@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "industrial-engineer": {
+      "source": "selfdriven-octo/skillzeb",
+      "sourceType": "github",
+      "skillPath": "skills/intelligence/organic-human/human/industrial-engineer/SKILL.md",
+      "computedHash": "51326cb21368f22df9fcf5041aac0fe29cb0345b26827203f5b1a98292d64705"
+    },
     "startup-financial-modeling": {
       "source": "wshobson/agents",
       "sourceType": "github",
