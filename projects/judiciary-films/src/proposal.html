@@ -1,0 +1,416 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<title>عرض إنتاج فيلمي احتفالية يوم القضاء العراقي</title>
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+  .num-ltr { direction: ltr; unicode-bidi: embed; font-family: 'Cinzel', serif; }
+  table.bt { width: 100%; border-collapse: collapse; }
+  table.bt th {
+    font-family: 'Cairo', sans-serif; font-weight: 600; font-size: 8.6pt;
+    color: var(--gold); text-align: right; padding: 2.6mm 3mm;
+    border-bottom: 1pt solid var(--gold-dim);
+  }
+  table.bt td {
+    font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 9pt;
+    color: var(--bone-dim); padding: 2.3mm 3mm;
+    border-bottom: .3pt solid rgba(201,162,39,.14);
+    vertical-align: top;
+  }
+  table.bt td.v { font-family: 'Cinzel', serif; direction: ltr; text-align: left; color: var(--bone); font-size: 9.5pt; white-space: nowrap; }
+  table.bt tr.total td { border-top: 1.2pt solid var(--gold); border-bottom: 0; color: var(--gold-soft); font-weight: 600; font-size: 10pt; padding-top: 3mm; }
+  table.bt tr.total td.v { color: var(--gold-soft); font-size: 12.5pt; }
+  .stat { text-align: center; padding: 5mm 2mm; background: var(--ink-2); border: .4pt solid rgba(201,162,39,.16); border-top: 1.4pt solid var(--gold-dim); }
+  .stat .big { font-family: 'Cinzel', serif; direction: ltr; font-size: 18pt; color: var(--gold-soft); }
+  .stat .big.kufi-big { font-family: 'Reem Kufi', sans-serif; direction: rtl; }
+  .stat .lbl { font-family: 'Cairo', sans-serif; font-weight: 600; font-size: 8.6pt; color: var(--bone); margin-top: 1.6mm; }
+  .stat .sub { font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 7.6pt; color: var(--mute); margin-top: .8mm; }
+  .wk { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.5mm; }
+  .wk .lbl { font-family: 'Cairo', sans-serif; font-weight: 600; font-size: 8.4pt; color: var(--bone); min-width: 42mm; }
+  .wk .bar { height: 5.2mm; border-radius: 1mm; }
+  .filmcard { position: relative; border: .4pt solid rgba(201,162,39,.25); overflow: hidden; height: 62mm; }
+  .filmcard img { width: 100%; height: 100%; object-fit: cover; }
+  .filmcard .ov {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 20%, rgba(7,9,13,.92) 82%);
+  }
+  .filmcard .tx { position: absolute; inset-inline: 6mm; bottom: 4.5mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<div class="page">
+  <img class="cover-img" src="assets/img/f1-cover-ziggurat-dawn.jpg" alt="">
+  <div class="cover-veil" style="background:linear-gradient(180deg, rgba(7,9,13,.35) 0%, rgba(7,9,13,.15) 30%, rgba(7,9,13,.6) 62%, rgba(7,9,13,.97) 100%);"></div>
+  <div class="cover-content">
+    <div class="eyebrow" style="margin-bottom:3mm;">OFFICIAL PRODUCTION PROPOSAL — 2026</div>
+    <div class="eyebrow ar" style="margin-bottom:8mm;">مقدَّم إلى مجلس القضاء الأعلى — جمهورية العراق · احتفالية يوم القضاء العراقي</div>
+    <h1 class="film-title-ar" style="font-size:38pt; margin-bottom:2mm;">عرضُ إنتاج فيلمَي الاحتفالية</h1>
+    <div class="film-title-en" style="margin-bottom:7mm;">«يا بُنَيّ»&nbsp;·&nbsp;«حاضِرون»</div>
+    <hr class="rule-gold" style="width:60mm; margin:0 auto 6mm;">
+    <p class="lead" style="max-width:215mm; margin:0 auto; font-size:12pt;">
+      فيلمان سينمائيان قصيران بجودة <span class="num-ltr" style="font-family:'Cinzel';">4K</span> وبمستوى مهرجانات دولية،
+      يرويان — لأول مرة بأحدث تقنيات الذكاء الاصطناعي التوليدي في العراق —
+      قصة أول عدالةٍ في تاريخ البشرية، وقصة قضاتها الذين شهدوا لها بأرواحهم.
+    </p>
+    <div class="cairo" style="margin-top:9mm; font-size:9.5pt; color:var(--gold-soft); font-weight:600;">
+      قيمة الاستثمار الكاملة للفيلمين: <span class="num-ltr" style="font-size:13pt;">$29,000</span>
+      <span style="color:var(--bone-dim); font-weight:300;">&nbsp;·&nbsp; التسليم النهائي خلال <span class="num-ltr">6–8</span> أسابيع من التوقيع</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — EXECUTIVE OVERVIEW ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">EXECUTIVE OVERVIEW</div>
+        <h2 class="sec-ar">الرؤية التنفيذية</h2>
+      </div>
+      <div class="num">01</div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.25;">
+        <p class="lead" style="margin-bottom:5mm;">
+          احتفاليةُ هذا العام لن تعرض فيلماً…<br>
+          <span class="gold">ستصنع سابقةً سينمائية باسم القضاء العراقي.</span>
+        </p>
+        <div class="body">
+          <p style="margin-bottom:4mm;">
+            نضع بين أيدي مجلسكم الموقّر مشروعَ فيلمين قصيرين من الطراز العالمي: <strong>«يا بُنَيّ»</strong> — أول عمل روائي ناطق باللغة السومرية المعاد بناؤها علمياً يروي ميلاد العدالة على أرض العراق، و<strong>«حاضِرون»</strong> — تحية سينمائية مهيبة لقضاة العراق الشهداء بوصفهم أبطالاً خالدين لا ضحايا.
+          </p>
+          <p style="margin-bottom:4mm;">
+            يُنتَج الفيلمان بأحدث تقنيات التوليد السينمائي بالذكاء الاصطناعي (<span class="cinzel" dir="ltr" style="font-size:8.5pt;">Seedance 2.0</span> وما بعدها)، بدقة <strong>4K أصلية</strong> ونسبة عرضٍ سينمائية، وبإشراف علمي أكاديمي على كل نصٍّ سومري وكل تفصيلٍ أثري — وهو ما يجعلهما مؤهلَين للترشح باسم المشروع إلى مهرجانات الأفلام القصيرة وأفلام الذكاء الاصطناعي الدولية بعد عرض الاحتفالية.
+          </p>
+          <p>
+            هذه الوثيقة تعرض: موجز الفيلمين، ومنهجية الإنتاج وتفكيكها، والجدول الزمني بمحطات اعتماد المجلس، والميزانية الكاملة الشفافة، وشروط التعاقد والتسليم.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-bottom:4mm;">
+          <div class="stat"><div class="big">2</div><div class="lbl">فيلمان سينمائيان</div><div class="sub">10:30 دقيقة منتهية مجتمعَين</div></div>
+          <div class="stat"><div class="big">4K</div><div class="lbl">دقة الماستر</div><div class="sub">توليد أصلي — لا ترقية رقمية</div></div>
+          <div class="stat"><div class="big">85</div><div class="lbl">لقطة نهائية معتمدة</div><div class="sub">تُنتقى من ~740 توليداً سينمائياً</div></div>
+          <div class="stat"><div class="big">3</div><div class="lbl">محطات اعتماد للمجلس</div><div class="sub">لا مفاجآت — ترون كل شيء قبل إنتاجه</div></div>
+        </div>
+        <div class="card">
+          <h3>لماذا هذا النهج؟</h3>
+          <p>إنتاج هذين الفيلمين تقليدياً — ديكورات سومرية تُبنى، وكومبارس، ومعدات سينمائية، ومؤثرات — كان سيتجاوز <strong class="num-ltr">$300,000</strong> وتسعة أشهر عمل (تفصيل المقارنة صفحة ٠٦). نُسلّم الجودة السينمائية ذاتها بجزءٍ يسير من الكلفة والزمن، وبميثاق وقارٍ صارم يليق بمقام المجلس.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">OVERVIEW</span></div>
+</div>
+
+<!-- ============ PAGE 3 — THE TWO FILMS ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">THE TWO FILMS</div>
+        <h2 class="sec-ar">الفيلمان</h2>
+      </div>
+      <div class="num">02</div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <div class="filmcard" style="margin-bottom:4mm;">
+          <img src="assets/img/f1-sage-lamp.jpg" alt="">
+          <div class="ov"></div>
+          <div class="tx">
+            <div class="kufi" style="font-size:16pt; font-weight:700; color:var(--bone);">يا بُنَيّ <span class="cinzel" style="font-size:8.5pt; color:var(--gold); letter-spacing:.3em;">&nbsp;O MY SON</span></div>
+            <div class="cairo" style="font-size:8.2pt; color:var(--bone-dim); font-weight:300;">المدة: 5:30 دقيقة · اللغة: السومرية الموثقة (ترجمة عربية/إنجليزية) · 45 لقطة 4K</div>
+          </div>
+        </div>
+        <div class="body">
+          <p style="margin-bottom:3mm;">
+            نحو <span class="num-ltr">2600</span> ق.م، يهمس الحكيم شوروباك وصايا العدل الأولى — الصدق والأمانة والنهي عن السرقة — في طينٍ رطبٍ بين يدي ابنه زيوسودرا؛ وعلى بُعد ستةٍ وأربعين قرناً، تفتتح قاضيةٌ عراقية جلستها بالسطر الذي لم ينقطع: <strong>«باسم الشعب»</strong>.
+          </p>
+          <p class="small">
+            ينسج الفيلم نقاط المجلس كاملةً: تعاليم شوروباك (أدب الحكمة)، والمحكَّم الأول، وأول تحكيمٍ دولي مسجَّل في التاريخ (ميسيليم بين لكش وأومّا)، ومعبد إيكيشنوغال ورثاء أور — في جديلةٍ تربط فجر سومر بفجر بغداد اليوم.
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="filmcard" style="margin-bottom:4mm;">
+          <img src="assets/img/f2-candles-hall.jpg" alt="">
+          <div class="ov"></div>
+          <div class="tx">
+            <div class="kufi" style="font-size:16pt; font-weight:700; color:var(--bone);">حاضِرون <span class="cinzel" style="font-size:8.5pt; color:var(--gold); letter-spacing:.3em;">&nbsp;PRESENT</span></div>
+            <div class="cairo" style="font-size:8.2pt; color:var(--bone-dim); font-weight:300;">المدة: 5:00 دقائق · اللغة: العربية بصيغ الجلسات الرسمية · 40 لقطة 4K</div>
+          </div>
+        </div>
+        <div class="body">
+          <p style="margin-bottom:3mm;">
+            قبل الفجر، في قاعة محكمةٍ فارغة، يتلو منادي المحكمة أسماء القضاة الشهداء — فيجيب عن كل اسمٍ <strong>النورُ نفسُه: حاضِر.</strong> لا مشهد موتٍ واحد؛ طقسُ حضورٍ وفخر، ذروته عند منصّة الشهود: «في لغتنا… الشهيدُ من الشاهد».
+          </p>
+          <p class="small">
+            بورتريهات الشهداء الرسمية تُكرَّم بالضوء وحده — <strong>ميثاق شرفٍ معلن: وجوههم لا تُولَّد ولا تُحرَّك بالذكاء الاصطناعي أبداً</strong> — والبنية تستوعب القائمة الرسمية الكاملة للشهداء بأي عدد. وخاتمةٌ مصممة لقاعة الاحتفالية: مع النداء الأخير تُضاء أنوار القاعة فيقف الحضور.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="divider-cune" style="margin-top:4mm;">𒁲 𒀭 𒌓</div>
+    <p class="small" style="text-align:center; margin-top:2mm;">الملفان السينمائيان التفصيليان لكل فيلم (السيناريو، المشاهد، اللوحات البصرية، باليت الألوان، تصميم الصوت) مرفقان مع هذا العرض.</p>
+  </div>
+  <div class="foot"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">THE FILMS</span></div>
+</div>
+
+<!-- ============ PAGE 4 — HOW WE PRODUCE ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">PRODUCTION METHOD — DECONSTRUCTED</div>
+        <h2 class="sec-ar">كيف نصنع الفيلم — تفكيك الإنتاج</h2>
+      </div>
+      <div class="num">03</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:5mm; margin-bottom:5mm;">
+      <div class="card">
+        <div class="cinzel" style="font-size:8pt; color:var(--gold); letter-spacing:.25em; margin-bottom:2mm;">STAGE 1</div>
+        <h3>التطوير والبحث</h3>
+        <p>السيناريو النهائي بمراجعة مستشار آشوريات معتمد (يُذكر في التترات): كل جملة سومرية من النصوص الأصلية الموثقة، وكل صيغة قضائية تُعتمد من المجلس حرفياً، وأسماء الشهداء وألقابهم من القائمة الرسمية.</p>
+      </div>
+      <div class="card">
+        <div class="cinzel" style="font-size:8pt; color:var(--gold); letter-spacing:.25em; margin-bottom:2mm;">STAGE 2</div>
+        <h3>العالم والإطارات المرجعية</h3>
+        <p>يُبنى العالم البصري كاملاً صوراً ثابتة أولاً: ورقات شخصيات مُحكمة (شوروباك، زيوسودرا، القاضية، المنادي)، وإطارٌ مرجعي معتمد اللون لكل لقطة من لقطات الفيلمين — <strong>يراها المجلس ويعتمدها قبل تحريك أي كادر.</strong></p>
+      </div>
+      <div class="card">
+        <div class="cinzel" style="font-size:8pt; color:var(--gold); letter-spacing:.25em; margin-bottom:2mm;">STAGE 3</div>
+        <h3>التوليد السينمائي 4K</h3>
+        <p>كل لقطة تُنتَج بمحرك <span class="cinzel" dir="ltr" style="font-size:8.5pt;">Seedance 2.0</span> على ثلاث بوابات جودة: مسوداتٌ متعددة لكل لقطة (تصل إلى <span class="num-ltr">20</span> نسخة للقطات الصعبة)، ففحصٌ عالي الدقة، فماستر <strong>4K أصلي</strong>. يُختار الأفضل فقط — <span class="num-ltr">85</span> لقطة نهائية من ~<span class="num-ltr">740</span> توليداً.</p>
+      </div>
+      <div class="card">
+        <div class="cinzel" style="font-size:8pt; color:var(--gold); letter-spacing:.25em; margin-bottom:2mm;">STAGE 4</div>
+        <h3>الصوت والماستر</h3>
+        <p>موسيقى تصويرية أصلية تُؤلَّف للفيلمين (قيثارة أور، ناي، مقام عراقي)، وأداء صوتي احترافي، وتصميم صوتٍ حسّي، ومكس <span class="cinzel" dir="ltr" style="font-size:8.5pt;">Dolby 5.1</span>، وتدريجٌ لوني سينمائي، ونسخ نهائية للقاعة وللمهرجانات.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.35;">
+        <div class="card" style="border-top-color:var(--gold);">
+          <h3>تشريح اللقطة الواحدة — مثال حقيقي من «يا بُنَيّ»</h3>
+          <p class="cairo" style="font-size:8.8pt; line-height:2;">
+            لقطة «حُكم الماء» (المُحكَّم يقسم ساقية الريّ بالسوية بين خصمين — من الأعلى): تُكتب بطاقة اللقطة (كاميرا، ضوء، حركة) ← يُولَّد إطارها المرجعي ويُعتمد ← تُنتَج <span class="num-ltr">15–20</span> نسخة حركية لضبط فيزياء الماء ← يختار المخرج أفضلها ← تُفحص بدقة عالية ← يُولَّد الماستر 4K ← تدخل المونتاج بموسيقاها وصوت الماء الحقيقي. <strong style="color:var(--bone);">هذا المعيار يُطبَّق على كل لقطة من لقطات الفيلمين الـ85.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <h3>فريق العمل</h3>
+          <p style="line-height:1.95;">مخرج ومولّد سينمائي رئيسي · منتج منفذ · مونتير وملوّن · مصمم صوت ومكس · مؤلف موسيقي · مستشار آشوريات أكاديمي · مؤدون صوتيون محترفون · مشرف جودة ومعالجة بورتريهات</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">METHOD</span></div>
+</div>
+
+<!-- ============ PAGE 5 — TIMELINE ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">TIMELINE & COUNCIL MILESTONES</div>
+        <h2 class="sec-ar">الجدول الزمني ومحطات اعتماد المجلس</h2>
+      </div>
+      <div class="num">04</div>
+    </div>
+    <div style="display:flex; gap:2mm; margin-bottom:3mm; padding-inline-start:45mm;">
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W1</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W2</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W3</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W4</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W5</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W6</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W7</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W8</div>
+    </div>
+    <div class="wk"><div class="lbl">التطوير والعالم والإطارات المرجعية</div><div class="bar" style="flex:2; background:linear-gradient(90deg,var(--clay),var(--amber));"></div><div style="flex:6;"></div></div>
+    <div class="wk"><div class="lbl">★ محطة ١ — اعتماد المجلس للإطارات</div><div style="flex:1.6;"></div><div class="bar" style="flex:.8; background:var(--gold);"></div><div style="flex:5.6;"></div></div>
+    <div class="wk"><div class="lbl">التوليد السينمائي — «يا بُنَيّ»</div><div style="flex:1.6;"></div><div class="bar" style="flex:2.2; background:linear-gradient(90deg,#5c7fa8,var(--lapis));"></div><div style="flex:4.2;"></div></div>
+    <div class="wk"><div class="lbl">التوليد السينمائي — «حاضِرون»</div><div style="flex:2;"></div><div class="bar" style="flex:2; background:linear-gradient(90deg,#5c7fa8,var(--lapis));"></div><div style="flex:4;"></div></div>
+    <div class="wk"><div class="lbl">★ محطة ٢ — العرض المبدئي + جولة تعديل ١</div><div style="flex:3.4;"></div><div class="bar" style="flex:1; background:var(--gold);"></div><div style="flex:3.6;"></div></div>
+    <div class="wk"><div class="lbl">ماسترات 4K النهائية</div><div style="flex:4;"></div><div class="bar" style="flex:2.2; background:linear-gradient(90deg,var(--gold-dim),var(--gold));"></div><div style="flex:1.8;"></div></div>
+    <div class="wk"><div class="lbl">الموسيقى الأصلية والمكس 5.1</div><div style="flex:5;"></div><div class="bar" style="flex:1.4; background:#7a5f9e;"></div><div style="flex:1.6;"></div></div>
+    <div class="wk"><div class="lbl">★ محطة ٣ — النسخة قبل النهائية + جولة تعديل ٢</div><div style="flex:5.8;"></div><div class="bar" style="flex:.9; background:var(--gold);"></div><div style="flex:1.3;"></div></div>
+    <div class="wk"><div class="lbl">التسليم والنسخ وبروفة القاعة (تايم-كود)</div><div style="flex:6.6;"></div><div class="bar" style="flex:1.4; background:var(--crimson);"></div></div>
+    <div class="cols" style="margin-top:5mm;">
+      <div class="col">
+        <div class="card"><h3>مبدأ «لا مفاجآت»</h3>
+        <p>يعتمد المجلس المشروع ثلاث مرات قبل النسخة النهائية: الإطارات المرجعية (يرى الفيلم كاملاً صوراً)، فالعرض المبدئي المتحرك، فالنسخة قبل النهائية. <strong>جولتا تعديلٍ كاملتان مشمولتان في قيمة العقد.</strong></p></div>
+      </div>
+      <div class="col">
+        <div class="card"><h3>يوم الاحتفالية</h3>
+        <p>فريقنا يحضر بروفة القاعة قبل الحفل بـ<span class="num-ltr">48</span> ساعة: مزامنة خاتمة «حاضِرون» مع إضاءة القاعة بتايم-كود آلي، واختبار الصوت 5.1، ونسخ احتياطية جاهزة. <strong>التسليم النهائي خلال 6–8 أسابيع من التوقيع</strong> — قابل للضغط عند تحديد موعد الاحتفالية.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">TIMELINE</span></div>
+</div>
+
+<!-- ============ PAGE 6 — INVESTMENT ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">INVESTMENT — FULL TRANSPARENCY</div>
+        <h2 class="sec-ar">قيمة الاستثمار — بشفافية كاملة</h2>
+      </div>
+      <div class="num">05</div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <div class="cairo" style="font-weight:600; font-size:10.5pt; color:var(--gold-soft); margin-bottom:2mm;">الفيلم الأول — «يا بُنَيّ» <span style="color:var(--mute); font-weight:300; font-size:8.5pt;">(5:30 دقيقة · 45 لقطة 4K)</span></div>
+        <table class="bt">
+          <tr><td>التطوير والسيناريو والبحث التاريخي والاستشارة الأكاديمية (الآشوريات والنصوص السومرية)</td><td class="v">$1,800</td></tr>
+          <tr><td>بناء العالم البصري وورقات الشخصيات والإطارات المرجعية المعتمدة</td><td class="v">$2,400</td></tr>
+          <tr><td>التوليد السينمائي 4K — مسودات وفحوص وماسترات (حوسبة سحابية متقدمة)</td><td class="v">$4,800</td></tr>
+          <tr><td>أجور الفريق — الإخراج وإدارة الإنتاج والإشراف الفني</td><td class="v">$2,200</td></tr>
+          <tr><td>المونتاج والتدريج اللوني والموشن غرافيكس والترجمة (عربي/إنجليزي)</td><td class="v">$1,800</td></tr>
+          <tr><td>الموسيقى التصويرية الأصلية (قيثارة أور) وتصميم الصوت والمكس 5.1</td><td class="v">$1,900</td></tr>
+          <tr><td>الأداء الصوتي الاحترافي (السومري والعربي) والتسجيل</td><td class="v">$600</td></tr>
+          <tr><td>ضمان الجودة والنسخ النهائية (قاعة + مهرجان + DCP)</td><td class="v">$500</td></tr>
+          <tr class="total"><td>إجمالي الفيلم الأول</td><td class="v">$16,000</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="cairo" style="font-weight:600; font-size:10.5pt; color:var(--gold-soft); margin-bottom:2mm;">الفيلم الثاني — «حاضِرون» <span style="color:var(--mute); font-weight:300; font-size:8.5pt;">(5:00 دقائق · 40 لقطة 4K)</span></div>
+        <table class="bt">
+          <tr><td>التطوير والسيناريو وبروتوكول الصيغ القضائية وقائمة الشهداء الرسمية</td><td class="v">$1,200</td></tr>
+          <tr><td>بناء القاعة الرقمية وورقة شخصية المنادي والإطارات المرجعية</td><td class="v">$1,900</td></tr>
+          <tr><td>التوليد السينمائي 4K — مسودات وفحوص وماسترات</td><td class="v">$4,000</td></tr>
+          <tr><td>أجور الفريق — الإخراج وإدارة الإنتاج والإشراف الفني</td><td class="v">$1,800</td></tr>
+          <tr><td>المونتاج والتلوين وموشن غرافيكس الأسماء ومعالجة البورتريهات التكريمية</td><td class="v">$1,600</td></tr>
+          <tr><td>الموسيقى التصويرية الأصلية وتصميم الصوت والمكس 5.1</td><td class="v">$1,500</td></tr>
+          <tr><td>الأداء الصوتي (منادي المحكمة) والتسجيل</td><td class="v">$400</td></tr>
+          <tr><td>مزامنة قاعة الاحتفالية (تايم-كود وبروفة) والنسخ والتسليم</td><td class="v">$600</td></tr>
+          <tr class="total"><td>إجمالي الفيلم الثاني</td><td class="v">$13,000</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:6mm; text-align:center; background:var(--ink-3); border:1pt solid var(--gold); padding:5mm;">
+      <span class="kufi" style="font-size:14pt; font-weight:600; color:var(--bone);">قيمة العقد الكاملة للفيلمين — شاملة كل ما ورد أعلاه: </span>
+      <span class="cinzel num-ltr" style="font-size:19pt; color:var(--gold-soft);">$29,000</span>
+      <div class="small" style="margin-top:1.5mm;">لا رسوم إضافية من أي نوع ضمن نطاق العمل المتفق عليه — جولتا تعديل كاملتان مشمولتان</div>
+    </div>
+  </div>
+  <div class="foot"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">INVESTMENT</span></div>
+</div>
+
+<!-- ============ PAGE 7 — TRADITIONAL COMPARISON ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">VALUE BENCHMARK — TRADITIONAL PRODUCTION</div>
+        <h2 class="sec-ar">للمقارنة — كلفة الإنتاج التقليدي ذاته</h2>
+      </div>
+      <div class="num">06</div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.4;">
+        <p class="body" style="margin-bottom:4mm;">
+          لو أُنتج هذان الفيلمان بالتصوير الحقيقي وبالمستوى البصري نفسه — عالمٌ سومري كامل يُبنى، وسقوط أور بالمؤثرات، وقاعة محكمة تاريخية — لكانت الميزانية بمعايير الإنتاج السينمائي التاريخي:
+        </p>
+        <table class="bt">
+          <tr><td>بناء الديكورات (بيت سومري، معبد إيكيشنوغال، أسواق) والأزياء والإكسسوارات الأثرية</td><td class="v">$85,000+</td></tr>
+          <tr><td>طاقم التصوير والمعدات السينمائية (كاميرات، إضاءة، رافعات — 15–20 يوم تصوير)</td><td class="v">$70,000+</td></tr>
+          <tr><td>الممثلون والكومبارس (مشاهد المدينة والمعبد والجيشين)</td><td class="v">$45,000+</td></tr>
+          <tr><td>المؤثرات البصرية VFX (سقوط أور، الزقورة، عاصفة الغبار، اللقطات الجوية)</td><td class="v">$60,000+</td></tr>
+          <tr><td>المواقع والتنقلات والإقامة والتصاريح</td><td class="v">$35,000+</td></tr>
+          <tr><td>المونتاج والصوت والموسيقى والتدريج</td><td class="v">$25,000+</td></tr>
+          <tr class="total"><td>التقدير الإجمالي — بزمن إنتاج 6–9 أشهر</td><td class="v">$320,000+</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="stat" style="margin-bottom:4mm; padding:7mm 4mm;">
+          <div class="big" style="font-size:24pt;">&lt; 10%</div>
+          <div class="lbl">من كلفة الإنتاج التقليدي</div>
+          <div class="sub">وبربع الزمن — مع جودة 4K مهرجانية وحرية إبداعية لا يتيحها التصوير الواقعي</div>
+        </div>
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>ما لا يستطيعه التصوير التقليدي أصلاً</h3>
+          <p>إعادة بناء أور في أوج مجدها ولحظة سقوطها، ومعبد إيكيشنوغال من الداخل، وبغداد من السماء تتحول لوحاً مسمارياً مضيئاً — لقطاتٌ يستحيل تنفيذها واقعياً بأي ميزانية، وهي قلب الفيلمين.</p>
+        </div>
+        <div class="card">
+          <h3>وقيمة تتجاوز الاحتفالية</h3>
+          <p>الفيلمان أصلٌ إعلامي دائم للمجلس: صالحان للمهرجانات الدولية باسم المشروع، وللمنصات الرسمية، وللوفود والمناسبات الدبلوماسية — أول سردية بصرية عالمية تقول: <strong>العدالة وُلدت في العراق.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">BENCHMARK</span></div>
+</div>
+
+<!-- ============ PAGE 8 — TERMS ============ -->
+<div class="page">
+  <img class="cover-img" src="assets/img/f2-judges-light.jpg" alt="" style="opacity:.4;">
+  <div class="cover-veil" style="background:linear-gradient(180deg, rgba(7,9,13,.8), rgba(7,9,13,.6) 40%, rgba(7,9,13,.95));"></div>
+  <div class="pad" style="position:relative; z-index:2;">
+    <div class="header-row" style="border-color:rgba(201,162,39,.4);">
+      <div>
+        <div class="sec-en">TERMS OF ENGAGEMENT</div>
+        <h2 class="sec-ar">شروط التعاقد والتسليم</h2>
+      </div>
+      <div class="num">07</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:5mm; margin-bottom:6mm;">
+      <div class="card" style="background:rgba(13,17,23,.85);">
+        <h3>شروط الدفع</h3>
+        <p style="line-height:2.05;">
+          <span class="num-ltr" style="color:var(--gold-soft);">50%</span> — عند توقيع العقد (إطلاق الإنتاج)<br>
+          <span class="num-ltr" style="color:var(--gold-soft);">25%</span> — عند اعتماد العرض المبدئي (محطة ٢)<br>
+          <span class="num-ltr" style="color:var(--gold-soft);">25%</span> — عند التسليم النهائي واعتماد النسخ<br>
+          <span class="small">صلاحية هذا العرض: 30 يوماً من تاريخه</span>
+        </p>
+      </div>
+      <div class="card" style="background:rgba(13,17,23,.85);">
+        <h3>التسليمات</h3>
+        <p style="line-height:2.05;">
+          فيلمان بدقة 4K — نسخة قاعة ونسخة مهرجانية لكل فيلم<br>
+          صوت Dolby 5.1 + نسخة ستيريو<br>
+          ترجمة عربية وإنجليزية مدمجة ومنفصلة<br>
+          ملفا العرض السينمائيان + المواد الترويجية (بوسترات وإعلان تشويقي قصير)
+        </p>
+      </div>
+      <div class="card" style="background:rgba(13,17,23,.85);">
+        <h3>الحقوق والضمانات</h3>
+        <p style="line-height:2.05;">
+          حقوق العرض والبث الكاملة للمجلس داخل العراق وخارجه<br>
+          الموسيقى الأصلية بحقوقها الكاملة — لا رسوم تراخيص لاحقة<br>
+          الترشيح المهرجاني باسم المجلس وبموافقته المسبقة<br>
+          جولتا تعديل شاملتان؛ وما زاد يُتفق عليه كتابةً
+        </p>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:5mm; margin-bottom:8mm;">
+      <div class="card" style="background:rgba(13,17,23,.85); border-top-color:var(--gold);">
+        <h3>ميثاق الوقار — التزام تعاقدي</h3>
+        <p>وجوه الشهداء لا تُولَّد ولا تُحرَّك ولا تُنطَق بالذكاء الاصطناعي؛ الأسماء والألقاب والصيغ القضائية تُعتمد من المجلس حرفياً قبل التسجيل؛ المعبد يُصوَّر تاريخاً وعمارةً لا طقساً؛ ولا دماء ولا مشاهد عنف في الفيلمين إطلاقاً.</p>
+      </div>
+      <div class="card" style="background:rgba(13,17,23,.85); border-top-color:var(--gold);">
+        <h3>السرية والملكية</h3>
+        <p>جميع المواد الخاصة بالمجلس (الصور، الأسماء، الوثائق) تُعامل بسرية تامة وتبقى ملكاً له؛ ملفات المشروع المصدرية تُسلَّم نسخة أرشيفية منها للمجلس عند الإغلاق المالي للعقد.</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div class="cune" style="font-size:12pt; color:var(--gold-dim); letter-spacing:.7em; margin-bottom:4mm;">𒁲 𒀭 𒌓</div>
+      <div class="kufi" style="font-size:16pt; font-weight:600; color:var(--bone); margin-bottom:5mm;">يشرّفنا أن نضع اسم القضاء العراقي حيث يستحق: في صدارة الشاشة العالمية</div>
+      <div class="cairo" style="font-size:9pt; color:var(--bone-dim); font-weight:300;">
+        [ اسم الشركة ] — الشركة المنظِّمة لاحتفالية يوم القضاء العراقي &nbsp;·&nbsp; [ الاسم والتوقيع — المدير التنفيذي ] &nbsp;·&nbsp; [ التاريخ ]
+      </div>
+    </div>
+  </div>
+  <div class="foot" style="z-index:2;"><span>عرض إنتاج — مجلس القضاء الأعلى</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">TERMS</span></div>
+</div>
+
+</body>
+</html>
