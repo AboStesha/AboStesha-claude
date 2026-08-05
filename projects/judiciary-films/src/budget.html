@@ -1,0 +1,386 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<title>ملف الإنتاج والميزانية — فيلما احتفالية يوم القضاء</title>
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+  .num-ltr { direction: ltr; unicode-bidi: embed; font-family: 'Cinzel', serif; }
+  table.bt { width: 100%; border-collapse: collapse; }
+  table.bt th {
+    font-family: 'Cairo', sans-serif; font-weight: 600; font-size: 8.6pt;
+    color: var(--gold); text-align: right; padding: 2.6mm 3mm;
+    border-bottom: 1pt solid var(--gold-dim);
+  }
+  table.bt td {
+    font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 9pt;
+    color: var(--bone-dim); padding: 2.4mm 3mm;
+    border-bottom: .3pt solid rgba(201,162,39,.14);
+    vertical-align: top;
+  }
+  table.bt td.v { font-family: 'Cinzel', serif; direction: ltr; text-align: left; color: var(--bone); font-size: 9.5pt; white-space: nowrap; }
+  table.bt tr.total td { border-top: 1.2pt solid var(--gold); border-bottom: 0; color: var(--gold-soft); font-weight: 600; font-size: 10pt; padding-top: 3mm; }
+  table.bt tr.total td.v { color: var(--gold-soft); font-size: 12pt; }
+  .stat { text-align: center; padding: 5mm 2mm; background: var(--ink-2); border: .4pt solid rgba(201,162,39,.16); border-top: 1.4pt solid var(--gold-dim); }
+  .stat .big { font-family: 'Cinzel', serif; direction: ltr; font-size: 19pt; color: var(--gold-soft); }
+  .stat .lbl { font-family: 'Cairo', sans-serif; font-weight: 600; font-size: 8.6pt; color: var(--bone); margin-top: 1.6mm; }
+  .stat .sub { font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 7.6pt; color: var(--mute); margin-top: .8mm; }
+  .tier { background: var(--ink-2); border: .4pt solid rgba(201,162,39,.2); padding: 5mm 6mm; }
+  .tier.hero { border: 1pt solid var(--gold); background: var(--ink-3); }
+  .tier h3 { font-family: 'Reem Kufi', sans-serif; font-weight: 600; font-size: 12pt; color: var(--bone); margin-bottom: 1.5mm; }
+  .tier .price { font-family: 'Cinzel', serif; direction: ltr; font-size: 20pt; color: var(--gold-soft); margin: 2mm 0; }
+  .tier p { font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 8.4pt; color: var(--bone-dim); line-height: 1.9; }
+  .wk { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.6mm; }
+  .wk .lbl { font-family: 'Cairo', sans-serif; font-weight: 600; font-size: 8.4pt; color: var(--bone); min-width: 40mm; }
+  .wk .bar { height: 5.5mm; border-radius: 1mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<div class="page">
+  <img class="cover-img" src="assets/img/f2-scales-desk.jpg" alt="">
+  <div class="cover-veil" style="background:linear-gradient(180deg, rgba(7,9,13,.45) 0%, rgba(7,9,13,.25) 30%, rgba(7,9,13,.7) 60%, rgba(7,9,13,.97) 100%);"></div>
+  <div class="cover-content">
+    <div class="eyebrow" style="margin-bottom:4mm;">EXECUTIVE PRODUCTION FILE — CONFIDENTIAL</div>
+    <div class="eyebrow ar" style="margin-bottom:7mm;">وثيقة داخلية لشركة الإنتاج — لا تُسلَّم للعميل</div>
+    <h1 class="film-title-ar" style="font-size:40pt; margin-bottom:2mm;">ملف الإنتاج والميزانية</h1>
+    <div class="film-title-en" style="margin-bottom:8mm;">PRODUCTION&nbsp;BUDGET&nbsp;·&nbsp;4K&nbsp;MASTER</div>
+    <hr class="rule-gold" style="width:60mm; margin:0 auto 6mm;">
+    <p class="lead" style="max-width:210mm; margin:0 auto; font-size:12pt;">
+      «يا بُنيّ» و«حاضِرون» — ميزانية تفصيلية بأسعار المنصة الحقيقية المستعلمة مباشرة،
+      مع احتساب المسودات والإعادات وتغييرات العميل، وخطة زمنية، واستراتيجية تسعير البيع.
+    </p>
+    <div class="cairo" style="margin-top:8mm; font-size:8.5pt; color:var(--bone-dim); font-weight:300;">
+      أُعدّت بتاريخ ٥ آب ٢٠٢٦ — الأسعار مستعلمة من Higgsfield API مباشرة (Seedance 2.0 · Soul Cinema · Seed Audio)
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — EXECUTIVE SUMMARY ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">EXECUTIVE SUMMARY</div>
+        <h2 class="sec-ar">الملخص التنفيذي</h2>
+      </div>
+      <div class="num">01</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; margin-bottom:6mm;">
+      <div class="stat"><div class="big">47,026</div><div class="lbl">إجمالي الكريدت للفيلمين</div><div class="sub">شاملاً المسودات والإعادات والاحتياطي</div></div>
+      <div class="stat"><div class="big">$1,900</div><div class="lbl">كلفة المنصة (توليد 4K)</div><div class="sub">بمعدل $0.0404 للكريدت — حزم 4,000</div></div>
+      <div class="stat"><div class="big">$5,450</div><div class="lbl">الكلفة الصلبة الكاملة</div><div class="sub">منصة + صوت وموسيقى ومستشار ومونتاج</div></div>
+      <div class="stat"><div class="big">6–8</div><div class="lbl">أسابيع للتسليم النهائي</div><div class="sub">الفيلمان بالتوازي · أول عرض مبدئي أسبوع ٣</div></div>
+    </div>
+    <table class="bt">
+      <tr>
+        <th style="width:24%;">الفيلم</th>
+        <th>المدة النهائية</th>
+        <th>لقطات نهائية 4K</th>
+        <th>محاولات التوليد الكلية</th>
+        <th>إجمالي الكريدت</th>
+        <th>كلفة المنصة</th>
+        <th>الكلفة الكاملة</th>
+        <th>زمن الإنتاج</th>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--bone);">«يا بُنيّ» — أدب الحكمة</strong><br><span class="small">الأصعب: عالم أثري + لغة سومرية + شخصيات</span></td>
+        <td class="v">5:30 min</td>
+        <td class="v">45</td>
+        <td class="v">~430</td>
+        <td class="v">26,110 cr</td>
+        <td class="v">$1,055</td>
+        <td class="v">$3,080</td>
+        <td class="v">5 wks</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--bone);">«حاضِرون» — الشهداء</strong><br><span class="small">الأأمن إنتاجياً: موقع واحد، ضوء وملمس</span></td>
+        <td class="v">5:00 min</td>
+        <td class="v">40</td>
+        <td class="v">~310</td>
+        <td class="v">20,916 cr</td>
+        <td class="v">$845</td>
+        <td class="v">$2,370</td>
+        <td class="v">4 wks</td>
+      </tr>
+      <tr class="total">
+        <td>المجموع — بالإنتاج المتوازي</td>
+        <td class="v">10:30</td>
+        <td class="v">85</td>
+        <td class="v">~740</td>
+        <td class="v">47,026 cr</td>
+        <td class="v">$1,900</td>
+        <td class="v">$5,450</td>
+        <td class="v">6–8 wks</td>
+      </tr>
+    </table>
+    <div class="cols" style="margin-top:5mm;">
+      <div class="col">
+        <p class="small">«الكلفة الكاملة» = المنصة + مستشار الآشوريات + الأداء الصوتي + الموسيقى الأصلية والمكس 5.1 + المونتاج والتلوين والموشن غرافيكس (إن أُسندت خارجياً) + الاشتراكات — <strong style="color:var(--bone-dim);">ولا تشمل وقت الفريق الداخلي</strong> (يُقدَّر بـ 250–300 ساعة عمل للفيلمين، تدخل في حساب هامش الربح صفحة التسعير).</p>
+      </div>
+      <div class="col">
+        <div class="sumer-block" style="margin:0;">
+          <div class="sumer-ar" style="font-size:10.5pt;">السعر الموصى به للبيع: <strong>$28,000 للحزمة</strong> («يا بُنيّ» $16,500 · «حاضِرون» $13,500 منفصلَين) — هامش صافٍ ≈ <span class="num-ltr">66%</span> بعد كل الكلف بما فيها وقت الفريق، ومدعوم ببحث سوقٍ موثَّق (صفحة التسعير).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>ملف الإنتاج والميزانية</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">SUMMARY</span></div>
+</div>
+
+<!-- ============ PAGE 3 — REAL PLATFORM RATES + METHOD ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">REAL PLATFORM RATES & COST METHOD</div>
+        <h2 class="sec-ar">أسعار المنصة الحقيقية — ومنهجية ضبط الكلفة</h2>
+      </div>
+      <div class="num">02</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:4mm; margin-bottom:6mm;">
+      <div class="stat"><div class="big">22</div><div class="lbl">كريدت / ثانية 4K</div><div class="sub">Seedance 2.0 · std · أصلي بلا ترقية ≈ <span class="num-ltr">$0.89/s</span></div></div>
+      <div class="stat"><div class="big">9</div><div class="lbl">كريدت / ثانية 1080p</div><div class="sub">فحص الذروات قبل 4K بـ<span class="num-ltr">40%</span> من الكلفة</div></div>
+      <div class="stat"><div class="big">3.5</div><div class="lbl">كريدت / ثانية مسودة</div><div class="sub">720p fast — مختبر التجريب</div></div>
+      <div class="stat"><div class="big">0.12</div><div class="lbl">كريدت / صورة مرجعية</div><div class="sub">Soul Cinema 2K — إطارات وموود</div></div>
+      <div class="stat"><div class="big">$161.5</div><div class="lbl">حزمة 4,000 كريدت</div><div class="sub">أفضل معدل شراء — صلاحية 90 يوماً</div></div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.3;">
+        <p class="lead" style="margin-bottom:4mm;">القاعدة الذهبية: <span class="gold">جرّب رخيصاً، وأنهِ فاخراً.</span></p>
+        <div class="body">
+          <p style="margin-bottom:3.5mm;">
+            ثانية 4K تكلف <strong class="num-ltr">6.3×</strong> ثانية المسودة. لذلك لا تُطلق لقطة واحدة بدقة 4K قبل أن تُعتمد نسختها المسودة نهائياً. كل لقطة تمر بثلاث بوابات:
+          </p>
+          <p style="margin-bottom:2.5mm;"><strong style="color:var(--amber);">البوابة ١ — المسودات (720p fast):</strong> كل المحاولات والتجريب واختيار الأداء والحركة هنا — وهي <span class="num-ltr">~66%</span> من مجموع المحاولات لكن <span class="num-ltr">~35%</span> فقط من الكلفة.</p>
+          <p style="margin-bottom:2.5mm;"><strong style="color:var(--amber);">البوابة ٢ — فحص 1080p:</strong> للقطات البطلة فقط (الماء المنشطر، المسلّة، الزقورة): نتحقق من صمود التفاصيل قبل دفع سعر الـ4K.</p>
+          <p><strong style="color:var(--amber);">البوابة ٣ — الماستر 4K الأصلي:</strong> اللقطة المعتمدة تُولَّد بدقة <span class="num-ltr">4K</span> أصلية من Seedance مباشرة (لا upscale) — مع هامش إعادةٍ محسوب لقطات لا تنجح أول مرة بالدقة العالية.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>شراء الكريدت — على ثلاث دفعات</h3>
+          <p>صلاحية حزم الكريدت <strong>90 يوماً</strong>، لذا لا تُشترى الـ47 ألفاً دفعة واحدة، بل ثلاث دفعات مرتبطة بمراحل الإنتاج (وبدفعات العميل): <span class="num-ltr">16k → 16k → 15k</span>. لا كريدت ميت.</p>
+        </div>
+        <div class="card">
+          <h3>لماذا 4K أصلي لا ترقية؟</h3>
+          <p>Seedance 2.0 يدعم 4K std أصلياً بنسبة <span class="num-ltr">21:9</span> السينمائية — تفاصيل حقيقية مولّدة لا استيفاء بكسلات. جودة تليق بشاشة القاعة العملاقة وبمعايير DCP المهرجانية.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>ملف الإنتاج والميزانية</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">RATES</span></div>
+</div>
+
+<!-- ============ PAGE 4 — FILM 1 BUDGET ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">FILM 1 BUDGET — O MY SON</div>
+        <h2 class="sec-ar">ميزانية «يا بُنيّ» — 5:30 دقيقة · 45 لقطة 4K</h2>
+      </div>
+      <div class="num">03</div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.45;">
+        <table class="bt">
+          <tr><th>البند</th><th>الحساب</th><th style="text-align:left;">كريدت</th></tr>
+          <tr><td>مسودات التجريب <span class="small">(720p fast)</span></td><td class="small">366 محاولة × 7.3 ث × 3.5 — لقطات بطلة ×14، قياسية ×7، بسيطة ×4</td><td class="v">9,351</td></tr>
+          <tr><td>فحوص 1080p للقطات البطلة</td><td class="small">20 لقطة × 7.3 ث × 9</td><td class="v">1,314</td></tr>
+          <tr><td>الماستر 4K الأصلي</td><td class="small">45 لقطة × 7.3 ث × 22</td><td class="v">7,227</td></tr>
+          <tr><td>هامش إعادات 4K</td><td class="small">‎+30% — لقطات لا تنجح أول مرة بالدقة العالية</td><td class="v">2,168</td></tr>
+          <tr><td>جولتا تغييرات العميل</td><td class="small">إعادة ~20% من اللقطات (9 لقطات: مسودات + 4K)</td><td class="v">3,416</td></tr>
+          <tr><td>صور مرجعية وورقات شخصيات</td><td class="small">~600 إطار (شوروباك، زيوسودرا، القاضية، العالم)</td><td class="v">200</td></tr>
+          <tr><td>تجارب صوتية <span class="small">(TTS مبدئي)</span></td><td class="small">سطر الاختبار = 0.4 كريدت</td><td class="v">60</td></tr>
+          <tr><td>احتياطي طوارئ</td><td class="small">‎10%</td><td class="v">2,374</td></tr>
+          <tr class="total"><td>إجمالي المنصة</td><td class="small" style="color:var(--gold-soft);">≈ <span class="num-ltr">$1,055</span> بمعدل حزم 4,000</td><td class="v">26,110</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>لماذا هذا الفيلم أغلى؟</h3>
+          <p style="line-height:1.9;">
+            · لقطاته البطلة الاثنتا عشرة الأصعب في المشروع كله: فيزياء الماء المنشطر (<span class="num-ltr">15–20</span> محاولة)، مسلّة الفجر، سقوط أور<br>
+            · ثبات ٣ شخصيات عبر أزمنة + مزامنة شفاه سومرية<br>
+            · عالم أثري كامل يُبنى من الصفر بدقة أكاديمية
+          </p>
+        </div>
+        <div class="card">
+          <h3>كلف خارجية — فيلم ١</h3>
+          <p style="line-height:2;">
+            مستشار آشوريات (نصوص ونطق): <span class="num-ltr">$400</span><br>
+            أداء صوتي (سومري + عربي): <span class="num-ltr">$350</span><br>
+            موسيقى أصلية + مكس 5.1: <span class="num-ltr">$600</span><br>
+            مونتاج وتلوين وموشن غرافيكس: <span class="num-ltr">$600</span><br>
+            حصة اشتراكات وأدوات: <span class="num-ltr">$75</span><br>
+            <strong style="color:var(--gold-soft);">إجمالي الفيلم الأول: <span class="num-ltr">$3,080</span></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>ملف الإنتاج والميزانية</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">FILM 1</span></div>
+</div>
+
+<!-- ============ PAGE 5 — FILM 2 BUDGET ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">FILM 2 BUDGET — PRESENT</div>
+        <h2 class="sec-ar">ميزانية «حاضِرون» — 5:00 دقائق · 40 لقطة 4K</h2>
+      </div>
+      <div class="num">04</div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.45;">
+        <table class="bt">
+          <tr><th>البند</th><th>الحساب</th><th style="text-align:left;">كريدت</th></tr>
+          <tr><td>مسودات التجريب <span class="small">(720p fast)</span></td><td class="small">256 محاولة × 7.5 ث × 3.5 — بطلة ×11، قياسية ×6، بسيطة ×4</td><td class="v">6,720</td></tr>
+          <tr><td>فحوص 1080p للقطات البطلة</td><td class="small">14 لقطة × 7.5 ث × 9</td><td class="v">945</td></tr>
+          <tr><td>الماستر 4K الأصلي</td><td class="small">40 لقطة × 7.5 ث × 22</td><td class="v">6,600</td></tr>
+          <tr><td>هامش إعادات 4K</td><td class="small">‎+25% — بيئة أأمن: ضوء وملمس وحركة بطيئة</td><td class="v">1,650</td></tr>
+          <tr><td>جولتا تغييرات العميل</td><td class="small">إعادة ~20% من اللقطات (8 لقطات)</td><td class="v">2,910</td></tr>
+          <tr><td>صور مرجعية وورقة المنادي</td><td class="small">~450 إطار (القاعة، القنديل، السجل، الوحدات)</td><td class="v">150</td></tr>
+          <tr><td>تجارب صوتية</td><td class="small">نداءات مبدئية للمونتاج</td><td class="v">40</td></tr>
+          <tr><td>احتياطي طوارئ</td><td class="small">‎10%</td><td class="v">1,902</td></tr>
+          <tr class="total"><td>إجمالي المنصة</td><td class="small" style="color:var(--gold-soft);">≈ <span class="num-ltr">$845</span> بمعدل حزم 4,000</td><td class="v">20,916</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>لماذا هذا الفيلم أوفر؟</h3>
+          <p style="line-height:1.9;">
+            · موقع واحد وشخصية واحدة — منطقة الأمان القصوى للتوليد<br>
+            · بطولة الضوء والملمس والحركة البطيئة: نسب قبول أعلى<br>
+            · بورتريهات الشهداء تُعالَج في المونتاج (2.5D) لا بالتوليد — صفر كريدت وصفر مخاطرة ذوقية<br>
+            · توهج الأسماء موشن غرافيكس فوق اللقطة — سلامة الخط مضمونة
+          </p>
+        </div>
+        <div class="card">
+          <h3>كلف خارجية — فيلم ٢</h3>
+          <p style="line-height:2;">
+            أداء صوتي (المنادي — صوت عراقي وقور): <span class="num-ltr">$250</span><br>
+            موسيقى أصلية + مكس 5.1: <span class="num-ltr">$600</span><br>
+            مونتاج وتلوين وموشن غرافيكس الأسماء: <span class="num-ltr">$600</span><br>
+            حصة اشتراكات وأدوات: <span class="num-ltr">$75</span><br>
+            <strong style="color:var(--gold-soft);">إجمالي الفيلم الثاني: <span class="num-ltr">$2,370</span></strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>ملف الإنتاج والميزانية</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">FILM 2</span></div>
+</div>
+
+<!-- ============ PAGE 6 — TIMELINE ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">PRODUCTION TIMELINE — PARALLEL TRACKS</div>
+        <h2 class="sec-ar">الجدول الزمني — الفيلمان بالتوازي</h2>
+      </div>
+      <div class="num">05</div>
+    </div>
+    <div style="display:flex; gap:2mm; margin-bottom:3mm; padding-inline-start:43mm;">
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W1</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W2</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W3</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W4</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W5</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W6</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W7</div>
+      <div class="cinzel" style="flex:1; text-align:center; font-size:8pt; color:var(--mute);">W8</div>
+    </div>
+    <div class="wk"><div class="lbl">العالم والشخصيات والإطارات</div><div class="bar" style="flex:2; background:linear-gradient(90deg,var(--clay),var(--amber));"></div><div style="flex:6;"></div></div>
+    <div class="wk"><div class="lbl">موافقة المجلس على الإطارات</div><div style="flex:1.6;"></div><div class="bar" style="flex:.8; background:var(--gold);"></div><div style="flex:5.6;"></div></div>
+    <div class="wk"><div class="lbl">مسودات التحريك — فيلم ١</div><div style="flex:1.6;"></div><div class="bar" style="flex:2.2; background:linear-gradient(90deg,#5c7fa8,var(--lapis));"></div><div style="flex:4.2;"></div></div>
+    <div class="wk"><div class="lbl">مسودات التحريك — فيلم ٢</div><div style="flex:2;"></div><div class="bar" style="flex:2; background:linear-gradient(90deg,#5c7fa8,var(--lapis));"></div><div style="flex:4;"></div></div>
+    <div class="wk"><div class="lbl">عرض مبدئي (Rough Cut) + جولة تعديل ١</div><div style="flex:3.4;"></div><div class="bar" style="flex:1; background:var(--gold);"></div><div style="flex:3.6;"></div></div>
+    <div class="wk"><div class="lbl">ماستر 4K — فيلم ١</div><div style="flex:4;"></div><div class="bar" style="flex:1.8; background:linear-gradient(90deg,var(--gold-dim),var(--gold));"></div><div style="flex:2.2;"></div></div>
+    <div class="wk"><div class="lbl">ماستر 4K — فيلم ٢</div><div style="flex:4.4;"></div><div class="bar" style="flex:1.6; background:linear-gradient(90deg,var(--gold-dim),var(--gold));"></div><div style="flex:2;"></div></div>
+    <div class="wk"><div class="lbl">الموسيقى والمكس 5.1 + جولة تعديل ٢</div><div style="flex:5;"></div><div class="bar" style="flex:1.4; background:#7a5f9e;"></div><div style="flex:1.6;"></div></div>
+    <div class="wk"><div class="lbl">الماسترات والتسليم وDCP</div><div style="flex:6;"></div><div class="bar" style="flex:1; background:var(--bone-dim);"></div><div style="flex:1;"></div></div>
+    <div class="wk"><div class="lbl">بروفة القاعة (تايم-كود) + احتياط</div><div style="flex:7;"></div><div class="bar" style="flex:1; background:var(--crimson);"></div></div>
+    <div class="cols" style="margin-top:5mm;">
+      <div class="col">
+        <div class="card"><h3>محطات العميل الثلاث</h3>
+        <p>١) اعتماد الإطارات المرجعية (نهاية W2) — يرى المجلس كل الفيلم صوراً ثابتة قبل أي تحريك · ٢) العرض المبدئي (نهاية W3–W4) · ٣) النسخة قبل النهائية (W6–W7). <strong>جولتا تعديل محسوبتان في الميزانية</strong> — وأي جولة إضافية تُسعَّر منفصلة.</p></div>
+      </div>
+      <div class="col">
+        <div class="card"><h3>فريق العمل</h3>
+        <p>مخرج/مولّد رئيسي + مونتير/ملوّن + مصمم صوت (جزئي) + مستشار آشوريات (فيلم ١) + مؤديان صوتيان. الوقت الداخلي المقدَّر: <span class="num-ltr">250–300</span> ساعة للفيلمين.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>ملف الإنتاج والميزانية</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">TIMELINE</span></div>
+</div>
+
+<!-- ============ PAGE 7 — PRICING STRATEGY ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">PRICING STRATEGY — WHAT TO QUOTE</div>
+        <h2 class="sec-ar">استراتيجية التسعير — كم تطلب من المجلس؟</h2>
+      </div>
+      <div class="num">06</div>
+    </div>
+    <div class="cols" style="margin-bottom:5mm;">
+      <div class="col" style="flex:1.15;">
+        <p class="body" style="margin-bottom:3mm;">
+          القاعدة الأولى: <strong>لا تبع الكلفة، بِع القيمة.</strong> المجلس لا يشتري «فيديو» — يشتري افتتاحية احتفاليته الرسمية أمام رؤساء السلطات والضيوف، وهويةً حضاريةً تُروى باسمه، وأول ترشيح مهرجاني دولي محتمل لفيلم قضائي عراقي. المعيار العالمي للدقيقة المنتهية: احترافي <span class="num-ltr">$3–5k</span> وفاخر <span class="num-ltr">$5–10k</span> — وفيلمانا <span class="num-ltr">10:30</span> دقيقة منتهية.
+        </p>
+        <div id="market-box" class="card">
+          <h3>مقارنات السوق — بحث موثَّق (آب 2026)</h3>
+          <p style="line-height:1.95;">
+            · وكالة عراقية محلية: <span class="num-ltr">$3k–12k</span> للفيلم الواحد (الرائدة حتى <span class="num-ltr">$15k</span>)<br>
+            · وكالة خليجية محترفة (دبي/الرياض): <span class="num-ltr">$15k–45k</span> للفيلم — وbrand film السينمائي في دبي يبدأ من <span class="num-ltr">$22–27k</span><br>
+            · المشتري الحكومي يدفع أعلى الشرائح <span class="num-ltr">+10–15%</span> (موثق في الرياض)<br>
+            · إنتاجات AI قصيرة موثقة بأرقام حقيقية: <span class="num-ltr">$315–750</span> للدقيقة المنجزة، ووكالات AI تبدأ من <span class="num-ltr">$15k</span> للمشروع<br>
+            · <strong style="color:var(--gold-soft);">النطاق الدفاعي للحزمة أمام جهة سيادية: <span class="num-ltr">$25k–60k</span>، بارتكاز <span class="num-ltr">$30–45k</span></strong>
+          </p>
+        </div>
+      </div>
+      <div class="col" style="flex:1.6;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:4mm;">
+          <div class="tier">
+            <h3>الحد الأدنى</h3>
+            <div class="price">$18,000</div>
+            <p>للحزمة إن ضغط التفاوض — <strong>لا تنزل تحته أبداً</strong>: تحته تبيع عملاً بمستوى خليجي بسعر محلي وتحرق سوقك القادم. الهامش الصافي ~<span class="num-ltr">47%</span>.<br>منفصلَين: <span class="num-ltr">$10.5k + $8.5k</span></p>
+          </div>
+          <div class="tier hero">
+            <h3>الموصى به ★</h3>
+            <div class="price">$28,000</div>
+            <p>حزمة الفيلمين ≈ <span class="num-ltr">$2,700</span>/دقيقة منتهية — قاع نطاق الارتكاز السيادي (<span class="num-ltr">$30–45k</span>)، فوق السوق العراقي بما يليق بالجودة، وتحت أسعار دبي. منفصلَين: «يا بُنيّ» <span class="num-ltr">$16,500</span> · «حاضِرون» <span class="num-ltr">$13,500</span> — الحزمة توفّر للعميل <span class="num-ltr">$2k</span> وتضمن لك المشروعين.</p>
+          </div>
+          <div class="tier">
+            <h3>بريميوم</h3>
+            <div class="price">$38,000</div>
+            <p>الحزمة + النسخ المهرجانية الإنجليزية + DCP + إدارة حملة ترشيحات (رسوم ١٠ مهرجانات دولية) + فيلم «خلف الكواليس» للمجلس + حقوق بث موسعة سنتين.</p>
+          </div>
+        </div>
+        <table class="bt" style="margin-top:5mm;">
+          <tr><th>حساب الربح — عند $28,000</th><th style="text-align:left;">USD</th></tr>
+          <tr><td>الإيراد (الحزمة)</td><td class="v">28,000</td></tr>
+          <tr><td>الكلف الصلبة (منصة + خارجية)</td><td class="v">−5,450</td></tr>
+          <tr><td>وقت الفريق الداخلي (~280 ساعة)</td><td class="v">−3,500</td></tr>
+          <tr><td>احتياطي تشغيلي</td><td class="v">−600</td></tr>
+          <tr class="total"><td>الربح الصافي ≈ 66%</td><td class="v">≈ 18,450</td></tr>
+        </table>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:4mm;">
+      <div class="card"><h3>شروط الدفع</h3><p><span class="num-ltr">50%</span> عند التوقيع (تموّل الكريدت والمستشارين) · <span class="num-ltr">25%</span> عند اعتماد العرض المبدئي · <span class="num-ltr">25%</span> عند التسليم النهائي. صلاحية العرض <span class="num-ltr">30</span> يوماً.</p></div>
+      <div class="card"><h3>ما يتضمنه السعر — حدّده كتابةً</h3><p>فيلمان 4K + نسخة قاعة ونسخة مهرجان لكل فيلم + جولتا تعديل + الموسيقى الأصلية بحقوقها + ملفا العرض السينمائيان. أي لقطات إضافية أو جولة ثالثة: <span class="num-ltr">$120</span>/لقطة 4K.</p></div>
+      <div class="card"><h3>ورقة التفاوض الذهبية</h3><p>«الإنتاج التقليدي لهذين الفيلمين — ديكورات سومرية وكومبارس ومعدات سينمائية — كان سيكلفكم فوق <span class="num-ltr">$150,000</span> وستة أشهر. نسلّمكم جودة عالمية بعُشر الرقم وربع الزمن — لأننا نملك التقنية التي لا يملكها غيرنا في العراق.»</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>ملف الإنتاج والميزانية</span><span class="cune">𒁲 𒀭 𒌓</span><span class="cinzel">PRICING</span></div>
+</div>
+
+</body>
+</html>
