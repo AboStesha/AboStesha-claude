@@ -1,9 +1,9 @@
-f1-cover-ziggurat-dawn.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_cd76e7ef-caf0-49db-a79f-8ebc9ac2be03.png
+f1-cover-ziggurat-dawn.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_050035_b1d6dae6-0b8f-4358-afea-7d6a49edc079.png
 f1-sage-lamp.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044947_7b6a297a-df51-4aed-82bb-3ee8b6fc57a5.png
 f1-stylus-clay.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_342aeca7-6ae9-4a35-af6f-4d457fb6e316.png
 f1-arbiter-palm.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_a967c6e9-6818-4db2-aa7c-8846d27d80eb.png
 f1-temple-moonlight.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_4ee1aae4-c416-4cd9-af6d-f946d993a000.png
-f1-city-burning.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_61ba2d41-a447-47fa-8cfe-1166a4838b68.png
+f1-city-burning.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_050035_fa4aa966-e8a2-4e78-a848-4d449f6e704c.png
 f1-lament-ash.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_85eb4e8b-cefc-48f4-a263-dc2f0e4c0118.png
 f1-museum-tablet.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044900_7965057e-5243-4744-b567-4c2e9bfcb343.png
 f2-cover-courtroom-dawn.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044913_55e34517-bcdc-4f67-a688-6bd9684af6f9.png
