@@ -1,0 +1,378 @@
+/* ============================================================
+   Cinematic Pitch Deck — Design System
+   Iraqi Supreme Judicial Council — Two Short Films
+   A4 landscape, full-bleed, dark cinematic, RTL Arabic
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: 'Amiri';
+  src: url('fonts/amiri/files/amiri-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Amiri';
+  src: url('fonts/amiri/files/amiri-arabic-700-normal.woff2') format('woff2');
+  font-weight: 700; font-style: normal;
+}
+@font-face {
+  font-family: 'Amiri Latin';
+  src: url('fonts/amiri/files/amiri-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Reem Kufi';
+  src: url('fonts/reem-kufi/files/reem-kufi-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Reem Kufi';
+  src: url('fonts/reem-kufi/files/reem-kufi-arabic-500-normal.woff2') format('woff2');
+  font-weight: 500; font-style: normal;
+}
+@font-face {
+  font-family: 'Reem Kufi';
+  src: url('fonts/reem-kufi/files/reem-kufi-arabic-600-normal.woff2') format('woff2');
+  font-weight: 600; font-style: normal;
+}
+@font-face {
+  font-family: 'Reem Kufi';
+  src: url('fonts/reem-kufi/files/reem-kufi-arabic-700-normal.woff2') format('woff2');
+  font-weight: 700; font-style: normal;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('fonts/cairo/files/cairo-arabic-300-normal.woff2') format('woff2');
+  font-weight: 300; font-style: normal;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('fonts/cairo/files/cairo-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('fonts/cairo/files/cairo-arabic-600-normal.woff2') format('woff2');
+  font-weight: 600; font-style: normal;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('fonts/cairo/files/cairo-arabic-700-normal.woff2') format('woff2');
+  font-weight: 700; font-style: normal;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/cinzel/files/cinzel-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/cinzel/files/cinzel-latin-700-normal.woff2') format('woff2');
+  font-weight: 700; font-style: normal;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/cinzel/files/cinzel-latin-900-normal.woff2') format('woff2');
+  font-weight: 900; font-style: normal;
+}
+@font-face {
+  font-family: 'Gentium';
+  src: url('fonts/gentium-plus/files/gentium-plus-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+@font-face {
+  font-family: 'Cuneiform';
+  src: url('fonts/noto-sans-cuneiform/files/noto-sans-cuneiform-cuneiform-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal;
+}
+
+/* ---------- Palette tokens ---------- */
+:root {
+  --ink:        #07090D;   /* page night */
+  --ink-2:      #0D1117;   /* card night */
+  --ink-3:      #141A22;   /* raised night */
+  --gold:       #C9A227;   /* judicial gold */
+  --gold-soft:  #DDB95A;
+  --gold-dim:   rgba(201,162,39,.45);
+  --bone:       #EAE0CC;   /* primary text */
+  --bone-dim:   #B9AE97;   /* secondary text */
+  --mute:       #7C7565;   /* captions */
+  --clay:       #B0683B;   /* Mesopotamian clay */
+  --amber:      #D99A4E;   /* lamp light */
+  --lapis:      #2E5E8C;   /* lapis lazuli */
+  --lapis-deep: #1E3A57;
+  --smoke:      #3A4148;
+  --green-deep: #1F3D31;   /* judicial green */
+  --crimson:    #7E2B24;   /* fall of Ur */
+  --line: rgba(201,162,39,.28);
+}
+
+/* ---------- Base ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { direction: rtl; }
+body {
+  font-family: 'Amiri', serif;
+  background: var(--ink);
+  color: var(--bone);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+@page { size: A4 landscape; margin: 0; }
+
+.page {
+  position: relative;
+  width: 297mm;
+  height: 209.6mm;
+  overflow: hidden;
+  page-break-after: always;
+  background: var(--ink);
+}
+.page:last-child { page-break-after: avoid; }
+
+/* subtle film grain via layered gradients */
+.grain::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(201,162,39,.05), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(46,94,140,.06), transparent 60%);
+  pointer-events: none;
+}
+
+/* ---------- Typography ---------- */
+.kufi   { font-family: 'Reem Kufi', sans-serif; }
+.cairo  { font-family: 'Cairo', sans-serif; }
+.cinzel { font-family: 'Cinzel', serif; }
+.gentium{ font-family: 'Gentium', 'Amiri Latin', serif; }
+.cune   { font-family: 'Cuneiform', sans-serif; }
+
+.eyebrow {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 8.2pt;
+  letter-spacing: .35em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.eyebrow.ar { letter-spacing: .12em; font-size: 9pt; }
+
+h1.film-title-ar {
+  font-family: 'Reem Kufi', sans-serif;
+  font-weight: 700;
+  font-size: 52pt;
+  line-height: 1.25;
+  color: var(--bone);
+}
+.film-title-en {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 16pt;
+  letter-spacing: .42em;
+  color: var(--gold-soft);
+}
+
+h2.sec-ar {
+  font-family: 'Reem Kufi', sans-serif;
+  font-weight: 600;
+  font-size: 21pt;
+  color: var(--bone);
+  line-height: 1.4;
+}
+.sec-en {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 9pt;
+  letter-spacing: .5em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+p.lead {
+  font-size: 13.5pt;
+  line-height: 2.05;
+  color: var(--bone);
+}
+p.body, .body p {
+  font-size: 11.5pt;
+  line-height: 1.95;
+  color: var(--bone-dim);
+}
+p.body strong, .body strong { color: var(--bone); font-weight: 700; }
+.small { font-size: 9.5pt; line-height: 1.8; color: var(--mute); }
+
+.gold  { color: var(--gold); }
+.amber { color: var(--amber); }
+
+/* ---------- Structural helpers ---------- */
+.pad { padding: 14mm 16mm; }
+
+.header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: .4pt solid var(--line);
+  padding-bottom: 4mm;
+  margin-bottom: 8mm;
+}
+.header-row .num {
+  font-family: 'Cinzel', serif;
+  font-size: 22pt;
+  color: var(--gold-dim);
+}
+
+.rule-gold {
+  height: 1.2pt; border: 0;
+  background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold) 75%, transparent);
+}
+
+.divider-cune {
+  font-family: 'Cuneiform', sans-serif;
+  color: var(--gold-dim);
+  font-size: 13pt;
+  letter-spacing: 1.2em;
+  text-align: center;
+}
+
+/* ---------- Cover ---------- */
+.cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.cover-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(7,9,13,.30) 0%,
+    rgba(7,9,13,.05) 32%,
+    rgba(7,9,13,.42) 62%,
+    rgba(7,9,13,.94) 100%);
+}
+.cover-veil-side {
+  position: absolute; inset: 0;
+  background: linear-gradient(270deg, rgba(7,9,13,.55), transparent 40%);
+}
+.cover-content {
+  position: absolute;
+  right: 16mm; left: 16mm; bottom: 13mm;
+  text-align: center;
+}
+
+/* ---------- Mood grid ---------- */
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5mm;
+}
+.mood-cell { position: relative; border: .4pt solid rgba(201,162,39,.2); }
+.mood-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mood-cap {
+  position: absolute; inset-inline: 0; bottom: 0;
+  padding: 2mm 3mm 1.6mm;
+  background: linear-gradient(180deg, transparent, rgba(7,9,13,.88));
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400;
+  font-size: 7.4pt;
+  color: var(--bone-dim);
+}
+
+/* ---------- Palette ---------- */
+.swatch-row { display: flex; gap: 4mm; }
+.swatch { flex: 1; }
+.swatch .chip { height: 17mm; border: .4pt solid rgba(255,255,255,.12); }
+.swatch .name {
+  font-family: 'Cairo', sans-serif; font-weight: 600;
+  font-size: 8.4pt; color: var(--bone); margin-top: 2mm;
+}
+.swatch .hex {
+  font-family: 'Cinzel', serif;
+  font-size: 7pt; letter-spacing: .12em; color: var(--mute);
+}
+.swatch .use { font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 7.6pt; color: var(--bone-dim); line-height: 1.6; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--ink-2);
+  border: .4pt solid rgba(201,162,39,.16);
+  border-top: 1.4pt solid var(--gold-dim);
+  padding: 6mm 7mm;
+}
+.card h3 {
+  font-family: 'Reem Kufi', sans-serif;
+  font-weight: 600; font-size: 12.5pt;
+  color: var(--gold-soft);
+  margin-bottom: 2.5mm;
+}
+.card p { font-size: 10pt; line-height: 1.9; color: var(--bone-dim); }
+
+/* ---------- Scene / beat list ---------- */
+.beat {
+  display: flex; gap: 6mm; align-items: flex-start;
+  padding: 4mm 0;
+  border-bottom: .3pt solid rgba(201,162,39,.14);
+}
+.beat:last-child { border-bottom: 0; }
+.beat .no {
+  font-family: 'Cinzel', serif;
+  font-size: 15pt; color: var(--gold-dim);
+  min-width: 11mm; text-align: center;
+  padding-top: 1mm;
+}
+.beat h4 {
+  font-family: 'Reem Kufi', sans-serif;
+  font-weight: 600; font-size: 11.5pt; color: var(--bone);
+  margin-bottom: 1.4mm;
+}
+.beat p { font-size: 9.8pt; line-height: 1.85; color: var(--bone-dim); }
+
+/* ---------- Dialogue (Sumerian) ---------- */
+.sumer-block {
+  background: var(--ink-3);
+  border-inline-start: 2pt solid var(--gold);
+  padding: 3.2mm 5mm;
+  margin-bottom: 3mm;
+}
+.sumer-cune { font-family: 'Cuneiform', sans-serif; font-size: 13pt; color: var(--gold-soft); line-height: 1.7; }
+.sumer-translit {
+  font-family: 'Gentium', serif;
+  direction: ltr; text-align: left;
+  font-size: 10pt; color: var(--amber);
+  letter-spacing: .04em;
+}
+.sumer-ar { font-size: 11pt; color: var(--bone); line-height: 1.9; }
+.sumer-src { font-family: 'Cairo', sans-serif; font-weight: 300; font-size: 7.4pt; color: var(--mute); }
+
+/* ---------- Reference films ---------- */
+.ref {
+  display: flex; gap: 5mm; align-items: baseline;
+  padding: 3.2mm 0; border-bottom: .3pt solid rgba(201,162,39,.12);
+}
+.ref:last-child { border-bottom: 0; }
+.ref .t {
+  font-family: 'Cinzel', serif;
+  direction: ltr;
+  font-size: 10pt; font-weight: 700; color: var(--bone);
+  min-width: 46mm;
+}
+.ref .d { font-size: 9.6pt; color: var(--bone-dim); line-height: 1.8; }
+
+/* ---------- Footer ---------- */
+.foot {
+  position: absolute; inset-inline: 16mm; bottom: 6mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Cairo', sans-serif; font-weight: 300;
+  font-size: 7pt; color: var(--mute);
+}
+.foot .cune { font-size: 8pt; color: var(--gold-dim); letter-spacing: .6em; }
+
+/* ---------- Full-bleed section splash ---------- */
+.splash { position: absolute; inset: 0; }
+.splash img { width: 100%; height: 100%; object-fit: cover; }
+.splash .veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(7,9,13,.2), rgba(7,9,13,.85) 78%);
+}
+.splash .content { position: absolute; inset-inline: 16mm; bottom: 12mm; }
+
+/* two-column layout */
+.cols { display: flex; gap: 10mm; }
+.col { flex: 1; min-width: 0; }
