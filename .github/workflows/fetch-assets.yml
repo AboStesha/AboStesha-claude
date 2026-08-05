@@ -1,0 +1,38 @@
+name: fetch-assets
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch moodboard images
+        run: |
+          set -u
+          DEST="projects/judiciary-films/assets/moodboard"
+          mkdir -p "$DEST"
+          FAILED=0
+          while IFS='|' read -r name url; do
+            [ -z "${name:-}" ] && continue
+            if curl -fsSL --retry 3 --retry-delay 2 -o "$DEST/$name" "$url"; then
+              echo "OK   $name"
+            else
+              echo "FAIL $name  $url"
+              FAILED=1
+            fi
+          done < projects/judiciary-films/assets/urls.txt
+          echo "failed_any=$FAILED" >> "$GITHUB_OUTPUT" || true
+
+      - name: Commit fetched assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/judiciary-films/assets/moodboard
+          git commit -m "Add fetched moodboard assets for judiciary films" || echo "nothing to commit"
+          git push
