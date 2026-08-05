@@ -1,6 +1,12 @@
 name: fetch-assets
 
 on:
+  push:
+    branches:
+      - 'claude/iraqi-judiciary-films-ngixci'
+    paths:
+      - 'projects/judiciary-films/assets/urls.txt'
+      - '.github/workflows/fetch-assets.yml'
   workflow_dispatch:
 
 permissions:
