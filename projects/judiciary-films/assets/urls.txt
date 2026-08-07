@@ -28,3 +28,7 @@ w-52-uruk-rising.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVO
 w-53-edubba-school.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_e3215d7e-8d8a-424d-8704-e78ece7e8c86.png
 w-54-cylinder-seal.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_1969ad9d-8d62-4e80-966d-3b552d7056cc.png
 w-55-elder-grandchild.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062542_f7b9c2d2-14c3-4f96-ac8a-463e3dcba0bc.png
+hg-60-seven-holograms.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_134804_3e3667be-2892-4d4d-a395-a228705342f2.png
+hg-61-materializing.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_134804_833c133a-4fce-4222-be81-df5f5975767a.png
+hg-62-speaking-judge.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_134804_11fc72e3-4747-4275-8b69-30f03481a956.png
+hg-63-ascension-finale.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_134804_d0a2c44a-3594-4a9f-8ab4-a3bf3b245fd4.png
