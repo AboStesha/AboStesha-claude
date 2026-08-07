@@ -1,0 +1,299 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<title>الجلسة الأولى — ملف العرض والسيناريو المزدوج</title>
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+  .num-ltr { direction: ltr; unicode-bidi: embed; font-family: 'Cinzel', serif; }
+  .seg-card { background: var(--ink-2); border: .4pt solid rgba(201,162,39,.16); border-top: 1.2pt solid var(--gold-dim); padding: 3.5mm 4.5mm; }
+  .seg-card h4 { font-family:'Reem Kufi',sans-serif; font-weight:600; font-size:9.5pt; color:var(--gold-soft); margin-bottom:1.6mm; }
+  .seg-card p { font-family:'Cairo',sans-serif; font-weight:300; font-size:7.9pt; line-height:1.72; color:var(--bone-dim); }
+  .dlg { columns: 2; column-gap: 8mm; column-rule: .3pt solid rgba(201,162,39,.18); }
+  .dlg .dlg-h { font-family:'Cairo',sans-serif; font-weight:600; font-size:8pt; letter-spacing:.1em; color:var(--gold); margin-bottom:1.6mm; break-after: avoid; }
+  .dlg .dlg-b { font-family:'Amiri',serif; font-size:8.9pt; line-height:1.78; color:var(--bone); margin-bottom:3mm; }
+  .dlg .dlg-b .dir { color:var(--mute); font-size:8.2pt; }
+  .dlg .dlg-b strong { color:var(--gold-soft); font-weight:700; }
+  .dlg .lt { direction:ltr; unicode-bidi:embed; font-family:'Gentium',serif; color:var(--amber); font-size:8.6pt; }
+  .cue-strip { display:flex; gap:5mm; margin-top:3mm; border-top:.4pt solid rgba(201,162,39,.2); padding-top:2.6mm; }
+  .cue-strip > div { flex:1; }
+  .cue-strip h5 { font-family:'Cairo',sans-serif; font-weight:600; font-size:7.6pt; color:var(--gold); margin-bottom:1.2mm; }
+  .cue-strip p { font-family:'Cairo',sans-serif; font-weight:300; font-size:7.2pt; line-height:1.65; color:var(--mute); }
+  .char { background:var(--ink-2); border:.4pt solid rgba(201,162,39,.16); border-top:1.2pt solid var(--gold-dim); padding:4mm 5mm; }
+  .char .tag { font-family:'Cairo',sans-serif; font-weight:600; font-size:6.8pt; color:var(--ink); background:var(--gold-soft); padding:.6mm 2mm; border-radius:1mm; display:inline-block; margin-bottom:1.6mm; }
+  .char .tag.scr { background:var(--lapis); color:var(--bone); }
+  .char h4 { font-family:'Reem Kufi',sans-serif; font-weight:600; font-size:10.5pt; color:var(--bone); margin-bottom:1.4mm; }
+  .char p { font-family:'Cairo',sans-serif; font-weight:300; font-size:7.8pt; line-height:1.7; color:var(--bone-dim); }
+  .tech { background:var(--ink-2); border:.4pt solid rgba(201,162,39,.16); border-top:1.2pt solid var(--gold-dim); padding:3.8mm 4.5mm; }
+  .tech h4 { font-family:'Reem Kufi',sans-serif; font-weight:600; font-size:10pt; color:var(--gold-soft); margin-bottom:1.5mm; }
+  .tech p { font-family:'Cairo',sans-serif; font-weight:300; font-size:7.9pt; line-height:1.72; color:var(--bone-dim); }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<div class="page">
+  <img class="cover-img" src="assets/img/h-40-stage-tablet-wide.jpg" alt="">
+  <div class="cover-veil" style="background:linear-gradient(180deg, rgba(7,9,13,.4) 0%, rgba(7,9,13,.18) 30%, rgba(7,9,13,.62) 60%, rgba(7,9,13,.97) 100%);"></div>
+  <div class="cover-content">
+    <div class="eyebrow" style="margin-bottom:3mm;">STAGE + SCREEN EXPERIENCE — CREATIVE FILE & DUAL SCRIPT</div>
+    <div class="eyebrow ar" style="margin-bottom:7mm;">العرض المسرحي-السينمائي لاحتفالية يوم القضاء العراقي — مجلس القضاء الأعلى</div>
+    <div class="cune" style="font-size:14pt; color:var(--gold-soft); letter-spacing:.4em; margin-bottom:3mm;">𒁲𒌉</div>
+    <h1 class="film-title-ar" style="margin-bottom:2mm;">الجلسة الأولى</h1>
+    <div class="film-title-en" style="margin-bottom:8mm;">THE&nbsp;FIRST&nbsp;SESSION</div>
+    <hr class="rule-gold" style="width:60mm; margin:0 auto 6mm;">
+    <p class="lead" style="max-width:215mm; margin:0 auto; font-size:12pt;">
+      منذ أربعة آلاف وستمئة سنة يجلس كاتبُ ضبطٍ واحد إلى مكتبه الطينيّ يدوّن محضراً لم يُغلق بعد —
+      عرضٌ هجين (مسرح حيّ + سينما ذكاء اصطناعي) يثبت أن الجلسة التي افتُتحت في سومر
+      <span class="gold">ما زالت منعقدة… وأن قضاتها الليلةَ جالسون في القاعة.</span>
+    </p>
+    <div class="cairo" style="margin-top:8mm; font-size:8.5pt; color:var(--bone-dim); font-weight:300;">
+      15 دقيقة · شاشة-لوح طينيّ عملاقة + خمسة أدوار حية + فيلم 4K ناطق بالسومرية · ملف المفهوم والسيناريو المزدوج الكامل
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAGE 2 — CONCEPT ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">THE CONCEPT</div>
+        <h2 class="sec-ar">المفهوم — لماذا هذا الشكل؟</h2>
+      </div>
+      <div class="num">01</div>
+    </div>
+    <div class="cols">
+      <div class="col" style="flex:1.3;">
+        <p class="lead" style="margin-bottom:4mm;">الشاشةُ ليست شاشة. <span class="gold">إنها لوحٌ طينيّ حيّ — والمسرحُ ترجمتُه.</span></p>
+        <div class="body">
+          <p style="margin-bottom:3.5mm;">
+            الفيلم لا يُعرض على الشاشة بل يعيش داخل لوحٍ طينيٍّ مهيب يملأ عمق الخشبة، بحوافّ متشققة وملمسٍ حيّ. أمامه، على أرضيةٍ بلون الطين، يجلس البطل الرابط: <strong>كاتبُ الضبط الأزلي</strong> بمكتبه وقنديله — وهو المفصل الذي تدور عليه العمارة كلها. <strong>الماضي على الشاشة ينطق بالسومرية الموثقة، والحاضر على الخشبة يجيب بالعربية الفصحى</strong> — فيكون المسرح نفسه هو الترجمة الحية للّوح.
+          </p>
+          <p style="margin-bottom:3.5mm;">
+            والاندماج بين الوسيطين ليس تجاوراً بل <strong>تعاقدٌ درامي</strong>: المُحكَّم السينمائي يحاكم متخاصمَين حيَّين واقفَين أمامه، وبصمتا إبهامَيهما في الطين الحقيقي تظهران محفورتَين فوراً في لوح الشاشة — المادةُ تعبر الحاجز بين الخشبة والصورة في لحظةٍ واحدة مضبوطة بالتايم-كود. وحين تنكسر أور، يموت اللوح نفسه ويسودّ، ولا يبقى للعدل إلا قنديل الكاتب.
+          </p>
+          <p>
+            وفي الختام ينقلب اتجاه الترجمة انقلاباً دالاً: العربية تُنطق من قاعة محكمة اليوم، والمسمارية تُنقش مترجمةً لها — فيصير الحاضرُ هو الأصل والماضي هو الصدى، ويستدير الكاتب إلى قضاة القاعة الحقيقيين ليضمّهم إلى المحضر: <strong class="gold">الجلسة الأولى لم تُرفع قط؛ نحن جميعاً ما زلنا داخلها.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>تطوير المقترح الأساس</h3>
+          <p>يحافظ هذا العرض على البنية المعتمدة كاملةً — شوروباك، نزاع التاجرَين إينان ولغال، إيكيشنوغال، رثاء أور، مسلة حمورابي، والربط بالقضاء العراقي — لكنه يستبدل صيغة «الراوي الشارح» بدراما حية عابرة للشاشة: <strong>لا تعليق صوتي تعليمي في العرض إطلاقاً؛ كل معلومة تُروى فعلاً ومشهداً.</strong></p>
+        </div>
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>قاعدة اللغة الذهبية</h3>
+          <p>الشاشة سومريةٌ حصراً (بترجمة محفورة)، والخشبة عربيةٌ حصراً، والكاتب هو قناة الترجمة الوحيدة. جمل الشاشة 3–6 كلمات لضبط مزامنة الشفاه، تتبعها فواصل صمتٍ مقاسة للترجمة الحية. <strong>الانقلاب يقع مرة واحدة لا تتكرر — في الخاتمة.</strong></p>
+        </div>
+        <div class="small">
+          سوابق عالمية لهذا الشكل: فرقة <span class="cinzel" dir="ltr" style="font-size:7.5pt;">1927</span> البريطانية (تزامن ممثلين مع فيلم فريماً بفريم)، روبير لوباج، افتتاحية أولمبياد لندن 2012 (<span class="cinzel" dir="ltr" style="font-size:7.5pt;">59 Productions</span>) — التفصيل في صفحات التقنية.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel">CONCEPT</span></div>
+</div>
+
+<!-- ============ PAGE 3 — CHARACTERS ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">CAST — STAGE & SCREEN</div>
+        <h2 class="sec-ar">الشخصيات — بين الخشبة واللوح</h2>
+      </div>
+      <div class="num">02</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:4mm;">
+      <div class="char" style="grid-column: span 3; display:flex; gap:6mm; align-items:center; border:1pt solid var(--gold);">
+        <div style="flex:1;">
+          <span class="tag">خشبة حيّة — الدور الرابط</span>
+          <h4 style="font-size:13pt;">كاتب الضبط الأزلي</h4>
+          <p style="font-size:8.6pt;">كاتب محكمة مسنّ يدوّن منذ 4600 سنة؛ مكتبه الطيني وقنديله في مقدمة الخشبة. صوت العرض وضميره: يترجم السومرية حياً، ويفتتح المحضر ويرفض إغلاقه. وقورٌ بدفءٍ خفيف محبب — حكمةُ جدٍّ لا تهريج. لا يغادر مقعده إلا خطوتين في «الأرشيف»… ونهوضه الكامل الوحيد في الختام هو ذروة العرض. <strong style="color:var(--gold-soft);">صداه المؤسسي: كاتب الضبط في محاكم العراق اليوم.</strong></p>
+        </div>
+      </div>
+      <div class="char"><span class="tag scr">شاشة</span><h4>شوروباك</h4><p>الحكيم صاحب أقدم وصايا معروفة؛ وجهٌ محفور كأنه لوح حيّ، ينطق السومرية بجمل قصيرة مضبوطة المزامنة.</p></div>
+      <div class="char"><span class="tag scr">شاشة</span><h4>زيوسودرا</h4><p>الفتى المتلقي الأول للوصية. دورٌ شبه صامت: عيناه وإيماءاته وبصمةُ إبهامه هي كلامه.</p></div>
+      <div class="char"><span class="tag scr">شاشة — تفاعلي بالتايم-كود</span><h4>المُحكَّم</h4><p>أول قاضٍ في العرض: شيخ مهيب داخل اللوح، وجهه نصف طينٍ ونصف بشر، يستمع لمتقاضيَين حيَّين ويحكم بالسومرية — بلقطات مصممة ليبدو ناظراً فعلاً إلى الواقفَين على الخشبة.</p></div>
+      <div class="char"><span class="tag">خشبة حيّة</span><h4>إينان — تاجر الشعير</h4><p>صاحب الشحنة؛ حادّ الكرامة لكنه صاحب اللحظة التأسيسية: يكفّ يدَ خصمه عن الخنجر ويقول «لنذهبْ إلى المُحكَّم». يقتحم القاعة من بين الجمهور.</p></div>
+      <div class="char"><span class="tag">خشبة حيّة</span><h4>لغال — مالك المركب</h4><p>الخصم الثاني؛ غضبه مشروع وخسارته حقيقية — وقبولُه الحكمَ رغم أنه عليه جزئياً هو ذروة معنى الفقرة: هيبةُ العدل فوق هوى الخصوم.</p></div>
+      <div class="char"><span class="tag">خشبة حيّة</span><h4>المنشدة</h4><p>صوت الرثاء: تنشد رثاء أور حياً على مقام الصبا بينما تنطفئ القناديل. لا تلتقي بالكاتب في ضوءٍ واحد — بينهما مسافةُ الخراب.</p></div>
+      <div class="char"><span class="tag scr">شاشة</span><h4>القاضي العراقي المعاصر</h4><p>ينطق «باسم الشعب» بالعربية من داخل اللوح فيُحدث انقلابَ الترجمة — حضورٌ قصير حاسم: القضاء الحاضر وريثاً شرعياً.</p></div>
+      <div class="char"><span class="tag scr">شاشة — حضور صامت</span><h4>حمورابي — المسلّة</h4><p>لا يظهر شخصاً بل مسلةً: الديوريت الأسود ينهض من الرماد — جسرُ الانتقال من الوصية الشفوية إلى القانون المدوَّن.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel">CAST</span></div>
+</div>
+
+<!--SEGMENTS-->
+
+<!-- ============ REFERENCES PAGE ============ -->
+<div class="page">
+  <div class="pad" style="padding-bottom:8mm;">
+    <div class="header-row" style="margin-bottom:5mm;">
+      <div>
+        <div class="sec-en">VISUAL REFERENCES — STAGE & SCREEN</div>
+        <h2 class="sec-ar">الريفرنسات البصرية — شكل المسرح وشكل الفيلم</h2>
+      </div>
+      <div class="num">09</div>
+    </div>
+    <div class="mood-grid" style="grid-template-rows: 1fr 1fr; height:150mm;">
+      <div class="mood-cell"><img src="assets/img/h-41-merchants-market.jpg" alt=""><div class="mood-cap">الامتداد المشهدي — التاجران الحيّان وسوق أور يتواصل داخل اللوح</div></div>
+      <div class="mood-cell"><img src="assets/img/h-42-screen-judge.jpg" alt=""><div class="mood-cap">المحاكمة العابرة للشاشة — المُحكَّم يُصغي من داخل الفيلم</div></div>
+      <div class="mood-cell"><img src="assets/img/h-43-lament-singer.jpg" alt=""><div class="mood-cap">الرثاء — المنشدة الحية والقناديل تنطفئ واللوح يحترق</div></div>
+      <div class="mood-cell"><img src="assets/img/h-44-thumbprints.jpg" alt=""><div class="mood-cap">طقس البصمة — من طين الخشبة إلى لوح الشاشة</div></div>
+      <div class="mood-cell"><img src="assets/img/h-45-hammurabi-stele.jpg" alt=""><div class="mood-cap">النهوض — مسلة حمورابي تصعد من الرماد</div></div>
+      <div class="mood-cell"><img src="assets/img/h-47-portal-actor.jpg" alt=""><div class="mood-cap">بوابة اللوح — عبور الممثل بين العالمين</div></div>
+    </div>
+    <div class="small" style="margin-top:4mm; text-align:center;">إطارات مفهومية مولَّدة خصيصاً لهذا الملف — Higgsfield Soul Cinema — تمثل الاتجاه البصري للعرض والفيلم</div>
+  </div>
+  <div class="foot"><span>الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel">REFERENCES</span></div>
+</div>
+
+<!-- ============ STAGE DESIGN PAGE ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">STAGE DESIGN — THE TABLET</div>
+        <h2 class="sec-ar">تصميم المسرح — اللوح والخشبة</h2>
+      </div>
+      <div class="num">10</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:5mm; margin-bottom:5mm;">
+      <div class="tech">
+        <h4>الشاشة: LED لا إسقاط — قرار حاسم</h4>
+        <p>الإسقاط الأمامي يقتل الدمج (ظل الممثل يقع على الصورة ويغرقه ضوء البروجكتر)، والخلفي يلتهم 6–8 أمتار عمقاً. شاشة LED تحافظ على سوادها وتباينها في قاعة رسمية لا تُظلم إظلاماً مسرحياً (إضاءة بروتوكول وتصوير تلفزيوني). <strong style="color:var(--bone);">المواصفة: مسافة بكسل 2.6–2.9 ملم · سطوع 600–1200 نت · معدل تحديث ≥3840Hz لسلامة التصوير التلفزيوني · مقاس إرشادي 12–16م × 6–8م.</strong></p>
+      </div>
+      <div class="tech">
+        <h4>إطار اللوح الطيني — الشاشة سينوغرافيا</h4>
+        <p>إطار نحتي ضخم من فوم CNC مُعتَّق بملمس الطين المتشقق وحوافّ كسور الألواح الأثرية: يخفي حواف كابينات LED ويعلن هوية العرض قبل أول صورة. فيه <strong style="color:var(--bone);">بوابة عملية مخفية</strong> (شقُّ «كسرٍ» في اللوح) لعبور الممثل خلف الشاشة، وخيارٌ مُثرٍ منخفض الكلفة: إسقاطٌ خرائطي على الإطار وحده يحوّل الطين من رطبٍ إلى محفورٍ إلى متشقق مع تقدم السرد.</p>
+      </div>
+      <div class="tech">
+        <h4>الخشبة والممر الأمامي</h4>
+        <p>أرضية مطفية بلون الطين تمتص انعكاس الشاشة (يُمنع أي سطح لامع)، وممر تمثيل أمامي بعمق 3–4م. قاعدة ذهبية: لا يقف ممثل أقرب من مترين من الشاشة إلا في لحظات الالتقاء المصممة، ولحظات التفاعل المباشر تُصمم قرب حافتَي الشاشة لتُقرأ من كل زوايا القاعة. علاماتٌ أرضية فسفورية لكل موقع مزامنة. وإن سمحت الميزانية: شريط LED أرضي يُسيل وهجَ الفيلم على الخشبة (وهج المصباح، رماد أور).</p>
+      </div>
+      <div class="tech">
+        <h4>الصوت الموضعي — العالمان فضاءٌ واحد</h4>
+        <p>سماعات مركزية فوق الشاشة وخلف إطارها لأصوات شخصيات الفيلم (الصوت يأتي من مكان الصورة)، ونظام قاعة موزع بتأخيرات مضبوطة، وميكروفونات لاسلكية مخفية للممثلين، وسماعات أذن IEM تصلهم العدّات والإشارات — على نموذج المنظومة الغامرة في قبة الوصل بإكسبو دبي.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <div class="card"><h3>الإضاءة المتطابقة بين العالمين</h3>
+        <p>لكل مشهد في الفيلم «مخطط إضاءة» موثق (اتجاه المصدر وشدته وحرارته اللونية)، تُبرمج على أساسه أجهزة الإضاءة المسرحية لتتغير مع التايم-كود لحظة تغيّر ضوء الفيلم — فيُضاء الممثل الحي من مصادر الضوء التي داخل الشاشة، وتُرسم في الفيلم ظلالٌ «تستقبل» ظلّ الممثل عند نقاط الالتقاء. المبدأ نفسه الذي تقوم عليه استوديوهات LED في الإنتاج الافتراضي العالمي.</p></div>
+      </div>
+      <div class="col">
+        <div class="card"><h3>القناديل والسلامة</h3>
+        <p>قنديل الكاتب وقناديل الرثاء السبعة: لهبٌ حقيقي مرخَّص بموافقة الدفاع المدني مع بدائل LED-لهبٍ عالية الجودة جاهزة، وآلية إطفاء متزامنة مع نهايات أبيات الإنشاد الحي — <strong>الإنشاد سيدُ الإيقاع في الرثاء، والشاشة تتبعه قطاعاً قطاعاً.</strong></p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel">STAGE DESIGN</span></div>
+</div>
+
+<!-- ============ FUSION TECHNIQUES PAGE ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">FUSION TECHNIQUES & WORLD PRECEDENTS</div>
+        <h2 class="sec-ar">تقنيات الدمج — وسوابقها العالمية</h2>
+      </div>
+      <div class="num">11</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-bottom:5mm;">
+      <div class="tech"><h4>١ · الامتداد المشهدي</h4><p>محتوى الفيلم يُرندَر من منظور مقاعد الشرف بحيث يتطابق الأفق مع عين الجمهور، وقطعةُ ديكور مادية واحدة على الأقل تلتصق بصرياً بحافة الشاشة — فيصير الديكور والفيلم عالماً واحداً.</p></div>
+      <div class="tech"><h4>٢ · الحوار العابر للشاشة</h4><p>الفيلم يُقفل مونتاجياً قبل البروفات، بفجوات مقاسة بالفريم لردود الممثلين و«لقطات جسرٍ» يمكن تمديدها حلقياً إذا تأخر الأداء — والممثل يسمع العدّات عبر سماعة أذن. تقنية فرقة 1927 التي «يفسد إيهامَها انحرافُ إنشٍ واحد».</p></div>
+      <div class="tech"><h4>٣ · العبور بين العالمين</h4><p>تطابقٌ تام في الملابس والمشية بين الممثل ونسخته المصوَّرة، وبوابة عملية في إطار اللوح، وومضةُ إخفاءٍ تغطي لحظة التبديل — فيدخل الممثل الفيلمَ أو يخرج منه أمام أعين الجمهور.</p></div>
+      <div class="tech"><h4>٤ · الإضاءة المتطابقة</h4><p>أجهزة الخشبة تحاكي مصادر ضوء الفيلم وتتبدل معها بالتايم-كود، وشاشة LED نفسها مصدرُ إضاءةٍ تفاعلي على الممثلين — درس استوديو LED Volume منقولاً إلى القاعة الاحتفالية.</p></div>
+      <div class="tech"><h4>٥ · السينما الحية (مشهد واحد)</h4><p>كاميرا حية تنقل كفَّ التوقيع الحقيقية بحجم عملاق فوق اللوح السينمائي بتأخير أقل من فريمين — «إظهار الحيلة يزيد السحر» (Cold Blood). تُستخدم باعتدال كي لا تنافس لغة الفيلم.</p></div>
+      <div class="tech"><h4>٦ · الصوت الموضعي</h4><p>صوت شخصية الفيلم يصدر من مكان صورتها، وصوت الممثل من مكانه — فيتعامل سمعُ الجمهور مع العالمين كفضاءٍ واحد متصل.</p></div>
+    </div>
+    <div class="card" style="border-top-color:var(--gold);">
+      <h3>السوابق — هذا بروتوكول عالمي مجرَّب، لا مغامرة</h3>
+      <p class="cairo" style="font-size:8.4pt; line-height:1.9; color:var(--bone-dim);">
+        <strong style="color:var(--bone);">فرقة 1927 البريطانية (Golem):</strong> ممثلون يتزامنون فريماً بفريم مع فيلم مسبق الإنتاج — والغوليم مصنوع من طينٍ حقيقي: الصدى الأقرب حرفياً لعرضنا ·
+        <strong style="color:var(--bone);">روبير لوباج / Ex Machina:</strong> الشاشة عنصرٌ سينوغرافي منحوت لا مستطيل عرض ·
+        <strong style="color:var(--bone);">59 Productions — افتتاحية أولمبياد لندن 2012:</strong> المعيار الذهبي لدمج السرد الوطني بالتايم-كود في احتفالية دولة ·
+        <strong style="color:var(--bone);">Royal Shakespeare Company — العاصفة 2016:</strong> مؤسسة عريقة محافظة تبنّت الدمج الرقمي دون التفريط بهيبة النص ·
+        <strong style="color:var(--bone);">قبة الوصل — إكسبو دبي:</strong> السابقة الإقليمية: احتفاليات دولةٍ بحضور رؤساء، وخبراتٌ ومورّدون في المنطقة.
+      </p>
+    </div>
+  </div>
+  <div class="foot"><span>الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel">TECHNIQUES</span></div>
+</div>
+
+<!-- ============ SHOW CONTROL + REHEARSALS PAGE ============ -->
+<div class="page grain">
+  <div class="pad">
+    <div class="header-row">
+      <div>
+        <div class="sec-en">SHOW CONTROL & REHEARSALS</div>
+        <h2 class="sec-ar">التحكم بالعرض — وخطة البروفات</h2>
+      </div>
+      <div class="num">12</div>
+    </div>
+    <div class="cols" style="margin-bottom:5mm;">
+      <div class="col">
+        <p class="body" style="margin-bottom:3.5mm;">
+          <strong>الفكرة بجملة:</strong> لا أحد «يضغط تشغيل» لكل جهاز؛ ساعةٌ إلكترونية واحدة (تايم-كود SMPTE) تبثّ الوقت عشرات المرات في الثانية، وكل الأنظمة — الفيلم والصوت والإضاءة وسماعات الممثلين — تقرؤها وتنفّذ ما بُرمج لها بدقة جزءٍ من الثانية. هكذا اشتغلت افتتاحية أولمبياد لندن وعروض إكسبو دبي: <strong>منظومة قياسية مجرَّبة منذ عقود.</strong>
+        </p>
+        <div class="card">
+          <h3>البنية العملية</h3>
+          <p style="line-height:1.9;">
+            · خادم ميديا سيدٌ للزمن + <strong>خادم احتياطي مرآتي بتحويل فوري — غير قابل للتفاوض</strong><br>
+            · الخيار الموصى به: Dataton Watchout (المتوازن للاحتفاليات الرسمية) — أو disguise للطموح الأعلى بمعاينة ثلاثية الأبعاد مسبقة للقاعة<br>
+            · طاولة إضاءة grandMA تتبع التايم-كود عبر DMX، ومبرمجها جالسٌ خلفها بصلاحية تدخل يدوي طوال العرض<br>
+            · مدير عرضٍ (Show Caller) على الإنتركم، ونقاط استئناف كل 2–3 دقائق: أيُّ طارئ يُستأنف من أقرب نقطة خلال ثوانٍ
+          </p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-bottom:4mm;">
+          <h3>خطة البروفات — 6 أسابيع</h3>
+          <p style="line-height:1.9;">
+            <strong style="color:var(--gold-soft);">القاعدة الحاكمة:</strong> لا بروفة جدية قبل القفل النهائي لمونتاج الفيلم — الفيلم شريكٌ تمثيلي لا يرتجل ولا ينتظر.<br>
+            <span class="num-ltr">W6</span>: قفل الفيلم + نسخة بروفات بتايم-كود + جدول نقاط الالتقاء (دستور البروفات)<br>
+            <span class="num-ltr">W5–W4</span>: طاولة واستوديو بمقياس 1:1 — الممثلون «يتعرفون على شركائهم المصوَّرين»<br>
+            <span class="num-ltr">W3</span>: عزل كل نقطة التقاء وتكرارها 5–10 مرات + بروفات سيناريوهات العطل ومواقف الأمان<br>
+            <span class="num-ltr">W2</span>: تركيب LED والإطار + يومان Dry Tech بلا ممثلين<br>
+            <span class="num-ltr">W1</span>: Cue-to-Cue ثم تشغيلات كاملة + جنرالان (الثاني بجمهورٍ داخلي) + تجميدٌ كامل قبل الحفل بـ48 ساعة
+          </p>
+        </div>
+        <div class="card">
+          <h3>الفريق الأدنى ليلة العرض</h3>
+          <p>مخرج العرض الحي · مدير عرض · مشغّل ميديا + احتياط · مبرمج إضاءة · مهندس صوت + فني لاسلكي · مساعد مخرج للخشبة · منسق بروتوكول المجلس.</p>
+        </div>
+      </div>
+    </div>
+    <p class="small" style="text-align:center;">المراجع التقنية الكاملة (Theatrecrafts، disguise، grandMA/Consoletrainer، 59 Productions) موثقة في ملحق المشروع.</p>
+  </div>
+  <div class="foot"><span>الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel">SHOW CONTROL</span></div>
+</div>
+
+<!-- ============ FINALE PAGE ============ -->
+<div class="page">
+  <div class="splash">
+    <img src="assets/img/h-46-finale-scribe.jpg" alt="">
+    <div class="veil"></div>
+    <div class="content" style="text-align:center; inset-inline:20mm;">
+      <div class="cune" style="font-size:13pt; color:var(--gold-dim); letter-spacing:.7em; margin-bottom:4mm;">𒁲𒌉</div>
+      <h2 class="kufi" style="font-size:24pt; font-weight:600; color:var(--bone); margin-bottom:3mm;">«رُفعتِ الجلسة؟ … لا. الجلسةُ مستمرة.»</h2>
+      <p class="lead" style="font-size:11pt; max-width:210mm; margin:0 auto;">
+        وفي زاوية اللوح، تُنقش علامة <span class="gentium" dir="ltr" style="color:var(--amber);">di-til-la</span> ناقصةً إسفينَها الأخير —
+        المحضرُ الوحيد في التاريخ الذي لم يُغلق. وآخرُ ضوءٍ حيٍّ يغادر القاعةَ هو قنديلُ الكاتب محمولاً في العتمة،
+        بينما يبقى السطرُ الختامي مضيئاً: <span class="gold">قضيةُ العدل وحدها بقيتْ مفتوحة — في عهدة الجالسين في القاعة.</span>
+      </p>
+      <div class="cairo" style="margin-top:7mm; font-size:8.5pt; color:var(--bone-dim); font-weight:300;">
+        العرض: 15 دقيقة · فيلم 4K بالسومرية الموثقة + خمسة أدوار حية · عرض الإنتاج الرسمي للمكوّن السينمائي مرفقٌ منفصلاً
+      </div>
+    </div>
+  </div>
+  <div class="foot" style="z-index:2;"><span style="color:rgba(234,224,204,.75);">الجلسة الأولى — ملف العرض</span><span class="cune">𒁲𒌉</span><span class="cinzel" style="color:rgba(234,224,204,.75);">FINALE</span></div>
+</div>
+
+</body>
+</html>
