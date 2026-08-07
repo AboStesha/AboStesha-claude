@@ -22,3 +22,9 @@ h-44-thumbprints.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVO
 h-45-hammurabi-stele.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_18b6c9a9-2558-48fb-a75f-c803a5ae1a7c.png
 h-46-finale-scribe.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_c240ee50-b680-4e45-93be-31c6fd1615c7.png
 h-47-portal-actor.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_8f339dac-d9b2-40dd-ac8d-70017f092b4a.png
+w-50-storm-lesson.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_c08e9b61-304c-4059-a2d9-4207f4a6a675.png
+w-51-flood-ark.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_14d956ea-b728-41be-8c45-159f25fdd82a.png
+w-52-uruk-rising.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_f2fe0476-b8e2-4a44-ac1f-d581e47f41cb.png
+w-53-edubba-school.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_e3215d7e-8d8a-424d-8704-e78ece7e8c86.png
+w-54-cylinder-seal.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_1969ad9d-8d62-4e80-966d-3b552d7056cc.png
+w-55-elder-grandchild.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_062310_217f817f-6b24-4579-8826-c3b9553f93ab.png
