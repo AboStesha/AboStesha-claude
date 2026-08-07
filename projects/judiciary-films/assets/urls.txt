@@ -14,3 +14,11 @@ f2-marble-names.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr
 f2-tablet-calligraphy.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044913_cf404ab5-72c8-482b-a32a-2111cb3bc18a.png
 f2-judges-light.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044913_a6321dcf-3a95-4379-a1c4-161d8ac14d6d.png
 f2-baghdad-dawn.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260805_044913_7e8ae692-f590-49bb-88a8-2cd572fbe11a.png
+h-40-stage-tablet-wide.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_a2647c2c-fa03-4d94-a852-f5b50d6e8a92.png
+h-41-merchants-market.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_ecc856f7-08da-41eb-bf81-6196232aeac2.png
+h-42-screen-judge.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_8089877c-cd59-43f5-a26b-092d58b954cd.png
+h-43-lament-singer.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053114_47ad1fbd-df5a-4c35-95ed-490fb8981e1e.png
+h-44-thumbprints.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_a9a57a52-33ae-4101-989e-1a25001ad17b.png
+h-45-hammurabi-stele.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_18b6c9a9-2558-48fb-a75f-c803a5ae1a7c.png
+h-46-finale-scribe.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_c240ee50-b680-4e45-93be-31c6fd1615c7.png
+h-47-portal-actor.png|https://d8j0ntlcm91z4.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/hf_20260807_053113_8f339dac-d9b2-40dd-ac8d-70017f092b4a.png
