@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Axi IQ · C1</title>
+<style>
+  /* ============ AXI IRAQ CAROUSEL TEMPLATE — EDUCATION FAMILY ============
+     Working color tokens — swap with official values when the brand
+     guideline file arrives (file 01, Missing Info #1). */
+  :root{
+    --red:#FA4653;        /* axi coral red (working value) */
+    --crimson:#C8102E;    /* deep red (working value) */
+    --cream:#F7F1E6;      /* warm cream */
+    --cream-deep:#EFE6D5;
+    --ink:#17171C;        /* near-black */
+    --ink-soft:#4A4A52;
+    --white:#FFFFFF;
+  }
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-Regular.ttf');font-weight:400;}
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-Medium.ttf');font-weight:500;}
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-SemiBold.ttf');font-weight:600;}
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-Bold.ttf');font-weight:700;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1080px;height:1350px;overflow:hidden;}
+  body{font-family:'PlexAr',sans-serif;color:var(--ink);}
+  .slide{position:relative;width:1080px;height:1350px;padding:96px 96px 84px;display:none;
+         flex-direction:column;background:var(--cream);}
+  .slide.on{display:flex;}
+  .ltr{direction:ltr;unicode-bidi:isolate;}
+
+  /* ---------- shared furniture ---------- */
+  .kicker{display:flex;align-items:center;gap:18px;font-size:27px;font-weight:600;color:var(--crimson);letter-spacing:.5px;}
+  .kicker .rule{flex:0 0 64px;height:4px;background:var(--red);border-radius:2px;}
+  .footer{position:absolute;left:96px;right:96px;bottom:64px;display:flex;justify-content:space-between;align-items:baseline;}
+  .wordmark{font-weight:700;font-size:44px;letter-spacing:-1px;color:var(--red);direction:ltr;}
+  .dark .wordmark,.red .wordmark{color:var(--cream);}
+  .counter{font-size:26px;font-weight:500;color:var(--ink-soft);}
+  .dark .counter{color:#B9B9C2;} .red .counter{color:rgba(247,241,230,.85);}
+  .chip{width:104px;height:104px;border-radius:28px;background:var(--red);color:var(--white);
+        display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:700;line-height:1;
+        box-shadow:0 10px 24px rgba(200,16,46,.22);}
+  h2{font-size:78px;line-height:1.28;font-weight:700;margin:40px 0 8px;}
+  .body{font-size:43px;line-height:1.72;font-weight:400;color:var(--ink-soft);max-width:860px;}
+  .body b{color:var(--ink);font-weight:600;}
+  .diagram{margin-top:auto;margin-bottom:150px;display:flex;justify-content:center;}
+  .tag{display:inline-block;align-self:flex-start;margin-top:26px;padding:10px 26px;border:2.5px solid var(--crimson);
+       border-radius:100px;color:var(--crimson);font-size:26px;font-weight:600;}
+
+  /* ---------- cover ---------- */
+  .cover{justify-content:flex-start;}
+  .cover .giant{position:absolute;left:96px;top:330px;text-align:center;line-height:1;}
+  .cover .giant .n{font-size:470px;font-weight:700;color:var(--red);display:block;line-height:.9;}
+  .cover .giant .lbl{display:block;margin-top:8px;font-size:56px;font-weight:600;color:var(--crimson);}
+  .cover .giant small{position:absolute;right:-10px;top:96px;font-size:64px;color:var(--crimson);font-weight:600;}
+  .cover h1{font-size:104px;line-height:1.3;font-weight:700;margin-top:190px;max-width:600px;}
+  .cover h1 .lite{font-weight:500;color:var(--ink-soft);font-size:72px;display:block;margin-bottom:6px;}
+  .cover .sub{margin-top:44px;font-size:38px;color:var(--ink-soft);max-width:560px;line-height:1.6;}
+  .swipe{position:absolute;bottom:170px;right:96px;display:flex;align-items:center;gap:16px;
+         font-size:32px;font-weight:600;color:var(--crimson);}
+  .swipe svg{transform:translateY(2px);}
+  .wm{position:absolute;inset:auto -40px -60px auto;font-size:520px;font-weight:700;color:transparent;
+      -webkit-text-stroke:2px rgba(200,16,46,.10);letter-spacing:-8px;direction:ltr;line-height:1;pointer-events:none;}
+
+  /* ---------- dark + red variants ---------- */
+  .dark{background:var(--ink);color:var(--cream);}
+  .dark h2{color:var(--cream);} .dark .body{color:#C9C9D2;} .dark .body b{color:var(--white);}
+  .red{background:linear-gradient(118deg,var(--red) 0 58%,var(--crimson) 58% 100%);color:var(--cream);}
+  .red h2{color:var(--white);} .red .body{color:rgba(255,255,255,.92);}
+
+  /* ---------- final slide ---------- */
+  .cta-box{margin-top:56px;background:var(--cream);color:var(--ink);border-radius:32px;padding:44px 52px;max-width:880px;}
+  .cta-box .c1{font-size:44px;font-weight:700;}
+  .cta-box .c2{font-size:32px;color:var(--ink-soft);margin-top:10px;line-height:1.6;}
+  .risk{margin-top:34px;border:3px dashed rgba(255,255,255,.7);border-radius:24px;padding:30px 40px;
+        font-size:27px;line-height:1.6;color:rgba(255,255,255,.95);max-width:880px;}
+  /* HTML diagrams (RTL-safe — no Arabic inside SVG) */
+  .dg{margin-top:auto;margin-bottom:150px;display:flex;flex-direction:column;align-items:center;gap:0;}
+  .dg .row{display:flex;align-items:center;justify-content:center;}
+  .pillbox{border:3.5px solid var(--ink);border-radius:18px;padding:18px 40px;font-size:36px;font-weight:600;color:var(--ink);background:transparent;}
+  .under{font-size:28px;font-weight:600;color:var(--crimson);margin-top:16px;text-align:center;}
+  .slash{font-size:96px;font-weight:700;color:var(--red);margin:0 34px;line-height:1;}
+  .gapwrap{position:relative;display:flex;align-items:center;}
+  .gapspace{width:150px;}
+  .measure{position:absolute;left:50%;transform:translateX(-50%);top:calc(100% + 22px);width:150px;}
+  .measure .bar{height:5px;background:var(--red);border-radius:3px;position:relative;}
+  .measure .bar::before,.measure .bar::after{content:'';position:absolute;top:-10px;width:5px;height:25px;background:var(--red);border-radius:3px;}
+  .measure .bar::before{left:0}.measure .bar::after{right:0}
+  .measure .mlbl{margin-top:14px;text-align:center;font-size:28px;font-weight:600;color:var(--crimson);white-space:nowrap;}
+  .caption{font-size:27px;font-weight:500;color:var(--ink-soft);margin-top:20px;text-align:center;}
+  svg .st{stroke:var(--ink);stroke-width:3.5;fill:none;stroke-linecap:round;}
+  svg .sr{stroke:var(--red);stroke-width:5;fill:none;stroke-linecap:round;}
+  svg .fr{fill:var(--red);} svg .tx{font-family:'PlexAr';font-weight:600;}
+</style>
+</head>
+<body>
+
+<!-- ═══ S1 · COVER ═══ -->
+<section class="slide cover" id="s1">
+  <div class="kicker"><span class="rule"></span><span>شهر الأساسيات · الدليل ١</span></div>
+  <div class="giant"><span class="n">٥</span><span class="lbl">أساسيات</span></div>
+  <h1><span class="lite">قبل أول صفقة…</span> افهم هاي الخمسة</h1>
+  <div class="sub">دليل مبسّط لأساسيات سوق العملات — بلا وعود، بلا تعقيد.</div>
+  <div class="swipe">اسحب
+    <svg width="54" height="24" viewBox="0 0 54 24"><path class="sr" d="M50 12H8M16 4l-9 8 9 8"/></svg>
+  </div>
+  <div class="wm">axi</div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">١ / ٨</div></div>
+</section>
+
+<!-- ═══ S2 · الفوركس ═══ -->
+<section class="slide" id="s2">
+  <div class="chip">١</div>
+  <h2>شنو يعني سوق العملات (فوركس)؟</h2>
+  <div class="body">سوق عالمي تُتبادل فيه عملات الدول: <b>تشتري عملة وتبيع أخرى بنفس اللحظة</b>. هو أكبر سوق مالي في العالم، ويعمل <b>٢٤ ساعة</b> خلال أيام الأسبوع.</div>
+  <div class="dg">
+    <svg width="300" height="250" viewBox="0 0 560 250">
+      <circle class="st" cx="280" cy="125" r="95"/>
+      <ellipse class="st" cx="280" cy="125" rx="42" ry="95"/>
+      <path class="st" d="M190 95h180M190 155h180"/>
+    </svg>
+    <div class="row" style="direction:ltr;margin-top:26px;gap:26px;font-weight:600;font-size:38px;color:var(--ink);">
+      <span>EUR</span><span style="color:var(--red);font-size:44px;">&#8646;</span><span>USD</span>
+    </div>
+  </div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٢ / ٨</div></div>
+</section>
+
+<!-- ═══ S3 · الزوج ═══ -->
+<section class="slide" id="s3">
+  <div class="chip">٢</div>
+  <h2>الزوج: العملات تمشي اثنين اثنين</h2>
+  <div class="body"><span class="ltr"><b>EUR/USD</b></span> مثلاً: اليورو مقابل الدولار. سعر الزوج يجاوب سؤالاً واحداً: <b>كم دولاراً يساوي اليورو الواحد؟</b> الأولى تسمى عملة الأساس، والثانية عملة التسعير.</div>
+  <div class="dg">
+    <div class="row" style="direction:ltr">
+      <div><div class="pillbox">EUR</div><div class="under">عملة الأساس</div></div>
+      <div class="slash">/</div>
+      <div><div class="pillbox">USD</div><div class="under">عملة التسعير</div></div>
+    </div>
+    <div class="caption">السعر = كم من الثانية يشتري واحدٌ من الأولى</div>
+  </div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٣ / ٨</div></div>
+</section>
+
+<!-- ═══ S4 · النقطة ═══ -->
+<section class="slide" id="s4">
+  <div class="chip">٣</div>
+  <h2>النقطة (Pip): وحدة قياس الحركة</h2>
+  <div class="body">أصغر حركة قياسية في سعر الزوج — غالباً <b>الخانة العشرية الرابعة</b>. من <span class="ltr">1.0850</span> إلى <span class="ltr">1.0851</span> = حركة بمقدار <b>نقطة واحدة</b>.</div>
+  <div class="tag">مثال توضيحي فقط</div>
+  <div class="diagram">
+    <svg width="620" height="230" viewBox="0 0 620 230">
+      <text class="tx" x="60" y="120" font-size="72" fill="#17171C" direction="ltr" letter-spacing="4">1.08<tspan fill="#C8102E" font-size="88">5</tspan>0</text>
+      <circle class="sr" cx="345" cy="95" r="64"/>
+      <path class="sr" d="M390 141l52 52"/>
+      <text class="tx" x="60" y="205" font-size="28" fill="#4A4A52" direction="ltr">1 pip = 0.0001</text>
+    </svg>
+  </div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٤ / ٨</div></div>
+</section>
+
+<!-- ═══ S5 · السبريد ═══ -->
+<section class="slide" id="s5">
+  <div class="chip">٤</div>
+  <h2>السبريد: تكلفة الدخول</h2>
+  <div class="body">الفرق بين <b>سعر الشراء</b> و<b>سعر البيع</b> بنفس اللحظة. هذه أول تكلفة في أي صفقة — وكل ما كان السبريد أضيق، كانت تكلفتك أقل. <b>التفاصيل الكاملة الأسبوع الجاي.</b></div>
+  <div class="dg">
+    <div class="row" style="margin-bottom:90px;">
+      <div class="pillbox">سعر البيع</div>
+      <div class="gapwrap"><div class="gapspace"></div>
+        <div class="measure"><div class="bar"></div><div class="mlbl">السبريد</div></div>
+      </div>
+      <div class="pillbox">سعر الشراء</div>
+    </div>
+  </div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٥ / ٨</div></div>
+</section>
+
+<!-- ═══ S6 · الحساب التجريبي ═══ -->
+<section class="slide" id="s6">
+  <div class="chip">٥</div>
+  <h2>الحساب التجريبي: تدرّب قبل ما تخاطر</h2>
+  <div class="body">حساب بأموال <b>افتراضية</b> يحاكي السوق الحقيقي. Axi توفّر حساباً تجريبياً مجانياً برصيد افتراضي <span class="ltr"><b>$50,000</b></span> — جرّب، اغلط، وتعلّم بدون خسارة حقيقية.</div>
+  <div class="diagram" style="flex-direction:column;align-items:center;">
+    <svg width="600" height="240" viewBox="0 0 600 240">
+      <rect class="st" x="110" y="30" width="380" height="180" rx="22" stroke-dasharray="16 14"/>
+      <path class="sr" d="M170 160 L250 110 L310 135 L430 70"/>
+      <circle class="fr" cx="430" cy="70" r="9"/>
+      </svg>
+    <div class="caption">بيئة تدريب آمنة — أرقام افتراضية بالكامل</div>
+  </div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٦ / ٨</div></div>
+</section>
+
+<!-- ═══ S7 · القاعدة الذهبية (dark) ═══ -->
+<section class="slide dark" id="s7">
+  <div class="kicker" style="color:var(--red)"><span class="rule"></span><span>القاعدة الذهبية</span></div>
+  <h2 style="margin-top:56px">لا تخاطر بمبلغ<br>ما تتحمّل خسارته.</h2>
+  <div class="body">الخسارة جزء طبيعي من أي سوق. المتداول الواعي يحدّد <b>حجم المخاطرة أولاً</b> — قبل أن يفكّر بأي عائد.</div>
+  <div class="diagram">
+    <svg width="300" height="300" viewBox="0 0 300 300">
+      <path d="M150 30l95 38v70c0 62-40 110-95 132-55-22-95-70-95-132V68z" fill="none" stroke="#F7F1E6" stroke-width="4"/>
+      <path class="sr" d="M105 150l32 32 60-70"/>
+    </svg>
+  </div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٧ / ٨</div></div>
+</section>
+
+<!-- ═══ S8 · FINAL (red) ═══ -->
+<section class="slide red" id="s8">
+  <div class="kicker" style="color:rgba(255,255,255,.95)"><span class="rule" style="background:var(--cream)"></span><span>الخلاصة</span></div>
+  <h2 style="margin-top:60px;font-size:96px">الأساس قبل الطموح.</h2>
+  <div class="body" style="margin-top:8px">خمس ركائز تعرفها اليوم، توفّر عليك دروساً مكلفة باچر. احفظ المنشور وشاركه ويّا من يحتاجه.</div>
+  <div class="cta-box">
+    <div class="c1">ابدأ التعلّم مجاناً — Axi Academy</div>
+    <div class="c2">دورات منظمة خطوة بخطوة + حساب تجريبي برصيد افتراضي <span class="ltr">$50,000</span></div>
+  </div>
+  <div class="risk">[ نص إخلاء المسؤولية المعتمد من Axi — قيد الاعتماد · لا يُنشر هذا التصميم قبل إدراج النص ]</div>
+  <div class="wm" style="-webkit-text-stroke-color:rgba(247,241,230,.14)">axi</div>
+  <div class="footer"><div class="wordmark">axi</div><div class="counter">٨ / ٨</div></div>
+</section>
+
+<script>
+  const n=(new URLSearchParams(location.search)).get('slide')||'1';
+  document.getElementById('s'+n).classList.add('on');
+</script>
+</body>
+</html>
