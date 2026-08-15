@@ -30,6 +30,7 @@ A complete, one-person-operable September system: 17 feed assets, 30 daily story
 2. Re-upload the brand-guidelines file directly to chat (the Drive link was unreachable) → exact colors/fonts lock the templates.
 3. Confirm women's-film casting (deadline Aug 27) and souq permissions via the Erbil office.
 4. Start the file 10 §A sprint: templates first.
+5. From the digital team: the **Arabic variant URL of the Iraq landing page** (`pages.axi.com/one-axi2-vi-…`) + its verbatim risk disclaimer (likely = the approved Arabic risk text we need), plus a dedicated **organic UTM set** for clean CTA links (file 01 §2 "Acquisition funnel").
 
 ## Standing rules (never break)
 Market numbers: live, verified twice, timestamped, sourced — or not published. No profit promises, no advice, no invented facts, no fake UI numbers. Arabic approved → then translated → then designed → then QA'd → then published. Every asset ends with the approved risk line.

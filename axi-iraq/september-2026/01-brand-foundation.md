@@ -50,6 +50,13 @@
 
 **Creative gold in these mechanics:** Axi Select structurally *rewards discipline, risk management and consistency* — not lucky wins. That is a compliance-safe, differentiated story ("الانضباط يُموَّل" — discipline gets funded) and the backbone of Hero Video 2.
 
+### Acquisition funnel (verified from the live campaign URL, Aug 2026)
+The paid team runs an active Google Ads Iraq acquisition campaign — `FY26_FEB_ME_IQ_ACQ_EN-AR_SVG_V2` (Middle East · Iraq · English-Arabic · SVG entity · brand-keyword search · tCPA · mobile-heavy) — landing on `pages.axi.com/one-axi2-vi-en/`. What this establishes:
+- **SVG entity confirmed as the Iraq acquisition entity** (corroborates the Axi Select brochure) — compliance copy should assume SVG-entity rules.
+- **A bilingual funnel exists (EN-AR)** → an **Arabic variant of the LP exists**, and its footer almost certainly carries the **compliance-approved Arabic risk warning** — the exact text we're blocked on (Missing Info #2). Fastest unlock: get the Arabic LP URL + its verbatim disclaimer from the digital team (or paste the page text into chat — the page is unreachable from this working environment).
+- **This LP is the official conversion destination** for Iraqi traffic. Organic CTA rule: when a post's CTA is account-oriented (Arabic account only), link the **clean base URL — never the gclid-laden ad link** (a `gclid` is click-specific and corrupts paid attribution). Ask the digital team for a dedicated organic UTM set (e.g., `utm_source=instagram&utm_medium=organic&utm_campaign=axi_iq_<asset>`) so organic-driven signups become measurable — this feeds our WINNERS/LOSERS loop (file 10 §E).
+- Education CTAs (the default in this system) still point to Axi Academy / demo; the LP is for explicitly commercial slots and sales PDFs.
+
 ### From the vision deck (internal ambitions — NOT publishable as live facts until confirmed)
 - Iraqi Premier League sponsorship ("Axi League"), Chart Champion $1M championship, reality show, social trading app, Axi Academy launch, padel/horse racing/MMA events, Manchester City player content (Haaland/Rodri challenge assets exist globally for localization).
 - **Status of each must be confirmed before any public mention.** Marked in calendar as `AXI INFO NEEDED`.
