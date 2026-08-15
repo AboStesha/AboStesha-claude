@@ -25,6 +25,7 @@
 | **Fri** | LIGHT (30 min) | Close-of-week story frame (live data); weekend recap prep |
 | **Sat** | RECAP + LEARN (1.5h) | «الأسبوع بدقيقة» recap live; log week's metrics in the performance sheet; pick one test for next week |
 | Daily | PULSE (≤25 min/account) | Market pulse protocol (file 08 §B) + comment moderation sweep (2× daily during campaign) |
+| Flex | **TREND-JACK slot (max 1/week, optional)** | If an Iraqi meme/audio wave or a market-moving news day hits: one rapid-turn story or Reel riding the wave (market-event humor or "what today's move means" explainer). Rules: compliance word-scan still applies, no prices without the data protocol, drop it if nothing genuinely fits (evidence: file 02 §E2.1/E2.7) |
 
 Total ≈ 18–20 focused hours/week — realistic for one person because templates carry the volume and only data + one creative frame are made fresh daily.
 
