@@ -107,7 +107,7 @@
 | Date | Asset |
 |---|---|
 | Sun 14? — no: **Sun 13** | Announce post: campaign mark + manifesto caption (why this campaign, in her address) |
-| Mon 14 | **Carousel C3:** «٥ أسئلة اسأليها قبل ما تدخلين أي سوق» (works as sales-support PDF too — file 06) |
+| Mon 14 | **Carousel C3:** «٥ أسئلة اسألها قبل ما تدخل أي سوق» — *neutral address per creative lead decision (Aug 2026): the carousel teaches everyone; feminine direct address lives in the film, stories, portraits and Q&A* (works as sales-support PDF too — file 06) |
 | Wed 16 | **Hero film «الأسئلة الصح»** (HV3 slot) |
 | Thu 17 | Portrait post 1 — «من دفترها»: photo essay of preparation (journal, checklist, tea, screen) + her one-line quote about learning |
 | Thu 24 | Portrait post 2 + community close: selected (anonymized) audience questions from the Q&A designed as a shareable carousel-lite |

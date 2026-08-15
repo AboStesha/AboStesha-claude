@@ -32,6 +32,7 @@ No two same-family tiles sit adjacent in any row — the fixed weekly rhythm (Mo
 - **Latin/brand:** per Axi guidelines `[pending file]`.
 - **Arabic:** one family for everything, two weights. Recommended: **IBM Plex Sans Arabic** (free license, premium-neutral, excellent numerals) — swap only if the official guidelines name a licensed Arabic brand font. Display size for hooks, text size for education.
 - **Kurdish (Sorani, Arabic script):** SAME family IF glyph QA passes — test string: «ڕێگە، ورد، ھەڵە، ئێوارە، گۆڕان، چاڤ، ژیان، ڤیدیۆ، ە» — if any glyph fails, Kurdish uses **Noto Sans Arabic** (full coverage) at matched optical size. Never mix families within one asset.
+- **Punctuation rule:** the em-dash (—) never appears in published copy, any language. Use commas, colons, ؛ or split sentences.
 - **Numerals rule:** Western digits (1234) for ALL data — prices, %, dates, times (matches platforms and sources). Arabic-Indic (١٢٣٤) allowed only in editorial headlines/numerals-as-design (e.g., carousel covers «٥»). Never mixed inside one line.
 - **Type scale (9:16):** hook 64–80pt equivalent · support 36–44 · caption/source 24–28 · legal 20 minimum (legible on phone).
 

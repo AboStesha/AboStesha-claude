@@ -31,8 +31,8 @@
 
 ---
 
-## C3 · Mon 14 Sept · «٥ أسئلة اسأليها قبل ما تدخلين أي سوق» (women's campaign)
-**STRATEGY** — Objective: campaign's education core; feminine address throughout. Problem: women get cheerleading, not curriculum (eToro audit — file 04). Axi benefit: the brand that answers questions seriously. Save driver: a decision framework, useful far beyond trading. Commercial: sales PDF for female leads + partners' women networks.
+## C3 · Mon 14 Sept · «٥ أسئلة اسألها قبل ما تدخل أي سوق» (women's campaign, neutral address)
+**STRATEGY** — Objective: campaign's education core; NEUTRAL address per creative lead (the carousel teaches everyone; feminine address lives in film/stories/portraits). Problem: women get cheerleading, not curriculum (eToro audit — file 04). Axi benefit: the brand that answers questions seriously. Save driver: a decision framework, useful far beyond trading. Commercial: sales PDF for female leads + partners' women networks.
 **COVER** — Main: «٥ أسئلة اسأليها قبل أي سوق» + «عن دراية» mark · A: «قبل الشجاعة… المعرفة» · B: «قرارچ يستاهل أسئلة صح» · Visual: notebook + red underline device.
 **SLIDES** — 1 Cover · 2 «شنو أعرف عن هذا السوق؟» (مصدر معرفتچ منو؟ منهج ولا إشاعة؟) · 3 «شكد أكدر أخسر بلا ما يتأثر بيتي؟» (family-security framing — رأس المال المسموح به فقط) · 4 «شنو خطتي إذا غلطت؟» (وقف الخسارة كفكرة = قرار مسبق، مو توصية) · 5 «منو المستفيد من نصيحتي المجانية؟» (anti-scam: الإشارات المجانية والوعود المضمونة علامة خطر) · 6 «هل أقدر أشرح قراري بجملة وحدة؟» (إذا ما تقدرين تشرحينه، ما تملكينه بعد) · 7 «الأسئلة مو ضعف — الأسئلة منهج» (bridge to campaign film) · 8 FINAL — Takeaway: «عن دراية: قرار مدروس أفضل من قرار شجاع» · CTA: «ابدئي التعلم مجاناً» · `[RISK-AR]`.
 **SOCIAL** — Caption in feminine address; invite questions to the judgment-free Q&A sticker (that evening's story).

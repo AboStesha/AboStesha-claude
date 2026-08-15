@@ -22,7 +22,9 @@
 - **Axi Select sub-brand:** dark background, neon glow red, gold/yellow accent chevrons — usable for Select-specific content only.
 
 ### Voice
-- Arabic master: clear, modern, premium MSA with light Iraqi conversational color in hooks (شنو، خوش، هواي — sparingly); education copy stays clean and precise. No robotic formality, no heavy slang, no hype.
+- Arabic master: clear, modern, premium MSA with light Iraqi conversational color in hooks (شنو، خوش، هواي، sparingly); education copy stays clean and precise. No robotic formality, no heavy slang, no hype.
+- **Punctuation rule (standing, per creative lead):** never use the em-dash (—) in any published copy, any language, any asset. Use commas, colons, the Arabic semicolon (؛), or split the sentence.
+- **Address rule (standing, per creative lead):** feed carousels speak to everyone in neutral address, including women's-campaign carousels; direct feminine address is reserved for the campaign film, stories, portraits, and Q&A formats.
 - Kurdish: professionally translated from approved Arabic; must feel natively designed (file 09 covers layout adaptation).
 
 ---
