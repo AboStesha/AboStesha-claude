@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Axi IQ · نبض السوق</title>
+<style>
+  :root{
+    --red:#FA4653; --crimson:#C8102E; --cream:#F7F1E6; --ink:#17171C;
+    --ink2:#22222A; --soft:#B9B9C2; --up:#2BA778; --down:#E5484D; --white:#fff;
+  }
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-Regular.ttf');font-weight:400;}
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-Medium.ttf');font-weight:500;}
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-SemiBold.ttf');font-weight:600;}
+  @font-face{font-family:'PlexAr';src:url('../fonts/IBMPlexSansArabic-Bold.ttf');font-weight:700;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1080px;height:1920px;overflow:hidden;}
+  body{font-family:'PlexAr',sans-serif;background:var(--ink);color:var(--cream);
+       display:flex;flex-direction:column;padding:150px 84px 270px;position:relative;}
+  .ltr{direction:ltr;unicode-bidi:isolate;}
+
+  .head{display:flex;justify-content:space-between;align-items:center;}
+  .franchise{display:flex;align-items:center;gap:20px;font-size:40px;font-weight:700;color:var(--cream);}
+  .franchise svg{transform:translateY(2px);}
+  .date{font-size:28px;font-weight:500;color:var(--soft);}
+
+  .instr{margin-top:110px;display:flex;align-items:center;gap:24px;}
+  .instr .sym{direction:ltr;font-size:34px;font-weight:700;color:var(--ink);background:var(--cream);
+              border-radius:14px;padding:8px 22px;letter-spacing:1px;}
+  .instr .name{font-size:44px;font-weight:600;}
+
+  .price{margin-top:36px;direction:ltr;text-align:right;font-size:170px;font-weight:700;color:var(--white);
+         line-height:1;letter-spacing:-2px;}
+  .price small{font-size:56px;font-weight:600;color:var(--soft);letter-spacing:0;}
+
+  .chgrow{margin-top:44px;display:flex;align-items:center;gap:26px;}
+  .badge{display:flex;align-items:center;gap:14px;border-radius:100px;padding:14px 34px;
+         font-size:44px;font-weight:700;direction:ltr;}
+  .badge.up{background:rgba(43,167,120,.16);color:var(--up);}
+  .badge.down{background:rgba(229,72,77,.16);color:var(--down);}
+  .chglbl{font-size:32px;color:var(--soft);font-weight:500;}
+
+  .spark{margin-top:80px;}
+  .datastrip{margin-top:70px;display:flex;gap:56px;}
+  .cell .k{font-size:27px;color:var(--soft);font-weight:500;}
+  .cell .v{font-size:40px;font-weight:600;color:var(--cream);margin-top:8px;direction:ltr;text-align:right;}
+
+  .meta{margin-top:auto;}
+  .srcline{font-size:26px;color:var(--soft);line-height:1.7;}
+  .disc{margin-top:26px;border-top:2px solid #33333D;padding-top:24px;font-size:25px;line-height:1.65;color:#8F8F9A;}
+  .footer{position:absolute;left:84px;right:84px;bottom:120px;display:flex;justify-content:space-between;align-items:baseline;}
+  .wordmark{font-weight:700;font-size:46px;color:var(--red);direction:ltr;}
+  .mstat{font-size:26px;color:var(--soft);}
+  .mstat b{color:var(--up);font-weight:600;}
+
+  /* demo watermark */
+  .demo{position:absolute;inset:0;pointer-events:none;display:none;}
+  body.is-demo .demo{display:block;}
+  .demo .diag{position:absolute;top:46%;left:-10%;right:-10%;text-align:center;transform:rotate(-18deg);
+              font-size:110px;font-weight:700;color:rgba(250,70,83,.14);letter-spacing:6px;}
+  .demo .strip{position:absolute;top:56px;right:84px;left:84px;text-align:center;background:var(--crimson);
+               color:#fff;font-size:28px;font-weight:700;border-radius:12px;padding:12px;}
+</style>
+</head>
+<body>
+  <div class="head">
+    <div class="franchise">
+      <svg width="64" height="34" viewBox="0 0 64 34"><path d="M2 22h12l6-14 9 24 8-18 5 8h20" fill="none" stroke="#FA4653" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      نبض السوق
+    </div>
+    <div class="date" id="date">…</div>
+  </div>
+
+  <div class="instr">
+    <div class="sym" id="sym">…</div>
+    <div class="name" id="name">…</div>
+  </div>
+
+  <div class="price" id="price">…<small> USD</small></div>
+
+  <div class="chgrow">
+    <div class="badge up" id="badge"><span id="arrow">▲</span><span id="chg">…</span></div>
+    <div class="chglbl" id="chglbl">منذ إغلاق أمس</div>
+  </div>
+
+  <svg class="spark" id="spark" width="912" height="210" viewBox="0 0 912 210">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FA4653" stop-opacity=".28"/><stop offset="1" stop-color="#FA4653" stop-opacity="0"/>
+    </linearGradient></defs>
+    <path id="sparkfill" fill="url(#g)" stroke="none"/>
+    <path id="sparkline" fill="none" stroke="#FA4653" stroke-width="5" stroke-linecap="round"/>
+    <circle id="sparkdot" r="10" fill="#FA4653"/>
+  </svg>
+
+  <div class="datastrip">
+    <div class="cell"><div class="k">الإغلاق السابق</div><div class="v" id="prev">…</div></div>
+    <div class="cell"><div class="k">التغيّر</div><div class="v" id="abschg">…</div></div>
+    <div class="cell"><div class="k">بتوقيت بغداد</div><div class="v" id="time">…</div></div>
+  </div>
+
+  <div class="meta">
+    <div class="srcline" id="src">المصدر: … · تم التحقق من مصدرين</div>
+    <div class="disc">معلومة سوقية للأغراض التعليمية، ليست توصية استثمارية. [RISK-AR]</div>
+  </div>
+
+  <div class="footer">
+    <div class="wordmark">axi</div>
+    <div class="mstat" id="mstat">السوق: <b>مفتوح</b></div>
+  </div>
+
+  <div class="demo">
+    <div class="strip">عينة تصميم بأرقام تجريبية · لا تُنشر</div>
+    <div class="diag">عينة تصميم</div>
+  </div>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  const get=(k,d)=>q.get(k)??d;
+  const demo = get('demo','1')==='1';
+  if(demo) document.body.classList.add('is-demo');
+  document.getElementById('date').textContent  = get('date','الجمعة · 15 آب 2026');
+  document.getElementById('sym').textContent   = get('sym','XAUUSD');
+  document.getElementById('name').textContent  = get('name','الذهب مقابل الدولار');
+  document.getElementById('price').innerHTML   = get('price','0,000.00')+'<small> '+get('unit','USD')+'</small>';
+  const dir = get('dir','up');
+  const badge=document.getElementById('badge');
+  badge.className='badge '+dir;
+  document.getElementById('arrow').textContent = dir==='up'?'▲':'▼';
+  document.getElementById('chg').textContent   = get('pct','+0.00%');
+  document.getElementById('prev').textContent  = get('prev','0,000.00');
+  document.getElementById('abschg').textContent= get('chg','+0.00');
+  document.getElementById('time').textContent  = get('time','16:30');
+  document.getElementById('src').textContent   = 'المصدر: '+get('src','[المصدر الأول] · تم التحقق من مصدر ثانٍ');
+  document.getElementById('mstat').innerHTML   = 'السوق: <b style="color:'+(get('open','1')==='1'?'#2BA778':'#E5484D')+'">'+(get('open','1')==='1'?'مفتوح':'مغلق')+'</b>';
+  document.getElementById('chglbl').textContent= get('lbl','منذ إغلاق أمس');
+  // sparkline from comma-separated normalized points (0..100)
+  const pts=(get('spark','20,35,28,48,42,60,55,72,66,80')).split(',').map(Number);
+  const W=912,H=210,P=12, n=pts.length;
+  const xy=pts.map((p,i)=>[P+i*(W-2*P)/(n-1), H-P-(p/100)*(H-2*P)]);
+  const d='M'+xy.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L ');
+  document.getElementById('sparkline').setAttribute('d',d);
+  document.getElementById('sparkfill').setAttribute('d',d+` L ${W-P} ${H-P} L ${P} ${H-P} Z`);
+  const last=xy[xy.length-1];
+  const dot=document.getElementById('sparkdot');
+  dot.setAttribute('cx',last[0]); dot.setAttribute('cy',last[1]);
+</script>
+</body>
+</html>
