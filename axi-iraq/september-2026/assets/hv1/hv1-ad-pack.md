@@ -1,6 +1,18 @@
 # HV1 · «الأسواق تتكلم» — Full Ad Production Pack
 **Slot:** Week 1 hero · Publish Thu 3 Sept, 19:00 Baghdad · 9:16 master 32s + 15s cut + 4:5 crop
-**Status:** ready for approval → generation. Concept selection + scoring in file 05 (A: 41/45, recommended over «السوق ما ينام» and «صار عندك سؤال؟»).
+**Status:** REV A — revised against the 15-Aug current-trends research (file 02 §E2–E3) → ready for approval. Concept selection + scoring in file 05.
+
+---
+
+## ⚡ REV A (16 Aug) — evidence-driven revisions
+The concept, script, sound and structure SURVIVED the trends audit (daily-price habit = Iraq's #1 content loop validates the premise). Two things did not, and are changed:
+
+1. **Production method: AI-cinematic → FILMED-LOCAL macro b-roll.** Evidence: documented 2026 AI-ad authenticity backlash (54% AI fatigue; TikTok's mandatory AI labels measurably depress trust; nothing shows AI-cinematic collecting Iraqi audiences, while June's biggest Iraqi wave was a real street frame). Every shot in the board below is shootable in one half-day with phone + gimbal + macro attachment (souq, exchange office exterior, market, kitchen). AI moves backstage only: caption automation, cut-down variants, color assist. **New requirement: half-day b-roll shoot Mon–Tue 25–26 Aug** (vendor courtesy permissions only; no talent contracts; banks b-roll for story frames too). Master still locks Aug 29.
+2. **A human face enters the first 3 seconds.** Evidence: face-led opens retain best; street money vox-pops are the best-verified collectors globally and the hottest frame in Iraq. The scale-slam hook stays (now real footage), but shot 2 (goldsmith's hands + face) moves up to start at ~1.2s. And a fourth hook variant joins paid testing:
+   - **Hook D (street-question open):** real passerby/vendor asked on the street: «شگد سعر الدولار اليوم؟» smash-cut montage of three different people answering instantly, then: «كلنا نعرف الأسعار. اليوم نتعلم شنو تقول.» → film continues. This merges Iraq's hottest visual grammar with our exact premise and is the strongest test candidate against Hook A.
+3. Distribution note for management: mirror the Reel organically to TikTok (Iraq's largest audience) while IG stays the brand anchor; if any AI-assisted realistic imagery is ever used there, it must carry the platform's AI label — one more reason the hero stays filmed.
+
+Everything below stands as written, with "Generation method" columns now read as **filmed reference for the shooter** (the prompts double as shot descriptions).
 
 ---
 

@@ -7,10 +7,10 @@
 | Aug 17–18 | **Approvals round 1** | Send management/compliance: this whole plan + the 10 Missing-Info requests (file 01 §4) + the KRI legal escalation (file 02 §A1) + women's-campaign pre-clearances (file 04 §10) |
 | Aug 19–21 | **Design system build** | File 09 templates: 7 story templates, carousel master (5 layouts), thumbnail panel system, highlight covers, end-card motion template |
 | Aug 22 | **Copy batch 1** | All 30 story frames' static copy (from file 08) + C1–C2 full copy → compliance |
-| Aug 24–25 | **Design batch 1** | C1 + C2 built (both artboards incl. PDF); HV1 storyboard frames generated (Higgsfield); week 1–2 story skeletons |
+| Aug 24–25 | **Design batch 1 + HV1 b-roll shoot** | C1 + C2 built (both artboards incl. PDF); **half-day HV1 filmed b-roll shoot (REV A: souq, exchange exterior, market, kitchen)**; week 1–2 story skeletons |
 | Aug 26 | **Translation batch 1** | Approved evergreen set → translators: story-template statics, terms/quizzes/mistakes set, C1–C2, HV1 script, campaign name brief |
 | Aug 27 | **Casting locked** | Women's film participants confirmed (file 04 §10); vendor outreach for «أهل السوق» via Erbil office |
-| Aug 28–29 | **HV1 production** | Generate shots, edit, master + cuts + thumbnails |
+| Aug 28–29 | **HV1 production** | Edit filmed b-roll, VO record, captions, master + cuts + thumbnails |
 | Aug 30–31 | **Kurdish batch 1 build + QA** | Kurdish templates populated; glyph QA; both accounts' September week 1 scheduled |
 
 ## B. Weekly operating rhythm (repeats all September)
