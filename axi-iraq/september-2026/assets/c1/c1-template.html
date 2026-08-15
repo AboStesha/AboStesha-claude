@@ -47,17 +47,16 @@
        border-radius:100px;color:var(--crimson);font-size:26px;font-weight:600;}
 
   /* ---------- cover ---------- */
-  .cover{justify-content:flex-start;}
-  .cover .giant{position:absolute;left:96px;top:330px;text-align:center;line-height:1;}
-  .cover .giant .n{font-size:470px;font-weight:700;color:var(--red);display:block;line-height:.9;}
-  .cover .giant .lbl{display:block;margin-top:8px;font-size:56px;font-weight:600;color:var(--crimson);}
-  .cover .giant small{position:absolute;right:-10px;top:96px;font-size:64px;color:var(--crimson);font-weight:600;}
-  .cover h1{font-size:104px;line-height:1.3;font-weight:700;margin-top:190px;max-width:600px;}
-  .cover h1 .lite{font-weight:500;color:var(--ink-soft);font-size:72px;display:block;margin-bottom:6px;}
-  .cover .sub{margin-top:44px;font-size:38px;color:var(--ink-soft);max-width:560px;line-height:1.6;}
+  .cover{justify-content:flex-start;background:linear-gradient(118deg,var(--red) 0 58%,var(--crimson) 58% 100%);}
+  .cover .kicker{color:var(--cream);} .cover .kicker .rule{background:var(--cream);}
+  .cover .giant{position:absolute;left:-56px;bottom:150px;line-height:.78;font-size:900px;font-weight:700;color:var(--cream);text-shadow:0 30px 80px rgba(0,0,0,.18);}
+  .cover h1{font-size:118px;line-height:1.22;font-weight:700;margin-top:150px;max-width:640px;color:var(--white);}
+  .cover h1 .lite{font-weight:500;color:rgba(247,241,230,.92);font-size:66px;display:block;margin-bottom:10px;}
+  .cover .sub{margin-top:40px;font-size:40px;color:var(--cream);max-width:520px;line-height:1.6;font-weight:500;}
   .swipe{position:absolute;bottom:170px;right:96px;display:flex;align-items:center;gap:16px;
-         font-size:32px;font-weight:600;color:var(--crimson);}
+         font-size:34px;font-weight:600;color:var(--cream);}
   .swipe svg{transform:translateY(2px);}
+  .cover .swipe svg path{stroke:var(--cream);}
   .wm{position:absolute;inset:auto -40px -60px auto;font-size:520px;font-weight:700;color:transparent;
       -webkit-text-stroke:2px rgba(200,16,46,.10);letter-spacing:-8px;direction:ltr;line-height:1;pointer-events:none;}
 
@@ -95,15 +94,15 @@
 <body>
 
 <!-- ═══ S1 · COVER ═══ -->
-<section class="slide cover" id="s1">
-  <div class="kicker"><span class="rule"></span><span>شهر الأساسيات · الدليل ١</span></div>
-  <div class="giant"><span class="n">٥</span><span class="lbl">أساسيات</span></div>
+<section class="slide cover red" id="s1">
+  <div class="kicker"><span class="rule"></span><span>شهر الأساسيات</span></div>
+  <div class="giant">٥</div>
   <h1><span class="lite">قبل أول صفقة…</span> افهم هاي الخمسة</h1>
-  <div class="sub">دليل مبسّط لأساسيات سوق العملات — بلا وعود، بلا تعقيد.</div>
+  <div class="sub">دليل مبسّط لسوق العملات</div>
   <div class="swipe">اسحب
     <svg width="54" height="24" viewBox="0 0 54 24"><path class="sr" d="M50 12H8M16 4l-9 8 9 8"/></svg>
   </div>
-  <div class="wm">axi</div>
+  <div class="wm" style="-webkit-text-stroke-color:rgba(247,241,230,.12)">axi</div>
   <div class="footer"><div class="wordmark">axi</div><div class="counter">١ / ٨</div></div>
 </section>
 
@@ -162,7 +161,7 @@
 <section class="slide" id="s5">
   <div class="chip">٤</div>
   <h2>السبريد: تكلفة الدخول</h2>
-  <div class="body">الفرق بين <b>سعر الشراء</b> و<b>سعر البيع</b> بنفس اللحظة. هذه أول تكلفة في أي صفقة — وكل ما كان السبريد أضيق، كانت تكلفتك أقل. <b>التفاصيل الكاملة الأسبوع الجاي.</b></div>
+  <div class="body">الفرق بين <b>سعر الشراء</b> و<b>سعر البيع</b> بنفس اللحظة. هذه أول تكلفة في أي صفقة — وكل ما كان السبريد أضيق، كانت تكلفتك أقل.</div>
   <div class="dg">
     <div class="row" style="margin-bottom:90px;">
       <div class="pillbox">سعر البيع</div>

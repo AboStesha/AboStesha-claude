@@ -6,7 +6,7 @@ No physically-connected posts. Instead: 5 recognizable **card families**, each w
 | Family (pillar) | Cover system | Base look |
 |---|---|---|
 | MARKET (recaps/data) | dark charcoal card, big number/«الأسبوع بدقيقة» wordmark, red sparkline | dark |
-| EDUCATION (carousels) | cream card, red Arabic-Indic numeral, thin-line diagram motif | cream |
+| EDUCATION (carousels) | **cover = red diagonal split + giant cream numeral bleeding the edge** (grid stopping-power); interior slides cream with red chips + thin-line diagrams | red cover / cream inside |
 | HUMAN / CAMPAIGN | photography-first, minimal type, «عن دراية» red-underline mark when campaign | photo |
 | AXI (brand/product) | Axi red diagonal-split (the brand device from the deck), cream wordmark | red |
 | VIDEO (reels) | cinematic still + left-third headline panel (thumbnail system §5) | photo+panel |
