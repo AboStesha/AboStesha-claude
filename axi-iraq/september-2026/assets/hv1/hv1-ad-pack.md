@@ -1,6 +1,6 @@
 # HV1 · «الأسواق تتكلم» — Full Ad Production Pack
 **Slot:** Week 1 hero · Publish Thu 3 Sept, 19:00 Baghdad · 9:16 master 32s + 15s cut + 4:5 crop
-**Status:** REV A — revised against the 15-Aug current-trends research (file 02 §E2–E3) → ready for approval. Concept selection + scoring in file 05.
+**Status:** REV A — revised against the 15-Aug current-trends research (file 02 §E2–E3) → ready for approval. Concept selection + scoring in file 05. **Animatic approval cut delivered 16 Aug — see the Animatic section at the end of this file.**
 
 ---
 
@@ -87,3 +87,51 @@ Talent: AI-generated generic adults, modest professional wardrobe, hijab-diverse
 ## Production sequence (when approved)
 1. Generate 8 keyframes (Higgsfield, batch) → select/regenerate → 2. animate via Seedance 2.0 img2vid per shot → 3. record VO (real Iraqi voice; AI scratch for timing) → 4. edit + captions + music → 5. end card from brand template → 6. compliance pass → 7. thumbnails → 8. translation batch for Kurdish edition.
 **Time estimate:** ~1 day generation/selection + ½ day edit. Deadline for the Sept 3 slot: master locked **Aug 29** (file 10 sprint).
+
+---
+
+## 🎬 Animatic (approval cut) — delivered 16 Aug
+**This is NOT the publish master.** Per REV A the published hero is filmed local b-roll (half-day shoot Mon–Tue 25–26 Aug). This animatic exists to (1) get concept/timing/caption approval before the shoot, (2) hand the shooter a 1:1 frame reference, (3) pressure-test the caption system. Every footage frame carries the crimson strip «أنيماتيك للمراجعة الداخلية · ليست للنشر» — it must never be posted anywhere.
+
+- **File:** https://d2ol7oe51mr4n9.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/b0f5ad23-ec56-443a-89d6-1c25f76a6b80.mp4
+- **Specs:** 720×1280 (9:16), 31.53 s, h264, 5.5 MB, **silent by design** (VO + sound design happen at the filmed-master stage; VO timing = this animatic's timing, script §11)
+- **Higgsfield media_id:** `b0f5ad23-ec56-443a-89d6-1c25f76a6b80` (also in the account's media library)
+
+### Timeline as built
+| Seg | Time | Shot (per §13–19 board) | Caption burned |
+|---|---|---|---|
+| 1 | 0.0–2.5 | gold scale macro (hook) | «هذا مو ذهب. هذا سعر.» |
+| 2 | 2.5–6.0 | goldsmith hands + face | «الذهب: سعر عالمي» |
+| 3 | 6.0–9.0 | exchange-board bokeh | «العملات: أكبر سوق بالعالم» |
+| 4 | 9.0–12.0 | counting notes | «العملات: أكبر سوق بالعالم» |
+| 5 | 12.0–15.5 | port cranes at dusk | «الطاقة: سعر يتجدد كل ثانية» |
+| 6 | 15.5–18.5 | pump counter macro | «الطاقة: سعر يتجدد كل ثانية» |
+| 7 | 18.5–22.0 | receipt + استكان چاي | «الأسعار حولك: قصة أكبر» |
+| 8 | 22.0–26.0 | person at window light | «الأسواق تتكلم.» |
+| 9 | 26.0–31.5 | end card: red field, «الأسواق تتكلم.», Academy CTA card, `[RISK-AR]` placeholder, axi mark | (end card) |
+
+### Generation record (Higgsfield)
+Keyframes: Nano Banana 2 · clips: Seedance 2.0, fast mode, 720p, image-to-video from each keyframe, no generated audio. Captions + end card: HTML/CSS overlays (720×1280 transparent PNGs, headless Chromium), burned and assembled with ffmpeg (per-segment scale/crop → concat).
+
+| Shot | Keyframe job | Clip job |
+|---|---|---|
+| 1 | fc807311-d4da-428f-87d8-cb224340bf3c | cce30606-cd00-4993-b425-d2e53e630a76 |
+| 2 | 5a7829c5-6902-4e26-b16f-21c2f7f4f5fe | 8bc3c02b-a9d5-47af-acba-2591226aeff2 |
+| 3 | d4234b24-48ec-4a48-901a-d8872c770212 | 4ce42aef-a7e6-4a82-a65c-b066b32f7bbb |
+| 4 | 33e3825b-93c8-4b84-969d-ffc014b31488 | 63919fb2-65a3-4e28-80fd-f6fd3f78a3e1 |
+| 5 | 867ad314-969e-4adb-a555-4af7c39b285c | 8a352cda-8198-4a2b-844b-71a9a06340a9 |
+| 6 | afa2cfb0-2c78-4758-b05c-1770c6446800 | 1a1d366a-9ca3-4ca5-a3c4-fe19893473ba |
+| 7 | c926e5fb-c44b-4ba6-a30d-ad8e44b94391 | 9d92a10b-abf7-442d-92d7-b0a605a2a010 |
+| 8 | 24ce0cf9-92d0-4136-b592-9178dc0de958 | 7c0b6046-e05b-4922-8965-e3c60004ea20 |
+
+### QA record (16 Aug)
+1. **Container:** h264, 720×1280, 31.534 s, 5,549,544 bytes at the URL — matches the assembled master exactly.
+2. **Structural frame check** (color-class layout maps at t = 1.8 / 8 / 15 / 24 / 29): watermark strip present at the top of every footage segment; cream caption box with rendered glyph texture (no tofu/empty-box signature) present at all sampled captions; end card = red field + title lines + cream CTA card.
+3. **Vision-model scene pass** (Higgsfield video analysis, id `0606277a-9afd-4d65-a29f-b47fe6505457`): read back all 6 captions + the end-card copy correctly in translation (incl. Academy line and the $50k demo figure), confirming the Arabic burned in with correct shaping end to end. Note: the analysis "audio" descriptions are the model's reading of the burned captions plus imagined sound design — the file itself is silent.
+4. **Content flag — shot 4:** the generator produced a stack of US $100 bills instead of the board's worn dinar notes. Acceptable inside a watermarked internal animatic; **the filmed shot stays as the board specifies (worn dinars counted at speed)** — exchange-office dollar context is management's call, but a thick $100 stack skirts our no-cash-stacks rule (file 01 §3).
+5. **Compliance:** no readable real prices, no platform UI, no profit language; `[RISK-AR]` is still the dashed placeholder → the standing publish blocker applies to the filmed master too, by design.
+
+### What this unlocks before the shoot
+1. Management approval of concept/timing/captions (send the URL above).
+2. Shooter reference: match each animatic shot 1:1 on the 25–26 Aug half-day (real souq / exchange exterior / market / kitchen; shot 4 with dinars).
+3. VO casting + record against §11 once approved — the animatic's segment timing is the VO click track.
