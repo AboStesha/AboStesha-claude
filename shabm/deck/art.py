@@ -70,16 +70,16 @@ def cube_exterior():
   <g transform="translate(452,320) skewY(-3.4) rotate(-1.6) translate(-452,-320)">
   <!-- ============ THE BLOCK — leaning, eroded, never a clean cube ============ -->
   <!-- right/side face -->
-  <path d="M664 132 L748 190 L716 486 L648 500 Z" fill="url(#fB)"/>
+  <path d="M652 108 L800 178 L790 458 L646 500 Z" fill="url(#fB)"/>
   <!-- top face, sagging where it has melted -->
-  <path d="M244 126 C312 104 486 108 664 132 L748 190 C566 176 392 178 268 198 Z" fill="url(#fC)"/>
+  <path d="M240 104 C312 84 480 84 652 108 L800 178 C620 156 430 158 300 172 Z" fill="url(#fC)"/>
   <!-- front face: edges bowed and rounded by melt, base narrower than the top -->
-  <path d="M244 126 C312 104 486 108 664 132
-           L648 500 C540 512 372 510 224 498
-           C220 372 228 240 244 126 Z" fill="url(#fA)"/>
+  <path d="M240 104 C312 84 480 84 652 108
+           L646 500 C536 514 366 512 220 500
+           C214 366 224 228 240 104 Z" fill="url(#fA)"/>
   <!-- outline, deliberately soft and uneven -->
-  <path d="M244 126 C312 104 486 108 664 132 L748 190 L716 486 L648 500
-           C540 512 372 510 224 498 C220 372 228 240 244 126 Z"
+  <path d="M240 104 C312 84 480 84 652 108 L800 178 L790 458 L646 500
+           C536 514 366 512 220 500 C214 366 224 228 240 104 Z"
         fill="none" stroke="currentColor" stroke-opacity=".34" stroke-width="1.3" stroke-linejoin="round"/>
   <path d="M660 126 L648 500 M660 126 L742 176" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="1"/>
 
@@ -143,15 +143,15 @@ def cube_exterior():
        upper edge of the stroke and shadow gathering in the bottom of the cut. -->
   <g font-family="Cairo, sans-serif" font-weight="300" font-size="80" letter-spacing="2"
      text-anchor="middle">
-   <text x="436" y="239" fill="currentColor" fill-opacity=".34">شَبِم</text>
-   <text x="436" y="234" fill="currentColor" fill-opacity=".10">شَبِم</text>
-   <text x="436" y="236" fill="none" stroke="currentColor" stroke-opacity=".22"
+   <text x="433" y="222" fill="currentColor" fill-opacity=".34">شَبِم</text>
+   <text x="433" y="217" fill="currentColor" fill-opacity=".10">شَبِم</text>
+   <text x="433" y="219" fill="none" stroke="currentColor" stroke-opacity=".22"
          stroke-width="1.1">شَبِم</text>
   </g>
   <g font-family="Space Grotesk, sans-serif" font-weight="300" font-size="12"
      letter-spacing="10" text-anchor="middle">
-   <text x="436" y="267" fill="currentColor" fill-opacity=".3">SHBM</text>
-   <text x="436" y="265" fill="currentColor" fill-opacity=".12">SHBM</text>
+   <text x="433" y="250" fill="currentColor" fill-opacity=".3">SHBM</text>
+   <text x="433" y="248" fill="currentColor" fill-opacity=".12">SHBM</text>
   </g>
 
   <!-- RIGHT — order, on a screen. -->
@@ -192,20 +192,20 @@ def cube_exterior():
        The only thing on the whole block besides the name and the openings:
        the finished products, frozen into the panel, priced above each. -->
   <g stroke="currentColor" stroke-opacity=".26" stroke-width="1" fill="none">
-   <path d="M660 152 L730 190 M660 216 L730 254 M660 280 L730 318 M660 344 L730 382"/>
+   <path d="M666 146 L788 202 M666 226 L788 282 M666 306 L790 362 M666 386 L790 434"/>
   </g>
   <g stroke="currentColor" stroke-opacity=".36" stroke-width="1.1" fill="url(#fC)">
-   <rect x="672" y="164" width="22" height="34" rx="2"/>
-   <ellipse cx="683" cy="164" rx="11" ry="3.4"/>
-   <rect x="676" y="230" width="20" height="28" rx="2"/>
-   <rect x="678" y="292" width="18" height="30" rx="9"/>
-   <circle cx="688" cy="360" r="11"/>
+   <rect x="694" y="160" width="26" height="42" rx="2"/>
+   <ellipse cx="707" cy="160" rx="13" ry="4"/>
+   <rect x="700" y="242" width="26" height="36" rx="2"/>
+   <rect x="704" y="320" width="22" height="38" rx="11"/>
+   <circle cx="716" cy="404" r="14"/>
   </g>
   <g fill="currentColor" opacity=".1">
-   <ellipse cx="683" cy="180" rx="20" ry="26"/><ellipse cx="686" cy="244" rx="19" ry="23"/>
-   <ellipse cx="687" cy="307" rx="17" ry="24"/><ellipse cx="688" cy="360" rx="18" ry="19"/>
+   <ellipse cx="707" cy="182" rx="24" ry="30"/><ellipse cx="713" cy="260" rx="23" ry="28"/>
+   <ellipse cx="715" cy="340" rx="21" ry="28"/><ellipse cx="716" cy="404" rx="22" ry="24"/>
   </g>
-  <text x="760" y="410" text-anchor="start" font-family="Cairo, sans-serif" font-size="11"
+  <text x="812" y="470" text-anchor="start" font-family="Cairo, sans-serif" font-size="11"
         fill="currentColor" fill-opacity=".46">الجانبُ الأيمن</text>
 
   </g>
@@ -214,21 +214,21 @@ def cube_exterior():
   <g transform="translate(742,520)">
    <rect x="0" y="0" width="132" height="86" rx="6" fill="currentColor" fill-opacity=".03"
          stroke="currentColor" stroke-opacity=".16" stroke-width="1"/>
-   <rect x="30" y="22" width="72" height="44" rx="3" fill="url(#fA)"
+   <rect x="34" y="18" width="64" height="54" rx="3" fill="url(#fA)"
          stroke="currentColor" stroke-opacity=".4" stroke-width="1.3"/>
    <g fill="currentColor" opacity=".5">
-    <rect x="38" y="63" width="12" height="6" rx="1"/>
-    <rect x="60" y="63" width="8" height="6" rx="1"/>
-    <rect x="80" y="63" width="12" height="6" rx="1"/>
+    <rect x="40" y="69" width="12" height="6" rx="1"/>
+    <rect x="60" y="69" width="8" height="6" rx="1"/>
+    <rect x="78" y="69" width="12" height="6" rx="1"/>
    </g>
-   <path d="M102 26 L102 62" stroke="currentColor" stroke-opacity=".5" stroke-width="3"/>
+   <path d="M98 22 L98 68" stroke="currentColor" stroke-opacity=".5" stroke-width="3"/>
    <text x="66" y="82" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9"
          fill="currentColor" fill-opacity=".42">الخدمة</text>
    <text x="118" y="18" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9"
          fill="currentColor" fill-opacity=".42">القائمة</text>
   </g>
   <text x="874" y="508" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">مسقطٌ أفقي · ١٨ م² · ٥.٥ × ٣.٣</text>
+        fill="currentColor" fill-opacity=".34">مسقطٌ أفقي · مكعّب ٤.٢ × ٤.٢ × ٤.٢</text>
 
   <text x="884" y="110" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
         fill="currentColor" fill-opacity=".34">كتلةٌ مصمتة: لا جلوسَ ولا مظلّةَ ولا نافذة</text>

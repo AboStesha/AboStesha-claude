@@ -16,9 +16,10 @@ LONG_EDGE, QUALITY = 1500, 74          # keeps the published page well under 16 
 
 SLOTS = {
     # the final exterior set: a closed block, three openings, menu flank
-    "37eeff56": "cube_day",      "0bebd39d": "cube_night",
-    "da76b46d": "cube_dawn",     "a8366b1c": "face_detail",
-    "410f2090": "cube_hero",     "965bbc8e": "logo_carved",
+    "99459816": "cube_day",      "7478ee00": "cube_night",
+    "2f54bf6b": "cube_dawn",     "a8366b1c": "face_detail",
+    "e5feb902": "cube_hero",     "965bbc8e": "logo_carved",
+    "c6fb0dc8": "cube_corner",   "52412c86": "cube_square",
     "799dd8b6": "menu_flank",    "e098dac5": "menu_flank_macro",
     # products
     "adbfb895": "p_saqee80",     "9513411e": "p_qalab",
