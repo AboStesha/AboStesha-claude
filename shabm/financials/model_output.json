@@ -33,18 +33,18 @@
    },
    "capex": {
     "items": {
-     "shell": 66404,
+     "shell": 61904,
      "power": 40000,
      "prod": 97000,
-     "front": 19502,
-     "sys": 30000,
+     "front": 15702,
+     "sys": 29000,
      "spares_service_reserve": 9700,
      "key_money": 30000,
      "pre_opening": 18000,
      "working_capital": 30000,
-     "contingency": 40873
+     "contingency": 39757
     },
-    "total": 381479
+    "total": 371063
    },
    "monthly_y1": [
     {
@@ -572,10 +572,10 @@
      "opex": 229871,
      "ebitda": 33467,
      "transactions": 67853,
-     "depreciation": 50211,
-     "ebit": -16744,
+     "depreciation": 48723,
+     "ebit": -15256,
      "tax": 0.0,
-     "net_income": -16744,
+     "net_income": -15256,
      "free_cash_flow": 26778,
      "year": 1,
      "ebitda_margin": 0.08,
@@ -598,11 +598,11 @@
      "opex": 241314,
      "ebitda": 183426,
      "transactions": 109440,
-     "depreciation": 50211,
-     "ebit": 133214,
-     "tax": 19982,
-     "net_income": 113232,
-     "free_cash_flow": 152655,
+     "depreciation": 48723,
+     "ebit": 134702,
+     "tax": 20205,
+     "net_income": 114497,
+     "free_cash_flow": 152432,
      "year": 2,
      "ebitda_margin": 0.26,
      "prime_cost_pct": 0.37
@@ -624,11 +624,11 @@
      "opex": 253372,
      "ebitda": 205984,
      "transactions": 118359,
-     "depreciation": 50211,
-     "ebit": 155773,
-     "tax": 23366,
-     "net_income": 132407,
-     "free_cash_flow": 170950,
+     "depreciation": 48723,
+     "ebit": 157261,
+     "tax": 23589,
+     "net_income": 133672,
+     "free_cash_flow": 170727,
      "year": 3,
      "ebitda_margin": 0.26,
      "prime_cost_pct": 0.37
@@ -650,11 +650,11 @@
      "opex": 264875,
      "ebitda": 221779,
      "transactions": 125393,
-     "depreciation": 50211,
-     "ebit": 171568,
-     "tax": 25735,
-     "net_income": 145833,
-     "free_cash_flow": 183683,
+     "depreciation": 48723,
+     "ebit": 173056,
+     "tax": 25958,
+     "net_income": 147098,
+     "free_cash_flow": 183460,
      "year": 4,
      "ebitda_margin": 0.27,
      "prime_cost_pct": 0.37
@@ -676,20 +676,20 @@
      "opex": 276309,
      "ebitda": 234228,
      "transactions": 131547,
-     "depreciation": 50211,
-     "ebit": 184016,
-     "tax": 27602,
-     "net_income": 156414,
-     "free_cash_flow": 193657,
+     "depreciation": 48723,
+     "ebit": 185504,
+     "tax": 27826,
+     "net_income": 157679,
+     "free_cash_flow": 193434,
      "year": 5,
      "ebitda_margin": 0.27,
      "prime_cost_pct": 0.37
     }
    ],
-   "payback_months": 32.2,
-   "irr_5y": 41.35,
-   "npv_5y_at_20": 341642,
-   "roi_y2_pct": 48.1
+   "payback_months": 31.8,
+   "irr_5y": 42.37,
+   "npv_5y_at_20": 351576,
+   "roi_y2_pct": 49.4
   },
   "baghdad_fr": {
    "label": "Iraq franchised Cube",
@@ -7033,18 +7033,18 @@
    },
    "capex": {
     "items": {
-     "shell": 103746,
+     "shell": 96546,
      "power": 64000,
      "prod": 106700,
-     "front": 31203,
-     "sys": 33000,
+     "front": 25123,
+     "sys": 31900,
      "spares_service_reserve": 10670,
      "key_money": 93000,
      "pre_opening": 31500,
      "working_capital": 52500,
-     "contingency": 63158
+     "contingency": 61433
     },
-    "total": 589478
+    "total": 573372
    },
    "monthly_y1": [
     {
@@ -7572,11 +7572,11 @@
      "opex": 504407,
      "ebitda": 155112,
      "transactions": 81425,
-     "depreciation": 76711,
-     "ebit": 78400,
-     "tax": 7056,
-     "net_income": 71344,
-     "free_cash_flow": 134410,
+     "depreciation": 74410,
+     "ebit": 80701,
+     "tax": 7263,
+     "net_income": 73438,
+     "free_cash_flow": 134203,
      "year": 1,
      "ebitda_margin": 0.17,
      "prime_cost_pct": 0.38
@@ -7598,11 +7598,11 @@
      "opex": 534420,
      "ebitda": 529320,
      "transactions": 131329,
-     "depreciation": 76711,
-     "ebit": 452608,
-     "tax": 40735,
-     "net_income": 411874,
-     "free_cash_flow": 466576,
+     "depreciation": 74410,
+     "ebit": 454909,
+     "tax": 40942,
+     "net_income": 413967,
+     "free_cash_flow": 466369,
      "year": 2,
      "ebitda_margin": 0.36,
      "prime_cost_pct": 0.31
@@ -7624,11 +7624,11 @@
      "opex": 561579,
      "ebitda": 588856,
      "transactions": 142030,
-     "depreciation": 76711,
-     "ebit": 512145,
-     "tax": 46093,
-     "net_income": 466052,
-     "free_cash_flow": 518960,
+     "depreciation": 74410,
+     "ebit": 514445,
+     "tax": 46300,
+     "net_income": 468145,
+     "free_cash_flow": 518753,
      "year": 3,
      "ebitda_margin": 0.37,
      "prime_cost_pct": 0.3
@@ -7650,11 +7650,11 @@
      "opex": 587436,
      "ebitda": 631367,
      "transactions": 150473,
-     "depreciation": 76711,
-     "ebit": 554656,
-     "tax": 49919,
-     "net_income": 504737,
-     "free_cash_flow": 556230,
+     "depreciation": 74410,
+     "ebit": 556956,
+     "tax": 50126,
+     "net_income": 506830,
+     "free_cash_flow": 556023,
      "year": 4,
      "ebitda_margin": 0.38,
      "prime_cost_pct": 0.3
@@ -7676,20 +7676,20 @@
      "opex": 613115,
      "ebitda": 665500,
      "transactions": 157857,
-     "depreciation": 76711,
-     "ebit": 588789,
-     "tax": 52991,
-     "net_income": 535798,
-     "free_cash_flow": 586054,
+     "depreciation": 74410,
+     "ebit": 591090,
+     "tax": 53198,
+     "net_income": 537892,
+     "free_cash_flow": 585847,
      "year": 5,
      "ebitda_margin": 0.38,
      "prime_cost_pct": 0.3
     }
    ],
-   "payback_months": 20.9,
-   "irr_5y": 72.5,
-   "npv_5y_at_20": 1586705,
-   "roi_y2_pct": 89.8
+   "payback_months": 20.6,
+   "irr_5y": 73.97,
+   "npv_5y_at_20": 1602192,
+   "roi_y2_pct": 92.3
   }
  },
  "franchisor": {
@@ -7811,13 +7811,13 @@
    }
   ],
   "exit_ev": 12413784,
-  "irr_pct": 45.32,
+  "irr_pct": 45.37,
   "moic": 7.53,
   "cash_flows": [
    -1750000,
    -270944,
    -263974,
-   -501861,
+   -491445,
    465906,
    13741749
   ]
@@ -7827,43 +7827,43 @@
    "y2_revenue": 719250,
    "y2_ebitda": 183426,
    "y2_margin": 0.26,
-   "payback_months": 32.2,
-   "irr_5y": 41.35
+   "payback_months": 31.8,
+   "irr_5y": 42.37
   },
   "bear": {
    "y2_revenue": 483471,
    "y2_ebitda": 34361,
    "y2_margin": 0.07,
    "payback_months": null,
-   "irr_5y": -5.37
+   "irr_5y": -4.88
   },
   "bull": {
    "y2_revenue": 941538,
    "y2_ebitda": 304309,
    "y2_margin": 0.32,
-   "payback_months": 21.6,
-   "irr_5y": 65.01
+   "payback_months": 21.1,
+   "irr_5y": 66.37
   },
   "stress_heat_fails": {
    "y2_revenue": 561015,
    "y2_ebitda": 80510,
    "y2_margin": 0.14,
    "payback_months": null,
-   "irr_5y": 13.57
+   "irr_5y": 14.23
   },
   "stress_fx": {
    "y2_revenue": 618555,
    "y2_ebitda": 103967,
    "y2_margin": 0.17,
-   "payback_months": 53.1,
-   "irr_5y": 20.96
+   "payback_months": 52.6,
+   "irr_5y": 21.72
   },
   "stress_sales_tax": {
    "y2_revenue": 653798,
    "y2_ebitda": 131778,
    "y2_margin": 0.2,
-   "payback_months": 42.9,
-   "irr_5y": 28.75
+   "payback_months": 42.5,
+   "irr_5y": 29.6
   }
  },
  "assumptions": {
@@ -8037,11 +8037,11 @@
     "pre_opening_usd": 18000,
     "working_capital_usd": 30000,
     "capex": {
-     "shell": 66404,
+     "shell": 61904,
      "power": 40000,
      "prod": 97000,
-     "front": 19502,
-     "sys": 30000
+     "front": 15702,
+     "sys": 29000
     },
     "_capex_note": "مُشتقٌّ من جدول المعدّات أدناه، سطراً سطراً. أُعيد بناؤه من الأساس بعد أن تبيّن أنّ النسخةَ الأولى (٣٨٠,٠٠٠$ قبل الطوارئ) كانت تحمل ثلاثةَ أخطاء: عُدّةُ الامتياز مُحمَّلةٌ على الفرع لا على الشركة المانحة، ومصنعُ ثلجٍ بثلاث وحداتٍ حيث تكفي واحدة، وتقديرٌ إجماليٌّ للغلاف بدل حسابِ مساحة.",
     "_other_note": "E — the specialist-refrigeration service contract (a -80C ULT unit and a directional-freeze ice plant are not maintained by a general fridge engineer), RO water and ice-plant consumables, genset servicing, insulated and dry-ice delivery packaging, 24-hour security, cleaning, insurance, municipal and health licences, accounting, uniforms, staff meals, and a continuous training budget - Iraqi F&B turnover is high and this format cannot be run by untrained staff.",
@@ -8116,13 +8116,13 @@
      },
      {
       "key": "fitout_in",
-      "ar": "التجهيزُ الداخلي — ألواحُ غرفةٍ باردة، فولاذ، أرضيّة، تصريف",
+      "ar": "التجهيزُ الداخلي — ألواحُ غرفةٍ باردة، فولاذ، أرضيّةٌ صناعية، تصريف",
       "qty": 25,
-      "unit_usd": 520,
-      "total_usd": 13000,
+      "unit_usd": 340,
+      "total_usd": 8500,
       "cat": "shell",
       "idx": "fitout",
-      "note": "E — ٥٢٠$/م² لتجهيزٍ بدرجة غرفةٍ باردة، لا لتجهيز مقهى."
+      "note": "E — خُفِّض من ٥٢٠$/م². لا يراه زبونٌ أبداً، فلا يحمل أيَّ كلفةِ تشطيبٍ أو هويّة: ألواحُ غرفةٍ باردة قياسية، وجدرانُ فولاذٍ مقاوم، وأرضيّةٌ إيبوكسي بمصارف. المواصفةُ مطبخٌ يعمل، لا غرفةٌ تُصوَّر."
      },
      {
       "key": "genset",
@@ -8306,23 +8306,23 @@
      },
      {
       "key": "light",
-      "ar": "الإضاءةُ الداخلية والحفرُ المُضاءُ من الحافة والواجهة",
+      "ar": "الإضاءةُ والحفرُ المُضاءُ — الواجهةُ الخارجية فقط",
       "qty": 1,
-      "unit_usd": 11000,
-      "total_usd": 11000,
+      "unit_usd": 7200,
+      "total_usd": 7200,
       "cat": "front",
       "idx": "fitout",
-      "note": "E — القائمةُ محفورةٌ في الجدار ومُضاءةٌ من الحافة: هي اللافتةُ والمنيو معاً."
+      "note": "E — خُفِّض من ١١,٠٠٠$. الحفرُ المُضاءُ من الحافة والاسمُ المنحوت كلُّها على الغلاف الخارجي، حيث يراها الناس. أمّا الداخل فإضاءةُ عملٍ بيضاء عالية الكفاءة على شريطٍ صناعي — لا حفرَ ولا قائمةَ محفورة ولا شاشاتٍ مغروسةٍ في الجدار."
      },
      {
       "key": "kiosks",
       "ar": "شاشتا الطلب الذاتي ونقطةُ البيع وشاشاتُ الأرقام والشبكة",
       "qty": 1,
-      "unit_usd": 8000,
-      "total_usd": 8000,
+      "unit_usd": 7000,
+      "total_usd": 7000,
       "cat": "sys",
       "idx": "equip",
-      "note": "E — كشكا طلبٍ بـ١,٨٠٠$ للواحد. لا كاشير، فهاتان الشاشتان هما نقطةُ البيع كلُّها."
+      "note": "E — كشكا طلبٍ بـ١,٨٠٠$ للواحد على الواجهة، وشاشةُ رقمِ الطلب، والشبكة والمراقبة. شاشاتُ الجدار الداخلية أُلغِيت: شاشةُ إنتاجٍ واحدةٌ مثبَّتةٌ على ذراعٍ تكفي مطبخاً لا يراه أحد."
      },
      {
       "key": "brand",
@@ -8334,7 +8334,8 @@
       "idx": "equip",
       "note": "H/E — خُفِّضت من ٨٢,٠٠٠$. عرضُ استوديو بيروت البالغ ٨١,٧٩٢$ يشمل عُدّةَ الامتياز الكاملة، وهذه كلفةُ الشركة المانحة لا كلفةُ الفرع: نُقِل منها ٤٥,٠٠٠$ إلى ما قبل تشغيل الشركة المانحة. الباقي هويّةٌ وعبوةٌ وتصميمُ بووثٍ لوحدةٍ واحدة."
      }
-    ]
+    ],
+    "_interior_note": "قرارٌ صريح: داخلُ المكعّب لا يراه زبون. الفتحاتُ الثلاث كلُّها صناديقُ تمريرٍ بظهرٍ مُعتِم، والجدرانُ مصمتة. فلا يُنفَق دولارٌ واحد على هويّةٍ داخلية — لا قائمةَ محفورةً في الجدار، ولا شاشاتٍ مغروسةً في مادّة الثلج، ولا تشطيبٍ مُصمَّم. الداخلُ مطبخٌ باردٌ يعمل. والقائمةُ انتقلت إلى مكانها الصحيح: شاشةُ الطلب على الواجهة. الوفرُ ٘٨,٣٠٠$ من الجدول، والصورُ الداخلية للتسويق تُنتَج بالذكاء الاصطناعي لا بتصويرٍ في الموقع."
    },
    "cube_rollout": {
     "label": "المُكَعَّب — the Cube (replication unit, post-prototype)",

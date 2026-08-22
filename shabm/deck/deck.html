@@ -354,7 +354,7 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
   <div class="meta">
    <span class="chip">بغداد ← العراق ← الخليج</span>
    <span class="chip k">عرضٌ للمستثمرين · 2026-08</span>
-   <span class="chip k">الفرع الأول $381k · استرداد 32 شهراً</span>
+   <span class="chip k">الفرع الأول $371k · استرداد 32 شهراً</span>
    <span class="chip k">شركة الامتياز $1.75M · عائد 45%</span>
   </div>
  </div>
@@ -747,84 +747,119 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
    <ellipse cx="339" cy="346" rx="1.8" ry="2.6"/><ellipse cx="718" cy="490" rx="2" ry="2.8"/>
   </g>
 
-  <!-- ============ THE FACE: branding, hatches, screens ============ -->
-  <!-- the Arabic wordmark, cut into the ice -->
-  <text x="452" y="252" text-anchor="middle" font-family="Cairo, sans-serif" font-weight="300"
+  <!-- ============ THE FACE ============================================
+       Carved wordmark and exactly three square openings. Nothing else is
+       cut into this face, and no seating stands in front of it. -->
+  <text x="436" y="238" text-anchor="middle" font-family="Cairo, sans-serif" font-weight="300"
         font-size="86" fill="currentColor" fill-opacity=".62" letter-spacing="2">شَبِم</text>
-  <text x="452" y="284" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="300"
+  <text x="436" y="268" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="300"
         font-size="13" fill="currentColor" fill-opacity=".34" letter-spacing="11">SHBM</text>
 
-  <!-- RIGHT: the order point is a touchscreen set into the ice, not a hatch.
-       Nobody takes your order; you place it yourself on the glass. -->
-  <rect x="556" y="292" width="96" height="128" rx="5" fill="currentColor" fill-opacity=".04"
+  <!-- RIGHT — order. A square touchscreen sunk into the ice. No cashier. -->
+  <rect x="520" y="312" width="100" height="100" rx="5" fill="currentColor" fill-opacity=".04"
         stroke="currentColor" stroke-opacity=".38" stroke-width="1.2"/>
-  <rect x="566" y="302" width="76" height="108" rx="3" fill="currentColor" fill-opacity=".26"/>
+  <rect x="528" y="320" width="84" height="84" rx="3" fill="currentColor" fill-opacity=".26"/>
   <g stroke="currentColor" stroke-opacity=".5" stroke-width="1.4" fill="none" stroke-linecap="round">
-   <path d="M576 320 H614 M576 334 H626 M576 348 H606"/>
+   <path d="M538 338 H576 M538 352 H590 M538 366 H568"/>
   </g>
-  <rect x="576" y="368" width="50" height="16" rx="8" fill="currentColor" fill-opacity=".55"/>
-  <text x="604" y="438" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
-        fill="currentColor" fill-opacity=".5">اطلب — شاشةُ لمس</text>
+  <rect x="538" y="380" width="46" height="14" rx="7" fill="currentColor" fill-opacity=".55"/>
+  <text x="570" y="434" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
+        fill="currentColor" fill-opacity=".5">اطلب</text>
 
-  <!-- LEFT: collection. A sealed pass-through box — the customer's panel opens,
-       but its back wall is the same opaque ice material, so the inside of the
-       booth is never visible through the opening. -->
-  <rect x="258" y="330" width="88" height="66" rx="4" fill="currentColor" fill-opacity=".05"
-        stroke="currentColor" stroke-opacity=".4" stroke-width="1.2"/>
-  <rect x="272" y="344" width="60" height="34" rx="2" fill="url(#fC)"
-        stroke="currentColor" stroke-opacity=".34" stroke-width="1"/>
-  <g stroke="currentColor" stroke-opacity=".22" stroke-width="1" fill="none">
-   <path d="M272 344 L280 338 M332 344 L324 338"/>
+  <!-- CENTRE — cup return. Square, hinged, back-panelled. -->
+  <rect x="386" y="312" width="100" height="100" rx="5" fill="currentColor" fill-opacity=".04"
+        stroke="currentColor" stroke-opacity=".38" stroke-width="1.2"/>
+  <rect x="394" y="320" width="84" height="84" rx="3" fill="url(#fC)"
+        stroke="currentColor" stroke-opacity=".3" stroke-width="1"/>
+  <g stroke="currentColor" stroke-opacity=".24" stroke-width="1" fill="none">
+   <path d="M394 348 L478 348"/><path d="M404 340 L412 332 M468 340 L460 332"/>
   </g>
-  <rect x="272" y="300" width="60" height="22" rx="3" fill="currentColor" fill-opacity=".28"/>
-  <text x="302" y="316" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13"
+  <text x="436" y="434" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
+        fill="currentColor" fill-opacity=".5">أرجِعِ الكوب</text>
+
+  <!-- LEFT — collection, with the order number cut in above it. -->
+  <rect x="252" y="312" width="100" height="100" rx="5" fill="currentColor" fill-opacity=".04"
+        stroke="currentColor" stroke-opacity=".38" stroke-width="1.2"/>
+  <rect x="260" y="320" width="84" height="84" rx="3" fill="url(#fC)"
+        stroke="currentColor" stroke-opacity=".3" stroke-width="1"/>
+  <g stroke="currentColor" stroke-opacity=".24" stroke-width="1" fill="none">
+   <path d="M268 330 L276 322 M336 330 L328 322"/>
+  </g>
+  <rect x="272" y="278" width="60" height="22" rx="3" fill="currentColor" fill-opacity=".28"/>
+  <text x="302" y="294" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13"
         font-weight="500" fill="currentColor" fill-opacity=".9">٤٢</text>
-  <text x="302" y="414" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
-        fill="currentColor" fill-opacity=".5">استلم — شبّاكٌ ذاتيّ</text>
+  <text x="302" y="434" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
+        fill="currentColor" fill-opacity=".5">استلم</text>
 
-  <!-- CENTRE: cup return. Third and last opening. Also back-panelled. -->
-  <rect x="418" y="368" width="66" height="26" rx="3" fill="url(#fC)"
-        stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
-  <text x="451" y="412" text-anchor="middle" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".38">إرجاع الأكواب</text>
-
-  <!-- The perimeter bar wraps THREE sides — the two flanks and the back. The
-       service face stays clear, so nobody sits between a customer and the
-       hatches. Counter and stools are the same cast ice material as the block. -->
+  <!-- ============ THE BAR =============================================
+       Bonded to the block itself on three sides — both flanks and the whole
+       back. It is a shelf growing out of the ice, not furniture standing
+       near it. The service face carries none of it. -->
   <g>
-   <!-- right flank: counter running back into depth -->
-   <path d="M672 470 L826 452 L838 470 L680 490 Z" fill="url(#fC)"
-         stroke="currentColor" stroke-opacity=".32" stroke-width="1.1"/>
+   <!-- right flank, bonded to the side face and running back -->
+   <path d="M660 446 L836 424 L844 444 L668 468 Z" fill="url(#fC)"
+         stroke="currentColor" stroke-opacity=".34" stroke-width="1.1"/>
+   <path d="M660 446 L668 468 L664 500 L656 476 Z" fill="currentColor" fill-opacity=".1"/>
    <g stroke="currentColor" stroke-opacity=".26" stroke-width="1.1" fill="none">
-    <path d="M700 488 L702 528 M746 482 L748 522 M792 476 L794 516"/>
+    <path d="M700 470 L702 512 M754 463 L756 505 M808 456 L810 498"/>
    </g>
    <g fill="url(#fA)" stroke="currentColor" stroke-opacity=".3" stroke-width="1">
-    <ellipse cx="701" cy="486" rx="15" ry="5"/><ellipse cx="747" cy="480" rx="15" ry="5"/>
-    <ellipse cx="793" cy="474" rx="15" ry="5"/>
+    <ellipse cx="701" cy="468" rx="16" ry="5.5"/><ellipse cx="755" cy="461" rx="16" ry="5.5"/>
+    <ellipse cx="809" cy="454" rx="16" ry="5.5"/>
    </g>
-   <!-- left flank: counter turning the corner and continuing behind the block -->
-   <path d="M64 486 L214 470 L206 488 L58 504 Z" fill="url(#fC)"
-         stroke="currentColor" stroke-opacity=".32" stroke-width="1.1"/>
+   <!-- the back run continues out of sight behind the block; the two stools
+        clearing its far corner are the only part of it this view can show -->
+   <g fill="url(#fA)" stroke="currentColor" stroke-opacity=".22" stroke-width="1" opacity=".6">
+    <ellipse cx="866" cy="428" rx="14" ry="5"/><ellipse cx="896" cy="416" rx="13" ry="4.6"/>
+   </g>
+   <g stroke="currentColor" stroke-opacity=".18" stroke-width="1" fill="none" opacity=".6">
+    <path d="M866 432 L868 470 M896 420 L898 456"/>
+   </g>
+   <!-- left flank, bonded and continuing behind the block -->
+   <path d="M40 470 L226 448 L232 468 L46 490 Z" fill="url(#fC)"
+         stroke="currentColor" stroke-opacity=".34" stroke-width="1.1"/>
+   <path d="M226 448 L232 468 L228 500 L222 476 Z" fill="currentColor" fill-opacity=".1"/>
    <g stroke="currentColor" stroke-opacity=".26" stroke-width="1.1" fill="none">
-    <path d="M92 502 L90 542 M138 496 L136 536 M184 490 L182 530"/>
+    <path d="M76 490 L74 532 M136 483 L134 525 M196 476 L194 518"/>
    </g>
    <g fill="url(#fA)" stroke="currentColor" stroke-opacity=".3" stroke-width="1">
-    <ellipse cx="91" cy="500" rx="15" ry="5"/><ellipse cx="137" cy="494" rx="15" ry="5"/>
-    <ellipse cx="183" cy="488" rx="15" ry="5"/>
+    <ellipse cx="75" cy="488" rx="16" ry="5.5"/><ellipse cx="135" cy="481" rx="16" ry="5.5"/>
+    <ellipse cx="195" cy="474" rx="16" ry="5.5"/>
    </g>
   </g>
 
-  <!-- the service apron: deliberately empty ground in front of the hatches -->
+  <!-- a plan inset, because a three-quarter elevation cannot show a U -->
+  <g transform="translate(742,536)">
+   <rect x="0" y="0" width="132" height="86" rx="6" fill="currentColor" fill-opacity=".03"
+         stroke="currentColor" stroke-opacity=".16" stroke-width="1"/>
+   <rect x="34" y="24" width="64" height="40" rx="3" fill="url(#fA)"
+         stroke="currentColor" stroke-opacity=".34" stroke-width="1.1"/>
+   <path d="M24 66 L24 14 L108 14 L108 66" fill="none" stroke="currentColor"
+         stroke-opacity=".5" stroke-width="3.4" stroke-linecap="round"/>
+   <g fill="currentColor" opacity=".34">
+    <circle cx="18" cy="26" r="3"/><circle cx="18" cy="44" r="3"/>
+    <circle cx="40" cy="8" r="3"/><circle cx="66" cy="8" r="3"/><circle cx="92" cy="8" r="3"/>
+    <circle cx="114" cy="26" r="3"/><circle cx="114" cy="44" r="3"/>
+   </g>
+   <path d="M34 70 L98 70" stroke="currentColor" stroke-opacity=".2" stroke-width="1"
+         stroke-dasharray="3 4"/>
+   <text x="66" y="82" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9"
+         fill="currentColor" fill-opacity=".42">الخدمة</text>
+  </g>
+  <text x="874" y="524" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">مسقطٌ أفقي</text>
+
+  <!-- the service apron: deliberately empty ground in front of the openings -->
   <g stroke="currentColor" stroke-opacity=".18" stroke-width="1"
      stroke-dasharray="4 6" fill="none">
    <path d="M246 536 L640 524"/>
   </g>
   <text x="443" y="556" text-anchor="middle" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">واجهةُ الخدمة تبقى خالية — لا جلوسَ أمام الشبّاكَين</text>
-  <text x="884" y="404" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">بارٌ من الثلج يلفّ الجهاتِ الثلاث</text>
-  <text x="884" y="424" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">كتلةٌ مصمتة: ثلاثُ فتحاتٍ فقط، ولكلٍّ ظهرٌ مُعتِم</text>
+        fill="currentColor" fill-opacity=".34">واجهةُ الخدمة خالية — لا بار ولا جلوس أمامها</text>
+  <text x="884" y="284" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">بارٌ ملتصقٌ بالكتلة: جناحان وظهر</text>
+  <text x="884" y="306" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">كتلةٌ مصمتة: ثلاثُ فتحاتٍ مربّعة، لا رابعة</text>
 
   <!-- misting nozzles under the overhang, and their drift -->
   <g filter="url(#soft)" opacity=".34">
@@ -843,7 +878,13 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
    <li><b>دخانُ برد.</b> ضبابٌ ثقيل ينزل من القاعدة ويتدحرج على الأرض — مثل أيّ شيءٍ شديدِ البرودة تحت شمسٍ حارقة.
    ومن بعيد يبدو المبنى كأنّه يدخّن.</li>
    <li><b>رذاذٌ منعش.</b> فوّهاتُ ضبابٍ عالي الضغط تحت الإفريز تُنزل حرارةَ محيط الجلوس ٨ إلى ١٥ درجة.</li>
-   <li><b>اسمٌ محفور.</b> <b>شَبِم</b> بالعربية، غائرةً في مادّة الثلج لا مطبوعةً عليها.</li>
+   <li><b>اسمٌ محفور.</b> <b>شَبِم</b> بالعربية، غائرةً في مادّة الثلج لا مطبوعةً عليها — كبيرةً على الواجهة،
+   ومقروءةً من آخر الشارع.</li>
+   <li><b>ثلاثُ فتحاتٍ مربّعة، لا رابعة.</b> يميناً شاشةُ الطلب، ووسطاً إرجاعُ الأكواب، ويساراً الاستلام.
+   متساويةُ الحجم، في صفٍّ واحد، وكلُّ ما عداها كتلةٌ مصمتة.</li>
+   <li><b>بارٌ ملتصقٌ بالكتلة.</b> ينبت من الجناح الأيمن والأيسر ويلتفّ حول الظهر كاملاً — طاولةٌ ومقاعدُ من
+   المادّة نفسها، مثبَّتةٌ في الجسم لا واقفةٌ بجانبه. و<b>واجهةُ الخدمة تبقى خالية</b>: لا بارَ ولا مقعدَ
+   أمام الفتحات الثلاث.</li>
   </ul>
   <div class="note" style="margin-top:1.4rem">
    <b>القرار الهندسي الذي يحمي هذا كلّه:</b> الجدارُ قشرتان لا قشرةٌ واحدة. الخارجيةُ أكريليك مصبوب ٢٠–٣٠ ملم،
@@ -853,9 +894,9 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
   </div>
   <div class="note hard" style="margin-top:1.2rem">
    <b>كتلةٌ مُصمَتة، لا واجهةُ زجاج.</b> لا يستطيع أحدٌ أن يرى الداخل من أيّ زاوية: المادّةُ مُعتِمةٌ تنشر الضوء
-   ولا تنقل الصورة. وفي المبنى كلِّه <b>ثلاثُ فتحاتٍ فقط</b> — شاشةُ الطلب، وشبّاكُ الاستلام، وفتحةُ إرجاع الأكواب —
-   ولكلٍّ منها ظهرٌ مغلقٌ من المادّة نفسها، فهي صناديقُ تمريرٍ لا نوافذ. الغموضُ هنا ليس أسلوباً بصرياً فحسب:
-   هو أيضاً ما يجعل حفظَ البرودة ممكناً عند خمسٍ وأربعين درجة.
+   ولا تنقل الصورة، والفتحاتُ الثلاث صناديقُ تمريرٍ لكلٍّ منها ظهرٌ مغلقٌ من المادّة نفسها — لا نوافذ.
+   وهذا قرارٌ يدفع ثمنَه مرّتين لصالحنا: يحفظ البرودةَ عند خمسٍ وأربعين درجة، <b>ويُلغي كلَّ كلفةِ تشطيبٍ
+   داخلي</b> — ما لا يُرى لا يُدفَع ثمنُه. التفصيلُ في القسم <span class="n">06</span>.
   </div>
  </div>
 </div>
@@ -866,7 +907,7 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
   <h2 class="t">المُكعَّب من الداخل</h2>
   
   
-<p class="sub">٢٥ متراً مربّعاً. كشكٌ حقيقي بمقاسٍ حقيقي — لا مطعم.</p>
+<p class="sub">٢٥ متراً مربّعاً لا يراها زبونٌ أبداً. ولهذا لا نصرف عليها دولاراً واحداً للشكل.</p>
 
 <div style="margin-top:2rem">
 <svg viewBox="0 0 900 560" class="cv scene" role="img"
@@ -883,27 +924,35 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
   <path d="M60 40 L840 40 L840 470 L60 470 Z" fill="url(#wallG)" stroke="currentColor" stroke-opacity=".26" stroke-width="1.2"/>
   <path d="M60 40 L840 40" stroke="currentColor" stroke-opacity=".3" stroke-width="1.4"/>
 
-  <!-- back wall: the menu, cut into the ice -->
+  <!-- Back wall: bare. No customer ever sees this room, so it carries no
+       engraved menu, no branding and no designed finish — just cold-room
+       panel, a shelf, and one production screen on an arm. -->
   <g opacity=".5">
-   <text x="812" y="96" text-anchor="end" font-family="Cairo, sans-serif" font-size="17" font-weight="500" fill="currentColor">المنيو محفور في الجدار</text>
+   <text x="812" y="96" text-anchor="end" font-family="Cairo, sans-serif" font-size="17"
+         font-weight="500" fill="currentColor">جدارٌ عارٍ — لا أحدَ يراه</text>
   </g>
-  <g stroke="currentColor" stroke-opacity=".22" stroke-width="1" fill="none">
-   <path d="M596 118 L812 118 M596 146 L812 146 M596 174 L812 174 M596 202 L812 202 M596 230 L812 230 M596 258 L812 258"/>
+  <g stroke="currentColor" stroke-opacity=".14" stroke-width="1" fill="none">
+   <path d="M110 128 L286 128 M110 176 L286 176 M110 224 L286 224"/>
+   <path d="M154 128 L154 224 M198 128 L198 224 M242 128 L242 224"/>
   </g>
-  <g fill="currentColor" opacity=".3">
-   <rect x="596" y="108" width="52" height="7" rx="3"/><rect x="596" y="136" width="72" height="7" rx="3"/>
-   <rect x="596" y="164" width="44" height="7" rx="3"/><rect x="596" y="192" width="64" height="7" rx="3"/>
-   <rect x="596" y="220" width="38" height="7" rx="3"/><rect x="596" y="248" width="58" height="7" rx="3"/>
-  </g>
+  <text x="198" y="248" text-anchor="middle" font-family="Cairo, sans-serif" font-size="12"
+        fill="currentColor" fill-opacity=".4">رفوفُ تخزينٍ على ألواحِ الغرفة الباردة</text>
 
-  <!-- screens set into openings cut in the ice-material wall -->
+  <!-- one production screen, on an arm, not sunk into any wall -->
   <g>
-   <rect x="330" y="104" width="150" height="88" rx="5" fill="currentColor" fill-opacity=".24" stroke="currentColor" stroke-opacity=".4"/>
-   <rect x="330" y="104" width="150" height="88" rx="5" fill="none" stroke="currentColor" stroke-opacity=".12" stroke-width="5"/>
-   <rect x="150" y="126" width="120" height="66" rx="5" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-opacity=".34"/>
-   <rect x="150" y="126" width="120" height="66" rx="5" fill="none" stroke="currentColor" stroke-opacity=".1" stroke-width="4"/>
+   <rect x="330" y="120" width="126" height="74" rx="5" fill="currentColor" fill-opacity=".24"
+         stroke="currentColor" stroke-opacity=".4"/>
+   <path d="M393 194 L393 214 M366 214 L420 214" stroke="currentColor" stroke-opacity=".3"
+         stroke-width="1.4" fill="none"/>
   </g>
-  <text x="405" y="215" text-anchor="middle" font-family="Cairo, sans-serif" font-size="12" fill="currentColor" fill-opacity=".42">شاشات من فتحات في الثلج</text>
+  <text x="393" y="238" text-anchor="middle" font-family="Cairo, sans-serif" font-size="12"
+        fill="currentColor" fill-opacity=".42">شاشةُ إنتاجٍ واحدة على ذراع</text>
+
+  <g stroke="currentColor" stroke-opacity=".2" stroke-width="1" fill="none" stroke-dasharray="3 5">
+   <path d="M756 128 L816 128 L816 214 L756 214 Z"/>
+  </g>
+  <text x="786" y="234" text-anchor="middle" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">لوحةُ الكهرباء</text>
 
   <!-- the production bar -->
   <path d="M110 300 L790 300 L790 318 L110 318 Z" fill="currentColor" opacity=".22"/>
@@ -978,23 +1027,39 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
  </g>
 </svg></div>
 
-<div class="grid g3" style="margin-top:2.2rem">
- <div class="g"><div class="cap">بارد فعلاً، لا مجازاً</div>
-  <p>جوفُ الكشك مُبرَّدٌ كغرفةِ تبريد. العاملون يرتدون معاطفَ شتويّة في آب. هذا ليس تفصيلاً جمالياً بل هو المنتج:
-  الزبونُ يشعر بالفرق على جلده قبل أن يذوق شيئاً. وثمنُه في الفاتورة صريح — الغلافُ يقاوم فارقاً حرارياً من ٣٠ إلى
-  ٣٥ درجة في محيطٍ عند ٤٥ إلى ٥٠.</p></div>
- <div class="g"><div class="cap">لا كاشير، ولا طابور عند الشبّاك</div>
-  <p>الطلبُ ذاتيّ من شاشة. فتحةٌ يمين للطلب، وفتحةٌ يسار للاستلام تفتح من جهةٍ واحدة: الموظّف يضع الطلب ويُغلق،
-  فيفتحها الزبون من جهته. فوقها شاشةٌ صغيرة محفورةٌ في الثلج تُظهر رقم الطلب. وفتحةٌ ثالثة منخفضة لإرجاع الأكواب.
-  لا احتكاكَ ولا كلامَ ولا انتظارَ أمام شخص.</p></div>
- <div class="g"><div class="cap">الجدارُ هو القائمة</div>
-  <p>المنيو محفورٌ في الجدار الجليدي نفسه. وخلف البار شاشاتٌ تظهر من فتحاتٍ مقطوعةٍ في المادّة، فتبدو كأنّها معلَّقةٌ
-  داخل الثلج. ومن الخارج، يلتفّ بارُ جلوسٍ حول الكتلة من جوانبها كلّها، تحت رذاذٍ خفيف.</p></div>
+
+<div class="note hard" style="margin-top:2rem">
+ <b>القرارُ الذي يوفّر ١٨,٣٠٠ دولاراً: لا هويّةَ في الداخل.</b>
+ الكتلةُ مصمتة، والفتحاتُ الثلاث صناديقُ تمريرٍ لكلٍّ منها ظهرٌ مُعتِمٌ من المادّة نفسها — فلا يستطيع أحدٌ
+ أن يرى الداخل من أيّ زاوية، ولا في أيّ لحظة. وما لا يُرى لا يُدفَع ثمنُه:
+ <b>ألغينا</b> القائمةَ المحفورة في الجدار الداخلي، والشاشاتِ المغروسة في مادّة الثلج، والتشطيبَ المُصمَّم.
+ التجهيزُ الداخلي نزل من ٥٢٠$ إلى <b>٣٤٠$ للمتر</b> — ألواحُ غرفةٍ باردة وفولاذٌ وأرضيّةُ إيبوكسي بمصارف —
+ والإضاءةُ الداخلية صارت شريطاً صناعياً أبيض. الحفرُ المُضاءُ والاسمُ المنحوت بقيا حيث ينفعان: <b>على الواجهة</b>.
+ <br><br>
+ والقائمةُ لم تُلغَ، بل انتقلت إلى مكانها الصحيح: <b>شاشةُ الطلب</b>. وهي أفضلُ من الجدار المحفور بثلاثة وجوه —
+ تتغيّر بلا نجّار، وتُظهر النفادَ لحظةَ حدوثه، وتعرف أن ترفع صنفاً على آخر.
 </div>
-<div class="note hard" style="margin-top:1.8rem">
- <b>وهذا هو الحاجز الحقيقي.</b> منافسٌ يستطيع شراء صحن لفائف. لا يستطيع بسهولة بناء غرفةِ تبريدٍ شفّافة
- فيها مُجمِّدٌ عند ثمانين تحت الصفر ومصنعُ ثلجٍ اتجاهيّ ومولّدةٌ مخصّصة ٦٠ ك.ف.أ وعقدُ صيانةٍ متخصّص —
- ثم يشغّلها في بغداد بشبكةِ كهرباءٍ تعطي ٨ إلى ١٢ ساعة في اليوم.
+
+<div class="grid g3" style="margin-top:1.8rem">
+ <div class="g"><div class="cap">بارد فعلاً، لا مجازاً</div>
+  <p>جوفُ الكشك مُبرَّدٌ كغرفةِ تبريد. العاملون يرتدون معاطفَ شتويّة في آب. هذا ليس تفصيلاً جمالياً بل شرطُ
+  إنتاج: الغلافُ يقاوم فارقاً حرارياً من ٣٠ إلى ٣٥ درجة في محيطٍ عند ٤٥ إلى ٥٠، ومُجمِّدُ الثمانين
+  لا يعمل أصلاً فوق ٣٢ درجةَ محيط. البرودةُ هنا مواصفةٌ هندسية، لا ديكور.</p></div>
+ <div class="g"><div class="cap">ثلاثُ فتحاتٍ، ولا كاشير</div>
+  <p>على الواجهة ثلاثُ فتحاتٍ مربّعةٍ متساوية ولا رابعة: <b>يميناً</b> شاشةُ لمسٍ يطلب منها الزبون بنفسه،
+  و<b>وسطاً</b> فتحةُ إرجاع الأكواب، و<b>يساراً</b> فتحةُ الاستلام تفتح من جهةٍ واحدة — الموظّف يضع الطلب ويُغلق،
+  فيفتحها الزبون من جهته، وفوقها رقمُ الطلب محفوراً في الثلج. لا احتكاكَ ولا كلامَ ولا وقوفَ أمام أحد.</p></div>
+ <div class="g"><div class="cap">صورُ التسويق تُصنَع، لا تُصوَّر</div>
+  <p>ما دام لا أحدَ يدخل، فالصورُ الداخلية التي تحتاجها الحملاتُ تُنتَج <b>بالذكاء الاصطناعي</b> من مواصفةِ
+  التصميم نفسها: لا يومَ تصويرٍ يُغلق الفرع، ولا مصوّرَ ولا إضاءةَ ولا فريقَ إنتاج. وهذا يُخرِج بنداً كاملاً
+  من ميزانية ما قبل الافتتاح، ويجعل تجديدَ المحتوى شهرياً بدل موسمياً.</p></div>
+</div>
+
+<div class="note" style="margin-top:1.4rem">
+ <b>والحاجزُ الحقيقي بقي حيث هو.</b> منافسٌ يستطيع شراءَ صحن لفائف. لا يستطيع بسهولة بناءَ غرفةِ تبريدٍ
+ داخل غلافٍ مزدوج فيها مُجمِّدٌ عند ثمانين تحت الصفر ومصنعُ ثلجٍ اتجاهيّ ومولّدةٌ مخصّصة وعقدُ صيانةٍ متخصّص،
+ ثم يشغّلها في بغداد بشبكةِ كهرباءٍ تعطي ٨ إلى ١٢ ساعةً في اليوم. الحاجزُ في الميكانيك، لا في التشطيب —
+ وهذا بالضبط سببُ عدم الإنفاق على التشطيب.
 </div>
  </div>
 </section><section class="s q" id="s7">
@@ -1103,17 +1168,17 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
  <div class="legend"><span><i class="c"></i>الإيراد</span><span><i></i>الأرباح التشغيلية · بالنسبة تحت العمود</span></div>
  <svg viewBox="0 0 880 360" class="cv" role="img" aria-label="الإيراد والأرباح التشغيلية للفرع الأول على خمس سنوات" preserveAspectRatio="xMidYMid meet"><line x1="64" y1="30.0" x2="856" y2="30.0" class="grid"/><text x="56" y="34.0" class="ax" text-anchor="end">$1.04M</text><line x1="64" y1="99.0" x2="856" y2="99.0" class="grid"/><text x="56" y="103.0" class="ax" text-anchor="end">$778k</text><line x1="64" y1="168.0" x2="856" y2="168.0" class="grid"/><text x="56" y="172.0" class="ax" text-anchor="end">$519k</text><line x1="64" y1="237.0" x2="856" y2="237.0" class="grid"/><text x="56" y="241.0" class="ax" text-anchor="end">$259k</text><line x1="64" y1="306.0" x2="856" y2="306.0" class="grid"/><text x="56" y="310.0" class="ax" text-anchor="end">$0</text><rect x="64.0" y="187.4" width="107.7" height="118.6" rx="3" class="s3"><title>السنة 1 — الإيراد $445,935</title></rect><rect x="64.0" y="297.1" width="107.7" height="8.9" rx="3" class="s1"><title>السنة 1 — EBITDA $33,467</title></rect><text x="117.9" y="177.4" class="vl" text-anchor="middle">$446k</text><text x="117.9" y="326" class="ax" text-anchor="middle">S1</text><text x="117.9" y="342" class="ax" text-anchor="middle">8%</text><rect x="235.1" y="114.7" width="107.7" height="191.3" rx="3" class="s3"><title>السنة 2 — الإيراد $719,250</title></rect><rect x="235.1" y="257.2" width="107.7" height="48.8" rx="3" class="s1"><title>السنة 2 — EBITDA $183,426</title></rect><text x="288.9" y="104.7" class="vl" text-anchor="middle">$719k</text><text x="288.9" y="326" class="ax" text-anchor="middle">S2</text><text x="288.9" y="342" class="ax" text-anchor="middle">26%</text><rect x="406.1" y="99.1" width="107.7" height="206.9" rx="3" class="s3"><title>السنة 3 — الإيراد $777,869</title></rect><rect x="406.1" y="251.2" width="107.7" height="54.8" rx="3" class="s1"><title>السنة 3 — EBITDA $205,984</title></rect><text x="460.0" y="89.1" class="vl" text-anchor="middle">$778k</text><text x="460.0" y="326" class="ax" text-anchor="middle">S3</text><text x="460.0" y="342" class="ax" text-anchor="middle">26%</text><rect x="577.2" y="86.8" width="107.7" height="219.2" rx="3" class="s3"><title>السنة 4 — الإيراد $824,096</title></rect><rect x="577.2" y="247.0" width="107.7" height="59.0" rx="3" class="s1"><title>السنة 4 — EBITDA $221,779</title></rect><text x="631.1" y="76.8" class="vl" text-anchor="middle">$824k</text><text x="631.1" y="326" class="ax" text-anchor="middle">S4</text><text x="631.1" y="342" class="ax" text-anchor="middle">27%</text><rect x="748.3" y="76.0" width="107.7" height="230.0" rx="3" class="s3"><title>السنة 5 — الإيراد $864,538</title></rect><rect x="748.3" y="243.7" width="107.7" height="62.3" rx="3" class="s1"><title>السنة 5 — EBITDA $234,228</title></rect><text x="802.1" y="66.0" class="vl" text-anchor="middle">$865k</text><text x="802.1" y="326" class="ax" text-anchor="middle">S5</text><text x="802.1" y="342" class="ax" text-anchor="middle">27%</text><line x1="64" y1="306.0" x2="856" y2="306.0" class="axis"/></svg>
 </figure>
-<div class="tw"><table><thead><tr><th class=""></th><th class="num">س١</th><th class="num">س٢</th><th class="num">س٣</th><th class="num">س٤</th><th class="num">س٥</th></tr></thead><tbody><tr class=""><td class="">الإيراد</td><td class="num">$445,935</td><td class="num">$719,250</td><td class="num">$777,869</td><td class="num">$824,096</td><td class="num">$864,538</td></tr><tr class=""><td class="">ضريبة المبيعات ١٠٪</td><td class="num">($44,593)</td><td class="num">($71,925)</td><td class="num">($77,787)</td><td class="num">($82,410)</td><td class="num">($86,454)</td></tr><tr class=""><td class="">عمولة التوصيل</td><td class="num">($17,659)</td><td class="num">($28,482)</td><td class="num">($30,804)</td><td class="num">($32,634)</td><td class="num">($34,236)</td></tr><tr class=""><td class="">كلفة البضاعة والهدر</td><td class="num">($120,344)</td><td class="num">($194,103)</td><td class="num">($209,923)</td><td class="num">($222,398)</td><td class="num">($233,312)</td></tr><tr class=""><td class="">الرواتب والضمان ١٢٪</td><td class="num">($71,123)</td><td class="num">($73,967)</td><td class="num">($76,926)</td><td class="num">($80,003)</td><td class="num">($83,203)</td></tr><tr class=""><td class="">الإيجار</td><td class="num">($26,400)</td><td class="num">($27,720)</td><td class="num">($29,106)</td><td class="num">($30,561)</td><td class="num">($32,089)</td></tr><tr class=""><td class="">الطاقة والتبريد والمولّدة</td><td class="num">($34,546)</td><td class="num">($35,928)</td><td class="num">($37,365)</td><td class="num">($38,859)</td><td class="num">($40,414)</td></tr><tr class=""><td class="">التسويق</td><td class="num">($44,593)</td><td class="num">($46,751)</td><td class="num">($50,561)</td><td class="num">($53,566)</td><td class="num">($56,195)</td></tr><tr class=""><td class="">مصاريف تشغيلية أخرى</td><td class="num">($50,400)</td><td class="num">($52,416)</td><td class="num">($54,513)</td><td class="num">($56,693)</td><td class="num">($58,961)</td></tr><tr class="tot"><td class=""><b>الأرباح التشغيلية</b></td><td class="num"><b>$33,467</b></td><td class="num"><b>$183,426</b></td><td class="num"><b>$205,984</b></td><td class="num"><b>$221,779</b></td><td class="num"><b>$234,228</b></td></tr><tr class="sub"><td class="">الهامش التشغيلي</td><td class="num">8%</td><td class="num">26%</td><td class="num">26%</td><td class="num">27%</td><td class="num">27%</td></tr><tr class="sub"><td class="">صافي الدخل بعد الاستهلاك والضريبة</td><td class="num">($16,744)</td><td class="num">$113,232</td><td class="num">$132,407</td><td class="num">$145,833</td><td class="num">$156,414</td></tr></tbody><caption>السنةُ الأولى تعمل بـ٦٢٪ من الحجم الناضج: شهرا تجهيز، ثم قفزةُ افتتاح، ثم استقرار. السنةُ الثانية هي الأساس.</caption></table></div>
+<div class="tw"><table><thead><tr><th class=""></th><th class="num">س١</th><th class="num">س٢</th><th class="num">س٣</th><th class="num">س٤</th><th class="num">س٥</th></tr></thead><tbody><tr class=""><td class="">الإيراد</td><td class="num">$445,935</td><td class="num">$719,250</td><td class="num">$777,869</td><td class="num">$824,096</td><td class="num">$864,538</td></tr><tr class=""><td class="">ضريبة المبيعات ١٠٪</td><td class="num">($44,593)</td><td class="num">($71,925)</td><td class="num">($77,787)</td><td class="num">($82,410)</td><td class="num">($86,454)</td></tr><tr class=""><td class="">عمولة التوصيل</td><td class="num">($17,659)</td><td class="num">($28,482)</td><td class="num">($30,804)</td><td class="num">($32,634)</td><td class="num">($34,236)</td></tr><tr class=""><td class="">كلفة البضاعة والهدر</td><td class="num">($120,344)</td><td class="num">($194,103)</td><td class="num">($209,923)</td><td class="num">($222,398)</td><td class="num">($233,312)</td></tr><tr class=""><td class="">الرواتب والضمان ١٢٪</td><td class="num">($71,123)</td><td class="num">($73,967)</td><td class="num">($76,926)</td><td class="num">($80,003)</td><td class="num">($83,203)</td></tr><tr class=""><td class="">الإيجار</td><td class="num">($26,400)</td><td class="num">($27,720)</td><td class="num">($29,106)</td><td class="num">($30,561)</td><td class="num">($32,089)</td></tr><tr class=""><td class="">الطاقة والتبريد والمولّدة</td><td class="num">($34,546)</td><td class="num">($35,928)</td><td class="num">($37,365)</td><td class="num">($38,859)</td><td class="num">($40,414)</td></tr><tr class=""><td class="">التسويق</td><td class="num">($44,593)</td><td class="num">($46,751)</td><td class="num">($50,561)</td><td class="num">($53,566)</td><td class="num">($56,195)</td></tr><tr class=""><td class="">مصاريف تشغيلية أخرى</td><td class="num">($50,400)</td><td class="num">($52,416)</td><td class="num">($54,513)</td><td class="num">($56,693)</td><td class="num">($58,961)</td></tr><tr class="tot"><td class=""><b>الأرباح التشغيلية</b></td><td class="num"><b>$33,467</b></td><td class="num"><b>$183,426</b></td><td class="num"><b>$205,984</b></td><td class="num"><b>$221,779</b></td><td class="num"><b>$234,228</b></td></tr><tr class="sub"><td class="">الهامش التشغيلي</td><td class="num">8%</td><td class="num">26%</td><td class="num">26%</td><td class="num">27%</td><td class="num">27%</td></tr><tr class="sub"><td class="">صافي الدخل بعد الاستهلاك والضريبة</td><td class="num">($15,256)</td><td class="num">$114,497</td><td class="num">$133,672</td><td class="num">$147,098</td><td class="num">$157,679</td></tr></tbody><caption>السنةُ الأولى تعمل بـ٦٢٪ من الحجم الناضج: شهرا تجهيز، ثم قفزةُ افتتاح، ثم استقرار. السنةُ الثانية هي الأساس.</caption></table></div>
 
 <div class="grid g4" style="margin-top:2rem">
- <div class="g fig "><span class="v">$381k</span><span class="k">كلفة بناء الفرع الأول</span><span class=nt>$381,479 — كلفةُ نموذجٍ أوّليّ تحمل أتعاب هوية وعمارة لمرّةٍ واحدة و١٢٪ طوارئ.</span></div>
+ <div class="g fig "><span class="v">$371k</span><span class="k">كلفة بناء الفرع الأول</span><span class=nt>$371,063 — كلفةُ نموذجٍ أوّليّ تحمل أتعاب هوية وعمارة لمرّةٍ واحدة و١٢٪ طوارئ.</span></div>
  <div class="g fig "><span class="v">$719k</span><span class="k">إيراد السنة الثانية</span><span class=nt>$719,250</span></div>
  <div class="g fig "><span class="v">32<span class="u">شهر</span></span><span class="k">استرداد رأس المال</span><span class=nt>من الأرباح التشغيلية، منذ الافتتاح.</span></div>
- <div class="g fig "><span class="v">41%</span><span class="k">العائد الداخلي على ٥ سنوات</span><span class=nt>صافي القيمة الحالية عند خصم ٢٠٪: $341,642</span></div>
+ <div class="g fig "><span class="v">42%</span><span class="k">العائد الداخلي على ٥ سنوات</span><span class=nt>صافي القيمة الحالية عند خصم ٢٠٪: $351,576</span></div>
 </div>
 
 <h3 style="font-size:var(--s-2);font-weight:300;margin:3rem 0 1rem">ماذا لو كنّا مخطئين</h3>
-<figure><svg viewBox="0 0 880 290" class="cv" role="img" aria-label="الأرباح التشغيلية في السنة الثانية عبر ستة سيناريوهات" preserveAspectRatio="xMidYMid meet"><line x1="62" y1="24.0" x2="858" y2="24.0" class="grid"/><text x="54" y="28.0" class="ax" text-anchor="end">$380k</text><line x1="62" y1="71.5" x2="858" y2="71.5" class="grid"/><text x="54" y="75.5" class="ax" text-anchor="end">$285k</text><line x1="62" y1="119.0" x2="858" y2="119.0" class="grid"/><text x="54" y="123.0" class="ax" text-anchor="end">$190k</text><line x1="62" y1="166.5" x2="858" y2="166.5" class="grid"/><text x="54" y="170.5" class="ax" text-anchor="end">$95k</text><line x1="62" y1="214.0" x2="858" y2="214.0" class="grid"/><text x="54" y="218.0" class="ax" text-anchor="end">$0</text><rect x="62.0" y="196.8" width="92.9" height="17.2" rx="3" class="s2"/><text x="108.4" y="187.8" class="vl" text-anchor="middle">$34k</text><text x="108.4" y="234" class="ax" text-anchor="middle">متشائم</text><text x="108.4" y="252" class="ax" text-anchor="middle">لا استرداد</text><text x="108.4" y="268" class="ax" text-anchor="middle">IRR -5%</text><rect x="202.6" y="173.8" width="92.9" height="40.2" rx="3" class="s2"/><text x="249.1" y="164.8" class="vl" text-anchor="middle">$81k</text><text x="249.1" y="234" class="ax" text-anchor="middle">فشل فرضية الحرارة</text><text x="249.1" y="252" class="ax" text-anchor="middle">لا استرداد</text><text x="249.1" y="268" class="ax" text-anchor="middle">IRR 14%</text><rect x="343.3" y="162.1" width="92.9" height="51.9" rx="3" class="s2"/><text x="389.7" y="153.1" class="vl" text-anchor="middle">$104k</text><text x="389.7" y="234" class="ax" text-anchor="middle">صدمة صرف</text><text x="389.7" y="252" class="ax" text-anchor="middle">53 شهر</text><text x="389.7" y="268" class="ax" text-anchor="middle">IRR 21%</text><rect x="483.9" y="148.2" width="92.9" height="65.8" rx="3" class="s2"/><text x="530.3" y="139.2" class="vl" text-anchor="middle">$132k</text><text x="530.3" y="234" class="ax" text-anchor="middle">ضريبة إضافية</text><text x="530.3" y="252" class="ax" text-anchor="middle">43 شهر</text><text x="530.3" y="268" class="ax" text-anchor="middle">IRR 29%</text><rect x="624.5" y="122.4" width="92.9" height="91.6" rx="3" class="s1"/><text x="670.9" y="113.4" class="vl" text-anchor="middle">$183k</text><text x="670.9" y="234" class="ax" text-anchor="middle">الأساس</text><text x="670.9" y="252" class="ax" text-anchor="middle">32 شهر</text><text x="670.9" y="268" class="ax" text-anchor="middle">IRR 41%</text><rect x="765.1" y="62.0" width="92.9" height="152.0" rx="3" class="s2"/><text x="811.6" y="53.0" class="vl" text-anchor="middle">$304k</text><text x="811.6" y="234" class="ax" text-anchor="middle">متفائل</text><text x="811.6" y="252" class="ax" text-anchor="middle">22 شهر</text><text x="811.6" y="268" class="ax" text-anchor="middle">IRR 65%</text><line x1="62" y1="214.0" x2="858" y2="214.0" class="axis"/></svg></figure>
+<figure><svg viewBox="0 0 880 290" class="cv" role="img" aria-label="الأرباح التشغيلية في السنة الثانية عبر ستة سيناريوهات" preserveAspectRatio="xMidYMid meet"><line x1="62" y1="24.0" x2="858" y2="24.0" class="grid"/><text x="54" y="28.0" class="ax" text-anchor="end">$380k</text><line x1="62" y1="71.5" x2="858" y2="71.5" class="grid"/><text x="54" y="75.5" class="ax" text-anchor="end">$285k</text><line x1="62" y1="119.0" x2="858" y2="119.0" class="grid"/><text x="54" y="123.0" class="ax" text-anchor="end">$190k</text><line x1="62" y1="166.5" x2="858" y2="166.5" class="grid"/><text x="54" y="170.5" class="ax" text-anchor="end">$95k</text><line x1="62" y1="214.0" x2="858" y2="214.0" class="grid"/><text x="54" y="218.0" class="ax" text-anchor="end">$0</text><rect x="62.0" y="196.8" width="92.9" height="17.2" rx="3" class="s2"/><text x="108.4" y="187.8" class="vl" text-anchor="middle">$34k</text><text x="108.4" y="234" class="ax" text-anchor="middle">متشائم</text><text x="108.4" y="252" class="ax" text-anchor="middle">لا استرداد</text><text x="108.4" y="268" class="ax" text-anchor="middle">IRR -5%</text><rect x="202.6" y="173.8" width="92.9" height="40.2" rx="3" class="s2"/><text x="249.1" y="164.8" class="vl" text-anchor="middle">$81k</text><text x="249.1" y="234" class="ax" text-anchor="middle">فشل فرضية الحرارة</text><text x="249.1" y="252" class="ax" text-anchor="middle">لا استرداد</text><text x="249.1" y="268" class="ax" text-anchor="middle">IRR 14%</text><rect x="343.3" y="162.1" width="92.9" height="51.9" rx="3" class="s2"/><text x="389.7" y="153.1" class="vl" text-anchor="middle">$104k</text><text x="389.7" y="234" class="ax" text-anchor="middle">صدمة صرف</text><text x="389.7" y="252" class="ax" text-anchor="middle">53 شهر</text><text x="389.7" y="268" class="ax" text-anchor="middle">IRR 22%</text><rect x="483.9" y="148.2" width="92.9" height="65.8" rx="3" class="s2"/><text x="530.3" y="139.2" class="vl" text-anchor="middle">$132k</text><text x="530.3" y="234" class="ax" text-anchor="middle">ضريبة إضافية</text><text x="530.3" y="252" class="ax" text-anchor="middle">42 شهر</text><text x="530.3" y="268" class="ax" text-anchor="middle">IRR 30%</text><rect x="624.5" y="122.4" width="92.9" height="91.6" rx="3" class="s1"/><text x="670.9" y="113.4" class="vl" text-anchor="middle">$183k</text><text x="670.9" y="234" class="ax" text-anchor="middle">الأساس</text><text x="670.9" y="252" class="ax" text-anchor="middle">32 شهر</text><text x="670.9" y="268" class="ax" text-anchor="middle">IRR 42%</text><rect x="765.1" y="62.0" width="92.9" height="152.0" rx="3" class="s2"/><text x="811.6" y="53.0" class="vl" text-anchor="middle">$304k</text><text x="811.6" y="234" class="ax" text-anchor="middle">متفائل</text><text x="811.6" y="252" class="ax" text-anchor="middle">21 شهر</text><text x="811.6" y="268" class="ax" text-anchor="middle">IRR 66%</text><line x1="62" y1="214.0" x2="858" y2="214.0" class="axis"/></svg></figure>
 <div class="note" style="margin-top:1.4rem">
  <b>السيناريو المتشائم هو الذي يستحقّ النظر.</b> حجمٌ أقلّ ٣٠٪ من الخطّة، وخصمٌ على الصنفَين المميّزَين، وإيجارٌ
  أعلى بالثلث، وكلفةُ تبريدٍ أعلى ٤٥٪: الفرع يبقى موجبَ النقد كلَّ شهر، لكنّه <b>لا يستردّ رأس ماله خلال خمس سنوات</b>.
@@ -1178,34 +1243,36 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
 <p class="sub">كلُّ معدّةٍ وكلُّ متر. لا سطرَ واحدٌ اسمُه «متنوّعات».</p>
 
 <div class="note hard" style="margin-top:1.6rem">
- <b>أُعيد بناءُ هذا الرقم من الصفر، وانخفض ٢٩٪.</b> النسخةُ الأولى قالت <span class="n">$538,944</span>،
+ <b>أُعيد بناءُ هذا الرقم من الصفر، وانخفض ٣١٪.</b> النسخةُ الأولى قالت <span class="n">$538,944</span>،
  وهو رقمٌ لا يُصدَّق لكشكٍ مساحتُه ٢٥ متراً — نحو <span class="n">$21,500</span> للمتر المربّع.
- وكانت تحمل ثلاثةَ أخطاءٍ حقيقية:
+ وكانت تحمل أربعةَ أخطاء:
  <b>أوّلاً</b> عُدّةُ الامتياز — وثيقةُ الإفصاح ودليلُ التشغيل ومنهجُ التدريب، بـ<span class="n">$45,000</span> —
  كانت مُحمَّلةً على الفرع، وهي كلفةُ الشركة المانحة تُكتَب مرّةً وتستعملها كلُّ الفروع بعده؛ نُقِلت إلى مكانها.
  <b>ثانياً</b> مصنعُ ثلجٍ بثلاث وحداتٍ بـ<span class="n">$34,000</span> حيث الطلبُ الناضج ٢٤ كأساً في اليوم
  ووحدةٌ واحدة تعطي ٣٠ إلى ٤٢. <b>ثالثاً</b> تقديرٌ إجماليٌّ للغلاف بدل حسابِ مساحةٍ فعليّة.
- الرقمُ اليوم <b class="n">$381,479</b>، والاستردادُ نزل من ٤٢.٥ شهراً إلى
- <b class="n">32.2</b> — أي <b>داخل</b> نطاق الأربعة والعشرين إلى ستّة وثلاثين شهراً
+ <b>ورابعاً</b> — وهو الأوضح حين يُقال — كنّا ندفع
+ <span class="n">$18,300</span> على تشطيبٍ وهويّةٍ <b>داخل</b> كتلةٍ لا يراها زبونٌ أبداً.
+ الرقمُ اليوم <b class="n">$371,063</b>، والاستردادُ نزل من ٤٢.٥ شهراً إلى
+ <b class="n">31.8</b> — أي <b>داخل</b> نطاق الأربعة والعشرين إلى ستّة وثلاثين شهراً
  الذي يكتتب عليه المستثمر الخليجي، بعد أن كان خارجه.
 </div>
 
 
 <div style="margin-top:2rem">
- <div class="tw"><table><thead><tr><th class="">البند</th><th class="num">العدد</th><th class="num">سعرُ الوحدة</th><th class="num">الإجمالي</th></tr></thead><tbody><tr class="sub"><td class=""><b>الغلافُ والإنشاء</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$66,404</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الهيكلُ الفولاذي والأساسُ المعزول ومنظومةُ تصريف الذوبان</span></td><td class="num">١</td><td class="num">$14,000</td><td class="num">$14,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">القشرةُ الخارجية — أكريليك مصبوب ٢٥ ملم، منقوشٌ ومُضاءٌ من الحافة</span></td><td class="num">98</td><td class="num">$153</td><td class="num">$14,994</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">القشرةُ الداخلية — بولي كربونات متعدّد الجدران</span></td><td class="num">98</td><td class="num">$45</td><td class="num">$4,410</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">إطارُ الألمنيوم والتثبيتاتُ وعزلُ التجويف المُهوّى</span></td><td class="num">١</td><td class="num">$9,000</td><td class="num">$9,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الشحنُ البحري والجماركُ والتخليص</span></td><td class="num">١</td><td class="num">$5,000</td><td class="num">$5,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">التركيبُ في الموقع</span></td><td class="num">١</td><td class="num">$6,000</td><td class="num">$6,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">التجهيزُ الداخلي — ألواحُ غرفةٍ باردة، فولاذ، أرضيّة، تصريف</span></td><td class="num">25</td><td class="num">$520</td><td class="num">$13,000</td></tr><tr class="sub"><td class=""><b>التبريدُ والطاقة</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$40,000</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مولّدةُ ديزل صامتة ٤٥ ك.ف.أ مع لوحةِ نقلٍ آلي</span></td><td class="num">١</td><td class="num">$11,000</td><td class="num">$11,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">وحدةُ تبريد الغرفة الباردة ١٢ ك.و — مُكثِّفٌ استوائيّ ومُبخِّران</span></td><td class="num">١</td><td class="num">$13,000</td><td class="num">$13,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">منظومةُ الرذاذ وتهويةُ الواجهة</span></td><td class="num">١</td><td class="num">$4,500</td><td class="num">$4,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">اللوحاتُ الكهربائية والتمديدات</span></td><td class="num">١</td><td class="num">$7,000</td><td class="num">$7,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">السباكةُ والتصريفُ ومعالجةُ المياه بالتناضح العكسي</span></td><td class="num">١</td><td class="num">$4,500</td><td class="num">$4,500</td></tr><tr class="sub"><td class=""><b>معدّاتُ الإنتاج</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$97,000</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مكنةُ إسبريسو تجارية مجموعتان + مطحنتان</span></td><td class="num">١</td><td class="num">$12,000</td><td class="num">$12,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدتا ٨٦− درجة (واحدةٌ عاملة وواحدةٌ احتياط)</span></td><td class="num">2</td><td class="num">$8,000</td><td class="num">$16,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مصنعُ الثلج الاتّجاهي Clinebell CB300 — وحدةٌ واحدة</span></td><td class="num">١</td><td class="num">$6,500</td><td class="num">$6,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدةُ تخزين القوالب ومنشارٌ شريطي وعدّةُ النحت</span></td><td class="num">١</td><td class="num">$7,500</td><td class="num">$7,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">صحنا اللفائف عند ٣٠− درجة</span></td><td class="num">2</td><td class="num">$3,000</td><td class="num">$6,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدةُ دفعاتٍ للسوربيه</span></td><td class="num">١</td><td class="num">$12,000</td><td class="num">$12,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدةُ صدمة</span></td><td class="num">١</td><td class="num">$6,000</td><td class="num">$6,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">قوالبُ سيليكون بلاتيني على هيئة الفاكهة</span></td><td class="num">١</td><td class="num">$2,500</td><td class="num">$2,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">محطّةُ العصير والسلاش — Ugolini HT 3/1 وعصّارةُ حمضيات</span></td><td class="num">١</td><td class="num">$13,000</td><td class="num">$13,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">ثلّاجاتُ التحضير والتخزين</span></td><td class="num">١</td><td class="num">$8,000</td><td class="num">$8,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">غلّايةُ اللؤلؤ ومحطّةُ الشاي</span></td><td class="num">١</td><td class="num">$3,500</td><td class="num">$3,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الأدواتُ الصغيرة والأواني</span></td><td class="num">١</td><td class="num">$4,000</td><td class="num">$4,000</td></tr><tr class="sub"><td class=""><b>البارُ والإضاءة</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$19,502</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">بارُ الثلج المحيط ومقاعدُه — من المادّة نفسها</span></td><td class="num">26</td><td class="num">$327</td><td class="num">$8,502</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الإضاءةُ الداخلية والحفرُ المُضاءُ من الحافة والواجهة</span></td><td class="num">١</td><td class="num">$11,000</td><td class="num">$11,000</td></tr><tr class="sub"><td class=""><b>الأنظمةُ والهويّة</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$30,000</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">شاشتا الطلب الذاتي ونقطةُ البيع وشاشاتُ الأرقام والشبكة</span></td><td class="num">١</td><td class="num">$8,000</td><td class="num">$8,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الهويّةُ والتصميمُ المعماري للبووث — الوحدةُ الأولى</span></td><td class="num">١</td><td class="num">$22,000</td><td class="num">$22,000</td></tr><tr class="tot"><td class=""><b>مجموعُ الجدول</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$252,906</b></td></tr></tbody><caption>جدولُ المعدّات والإنشاء — بغداد، أسعارٌ واصلةٌ ومركَّبة</caption></table></div>
+ <div class="tw"><table><thead><tr><th class="">البند</th><th class="num">العدد</th><th class="num">سعرُ الوحدة</th><th class="num">الإجمالي</th></tr></thead><tbody><tr class="sub"><td class=""><b>الغلافُ والإنشاء</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$61,904</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الهيكلُ الفولاذي والأساسُ المعزول ومنظومةُ تصريف الذوبان</span></td><td class="num">١</td><td class="num">$14,000</td><td class="num">$14,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">القشرةُ الخارجية — أكريليك مصبوب ٢٥ ملم، منقوشٌ ومُضاءٌ من الحافة</span></td><td class="num">98</td><td class="num">$153</td><td class="num">$14,994</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">القشرةُ الداخلية — بولي كربونات متعدّد الجدران</span></td><td class="num">98</td><td class="num">$45</td><td class="num">$4,410</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">إطارُ الألمنيوم والتثبيتاتُ وعزلُ التجويف المُهوّى</span></td><td class="num">١</td><td class="num">$9,000</td><td class="num">$9,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الشحنُ البحري والجماركُ والتخليص</span></td><td class="num">١</td><td class="num">$5,000</td><td class="num">$5,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">التركيبُ في الموقع</span></td><td class="num">١</td><td class="num">$6,000</td><td class="num">$6,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">التجهيزُ الداخلي — ألواحُ غرفةٍ باردة، فولاذ، أرضيّةٌ صناعية، تصريف</span></td><td class="num">25</td><td class="num">$340</td><td class="num">$8,500</td></tr><tr class="sub"><td class=""><b>التبريدُ والطاقة</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$40,000</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مولّدةُ ديزل صامتة ٤٥ ك.ف.أ مع لوحةِ نقلٍ آلي</span></td><td class="num">١</td><td class="num">$11,000</td><td class="num">$11,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">وحدةُ تبريد الغرفة الباردة ١٢ ك.و — مُكثِّفٌ استوائيّ ومُبخِّران</span></td><td class="num">١</td><td class="num">$13,000</td><td class="num">$13,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">منظومةُ الرذاذ وتهويةُ الواجهة</span></td><td class="num">١</td><td class="num">$4,500</td><td class="num">$4,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">اللوحاتُ الكهربائية والتمديدات</span></td><td class="num">١</td><td class="num">$7,000</td><td class="num">$7,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">السباكةُ والتصريفُ ومعالجةُ المياه بالتناضح العكسي</span></td><td class="num">١</td><td class="num">$4,500</td><td class="num">$4,500</td></tr><tr class="sub"><td class=""><b>معدّاتُ الإنتاج</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$97,000</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مكنةُ إسبريسو تجارية مجموعتان + مطحنتان</span></td><td class="num">١</td><td class="num">$12,000</td><td class="num">$12,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدتا ٨٦− درجة (واحدةٌ عاملة وواحدةٌ احتياط)</span></td><td class="num">2</td><td class="num">$8,000</td><td class="num">$16,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مصنعُ الثلج الاتّجاهي Clinebell CB300 — وحدةٌ واحدة</span></td><td class="num">١</td><td class="num">$6,500</td><td class="num">$6,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدةُ تخزين القوالب ومنشارٌ شريطي وعدّةُ النحت</span></td><td class="num">١</td><td class="num">$7,500</td><td class="num">$7,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">صحنا اللفائف عند ٣٠− درجة</span></td><td class="num">2</td><td class="num">$3,000</td><td class="num">$6,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدةُ دفعاتٍ للسوربيه</span></td><td class="num">١</td><td class="num">$12,000</td><td class="num">$12,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">مُجمِّدةُ صدمة</span></td><td class="num">١</td><td class="num">$6,000</td><td class="num">$6,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">قوالبُ سيليكون بلاتيني على هيئة الفاكهة</span></td><td class="num">١</td><td class="num">$2,500</td><td class="num">$2,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">محطّةُ العصير والسلاش — Ugolini HT 3/1 وعصّارةُ حمضيات</span></td><td class="num">١</td><td class="num">$13,000</td><td class="num">$13,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">ثلّاجاتُ التحضير والتخزين</span></td><td class="num">١</td><td class="num">$8,000</td><td class="num">$8,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">غلّايةُ اللؤلؤ ومحطّةُ الشاي</span></td><td class="num">١</td><td class="num">$3,500</td><td class="num">$3,500</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الأدواتُ الصغيرة والأواني</span></td><td class="num">١</td><td class="num">$4,000</td><td class="num">$4,000</td></tr><tr class="sub"><td class=""><b>البارُ والإضاءة</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$15,702</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">بارُ الثلج المحيط ومقاعدُه — من المادّة نفسها</span></td><td class="num">26</td><td class="num">$327</td><td class="num">$8,502</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الإضاءةُ والحفرُ المُضاءُ — الواجهةُ الخارجية فقط</span></td><td class="num">١</td><td class="num">$7,200</td><td class="num">$7,200</td></tr><tr class="sub"><td class=""><b>الأنظمةُ والهويّة</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$29,000</b></td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">شاشتا الطلب الذاتي ونقطةُ البيع وشاشاتُ الأرقام والشبكة</span></td><td class="num">١</td><td class="num">$7,000</td><td class="num">$7,000</td></tr><tr class=""><td class=""><span style="padding-inline-start:1rem">الهويّةُ والتصميمُ المعماري للبووث — الوحدةُ الأولى</span></td><td class="num">١</td><td class="num">$22,000</td><td class="num">$22,000</td></tr><tr class="tot"><td class=""><b>مجموعُ الجدول</b></td><td class="num"></td><td class="num"></td><td class="num"><b>$243,606</b></td></tr></tbody><caption>جدولُ المعدّات والإنشاء — بغداد، أسعارٌ واصلةٌ ومركَّبة</caption></table></div>
 </div>
 
 <div class="grid g2" style="margin-top:2rem;align-items:start">
  <div class="g"><div class="cap">وما يُضاف فوق الجدول</div>
-  <div class="tw"><table><thead><tr><th class="">البند</th><th class="num">المبلغ</th></tr></thead><tbody><tr class=""><td class="">احتياطيُّ قطع الغيار والخدمة — ١٠٪ من معدّات الإنتاج</td><td class="num">$9,700</td></tr><tr class=""><td class="">الخُلُوّ — ١٥ ضعفَ الإيجار</td><td class="num">$30,000</td></tr><tr class=""><td class="">ما قبل الافتتاح — تدريبٌ وتجاربُ إنتاجٍ وإجازات</td><td class="num">$18,000</td></tr><tr class=""><td class="">رأسُ المال العامل</td><td class="num">$30,000</td></tr><tr class=""><td class="">الطوارئ ١٢٪</td><td class="num">$40,873</td></tr><tr class="tot"><td class=""><b>الإجمالي الكلّي</b></td><td class="num"><b>$381,479</b></td></tr></tbody></table></div>
+  <div class="tw"><table><thead><tr><th class="">البند</th><th class="num">المبلغ</th></tr></thead><tbody><tr class=""><td class="">احتياطيُّ قطع الغيار والخدمة — ١٠٪ من معدّات الإنتاج</td><td class="num">$9,700</td></tr><tr class=""><td class="">الخُلُوّ — ١٥ ضعفَ الإيجار</td><td class="num">$30,000</td></tr><tr class=""><td class="">ما قبل الافتتاح — تدريبٌ وتجاربُ إنتاجٍ وإجازات</td><td class="num">$18,000</td></tr><tr class=""><td class="">رأسُ المال العامل</td><td class="num">$30,000</td></tr><tr class=""><td class="">الطوارئ ١٢٪</td><td class="num">$39,757</td></tr><tr class="tot"><td class=""><b>الإجمالي الكلّي</b></td><td class="num"><b>$371,063</b></td></tr></tbody></table></div>
   <p style="margin-top:1rem;font-size:var(--s--2);color:var(--ink-4);line-height:1.9">
   <b>الخُلُوّ محظورٌ قانوناً</b> بقانون إيجار العقار ٨٧ لسنة ١٩٧٩، ومع ذلك هو عُرفٌ شاملٌ في بغداد.
   رُصِد عند ٢٥ ضعفَ الإيجار في الكرّادة؛ نحن نُدرِج ١٥ ضعفاً ونُبنِيه في العقد لا خارجه.</p>
  </div>
  <div class="g"><div class="cap">الخمسةُ الكبار — أين يذهب النصف</div>
-  <svg viewBox="0 0 400 318" class="cv" role="img" aria-label="أكبر خمسة بنود في جدول الكلفة" preserveAspectRatio="xMidYMid meet"><text x="400" y="15" class="rl" text-anchor="start">التجهيزُ الداخلي</text><text x="0" y="15" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$13,000</text><rect x="0" y="24" width="400" height="14" rx="3" class="trk"/><rect x="163.6" y="24" width="236.4" height="14" rx="3" class="s2"><title>التجهيزُ الداخلي: $13,000</title></rect><text x="400" y="77" class="rl" text-anchor="start">الهيكلُ والأساس</text><text x="0" y="77" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$14,000</text><rect x="0" y="86" width="400" height="14" rx="3" class="trk"/><rect x="145.5" y="86" width="254.5" height="14" rx="3" class="s3"><title>الهيكلُ والأساس: $14,000</title></rect><text x="400" y="139" class="rl" text-anchor="start">القشرةُ الخارجية</text><text x="0" y="139" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$14,994</text><rect x="0" y="148" width="400" height="14" rx="3" class="trk"/><rect x="127.4" y="148" width="272.6" height="14" rx="3" class="s3"><title>القشرةُ الخارجية: $14,994</title></rect><text x="400" y="201" class="rl" text-anchor="start">مُجمِّدتا ٨٦−</text><text x="0" y="201" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$16,000</text><rect x="0" y="210" width="400" height="14" rx="3" class="trk"/><rect x="109.1" y="210" width="290.9" height="14" rx="3" class="s3"><title>مُجمِّدتا ٨٦−: $16,000</title></rect><text x="400" y="263" class="rl" text-anchor="start">الهويّة والتصميم</text><text x="0" y="263" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$22,000</text><rect x="0" y="272" width="400" height="14" rx="3" class="trk"/><rect x="0.0" y="272" width="400.0" height="14" rx="3" class="s1"><title>الهويّة والتصميم: $22,000</title></rect></svg>
+  <svg viewBox="0 0 400 318" class="cv" role="img" aria-label="أكبر خمسة بنود في جدول الكلفة" preserveAspectRatio="xMidYMid meet"><text x="400" y="15" class="rl" text-anchor="start">تبريدُ الغرفة</text><text x="0" y="15" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$13,000</text><rect x="0" y="24" width="400" height="14" rx="3" class="trk"/><rect x="163.6" y="24" width="236.4" height="14" rx="3" class="s2"><title>تبريدُ الغرفة: $13,000</title></rect><text x="400" y="77" class="rl" text-anchor="start">الهيكلُ والأساس</text><text x="0" y="77" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$14,000</text><rect x="0" y="86" width="400" height="14" rx="3" class="trk"/><rect x="145.5" y="86" width="254.5" height="14" rx="3" class="s3"><title>الهيكلُ والأساس: $14,000</title></rect><text x="400" y="139" class="rl" text-anchor="start">القشرةُ الخارجية</text><text x="0" y="139" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$14,994</text><rect x="0" y="148" width="400" height="14" rx="3" class="trk"/><rect x="127.4" y="148" width="272.6" height="14" rx="3" class="s3"><title>القشرةُ الخارجية: $14,994</title></rect><text x="400" y="201" class="rl" text-anchor="start">مُجمِّدتا ٨٦−</text><text x="0" y="201" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$16,000</text><rect x="0" y="210" width="400" height="14" rx="3" class="trk"/><rect x="109.1" y="210" width="290.9" height="14" rx="3" class="s3"><title>مُجمِّدتا ٨٦−: $16,000</title></rect><text x="400" y="263" class="rl" text-anchor="start">الهويّة والتصميم</text><text x="0" y="263" class="vl" text-anchor="start" style="direction:ltr;unicode-bidi:isolate">$22,000</text><rect x="0" y="272" width="400" height="14" rx="3" class="trk"/><rect x="0.0" y="272" width="400.0" height="14" rx="3" class="s1"><title>الهويّة والتصميم: $22,000</title></rect></svg>
   <p style="margin-top:1rem">خمسةُ بنودٍ من ثمانيةٍ وعشرين تحمل
-  <b class="n">32%</b>
+  <b class="n">33%</b>
   من الجدول. وأيُّ تفاوضٍ جادّ يبدأ منها، لا من الأدوات الصغيرة.</p>
   <p style="margin-top:.8rem"><b>ودرجةُ التوثيق:</b> البنودُ المستوردة أسعارُها من نطاقاتٍ مرصودة،
   أمّا الإنشاءُ والتركيب فتقديراتٌ تحتاج عرضَين مقاولَين قبل الالتزام. هذا آخرُ رقمٍ يجب أن يتحرّك
@@ -1224,7 +1291,7 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
 <div class="grid g2" style="margin-top:2rem;align-items:start">
  <div class="g solid">
   <span class="chip k">لو فتحنا المُكعَّب نفسه في دبي</span>
-  <div class="tw"><table><thead><tr><th class=""></th><th class="num">بغداد</th><th class="num">دبي</th></tr></thead><tbody><tr class=""><td class="">رأسُ المال</td><td class="num">$381,479</td><td class="num">$589,478</td></tr><tr class=""><td class="">إيرادُ السنة ٢</td><td class="num">$719,250</td><td class="num">$1,467,270</td></tr><tr class=""><td class="">الأرباحُ التشغيلية</td><td class="num">$183,426</td><td class="num">$529,320</td></tr><tr class=""><td class="">الهامش</td><td class="num">26%</td><td class="num">36%</td></tr><tr class=""><td class="">متوسّطُ الفاتورة</td><td class="num">$6.57</td><td class="num">$11.17</td></tr><tr class=""><td class="">الإيجارُ شهرياً</td><td class="num">$2,200</td><td class="num">$6,820</td></tr><tr class=""><td class="">ضريبةُ الشركات</td><td class="num">15%</td><td class="num">9%</td></tr><tr class="tot"><td class=""><b>الاسترداد</b></td><td class="num"><b>32.2 شهراً</b></td><td class="num"><b>20.9 شهراً</b></td></tr><tr class="tot"><td class=""><b>العائدُ الداخلي ٥ سنوات</b></td><td class="num"><b>41%</b></td><td class="num"><b>72%</b></td></tr></tbody></table></div>
+  <div class="tw"><table><thead><tr><th class=""></th><th class="num">بغداد</th><th class="num">دبي</th></tr></thead><tbody><tr class=""><td class="">رأسُ المال</td><td class="num">$371,063</td><td class="num">$573,372</td></tr><tr class=""><td class="">إيرادُ السنة ٢</td><td class="num">$719,250</td><td class="num">$1,467,270</td></tr><tr class=""><td class="">الأرباحُ التشغيلية</td><td class="num">$183,426</td><td class="num">$529,320</td></tr><tr class=""><td class="">الهامش</td><td class="num">26%</td><td class="num">36%</td></tr><tr class=""><td class="">متوسّطُ الفاتورة</td><td class="num">$6.57</td><td class="num">$11.17</td></tr><tr class=""><td class="">الإيجارُ شهرياً</td><td class="num">$2,200</td><td class="num">$6,820</td></tr><tr class=""><td class="">ضريبةُ الشركات</td><td class="num">15%</td><td class="num">9%</td></tr><tr class="tot"><td class=""><b>الاسترداد</b></td><td class="num"><b>31.8 شهراً</b></td><td class="num"><b>20.6 شهراً</b></td></tr><tr class="tot"><td class=""><b>العائدُ الداخلي ٥ سنوات</b></td><td class="num"><b>42%</b></td><td class="num"><b>74%</b></td></tr></tbody></table></div>
   <p style="margin-top:1.2rem"><b>ولا نُخفي النتيجة: دبي أفضل على الورق، وبفارقٍ كبير.</b>
   رأسُ مالٍ أعلى بـ<span class="n">55%</span>،
   لكنّ إيراداً أعلى بـ<span class="n">104%</span>،
@@ -1235,8 +1302,8 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
   <div class="g"><div class="cap">وهذه أسبابُ البدء في بغداد رغم ذلك</div>
    <ol class="st">
     <li><b>كلفةُ الخطأ.</b> النموذجُ الأوّل سيُخطئ: في السعة، في المزيج، في الغلاف، في المولّدة.
-    التعلُّمُ على $381,479 أرخصُ من التعلُّم على $589,478 —
-    والفرقُ <b>$207,999</b> هو ثمنُ التعليم لا الربح.</li>
+    التعلُّمُ على $371,063 أرخصُ من التعلُّم على $573,372 —
+    والفرقُ <b>$202,309</b> هو ثمنُ التعليم لا الربح.</li>
     <li><b>لا منافس.</b> العراقُ فيه ١.٨ فرعٍ مُعلَّم لكلّ مليون نسمة. ودبي فيها ٣,٢٥٧ مقهىً
     و<b>مشغّلان يقدّمان القهوةَ في مكعّب ثلج بالفعل</b> — ‏The Pods و‏La Letizia. بغداد صفحةٌ بيضاء، ودبي ليست.</li>
     <li><b>الإيجارُ هو المخاطرة الحقيقية في دبي.</b> النموذجُ يفترض
@@ -1387,13 +1454,13 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
  <div class="g">
   <span class="chip k">المسار أ · تمويل ذاتي</span>
   <h3 style="font-size:var(--s-2);font-weight:300;margin:.9rem 0 .4rem">بناء الفرع الأول في بغداد</h3>
-  <div style="font-family:var(--la);font-weight:400;font-size:var(--s-3);letter-spacing:-.03em;direction:ltr;text-align:right">$381,479</div>
+  <div style="font-family:var(--la);font-weight:400;font-size:var(--s-3);letter-spacing:-.03em;direction:ltr;text-align:right">$371,063</div>
   <p style="margin-top:.8rem">رأسُ مال المؤسّس. مُكعَّبٌ واحد على زاوية في بغداد، يُبنى نموذجاً أوّلياً ودليلاً في آنٍ
   واحد. بلا حصصٍ خارجية وبلا التزامٍ بجدول أحد.</p>
-  <div class="tw"><table><thead><tr><th class="">أوجه الصرف</th><th class="num">المبلغ</th></tr></thead><tbody><tr class=""><td class="">الغلافُ الجليدي والإنشاء والتجهيز الداخلي</td><td class="num">$66,404</td></tr><tr class=""><td class="">التبريدُ والطاقة والمولّدة</td><td class="num">$40,000</td></tr><tr class=""><td class="">معدّاتُ الإنتاج وقطعُ الغيار</td><td class="num">$106,700</td></tr><tr class=""><td class="">البارُ والإضاءة والحفرُ المُضاء</td><td class="num">$19,502</td></tr><tr class=""><td class="">الأنظمةُ والهويّة</td><td class="num">$30,000</td></tr><tr class=""><td class="">الخُلُوّ وما قبل الافتتاح ورأسُ المال العامل</td><td class="num">$78,000</td></tr><tr class=""><td class="">الطوارئ ١٢٪</td><td class="num">$40,873</td></tr><tr class="tot"><td class=""><b>الإجمالي</b></td><td class="num"><b>$381,479</b></td></tr></tbody></table></div>
+  <div class="tw"><table><thead><tr><th class="">أوجه الصرف</th><th class="num">المبلغ</th></tr></thead><tbody><tr class=""><td class="">الغلافُ الجليدي والإنشاء والتجهيز الداخلي</td><td class="num">$61,904</td></tr><tr class=""><td class="">التبريدُ والطاقة والمولّدة</td><td class="num">$40,000</td></tr><tr class=""><td class="">معدّاتُ الإنتاج وقطعُ الغيار</td><td class="num">$106,700</td></tr><tr class=""><td class="">البارُ والإضاءة والحفرُ المُضاء</td><td class="num">$15,702</td></tr><tr class=""><td class="">الأنظمةُ والهويّة</td><td class="num">$29,000</td></tr><tr class=""><td class="">الخُلُوّ وما قبل الافتتاح ورأسُ المال العامل</td><td class="num">$78,000</td></tr><tr class=""><td class="">الطوارئ ١٢٪</td><td class="num">$39,757</td></tr><tr class="tot"><td class=""><b>الإجمالي</b></td><td class="num"><b>$371,063</b></td></tr></tbody></table></div>
   <div class="grid g3" style="gap:.6rem;margin-top:1.2rem">
    <div class="g fig "><span class="v">32<span class="u">شهر</span></span><span class="k">الاسترداد</span></div>
-   <div class="g fig "><span class="v">41%</span><span class="k">العائد الداخلي</span></div>
+   <div class="g fig "><span class="v">42%</span><span class="k">العائد الداخلي</span></div>
    <div class="g fig "><span class="v">$183k</span><span class="k">أرباح السنة ٢</span></div>
   </div>
  </div>

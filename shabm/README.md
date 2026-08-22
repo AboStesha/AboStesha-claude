@@ -88,11 +88,15 @@ cd financials && python3 model.py && cd ../deck && python3 build_ar.py && python
 ## The concept, as it now stands
 
 A tilted, eroding ice cube on a Baghdad pavement — 25 m² of booth, 38 m² of terrace, 26 perimeter bar seats.
-It is **genuinely cold inside**: staff wear winter coats in August. Two through-wall hatches replace the
-counter — right to order, left to collect, with the order number cut into the ice above — plus a third for
-returning cups. No cashier, no queue at a window. The menu is engraved into the back wall; the screens sit in
-openings cut through the ice-material. AC vents through the cube body and throws a fine mist, so from a
-distance the whole thing appears to be steaming with cold.
+It is **genuinely cold inside**: staff wear winter coats in August. The envelope is solid — nobody can see in
+from any angle — and it carries **exactly three square openings** in one row on the service face and nothing
+else: right, a touchscreen the customer orders on themselves; centre, a cup-return hatch; left, a collection
+hatch with the order number cut into the ice above it. Each is a sealed pass-through with an opaque back panel.
+No cashier, no queue at a window.
+
+An ice bar counter and stools, cast from the same material, are **bonded to the block** and wrap three sides —
+both flanks and the whole back. The service face stays clear: no seating in front of the openings. AC vents
+through the cube body and throws a fine mist, so from a distance the whole thing appears to be steaming with cold.
 
 **Nothing hot. Ever.** Six cold SKUs:
 
@@ -111,13 +115,13 @@ distance the whole thing appears to be steaming with cold.
 
 | | |
 |---|---|
-| Baghdad flagship CAPEX | **$381,479** (was $538,944 — rebuilt line by line, see below) |
+| Baghdad flagship CAPEX | **$371,063** (was $538,944 — rebuilt line by line, see below) |
 | Year-2 revenue / EBITDA | $719,250 / $183,426 (26%) |
-| Payback / 5-year IRR | **32.2 months** / 41% |
+| Payback / 5-year IRR | **31.8 months** / 42% |
 | Iraq franchised Shard — the volume format | $184,842 CAPEX · 38.5-month payback · 36.8% IRR |
 | Franchisor, Year 5 | 47 units · $25,357,456 system sales · $1,551,723 EBITDA |
 | Raise / return | $1.75M · 45% IRR · 7.5× MOIC |
-| *Dubai company-owned Cube, for comparison* | *$589,478 CAPEX · $1,467,270 revenue · 36% EBITDA · 20.9-month payback · 72% IRR* |
+| *Dubai company-owned Cube, for comparison* | *$573,372 CAPEX · $1,467,270 revenue · 36% EBITDA · 20.6-month payback · 74% IRR* |
 
 **Bear case:** the unit stays cash-positive every month but never repays its capital inside five years.
 Size any position against that, not against the base case.
@@ -137,7 +141,7 @@ price index, and Cairo has roughly 5–15 days a year above 40 °C against Baghd
 ## The CAPEX was too high. It was rebuilt line by line.
 
 The first build said **$538,944** for a 25 m² booth — about $21,500 per square metre, which is not credible.
-It carried three real errors, all now corrected in `financials/assumptions.json` as a 28-line equipment
+It carried four real errors, all now corrected in `financials/assumptions.json` as a 28-line equipment
 schedule that the model sums into buckets (nothing is typed twice):
 
 1. **The $45,000 franchise toolkit was on the unit.** The disclosure document, operations manual, training
@@ -149,10 +153,20 @@ schedule that the model sums into buckets (nothing is typed twice):
 3. **A lump-sum shell estimate** instead of an area calculation. The envelope is now priced per m²:
    98 m² of 25 mm cast acrylic at $153, 98 m² of multiwall polycarbonate at $45, plus frame, freight and erection.
 
+4. **$18,300 of finish and identity inside a block nobody can see.** The envelope is solid, the three
+   openings are sealed pass-throughs with opaque back panels, and no customer ever enters. So the interior
+   carries no engraved menu wall, no screens sunk into ice, no designed finish: interior fitout drops from
+   $520 to **$340/m²** (cold-room panel, stainless, epoxy floor with drains) and interior lighting becomes
+   an industrial white strip. The edge-lit carving and the carved name stay where they earn their keep —
+   on the outside. The menu moved to where it belongs: the ordering screen, which is better than a carved
+   wall anyway — it changes without a joiner, shows sold-out the moment it happens, and can push one item
+   over another. Marketing photography of the interior is AI-generated from the design spec, so there is no
+   shoot day, no crew, and no closed store.
+
 Also raised, not cut: the juice/slush station went **$9,000 → $14,000**, because a $700–1,800 granita machine
 does not survive a Baghdad summer on 8–12 hours of grid power, and بَرَد is 21% of units.
 
-Net: **$381,479**, and payback falls from 42.5 to **32.2 months** — inside the 24–36 month band Gulf investors
+Net: **$371,063**, and payback falls from 42.5 to **31.8 months** — inside the 24–36 month band Gulf investors
 underwrite to, where it previously sat outside.
 
 ---
@@ -160,11 +174,11 @@ underwrite to, where it previously sat outside.
 ## Dubai vs Baghdad
 
 A company-owned Dubai Cube is modelled as `dubai_own` for a like-for-like comparison. It is **better on every
-financial line**: 20.9-month payback against 32.2, 72% IRR against 41%, 36% EBITDA margin against 26%. The deck
+financial line**: 20.6-month payback against 31.8, 74% IRR against 42%, 36% EBITDA margin against 26%. The deck
 says so plainly rather than burying it.
 
 Baghdad still goes first, for reasons the model does not price: the first unit will be wrong somewhere, and
-learning on $381k is cheaper than learning on $589k; Iraq has 1.8 branded outlets per million people and no
+learning on $371k is cheaper than learning on $573k; Iraq has 1.8 branded outlets per million people and no
 competitor, while Dubai has 3,257 coffee shops and **two operators already serving coffee in an ice cube**
 (The Pods, La Letizia); and the founder can be on site daily in year one.
 
