@@ -15,10 +15,10 @@ RAW, OUT = os.path.join(HERE, "raw"), os.path.join(HERE, "img")
 LONG_EDGE, QUALITY = 1500, 74          # keeps the published page well under 16 MB
 
 SLOTS = {
-    # the new exterior set, drawn from the final design reference
-    "f2fb995e": "cube_day",      "46480ce6": "cube_night",
-    "ceb01083": "bar_seats",     "3a5b22af": "cube_plan",
-    "f9d6c7da": "wall_frozen",   "5c01d6de": "window_pan",
+    # the final exterior set: a closed block, three openings, menu flank
+    "8fbf79e6": "cube_day",      "6e3a36c6": "cube_night",
+    "b95d8990": "cube_dawn",     "265d06aa": "face_detail",
+    "799dd8b6": "menu_flank",    "e098dac5": "menu_flank_macro",
     # products
     "b2491ca7": "p_saqee80",     "eee0f1da": "p_qalab",
     "fe961503": "p_boba",        "f56a0493": "p_lafaif",
