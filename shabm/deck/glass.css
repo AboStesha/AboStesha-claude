@@ -330,3 +330,16 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
 @media (max-width: 820px){ .phgrid, .phgrid.g3 { grid-template-columns: 1fr; } }
 .ph.wide img { aspect-ratio: 16/9; object-fit: cover; }
 .ph.sq img { aspect-ratio: 3/2; object-fit: cover; }
+
+/* illustrations sit in the same slots as photography and carry the same
+   frame, so the deck reads as one system whether or not renders are present */
+.fg { border: 1px solid var(--hair-2); border-radius: 10px; padding: .9rem 1rem 1rem;
+      background: var(--surface-in); }
+.fg svg.il { width: 100%; height: auto; display: block; color: var(--ink); }
+.fg figcaption { margin-top: .5rem; }
+
+/* the equipment schedule carries a drawing of each machine beside its name */
+.eqline { display:flex; align-items:center; gap:.7rem; padding-inline-start:1rem; }
+.eqline svg.eq { width:44px; height:36px; flex:0 0 44px; color: var(--ink-2); }
+tr.sub .eqline, thead .eqline { padding-inline-start:0; }
+@media (max-width:700px){ .eqline svg.eq { display:none; } }

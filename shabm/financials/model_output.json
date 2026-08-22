@@ -33,18 +33,18 @@
    },
    "capex": {
     "items": {
-     "shell": 61904,
-     "power": 40000,
-     "prod": 97000,
-     "front": 15702,
+     "shell": 50870,
+     "power": 31800,
+     "prod": 95500,
+     "front": 22586,
      "sys": 29000,
-     "spares_service_reserve": 9700,
-     "key_money": 30000,
+     "spares_service_reserve": 9550,
+     "key_money": 24000,
      "pre_opening": 18000,
      "working_capital": 30000,
-     "contingency": 39757
+     "contingency": 37357
     },
-    "total": 371063
+    "total": 348663
    },
    "monthly_y1": [
     {
@@ -59,14 +59,14 @@
      "cogs": 4859,
      "gross_profit": 10632,
      "labour": 4179,
-     "rent": 2200,
-     "utilities": 1552,
+     "rent": 1600,
+     "utilities": 1345,
      "marketing": 1800,
      "card_fees": 113,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 14044,
-     "ebitda": -3413
+     "opex": 13238,
+     "ebitda": -2606
     },
     {
      "month": 2,
@@ -80,14 +80,14 @@
      "cogs": 5793,
      "gross_profit": 12676,
      "labour": 4179,
-     "rent": 2200,
-     "utilities": 1753,
+     "rent": 1600,
+     "utilities": 1491,
      "marketing": 2147,
      "card_fees": 135,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 14614,
-     "ebitda": -1938
+     "opex": 13752,
+     "ebitda": -1076
     },
     {
      "month": 3,
@@ -101,14 +101,14 @@
      "cogs": 8035,
      "gross_profit": 17583,
      "labour": 6034,
-     "rent": 2200,
-     "utilities": 2283,
+     "rent": 1600,
+     "utilities": 1875,
      "marketing": 2978,
      "card_fees": 188,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 17882,
-     "ebitda": -299
+     "opex": 16874,
+     "ebitda": 709
     },
     {
      "month": 4,
@@ -122,14 +122,14 @@
      "cogs": 9530,
      "gross_profit": 20854,
      "labour": 6222,
-     "rent": 2200,
-     "utilities": 2667,
+     "rent": 1600,
+     "utilities": 2154,
      "marketing": 3531,
      "card_fees": 222,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 19043,
-     "ebitda": 1811
+     "opex": 17930,
+     "ebitda": 2925
     },
     {
      "month": 5,
@@ -143,14 +143,14 @@
      "cogs": 12894,
      "gross_profit": 28215,
      "labour": 6645,
-     "rent": 2200,
-     "utilities": 3608,
+     "rent": 1600,
+     "utilities": 2836,
      "marketing": 4778,
      "card_fees": 301,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 21731,
-     "ebitda": 6483
+     "opex": 20359,
+     "ebitda": 7856
     },
     {
      "month": 6,
@@ -164,14 +164,14 @@
      "cogs": 15136,
      "gross_profit": 33122,
      "labour": 6926,
-     "rent": 2200,
-     "utilities": 4286,
+     "rent": 1600,
+     "utilities": 3328,
      "marketing": 5609,
      "card_fees": 353,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 23575,
-     "ebitda": 9547
+     "opex": 22016,
+     "ebitda": 11106
     },
     {
      "month": 7,
@@ -185,14 +185,14 @@
      "cogs": 15884,
      "gross_profit": 34757,
      "labour": 7020,
-     "rent": 2200,
-     "utilities": 4521,
+     "rent": 1600,
+     "utilities": 3498,
      "marketing": 5886,
      "card_fees": 371,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 24198,
-     "ebitda": 10560
+     "opex": 22574,
+     "ebitda": 12183
     },
     {
      "month": 8,
@@ -206,14 +206,14 @@
      "cogs": 15510,
      "gross_profit": 33940,
      "labour": 6973,
-     "rent": 2200,
-     "utilities": 4403,
+     "rent": 1600,
+     "utilities": 3412,
      "marketing": 5747,
      "card_fees": 362,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 23886,
-     "ebitda": 10054
+     "opex": 22295,
+     "ebitda": 11645
     },
     {
      "month": 9,
@@ -227,14 +227,14 @@
      "cogs": 12707,
      "gross_profit": 27806,
      "labour": 6621,
-     "rent": 2200,
-     "utilities": 3553,
+     "rent": 1600,
+     "utilities": 2796,
      "marketing": 4709,
      "card_fees": 297,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 21579,
-     "ebitda": 6226
+     "opex": 20222,
+     "ebitda": 7584
     },
     {
      "month": 10,
@@ -248,14 +248,14 @@
      "cogs": 9157,
      "gross_profit": 20037,
      "labour": 6175,
-     "rent": 2200,
-     "utilities": 2569,
+     "rent": 1600,
+     "utilities": 2082,
      "marketing": 3393,
      "card_fees": 214,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 18751,
-     "ebitda": 1286
+     "opex": 17664,
+     "ebitda": 2372
     },
     {
      "month": 11,
@@ -269,14 +269,14 @@
      "cogs": 6167,
      "gross_profit": 13494,
      "labour": 5970,
-     "rent": 2200,
-     "utilities": 1837,
+     "rent": 1600,
+     "utilities": 1552,
      "marketing": 2285,
      "card_fees": 144,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 16636,
-     "ebitda": -3142
+     "opex": 15751,
+     "ebitda": -2257
     },
     {
      "month": 12,
@@ -290,14 +290,14 @@
      "cogs": 4672,
      "gross_profit": 10223,
      "labour": 4179,
-     "rent": 2200,
-     "utilities": 1513,
+     "rent": 1600,
+     "utilities": 1317,
      "marketing": 1731,
      "card_fees": 109,
      "other_opex": 4200,
      "royalty": 0.0,
-     "opex": 13932,
-     "ebitda": -3709
+     "opex": 13136,
+     "ebitda": -2913
     }
    ],
    "monthly_y2": [
@@ -313,14 +313,14 @@
      "cogs": 7836,
      "gross_profit": 17148,
      "labour": 4346,
-     "rent": 2310,
-     "utilities": 1614,
+     "rent": 1680,
+     "utilities": 1399,
      "marketing": 1887,
      "card_fees": 183,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 14708,
-     "ebitda": 2440
+     "opex": 13863,
+     "ebitda": 3285
     },
     {
      "month": 2,
@@ -334,14 +334,14 @@
      "cogs": 9343,
      "gross_profit": 20446,
      "labour": 4346,
-     "rent": 2310,
-     "utilities": 1824,
+     "rent": 1680,
+     "utilities": 1551,
      "marketing": 2250,
      "card_fees": 218,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 15316,
-     "ebitda": 5130
+     "opex": 14413,
+     "ebitda": 6032
     },
     {
      "month": 3,
@@ -355,14 +355,14 @@
      "cogs": 12960,
      "gross_profit": 28360,
      "labour": 6276,
-     "rent": 2310,
-     "utilities": 2374,
+     "rent": 1680,
+     "utilities": 1950,
      "marketing": 3122,
      "card_fees": 303,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 18752,
-     "ebitda": 9608
+     "opex": 17698,
+     "ebitda": 10662
     },
     {
      "month": 4,
@@ -376,14 +376,14 @@
      "cogs": 15372,
      "gross_profit": 33636,
      "labour": 6471,
-     "rent": 2310,
-     "utilities": 2774,
+     "rent": 1680,
+     "utilities": 2240,
      "marketing": 3702,
      "card_fees": 359,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 19984,
-     "ebitda": 13652
+     "opex": 18820,
+     "ebitda": 14816
     },
     {
      "month": 5,
@@ -397,14 +397,14 @@
      "cogs": 20797,
      "gross_profit": 45508,
      "labour": 6910,
-     "rent": 2310,
-     "utilities": 3752,
+     "rent": 1680,
+     "utilities": 2949,
      "marketing": 5009,
      "card_fees": 485,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 22835,
-     "ebitda": 22673
+     "opex": 21402,
+     "ebitda": 24106
     },
     {
      "month": 6,
@@ -418,14 +418,14 @@
      "cogs": 24414,
      "gross_profit": 53422,
      "labour": 7203,
-     "rent": 2310,
-     "utilities": 4458,
+     "rent": 1680,
+     "utilities": 3461,
      "marketing": 5880,
      "card_fees": 570,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 24789,
-     "ebitda": 28633
+     "opex": 23162,
+     "ebitda": 30260
     },
     {
      "month": 7,
@@ -439,14 +439,14 @@
      "cogs": 25619,
      "gross_profit": 56060,
      "labour": 7301,
-     "rent": 2310,
-     "utilities": 4702,
+     "rent": 1680,
+     "utilities": 3638,
      "marketing": 6171,
      "card_fees": 598,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 25449,
-     "ebitda": 30611
+     "opex": 23755,
+     "ebitda": 32305
     },
     {
      "month": 8,
@@ -460,14 +460,14 @@
      "cogs": 25016,
      "gross_profit": 54741,
      "labour": 7252,
-     "rent": 2310,
-     "utilities": 4579,
+     "rent": 1680,
+     "utilities": 3549,
      "marketing": 6025,
      "card_fees": 584,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 25119,
-     "ebitda": 29622
+     "opex": 23458,
+     "ebitda": 31283
     },
     {
      "month": 9,
@@ -481,14 +481,14 @@
      "cogs": 20495,
      "gross_profit": 44848,
      "labour": 6886,
-     "rent": 2310,
-     "utilities": 3695,
+     "rent": 1680,
+     "utilities": 2908,
      "marketing": 4936,
      "card_fees": 478,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 22674,
-     "ebitda": 22174
+     "opex": 21257,
+     "ebitda": 23592
     },
     {
      "month": 10,
@@ -502,14 +502,14 @@
      "cogs": 14769,
      "gross_profit": 32317,
      "labour": 6422,
-     "rent": 2310,
-     "utilities": 2672,
+     "rent": 1680,
+     "utilities": 2166,
      "marketing": 3557,
      "card_fees": 345,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 19674,
-     "ebitda": 12644
+     "opex": 18538,
+     "ebitda": 13779
     },
     {
      "month": 11,
@@ -523,14 +523,14 @@
      "cogs": 9946,
      "gross_profit": 21765,
      "labour": 6208,
-     "rent": 2310,
-     "utilities": 1911,
+     "rent": 1680,
+     "utilities": 1614,
      "marketing": 2396,
      "card_fees": 232,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 17425,
-     "ebitda": 4340
+     "opex": 16498,
+     "ebitda": 5266
     },
     {
      "month": 12,
@@ -544,14 +544,14 @@
      "cogs": 7535,
      "gross_profit": 16488,
      "labour": 4346,
-     "rent": 2310,
-     "utilities": 1574,
+     "rent": 1680,
+     "utilities": 1370,
      "marketing": 1815,
      "card_fees": 176,
      "other_opex": 4368,
      "royalty": 0.0,
-     "opex": 14588,
-     "ebitda": 1900
+     "opex": 13754,
+     "ebitda": 2734
     }
    ],
    "years": [
@@ -563,22 +563,22 @@
      "cogs": 120344,
      "gross_profit": 263338,
      "labour": 71123,
-     "rent": 26400,
-     "utilities": 34546,
+     "rent": 19200,
+     "utilities": 27686,
      "marketing": 44593,
      "card_fees": 2809,
      "other_opex": 50400,
      "royalty": 0.0,
-     "opex": 229871,
-     "ebitda": 33467,
+     "opex": 215811,
+     "ebitda": 47527,
      "transactions": 67853,
-     "depreciation": 48723,
-     "ebit": -15256,
-     "tax": 0.0,
-     "net_income": -15256,
-     "free_cash_flow": 26778,
+     "depreciation": 45523,
+     "ebit": 2004,
+     "tax": 301,
+     "net_income": 1703,
+     "free_cash_flow": 40538,
      "year": 1,
-     "ebitda_margin": 0.08,
+     "ebitda_margin": 0.11,
      "prime_cost_pct": 0.43
     },
     {
@@ -589,22 +589,22 @@
      "cogs": 194103,
      "gross_profit": 424739,
      "labour": 73967,
-     "rent": 27720,
-     "utilities": 35928,
+     "rent": 20160,
+     "utilities": 28793,
      "marketing": 46751,
      "card_fees": 4531,
      "other_opex": 52416,
      "royalty": 0.0,
-     "opex": 241314,
-     "ebitda": 183426,
+     "opex": 226619,
+     "ebitda": 198120,
      "transactions": 109440,
-     "depreciation": 48723,
-     "ebit": 134702,
-     "tax": 20205,
-     "net_income": 114497,
-     "free_cash_flow": 152432,
+     "depreciation": 45523,
+     "ebit": 152597,
+     "tax": 22890,
+     "net_income": 129707,
+     "free_cash_flow": 164442,
      "year": 2,
-     "ebitda_margin": 0.26,
+     "ebitda_margin": 0.28,
      "prime_cost_pct": 0.37
     },
     {
@@ -615,22 +615,22 @@
      "cogs": 209923,
      "gross_profit": 459356,
      "labour": 76926,
-     "rent": 29106,
-     "utilities": 37365,
+     "rent": 21168,
+     "utilities": 29945,
      "marketing": 50561,
      "card_fees": 4901,
      "other_opex": 54513,
      "royalty": 0.0,
-     "opex": 253372,
-     "ebitda": 205984,
+     "opex": 238014,
+     "ebitda": 221342,
      "transactions": 118359,
-     "depreciation": 48723,
-     "ebit": 157261,
-     "tax": 23589,
-     "net_income": 133672,
-     "free_cash_flow": 170727,
+     "depreciation": 45523,
+     "ebit": 175819,
+     "tax": 26373,
+     "net_income": 149446,
+     "free_cash_flow": 183301,
      "year": 3,
-     "ebitda_margin": 0.26,
+     "ebitda_margin": 0.28,
      "prime_cost_pct": 0.37
     },
     {
@@ -641,22 +641,22 @@
      "cogs": 222398,
      "gross_profit": 486655,
      "labour": 80003,
-     "rent": 30561,
-     "utilities": 38859,
+     "rent": 22226,
+     "utilities": 31143,
      "marketing": 53566,
      "card_fees": 5192,
      "other_opex": 56693,
      "royalty": 0.0,
-     "opex": 264875,
-     "ebitda": 221779,
+     "opex": 248824,
+     "ebitda": 237831,
      "transactions": 125393,
-     "depreciation": 48723,
-     "ebit": 173056,
-     "tax": 25958,
-     "net_income": 147098,
-     "free_cash_flow": 183460,
+     "depreciation": 45523,
+     "ebit": 192308,
+     "tax": 28846,
+     "net_income": 163462,
+     "free_cash_flow": 196623,
      "year": 4,
-     "ebitda_margin": 0.27,
+     "ebitda_margin": 0.29,
      "prime_cost_pct": 0.37
     },
     {
@@ -667,29 +667,29 @@
      "cogs": 233312,
      "gross_profit": 510537,
      "labour": 83203,
-     "rent": 32089,
-     "utilities": 40414,
+     "rent": 23338,
+     "utilities": 32388,
      "marketing": 56195,
      "card_fees": 5447,
      "other_opex": 58961,
      "royalty": 0.0,
-     "opex": 276309,
-     "ebitda": 234228,
+     "opex": 259532,
+     "ebitda": 251005,
      "transactions": 131547,
-     "depreciation": 48723,
-     "ebit": 185504,
-     "tax": 27826,
-     "net_income": 157679,
-     "free_cash_flow": 193434,
+     "depreciation": 45523,
+     "ebit": 205481,
+     "tax": 30822,
+     "net_income": 174659,
+     "free_cash_flow": 207214,
      "year": 5,
-     "ebitda_margin": 0.27,
+     "ebitda_margin": 0.29,
      "prime_cost_pct": 0.37
     }
    ],
-   "payback_months": 31.8,
-   "irr_5y": 42.37,
-   "npv_5y_at_20": 351576,
-   "roi_y2_pct": 49.4
+   "payback_months": 30.1,
+   "irr_5y": 48.49,
+   "npv_5y_at_20": 436544,
+   "roi_y2_pct": 56.8
   },
   "baghdad_fr": {
    "label": "Iraq franchised Cube",
@@ -7033,18 +7033,18 @@
    },
    "capex": {
     "items": {
-     "shell": 96546,
-     "power": 64000,
-     "prod": 106700,
-     "front": 25123,
+     "shell": 79392,
+     "power": 50880,
+     "prod": 105050,
+     "front": 36138,
      "sys": 31900,
-     "spares_service_reserve": 10670,
-     "key_money": 93000,
+     "spares_service_reserve": 10505,
+     "key_money": 74400,
      "pre_opening": 31500,
      "working_capital": 52500,
-     "contingency": 61433
+     "contingency": 56672
     },
-    "total": 573372
+    "total": 528936
    },
    "monthly_y1": [
     {
@@ -7059,14 +7059,14 @@
      "cogs": 8217,
      "gross_profit": 34113,
      "labour": 14672,
-     "rent": 6820,
-     "utilities": 2313,
+     "rent": 4960,
+     "utilities": 1952,
      "marketing": 4705,
      "card_fees": 745,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 36606,
-     "ebitda": -2493
+     "opex": 34385,
+     "ebitda": -272
     },
     {
      "month": 2,
@@ -7080,14 +7080,14 @@
      "cogs": 8715,
      "gross_profit": 36180,
      "labour": 14672,
-     "rent": 6820,
-     "utilities": 2422,
+     "rent": 4960,
+     "utilities": 2031,
      "marketing": 4991,
      "card_fees": 791,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 37045,
-     "ebitda": -864
+     "opex": 34794,
+     "ebitda": 1387
     },
     {
      "month": 3,
@@ -7101,14 +7101,14 @@
      "cogs": 10706,
      "gross_profit": 44450,
      "labour": 14853,
-     "rent": 6820,
-     "utilities": 2877,
+     "rent": 4960,
+     "utilities": 2361,
      "marketing": 6131,
      "card_fees": 971,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 39003,
-     "ebitda": 5448
+     "opex": 36626,
+     "ebitda": 7824
     },
     {
      "month": 4,
@@ -7122,14 +7122,14 @@
      "cogs": 12698,
      "gross_profit": 52720,
      "labour": 15316,
-     "rent": 6820,
-     "utilities": 3363,
+     "rent": 4960,
+     "utilities": 2714,
      "marketing": 7272,
      "card_fees": 1152,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 41274,
-     "ebitda": 11446
+     "opex": 38764,
+     "ebitda": 13956
     },
     {
      "month": 5,
@@ -7143,14 +7143,14 @@
      "cogs": 15686,
      "gross_profit": 65125,
      "labour": 16012,
-     "rent": 6820,
-     "utilities": 4144,
+     "rent": 4960,
+     "utilities": 3279,
      "marketing": 8983,
      "card_fees": 1423,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 44731,
-     "ebitda": 20394
+     "opex": 42007,
+     "ebitda": 23118
     },
     {
      "month": 6,
@@ -7164,14 +7164,14 @@
      "cogs": 17678,
      "gross_profit": 73395,
      "labour": 16475,
-     "rent": 6820,
-     "utilities": 4694,
+     "rent": 4960,
+     "utilities": 3678,
      "marketing": 10124,
      "card_fees": 1604,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 47067,
-     "ebitda": 26328
+     "opex": 44191,
+     "ebitda": 29204
     },
     {
      "month": 7,
@@ -7185,14 +7185,14 @@
      "cogs": 18674,
      "gross_profit": 77530,
      "labour": 16707,
-     "rent": 6820,
-     "utilities": 4978,
+     "rent": 4960,
+     "utilities": 3884,
      "marketing": 10694,
      "card_fees": 1694,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 48243,
-     "ebitda": 29287
+     "opex": 45289,
+     "ebitda": 32241
     },
     {
      "month": 8,
@@ -7206,14 +7206,14 @@
      "cogs": 18425,
      "gross_profit": 76496,
      "labour": 16649,
-     "rent": 6820,
-     "utilities": 4907,
+     "rent": 4960,
+     "utilities": 3832,
      "marketing": 10551,
      "card_fees": 1671,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 47948,
-     "ebitda": 28548
+     "opex": 45014,
+     "ebitda": 31482
     },
     {
      "month": 9,
@@ -7227,14 +7227,14 @@
      "cogs": 16184,
      "gross_profit": 67192,
      "labour": 16128,
-     "rent": 6820,
-     "utilities": 4279,
+     "rent": 4960,
+     "utilities": 3377,
      "marketing": 9268,
      "card_fees": 1468,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 45313,
-     "ebitda": 21879
+     "opex": 42551,
+     "ebitda": 24641
     },
     {
      "month": 10,
@@ -7248,14 +7248,14 @@
      "cogs": 13445,
      "gross_profit": 55821,
      "labour": 15490,
-     "rent": 6820,
-     "utilities": 3553,
+     "rent": 4960,
+     "utilities": 2851,
      "marketing": 7700,
      "card_fees": 1220,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 42133,
-     "ebitda": 13689
+     "opex": 39571,
+     "ebitda": 16251
     },
     {
      "month": 11,
@@ -7269,14 +7269,14 @@
      "cogs": 10208,
      "gross_profit": 42383,
      "labour": 14737,
-     "rent": 6820,
-     "utilities": 2760,
+     "rent": 4960,
+     "utilities": 2276,
      "marketing": 5846,
      "card_fees": 926,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 38440,
-     "ebitda": 3943
+     "opex": 36095,
+     "ebitda": 6287
     },
     {
      "month": 12,
@@ -7290,14 +7290,14 @@
      "cogs": 8217,
      "gross_profit": 34113,
      "labour": 14672,
-     "rent": 6820,
-     "utilities": 2313,
+     "rent": 4960,
+     "utilities": 1952,
      "marketing": 4705,
      "card_fees": 745,
      "other_opex": 7350,
      "royalty": 0.0,
-     "opex": 36606,
-     "ebitda": -2493
+     "opex": 34385,
+     "ebitda": -272
     }
    ],
    "monthly_y2": [
@@ -7313,14 +7313,14 @@
      "cogs": 13253,
      "gross_profit": 55021,
      "labour": 15259,
-     "rent": 7161,
-     "utilities": 2406,
+     "rent": 5208,
+     "utilities": 2030,
      "marketing": 4933,
      "card_fees": 1202,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 38605,
-     "ebitda": 16416
+     "opex": 36276,
+     "ebitda": 18745
     },
     {
      "month": 2,
@@ -7334,14 +7334,14 @@
      "cogs": 14056,
      "gross_profit": 58356,
      "labour": 15259,
-     "rent": 7161,
-     "utilities": 2519,
+     "rent": 5208,
+     "utilities": 2112,
      "marketing": 5232,
      "card_fees": 1275,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 39090,
-     "ebitda": 19266
+     "opex": 36730,
+     "ebitda": 21626
     },
     {
      "month": 3,
@@ -7355,14 +7355,14 @@
      "cogs": 17268,
      "gross_profit": 71694,
      "labour": 15447,
-     "rent": 7161,
-     "utilities": 2992,
+     "rent": 5208,
+     "utilities": 2455,
      "marketing": 6428,
      "card_fees": 1566,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 41239,
-     "ebitda": 30455
+     "opex": 38749,
+     "ebitda": 32945
     },
     {
      "month": 4,
@@ -7376,14 +7376,14 @@
      "cogs": 20481,
      "gross_profit": 85032,
      "labour": 15929,
-     "rent": 7161,
-     "utilities": 3498,
+     "rent": 5208,
+     "utilities": 2822,
      "marketing": 7624,
      "card_fees": 1858,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 43714,
-     "ebitda": 41319
+     "opex": 41085,
+     "ebitda": 43948
     },
     {
      "month": 5,
@@ -7397,14 +7397,14 @@
      "cogs": 25300,
      "gross_profit": 105040,
      "labour": 16652,
-     "rent": 7161,
-     "utilities": 4309,
+     "rent": 5208,
+     "utilities": 3410,
      "marketing": 9418,
      "card_fees": 2295,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 47479,
-     "ebitda": 57561
+     "opex": 44627,
+     "ebitda": 60413
     },
     {
      "month": 6,
@@ -7418,14 +7418,14 @@
      "cogs": 28513,
      "gross_profit": 118379,
      "labour": 17134,
-     "rent": 7161,
-     "utilities": 4882,
+     "rent": 5208,
+     "utilities": 3825,
      "marketing": 10614,
      "card_fees": 2586,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 50021,
-     "ebitda": 68357
+     "opex": 47012,
+     "ebitda": 71367
     },
     {
      "month": 7,
@@ -7439,14 +7439,14 @@
      "cogs": 30119,
      "gross_profit": 125048,
      "labour": 17375,
-     "rent": 7161,
-     "utilities": 5177,
+     "rent": 5208,
+     "utilities": 4039,
      "marketing": 11212,
      "card_fees": 2732,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 51301,
-     "ebitda": 73747
+     "opex": 48210,
+     "ebitda": 76838
     },
     {
      "month": 8,
@@ -7460,14 +7460,14 @@
      "cogs": 29718,
      "gross_profit": 123380,
      "labour": 17315,
-     "rent": 7161,
-     "utilities": 5103,
+     "rent": 5208,
+     "utilities": 3986,
      "marketing": 11062,
      "card_fees": 2696,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 50980,
-     "ebitda": 72400
+     "opex": 47910,
+     "ebitda": 75470
     },
     {
      "month": 9,
@@ -7481,14 +7481,14 @@
      "cogs": 26104,
      "gross_profit": 108375,
      "labour": 16773,
-     "rent": 7161,
-     "utilities": 4450,
+     "rent": 5208,
+     "utilities": 3512,
      "marketing": 9717,
      "card_fees": 2368,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 48112,
-     "ebitda": 60262
+     "opex": 45222,
+     "ebitda": 63153
     },
     {
      "month": 10,
@@ -7502,14 +7502,14 @@
      "cogs": 21686,
      "gross_profit": 90034,
      "labour": 16110,
-     "rent": 7161,
-     "utilities": 3695,
+     "rent": 5208,
+     "utilities": 2965,
      "marketing": 8072,
      "card_fees": 1967,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 44649,
-     "ebitda": 45385
+     "opex": 41966,
+     "ebitda": 48068
     },
     {
      "month": 11,
@@ -7523,14 +7523,14 @@
      "cogs": 16465,
      "gross_profit": 68359,
      "labour": 15327,
-     "rent": 7161,
-     "utilities": 2871,
+     "rent": 5208,
+     "utilities": 2367,
      "marketing": 6129,
      "card_fees": 1494,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 40625,
-     "ebitda": 27735
+     "opex": 38168,
+     "ebitda": 30191
     },
     {
      "month": 12,
@@ -7544,14 +7544,14 @@
      "cogs": 13253,
      "gross_profit": 55021,
      "labour": 15259,
-     "rent": 7161,
-     "utilities": 2406,
+     "rent": 5208,
+     "utilities": 2030,
      "marketing": 4933,
      "card_fees": 1202,
      "other_opex": 7644,
      "royalty": 0.0,
-     "opex": 38605,
-     "ebitda": 16416
+     "opex": 36276,
+     "ebitda": 18745
     }
    ],
    "years": [
@@ -7563,22 +7563,22 @@
      "cogs": 158854,
      "gross_profit": 659519,
      "labour": 186383,
-     "rent": 81840,
-     "utilities": 42604,
+     "rent": 59520,
+     "utilities": 34188,
      "marketing": 90971,
      "card_fees": 14410,
      "other_opex": 88200,
      "royalty": 0.0,
-     "opex": 504407,
-     "ebitda": 155112,
+     "opex": 473671,
+     "ebitda": 185848,
      "transactions": 81425,
-     "depreciation": 74410,
-     "ebit": 80701,
-     "tax": 7263,
-     "net_income": 73438,
-     "free_cash_flow": 134203,
+     "depreciation": 68062,
+     "ebit": 117785,
+     "tax": 10601,
+     "net_income": 107185,
+     "free_cash_flow": 161601,
      "year": 1,
-     "ebitda_margin": 0.17,
+     "ebitda_margin": 0.2,
      "prime_cost_pct": 0.38
     },
     {
@@ -7589,22 +7589,22 @@
      "cogs": 256216,
      "gross_profit": 1063740,
      "labour": 193838,
-     "rent": 85932,
-     "utilities": 44308,
+     "rent": 62496,
+     "utilities": 35555,
      "marketing": 95373,
      "card_fees": 23242,
      "other_opex": 91728,
      "royalty": 0.0,
-     "opex": 534420,
-     "ebitda": 529320,
+     "opex": 502231,
+     "ebitda": 561508,
      "transactions": 131329,
-     "depreciation": 74410,
-     "ebit": 454909,
-     "tax": 40942,
-     "net_income": 413967,
-     "free_cash_flow": 466369,
+     "depreciation": 68062,
+     "ebit": 493446,
+     "tax": 44410,
+     "net_income": 449036,
+     "free_cash_flow": 495089,
      "year": 2,
-     "ebitda_margin": 0.36,
+     "ebitda_margin": 0.38,
      "prime_cost_pct": 0.31
     },
     {
@@ -7615,22 +7615,22 @@
      "cogs": 277098,
      "gross_profit": 1150434,
      "labour": 201592,
-     "rent": 90229,
-     "utilities": 46080,
+     "rent": 65621,
+     "utilities": 36977,
      "marketing": 103145,
      "card_fees": 25136,
      "other_opex": 95397,
      "royalty": 0.0,
-     "opex": 561579,
-     "ebitda": 588856,
+     "opex": 527868,
+     "ebitda": 622566,
      "transactions": 142030,
-     "depreciation": 74410,
-     "ebit": 514445,
-     "tax": 46300,
-     "net_income": 468145,
-     "free_cash_flow": 518753,
+     "depreciation": 68062,
+     "ebit": 554504,
+     "tax": 49905,
+     "net_income": 504599,
+     "free_cash_flow": 548858,
      "year": 3,
-     "ebitda_margin": 0.37,
+     "ebitda_margin": 0.39,
      "prime_cost_pct": 0.3
     },
     {
@@ -7641,22 +7641,22 @@
      "cogs": 293565,
      "gross_profit": 1218803,
      "labour": 209655,
-     "rent": 94740,
-     "utilities": 47923,
+     "rent": 68902,
+     "utilities": 38456,
      "marketing": 109275,
      "card_fees": 26630,
      "other_opex": 99213,
      "royalty": 0.0,
-     "opex": 587436,
-     "ebitda": 631367,
+     "opex": 552131,
+     "ebitda": 666672,
      "transactions": 150473,
-     "depreciation": 74410,
-     "ebit": 556956,
-     "tax": 50126,
-     "net_income": 506830,
-     "free_cash_flow": 556023,
+     "depreciation": 68062,
+     "ebit": 598609,
+     "tax": 53875,
+     "net_income": 544735,
+     "free_cash_flow": 587580,
      "year": 4,
-     "ebitda_margin": 0.38,
+     "ebitda_margin": 0.4,
      "prime_cost_pct": 0.3
     },
     {
@@ -7667,29 +7667,29 @@
      "cogs": 307972,
      "gross_profit": 1278615,
      "labour": 218042,
-     "rent": 99477,
-     "utilities": 49840,
+     "rent": 72347,
+     "utilities": 39995,
      "marketing": 114638,
      "card_fees": 27936,
      "other_opex": 103182,
      "royalty": 0.0,
-     "opex": 613115,
-     "ebitda": 665500,
+     "opex": 576139,
+     "ebitda": 702476,
      "transactions": 157857,
-     "depreciation": 74410,
-     "ebit": 591090,
-     "tax": 53198,
-     "net_income": 537892,
-     "free_cash_flow": 585847,
+     "depreciation": 68062,
+     "ebit": 634414,
+     "tax": 57097,
+     "net_income": 577316,
+     "free_cash_flow": 618924,
      "year": 5,
-     "ebitda_margin": 0.38,
+     "ebitda_margin": 0.4,
      "prime_cost_pct": 0.3
     }
    ],
-   "payback_months": 20.6,
-   "irr_5y": 73.97,
-   "npv_5y_at_20": 1602192,
-   "roi_y2_pct": 92.3
+   "payback_months": 19.2,
+   "irr_5y": 82.9,
+   "npv_5y_at_20": 1787346,
+   "roi_y2_pct": 106.2
   }
  },
  "franchisor": {
@@ -7712,10 +7712,10 @@
     "hq_cost": 285000,
     "support_cost": 0,
     "ad_fund_spend": 0,
-    "own_store_cost": 173237,
-    "total_cost": 458237,
-    "ebitda": -270944,
-    "ebitda_margin": -1.45
+    "own_store_cost": 167331,
+    "total_cost": 452331,
+    "ebitda": -265039,
+    "ebitda_margin": -1.42
    },
    {
     "year": 2,
@@ -7735,10 +7735,10 @@
     "hq_cost": 480000,
     "support_cost": 30400,
     "ad_fund_spend": 4229,
-    "own_store_cost": 535824,
-    "total_cost": 1050453,
-    "ebitda": -263974,
-    "ebitda_margin": -0.34
+    "own_store_cost": 521130,
+    "total_cost": 1035759,
+    "ebitda": -249280,
+    "ebitda_margin": -0.32
    },
    {
     "year": 3,
@@ -7758,10 +7758,10 @@
     "hq_cost": 860000,
     "support_cost": 129580,
     "ad_fund_spend": 42514,
-    "own_store_cost": 812077,
-    "total_cost": 1844171,
-    "ebitda": -120382,
-    "ebitda_margin": -0.07
+    "own_store_cost": 790268,
+    "total_cost": 1822362,
+    "ebitda": -98573,
+    "ebitda_margin": -0.06
    },
    {
     "year": 4,
@@ -7781,10 +7781,10 @@
     "hq_cost": 1360000,
     "support_cost": 282701,
     "ad_fund_spend": 168226,
-    "own_store_cost": 1204634,
-    "total_cost": 3015561,
-    "ebitda": 537536,
-    "ebitda_margin": 0.15
+    "own_store_cost": 1172530,
+    "total_cost": 2983457,
+    "ebitda": 569640,
+    "ebitda_margin": 0.16
    },
    {
     "year": 5,
@@ -7804,66 +7804,66 @@
     "hq_cost": 1880000,
     "support_cost": 420566,
     "ad_fund_spend": 390358,
-    "own_store_cost": 1260620,
-    "total_cost": 3951544,
-    "ebitda": 1551723,
-    "ebitda_margin": 0.28
+    "own_store_cost": 1227066,
+    "total_cost": 3917990,
+    "ebitda": 1585277,
+    "ebitda_margin": 0.29
    }
   ],
-  "exit_ev": 12413784,
-  "irr_pct": 45.37,
-  "moic": 7.53,
+  "exit_ev": 12682216,
+  "irr_pct": 46.47,
+  "moic": 7.75,
   "cash_flows": [
    -1750000,
-   -270944,
-   -263974,
-   -491445,
-   465906,
-   13741749
+   -265039,
+   -249280,
+   -447236,
+   493194,
+   14038701
   ]
  },
  "scenarios": {
   "base": {
    "y2_revenue": 719250,
-   "y2_ebitda": 183426,
-   "y2_margin": 0.26,
-   "payback_months": 31.8,
-   "irr_5y": 42.37
+   "y2_ebitda": 198120,
+   "y2_margin": 0.28,
+   "payback_months": 30.1,
+   "irr_5y": 48.49
   },
   "bear": {
    "y2_revenue": 483471,
-   "y2_ebitda": 34361,
-   "y2_margin": 0.07,
+   "y2_ebitda": 54912,
+   "y2_margin": 0.11,
    "payback_months": null,
-   "irr_5y": -4.88
+   "irr_5y": 6.21
   },
   "bull": {
    "y2_revenue": 941538,
-   "y2_ebitda": 304309,
-   "y2_margin": 0.32,
-   "payback_months": 21.1,
-   "irr_5y": 66.37
+   "y2_ebitda": 319004,
+   "y2_margin": 0.34,
+   "payback_months": 19.8,
+   "irr_5y": 72.62
   },
   "stress_heat_fails": {
    "y2_revenue": 561015,
-   "y2_ebitda": 80510,
-   "y2_margin": 0.14,
-   "payback_months": null,
-   "irr_5y": 14.23
+   "y2_ebitda": 100912,
+   "y2_margin": 0.18,
+   "payback_months": 51.9,
+   "irr_5y": 22.76
   },
   "stress_fx": {
    "y2_revenue": 618555,
-   "y2_ebitda": 103967,
-   "y2_margin": 0.17,
-   "payback_months": 52.6,
-   "irr_5y": 21.72
+   "y2_ebitda": 118662,
+   "y2_margin": 0.19,
+   "payback_months": 43.1,
+   "irr_5y": 28.11
   },
   "stress_sales_tax": {
    "y2_revenue": 653798,
-   "y2_ebitda": 131778,
-   "y2_margin": 0.2,
-   "payback_months": 42.5,
-   "irr_5y": 29.6
+   "y2_ebitda": 146472,
+   "y2_margin": 0.22,
+   "payback_months": 39.3,
+   "irr_5y": 35.81
   }
  },
  "assumptions": {
@@ -7997,9 +7997,9 @@
   "formats": {
    "cube_flagship": {
     "label": "المُكَعَّب — the Cube (refrigerated street booth, Baghdad prototype)",
-    "area_m2": 25,
-    "terrace_m2": 38,
-    "seats": 26,
+    "area_m2": 18,
+    "terrace_m2": 26,
+    "seats": 18,
     "prod_stations": 3,
     "peak_equivalent_hours": 8.0,
     "_peh_note": "E — a 15-hour summer trading day does not run at peak throughput. 8.5 peak-equivalent hours is the demand ceiling used to cap revenue.",
@@ -8017,12 +8017,12 @@
      "radhadh": 0.15
     },
     "_mix_note": "Share of REVENUE, not units. Al-Qalab is capped at 12%: it is the scarcest input and, with Lafa'if, the slowest to make. Lafa'if is cut to 14% because it earns $1.15 of gross profit per minute of production time against the Jana box's $9.97.",
-    "rent_usd_month": 2200,
-    "_rent_note": "H/E — a 25 m2 enclosed booth on a ~60 m2 corner footprint including the perimeter bar. Sourced Baghdad comparables: 350 m2 on 14 Ramadan St, Mansour at $10.00/m2/month; 200 m2 in Zayouna near Dream Mall at $27.50/m2/month. Small prime-pitch footprints carry the higher rate.",
-    "key_money_usd": 30000,
+    "rent_usd_month": 1600,
+    "_rent_note": "H/E — خُفِّض من ٢,٢٠٠$ مع تصغير البصمة: ١٨ م² مغلقة على قدمٍ إجمالية نحو ٤٠ م² شاملةً البار المحيط، بدل ٦٠ م². المقارنات البغدادية: ٣٥٠ م² في ١٤ رمضان بالمنصور بـ١٠$/م²/شهر، و٢٠٠ م² في زيّونة بـ٢٧.٥$/م². البصماتُ الصغيرة في المواقع المميّزة تحمل السعرَ الأعلى للمتر.",
+    "key_money_usd": 24000,
     "_key_note": "H/E - Key money observed at $25,000 on a Karrada shop renting at $1,000/month, i.e. 25x monthly rent; SHABIM budgets 15x. LEGAL WARNING: Property Lease Law No. 87 of 1979 expressly prohibits key money (خلو) taken by landlord, tenant or broker. It is nonetheless universal in Baghdad commercial letting. Budget it, but structure it - see the risk register.",
     "utilities_base_usd_month": 800,
-    "utilities_cooling_usd_month": 2000,
+    "utilities_cooling_usd_month": 1450,
     "_util_note": "H/E — THIS IS NOT A CAFE'S ENERGY BILL, because this is not a cafe. The booth interior is held as a cold room, so the envelope is fighting a 30-35 K delta in 45-50 C ambient, on top of a -80 C ULT freezer, a directional-freeze ice plant and two -30 C pans. Sourced: Iraq commercial tariff 60 IQD/kWh; the national grid delivers 8-12 h/day (2025 peak demand 55 GW against 27 GW supply); Baghdad generator subscription 12,000 IQD per ampere/month; diesel $0.190/litre. A dedicated 60 kVA set is not optional - a shared neighbourhood generator's switchovers would cost a freezer load. Refrigeration COP also collapses at Baghdad ambient: 1.00 at 45 C against 1.19 at 30 C on the roll pans.",
     "other_opex_usd_month": 4200,
     "staff_core": {
@@ -8037,10 +8037,10 @@
     "pre_opening_usd": 18000,
     "working_capital_usd": 30000,
     "capex": {
-     "shell": 61904,
-     "power": 40000,
-     "prod": 97000,
-     "front": 15702,
+     "shell": 50870,
+     "power": 31800,
+     "prod": 95500,
+     "front": 22586,
      "sys": 29000
     },
     "_capex_note": "مُشتقٌّ من جدول المعدّات أدناه، سطراً سطراً. أُعيد بناؤه من الأساس بعد أن تبيّن أنّ النسخةَ الأولى (٣٨٠,٠٠٠$ قبل الطوارئ) كانت تحمل ثلاثةَ أخطاء: عُدّةُ الامتياز مُحمَّلةٌ على الفرع لا على الشركة المانحة، ومصنعُ ثلجٍ بثلاث وحداتٍ حيث تكفي واحدة، وتقديرٌ إجماليٌّ للغلاف بدل حسابِ مساحة.",
@@ -8058,28 +8058,38 @@
       "key": "frame",
       "ar": "الهيكلُ الفولاذي والأساسُ المعزول ومنظومةُ تصريف الذوبان",
       "qty": 1,
-      "unit_usd": 14000,
-      "total_usd": 14000,
+      "unit_usd": 10500,
+      "total_usd": 10500,
       "cat": "shell",
       "idx": "fitout",
-      "note": "E — حديدٌ مُصنَّع ٢.٥ طن بـ١,٢٠٠$/طن، أرضيّةٌ معزولة ٢٥م² بـ١٢٠$/م²، أساساتٌ ومصطبة، ونصب."
+      "note": "E — هيكلٌ أخفّ لبصمةٍ أصغر: نحو ١.٨ طن حديد مُصنَّع، وأرضيّةٌ معزولة ١٨ م²، وأساساتٌ ومصطبة."
      },
      {
       "key": "skin_out",
       "ar": "القشرةُ الخارجية — أكريليك مصبوب ٢٥ ملم، منقوشٌ ومُضاءٌ من الحافة",
-      "qty": 98,
+      "qty": 75,
       "unit_usd": 153,
-      "total_usd": 14994,
+      "total_usd": 11475,
       "cat": "shell",
       "idx": "fitout",
       "note": "H — مطحنةٌ صينية ٩٥–٢١٤$/م². الأكريليك المصمت ١٠٠ ملم غيرُ وارد: ٤٧٦–١,٠٧١$/م² صيني و٢,٩٧٥$ للعلامات."
      },
      {
+      "key": "inclusions",
+      "ar": "ألواحُ الجدار ذاتُ المجسّمات المصبوبة داخلها",
+      "qty": 1,
+      "unit_usd": 3800,
+      "total_usd": 3800,
+      "cat": "shell",
+      "idx": "fitout",
+      "note": "E — علاوةُ قوالبِ صبٍّ على ستّةِ ألواحٍ مختارة: فاكهةٌ وحبوبُ بُنٍّ وأدواتٌ حقيقية مغمورةٌ في الأكريليك أثناء الصبّ، فتبدو مجمّدةً داخل الكتلة وتُرى بوضوح. لا تُطبَع ولا تُلصَق — تُصبّ مرّةً واحدة، فلا تبلى ولا تُقشَّر ولا تُقلَّد بلاصق."
+     },
+     {
       "key": "skin_in",
       "ar": "القشرةُ الداخلية — بولي كربونات متعدّد الجدران",
-      "qty": 98,
+      "qty": 75,
       "unit_usd": 45,
-      "total_usd": 4410,
+      "total_usd": 3375,
       "cat": "shell",
       "idx": "fitout",
       "note": "H — ١٨–٩٠$/م². المادّةُ الشفّافة الرخيصة الوحيدة ذات عزلٍ حقيقي: U من ١.٥ إلى ٢.٤."
@@ -8088,38 +8098,38 @@
       "key": "skin_frame",
       "ar": "إطارُ الألمنيوم والتثبيتاتُ وعزلُ التجويف المُهوّى",
       "qty": 1,
-      "unit_usd": 9000,
-      "total_usd": 9000,
+      "unit_usd": 6800,
+      "total_usd": 6800,
       "cat": "shell",
       "idx": "fitout",
-      "note": "E — التجويفُ المُهوّى يُنزل معامل الكسب الشمسي من ٠.٣٥ إلى ٠.٢٧ ويطرد ٣ ك.و حرارية."
+      "note": "E — ٧٥ م² من الإطار بدل ٩٨. التجويفُ المُهوّى كما هو، والكسبُ الشمسي أقلّ بالنسبة نفسها."
      },
      {
       "key": "freight",
       "ar": "الشحنُ البحري والجماركُ والتخليص",
       "qty": 1,
-      "unit_usd": 5000,
-      "total_usd": 5000,
+      "unit_usd": 4000,
+      "total_usd": 4000,
       "cat": "shell",
       "idx": "equip",
-      "note": "E — حاويةُ أربعين قدماً من نينغبو إلى أمّ قصر ثم براً إلى بغداد."
+      "note": "E — حجمٌ أقلّ في الحاوية بعد التصغير."
      },
      {
       "key": "erect",
       "ar": "التركيبُ في الموقع",
       "qty": 1,
-      "unit_usd": 6000,
-      "total_usd": 6000,
+      "unit_usd": 4800,
+      "total_usd": 4800,
       "cat": "shell",
       "idx": "fitout",
-      "note": "E — فريقٌ من ستّة، عشرةُ أيام، مع رافعة."
+      "note": "E — فريقٌ من خمسة، ثمانيةُ أيام، مع رافعة."
      },
      {
       "key": "fitout_in",
       "ar": "التجهيزُ الداخلي — ألواحُ غرفةٍ باردة، فولاذ، أرضيّةٌ صناعية، تصريف",
-      "qty": 25,
+      "qty": 18,
       "unit_usd": 340,
-      "total_usd": 8500,
+      "total_usd": 6120,
       "cat": "shell",
       "idx": "fitout",
       "note": "E — خُفِّض من ٥٢٠$/م². لا يراه زبونٌ أبداً، فلا يحمل أيَّ كلفةِ تشطيبٍ أو هويّة: ألواحُ غرفةٍ باردة قياسية، وجدرانُ فولاذٍ مقاوم، وأرضيّةٌ إيبوكسي بمصارف. المواصفةُ مطبخٌ يعمل، لا غرفةٌ تُصوَّر."
@@ -8128,28 +8138,28 @@
       "key": "genset",
       "ar": "مولّدةُ ديزل صامتة ٤٥ ك.ف.أ مع لوحةِ نقلٍ آلي",
       "qty": 1,
-      "unit_usd": 11000,
-      "total_usd": 11000,
+      "unit_usd": 9000,
+      "total_usd": 9000,
       "cat": "power",
       "idx": "fitout",
-      "note": "H — الشبكةُ تعطي ٨–١٢ ساعة. مولّدةٌ مشتركة مع الحيّ تُتلف حمولةَ مُجمِّدٍ عند كلّ تحويل."
+      "note": "H — ٣٥ ك.ف.أ بدل ٤٥ بعد أن نزل حملُ التبريد. الشبكةُ تعطي ٨–١٢ ساعة."
      },
      {
       "key": "chiller",
       "ar": "وحدةُ تبريد الغرفة الباردة ١٢ ك.و — مُكثِّفٌ استوائيّ ومُبخِّران",
       "qty": 1,
-      "unit_usd": 13000,
-      "total_usd": 13000,
+      "unit_usd": 9500,
+      "total_usd": 9500,
       "cat": "power",
       "idx": "fitout",
-      "note": "H/E — مُصنَّفةٌ للعمل عند ٥٠° محيط. معاملُ الأداء ينهار من ١.١٩ عند ٣٠° إلى ١.٠٠ عند ٤٥°."
+      "note": "H/E — ٨ ك.و بدل ١٢: الحملُ يتبع مساحةَ الغلاف وحجمَ الهواء، وكلاهما نزل نحو الربع."
      },
      {
       "key": "mist_vent",
       "ar": "منظومةُ الرذاذ وتهويةُ الواجهة",
       "qty": 1,
-      "unit_usd": 4500,
-      "total_usd": 4500,
+      "unit_usd": 3600,
+      "total_usd": 3600,
       "cat": "power",
       "idx": "fitout",
       "note": "E — الرذاذُ المنعش هو أيضاً تبريدٌ تبخيري للواجهة."
@@ -8158,8 +8168,8 @@
       "key": "elec",
       "ar": "اللوحاتُ الكهربائية والتمديدات",
       "qty": 1,
-      "unit_usd": 7000,
-      "total_usd": 7000,
+      "unit_usd": 5800,
+      "total_usd": 5800,
       "cat": "power",
       "idx": "fitout",
       "note": "E"
@@ -8168,11 +8178,11 @@
       "key": "plumb",
       "ar": "السباكةُ والتصريفُ ومعالجةُ المياه بالتناضح العكسي",
       "qty": 1,
-      "unit_usd": 4500,
-      "total_usd": 4500,
+      "unit_usd": 3900,
+      "total_usd": 3900,
       "cat": "power",
       "idx": "fitout",
-      "note": "E — التناضحُ العكسي شرطٌ لصفاء قوالب الثلج، لا رفاهية."
+      "note": "E — التناضحُ العكسي شرطٌ لصفاء القوالب، لا رفاهية."
      },
      {
       "key": "espresso",
@@ -8268,11 +8278,11 @@
       "key": "fridges",
       "ar": "ثلّاجاتُ التحضير والتخزين",
       "qty": 1,
-      "unit_usd": 8000,
-      "total_usd": 8000,
+      "unit_usd": 6500,
+      "total_usd": 6500,
       "cat": "prod",
       "idx": "equip",
-      "note": "E"
+      "note": "E — ثلّاجةُ تحضيرٍ واحدة وثلّاجةُ تخزين، بعد أن ضاق الممرّ."
      },
      {
       "key": "boba_st",
@@ -8297,22 +8307,42 @@
      {
       "key": "bar",
       "ar": "بارُ الثلج المحيط ومقاعدُه — من المادّة نفسها",
-      "qty": 26,
+      "qty": 18,
       "unit_usd": 327,
-      "total_usd": 8502,
+      "total_usd": 5886,
       "cat": "front",
       "idx": "fitout",
-      "note": "E — منضدةٌ من الأكريليك المصبوب ١٤ متراً طولياً بـ٢٦٠$/م.ط، و٢٦ مقعداً بـ١٨٠$. البارُ يلفّ ثلاثَ جهات، وواجهةُ الخدمة تبقى خالية."
+      "note": "E — البارُ يلفّ ثلاثَ جهات: ٥.٥ + ٣.٣ + ٣.٣ = ١٢.١ متراً طولياً، أي ثمانيةَ عشرَ مقعداً بدل ستّةٍ وعشرين. وواجهةُ الخدمة تبقى خالية."
+     },
+     {
+      "key": "canopy",
+      "ar": "مظلّةٌ فوق البار — قماشٌ مشدودٌ على ثلاث جهات",
+      "qty": 1,
+      "unit_usd": 6500,
+      "total_usd": 6500,
+      "cat": "front",
+      "idx": "fitout",
+      "note": "E — نحو ٢٦ متراً مربّعاً من القماش المعماريّ المشدود، كابولياً من جسم الكتلة فلا أعمدةَ تعترض المارّة. بلا ظلٍّ لا يجلس أحدٌ في تموز مهما بلغت برودةُ الرذاذ: الشمسُ المباشرة عند ٤٥ درجة تُلغي أثرَ التبريد التبخيري كلَّه. وهي أيضاً حاملُ فوّهات الرذاذ ومجرى تصريف الندى."
      },
      {
       "key": "light",
       "ar": "الإضاءةُ والحفرُ المُضاءُ — الواجهةُ الخارجية فقط",
       "qty": 1,
-      "unit_usd": 7200,
-      "total_usd": 7200,
+      "unit_usd": 6000,
+      "total_usd": 6000,
       "cat": "front",
       "idx": "fitout",
-      "note": "E — خُفِّض من ١١,٠٠٠$. الحفرُ المُضاءُ من الحافة والاسمُ المنحوت كلُّها على الغلاف الخارجي، حيث يراها الناس. أمّا الداخل فإضاءةُ عملٍ بيضاء عالية الكفاءة على شريطٍ صناعي — لا حفرَ ولا قائمةَ محفورة ولا شاشاتٍ مغروسةٍ في الجدار."
+      "note": "E — الحفرُ المُضاءُ من الحافة والاسمُ المنحوت على الغلاف الخارجي وحده. الداخلُ إضاءةُ عملٍ صناعية."
+     },
+     {
+      "key": "window",
+      "ar": "زاويةُ العرض — لوحٌ أكريليك شفّافٌ تماماً على صحن اللفائف",
+      "qty": 1,
+      "unit_usd": 4200,
+      "total_usd": 4200,
+      "cat": "front",
+      "idx": "fitout",
+      "note": "E — زاويةٌ واحدة من الغلاف تُستبدَل بلوحٍ شفّافٍ بصريّاً، خلفه صحنُ اللفائف مباشرةً وإضاءةٌ مركَّزة عليه. هي الاستثناءُ الوحيد في كتلةٍ مصمتة، وهي مقصودة: المشهدُ الذي يُصوَّر هو الكشطُ على الصحن البارد، لا المطبخُ كلُّه. يرى الناسُ الصنعةَ ولا يرون الفوضى."
      },
      {
       "key": "kiosks",
@@ -8335,7 +8365,8 @@
       "note": "H/E — خُفِّضت من ٨٢,٠٠٠$. عرضُ استوديو بيروت البالغ ٨١,٧٩٢$ يشمل عُدّةَ الامتياز الكاملة، وهذه كلفةُ الشركة المانحة لا كلفةُ الفرع: نُقِل منها ٤٥,٠٠٠$ إلى ما قبل تشغيل الشركة المانحة. الباقي هويّةٌ وعبوةٌ وتصميمُ بووثٍ لوحدةٍ واحدة."
      }
     ],
-    "_interior_note": "قرارٌ صريح: داخلُ المكعّب لا يراه زبون. الفتحاتُ الثلاث كلُّها صناديقُ تمريرٍ بظهرٍ مُعتِم، والجدرانُ مصمتة. فلا يُنفَق دولارٌ واحد على هويّةٍ داخلية — لا قائمةَ محفورةً في الجدار، ولا شاشاتٍ مغروسةً في مادّة الثلج، ولا تشطيبٍ مُصمَّم. الداخلُ مطبخٌ باردٌ يعمل. والقائمةُ انتقلت إلى مكانها الصحيح: شاشةُ الطلب على الواجهة. الوفرُ ٘٨,٣٠٠$ من الجدول، والصورُ الداخلية للتسويق تُنتَج بالذكاء الاصطناعي لا بتصويرٍ في الموقع."
+    "_interior_note": "قرارٌ صريح: داخلُ المكعّب لا يراه زبون. الفتحاتُ الثلاث كلُّها صناديقُ تمريرٍ بظهرٍ مُعتِم، والجدرانُ مصمتة. فلا يُنفَق دولارٌ واحد على هويّةٍ داخلية — لا قائمةَ محفورةً في الجدار، ولا شاشاتٍ مغروسةً في مادّة الثلج، ولا تشطيبٍ مُصمَّم. الداخلُ مطبخٌ باردٌ يعمل. والقائمةُ انتقلت إلى مكانها الصحيح: شاشةُ الطلب على الواجهة. الوفرُ ٘٨,٣٠٠$ من الجدول، والصورُ الداخلية للتسويق تُنتَج بالذكاء الاصطناعي لا بتصويرٍ في الموقع.",
+    "_size_note": "١٨ متراً مربّعاً — ٥.٥ × ٣.٣ وارتفاع ٣.٢. صُغِّر من ٢٥ متراً بعد أن تبيّن أنّ المساحة الزائدة لم تكن تُنتج شيئاً: لا جلوسَ في الداخل، ولا صالةَ انتظار، ولا كاشير. المطلوبُ خطُّ إنتاجٍ بطول ٥.٥ أمتار وممرُّ خدمةٍ خلفه، وهذا كلُّ شيء. الغلافُ نزل من ٩٨ متراً مربّعاً إلى ٧٥ — أي ٢٣٪ أقلّ سطحاً يُبرَّد ويُدفَع ثمنُه مرّتين: مرّةً في الشراء ومرّةً كلَّ شهرٍ في الكهرباء."
    },
    "cube_rollout": {
     "label": "المُكَعَّب — the Cube (replication unit, post-prototype)",

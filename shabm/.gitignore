@@ -2,3 +2,4 @@ __pycache__/
 deck/shots/
 deck/preview.html
 deck/ref_*.png
+deck/raw/
