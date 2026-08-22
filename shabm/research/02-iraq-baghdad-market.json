@@ -1,0 +1,754 @@
+{
+ "dimension": "Iraq + Baghdad market sizing and demand (for SHABM / شبم ice-themed cold-drinks & frozen-dessert concept)",
+ "report_markdown": "> **METHOD NOTE — read before quoting anything below.** WebFetch was blocked by this session's egress proxy for every domain attempted (worldbank.org, imf.org, datareportal.com, citypopulation.de, wikipedia.org, numbeo.com, hikersbay.com and ~15 others). All figures below were obtained via WebSearch result summaries of those same sources. That means: **the attribution is real, but I could not read the underlying page myself in most cases.** Before this goes in front of an investor, the ~10 load-bearing numbers (marked ★) should be opened and screenshotted from the primary source. Everything I derived myself is labelled **ESTIMATE** with the arithmetic shown.\n\n---\n\n# 1. POPULATION AND DEMOGRAPHICS\n\n## 1.1 The 2024 national census — the anchor number\n\nIraq ran its first full census in 27 years on **20–22 November 2024** (the 10th in Iraqi history, and the first since 2003). Final results were announced by the Minister of Planning on **24 February 2025**.\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Total population (incl. foreign residents) | **46,118,793** | Iraqi Ministry of Planning, final census results, Feb 2025 |\n| Iraqi nationals only (excl. foreigners) | 45,778,662 | Same |\n| Male / Female | 23.161M (50.2%) / 22.957M (49.8%) | Same |\n| Urban / Rural | **70.17% / 29.83%** | Same |\n| Households | 7,898,588 | Same |\n| Average household size | 5.7 persons (census); 5.9 (IHSES 2023/24) | MoP census 2024; IHSES 2023/24 |\n| Annual population growth rate | **2.3%** | MoP census 2024 |\n\n**Why this matters for SHABM:** 2.3% annual growth on a 46M base = **~1.06 million new Iraqis per year**, i.e. a new city the size of Basra every 2 years. The addressable market is not static.\n\n## 1.2 Baghdad\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Baghdad Governorate population | **9,780,429** | 2024 census (MoP), announced Feb 2025 |\n| Baghdad as share of Iraq | **21.2%** | 2024 census |\n| Baghdad urban / rural split | **85.2% urban / 14.8% rural** | 2024 census |\n| Baghdad urban population (derived) | **≈8.33 million** | ESTIMATE: 9,780,429 × 0.852 |\n| Baghdad metro (UN/macrotrends estimate) | 8,001,223 (2026) | Macrotrends / UN WUP, 2026 |\n| Baghdad city proper (various estimates) | ~7.2M | WorldPopulationReview, 2026 |\n\n**Data hygiene warning:** English Wikipedia's Baghdad Governorate page currently shows the urban/rural split **inverted** (43.8% urban / 56.2% rural). The Arabic-language census reporting (alssaa.com, hathalyoum, MoP) gives 85.2% urban, which is the only figure consistent with Baghdad being a capital city. **Do not cite the Wikipedia number.**\n\n## 1.3 Age structure — the core of the SHABM thesis\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Median age | **20.85 years** (2025); 20.6 (2024) | UN World Population Prospects 2024 rev. |\n| Aged 0–14 | **35.90%** | 2024 census age structure |\n| Aged 15–64 | 60.44% | 2024 census |\n| Aged 65+ | 3.66% | 2024 census |\n| Aged 12–29 | **~36%** | UN Iraq, World Population Day 2026 |\n| Aged 15–29 | ~28% | UN Iraq, 2026 |\n| Under 25 | **55.7%** | UN WPP-derived, 2025 |\n| ★ **Under 30 (derived)** | **≈63–64%** | **ESTIMATE**: 35.9% (0–14) + ~28% (15–29) = 63.9%. Cross-checks against 55.7% under-25 + ~8pp for the 25–29 cohort. |\n| **Baghdad under-30 population** | **≈5.9–6.3 million** | **ESTIMATE**: 9.78M × 0.60–0.64. Range low end applies a slight downward adjustment because urban populations skew marginally older than the national average. |\n\n**The single most quotable line for the deck:** *Baghdad alone contains roughly 6 million people under 30 — more than the entire population of Denmark — in a city where the average summer high sits above 40°C for four straight months.*\n\n## 1.4 Income, poverty and household spending\n\nSource: **Iraq Household Socio-Economic Survey (IHSES) 2023/24** — the third IHSES, fielded July 2023–July 2024 by the Central Statistical Organisation + Kurdistan Region Statistics Office with World Bank support, results released 26 February 2025.\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Average household monthly expenditure | **1,467,000 IQD** (≈$1,112 official / ≈$958 parallel) | IHSES 2023/24, released Feb 2025 |\n| Average per-capita monthly expenditure | **248,600 IQD** (≈$188 official / ≈$162 parallel) | IHSES 2023/24 |\n| Average per-capita monthly income | 201,300 IQD (≈$153 official) | IHSES 2023/24 |\n| National poverty rate | **17.5%** (down from 20.05% in 2018) | IHSES 2023/24 |\n| **Baghdad poverty rate** | **13.5%** | IHSES 2023/24 (vs 8.6% KRI, 21.5% rest of federal Iraq) |\n| National poverty line | 136,601 IQD/month | IHSES 2023/24 |\n| Unemployment (15+) | 13.5% | IHSES 2023/24 |\n| Youth unemployment (15–24) | **32.0%** (2025); 32.09% (2024) | World Bank / modelled ILO estimate, 2025 |\n| Food share of household spending | 32% (food); 24% fuel/housing/lighting; 12.1% transport | IHSES **2018** — older vintage, flag it |\n\n**Note the asymmetry that favours Baghdad:** Baghdad's poverty rate (13.5%) is 4 percentage points below the national rate and 8 points below the rest of federal Iraq. Baghdad is where discretionary F&B spending actually exists.\n\n---\n\n# 2. MACROECONOMY AND CURRENCY\n\n## 2.1 GDP\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Nominal GDP | **≈US$258 billion** (2025) | IMF 2025 Article IV Consultation, Country Report No. 25/183–184, July 2025 |\n| ★ GDP per capita (nominal) | **US$5,803** (2025) | IMF World Economic Outlook, April 2026 |\n| GDP per capita (PPP) | ~US$15,000–25,000 | Various; vs GCC average US$50,000–120,000 |\n| Real GDP growth (projected) | **3.1%** (2025) | IMF, July 2025 |\n| ★ Non-oil GDP growth | **13.8% (2023) → 2.5% (2024)** | IMF 2025 Article IV |\n| Non-oil medium-term growth outlook | **3–4%**, \"mostly driven by demographics\" | IMF 2025 Article IV |\n| Oil dependence | ~90% of exports, 85% of govt revenue, ~40% of GDP | World Bank |\n| Sector split (2023 est.) | Agriculture 2.8%, Industry 55.6%, Services 42.3% | CIA World Factbook / trade portal, 2023 |\n| **Wholesale+retail trade + restaurants + hotels** | **~7% of GDP** | Iraq sectoral GDP, 2023 est. |\n\n**Caution:** one widely-syndicated Arabic outlet (channel8.com) reports Iraq's 2025 GDP at **$515 billion**. That is almost certainly a **PPP** figure being mislabelled as nominal, and it is roughly 2× the IMF nominal number. Do not use it.\n\n## 2.2 Household consumption — the real TAM base\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Household final consumption expenditure | **US$115.265 billion** (2024), +7.75% vs 2023 ($106.974bn) | World Bank / Statbase, 2024 |\n| Household consumption as % of GDP | **41.22%** (2024), up from 39.78% (2023) | TheGlobalEconomy / World Bank, 2024 |\n| Total Iraq consumer spending forecast | US$140.00bn by 2029 | Statista Consumption Indicators, Iraq |\n\nNote the world average household-consumption share is 66.87% — Iraq's 41% reflects the enormous state/oil share of GDP, **not** weak consumption in absolute terms. $115bn of household consumption across 46M people is a large, under-served retail market.\n\n## 2.3 Inflation\n\n| Metric | Value | Source / year |\n|---|---|---|\n| Headline CPI (Dec 2025) | ~1.2% y/y — reported amid a run of near-zero/deflationary months | TradingEconomics, Dec 2025 |\n| Core CPI (Dec 2025) | **−0.40% y/y** | TradingEconomics, Dec 2025 |\n| Food CPI (Dec 2025) | **−3.30% y/y** | TradingEconomics, Dec 2025 |\n| IMF projection 2026 | ~3% | IMF, 2026 |\n| CPI index level | 106.80 points (Dec 2025) | TradingEconomics |\n\n**Interpretation for the deck:** food-input deflation in 2025 is a tailwind for a food-service gross margin. But the IMF's 3% 2026 forecast means you should model input inflation at 3–5%, not 0%.\n\n## 2.4 IQD / USD — official vs parallel (critical for the financial model)\n\n| Rate | Value | Source / date |\n|---|---|---|\n| ★ Official CBI rate | **1,310 IQD/USD** (posted as 131,000 per $100) | Central Bank of Iraq, Aug 2026 |\n| IMF-described peg | ~1,320 IQD/USD | IMF 2025 Article IV |\n| 2026 federal budget rate | **1,300 IQD/USD** | CBI notification to Ministry of Finance for FY2026 budget |\n| ★ **Parallel market rate (Baghdad, Basra, Erbil)** | **1,527.5–1,532.5 IQD/USD** (152,750–153,250 per $100) | Iraqi News, **16 August 2026** |\n| ★ Parallel premium | **16–17%** | Iraqi News, Aug 2026 |\n\n**This is the single most important operational finance fact in this report.** Revenue is collected in IQD at street prices. Imported equipment (ultra-low-temperature freezers, rolled-ice-cream pans, ice-block machines, silicone fruit moulds), imported dairy, and imported coffee are paid for in USD — and unless you can access the CBI official window through a compliant bank, you buy dollars at the parallel rate. **Every USD cost line in the model should be stressed at 1,530, not 1,310.** A model built at 1,310 overstates USD-denominated gross margin by roughly 17%.\n\n---\n\n# 3. IRAQ / BAGHDAD CAFÉ AND RESTAURANT MARKET\n\n## 3.1 Size of the branded / organised segment — the real competitive set\n\nThe gold-standard source here is **World Coffee Portal's Project Café Middle East 2025**:\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ **Iraq branded coffee shop outlets** | **85** | Project Café Middle East 2025, World Coffee Portal |\n| Iraq's rank in MENA | **13th largest branded market** | Project Café Middle East 2025 |\n| Iraq forecast | **>130 outlets by end-2029** (~10% growth) | Project Café Middle East 2025 |\n| ★ MENA branded coffee shop market | **11,163 outlets**, **+11.2% y/y** | Project Café Middle East 2025 |\n| MENA forecast | 12,160 outlets by Nov 2025; **16,460 by Nov 2029 (8.1% CAGR)** | Project Café Middle East 2025 |\n| Saudi Arabia | **5,130 outlets = 46% of all MENA stores** | Project Café Middle East 2025 |\n| Fastest-growing MENA markets by outlets | Morocco (+19%), Saudi (+16.5%), Egypt (+13.3%) | Project Café Middle East 2025 |\n\n**This is the white-space slide.** Iraq has 46 million people and **85 branded coffee outlets** — one per ~542,000 people. Saudi Arabia has ~34 million people and 5,130 outlets — one per ~6,600 people. Iraq is under-penetrated versus Saudi by a factor of **~80×**. Even if you assume Iraq only ever reaches one-tenth of Saudi's density, that implies ~7,000 branded outlets — an 80× expansion from today.\n\n## 3.2 Total restaurant count (the unorganised market)\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Registered restaurants in Iraq | **23,718** (reported as \">24,000\") | Iraqi Ministry of Planning, cited by Infoplus Network / Mustaqila, 2025–26 |\n| Excludes | sidewalk, small, mobile, temporary, unregistered and \"hidden\" restaurants | Same |\n| Restaurant/food-service share of Iraqi commercial establishments | **~65%** (as reported) | Ministry of Planning, cited by Infoplus, 2025–26 |\n| Sector growth rate | **3–6% per year**, driven by youth demand, delivery apps, new local investment | Mustaqila (وكالة الصحافة المستقلة), 2026 |\n| Registered restaurants in Baghdad | \">500\" — **this figure is internally inconsistent** | Mustaqila, 2026 |\n\n**Data-quality flag — important.** The Mustaqila article is literally headlined *\"سوق المطاعم في بغداد.. أرقام متضاربة\"* (\"Baghdad's restaurant market: conflicting numbers\"). It states 24,000 nationally but only \">500 in Baghdad alone\" while simultaneously saying most restaurants are concentrated in Baghdad. Those cannot both be true. Treat \">500\" as either a sub-category (e.g. licensed large/luxury restaurants) or an error.\n\n> **ESTIMATE — Baghdad registered restaurant count:** Baghdad holds 21.2% of Iraq's population, is 85% urban, and has the country's lowest poverty rate outside Kurdistan, so its share of restaurants should exceed its population share. Applying a 25–35% share to 23,718 gives **≈5,900–8,300 registered restaurants in Baghdad Governorate**, plus a large unregistered tail. Confidence: low-medium — derived, not sourced.\n\n> **ESTIMATE — modern/specialty cafés in Baghdad:** of Iraq's 85 branded outlets, Baghdad likely holds 55–70% given it is the largest market and home to the leader (Ridha Alwan) and the fastest-growing chain (The Grinders, 17 branches). That implies **≈47–60 genuinely branded/specialty café outlets in a city of 9.8 million** — roughly one per 165,000–210,000 residents. Confidence: medium.\n\n## 3.3 Named operators — the real competitive map\n\n**Domestic Iraqi:**\n- ★ **Ridha Alwan Coffee (بن رضا علوان)** — founded **1960**, East Karrada. Explicitly named by World Coffee Portal as **the domestic market leader**. Evolved from a traditional cultural coffeehouse (poetry evenings, film festivals, intellectual gatherings) into a full retail coffee brand and roastery over the last decade. Also the institutional force behind the Baghdad Coffee & Tea Festival via the **Ridha Alwan Cultural Foundation**.\n- ★ **The Grinders (@thegrinders.iq)** — launched **2020**; **13 branches** as of the 2024 Iraqi News round-up; **17th branch opened in Al-Ameriyah, Baghdad, March 2025**. Locations confirmed in Zayouna (Rubaie St), Jadriya, Yarmouk, Al-Ameriyah, \"4 Streets\", plus Diyala. Serves plant-based milks, juices and lemonade alongside espresso — i.e. **already competing on cold/non-coffee**.\n- **Agora** — opened early 2024, rapidly became a youth favourite in Baghdad on \"cozy/calm vibes.\"\n- **Al-Reef Café** — Karrada, named one of Baghdad's best.\n- **IN OFF Cafe** — Arasat Al-Hindiya; 345+ menu items across two floors, fine dining + specialty coffee + premium shisha. This is the format your Arasat competitor set looks like.\n- **Al-Faisaliya Restaurant & Cafe** — modern upscale, explicitly \"distinctive youthful décor.\"\n- **Coffeella Cafe** — listed on Pulled.coffee as a Baghdad specialty shop.\n- Heritage coffeehouses (context, not competition): **Shabandar Café** (1917, Al-Mutanabbi St), **Al-Zahawi Café** (1917, Al-Rashid St), **Al-Beiruti Café** (Tigris riverfront), **Dar al-Atraqchi**, **Brazilian Café**.\n\n**Foreign brands already in Iraq:**\n- **Espressolab** (Türkiye) — branch in central Baghdad.\n- **Mikel Coffee** (Greece), **Caffè Vergnano 1882** (Italy) — named by World Coffee Portal as present in the Iraqi market.\n- **Shaghf Coffee** (UAE), **Dose Cafe** (Kuwait) — Gulf operators in-market.\n- ★ **Kyan Café** (Saudi Arabia) — opened its **first Iraq outlet in Basra as a drive-thru**; has publicly stated plans for **Baghdad, Karbala and Erbil**. Kyan's positioning is explicitly *\"a heavily iced coffee menu\"*. **This is your closest strategic analogue and your most direct future competitor.**\n- ★ **Half Million** (Saudi Arabia) — announced first Iraq outlet for H2 2025, **debuting at Baghdad's Iraq Mall**; second Saudi coffee chain into the market.\n- **Cinnabon** — first Iraq store opened **February 2023 in Al-Jadriya, Baghdad**.\n- **Morelli's Gelato** — Baghdad outlet opened 2021, **near the main gate of the University of Baghdad (Jadriya)**.\n- Fast food already present: Hardee's, Papa John's, Texas Chicken (Church's), Burger King (12 outlets nationally as of the Erbil third-outlet opening).\n\n**Names in the brief I could NOT verify:** I ran targeted searches for **Kahvi, Karam (as a coffee brand), Turk Coffee, Loyal, Bab, and Mokha** as Baghdad coffee operators and found **no substantiating English or Arabic sources**. (\"Karam Baghdad Restaurant\" exists as an Iraqi-cuisine restaurant, not a coffee brand; \"Mokkador\" appears as a Coffee Festival exhibitor.) **Do not put these names on an investor slide without local verification** — an Iraqi investor will know instantly if the competitive map is wrong.\n\n## 3.4 Prices in Baghdad — what a cup actually costs\n\n| Item | IQD | USD | Source / year |\n|---|---|---|---|\n| ★ Cappuccino (regular, restaurant) | **3,300 IQD** | $2.20–2.60 | world-prices.com / hikersbay, Baghdad, **2026** |\n| Cappuccino (Iraq national avg) | 2,900 IQD | $2.20 | hikersbay Iraq, 2026 |\n| Espresso | 2,000 IQD | $1.60 | hikersbay Baghdad, 2026 |\n| Latte | ~1,500–1,800 IQD | **$1.16** | Coffeestics Iraq (low-end/mass-market read) |\n| Cold brew | ~2,200 IQD | $1.69 | Coffeestics Iraq |\n| Mocha | ~2,650 IQD | $2.04 | Coffeestics Iraq |\n| **Frappuccino / blended iced** | **~4,900 IQD** | **$3.78** | Coffeestics Iraq |\n| McMeal (McDonald's/BK equivalent combo) | 8,000–9,700 IQD | $6.10–7.50 | hikersbay / world-prices Baghdad, 2026 |\n| Cheeseburger | 2,400–2,900 IQD | $1.80–2.20 | hikersbay / world-prices Baghdad, 2026 |\n| Coca-Cola 2L (retail) | 1,635 IQD | ~$1.25 | Expatistan Baghdad, 2026 |\n| Three-course meal for two | ~48,000 IQD | ~$37 | hikersbay Baghdad, 2026 |\n| Monthly cost, single person, ex-rent | — | ~€570 | Numbeo Baghdad, updated **10 July 2026** (650 entries, 37 contributors, past 12 months) |\n| Family of four, monthly, ex-rent | — | ~€1,910 | Numbeo Baghdad, July 2026 |\n\nNumbeo ranks Baghdad **1st cheapest of 41 Western Asian cities** for both \"meal at an inexpensive restaurant\" and \"soft drinks.\" Dining out in Baghdad is **~55% cheaper than the United States** (world-prices, 2026).\n\n> ★ **ESTIMATE — iced latte price in a modern Baghdad specialty café: 4,000–6,500 IQD ($2.60–4.25 at the parallel rate; $3.05–4.96 at the official rate).**\n> **Derivation:** the sourced Baghdad cappuccino benchmark is 3,300 IQD across a broad restaurant sample. Specialty/branded operators (The Grinders, Espressolab, Agora, IN OFF) sit above the sample mean; the sourced blended-iced-drink price of ~4,900 IQD ($3.78) is the best direct proxy for a premium cold drink. An iced latte therefore lands between the cappuccino floor and the frappuccino ceiling. Confidence: **medium — this is my number, not a published one.** Verify against an actual Grinders or Espressolab menu before it goes in the deck.\n\n> **ESTIMATE — scoop of ice cream in Baghdad: 1,500–3,000 IQD ($1.00–2.00).** Derivation: triangulated between the Coca-Cola 2L retail price (1,635 IQD), the cheeseburger price (2,400–2,900 IQD), and the general finding that Baghdad is the cheapest of 41 Western Asian cities for restaurant items. A premium/imported-format scoop (Morelli's Gelato) would sit at the top of or above that range. **No direct published price was found.** Confidence: **low.**\n\n> **ESTIMATE — fresh juice in Baghdad: 2,000–4,000 IQD ($1.30–2.60).** Derivation: input costs are sourced — local oranges 1,200–1,250 IQD/kg, bananas 1,000–1,750 IQD/kg (Iraqi Ministry of Agriculture wholesale bulletins, 2026) — implying a raw-material cost of roughly 400–700 IQD per 300ml glass; standard Middle East juice-bar markups of 4–6× give the range shown. Confidence: **low-medium.**\n\n**Pricing implication for SHABM:** if a standard Baghdad cappuccino is 3,300 IQD and a blended iced drink is ~4,900 IQD, then a **\"-80\" frozen-cup dirty latte at 7,500–9,000 IQD ($4.90–5.90 parallel)** is a ~1.5–1.8× premium to the top of the existing cold-drink market, and an **ice-block-vessel drink at 12,000–15,000 IQD ($7.85–9.80)** is a 2.5–3× premium. Both are defensible **only** on theatre/scarcity, not on beverage quality — which is exactly why the ice-cube-storefront brand asset matters. For reference, 15,000 IQD is roughly **6% of average per-capita monthly expenditure (248,600 IQD)** — that is a genuine special-occasion purchase in Baghdad, not an everyday one. Model the ice-block SKU at low volume and high margin; model the -80 latte as the everyday driver.\n\n## 3.5 Adjacent category sizes\n\n| Metric | Value | Source / year |\n|---|---|---|\n| Iraq ice cream market | **$39M (2024), +152% y/y**; consumption peak $189M | IndexBox Iraq Ice Cream Market Report 2025 |\n| Iraq sugary soft drinks market | $2.1bn (2024), −3.7% y/y in value but **volumes up strongly** | IndexBox / Euromonitor, 2024 |\n| Baghdad Soft Drinks Co (ISX: IBSD) | Exclusive PepsiCo bottler in Iraq; 1,400+ staff; **~7.2 million bottles/month** | Company profile, 2026 |\n| Global frozen desserts market | $132.36bn (2025) → $212.23bn (2034), 5.46% CAGR | Fortune Business Insights, 2025 |\n| Iraq influencer marketing sector | ~$15–20M/year | Low-confidence secondary source |\n\n**Note the ice cream figure carefully:** IndexBox shows a $39M *market* alongside $189M *consumption* — these are different definitions (likely domestic production value vs total consumption including imports). The **+152% year-on-year jump in 2024** is the eye-catching number and the one worth stress-testing before use.\n\n## 3.6 Delivery infrastructure (a real demand channel)\n\nOperating in Iraq: **Talabat** (Delivery Hero; 6M+ active customers, 65,000+ partners, 119,000 riders across its 7-country footprint), **Toters**, **Lezzoo** (Iraqi, founded Erbil 2018), plus aggressive entry by **Careem** and **Uber**. Competition has driven service quality up and pricing down.\n\n**Strategic caveat for SHABM:** three of your five product lines — the frozen -80 cup, the carved ice block, and the live-poured rolled ice cream — **cannot survive a delivery journey in a 45°C Baghdad summer.** This is a dine-in / grab-and-consume-immediately business. That is a constraint on revenue mix, and an investor will ask about it. The answer is that it is also a *moat*: a concept that cannot be delivered cannot be commoditised by an aggregator, and it forces the footfall that makes the storefront a media asset.\n\n---\n\n# 4. BAGHDAD CLIMATE — THE STRUCTURAL DEMAND DRIVER\n\n## 4.1 The hot season\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ Hot season length | **3.9 months, 26 May – 21 September**, daily highs averaging **above 102°F (38.9°C)** | Weather Spark, Baghdad (station 103217) |\n| Summer season (broader definition) | May–October, ~6 months | Weather Spark / Climates to Travel |\n| ★ July average high | **112°F (44.4°C)**; average low 82°F (27.8°C) | Weather Spark |\n| Annual temperature range | 41°F to 112°F (5°C to 44.4°C); rarely below 33°F or above 119°F (48.3°C) | Weather Spark |\n| Climate classification | Subtropical / hot desert (BWh) | Köppen |\n\n## 4.2 Average high by month (May–September)\n\n| Month | Avg high | Source |\n|---|---|---|\n| May | **37°C** (99°F) | timeanddate / weather-atlas, Baghdad climate normals |\n| June | **42°C** (108°F) | Same |\n| July | **45°C** (113°F) | Same |\n| August | **45°C** (113°F) | Same |\n| September | **41°C** (106°F) | Same |\n\nWeather-atlas separately records a summer mean temperature (not mean high) of **38.5–38.6°C**, with July peaking at 45.6°C mean high.\n\n## 4.3 Record highs and extreme-heat events\n\n| Event | Value | Source / year |\n|---|---|---|\n| ★ Baghdad all-time record high | **125.2°F (51.8°C), 28 July 2020** | Washington Post, Aug 2020 |\n| July 2025 heatwave | **51°C in Baghdad**; **13 provinces above 50°C** | Xinhua, 28 July 2025 |\n| June 2026 | 5 governorates (Basra, Maysan, Dhi Qar, Najaf, Babil) forecast to hit 50°C; Iraq and Kuwait exceeded 50°C by late June | Iraqi News / 964media, June 2026 |\n| Current days at 120°F (48.9°C) in Baghdad | **~14 per year** | EU Institute for Security Studies, cited by NPR, March 2022 |\n| Projected days at 120°F within two decades | **>40 per year** | EUISS / NPR, 2022 |\n| Warming rate | Iraq warming at **~2× the global average** | Cited in NPR, 2022 |\n| Institutional response | Baghdad city government **regularly declares \"heat holidays\"** ordering residents to stay home | Arab Weekly / multiple |\n\n> ★ **ESTIMATE — days above 40°C per year in Baghdad: 120–140.**\n> **Derivation:** June, July and August have mean *daily highs* of 42°C, 45°C and 45°C respectively — meaning essentially every day in those three months (92 days) exceeds 40°C. May's mean high of 37°C implies roughly the last 10–14 days of May clear 40°C; September's mean high of 41°C implies roughly 20–25 days clear it; early October contributes a further ~5–10. Total: 92 + 12 + 22 + 8 ≈ **134 days**, with a plausible band of 120–140. Cross-check: Weather Spark's 3.9-month (≈118-day) window of *average highs above 38.9°C* is consistent with a slightly narrower 40°C count. Confidence: **medium.** No published day-count for Baghdad was located.\n\n> ★ **ESTIMATE — days above 45°C per year in Baghdad: 40–60.**\n> **Derivation:** July and August both have mean daily highs of exactly ~45°C, so by definition roughly half the days in each month exceed it (≈31 days), plus the hottest ~10 days of June and ~5 days of September. Total ≈ 46 days, band 40–60. Anchor point: EUISS puts days at the much higher 48.9°C threshold at ~14/year today, which is consistent with ~46 days at the 45°C threshold. Confidence: **medium.**\n\n## 4.4 Winter — justifying the hot-drink pivot\n\n| Metric | Value | Source / year |\n|---|---|---|\n| ★ January average high / low | **16°C / 4°C** (60.8°F / 39.2°F) — coldest month | weather-atlas Baghdad |\n| Sub-freezing lows | Occur \"a couple of times per year\" | weather-atlas |\n| January precipitation | 31mm across 6 rain days | weather-atlas |\n| Annual minimum temperature | Rarely below 33°F (0.5°C) | Weather Spark |\n\n**The seasonality slide writes itself:** Baghdad delivers ~4 months (late May–late September) of structurally guaranteed extreme-heat demand for frozen product, plus a 3–4 month window (December–March) where an outdoor 4°C night makes a hot barista drink the obvious purchase. The genuine revenue risk is the **shoulder seasons — April and October–November** — where neither proposition is compelling. Model those months at a discount and be explicit about it; an investor who has operated seasonal F&B will look for exactly that.\n\n---\n\n# 5. BAGHDAD COMMERCIAL / FOOTFALL DISTRICTS\n\n## 5.1 District-by-district\n\n**MANSOUR (المنصور)** — *Highest-prestige option.*\n- Character: upper-class district containing malls, universities, parks. Described as \"an avid shopping district that attracts those seeking luxury imported goods, modern marketplaces, restaurants, cafes and entertainment.\" Full-service: schools, medical centres, luxury shopping.\n- Key artery: **14 Ramadan Street (شارع ١٤ رمضان)** — a principal Baghdad commercial spine within Mansour; hosts corporate offices (SalamAir opened its Baghdad office in the Al Asal Building here in March 2024), restaurants (Khan Mandi), and existing ice-cream retail (**ICE PACK Almansour** — note: a direct-adjacent competitor already on this street).\n- ★ **Real rent data point:** a **350 m² two-floor retail unit on 14 Ramadan Street, Mansour, listed at $3,500/month** (aiqarat.com listing) = **$10/m²/month**.\n- Land values: Mansour among the districts at **$3,000–7,000/m²** for purchase (thenewregion, \"Baghdad real estate prices eclipse Europe\"); reported as more expensive than some European cities.\n- Retail: **Mansour Mall, 32,000 m²**, includes a dedicated Iraqi-heritage floor; DeFacto anchor.\n- **SHABM fit: strong.** Highest willingness-to-pay, most affluent footfall, existing café culture. Also the highest rent and an incumbent ice-cream operator on the main street.\n\n**KARRADA (الكرادة)** — *Highest density of relevant competition; strongest coffee heritage.*\n- Character: upper-class commercial + residential hub; luxurious hotels, shopping centres, corporate headquarters; described as having \"lively nightlife, restaurants and shops.\" Bustling streets, street vendors, colourful markets. Reported that some restaurants on a main Karrada street transform into nightclubs at night.\n- **This is Ridha Alwan's home turf (East Karrada, since 1960)** and the location of Al-Reef Café.\n- **SHABM fit: strong for brand credibility, crowded for economics.** Landing in Karrada is a statement — it's where Baghdad's coffee identity lives — but you'd open directly opposite the category leader.\n\n**ARASAT AL-HINDIYA (عرصات الهندية)** — *Upscale dining strip inside Karrada.*\n- Character: Baghdad's premium restaurant row. Home to **IN OFF CAFE** (345+ menu items, fine dining + specialty coffee + premium shisha, two floors) — the clearest example of the high-ticket, high-design format Baghdad's affluent youth already pay for.\n- **SHABM fit: very strong for a flagship.** This is where a 12,000–15,000 IQD ice-block drink is defensible. Highest rent tier.\n\n**ZAYOUNA (زيونة)** — *Best rent-to-footfall ratio for a first unit.*\n- Character: **diverse upper-middle-class area bordering affluent Karrada**; \"strong infrastructure with moderate pricing,\" attractive for professionals and families seeking safe, well-connected areas. Rubaie Street is the commercial spine.\n- Retail: **Zayoona Mall (opened 2016, 33,000 m²)** — explicitly noted for \"a bustling array of restaurants and food brands, making it a go-to spot for food lovers,\" drawing families from Zayouna, Rusafa and beyond. DeFacto anchor.\n- **The Grinders operates a Rubaie Street branch here** — validation that the specialty-café model works in Zayouna.\n- Land: commercial-zone Zayouna reported at **~$10,000/m²** purchase, vs ~$3,500/m² residential (thenewregion).\n- **SHABM fit: best risk-adjusted first location.** Upper-middle-class youth density, proven F&B footfall, materially cheaper than Arasat, and the Rubaie Street/Zayoona Mall corridor supports both a street kiosk and a mall unit.\n\n**AL-JADRIYA (الجادرية)** — *Student capture.*\n- Character: home to the **University of Baghdad** main campus.\n- Proven demand: **Cinnabon chose Al-Jadriya for its first-ever Iraq store (Feb 2023)**; **Morelli's Gelato opened near the University's main gate in 2021**; The Grinders operates a Jadriya branch.\n- **SHABM fit: strong for volume, weak for ticket.** Students deliver frequency and TikTok distribution but resist a 15,000 IQD drink. Ideal for the -80 latte and rolled ice cream at 4,000–7,000 IQD; not the flagship.\n\n**BAGHDAD MALL** — opened **2017**; 36,000 m² retail across **80,000 m² GLA**, **200+ retail units**, 1,000 parking spaces, \"dozens of restaurants and cafés.\" Multi-level.\n\n**IRAQ MALL** — ★ opened **February 2026, Al-Dora district**. **>550,000 m²**, making it the **largest mall in Iraq and the third-largest in the Middle East**. **1,000+ retail outlets** (Zara, Mango, Hugo, Lefties, DeFacto, Nike, Pandora, Tom Ford Eyewear). Cinemas, family gaming zones, landscaped gardens, and Iraq's first choreographed dancing fountain. **Expected ~50 million visitors annually.** ~4,000 staff at opening, projected to reach **25,000 direct jobs** at full operation and 50,000+ once all units trade. **Opening day drew crowds that filled all floors.** Saudi chain **Half Million selected Iraq Mall for its Iraq debut.**\n- **SHABM fit: the single highest-footfall opportunity in Iraq.** 50M annual visitors, if realised, is ~137,000/day. Even 0.15% conversion at a 6,000 IQD ticket implies ~1.2bn IQD/year (~$800K) from one kiosk. Mall rents and revenue-share terms will be the binding constraint — and the 50M figure is a developer projection, not measured footfall. **Flag it as such.**\n\n**AL-ZAWRAA PARK (متنزه الزوراء)** — Baghdad's largest public park, established early 1970s on a 3 km² (400-acre) former army camp; includes Baghdad Zoo. Historic footfall: **~200,000 over the 3–4 day Eid in 2005**; **3 million visitors during the Eid holiday at the start of October 2009**; officials projected **~8 million for full-year 2009**. Secured by dedicated government-facility police; visitors frisked, bags checked; roads closed during holidays.\n- **SHABM fit: exceptional seasonal spike venue, unusable as a year-round flagship.** The Eid data is the strongest raw footfall evidence in Baghdad — but it is **17 years old** and needs re-sourcing before use.\n\n**ABU NUWAS STREET (شارع أبو نواس)** — Tigris riverfront promenade, historically Baghdad's most famous street, defined by masgouf grilled-fish restaurants that Iraqis drive in from other cities for. **Abu Nawas Corniche project, Feb–June 2023, >$6 million**: Phase 1 (completed April 2023) rehabilitated and widened the road, cleaned the river, built the first 0.5 km of corniche; Phase 2 (June 2023) added green space, recreational areas, a ground fountain and a further 0.6 km. Total scope: **1 km of corniche plus 17 acres of green space**, with designated areas for children, seniors and people with disabilities. **After Phase 1, families flocked to the parks and public spaces.** However — **as of March 2025, work has stalled for lack of funding** (Shafaq News: *\"Once revived, now neglected\"*).\n- **SHABM fit: high-upside, high-risk.** A giant melting ice cube on a Tigris-side corniche at 45°C is the best possible photograph of this brand. But the municipality has already run out of money once. Do not anchor the plan to Abu Nuwas.\n\n## 5.2 Rent — what is actually knowable\n\n| Data point | Value | Source |\n|---|---|---|\n| ★ Mansour, 14 Ramadan St, 350 m² two-floor retail | **$3,500/month = $10/m²/month** | aiqarat.com listing |\n| Baghdad retail-for-rent listings (OpenSooq sample) | 26 units listed; **average 127 m²** | OpenSooq Iraq, 2026 |\n| Purchase price, Jadriya / Mansour / Yarmouk / Palestine St / Saydiya | **$3,000–7,000/m²** | thenewregion, \"Baghdad real estate prices eclipse Europe\" |\n| Purchase price, Zayouna commercial zone | **~$10,000/m²** (vs $3,500/m² residential) | thenewregion |\n| Sector complaint | Rising operating costs and rents in prime commercial areas have pushed some restaurateurs to downsize or exit entirely | Mustaqila, 2026 |\n\n> **ESTIMATE — monthly rent for a 60–120 m² SHABM kiosk/store:**\n> - Zayouna / Jadriya secondary street: **$600–1,400/month** ($8–12/m²/mo)\n> - Mansour 14 Ramadan / Karrada main: **$1,000–2,000/month** ($12–18/m²/mo)\n> - Arasat Al-Hindiya prime: **$1,500–3,000/month** ($18–28/m²/mo)\n> - Mall unit (Baghdad Mall / Zayoona Mall / Iraq Mall): typically base rent **plus** revenue share; assume $25–45/m²/month equivalent.\n> **Derivation:** anchored on the single verified $10/m²/month Mansour listing, adjusted by the relative land-value ratios (Zayouna commercial $10,000/m² vs Mansour $3,000–7,000/m²) and standard mall-vs-street premiums. Confidence: **low-medium — only one real rent observation was found.** Get three live broker quotes before this line enters the model.\n\n**One structural warning that belongs in the risk section, not the market section:** Iraqi press (Baghdad Today, Yaqin News, Mustaqila, Annahar) reports repeated allegations that the proliferation of high-cost luxury restaurants in Baghdad functions partly as a **money-laundering front for politically connected actors**. Whether or not that is true, its consequence for SHABM is concrete: **some of your apparent competitors are not profit-maximising and can sustain uneconomic rents indefinitely.** Do not benchmark your unit economics against theirs.\n\n---\n\n# 6. SOCIAL MEDIA PENETRATION AND VIRALITY EVIDENCE\n\n## 6.1 The numbers\n\n| Platform / metric | Value | Date | Source |\n|---|---|---|---|\n| Population baseline | 46.5 million | Jan 2025 | DataReportal Digital 2025: Iraq |\n| ★ Internet users | **39.6 million — 83.8% penetration** | end-2025 | DataReportal Digital 2026: Iraq |\n| Internet users (prior) | 38 million | Jan 2025 | DataReportal Digital 2025: Iraq |\n| ★ Social media user identities | **40.1 million = 84.9% of population** | Oct 2025 | DataReportal Digital 2026: Iraq |\n| Social media identities (prior) | 34.3 million | Jan 2025 | DataReportal Digital 2025: Iraq |\n| ★ Mobile connections | **50.8 million = 108% of population** | late 2025 | DataReportal Digital 2026: Iraq |\n| ★ **TikTok (18+ ad reach)** | **40.1 million** | late 2025 | Kepios / DataReportal Digital 2026: Iraq |\n| TikTok growth | +2.12 million (+5.6%) | Jul→Oct 2025 | Kepios / DataReportal |\n| TikTok (prior) | 34.3 million (18+) | early 2025 | DataReportal Digital 2025: Iraq |\n| ★ **Facebook** | **34,539,100 = 72.3% of population** | June 2026 | NapoleonCat |\n| ★ **Instagram** | **23,592,900 = 49.4% of population** | June 2026 | NapoleonCat |\n| Instagram (prior) | 19.0 million; ad reach +700K (+3.8%) Jan 2024→Jan 2025 | early 2025 | DataReportal Digital 2025: Iraq |\n| ★ **Snapchat** | **18.5 million = 39.7% of total population** (up from 17.74M prior year) | early 2025 | DataReportal / Iraq Digital Media Center |\n| Snapchat MENA ranking | Iraq (18.5M) is **3rd-largest MENA market**, behind Saudi (24.7M) and Egypt (19.7M) | 2025 | DataReportal |\n| Facebook ad reach as % of internet users | 52.9% | Jan 2025 | DataReportal Digital 2025: Iraq |\n\n★ **CRITICAL METHODOLOGICAL WARNING — do not put \"40.1 million TikTok users in Iraq\" on a slide unqualified.** Iraq's 18+ population is approximately 25–26 million (46.1M × ~55–56% aged 18+, from the census age structure). A figure of 40.1 million \"users aged 18 and above\" is therefore **~155% of the adult population**. These are **platform-reported potential advertising reach figures**, which count *accounts*, not people, and Iraq has exceptionally high multi-account behaviour (the 108% mobile-connection rate is corroborating evidence). The same problem inflates the Facebook (72.3%) and social-identity (84.9%) numbers. **DataReportal itself labels these \"user identities,\" not users.**\n\n**The honest, defensible framing for the deck:** *\"Iraq has 39.6 million internet users at 83.8% penetration (DataReportal, end-2025). Every major short-video platform reports ad-reach in Iraq exceeding 18 million accounts — Snapchat 18.5M, Instagram 23.6M, TikTok and Facebook higher still. Whatever the true unique-user count, the distribution layer for a visually-native F&B brand in Iraq is effectively saturated and free.\"* That sentence survives a due-diligence check. \"40.1 million TikTok users\" does not.\n\n## 6.2 Evidence that viral F&B drives real queues in Baghdad\n\nThis is the **weakest-sourced section of this report** and I want to be blunt about it. Here is what I could actually document:\n\n**1. Baghdad Coffee & Tea Festival — the strongest hard evidence.**\n- **1st edition: 3–5 October 2024**, Palms of Baghdad Park. Organised by Unfold Agency with Bunn Ridha Alwan and the Ministry of Tourism. **40+ brands** from Iraq and abroad.\n- Attendance is reported at **two conflicting figures**: one source says \"over 15,000 visitors\"; another reports the **\"official tally\" at 62,000**. Both appeared in 2024–25 coverage.\n- **2nd edition, 2025:** organised by the **Ridha Alwan Cultural Foundation** with Enfold; **70+ companies** including 10 from UAE, Saudi Arabia, Türkiye and Italy; 40+ coffee/tea brands (Senso, Talya, Vanilly, Cinnabon, The Grinders, Almarai, Mokkador, Nido, Nescafé). **Expected to exceed 100,000 visitors.**\n- **The load-bearing fact is the trajectory: 62,000 → 100,000+ in one year for a coffee festival in Baghdad.** That is a category with real, growing, physically-turning-up demand.\n\n**2. Iraq Mall opening, February 2026.** Opening day \"drew large crowds from across the capital, with all floors filled with visitors\"; observers attributed the turnout to \"strong public anticipation.\" Qualitative, but it is contemporaneous reporting of a Baghdad crowd event.\n\n**3. The \"Dubai chocolate\" trend reached Iraq.** INEWS TV Iraq ran a segment headlined *\"شوكولاتة دبي.. ترند جديد يغزو أسواق العراق\"* (\"Dubai chocolate — a new trend invading Iraq's markets\"), with associated TikTok discovery pages for pricing in Iraq and specific shops in Baghdad and Mosul. This confirms that **a globally-viral, purely aesthetic, high-markup F&B format did transmit into Iraqi retail** — which is precisely the mechanism SHABM depends on.\n\n**4. Al-Zawraa Park, Eid 2009: 3 million visitors in one holiday week**, up from 200,000 over Eid 2005, with ~8 million projected for the full year. Attributed to improved security. Demonstrates Baghdad's latent appetite for out-of-home leisure at scale — but it is **17 years old** and must be re-sourced.\n\n**5. Food-influencer infrastructure exists.** **@restaurants_of_baghdad** has **1,104,362 followers**. StarNgage, Heepsy and Modash all maintain ranked lists of Iraqi food influencers on TikTok, Instagram and YouTube. Iraq's influencer marketing sector is estimated at **$15–20 million annually** (low-confidence source).\n\n**What I could NOT find, despite repeated English and Arabic searches:** a single named, dated, documented instance of a specific Baghdad F&B venue generating a documented queue as a direct result of a viral social post. Searches in Arabic (*\"افتتاح كافيه بغداد زحام طوابير تريند\"*) returned only TikTok discovery pages, not reported events. **This is a genuine gap and it is listed in the open questions.** If SHABM's go-to-market thesis rests on virality-to-queue conversion, an investor will ask for exactly this proof, and the honest answer today is that the evidence is inferential — strong category signals (the festival trajectory, the Dubai-chocolate transmission, near-total platform penetration) rather than a documented case study.\n\n---\n\n# 7. FOOD-SERVICE OPERATING RISKS IN IRAQ\n\n## 7.1 Electricity — the number one operating risk for a freezer-dependent business\n\n| Metric | Value | Source / date |\n|---|---|---|\n| ★ **National grid supply to households** | **8–12 hours/day even in its best condition** | Middle East Monitor, **August 2026** |\n| ★ Household generator cost, Baghdad summer | **$100–300/month** | Middle East Eye / multiple, 2025–26 |\n| Generator cost per ampere | **~$8.40/ampere/month** (based on 8 hrs/day usage) | *Renewable Energies* journal, **January 2025** |\n| Generator cost, 15 amperes | **>$300/month** | Same |\n| Operator-quoted rates | 15,000 IQD (~$11) to **25,000 IQD (~$19) per ampere in summer months** | Generator operator, cited 2025 |\n| Private generators nationwide | **~49,000** | Female Journalists For Climate |\n| Official business grid tariff | ~**USD 0.046/kWh** | GlobalPetrolPrices, June 2025 |\n| Iran gas halt, December 2025 | **Cut 4,000–4,500 MW from the national grid** | Middle East Eye, Dec 2025 |\n| Repeat interruptions | January and February 2026 | Iraqi Electricity Ministry |\n| US sanctions waiver | **Ended March 2025**, removing direct Iranian electricity imports; officials warned of up to a **one-third** cut to daily output | 2025 reporting |\n| Summer 2026 outlook | Ghadan Foundation for Risk Management warned of a **severe electricity shortfall ahead of summer 2026** | Kurdistan24 / GFRM, 2026 |\n\n**Why this is existential rather than annoying for SHABM specifically.** Every other café in Baghdad loses inventory measured in milk and pastries when the power drops. SHABM's inventory *is* the cold chain:\n- An **ultra-low-temperature freezer at −80°C** draws heavy continuous load and has a long, energy-expensive pull-down cycle. It cannot be cycled on generator power intermittently without either destroying the compressor or losing the entire frozen-cup stock.\n- **Carved clear ice blocks** represent days of accumulated freezing energy per unit — the most capital-intensive inventory per gram in the store.\n- The **rolled-ice-cream cold pan** must hold roughly −25°C continuously during service.\n- The **fruit-shaped moulded sorbets** are a finished frozen SKU with no shelf life outside the freezer.\n\nAt 8–12 grid hours per day, **12–16 hours of every single day must be covered by private generation**, all year, with peak load coinciding exactly with peak ambient temperature (45°C) and peak neighbourhood generator demand. This is not a contingency line — it is a core, continuous cost of goods.\n\n> **ESTIMATE — SHABM monthly power cost, single Baghdad unit:** a store running a −80°C ULT freezer, a blast/storage freezer, an ice-block freezer, a cold pan, refrigeration, air conditioning against 45°C ambient, and lighting would plausibly need **40–70 amperes** of neighbourhood generator capacity, or a dedicated on-site generator. At the sourced $8.40/ampere/month that is **$336–588/month** on shared supply; at the summer operator rate of 25,000 IQD/ampere it is **$500–875/month**. A dedicated diesel generator with fuel would likely run **$800–1,500/month** in summer. **Confidence: low — this is engineering judgement on top of sourced per-ampere rates, not a quoted figure.** An Iraqi electrical contractor should size this properly, and the answer belongs in the deck, because it is the first question a knowledgeable investor will ask.\n\n**The strategic reframe for the deck:** the electricity constraint is simultaneously SHABM's **largest cost risk and its widest moat**. A competitor cannot casually copy a −80°C product line, because doing so requires solving continuous ULT power in a city with 8–12 grid hours. Own that answer — redundant on-site generation, ULT units with sufficient thermal mass to ride through switchover, and a documented cold-chain SOP — and it becomes a barrier to entry rather than a footnote.\n\n## 7.2 Water\n\n| Finding | Detail | Source |\n|---|---|---|\n| Urban Baghdad household practice | **Most urban Baghdad residents use bottled drinking water rather than tap**; rural residents rely on tanker water — both driven by contamination fears | Assessment of Tigris River Water Quality for Drinking Purposes in Baghdad City (IIETA / IJEI) |\n| Contamination measurement | **Coliform and E. coli up to 540,000 per 100 mL** near Kadhimiya, north Baghdad — far exceeding safe standards | Troubled Waters: The Tigris River Pollution Crisis, Iraq Climate Change Center |\n| Causes | Improper municipal and industrial waste disposal, unregulated sewage, agricultural runoff, industrialisation, population growth | Same |\n| Health outcomes | Typhoid, amoebiasis, ascariasis, hepatitis, diarrhoea | Same |\n\n**Direct consequence for SHABM.** Two of the five product lines are **water served as food**: the carved ice-block vessel is consumed with a spoon, and rolled ice cream and sorbets are water-continuous frozen products. Municipal water is not usable as an input. The business requires **on-site multi-stage filtration (minimum RO + UV) with documented testing**, and — critically — a **clear-ice production process** (directional freezing / ice-block machine) that starts from purified water. This is a genuine capex and opex line, and it should be presented as a **trust asset**, not a cost: in a city where everyone already buys bottled water because they don't trust the tap, \"our ice is made from water purer than what you drink at home\" is a marketing message, not a compliance burden.\n\n## 7.3 Import logistics\n\n| Change | Detail | Source / date |\n|---|---|---|\n| ★ Customs restructuring | **Council of Ministers Decision No. 957 of 2025** eliminated the longstanding **flat per-container fee** for 20ft and 40ft containers, replacing it with **per-item assessment by HS Code, with rates starting at 5%** and varying by product category | Iraq Business News, **January 2026** — new rules in force at Umm Qasr |\n| ★ Digital customs | **ASYCUDA World** requirements implemented **Q1 2025**; **mandatory electronic declarations**; **paper declarations no longer accepted** at Umm Qasr and other major ports | Iraqi Customs Authority, 2025 |\n| ★ Food import testing | Food items via Umm Qasr are subject to quality and health testing by the southern-region Department of Health; **testing and analysis takes 5–7 days** | Logistics Cluster / Direct Drive Logistic |\n| Official position on delays | General Customs Authority **denied** reports of disruption at Umm Qasr, stating new oversight requires **15–30 minutes per shipment** | Shafaq News |\n\n**Implication for SHABM.** The shift from flat container fees to per-HS-code assessment means your import cost is now a function of *what* you bring in, not how much space it takes. Capital equipment (ULT freezers, ice-block machines, rolled-ice-cream pans, blast freezers) and consumables (silicone fruit moulds, specialty coffee green/roasted, cups) will each carry a different duty rate starting at 5%. **The financial model needs a per-item landed-cost build, not a flat \"20% import cost\" assumption.** Additionally, the mandatory 5–7 day food testing window at Umm Qasr means **perishable dairy and fruit purée imports carry a week of cold-chain risk at the port** — strongly favouring local sourcing for dairy and fruit, and reserving imports for equipment and non-perishables.\n\n## 7.4 Currency controls and banking\n\n| Event | Detail | Source / date |\n|---|---|---|\n| ★ Bank restrictions | CBI **banned five domestic banks from USD transactions** (Feb 2025) after meetings in Dubai with the US Federal Reserve and Treasury: Al-Mashreq Al-Arabi Islamic, United Bank for Investment, Al Sanam Islamic, Misk Islamic, Amin Iraq for Islamic Investment and Finance. Also **three payment firms**: Amawl, Al-Saqi Payment, Aqsa Payment | Iran Watch / Iraq Business News, Feb 2025 |\n| Mechanism | Restricted banks are **barred from the CBI daily dollar auction** — the primary hard-currency source in an import-dependent economy | Same |\n| Rationale | US scrutiny over currency smuggling to Iran and sanctions evasion | Same |\n| ★ Recent easing | **15 July 2026: CBI ruled banks may disburse customers' USD deposits in cash** | Search4Dinar / CBI, July 2026 |\n| Ongoing constraint | July 2026 analysis (economist Ziad Al-Hashemi) cautions that full USD integration remains **\"out of reach\"** due to stringent compliance benchmarks | Iraqi News, July 2026 |\n| Practical cost | **16–17% parallel-market premium** persists | Iraqi News, Aug 2026 |\n\n**Implication.** Banking-partner selection is a material risk decision, not an administrative one — an Iraqi bank cut off from the CBI dollar auction cannot fund your equipment imports. **Diligence the bank before opening the account,** and check it against the published restricted list (Iraq Business News maintains an amended full list, updated February 2026).\n\n## 7.5 Security perception\n\n| Metric | Value | Source / date |\n|---|---|---|\n| ★ US State Department advisory | **Level 4 — Do Not Travel** | travel.state.gov, current |\n| ★ Ordered departure | **2 March 2026** — non-emergency US government personnel ordered to depart Iraq; implemented | US Mission Iraq |\n| Ongoing alerts | US Embassy Baghdad security alerts on **3, 14, 29 March and 2, 20 April 2026**, each confirming no change to advisory level | iq.usembassy.gov |\n| Other governments | UK FCDO, Australia (Smartraveller) and Canada maintain equivalent do-not-travel guidance citing terrorism, kidnapping, armed conflict, civil unrest | Respective advisories |\n\n**And the countervailing evidence:**\n\n| Metric | Value | Source / date |\n|---|---|---|\n| ★ Iraq tourism revenue | **$5.7 billion in 2024, +25% y/y** (from $4.6bn) | Iraqi Ministry of Culture/Tourism, via Tehran Times & Travel And Tour World |\n| MENA ranking | **7th among Arab countries** by tourism income (behind UAE $57bn, Saudi $41bn, Egypt $15.3bn, Morocco $11.3bn, Qatar $8.4bn, Jordan $7.2bn) | Same |\n| ★ Baghdad status | **Arab Tourism Capital 2025**, awarded by the Arab Tourism Organization | ATO, 2025 |\n| Visa regime | Visa-on-arrival replaced by an **e-visa** | 2025 |\n| Erbil visitors | **3.4 million in 2025**; KRI total exceeded 8 million in 2024 | Regional tourism authority |\n| 2025 characterisation | Iraq's **\"calmest stretch in two decades\"** through 2025 | Cited in travel/tourism coverage |\n| 2025–26 arrivals | Sharp increase in Arab and foreign tourist arrivals, **Baghdad topping visitor numbers**, attributed to improved security | Shafaq News |\n\n**How to handle this honestly in an investor deck.** There is a real and widening gap between **Western government advisory posture** (uniformly Level 4, and *deteriorating* in early 2026 with the March ordered departure) and **measured domestic economic activity** ($5.7bn tourism revenue, +25%; a 550,000 m² mall opening in February 2026 to packed floors; 17 branded coffee outlets opened by one Iraqi chain in five years; a coffee festival scaling 62,000 → 100,000+).\n\nDo not paper over this. The correct framing is: **SHABM is not a tourism business.** Its customer is the ~6 million Baghdadis under 30 who live there regardless of any advisory, whose city's poverty rate fell from 20.05% to 13.5%, and whose discretionary spending built a 24,000-restaurant national sector growing 3–6% a year. The Level 4 advisory is relevant to **foreign investor travel, expatriate management, and international insurance cost** — all of which are real and should be named — but it is **not** a demand-side risk to a domestically-consumed product.\n\nOne caution: I encountered claims elsewhere in search results (e.g. travelwarningcheck.com) of \"127 foreigner kidnappings in 2025 with average ransom of $2.3 million\" attributed to UNAMI. **I could not verify this against any UNAMI primary source and the site appears to be low-quality/auto-generated. Do not use that figure.**\n\n---\n\n# 8. MARKET SIZING — TAM / SAM / SOM FOR BAGHDAD\n\nEvery figure in this section is an **ESTIMATE**. The arithmetic is fully shown so it can be audited and re-run with better inputs.\n\n### Step 1 — Total Baghdad household expenditure\n- Baghdad Governorate population: **9,780,429** *(2024 census — sourced)*\n- Average household size: **5.9** *(IHSES 2023/24 — sourced)*\n- → Baghdad households ≈ **1,657,700**\n- National average household monthly expenditure: **1,467,000 IQD** *(IHSES 2023/24 — sourced)*\n- Baghdad uplift: Baghdad poverty is 13.5% vs 17.5% national *(sourced)*; apply a **+10% expenditure adjustment** → **≈1,613,700 IQD/household/month** *(ESTIMATE)*\n- → **Total Baghdad household expenditure ≈ 32.1 trillion IQD/year**\n- → At the parallel rate of 1,530: **≈US$21.0 billion/year** (at the official 1,310: ≈US$24.5bn)\n\n### Step 2 — Food and beverage\n- Food share of household expenditure: **32%** *(IHSES 2018 — sourced, but old)*\n- → Baghdad food & beverage spend ≈ **US$6.7 billion/year**\n\n### Step 3 — Food away from home (TAM)\n- No Iraqi published split exists. In urbanising middle-income MENA markets, food-away-from-home typically runs **15–25%** of total food spend.\n- Applying **18%** *(ESTIMATE, midpoint-conservative)*:\n- → ★ **Baghdad food-service TAM ≈ US$1.2 billion/year**\n- *Sanity check:* at 5,900–8,300 registered Baghdad restaurants *(my earlier estimate)*, $1.2bn implies average revenue of **$145,000–203,000 per venue per year**, or roughly **$400–560/day**. Against a sourced McMeal price of $6.10–7.50 and a cappuccino at $2.20–2.60, that is ~60–90 covers a day per venue — **plausible for a market dominated by small independents.** The estimate holds together.\n\n### Step 4 — Cold drinks + frozen dessert (SAM)\n- Share of food-service spend attributable to specialty cold beverages, ice cream and frozen desserts: **12–18%** *(ESTIMATE — elevated above a temperate-market norm because Baghdad has ~134 days/year above 40°C)*\n- → ★ **Baghdad cold-drinks & frozen-dessert SAM ≈ US$145–215 million/year**\n\n### Step 5 — Obtainable market (SOM)\n- Baghdad under-30 population: **≈6.0 million** *(ESTIMATE from census age structure)*\n- Assume **5%** become monthly SHABM customers → **300,000 people**\n- At **2 visits/month** and an average ticket of **7,500 IQD (≈US$4.90 at parallel)**:\n- → 300,000 × 24 visits × $4.90 = ★ **≈US$35 million/year obtainable at maturity**\n- Sanity check against the SAM: $35M is **16–24% of the $145–215M SAM** — aggressive but not absurd for a category-defining brand with no direct competitor, and it should be presented as a **5–7 year mature-network figure across many units**, not a single-store outcome.\n\n### Step 6 — Single-unit revenue anchor\n- At **300 units/day** at an average ticket of **6,000 IQD**:\n- → 1.8M IQD/day × 365 = **657 million IQD/year ≈ US$429,000/year** at the parallel rate\n- Against my estimated rent band of $600–3,000/month and estimated power of $500–1,500/month, this supports a viable unit — **but the ticket and the daily-unit assumptions are the two most fragile numbers in the entire model** and both need Baghdad-specific validation before the raise.\n\n---\n\n# 9. THE FIVE FACTS THIS DECK SHOULD LEAD WITH\n\n1. ★ **9,780,429 people in Baghdad Governorate, 85.2% urban, with a national median age of 20.85 and roughly 64% of the population under 30** — approximately **6 million under-30s in one city.** *(2024 census; UN WPP 2024)*\n2. ★ **Baghdad's average daily high exceeds 38.9°C for 3.9 continuous months (26 May–21 September), with July and August averaging 45°C and an all-time record of 51.8°C.** An estimated **~134 days a year above 40°C.** *(Weather Spark; Washington Post 2020)*\n3. ★ **Iraq has 85 branded coffee shop outlets for 46.1 million people — one per ~542,000 residents — versus Saudi Arabia's 5,130 for ~34 million.** Iraq is under-penetrated by roughly **80×**, and the market is forecast to grow to 130+ outlets by 2029. *(Project Café Middle East 2025, World Coffee Portal)*\n4. ★ **Baghdad's coffee festival went from 62,000 visitors in 2024 to a projected 100,000+ in 2025**, while Iraq Mall opened in February 2026 at 550,000 m² to packed floors and a projected 50 million annual visitors. **Demand for out-of-home experience in Baghdad is measurable and compounding.** *(Ridha Alwan Cultural Foundation; Iraqi News)*\n5. ★ **Iraq has 39.6 million internet users at 83.8% penetration and 18.5M+ accounts on every major short-video platform** — free, saturated distribution for a brand whose entire product is designed to be filmed. *(DataReportal Digital 2026: Iraq)*\n\n**And the one risk to name before the investor does:** *Baghdad's grid delivers 8–12 hours of power a day. This business runs on a −80°C freezer. We have engineered and costed continuous private generation, and that engineering is the barrier no fast follower will clear cheaply.*\n",
+ "key_numbers": [
+  {
+   "claim": "Iraq total population, final 2024 national census (conducted 20-22 Nov 2024, released 24 Feb 2025)",
+   "value": "46,118,793",
+   "unit": "people",
+   "source": "Iraqi Ministry of Planning final census results, announced 24 Feb 2025 (via Iraqi News Agency ina.iq/en/local/43822; PUKmedia; Shafaq News)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad Governorate population, 2024 census — largest governorate, 21.2% of Iraq",
+   "value": "9,780,429",
+   "unit": "people",
+   "source": "Iraq 2024 General Population and Housing Census, Ministry of Planning (via alssaa.com/post/show/43032; hathalyoum.net)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad Governorate urban share (NOTE: English Wikipedia currently shows this INVERTED at 43.8% — do not use Wikipedia)",
+   "value": "85.2",
+   "unit": "percent urban (14.8% rural)",
+   "source": "Iraq 2024 census, Arabic-language reporting of MoP results (alssaa.com; hathalyoum.net)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad urban population derived from census",
+   "value": "≈8,333,000",
+   "unit": "people",
+   "source": "ESTIMATE: 9,780,429 × 0.852 (2024 census population × census urban share)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq national urbanisation rate, 2024 census",
+   "value": "70.17",
+   "unit": "percent (29.83% rural)",
+   "source": "Iraq 2024 census, Ministry of Planning",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq median age",
+   "value": "20.85",
+   "unit": "years (2025); 20.6 in 2024",
+   "source": "UN World Population Prospects 2024 revision (via statbase.org/data/irq-median-age)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq population aged 0-14",
+   "value": "35.90",
+   "unit": "percent",
+   "source": "Iraq 2024 census age structure (via Worldometer / Kurdistan24 census analysis)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq population aged 15-64 / 65+",
+   "value": "60.44 / 3.66",
+   "unit": "percent",
+   "source": "Iraq 2024 census age structure",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq population aged 12-29 / 15-29",
+   "value": "36 / 28",
+   "unit": "percent",
+   "source": "UN Iraq, World Population Day 2026 statement (iraq.un.org/en/319321)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq population under 30",
+   "value": "≈63-64",
+   "unit": "percent",
+   "source": "ESTIMATE: 35.9% (0-14, census) + ~28% (15-29, UN Iraq 2026) = 63.9%. Cross-checks vs sourced 55.7% under-25 plus ~8pp for 25-29 cohort",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad Governorate population under 30",
+   "value": "≈5.9-6.3 million",
+   "unit": "people",
+   "source": "ESTIMATE: 9,780,429 × 0.60-0.64 (census population × derived national under-30 share, adjusted down slightly for urban age skew)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq nominal GDP",
+   "value": "≈258",
+   "unit": "billion USD (2025)",
+   "source": "IMF 2025 Article IV Consultation, Country Report No. 25/183-184, July 2025",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq GDP per capita, nominal",
+   "value": "5,803",
+   "unit": "USD (2025)",
+   "source": "IMF World Economic Outlook, April 2026 (via channel8.com/english/news/47555)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq non-oil GDP growth — sharp deceleration",
+   "value": "13.8 (2023) → 2.5 (2024)",
+   "unit": "percent",
+   "source": "IMF 2025 Article IV Consultation, July 2025",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq non-oil medium-term growth outlook, 'mostly driven by demographics'",
+   "value": "3-4",
+   "unit": "percent per year",
+   "source": "IMF 2025 Article IV Consultation, July 2025",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq household final consumption expenditure",
+   "value": "115.265",
+   "unit": "billion USD (2024), +7.75% vs 2023 ($106.974bn)",
+   "source": "World Bank data via statbase.org/data/irq-households-final-consumption-expenditure",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq household consumption as share of GDP",
+   "value": "41.22",
+   "unit": "percent (2024), up from 39.78% in 2023",
+   "source": "TheGlobalEconomy.com / World Bank, 2024",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Average Iraqi household monthly expenditure",
+   "value": "1,467,000",
+   "unit": "IQD/month (≈$1,112 official / ≈$958 parallel)",
+   "source": "Iraq Household Socio-Economic Survey (IHSES) 2023/24, Ministry of Planning + World Bank, released 26 Feb 2025 (mop.gov.iq/archives/29726)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Average Iraqi per-capita monthly expenditure",
+   "value": "248,600",
+   "unit": "IQD/month (≈$188 official / ≈$162 parallel)",
+   "source": "IHSES 2023/24, Ministry of Planning, Feb 2025",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad poverty rate vs national — Baghdad materially better off",
+   "value": "13.5 vs 17.5",
+   "unit": "percent (KRI 8.6%, rest of federal Iraq 21.5%)",
+   "source": "IHSES 2023/24, released Feb 2025; World Bank Poverty & Equity Brief",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq youth unemployment (ages 15-24)",
+   "value": "32.0",
+   "unit": "percent (2025); 32.09% in 2024",
+   "source": "World Bank modelled ILO estimate, 2025 (data.worldbank.org SL.UEM.1524.ZS)",
+   "confidence": "high"
+  },
+  {
+   "claim": "IQD/USD official Central Bank of Iraq rate",
+   "value": "1,310",
+   "unit": "IQD per USD (posted 131,000 per $100); 2026 budget set at 1,300; IMF describes peg at ~1,320",
+   "source": "Central Bank of Iraq, Aug 2026 (via Iraqi News); IMF 2025 Article IV",
+   "confidence": "high"
+  },
+  {
+   "claim": "IQD/USD PARALLEL market rate in Baghdad — the rate that actually applies to USD-denominated costs",
+   "value": "1,527.5-1,532.5",
+   "unit": "IQD per USD (152,750-153,250 per $100)",
+   "source": "Iraqi News, dollar exchange rates Baghdad/Erbil/Basra, 16 August 2026",
+   "confidence": "high"
+  },
+  {
+   "claim": "Parallel market premium over official CBI rate",
+   "value": "16-17",
+   "unit": "percent",
+   "source": "Iraqi News, August 2026",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq branded coffee shop outlets — the true organised competitive set",
+   "value": "85",
+   "unit": "outlets; 13th largest branded market in MENA; forecast >130 by end-2029",
+   "source": "Project Café Middle East 2025, World Coffee Portal",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq branded-coffee under-penetration vs Saudi Arabia",
+   "value": "≈80×",
+   "unit": "ratio of population-per-outlet (Iraq 1 per ~542,000; Saudi 1 per ~6,600)",
+   "source": "ESTIMATE: 46.1M/85 vs 34M/5,130, both outlet counts from Project Café Middle East 2025",
+   "confidence": "medium"
+  },
+  {
+   "claim": "MENA branded coffee shop market size and growth",
+   "value": "11,163 outlets, +11.2% y/y",
+   "unit": "outlets; forecast 16,460 by Nov 2029 (8.1% CAGR); Saudi alone 5,130 = 46% of region",
+   "source": "Project Café Middle East 2025, World Coffee Portal (via comunicaffe.com)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Registered restaurants in Iraq (excludes sidewalk, mobile, temporary and unregistered venues)",
+   "value": "23,718",
+   "unit": "restaurants",
+   "source": "Iraqi Ministry of Planning official count, cited by Infoplus Network and Mustaqila, 2025-26",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraqi restaurant sector annual growth rate",
+   "value": "3-6",
+   "unit": "percent per year",
+   "source": "Mustaqila (وكالة الصحافة المستقلة), 'Baghdad restaurant market: conflicting numbers', 2026",
+   "confidence": "low"
+  },
+  {
+   "claim": "The Grinders (leading Iraqi specialty chain, launched 2020) branch count",
+   "value": "17",
+   "unit": "branches (13 as of the 2024 round-up; 17th opened Al-Ameriyah, Baghdad, March 2025)",
+   "source": "Iraqi News, 'The Grinders expands to Al-Ameriyah with 17th branch launch', April 2025",
+   "confidence": "high"
+  },
+  {
+   "claim": "Cappuccino price in Baghdad — the benchmark cold/hot drink price point",
+   "value": "3,300",
+   "unit": "IQD (~$2.20-2.60); espresso 2,000 IQD ($1.60); blended iced/frappuccino ~4,900 IQD ($3.78)",
+   "source": "world-prices.com/en/iraq/prices/baghdad and hikersbay.com/prices/iraq/baghdad, 2026; Coffeestics Iraq",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iced latte price in a modern Baghdad specialty café",
+   "value": "4,000-6,500",
+   "unit": "IQD ($2.60-4.25 at parallel rate)",
+   "source": "ESTIMATE: interpolated between sourced Baghdad cappuccino benchmark (3,300 IQD) and sourced blended-iced-drink price (~4,900 IQD), with a premium-operator uplift. No published specialty-café iced latte price was found",
+   "confidence": "low"
+  },
+  {
+   "claim": "Scoop of ice cream in Baghdad",
+   "value": "1,500-3,000",
+   "unit": "IQD ($1.00-2.00)",
+   "source": "ESTIMATE: triangulated from sourced Coca-Cola 2L (1,635 IQD) and cheeseburger (2,400-2,900 IQD) prices plus Numbeo's finding that Baghdad is cheapest of 41 Western Asian cities for restaurant items. No direct published price located",
+   "confidence": "low"
+  },
+  {
+   "claim": "Fresh juice in Baghdad",
+   "value": "2,000-4,000",
+   "unit": "IQD ($1.30-2.60)",
+   "source": "ESTIMATE: sourced fruit input costs (local oranges 1,200-1,250 IQD/kg, bananas 1,000-1,750 IQD/kg — Iraqi Ministry of Agriculture wholesale bulletins 2026) imply ~400-700 IQD raw material per 300ml, at standard MENA juice-bar markups of 4-6×",
+   "confidence": "low"
+  },
+  {
+   "claim": "Iraq ice cream market value",
+   "value": "39",
+   "unit": "million USD (2024), +152% y/y; consumption peak reported at $189M",
+   "source": "IndexBox Iraq Ice Cream Market Report 2025",
+   "confidence": "low"
+  },
+  {
+   "claim": "Baghdad hot season length and intensity",
+   "value": "3.9 months (26 May – 21 Sept), daily highs averaging above 102°F / 38.9°C",
+   "unit": "months / °C",
+   "source": "Weather Spark, Baghdad Iraq (station 103217), climate normals",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad average high by month, May-September",
+   "value": "May 37, June 42, July 45, August 45, September 41",
+   "unit": "°C",
+   "source": "timeanddate.com/weather/iraq/baghdad/climate and weather-atlas.com Baghdad climate normals",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad July average high / average low",
+   "value": "44.4 / 27.8",
+   "unit": "°C (112°F / 82°F)",
+   "source": "Weather Spark, Baghdad",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad all-time record high temperature",
+   "value": "51.8",
+   "unit": "°C (125.2°F), recorded 28 July 2020",
+   "source": "Washington Post, 'Baghdad heat is world's climate change future', August 2020",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad temperature during July 2025 national heatwave — 13 Iraqi provinces exceeded 50°C",
+   "value": "51",
+   "unit": "°C",
+   "source": "Xinhua, 28 July 2025",
+   "confidence": "high"
+  },
+  {
+   "claim": "Days per year above 40°C in Baghdad",
+   "value": "120-140 (point estimate ≈134)",
+   "unit": "days/year",
+   "source": "ESTIMATE: June/July/Aug mean daily highs of 42/45/45°C imply essentially all 92 days clear 40°C; plus ~12 days late May, ~22 days September, ~8 days early October. Cross-checks against Weather Spark's 118-day window of highs above 38.9°C. No published day-count located",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Days per year above 45°C in Baghdad",
+   "value": "40-60 (point estimate ≈46)",
+   "unit": "days/year",
+   "source": "ESTIMATE: July and August mean daily highs are both ~45°C, so ~half of those 62 days clear it (≈31), plus ~10 hottest June days and ~5 September days. Anchored against EUISS's ~14 days/year at the 48.9°C threshold",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Projected increase in Baghdad days at 120°F (48.9°C) over two decades",
+   "value": "~14 → >40",
+   "unit": "days per year",
+   "source": "EU Institute for Security Studies, cited by NPR, March 2022",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad January (coldest month) average high / low — justifies winter hot-drink pivot",
+   "value": "16 / 4",
+   "unit": "°C (60.8°F / 39.2°F); sub-freezing lows occur a couple of times per year",
+   "source": "weather-atlas.com/en/iraq/baghdad-weather-january",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq internet users and penetration",
+   "value": "39.6 million / 83.8",
+   "unit": "million users / percent penetration (end-2025)",
+   "source": "DataReportal Digital 2026: Iraq (Kepios)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq social media user IDENTITIES (accounts, not unique people)",
+   "value": "40.1 million = 84.9% of population",
+   "unit": "identities",
+   "source": "DataReportal Digital 2026: Iraq, October 2025 data",
+   "confidence": "medium"
+  },
+  {
+   "claim": "TikTok potential ad reach in Iraq, 18+ — WARNING: exceeds Iraq's entire adult population (~25-26M), so this counts accounts not people",
+   "value": "40.1 million",
+   "unit": "accounts aged 18+ (late 2025); +2.12M (+5.6%) Jul→Oct 2025; was 34.3M in early 2025",
+   "source": "Kepios / DataReportal Digital 2026: Iraq",
+   "confidence": "low"
+  },
+  {
+   "claim": "Facebook users in Iraq",
+   "value": "34,539,100 = 72.3% of population",
+   "unit": "users (June 2026)",
+   "source": "NapoleonCat, stats.napoleoncat.com/social-media-users-in-iraq/2026",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Instagram users in Iraq",
+   "value": "23,592,900 = 49.4% of population",
+   "unit": "users (June 2026); 19.0M in early 2025",
+   "source": "NapoleonCat, June 2026; DataReportal Digital 2025: Iraq",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Snapchat users in Iraq — 3rd largest MENA market after Saudi (24.7M) and Egypt (19.7M)",
+   "value": "18.5 million = 39.7% of total population",
+   "unit": "users (early 2025), up from 17.74M prior year",
+   "source": "DataReportal Digital 2025: Iraq; Iraq Digital Media Center",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq active cellular mobile connections",
+   "value": "50.8 million = 108% of population",
+   "unit": "connections (late 2025)",
+   "source": "DataReportal Digital 2026: Iraq",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad Coffee & Tea Festival attendance trajectory — hardest evidence of category demand",
+   "value": "62,000 (2024 official tally) → 100,000+ expected (2025)",
+   "unit": "visitors",
+   "source": "Shafaqna English / Iraqi News / Shafaq News coverage of the 2nd edition, organised by the Ridha Alwan Cultural Foundation with Enfold; 70+ companies, 40+ brands. NOTE: one 2024 source reports 15,000 instead of 62,000 — conflict unresolved",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq Mall, Baghdad (Al-Dora) — opened February 2026, largest mall in Iraq, 3rd largest in the Middle East",
+   "value": ">550,000 m², 1,000+ retail outlets, ~50 million projected annual visitors",
+   "unit": "m² / outlets / visitors",
+   "source": "Iraqi News, 'Iraq Mall opens in Baghdad', Feb 2026; MECSR. NOTE: 50M is a developer projection, not measured footfall",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraq Mall employment",
+   "value": "~4,000 at opening → 25,000 direct jobs projected at full operation (50,000+ once all units trade)",
+   "unit": "jobs",
+   "source": "Iraq Mall owner, via Iraqi News, Feb 2026",
+   "confidence": "low"
+  },
+  {
+   "claim": "Baghdad Mall (opened 2017) scale",
+   "value": "36,000 m² retail / 80,000 m² GLA, 200+ retail units, 1,000 parking spaces",
+   "unit": "m² / units",
+   "source": "Iraqi News '5 best shopping malls in Baghdad'; MECSR directory",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Mansour Mall / Zayoona Mall (opened 2016) floor area",
+   "value": "32,000 / 33,000",
+   "unit": "m²",
+   "source": "Iraqi News '5 best shopping malls in Baghdad'",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Al-Zawraa Park footfall during Eid holiday — Baghdad's latent out-of-home leisure demand",
+   "value": "3 million over the holiday (Oct 2009); ~8 million projected for full-year 2009; vs 200,000 over Eid 2005",
+   "unit": "visitors",
+   "source": "Gulf News, 'Baghdad zoo comes back to life'; NBC News. NOTE: 17 years old — must be re-sourced before use",
+   "confidence": "low"
+  },
+  {
+   "claim": "Verified Baghdad retail rent observation — 350 m² two-floor unit, 14 Ramadan Street, Mansour",
+   "value": "$3,500/month = $10/m²/month",
+   "unit": "USD per month",
+   "source": "aiqarat.com (عقارات العراق) live listing",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad commercial land purchase prices",
+   "value": "Zayouna commercial ~$10,000/m²; Jadriya/Mansour/Yarmouk/Palestine St/Saydiya $3,000-7,000/m²",
+   "unit": "USD per m²",
+   "source": "thenewregion.com/posts/592, 'Baghdad real estate prices eclipse Europe'",
+   "confidence": "low"
+  },
+  {
+   "claim": "Estimated monthly rent for a 60-120 m² SHABM unit in Baghdad",
+   "value": "$600-1,400 (Zayouna/Jadriya); $1,000-2,000 (Mansour/Karrada); $1,500-3,000 (Arasat prime)",
+   "unit": "USD per month",
+   "source": "ESTIMATE: anchored on the single verified $10/m²/month Mansour listing, scaled by relative land-value ratios between districts. Only one real rent observation was found — obtain three broker quotes",
+   "confidence": "low"
+  },
+  {
+   "claim": "Baghdad national grid electricity supply — THE core operating risk for a freezer-dependent concept",
+   "value": "8-12",
+   "unit": "hours per day, even in best condition",
+   "source": "Middle East Monitor, 'Iraq's electricity crisis: Fifty degrees of cold promises', 17 August 2026",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad household private generator cost in summer",
+   "value": "$100-300",
+   "unit": "USD per month",
+   "source": "Middle East Eye, 2025-26",
+   "confidence": "high"
+  },
+  {
+   "claim": "Private generator cost per ampere in Iraq",
+   "value": "~$8.40/ampere/month (at 8 hrs/day); operator-quoted 15,000-25,000 IQD ($11-19) per ampere in summer; >$300/month for 15 amperes",
+   "unit": "USD per ampere per month",
+   "source": "Renewable Energies journal, January 2025, cited via Yahoo News UK / riadi.iq",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Estimated SHABM monthly power cost, single Baghdad unit (ULT freezer + storage freezers + cold pan + refrigeration + AC against 45°C ambient)",
+   "value": "$336-588 (shared generator at $8.40/A) to $800-1,500 (dedicated diesel generator with fuel)",
+   "unit": "USD per month",
+   "source": "ESTIMATE: 40-70 amperes of required capacity (engineering judgement) × sourced per-ampere rates. Requires sizing by an Iraqi electrical contractor",
+   "confidence": "low"
+  },
+  {
+   "claim": "Iran gas export halt impact on Iraq's grid, December 2025",
+   "value": "4,000-4,500",
+   "unit": "MW cut from the national grid; repeat interruptions Jan and Feb 2026",
+   "source": "Middle East Eye, December 2025; Iraqi Electricity Ministry",
+   "confidence": "high"
+  },
+  {
+   "claim": "Tigris River contamination near Kadhimiya, Baghdad — why municipal water cannot be a product input",
+   "value": "540,000",
+   "unit": "coliform and E. coli per 100 mL (far exceeding safe standards)",
+   "source": "'Troubled Waters: The Tigris River Pollution Crisis', Iraq Climate Change Center (IC3+)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Umm Qasr customs regime change — flat per-container fee abolished, replaced by per-HS-code item assessment",
+   "value": "rates starting at 5%",
+   "unit": "percent duty, varying by product category",
+   "source": "Council of Ministers Decision No. 957 of 2025; Iraq Business News, 8 January 2026",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Food import health/quality testing time at Umm Qasr — cold-chain risk window",
+   "value": "5-7",
+   "unit": "days",
+   "source": "Logistics Cluster Digital Logistics Capacity Assessment, Iraq; Direct Drive Logistic",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Iraqi banks banned from USD transactions by CBI (barred from the daily dollar auction)",
+   "value": "5 banks + 3 payment firms",
+   "unit": "institutions (Feb 2025); amended full list published Feb 2026",
+   "source": "Iran Watch; Iraq Business News, 23 Feb 2026",
+   "confidence": "high"
+  },
+  {
+   "claim": "US State Department travel advisory for Iraq",
+   "value": "Level 4 — Do Not Travel; ordered departure of non-emergency US government personnel 2 March 2026",
+   "unit": "advisory level",
+   "source": "travel.state.gov Iraq Travel Advisory; US Mission Iraq security alerts, March-April 2026",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq tourism revenue — the countervailing evidence to the Level 4 advisory",
+   "value": "5.7",
+   "unit": "billion USD (2024), +25% y/y from $4.6bn; 7th among Arab countries",
+   "source": "Iraqi tourism authorities via Tehran Times and Travel And Tour World, 2025",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad designated Arab Tourism Capital",
+   "value": "2025",
+   "unit": "year",
+   "source": "Arab Tourism Organization (ATO)",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq inflation — food-input deflation as a 2025 margin tailwind",
+   "value": "Core CPI -0.40% y/y; Food CPI -3.30% y/y (Dec 2025); IMF projects ~3% for 2026",
+   "unit": "percent y/y",
+   "source": "TradingEconomics Iraq core/food inflation, December 2025; IMF 2026 projection via Iraqi News",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Wholesale/retail trade + restaurants + hotels share of Iraqi GDP",
+   "value": "~7",
+   "unit": "percent of GDP (2023 est.)",
+   "source": "Iraq sectoral GDP estimates, 2023 (via lloydsbanktrade.com Iraq economic context)",
+   "confidence": "low"
+  },
+  {
+   "claim": "DERIVED — Baghdad total household expenditure",
+   "value": "≈32.1 trillion IQD/year ≈ US$21.0 billion",
+   "unit": "USD per year at parallel rate 1,530",
+   "source": "ESTIMATE: 9,780,429 census pop ÷ 5.9 IHSES household size = 1,657,700 households × 1,613,700 IQD/month (national IHSES 1,467,000 × 1.10 Baghdad uplift for its lower 13.5% poverty rate) × 12",
+   "confidence": "medium"
+  },
+  {
+   "claim": "DERIVED — Baghdad food-service (food away from home) TAM",
+   "value": "≈1.2",
+   "unit": "billion USD per year",
+   "source": "ESTIMATE: $21.0bn Baghdad household expenditure × 32% food share (IHSES 2018) × 18% away-from-home share (assumed, typical urbanising MENA range 15-25%). Sanity-checked: implies $145K-203K revenue per venue against 5,900-8,300 estimated Baghdad restaurants",
+   "confidence": "low"
+  },
+  {
+   "claim": "DERIVED — Baghdad cold-drinks and frozen-dessert SAM",
+   "value": "≈145-215",
+   "unit": "million USD per year",
+   "source": "ESTIMATE: $1.2bn Baghdad food-service TAM × 12-18% (share elevated above temperate-market norm because Baghdad has ~134 days/year above 40°C)",
+   "confidence": "low"
+  },
+  {
+   "claim": "DERIVED — SHABM obtainable market in Baghdad at maturity (multi-unit network, 5-7 years)",
+   "value": "≈35",
+   "unit": "million USD per year",
+   "source": "ESTIMATE: 6.0M Baghdad under-30s × 5% monthly-customer penetration × 24 visits/year × 7,500 IQD ($4.90) average ticket. Equals 16-24% of the derived SAM — aggressive but defensible for a category-defining brand with no direct competitor",
+   "confidence": "low"
+  },
+  {
+   "claim": "DERIVED — single SHABM unit annual revenue anchor",
+   "value": "≈657 million IQD ≈ US$429,000",
+   "unit": "per year",
+   "source": "ESTIMATE: 300 units/day × 6,000 IQD average ticket × 365 days, converted at parallel rate 1,530. The daily-unit and ticket assumptions are the two most fragile inputs in the model",
+   "confidence": "low"
+  }
+ ],
+ "sources": [
+  "https://ina.iq/en/local/43822-planning-minister-announces-final-results-of-national-population-census.html",
+  "https://www.pukmedia.com/EN/Details/77647",
+  "https://shafaq.com/en/society/Iraq-s-final-national-census-Population-reaches-46-1M",
+  "https://mop.gov.iq/archives/35531",
+  "https://mop.gov.iq/archives/29726",
+  "https://mop.gov.iq/archives/29744",
+  "https://iraq.unfpa.org/en/news/iraq-unveils-key-census-insights-new-era-iraqs-national-planning",
+  "https://iraq.un.org/en/289810-iraq-unveils-key-census-insights-new-era-iraq%E2%80%99s-national-planning",
+  "https://iraq.un.org/en/319321-iraq-marks-world-population-day-2026-calling-youth-investment-drive-sustainable-development",
+  "https://alssaa.com/post/show/43032-iraq-2024-population-census-results-for-the-governorates",
+  "https://alssaa.com/post/show/42896-iraq-2024-results-of-the-general-population-and-housing-census",
+  "https://hathalyoum.net/articles/4037722",
+  "https://ar.wikipedia.org/wiki/تعداد_العراق_2024",
+  "https://www.kurdistan24.net/en/story/826489/analysis-of-iraqs-2024-census-results-a-deep-dive-into-demographic-shifts-and-national-trends",
+  "https://www.kurdistan24.net/en/story/877631/iraqs-population-tops-46-million-in-latest-census-highlighting-a-young-and-growing-society",
+  "https://www.citypopulation.de/en/iraq/cities/",
+  "https://statbase.org/data/irq-median-age/",
+  "https://www.worldometers.info/demographics/iraq-demographics/",
+  "https://www.macrotrends.net/global-metrics/cities/21529/baghdad/population",
+  "https://worldpopulationreview.com/cities/iraq/baghdad",
+  "https://www.elibrary.imf.org/view/journals/002/2025/183/article-A001-en.xml",
+  "https://www.imf.org/-/media/files/publications/cr/2025/english/1irqea2025001-source-pdf.pdf",
+  "https://www.imf.org/-/media/files/publications/cr/2025/english/1irqea2025002-source-pdf.pdf",
+  "https://www.imf.org/en/news/articles/2025/07/08/pr-25243-iraq-imf-executive-board-concludes-2025-article-iv-consultation",
+  "https://www.imf.org/en/news/articles/2025/05/15/mcs-iraq-concluding-statement-of-the-2025-imf-article-iv-mission",
+  "https://www.iraq-businessnews.com/2025/07/10/imf-issues-iraq-report-forecasts-growth-of-3-1/",
+  "https://channel8.com/english/news/47555",
+  "https://statbase.org/data/irq-households-final-consumption-expenditure/",
+  "https://www.theglobaleconomy.com/Iraq/household_consumption/",
+  "https://tradingeconomics.com/iraq/core-inflation-rate",
+  "https://tradingeconomics.com/iraq/food-inflation",
+  "https://www.iraqinews.com/iraq/imf-projects-iraqs-inflation-rate-to-continue-at-3-in-2026/",
+  "https://data.worldbank.org/indicator/SL.UEM.1524.ZS?locations=IQ",
+  "https://documents1.worldbank.org/curated/en/099641504212589716/pdf/IDU-2666c9d6-2a72-4112-912d-deeb8c48bb48.pdf",
+  "https://www.alsumaria.tv/news/localnews/517724/",
+  "https://www.ninanews.com/Website/News/Details?Key=1188900",
+  "https://www.iraqinews.com/iraq/dollar-exchange-rates-baghdad-erbil-basra-august-16-2026/",
+  "https://usfirstexchange.com/iraq-confirms-dinar-exchange-rate-for-2026",
+  "https://www.ebc.com/forex/will-the-iraqi-dinar-revalue-in-2026",
+  "https://dataviz.vam.wfp.org/the-middle-east-and-northern-africa/iraq/economic/exchange-rates",
+  "https://www.worldcoffeeportal.com/industry-report/project-cafe-middle-east-2025/",
+  "https://www.worldcoffeeportal.com/analysis/the-debrief-project-cafe-middle-east-2025/",
+  "https://www.worldcoffeeportal.com/news/saudi-arabias-half-million-preparing-for-iraq-launch/",
+  "https://www.worldcoffeeportal.com/news/saudi-arabias-kyan-cafe-continues-middle-east-expansion-with-first-iraq-outlet/",
+  "https://www.worldcoffeeportal.com/news/middle-east-remains-key-growth-market-for-branded-coffee-chains-but-regional-unrest-a-concern-for-operators/",
+  "https://www.comunicaffe.com/middle-east-branded-coffee-shop-market-grew-11-2/",
+  "https://kyancafe.com/en/kyan-cafe-opens-first-branch-in-iraq-expanding-into-basra/",
+  "https://kyancafe.com/en/kyan-cafe-has-a-heavily-iced-coffee/",
+  "https://www.verdictfoodservice.com/news/kyan-cafe-expands-iraq/",
+  "https://www.iraq-businessnews.com/2023/02/13/cinnabon-opens-its-first-store-in-iraq/",
+  "https://www.iraqinews.com/iraq/the-best-cafes-in-baghdad-2024/",
+  "https://www.iraqinews.com/lifestyle/the-grinders-17th-branch/",
+  "https://www.iraqinews.com/lifestyle/baghdad-coffee-and-tea-festival/",
+  "https://www.iraqinews.com/lifestyle/discover-baghdads-best-24-7-restaurants-and-cafes/",
+  "https://ridhaalwancoffee.iq/en/branches",
+  "https://ridhaalwancoffee.com/en/",
+  "https://en.wikipedia.org/wiki/Coffeehouse_culture_of_Baghdad",
+  "https://en.shafaqna.com/425264/baghdad-coffee-and-tea-festival-2025-opens",
+  "https://shafaq.com/en/society/Baghdad-Coffee-and-Tea-Festival-brews-global-flavor-local-tradition",
+  "https://www.iina.news/flavours-of-iraq-shine-at-coffee-and-tea-festival/",
+  "https://infoplusnetwork.com/news/local/العراق-يشهد-طفرة-غير-مسبوقة-في-أعداد-المطاعم-والمقاهي",
+  "https://mustaqila.com/سوق-المطاعم-في-بغداد-أرقام-متضاربة-ومخ/",
+  "https://baghdadtoday.news/266857",
+  "https://www.annahar.com/makalat/annahar-alarabi-authors/219819/",
+  "https://yaqinnews.net/?p=42868",
+  "https://www.thenationalnews.com/travel/2024/11/14/iraq-baghdad-cafe-culture/",
+  "https://inoff.net/",
+  "https://www.pulled.coffee/shop/coffeella-cafe-baghdad",
+  "https://www.tripadvisor.com/Restaurants-g294001-c8-Baghdad_Baghdad_Province.html",
+  "https://hikersbay.com/prices/iraq/baghdad?lang=en",
+  "https://world-prices.com/en/iraq/prices/baghdad",
+  "https://world-prices.com/en/iraq/prices-restaurants",
+  "https://www.numbeo.com/cost-of-living/in/Baghdad",
+  "https://www.numbeo.com/cost-of-living/price-rankings/in/Baghdad",
+  "https://www.numbeo.com/food-prices/in/Baghdad",
+  "https://www.expatistan.com/cost-of-living/baghdad",
+  "https://www.expatistan.com/price/coke/baghdad",
+  "https://coffeestics.com/countries/iraq/baghdadi",
+  "https://ashourland.net/2026/03/03/وزارة-الزراعة-تنشر-الموقف-اليومي-لأسع/",
+  "https://www.indexbox.io/store/iraq-ice-cream-market-analysis-forecast-size-trends-and-insights/",
+  "https://www.indexbox.io/store/iraq-sweet-soft-drinks-market-analysis-forecast-size-trends-and-insights/",
+  "https://www.euromonitor.com/soft-drinks-in-iraq/report",
+  "https://en.wikipedia.org/wiki/Baghdad_Soft_Drinks_Co",
+  "https://www.fortunebusinessinsights.com/frozen-dessert-market-112156",
+  "https://www.6wresearch.com/industry-report/iraq-coffee-market",
+  "https://weatherspark.com/y/103217/Average-Weather-in-Baghdad-Iraq-Year-Round",
+  "https://weatherspark.com/s/103217/1/Average-Summer-Weather-in-Baghdad-Iraq",
+  "https://www.timeanddate.com/weather/iraq/baghdad/climate",
+  "https://www.weather-atlas.com/en/iraq/baghdad-climate",
+  "https://www.weather-atlas.com/en/iraq/baghdad-weather-january",
+  "https://en.climate-data.org/asia/iraq/baghdad/baghdad-86/",
+  "https://www.climatestotravel.com/climate/iraq",
+  "https://www.washingtonpost.com/world/2020/08/12/baghdad-iraq-heat-climate-change/",
+  "https://www.npr.org/sections/goatsandsoda/2022/03/10/1083916026/why-baghdad-will-be-one-of-the-cities-hardest-hit-by-global-warming",
+  "https://english.news.cn/20250728/13b255c55a6f4d6bacdb6e83c001e013/c.html",
+  "https://www.arabnews.com/node/2609733/middle-east",
+  "https://thearabweekly.com/amid-climate-change-iraqis-struggle-temperatures-topping-50c",
+  "https://www.iraqinews.com/iraq/iraq-summer-heatwave-temperature-forecast-june-2026/",
+  "https://en.964media.com/48572/",
+  "https://en.wikipedia.org/wiki/Mansour_district",
+  "https://en.wikipedia.org/wiki/Karrada",
+  "https://en.wikipedia.org/wiki/Zayouna",
+  "https://evendo.com/locations/iraq/baghdad/al-karada",
+  "https://baytiraq.com/top-5-most-desirable-residential-areas-in-baghdad-in-2025/",
+  "https://expatlife.ai/iraq/cities/baghdad/neighborhoods/karrada",
+  "https://thenewregion.com/posts/592/baghdad-real-estate-prices-eclipse-europe",
+  "https://aiqarat.com/property/محل-للإيجار-في-المنصور٬شارع-١٤-رمضان٣/",
+  "https://iq.opensooq.com/en/baghdad/property/offices-for-rent",
+  "https://www.numbeo.com/property-investment/in/Baghdad",
+  "https://baytoona.com/property-prices-in-baghdad-2026-areas-trends-and-buying-guide/",
+  "https://www.iraqinews.com/lifestyle/5-best-shopping-malls-in-baghdad/",
+  "https://www.iraqinews.com/iraq/iraq-mall-baghdad-grand-opening/",
+  "https://www.mecsr.org/insights-member-articles/iraq-mall-a-game-changer-in-baghdad%E2%80%99s-landscape",
+  "https://www.mecsr.org/directory-shopping-centres/iraq-mall",
+  "https://www.einpresswire.com/article/900015406/baghdad-returns-to-the-spotlight-with-the-opening-of-iraq-mall-the-most-ambitious-investment-project-in-iraq-s-history",
+  "https://en.wikipedia.org/wiki/Baghdad_Mall",
+  "https://www.iina.news/baghdad-on-course-for-economic-boost-after-opening-of-iraq-mall/",
+  "https://en.wikipedia.org/wiki/Al-Zawraa_Park",
+  "https://gulfnews.com/world/mena/baghdad-zoo-comes-back-to-life-1.530222",
+  "https://www.nbcnews.com/id/wbna33984902",
+  "https://visitiraqnow.com/articles/671faa26ef8f54ae6695cc31",
+  "https://shafaq.com/en/Report/Once-revived-now-neglected-Baghdad-s-Abu-Nuwas-Street-struggles-again",
+  "https://araburban.org/en/infohub/projects/?id=7602",
+  "https://www.britannica.com/place/Abu-Nuwas-Street",
+  "https://www.nybooks.com/online/2025/03/22/the-new-baghdad/",
+  "https://datareportal.com/reports/digital-2026-iraq",
+  "https://datareportal.com/reports/digital-2025-iraq",
+  "https://datareportal.com/digital-in-iraq",
+  "https://datareportal.com/essential-tiktok-stats",
+  "https://datareportal.com/essential-snapchat-stats",
+  "https://datareportal.com/essential-instagram-stats",
+  "https://stats.napoleoncat.com/social-media-users-in-iraq/2026/",
+  "https://gs.statcounter.com/social-media-stats/all/iraq",
+  "https://www.pukmedia.com/EN/Details/77715",
+  "https://starngage.com/plus/en-us/influencer/ranking/tiktok/iraq",
+  "https://www.modash.io/find-influencers/iraq/food",
+  "https://www.heepsy.com/ranking/top-food-influencers-in-iraq",
+  "https://www.facebook.com/INEWSTViq/videos/شوكولاتة-دبي-ترند-جديد-يغزو-أسواق-العراق/1655920228314474/",
+  "https://www.middleeastmonitor.com/20260817-iraqs-electricity-crisis-fifty-degrees-of-cold-promises/",
+  "https://www.middleeasteye.net/news/iraqis-left-without-power-after-iran-halts-gas-exports",
+  "https://www.kurdistan24.net/en/story/911768/iraq-faces-severe-electricity-shortfall-ahead-of-summer-2026-energy-report-warns",
+  "https://gfrmiraq.com/en/post/542/",
+  "https://www.bakerinstitute.org/research/iraqs-electricity-shortage-and-paradox-gas-flaring",
+  "https://www.globalpetrolprices.com/Iraq/electricity_prices/",
+  "https://femalejournalistsforclimate.com/en/49000-generators-in-iraq-for-electricity-production/",
+  "https://riadi.iq/en/generator-and-electricity-prices/",
+  "https://uk.news.yahoo.com/iraqs-private-power-generators-lifesaver-151000906.html",
+  "https://themedialine.org/by-region/the-power-struggle-despite-billions-of-dollars-spent-iraqis-battle-with-unstable-electric-supply/",
+  "https://iraqclimatechange.org/troubled-waters-the-tigris-river-pollution-crisis/",
+  "https://iieta.org/journals/ijei/paper/10.18280/ijei.080419",
+  "https://repository.uobaghdad.edu.iq/publication/GRZZKIcBVTCNdQwCHDvD",
+  "https://www.iraq-businessnews.com/2026/01/08/new-customs-rules-in-force-at-umm-qasr-port/",
+  "https://shafaq.com/en/Economy/Iraq-rejects-disruption-reports-at-Umm-Qasr-Port",
+  "https://lca.logcluster.org/211-iraq-port-umm-qasr",
+  "https://lca.logcluster.org/13-iraq-customs-information",
+  "https://directdrivelogistic.com/services/customs-clearance-iraq/",
+  "https://www.iranwatch.org/news-brief/five-iraqi-banks-be-banned-us-dollar-transactions",
+  "https://www.iraq-businessnews.com/2026/02/23/iraqi-banks-restricted-from-us-dollar-transactions-full-list/",
+  "https://www.iraqinews.com/iraq/ziad-al-hashemi-iraq-banking-reform-us-dollar-restrictions-2026/",
+  "https://www.recoveryadvisers.com/insights/202312-iraq/",
+  "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/iraq-travel-advisory.html",
+  "https://iq.usembassy.gov/security-alert-ordered-departure-of-non-emergency-u-s-government-personnel-from-u-s-mission-iraq/",
+  "https://iq.usembassy.gov/security-alert-u-s-embassy-baghdad-iraq-april-20-2026/",
+  "https://www.smartraveller.gov.au/destinations/middle-east/iraq",
+  "https://travel.gc.ca/destinations/iraq",
+  "https://www.tehrantimes.com/news/518787/Iraq-s-tourism-revenues-jump-25-to-5-7-billion",
+  "https://shafaq.com/en/society/Baghdad-drives-Iraq-s-tourism-boom",
+  "https://www.travelandtourworld.com/news/article/iraqs-tourism-industry-booms-to-5-7-billion-as-baghdad-babylon-and-karbala-lead-the-way-for-growth-heres-everything-you-need-to-know/",
+  "https://iraq.talabat.com/",
+  "https://en.wikipedia.org/wiki/Lezzoo",
+  "https://www.osoustech.com/food-delivery-apps-in-iraq/",
+  "https://iraqtech.io/the-food-delivery-startup-case-an-overview-from-iraq-to-us/",
+  "https://www.morellisgelato.com/baghdad-iraq-1",
+  "https://icekingltd.com/",
+  "https://en.wikipedia.org/wiki/Stir-fried_ice_cream"
+ ],
+ "open_questions": [
+  "TOOLING LIMITATION — flag to the orchestrator: WebFetch was blocked by the session egress proxy for EVERY domain attempted (worldbank.org, imf.org, datareportal.com, citypopulation.de, wikipedia.org, numbeo.com, hikersbay.com, weather-atlas.com, shafaq.com, iraq-businessnews.com and more). All figures came from WebSearch result summaries. Attribution is real but most primary pages were not read directly. The ~10 figures marked ★ in the report should be opened and screenshotted from source before the deck ships.",
+  "No published price for an iced latte at a named Baghdad specialty café was found. My 4,000-6,500 IQD estimate is interpolated from a sourced 3,300 IQD cappuccino and a sourced ~4,900 IQD blended iced drink. ACTION: photograph the live menu at The Grinders (Rubaie St, Zayouna), Espressolab Baghdad, and Agora. This is the single most important missing number — the entire revenue model keys off average ticket.",
+  "No published price for a scoop of ice cream or a fresh juice in Baghdad was found. Both estimates are triangulated from adjacent sourced prices and input costs. ACTION: price-check Morelli's Gelato (Jadriya), ICE PACK Almansour (14 Ramadan St) and any juice bar on Karrada In.",
+  "No documented case study exists of a specific Baghdad F&B venue generating a queue as a direct result of a viral social post. Searches in both English and Arabic returned only TikTok discovery pages. The virality-to-queue thesis currently rests on inferential evidence (coffee festival 62,000→100,000+, Dubai-chocolate transmission into Iraqi markets, Iraq Mall opening crowds, near-total platform penetration). ACTION: interview 2-3 Baghdad operators, or find and film a queue at a recently-opened venue — this is the proof point an investor will ask for.",
+  "The Baghdad Coffee & Tea Festival 2024 attendance is reported at BOTH 15,000 and 62,000 ('official tally') by different sources. Resolve before quoting. The 2025 100,000+ figure is a pre-event expectation, not a post-event count — get the actual 2025 number.",
+  "The Iraqi Ministry of Planning restaurant figures are internally inconsistent: 23,718 nationally but '>500 in Baghdad alone', in an article that simultaneously says most restaurants are concentrated in Baghdad and is headlined 'conflicting numbers'. A defensible Baghdad venue count does not currently exist in public sources. ACTION: request the governorate-level breakdown from the Central Statistical Organisation, or commission a Google Places / OpenSooq scrape of Baghdad cafés and restaurants.",
+  "Baghdad rent is supported by exactly ONE verified observation ($3,500/month for 350 m² on 14 Ramadan Street, Mansour = $10/m²/month). All district rent bands in this report are scaled from that single point. ACTION: obtain three live broker quotes — one each in Zayouna, Mansour and Arasat Al-Hindiya — plus a mall leasing term sheet from Zayoona Mall or Iraq Mall. Note also the sector-wide reporting that rising rents in prime commercial areas have already forced restaurateurs to downsize or exit.",
+  "No published day-count for Baghdad days above 40°C or 45°C was located. My estimates (~134 and ~46 days respectively) are derived from monthly mean daily highs. ACTION: pull the daily station record for Baghdad International Airport (WMO 40650) from NOAA GHCN or the Iraqi Meteorological Organisation and count directly — this is a cheap fix and a headline slide number.",
+  "The Al-Zawraa Park footfall data (3 million over Eid 2009, ~8 million projected for full-year 2009) is 17 years old. ACTION: request current visitor numbers from the Baghdad Mayoralty (Amanat Baghdad) before using it as a footfall justification.",
+  "Iraq Mall's '~50 million annual visitors' is a developer projection made at a February 2026 opening, not measured footfall. Its 25,000-job projection is similarly forward-looking. ACTION: seek measured monthly footfall after 6-12 months of trading before basing a mall-unit business case on it.",
+  "Iraq's food-away-from-home share of household food spending has never been published. My 18% assumption drives the entire TAM. ACTION: request the IHSES 2023/24 detailed expenditure tables from the Central Statistical Organisation or the World Bank microdata portal — they should contain the restaurant/hotel line item directly. The food-share figure I used (32%) is also from IHSES 2018, not 2023/24.",
+  "Six operator names supplied in the brief — Kahvi, Karam (as a coffee brand), Turk Coffee, Loyal, Bab, and Mokha — could NOT be substantiated in any English or Arabic source as Baghdad coffee operators. Either verify them locally or remove them from the competitive slide; an Iraqi investor will spot an inaccurate competitive map immediately.",
+  "SHABM's power requirement has not been engineered. My 40-70 ampere / $336-1,500 per month estimate is judgement layered on sourced per-ampere rates. ACTION: have an Iraqi electrical contractor size the actual load for a -80°C ULT freezer plus storage freezers, cold pan, refrigeration and AC against 45°C ambient, and quote a redundant generator solution. Given the grid delivers only 8-12 hrs/day, this is the number that decides whether the unit economics work.",
+  "Security posture is diverging from economic activity: the US ordered departure of non-emergency personnel on 2 March 2026 and all Western advisories remain Level 4, while Baghdad simultaneously opened a 550,000 m² mall and posted 25% tourism revenue growth. ACTION: get a current insurance quote for a Baghdad retail unit and a written view from an Iraqi legal/commercial adviser — the practical cost of the advisory (insurance, foreign-director travel, expat management) needs to be a named line item rather than a hand-wave.",
+  "A claim of '127 foreigner kidnappings in 2025, average ransom $2.3M, attributed to UNAMI' surfaced via travelwarningcheck.com and could NOT be verified against any UNAMI primary source; the site appears low-quality or auto-generated. Do not use this figure. If kidnapping risk needs quantifying, source it from UNAMI's actual published reporting.",
+  "Three of the five product lines (frozen -80 cup, carved ice block, live-poured rolled ice cream) cannot survive delivery in a 45°C Baghdad summer, yet Talabat, Toters, Lezzoo, Careem and Uber are all competing hard in Iraqi delivery. The revenue mix must be modelled as predominantly dine-in. Decide and state explicitly which SKUs (if any) are delivery-viable — sealed sorbets and bottled cold brew are the likely candidates."
+ ]
+}

@@ -1,0 +1,719 @@
+{
+ "_meta": {
+  "brand": "شَبِم / SHABM",
+  "base_currency": "USD",
+  "as_of": "2026-08",
+  "fx_note": "Iraqi costs and prices are set in IQD and converted at the PARALLEL market rate, which is what actually applies to imported equipment, USD rent and USD-priced inputs. Official CBI rate 1,310; parallel 1,530 (Iraqi News, 16 Aug 2026). Using the official rate would overstate USD revenue by ~17%.",
+  "source_key": "H = hard-sourced. E = estimate, derivation stated. Q = requires a supplier quote before commitment."
+ },
+ "fx": {
+  "iqd_per_usd_official": 1310,
+  "iqd_per_usd_parallel": 1530,
+  "sar_per_usd": 3.75,
+  "aed_per_usd": 3.6725,
+  "qar_per_usd": 3.64,
+  "egp_per_usd": 48.0
+ },
+ "ops": {
+  "days_per_month": 30.4,
+  "ramp": [
+   0.62,
+   1.0,
+   1.05,
+   1.08,
+   1.1
+  ],
+  "_ramp_note": "E — Year 1 trades at 62% of mature volume: 2 months of pre-opening, a launch spike, then a settling trough. Year 2 is the mature base.",
+  "like_for_like_growth": 0.03,
+  "waste_pct": 0.065,
+  "_waste_note": "E - 6.5%. Fresh fruit held in 45C ambient, milk, moulded-sorbet reject rate, and clear-ice block breakage in handling. Carving waste is already inside the Al-Qalab recipe cost.",
+  "employer_oncost_pct": 0.12,
+  "_oncost_note": "E — Iraqi social security employer contribution 12% of salary for private sector.",
+  "marketing_pct_y1": 0.1,
+  "marketing_pct": 0.065,
+  "card_fee_pct": 0.018,
+  "station_efficiency": 0.72,
+  "_station_note": "E — real kitchens never hit theoretical throughput: order-taking, restocking, cleaning and hand-off losses.",
+  "depreciation_years": 7,
+  "maintenance_capex_pct": 0.015,
+  "unit_exit_multiple": 3.5,
+  "franchise_rev_index": 1.0,
+  "rent_escalation": 0.05,
+  "_rent_esc_note": "E — 5% annual rent escalation, standard in Baghdad and conservative for GCC malls.",
+  "_mkt_note": "E - 6.5% of sales ongoing, 10% in Year 1. Most cafe plans budget 2-3%. A brand whose entire distribution thesis is that people film it must fund the content engine, the creator payments and the launch events as a real line, not assume the internet does it free.",
+  "cost_escalation": 0.04,
+  "_cost_esc_note": "E - 4% annual escalation on wages, utilities and other operating costs. Iraqi wage drift and energy-cost drift both run at or above this; a flat cost base over five years is not a forecast, it is an oversight.",
+  "spares_pct": 0.1,
+  "_spares_note": "H/E — a spares and Year-1 service reserve at 10% of equipment CAPEX. Nine imported equipment categories, a three-day lead on the ice plant and no local service network for a ULT freezer: a broken part with a six-week lead time closes the signature product.",
+  "capex_contingency_pct": 0.12,
+  "_contingency_note": "H/E — 12% contingency on the whole build. First-of-kind, importing nine equipment categories into Iraq, with a landed-cost uplift of 28-40% over FOB China that is itself an estimate."
+ },
+ "menu": {
+  "saqee80": {
+   "ar": "صَقيع ٨٠−",
+   "en": "Saqee' −80",
+   "desc": "Dirty iced latte in a vessel taken from a −80°C freezer. Milk flash-freezes to a crust on the inside wall; ristretto cuts through it.",
+   "price_usd_baghdad": 5.23,
+   "_price_note": "8,000 IQD. H-anchored: Baghdad cappuccino benchmark 3,300 IQD; blended iced ~4,900 IQD; modern specialty 5,000-8,000 IQD. A theatrical signature sits at the top of that band.",
+   "cogs_usd_baghdad": 0.96,
+   "_cogs_note": "H/E — 18g specialty espresso $0.40 (roasted landed Baghdad $14-22/kg, sourced) + 150ml fresh milk $0.16 (HORECA UHT 1,100-1,300 IQD/l sourced; fresh carries a premium) + custom faceted double-wall cup, lid, sleeve, straw $0.30 (plain PET cup+lid delivered Baghdad $0.07-0.13 sourced; custom moulding and print adds 30-60% and the double wall roughly doubles again) + ULT energy allocation $0.10.",
+   "prep_seconds": 75
+  },
+  "qalab": {
+   "ar": "القالَب",
+   "en": "Al-Qalab (the block)",
+   "desc": "Coffee or tea served inside a hand-carved block of crystal-clear ice. Eaten with a spoon at the end.",
+   "price_usd_baghdad": 9.8,
+   "_price_note": "15,000 IQD. H-anchored: Cafe 33 (Hyatt Regency Kyoto) and Nishimura Coffee Kobe charge ¥2,000 ≈ $13 for the same format. Baghdad priced 25% below the Japanese original.",
+   "cogs_usd_baghdad": 2.35,
+   "_cogs_note": "H/E — carved ice vessel $1.20 (RO water, directional-freeze power, 45% carving waste, freezer storage, 2.5 min carve at the sourced Baghdad ice-tech wage) + 200ml coffee/tea $0.45 + syrup $0.15 + steel-look tray, spoon, base card $0.55.",
+   "prep_seconds": 150
+  },
+  "lafaif": {
+   "ar": "لَفائِف",
+   "en": "Lafa'if (rolls)",
+   "desc": "Rolled ice cream made to order on a −30°C pan, in front of the customer.",
+   "price_usd_baghdad": 4.58,
+   "_price_note": "7,000 IQD.",
+   "cogs_usd_baghdad": 1.42,
+   "_cogs_note": "H/E — 120ml dairy base $0.62 + mix-ins and toppings $0.45 + cup, dome lid, spoon $0.35.",
+   "prep_seconds": 165
+  },
+  "jana_piece": {
+   "ar": "جَنى",
+   "en": "Jana (single)",
+   "desc": "One frozen-fruit sorbet, moulded and coloured as the real fruit it is made from.",
+   "price_usd_baghdad": 1.96,
+   "_price_note": "3,000 IQD.",
+   "cogs_usd_baghdad": 0.55,
+   "_cogs_note": "H/E — 55g fruit purée, sugar, stabiliser $0.33 (Baghdad wholesale: watermelon 500-1,000 IQD/kg in season; strawberry 2,500-5,000 in season, 8,000-15,000 out — the mix is season-led for exactly this reason) + mould-cycle labour $0.13 + wrap $0.09.",
+   "prep_seconds": 22
+  },
+  "jana_box": {
+   "ar": "صُندوق الجَنى",
+   "en": "Jana box of 9",
+   "desc": "Nine sorbet fruits in a compartmented gift box, on a bed of crushed ice.",
+   "price_usd_baghdad": 14.38,
+   "_price_note": "22,000 IQD. Priced at a 19% discount to nine singles — the gift/share occasion carries it.",
+   "cogs_usd_baghdad": 6.0,
+   "_cogs_note": "E — 9 x $0.55 sorbet + $1.05 compartment box, tray, insulation and gel pack.",
+   "prep_seconds": 55
+  },
+  "radhadh": {
+   "ar": "رَذاذ",
+   "en": "Radhadh (slush / juice)",
+   "desc": "Fresh-pressed juice and fruit slush.",
+   "price_usd_baghdad": 3.27,
+   "_price_note": "5,000 IQD. H-anchored: Baghdad fresh juice observed at 2,000-4,000 IQD; branded premium sits above it.",
+   "cogs_usd_baghdad": 1.07,
+   "_cogs_note": "H/E — 300ml fruit $0.75 + cup, lid, straw $0.32.",
+   "prep_seconds": 70
+  },
+  "kahraman": {
+   "ar": "كَهرَمان",
+   "en": "Kahraman (winter hot menu)",
+   "desc": "Winter barista menu — flat white, Spanish latte, hot chocolate, karak, Arabic coffee.",
+   "price_usd_baghdad": 3.92,
+   "_price_note": "6,000 IQD. Sits above the 3,300 IQD Baghdad cappuccino benchmark on specialty positioning.",
+   "cogs_usd_baghdad": 0.72,
+   "_cogs_note": "H/E — 18g espresso $0.40 + milk $0.14 + double-wall cup, lid, sleeve $0.18.",
+   "prep_seconds": 60
+  }
+ },
+ "formats": {
+  "cube_flagship": {
+   "label": "المُكَعَّب — the Cube (street flagship, Baghdad prototype)",
+   "area_m2": 45,
+   "terrace_m2": 60,
+   "seats": 44,
+   "prod_stations": 4,
+   "peak_equivalent_hours": 8.5,
+   "_peh_note": "E — a 15-hour summer trading day does not run at peak throughput. 8.5 peak-equivalent hours is the demand ceiling used to cap revenue.",
+   "items_per_ticket": 1.45,
+   "baseline_tx_per_day": 300,
+   "_tx_note": "E — mature Year-2 annual average. Cross-checks: the independent research anchor for a Baghdad unit is 300/day; Regulars (Melbourne) sells 600 glasses/day of a single -85C drink. Peak summer months reach ~440/day in this model, winter ~205/day.",
+   "delivery_share": 0.18,
+   "mix": {
+    "saqee80": 0.3,
+    "qalab": 0.12,
+    "lafaif": 0.18,
+    "jana_piece": 0.08,
+    "jana_box": 0.08,
+    "radhadh": 0.16,
+    "kahraman": 0.08
+   },
+   "_mix_note": "Share of REVENUE, not units. The model solves back to unit shares. Al-Qalab is deliberately capped at 12% of revenue: it is the slowest item to make (150s) and the scarcest input (carved ice), so it is an anchor and a queue-magnet, not a volume driver.",
+   "rent_usd_month": 2600,
+   "_rent_note": "H/E — sourced Baghdad comparables: 350 m2 on 14 Ramadan St, Mansour at $3,500/month ($10.00/m2/month); 200 m2 in Zayouna near Dream Mall at $5,500/month ($27.50/m2/month). Small prime-pitch units carry the higher rate. Research range for a 30-60 m2 prime street unit: $1,400-3,000/month. SHABIM's flagship is budgeted at the top of that band because a destination format needs a corner site and a terrace, not a mid-block shop.",
+   "key_money_usd": 30000,
+   "_key_note": "H/E - Key money observed at $25,000 on a Karrada shop renting at $1,000/month, i.e. 25x monthly rent; SHABIM budgets 15x. LEGAL WARNING: Property Lease Law No. 87 of 1979 expressly prohibits key money (خلو) taken by landlord, tenant or broker. It is nonetheless universal in Baghdad commercial letting. Budget it, but structure it - see the risk register.",
+   "utilities_base_usd_month": 700,
+   "utilities_cooling_usd_month": 1250,
+   "_util_note": "H/E — Two ways to power this store, and the cheap one is not available to us. Sourced: Iraq commercial tariff 60 IQD/kWh; national grid delivers 8-12 h/day (peak 2025 demand 55 GW against 27 GW supply); Baghdad neighbourhood-generator subscription set by the governorate at 12,000 IQD per ampere/month for 24-hour 'golden' service; diesel at the pump $0.190/litre. A 50 m2 store of this type draws ~230 kWh/day in peak summer, plus 70-80 kWh/day if the ice facade is single-glazed. On a shared neighbourhood generator that is ~$450/month all-in. SHABIM does not use one: a -80C ULT freezer and a directional-freeze ice plant cannot survive a shared generator's switchovers and load-shedding, so the unit carries a dedicated 60 kVA set. That is the difference between $450/month and the $1,600-2,200/month in this model - and it is the price of never losing a freezer load.",
+   "other_opex_usd_month": 4200,
+   "staff_core": {
+    "manager": 1,
+    "head_barista": 2,
+    "barista": 4,
+    "ice_tech": 2,
+    "runner": 2,
+    "cleaner": 1
+   },
+   "staff_peak_extra": 3,
+   "pre_opening_usd": 28000,
+   "working_capital_usd": 30000,
+   "capex": {
+    "fitout": 40000,
+    "ice_skin": 30000,
+    "lighting_signage": 14000,
+    "mep_generator": 33000,
+    "espresso_system": 18000,
+    "ult_cold_chain": 16000,
+    "clear_ice_system": 34000,
+    "rolled_pans": 6000,
+    "sorbet_gelato": 28000,
+    "juice_slush": 9000,
+    "refrigeration_misc": 12000,
+    "smallwares": 4000,
+    "furniture": 14000,
+    "pos_it": 7000,
+    "design_brand_fees": 35000
+   },
+   "_capex_note": "Q — every equipment line needs a supplier quote. This is a PROTOTYPE cost: it carries one-time brand and architecture fees ($35k) and first-of-kind engineering. See cube_rollout for replication cost.",
+   "_other_note": "E — the specialist-refrigeration service contract (a -80C ULT unit and a directional-freeze ice plant are not maintained by a general fridge engineer), RO water and ice-plant consumables, genset servicing, insulated and dry-ice delivery packaging, 24-hour security, cleaning, insurance, municipal and health licences, accounting, uniforms, staff meals, and a continuous training budget - Iraqi F&B turnover is high and this format cannot be run by untrained staff.",
+   "_skin_note": "H/E — ~70 m2 of facade in 20-30 mm cast acrylic, fabricated, sub-framed and installed: $21,000-44,000. A facade of SOLID acrylic blocks is not affordable and should not be specified: 100 mm cast acrylic runs $476-1,071/m2 from a Chinese mill and $1,428-2,975/m2 branded. The ice depth is achieved with surface texture, internal lamination and edge lighting, not with mass.",
+   "capex_contingency_pct": 0.12
+  },
+  "cube_rollout": {
+   "label": "المُكَعَّب — the Cube (replication unit, post-prototype)",
+   "area_m2": 45,
+   "terrace_m2": 50,
+   "seats": 36,
+   "prod_stations": 4,
+   "peak_equivalent_hours": 8.0,
+   "items_per_ticket": 1.42,
+   "baseline_tx_per_day": 268,
+   "delivery_share": 0.2,
+   "mix": {
+    "saqee80": 0.3,
+    "qalab": 0.11,
+    "lafaif": 0.19,
+    "jana_piece": 0.08,
+    "jana_box": 0.08,
+    "radhadh": 0.16,
+    "kahraman": 0.08
+   },
+   "rent_usd_month": 2200,
+   "key_money_usd": 22000,
+   "utilities_base_usd_month": 640,
+   "utilities_cooling_usd_month": 1150,
+   "other_opex_usd_month": 3500,
+   "staff_core": {
+    "manager": 1,
+    "head_barista": 1,
+    "barista": 4,
+    "ice_tech": 1,
+    "runner": 2,
+    "cleaner": 1
+   },
+   "staff_peak_extra": 3,
+   "pre_opening_usd": 18000,
+   "working_capital_usd": 22000,
+   "capex": {
+    "fitout": 34000,
+    "ice_skin": 23000,
+    "lighting_signage": 10000,
+    "mep_generator": 28000,
+    "espresso_system": 11000,
+    "ult_cold_chain": 11000,
+    "clear_ice_system": 24000,
+    "rolled_pans": 5000,
+    "sorbet_gelato": 19000,
+    "juice_slush": 7000,
+    "refrigeration_misc": 10000,
+    "smallwares": 3500,
+    "furniture": 11000,
+    "pos_it": 6000,
+    "design_brand_fees": 6000
+   },
+   "_capex_note": "Design fees drop from $35k to a $6k site-adaptation fee; equipment is bought on a network contract. This is the number a franchisee is quoted.",
+   "capex_contingency_pct": 0.07,
+   "_cont_note": "E — 7%, not the prototype's 12%: the design is built, the drawings exist, and equipment is bought on a network contract with known landed cost."
+  },
+  "shard_kiosk": {
+   "label": "الشَّظِيَّة — the Shard (mall kiosk)",
+   "area_m2": 16,
+   "terrace_m2": 0,
+   "seats": 0,
+   "prod_stations": 2,
+   "peak_equivalent_hours": 7.5,
+   "items_per_ticket": 1.28,
+   "baseline_tx_per_day": 195,
+   "delivery_share": 0.1,
+   "mix": {
+    "saqee80": 0.34,
+    "qalab": 0.06,
+    "lafaif": 0.2,
+    "jana_piece": 0.11,
+    "jana_box": 0.09,
+    "radhadh": 0.15,
+    "kahraman": 0.05
+   },
+   "rent_usd_month": 2400,
+   "key_money_usd": 12000,
+   "_rent_note": "E/Q — mall kiosks are let on a $/m² + turnover-rent basis. Iraq Mall (opened Feb 2026, >550,000 m², 1,000+ units) resets the Baghdad benchmark and must be quoted directly.",
+   "utilities_base_usd_month": 300,
+   "utilities_cooling_usd_month": 380,
+   "_util_note": "Mall kiosks sit inside conditioned common area on mall power — a materially lower and more reliable energy bill than a street cube.",
+   "other_opex_usd_month": 1950,
+   "staff_core": {
+    "manager": 1,
+    "head_barista": 1,
+    "barista": 2,
+    "ice_tech": 0,
+    "runner": 1,
+    "cleaner": 0
+   },
+   "staff_peak_extra": 2,
+   "pre_opening_usd": 11000,
+   "working_capital_usd": 14000,
+   "capex": {
+    "fitout": 22000,
+    "ice_skin": 17000,
+    "lighting_signage": 8000,
+    "mep_generator": 4000,
+    "espresso_system": 11000,
+    "ult_cold_chain": 11000,
+    "clear_ice_system": 0,
+    "rolled_pans": 5000,
+    "sorbet_gelato": 9000,
+    "juice_slush": 6000,
+    "refrigeration_misc": 8000,
+    "smallwares": 2500,
+    "furniture": 2000,
+    "pos_it": 5000,
+    "design_brand_fees": 5000
+   },
+   "_capex_note": "No clear-ice plant: kiosks are supplied carved blocks from the city's Cube commissary. That is the supply-chain lock.",
+   "capex_contingency_pct": 0.07
+  }
+ },
+ "markets": {
+  "iraq": {
+   "label": "العراق — Iraq",
+   "price_index": 1.0,
+   "cogs_index": 1.0,
+   "cost_index": 1.0,
+   "rent_index": 1.0,
+   "fitout_index": 1.0,
+   "equip_index": 1.0,
+   "utility_index": 1.0,
+   "demand_index": 1.0,
+   "delivery_commission": 0.22,
+   "card_share": 0.35,
+   "cit": 0.15,
+   "_note": "H — Iraq CIT 15% flat (PwC; 35% applies only to oil and gas). Iraq has NO general VAT; a 10% sales tax applies to deluxe restaurants and hotels, and whether SHABIM falls inside that classification is an open question modelled in the sales_tax scenario. Talabat commission 15-30% regionally (not Iraq-verified); Lezzoo, the YC-backed Iraqi super-app, estimated 15-25%. 22% used. Iraq is cash-heavy; 35% card share.",
+   "wages": {
+    "manager": 1000,
+    "head_barista": 650,
+    "barista": 450,
+    "ice_tech": 500,
+    "runner": 380,
+    "cleaner": 300
+   },
+   "_wage_note": "H — Iraq federal statutory minimum wage 350,000 IQD/month (Art. 63, Labour Law No. 37 of 2015). Sourced Baghdad cafe vacancies: 450,000-600,000 IQD for an evening shift (17:00-01:00), 750,000 IQD for a full shift - a 1.67x ratio. SHABIM budgets full-shift rates ($450/mo = ~688,000 IQD for a barista) because a -80 and clear-ice operation cannot be run by transient evening staff. Employer social security 12% (Workers' Retirement and Social Security Law).",
+   "seasonality": [
+    0.74,
+    0.78,
+    0.92,
+    1.08,
+    1.34,
+    1.52,
+    1.58,
+    1.55,
+    1.32,
+    1.02,
+    0.82,
+    0.73
+   ],
+   "_seas_note": "H-shaped — Baghdad average highs May-Sep: 37/42/45/45/41°C; hot season 26 May - 21 Sept; Jan high 16°C. Trough months are carried by the Kahraman winter menu, which is why the winter floor is 0.73 and not 0.45.",
+   "sales_tax_pct": 0.1
+  },
+  "ksa": {
+   "label": "السعودية — Saudi Arabia",
+   "price_index": 1.58,
+   "cogs_index": 1.15,
+   "cost_index": 1.55,
+   "rent_index": 2.3,
+   "fitout_index": 1.45,
+   "equip_index": 1.15,
+   "utility_index": 1.2,
+   "demand_index": 1.15,
+   "delivery_commission": 0.25,
+   "card_share": 0.8,
+   "cit": 0.2,
+   "_note": "H — Riyadh specialty latte SAR 20-35 (average ~SAR 25 = $6.67) against Baghdad's 8,000 IQD ($5.23) is 1.28x on that single item, but Saudi menu boards are quoted VAT-INCLUSIVE at 15%, and the premium end of a Saudi menu carries a wider gap than the latte does. 1.58x on the full basket. KSA CIT 20% for non-GCC ownership (Zakat 2.5% for GCC nationals). Saudi Arabia has 5,130 branded coffee outlets, 46% of MENA's total.",
+   "wages": {
+    "manager": 2200,
+    "head_barista": 1400,
+    "barista": 1000,
+    "ice_tech": 1100,
+    "runner": 850,
+    "cleaner": 650
+   },
+   "seasonality": [
+    0.8,
+    0.84,
+    0.95,
+    1.08,
+    1.28,
+    1.42,
+    1.48,
+    1.46,
+    1.28,
+    1.05,
+    0.88,
+    0.78
+   ],
+   "sales_tax_pct": 0.15
+  },
+  "uae": {
+   "label": "الإمارات — UAE",
+   "price_index": 1.7,
+   "cogs_index": 1.1,
+   "cost_index": 1.75,
+   "rent_index": 3.1,
+   "fitout_index": 1.6,
+   "equip_index": 1.1,
+   "utility_index": 1.25,
+   "demand_index": 1.2,
+   "delivery_commission": 0.28,
+   "card_share": 0.88,
+   "cit": 0.09,
+   "_note": "H — Dubai latte AED 18-25 mid-market, AED 25-40 in premium specialty, %Arabica AED 30-40. UAE corporate tax 9% above AED 375k, VAT 5%. Dubai alone has 3,257 coffee shops; the UAE has 9,000+ cafes and a $3.2bn+ coffee market growing 8-9% a year.",
+   "wages": {
+    "manager": 2600,
+    "head_barista": 1600,
+    "barista": 1100,
+    "ice_tech": 1200,
+    "runner": 900,
+    "cleaner": 700
+   },
+   "seasonality": [
+    0.82,
+    0.86,
+    0.96,
+    1.06,
+    1.24,
+    1.38,
+    1.44,
+    1.42,
+    1.26,
+    1.08,
+    0.92,
+    0.82
+   ],
+   "sales_tax_pct": 0.05
+  },
+  "qatar": {
+   "label": "قطر — Qatar",
+   "price_index": 1.55,
+   "cogs_index": 1.12,
+   "cost_index": 1.7,
+   "rent_index": 2.8,
+   "fitout_index": 1.55,
+   "equip_index": 1.12,
+   "utility_index": 1.2,
+   "demand_index": 1.1,
+   "delivery_commission": 0.26,
+   "card_share": 0.85,
+   "cit": 0.1,
+   "wages": {
+    "manager": 2400,
+    "head_barista": 1500,
+    "barista": 1050,
+    "ice_tech": 1150,
+    "runner": 880,
+    "cleaner": 680
+   },
+   "seasonality": [
+    0.82,
+    0.86,
+    0.96,
+    1.08,
+    1.26,
+    1.4,
+    1.44,
+    1.42,
+    1.26,
+    1.06,
+    0.9,
+    0.8
+   ],
+   "sales_tax_pct": 0.0
+  },
+  "egypt": {
+   "label": "مصر — Egypt",
+   "price_index": 0.4,
+   "cogs_index": 0.8,
+   "cost_index": 0.62,
+   "rent_index": 0.85,
+   "fitout_index": 0.75,
+   "equip_index": 1.2,
+   "utility_index": 0.8,
+   "demand_index": 1.35,
+   "delivery_commission": 0.24,
+   "card_share": 0.3,
+   "cit": 0.225,
+   "_note": "E/H — REVISED DOWN from 0.62 on research. An Egyptian household spends roughly 4x more of its monthly budget than an Iraqi one for the same cup. Egypt CIT 22.5%, VAT 14%. equip_index is ABOVE 1.0 because imported equipment is bought in USD against a pound that lost ~37% in a single day at the March 2024 float. And the heat argument does not transfer: Cairo has roughly 5-15 days a year above 40C against Baghdad's ~134.",
+   "wages": {
+    "manager": 620,
+    "head_barista": 400,
+    "barista": 270,
+    "ice_tech": 320,
+    "runner": 230,
+    "cleaner": 180
+   },
+   "seasonality": [
+    0.78,
+    0.82,
+    0.94,
+    1.06,
+    1.26,
+    1.42,
+    1.5,
+    1.48,
+    1.28,
+    1.04,
+    0.86,
+    0.76
+   ],
+   "sales_tax_pct": 0.14
+  }
+ },
+ "unit_scenarios": {
+  "baghdad_own": {
+   "format": "cube_flagship",
+   "market": "iraq",
+   "label": "Baghdad flagship Cube (company-owned prototype)",
+   "royalty_applied": 0.0
+  },
+  "baghdad_fr": {
+   "format": "cube_rollout",
+   "market": "iraq",
+   "label": "Iraq franchised Cube",
+   "royalty_applied": 0.065
+  },
+  "baghdad_kiosk": {
+   "format": "shard_kiosk",
+   "market": "iraq",
+   "label": "Baghdad mall Shard",
+   "royalty_applied": 0.0
+  },
+  "riyadh_fr": {
+   "format": "cube_rollout",
+   "market": "ksa",
+   "label": "Riyadh franchised Cube",
+   "royalty_applied": 0.08
+  },
+  "dubai_fr": {
+   "format": "cube_rollout",
+   "market": "uae",
+   "label": "Dubai franchised Cube",
+   "royalty_applied": 0.08
+  },
+  "doha_fr": {
+   "format": "cube_rollout",
+   "market": "qatar",
+   "label": "Doha franchised Cube",
+   "royalty_applied": 0.08
+  },
+  "cairo_fr": {
+   "format": "cube_rollout",
+   "market": "egypt",
+   "label": "Cairo franchised Cube",
+   "royalty_applied": 0.065
+  },
+  "_note": "royalty_applied: company-owned units pay nothing; franchised units pay 6% royalty + 2% ad fund on gross sales. That charge is inside every franchisee P&L in this model.",
+  "cairo_kiosk": {
+   "format": "shard_kiosk",
+   "market": "egypt",
+   "label": "Cairo franchised Shard (kiosk)",
+   "royalty_applied": 0.065
+  },
+  "riyadh_kiosk": {
+   "format": "shard_kiosk",
+   "market": "ksa",
+   "label": "Riyadh franchised Shard (kiosk)",
+   "royalty_applied": 0.08
+  },
+  "baghdad_kiosk_fr": {
+   "format": "shard_kiosk",
+   "market": "iraq",
+   "label": "Iraq franchised Shard (kiosk)",
+   "royalty_applied": 0.065
+  }
+ },
+ "franchise": {
+  "initial_fee_usd": {
+   "default": 25000,
+   "iraq": 25000,
+   "ksa": 45000,
+   "uae": 50000,
+   "qatar": 50000,
+   "egypt": 30000,
+   "riyadh_kiosk": 28000,
+   "baghdad_kiosk_fr": 15000
+  },
+  "_fee_note": "H-benchmarked — MENA café/dessert franchise fees observed at $10.6k (Grano), $21.3k (Café2go), $88k (Gossip Cafe & Desserts); Mikel KSA entry SAR 90k-180k ($24k-48k).",
+  "royalty_pct": 0.05,
+  "ad_fund_pct": 0.015,
+  "_royalty_note": "H-benchmarked, and set market by market rather than globally. MENA café royalties are observed at 5-10% (Café2go 5, Gossip 6, Grano 7, Mikel KSA 10). SHABIM charges 5% + 1.5% in IRAQ and 6% + 2% in the GCC. The reason is arithmetic, not generosity: at 8% an Iraqi franchisee's payback stretches past four years and the offer stops being sellable, while a Dubai unit clears 27% EBITDA and can carry the standard rate comfortably. A franchisor that prices royalty off its own spreadsheet instead of off the franchisee's return ends up with signed agreements and no openings.",
+  "supply_share_of_rev": 0.14,
+  "supply_margin_pct": 0.3,
+  "_supply_note": "E — franchisees buy the proprietary inputs from the network and cannot substitute them: the roasted bean programme, the sorbet base and its colour system, the fruit moulds and carving jigs, the crystalline packaging — and, for every Shard kiosk, the carved ice blocks themselves, which come from the city's Cube. That is ~14% of unit revenue passing through central supply at a 30% margin, or about 4.2% of system sales. It is the line that grows with the estate, cannot be shopped around, and is the reason the kiosk format was designed without an ice plant.",
+  "new_unit_year_weight": 0.42,
+  "area_dev_fee_schedule": [
+   0,
+   0,
+   150000,
+   250000,
+   300000
+  ],
+  "_adf_note": "E — area development / master fees for KSA (Y3), UAE + Egypt (Y4), and a further country (Y5).",
+  "hq_cost_schedule": [
+   240000,
+   480000,
+   860000,
+   1360000,
+   1880000
+  ],
+  "_hq_note": "E — Year 1: founder, brand lead, ops lead, trainer. Year 5: a 13-person support office with an R&D kitchen, a supply-chain function, franchise legal counsel, disclosure-document preparation and registration in each jurisdiction, and trademark protection across eight countries — about $40,000 of head office per trading unit. Understating head office is the most common way a franchise plan lies to itself, so this line is deliberately heavier than the benchmarks.",
+  "hq_dep_usd": 60000,
+  "support_cost_per_unit_usd": 4200,
+  "opening_support_cost_usd": 11000,
+  "own_store_blend": 1.0,
+  "closure_rate": 0.05,
+  "_closure_note": "E — 5% of the franchised estate closes or is bought back each year from Year 3. No franchise network is closure-free; a plan that assumes zero is not a plan.",
+  "royalty_by_market": {
+   "default": {
+    "royalty": 0.06,
+    "ad_fund": 0.02
+   },
+   "iraq": {
+    "royalty": 0.05,
+    "ad_fund": 0.015
+   },
+   "ksa": {
+    "royalty": 0.06,
+    "ad_fund": 0.02
+   },
+   "uae": {
+    "royalty": 0.06,
+    "ad_fund": 0.02
+   },
+   "qatar": {
+    "royalty": 0.06,
+    "ad_fund": 0.02
+   },
+   "egypt": {
+    "royalty": 0.05,
+    "ad_fund": 0.015
+   }
+  }
+ },
+ "rollout": [
+  {
+   "own": 1,
+   "franchise": {}
+  },
+  {
+   "own": 0,
+   "franchise": {
+    "baghdad_kiosk_fr": 2
+   }
+  },
+  {
+   "own": 1,
+   "franchise": {
+    "baghdad_kiosk_fr": 4,
+    "baghdad_fr": 1,
+    "riyadh_kiosk": 2,
+    "dubai_fr": 1
+   }
+  },
+  {
+   "own": 0,
+   "franchise": {
+    "baghdad_kiosk_fr": 5,
+    "baghdad_fr": 2,
+    "riyadh_kiosk": 4,
+    "riyadh_fr": 2,
+    "dubai_fr": 2,
+    "doha_fr": 1
+   }
+  },
+  {
+   "own": 0,
+   "franchise": {
+    "baghdad_kiosk_fr": 6,
+    "baghdad_fr": 2,
+    "riyadh_kiosk": 5,
+    "riyadh_fr": 3,
+    "dubai_fr": 3,
+    "doha_fr": 2
+   }
+  }
+ ],
+ "_rollout_note": "44 units trading by end of Year 5 before closures (4 company-owned, 40 franchised) across Iraq, Saudi Arabia, the UAE and Qatar. The estate is deliberately weighted to the Shard kiosk, because that is the format that returns for a franchisee: a 31-month payback against the Cube's 49. The Cube is the brand's flagship, its commissary and its ice supply — mostly company-owned or sold to area developers, not the volume product. EGYPT IS EXCLUDED from the first five years: at a corrected price index the model returns NEGATIVE unit EBITDA there. Pace benchmark: Half Million went 0 to 59 stores across 14 Saudi cities in seven years, about 8-9 net new stores a year. This plan runs at 8.8.",
+ "raise": {
+  "amount_usd": 1750000,
+  "exit_multiple": 8.0,
+  "_exit_note": "E — asset-light franchisors trade well above restaurant operators. 9× EBITDA is deliberately below quoted franchisor multiples to leave headroom."
+ },
+ "scenarios": {
+  "base": {},
+  "bear": {
+   "formats.cube_flagship.baseline_tx_per_day": 0.7,
+   "menu.saqee80.price_usd_baghdad": 0.88,
+   "menu.qalab.price_usd_baghdad": 0.85,
+   "formats.cube_flagship.rent_usd_month": 1.35,
+   "formats.cube_flagship.utilities_cooling_usd_month": 1.45
+  },
+  "bull": {
+   "formats.cube_flagship.baseline_tx_per_day": 1.28,
+   "menu.saqee80.price_usd_baghdad": 1.08,
+   "menu.qalab.price_usd_baghdad": 1.1
+  },
+  "stress_heat_fails": {
+   "markets.iraq.demand_index": 0.78,
+   "formats.cube_flagship.utilities_cooling_usd_month": 1.8
+  },
+  "stress_fx": {
+   "menu.saqee80.price_usd_baghdad": 0.86,
+   "menu.qalab.price_usd_baghdad": 0.86,
+   "menu.lafaif.price_usd_baghdad": 0.86,
+   "menu.jana_piece.price_usd_baghdad": 0.86,
+   "menu.jana_box.price_usd_baghdad": 0.86,
+   "menu.radhadh.price_usd_baghdad": 0.86,
+   "menu.kahraman.price_usd_baghdad": 0.86
+  },
+  "stress_sales_tax": {
+   "menu.saqee80.price_usd_baghdad": 0.909,
+   "menu.qalab.price_usd_baghdad": 0.909,
+   "menu.lafaif.price_usd_baghdad": 0.909,
+   "menu.jana_piece.price_usd_baghdad": 0.909,
+   "menu.jana_box.price_usd_baghdad": 0.909,
+   "menu.radhadh.price_usd_baghdad": 0.909,
+   "menu.kahraman.price_usd_baghdad": 0.909
+  }
+ },
+ "_scenario_notes": {
+  "bear": "Volume 30% below plan, the two signature items discounted 12-15%, rent 35% higher than the sourced comparable implies, cooling costs 45% higher.",
+  "bull": "Volume 28% above plan - roughly what a genuine viral run looks like - with 8-10% pricing power on the two signatures.",
+  "stress_heat_fails": "The core thesis is wrong: heat does not drive the traffic we think it does. Demand index cut 22% and cooling costs raised 80% anyway.",
+  "stress_fx": "The dinar's parallel rate moves against us by 14% and menu prices cannot be raised to compensate within the year.",
+  "stress_sales_tax": "SHABIM is classified as a 'deluxe restaurant' and absorbs Iraq's 10% sales tax rather than passing it to the customer."
+ },
+ "_tax_note": "Consumption taxes are deducted from gross revenue, not passed through, because MENA menu boards are quoted tax-inclusive and the customer sees one price. Iraq: no general VAT, but a 10% sales tax applies to deluxe restaurants and hotels — SHABIM assumes it is classified deluxe and absorbs it. KSA VAT 15%, UAE 5%, Egypt 14%, Qatar nil."
+}

@@ -1,0 +1,1655 @@
+<title>شَبِم · SHABIM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SHABIM — an Arabic cold-drinks and frozen-dessert brand engineered for 45°C, from Baghdad to the Gulf. Investor presentation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap">
+<style>/* ==========================================================================
+   شَبِم · SHABM — Investor deck design system
+   Palette: glacier / meltwater / deep-freeze, with a single reserved sun-amber
+   Type:    Readex Pro (display, matched AR+LA) · IBM Plex Sans Arabic (body/data)
+            Amiri (classical verse only)
+   ========================================================================== */
+
+/* ---------- tokens: light ("الصَّقيع" — frost) ---------- */
+:root {
+  --ground:        #EEF5F9;
+  --ground-2:      #F7FBFD;
+  --surface:       #FFFFFF;
+  --surface-sunk:  #E3EEF4;
+  --ink:           #071722;
+  --ink-2:         #2C4655;
+  --ink-3:         #5D7C8D;
+  --hair:          #C7DBE6;
+  --hair-soft:     #DCE9F0;
+
+  --glacier:       #0E8CC4;   /* accent — true glacier blue */
+  --glacier-lift:  #17A9E4;
+  --glacier-deep:  #084F70;
+  --glacier-wash:  #DCEEF8;
+
+  --sun:           #C67B14;   /* reserved: heat data, winter identity, upside */
+  --sun-wash:      #FBEFDC;
+
+  --good:          #12856A;
+  --warn:          #B4720C;
+  --crit:          #B7442F;
+
+  --shadow-1: 0 1px 2px rgba(7,23,34,.05), 0 8px 24px -12px rgba(7,23,34,.18);
+  --shadow-2: 0 2px 4px rgba(7,23,34,.06), 0 24px 60px -28px rgba(7,23,34,.30);
+  --glow: none;
+
+  --caustic-op: .30;
+  --grain-op: .028;
+
+  color-scheme: light;
+}
+
+/* ---------- tokens: dark ("القَرّ" — deep freeze) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:        #04121B;
+    --ground-2:      #071B27;
+    --surface:       #0A2130;
+    --surface-sunk:  #061826;
+    --ink:           #E8F5FB;
+    --ink-2:         #A8C6D6;
+    --ink-3:         #6E93A6;
+    --hair:          #17384B;
+    --hair-soft:     #102B3B;
+
+    --glacier:       #45C4F0;
+    --glacier-lift:  #7FDCFF;
+    --glacier-deep:  #0B5D82;
+    --glacier-wash:  #0B2E42;
+
+    --sun:           #E8A33D;
+    --sun-wash:      #33230D;
+
+    --good:          #3FD3AC;
+    --warn:          #E8A33D;
+    --crit:          #F0806A;
+
+    --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+    --shadow-2: 0 2px 4px rgba(0,0,0,.5), 0 28px 70px -30px rgba(0,0,0,.9);
+    --glow: 0 0 60px -20px rgba(69,196,240,.45);
+
+    --caustic-op: .55;
+    --grain-op: .045;
+
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:        #04121B;
+  --ground-2:      #071B27;
+  --surface:       #0A2130;
+  --surface-sunk:  #061826;
+  --ink:           #E8F5FB;
+  --ink-2:         #A8C6D6;
+  --ink-3:         #6E93A6;
+  --hair:          #17384B;
+  --hair-soft:     #102B3B;
+
+  --glacier:       #45C4F0;
+  --glacier-lift:  #7FDCFF;
+  --glacier-deep:  #0B5D82;
+  --glacier-wash:  #0B2E42;
+
+  --sun:           #E8A33D;
+  --sun-wash:      #33230D;
+
+  --good:          #3FD3AC;
+  --warn:          #E8A33D;
+  --crit:          #F0806A;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  --shadow-2: 0 2px 4px rgba(0,0,0,.5), 0 28px 70px -30px rgba(0,0,0,.9);
+  --glow: 0 0 60px -20px rgba(69,196,240,.45);
+
+  --caustic-op: .55;
+  --grain-op: .045;
+
+  color-scheme: dark;
+}
+
+/* ---------- scale ---------- */
+:root {
+  --step--2: clamp(.68rem, .64rem + .18vw, .76rem);
+  --step--1: clamp(.80rem, .75rem + .22vw, .90rem);
+  --step-0:  clamp(.95rem, .90rem + .28vw, 1.06rem);
+  --step-1:  clamp(1.13rem, 1.04rem + .45vw, 1.35rem);
+  --step-2:  clamp(1.38rem, 1.22rem + .78vw, 1.90rem);
+  --step-3:  clamp(1.72rem, 1.42rem + 1.45vw, 2.75rem);
+  --step-4:  clamp(2.15rem, 1.60rem + 2.60vw, 4.00rem);
+  --step-5:  clamp(2.70rem, 1.70rem + 4.80vw, 6.20rem);
+  --step-6:  clamp(3.40rem, 1.60rem + 8.60vw, 9.50rem);
+
+  --pad: clamp(1.15rem, .55rem + 2.8vw, 4.5rem);
+  --maxw: 1240px;
+  --gap: clamp(.9rem, .5rem + 1.4vw, 1.9rem);
+
+  --ar: "Readex Pro", "IBM Plex Sans Arabic", "Segoe UI", system-ui, sans-serif;
+  --bd: "IBM Plex Sans Arabic", "Readex Pro", system-ui, -apple-system, sans-serif;
+  --vs: "Amiri", "Scheherazade New", Georgia, serif;
+  --mo: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--bd);
+  font-size: var(--step-0);
+  line-height: 1.72;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* fine frost grain over the whole page — keeps flat fills from looking plastic */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: var(--grain-op);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+::selection { background: var(--glacier); color: var(--ground); }
+
+/* ---------- type ---------- */
+h1, h2, h3, h4 { font-family: var(--ar); font-weight: 600; line-height: 1.14; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: var(--glacier); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--glacier-lift); outline-offset: 3px; border-radius: 3px; }
+
+/* The page runs LTR because most of its prose is English; every Arabic string is
+   isolated so the bidi algorithm never drags English punctuation to the wrong end. */
+.en { direction: ltr; unicode-bidi: isolate; font-family: var(--bd); }
+.ar { direction: rtl; unicode-bidi: isolate; }
+h2.title, .wordmark, .hero .line, .tl-h, .r-head h4, .prod .name, .topbar .mark, .verse {
+  direction: rtl; unicode-bidi: isolate;
+}
+/* Arabic runs right-to-left but the COLUMN stays left-aligned, so the eyebrow,
+   the title and the body copy all share one edge. */
+h2.title, .tl-h, .r-head h4, .prod .name { text-align: left; }
+.hero .wordmark, .hero .line { text-align: center; }
+.verse { unicode-bidi: isolate-override; }
+.verse .gl, .verse .by { direction: rtl; unicode-bidi: isolate; }
+.verse .gl { direction: ltr; text-align: center; }
+.num { font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum" 1; direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+/* ---------- deck chrome ---------- */
+.rail {
+  position: fixed; inset-inline-start: 0; inset-block: 0; width: 3px; z-index: 60;
+  background: linear-gradient(to bottom, transparent, var(--hair) 12%, var(--hair) 88%, transparent);
+  pointer-events: none;
+}
+.rail::after {
+  content: ""; position: absolute; inset-inline: 0; top: 0; height: var(--melt, 0%);
+  background: linear-gradient(to bottom, var(--glacier-lift), var(--glacier));
+  box-shadow: 0 0 14px var(--glacier);
+}
+
+.topbar {
+  position: fixed; top: 0; inset-inline: 0; z-index: 70;
+  display: flex; align-items: center; gap: .9rem;
+  padding: .55rem var(--pad);
+  background: color-mix(in oklab, var(--ground) 82%, transparent);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border-bottom: 1px solid var(--hair-soft);
+  font-size: var(--step--1);
+}
+.topbar .mark { font-family: var(--ar); font-weight: 700; font-size: var(--step-1); letter-spacing: .04em; color: var(--ink); }
+.topbar .sep { flex: 1; }
+.topbar .chip {
+  font-size: var(--step--2); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-3); border: 1px solid var(--hair); border-radius: 999px; padding: .16rem .6rem;
+  white-space: nowrap;
+}
+.topbar nav { display: flex; gap: .1rem; overflow-x: auto; scrollbar-width: none; }
+.topbar nav::-webkit-scrollbar { display: none; }
+.topbar nav a {
+  color: var(--ink-3); text-decoration: none; padding: .2rem .55rem; border-radius: 6px;
+  font-size: var(--step--1); white-space: nowrap;
+}
+.topbar nav a:hover, .topbar nav a[aria-current="true"] { color: var(--ink); background: var(--glacier-wash); }
+@media (max-width: 860px) { .topbar nav { display: none; } }
+
+/* ---------- section shell ---------- */
+main { padding-top: 3.1rem; }
+
+section.s {
+  position: relative;
+  padding: clamp(3.2rem, 2rem + 5vw, 7rem) var(--pad);
+  border-top: 1px solid var(--hair-soft);
+  scroll-margin-top: 3.2rem;
+}
+section.s:first-of-type { border-top: 0; }
+section.s > .in { max-width: var(--maxw); margin-inline: auto; }
+
+section.s.tint  { background: var(--ground-2); }
+section.s.deep {
+  background:
+    radial-gradient(120% 90% at 80% -10%, color-mix(in oklab, var(--glacier) 16%, transparent), transparent 62%),
+    var(--surface-sunk);
+}
+section.s.warm {
+  background:
+    radial-gradient(110% 90% at 15% -10%, color-mix(in oklab, var(--sun) 15%, transparent), transparent 60%),
+    var(--ground-2);
+}
+
+/* section eyebrow: act + index. The deck IS a sequence, so the number is real. */
+.eyebrow {
+  display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap;
+  margin-bottom: clamp(.9rem, .5rem + 1vw, 1.5rem);
+  font-size: var(--step--2); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.eyebrow .n {
+  font-family: var(--mo); font-size: var(--step--2); color: var(--glacier);
+  border: 1px solid color-mix(in oklab, var(--glacier) 40%, transparent);
+  border-radius: 4px; padding: .1rem .42rem; letter-spacing: .04em;
+}
+.eyebrow .act { color: var(--ink-3); }
+
+h2.title { font-size: var(--step-3); margin-bottom: .5rem; }
+h2.title.big { font-size: var(--step-4); }
+.sub { color: var(--ink-2); font-size: var(--step-1); max-width: 62ch; line-height: 1.6; }
+.lede { color: var(--ink-2); max-width: 68ch; margin-top: 1rem; }
+.kicker { color: var(--glacier); font-family: var(--ar); font-weight: 600; }
+
+.hr { height: 1px; background: var(--hair-soft); border: 0; margin: clamp(1.6rem,1rem+2vw,3rem) 0; }
+
+/* ---------- grid helpers ---------- */
+.grid { display: grid; gap: var(--gap); }
+.g2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.g4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+.g23 { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); }
+.g32 { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); }
+@media (max-width: 1000px) { .g4 { grid-template-columns: repeat(2, minmax(0,1fr)); } .g3 { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 760px) { .g2,.g3,.g4,.g23,.g32 { grid-template-columns: 1fr; } }
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hair-soft);
+  border-radius: 14px;
+  padding: clamp(1rem, .7rem + 1vw, 1.6rem);
+  box-shadow: var(--shadow-1);
+  position: relative; overflow: hidden;
+}
+.card.q { background: transparent; box-shadow: none; }
+.card h3 { font-size: var(--step-1); margin-bottom: .45rem; }
+.card p { color: var(--ink-2); font-size: var(--step--1); line-height: 1.68; }
+.card .cap { font-size: var(--step--2); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .5rem; }
+
+/* stat tile */
+.stat { display: flex; flex-direction: column; gap: .28rem; }
+.stat .v { font-family: var(--ar); font-weight: 700; font-size: var(--step-3); line-height: 1.04; color: var(--ink);
+  letter-spacing: -.02em; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.stat .v .u { font-size: .48em; font-weight: 500; letter-spacing: .04em; margin-inline-start: .18em; color: var(--ink-3); }
+.g3 > .card .stat .v, .g4 > .card .stat .v, .track .stat .v { font-size: var(--step-2); }
+.track .grid .stat .v { font-size: clamp(1.05rem, .8rem + .85vw, 1.45rem); white-space: nowrap; }
+.stat .v.acc { color: var(--glacier); }
+.stat .v.sun { color: var(--sun); }
+.stat .k { font-size: var(--step--1); color: var(--ink-2); }
+.stat .note { font-size: var(--step--2); color: var(--ink-3); }
+
+/* pill / chip */
+.pill {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: var(--step--2); letter-spacing: .06em; padding: .18rem .6rem; border-radius: 999px;
+  border: 1px solid var(--hair); color: var(--ink-2); background: var(--surface);
+}
+.pill.acc { border-color: color-mix(in oklab, var(--glacier) 45%, transparent); color: var(--glacier); background: var(--glacier-wash); }
+.pill.sun { border-color: color-mix(in oklab, var(--sun) 45%, transparent); color: var(--sun); background: var(--sun-wash); }
+.pill.good{ border-color: color-mix(in oklab, var(--good) 45%, transparent); color: var(--good); }
+.pill.crit{ border-color: color-mix(in oklab, var(--crit) 45%, transparent); color: var(--crit); }
+
+/* ---------- tables ---------- */
+.tw { overflow-x: auto; border: 1px solid var(--hair-soft); border-radius: 12px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 560px; }
+thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--surface-sunk); color: var(--ink-2);
+  font-family: var(--ar); font-weight: 600; text-align: start;
+  padding: .62rem .8rem; border-bottom: 1px solid var(--hair);
+  font-size: var(--step--2); letter-spacing: .05em; white-space: nowrap;
+}
+tbody td { padding: .55rem .8rem; border-bottom: 1px solid var(--hair-soft); color: var(--ink-2); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover td { background: color-mix(in oklab, var(--glacier) 6%, transparent); }
+td.n, th.n { text-align: end; font-variant-numeric: tabular-nums lining-nums; direction: ltr; }
+tbody tr.tot td { font-weight: 700; color: var(--ink); background: var(--surface-sunk); border-top: 1px solid var(--hair); }
+tbody tr.sub td { color: var(--ink-3); font-size: var(--step--2); }
+caption { caption-side: bottom; padding: .6rem .8rem; color: var(--ink-3); font-size: var(--step--2); text-align: start; }
+
+/* ---------- verse block (Amiri) ---------- */
+.verse {
+  font-family: var(--vs);
+  font-size: clamp(1.15rem, .95rem + .9vw, 1.75rem);
+  line-height: 2.05;
+  color: var(--ink);
+  text-align: center;
+}
+.verse .half { display: inline-block; padding: 0 .55rem; }
+.verse .dot { color: var(--glacier); padding: 0 .5rem; }
+.verse .by { display: block; margin-top: .5rem; font-family: var(--ar); font-size: var(--step--1); color: var(--ink-3); letter-spacing: .06em; }
+.verse .gl { display: block; margin-top: .3rem; font-family: var(--bd); font-size: var(--step--2); color: var(--ink-3); }
+
+/* ---------- the melt bar: a hairline that "drips" ---------- */
+.melt { position: relative; height: 1px; background: var(--hair); margin: 2rem 0; }
+.melt::after {
+  content: ""; position: absolute; top: 0; inset-inline-start: 18%;
+  width: 1px; height: 34px;
+  background: linear-gradient(var(--glacier), transparent);
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; min-height: calc(94svh - 3.1rem);
+  display: grid; place-items: center; text-align: center;
+  padding: clamp(3rem,2rem+6vw,7rem) var(--pad);
+  overflow: hidden;
+  background:
+    radial-gradient(130% 100% at 50% 120%, color-mix(in oklab, var(--glacier) 22%, transparent), transparent 60%),
+    var(--ground);
+}
+#caustics { position: absolute; inset: 0; width: 100%; height: 100%; opacity: var(--caustic-op); pointer-events: none; }
+.hero .in { position: relative; z-index: 2; max-width: 980px; }
+.wordmark {
+  font-family: var(--ar); font-weight: 700;
+  font-size: var(--step-6); line-height: .9; letter-spacing: .02em;
+  margin: 0;
+  background: linear-gradient(175deg, var(--ink) 20%, var(--glacier) 105%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(var(--glow));
+}
+.wordmark-la {
+  font-family: var(--ar); font-weight: 300; letter-spacing: .58em;
+  font-size: var(--step-1); color: var(--ink-3); margin-top: .9rem; text-indent: .58em;
+}
+.hero .line { font-family: var(--ar); font-size: var(--step-2); color: var(--ink); margin-top: 1.6rem; font-weight: 500; }
+.hero .line-en { font-size: var(--step-0); color: var(--ink-3); margin-top: .4rem; letter-spacing: .04em; }
+.hero .meta { margin-top: 2.4rem; display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- product cards ---------- */
+.prod {
+  display: grid; gap: 0; border: 1px solid var(--hair-soft); border-radius: 16px; overflow: hidden;
+  background: var(--surface); box-shadow: var(--shadow-1);
+}
+.prod .fig { aspect-ratio: 16/10; position: relative; background: var(--surface-sunk); overflow: hidden; }
+.prod .fig svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.prod .body { padding: clamp(1rem,.7rem+1vw,1.5rem); display: flex; flex-direction: column; gap: .5rem; }
+.prod .name { font-family: var(--ar); font-weight: 700; font-size: var(--step-2); line-height: 1.1; }
+.prod .rom { font-size: var(--step--2); letter-spacing: .18em; text-transform: uppercase; color: var(--glacier); }
+.prod .desc { font-size: var(--step--1); color: var(--ink-2); }
+.prod .spec { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .3rem; }
+
+/* ---------- swatches ---------- */
+.sw { border-radius: 10px; overflow: hidden; border: 1px solid var(--hair-soft); }
+.sw .chipc { height: 76px; }
+.sw .meta { padding: .5rem .6rem; background: var(--surface); }
+.sw .nm { font-size: var(--step--1); font-family: var(--ar); font-weight: 600; }
+.sw .hx { font-family: var(--mo); font-size: var(--step--2); color: var(--ink-3); }
+
+/* ---------- charts ---------- */
+figure.chart { margin: 0; }
+figure.chart figcaption { font-size: var(--step--2); color: var(--ink-3); margin-top: .55rem; }
+.legend { display: flex; gap: .9rem; flex-wrap: wrap; font-size: var(--step--2); color: var(--ink-2); margin-bottom: .6rem; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-inline-end: .35rem; vertical-align: middle; }
+
+/* ---------- callout ---------- */
+section.s > .in > .callout,
+section.s > .in > .melt + .callout { margin-top: 1.5rem; }
+.callout {
+  border-inline-start: 3px solid var(--glacier);
+  background: var(--glacier-wash);
+  padding: clamp(.85rem,.6rem+.7vw,1.25rem) clamp(1rem,.7rem+1vw,1.5rem);
+  border-radius: 0 12px 12px 0;
+  color: var(--ink-2);
+}
+.callout.sun { border-color: var(--sun); background: var(--sun-wash); }
+.callout.crit { border-color: var(--crit); background: color-mix(in oklab, var(--crit) 10%, transparent); }
+.callout b { color: var(--ink); }
+
+/* ---------- lists ---------- */
+ul.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+ul.ticks li { position: relative; padding-inline-start: 1.3rem; color: var(--ink-2); font-size: var(--step--1); }
+ul.ticks li::before {
+  content: ""; position: absolute; inset-inline-start: 0; top: .62em;
+  width: 7px; height: 7px; border-radius: 1px; background: var(--glacier); transform: rotate(45deg);
+}
+ul.ticks.sun li::before { background: var(--sun); }
+
+ol.steps { list-style: none; counter-reset: st; padding: 0; margin: 0; display: grid; gap: .9rem; }
+ol.steps li { counter-increment: st; position: relative; padding-inline-start: 2.4rem; color: var(--ink-2); font-size: var(--step--1); }
+ol.steps li::before {
+  content: counter(st, decimal-leading-zero);
+  position: absolute; inset-inline-start: 0; top: .05em;
+  font-family: var(--mo); font-size: var(--step--2); color: var(--glacier);
+  border: 1px solid color-mix(in oklab, var(--glacier) 35%, transparent); border-radius: 4px; padding: .05rem .3rem;
+}
+ol.steps li b { color: var(--ink); font-family: var(--ar); }
+
+/* ---------- footer ---------- */
+footer.end { padding: clamp(3rem,2rem+4vw,6rem) var(--pad) 4rem; border-top: 1px solid var(--hair-soft); background: var(--ground-2); }
+footer.end .in { max-width: var(--maxw); margin-inline: auto; }
+.fnote { font-size: var(--step--2); color: var(--ink-3); line-height: 1.8; }
+
+/* ---------- print ---------- */
+@media print {
+  .topbar, .rail, #caustics { display: none !important; }
+  section.s { break-inside: avoid; page-break-inside: avoid; border-top: 1px solid #ccc; }
+  body { background: #fff; color: #000; }
+}
+
+/* chart tokens — palettes validated against the six checks in both modes */
+:root { --c1:#0D8FCC; --c2:#BF7A10; --c3:#0A7350; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --c1:#2E9CC8; --c2:#B8801F; --c3:#1E9C7E; } }
+:root[data-theme="dark"] { --c1:#2E9CC8; --c2:#B8801F; --c3:#1E9C7E; }
+
+svg.cv { width:100%; height:auto; display:block; overflow:visible; }
+svg.cv .grid { stroke:var(--hair-soft); stroke-width:1; }
+svg.cv .axis { stroke:var(--hair); stroke-width:1; }
+svg.cv .ax { fill:var(--ink-3); font-family:var(--bd); font-size:11px; font-variant-numeric:tabular-nums; }
+svg.cv .ax.dim { fill:var(--ink-3); opacity:.75; font-size:10px; }
+svg.cv .vl { fill:var(--ink); font-family:var(--bd); font-size:11.5px; font-weight:600; font-variant-numeric:tabular-nums; }
+svg.cv .vl2 { fill:var(--sun); font-family:var(--bd); font-size:11px; font-weight:600; }
+svg.cv .vl-in { fill:var(--ground); font-family:var(--bd); font-size:11px; font-weight:700; }
+svg.cv .rl { fill:var(--ink-2); font-family:var(--bd); font-size:12px; }
+svg.cv .cell-hot { fill:#fff; font-family:var(--bd); font-size:10.5px; font-weight:700; }
+svg.cv .pk-lab { fill:var(--ink-3); font-family:var(--bd); font-size:11.5px; letter-spacing:.04em; }
+svg.cv rect, svg.cv circle { transition: opacity .15s ease; }
+svg.cv rect:hover, svg.cv circle:hover { opacity:.82; }
+.scene-wrap { background:var(--surface-sunk); border:1px solid var(--hair-soft); border-radius:16px; padding:.5rem; }
+svg.scene { border-radius:12px; }
+
+/* product cards */
+.ico-wrap { color:var(--glacier); width:44px; height:44px; margin-bottom:.35rem; }
+svg.ico { width:100%; height:100%; display:block; }
+.prod .price { display:flex; align-items:baseline; gap:.55rem; margin-top:.55rem; padding-top:.6rem; border-top:1px solid var(--hair-soft); }
+.prod .price .num { font-family:var(--ar); font-weight:700; font-size:var(--step-1); color:var(--ink); }
+.prod .price .pu { font-size:var(--step--2); color:var(--ink-3); }
+
+/* verse cards */
+.verse-card { border:1px solid var(--hair-soft); background:var(--surface); border-radius:14px; padding:1.1rem 1rem .95rem; }
+.verse-card .pill { margin-bottom:.5rem; }
+.score { display:flex; gap:.7rem; margin:.4rem 0 1rem; }
+.score > div { flex:1; display:flex; gap:.6rem; align-items:center; border-radius:10px; padding:.6rem .7rem; font-size:var(--step--2); line-height:1.4; }
+.sc-pass { background:color-mix(in oklab, var(--good) 12%, transparent); color:var(--ink-2); }
+.sc-fail { background:color-mix(in oklab, var(--crit) 12%, transparent); color:var(--ink-2); }
+.sc-n { font-family:var(--ar); font-weight:700; font-size:var(--step-3); line-height:1; }
+.sc-pass .sc-n { color:var(--good); } .sc-fail .sc-n { color:var(--crit); }
+ul.ticks.crit li::before { background:var(--crit); }
+ul.ticks.crit li { font-family:var(--ar); }
+.crit-card { border-color:color-mix(in oklab, var(--crit) 30%, var(--hair-soft)); }
+
+/* timeline */
+.timeline { display:grid; gap:0; }
+.tl { display:grid; grid-template-columns:132px minmax(0,1fr); gap:var(--gap); padding:1.3rem 0; border-top:1px solid var(--hair-soft); }
+.tl:first-child { border-top:0; }
+.tl-y { font-family:var(--mo); font-size:var(--step--1); color:var(--glacier); letter-spacing:.08em; padding-top:.15rem; }
+.tl-h { font-family:var(--ar); font-weight:600; font-size:var(--step-1); margin-bottom:.4rem; }
+.tl-b p { color:var(--ink-2); font-size:var(--step--1); }
+.tl-b .spec { margin-top:.7rem; display:flex; gap:.4rem; flex-wrap:wrap; }
+@media (max-width:700px) { .tl { grid-template-columns:1fr; gap:.4rem; } }
+
+/* risks */
+.risks { display:grid; gap:0; }
+.risk { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr); gap:var(--gap);
+  padding:1.15rem 0; border-top:1px solid var(--hair-soft); }
+.risk:first-child { border-top:0; }
+.r-head { display:flex; flex-direction:column; gap:.45rem; align-items:flex-start; }
+.r-head h4 { font-size:var(--step-0); font-family:var(--ar); font-weight:600; line-height:1.35; }
+.r-what { color:var(--ink-3); font-size:var(--step--1); margin-bottom:.5rem; }
+.r-mit { color:var(--ink-2); font-size:var(--step--1); }
+.r-mit b { color:var(--glacier); font-family:var(--ar); }
+@media (max-width:760px) { .risk { grid-template-columns:1fr; } }
+
+/* ask */
+.track { display:flex; flex-direction:column; gap:.7rem; }
+.track h3 { font-size:var(--step-2); }
+.track.accent { border-color:color-mix(in oklab, var(--glacier) 40%, var(--hair-soft)); box-shadow:var(--shadow-2); }
+.big-n { font-family:var(--ar); font-weight:700; font-size:var(--step-4); line-height:1; letter-spacing:-.02em; }
+.big-n.acc { color:var(--glacier); }
+.sub-h { font-family:var(--ar); font-size:var(--step-2); margin:1.8rem 0 .9rem; }
+.dim { color:var(--ink-3); }
+</style>
+<div class="rail" aria-hidden="true"></div>
+<div class="topbar">
+  <span class="mark ar">شَبِم</span>
+  <span class="chip en">SHABIM</span>
+  <nav aria-label="Sections"><a href="#s1" data-range="s1,s2,s3">الفكرة <span class="en dim">· The idea</span></a><a href="#s4" data-range="s4,s5,s6">السوق <span class="en dim">· The market</span></a><a href="#s7" data-range="s7,s8,s9,s10">العلامة <span class="en dim">· The brand</span></a><a href="#s11" data-range="s11,s12,s13,s14,s15,s16,s17,s18">الأرقام <span class="en dim">· The numbers</span></a><a href="#s19" data-range="s19,s20,s21,s22">الطريق <span class="en dim">· The road</span></a><a href="#s23" data-range="s23">الملحق <span class="en dim">· Appendix</span></a></nav>
+  <span class="sep"></span>
+  <span class="chip en">Investor deck</span>
+</div>
+
+<header class="hero">
+  <canvas id="caustics" aria-hidden="true"></canvas>
+  <div class="in">
+    <p class="wordmark ar">شَبِم</p>
+    <p class="wordmark-la en">SHABIM</p>
+    <p class="line ar">بَرْدُ الماء</p>
+    <p class="line-en en">The Arabic word for the coldness of water — and a cold-drinks brand
+      engineered for the hottest cities on earth.</p>
+    <div class="meta">
+      <span class="pill acc">Baghdad → Iraq → the Gulf</span>
+      <span class="pill">Investor presentation · 2026-08</span>
+      <span class="pill">Flagship $448,784 · payback 42 months</span>
+      <span class="pill">Franchisor $1.75M · 41% IRR</span>
+    </div>
+  </div>
+</header>
+<main>
+<section class="s deep" id="s1">
+ <div class="in">
+  <div class="eyebrow"><span class="n">I · 01</span><span class="act">THE NAME</span></div>
+  <h2 class="title">شَبِم — بَرْدُ الماء</h2>
+  
+  
+ <div class="grid g23" style="align-items:start">
+  <div>
+    <p class="lede">Arabic has a general word for cold — <span class="ar">بارِد</span> — and it is used for weather, for
+    food, for a person and for a joke. It also has one word that means the coldness that belongs specifically to
+    <em>water</em>. That word is <span class="ar kicker">شَبِم</span>.</p>
+    <div class="callout" style="margin-top:1.2rem">
+      <p class="ar" style="font-family:var(--vs);font-size:var(--step-1);line-height:1.9">
+      «الشَّبَمُ: بَرْدُ الماءِ. وماءٌ شَبِمٌ: بارِدٌ.»</p>
+      <p style="margin-top:.4rem;font-size:var(--step--2);color:var(--ink-3)">
+      لسان العرب، ابن منظور (ت ٧١١هـ)، مادّة «شبم» — <span class="en">“<i>al-shabam</i>: the coldness of water. And
+      <i>māʾ shabim</i>: cold water.”</span></p>
+    </div>
+    <p class="lede">It is a word almost nobody uses in speech any more, which is exactly why it is available. It is
+    unmistakably Arabic, it is unmistakably classical, and it means precisely and only the thing this business sells.</p>
+    <p class="lede">Al-Mutanabbī put it in the most quoted opening hemistich in the language. The brand's name is
+    already inside a line every educated Arab can finish.</p>
+  </div>
+  <div class="grid" style="gap:.8rem">
+    <div class="card stat"><span class="v ">شَبِم</span><span class="k">The Arabic wordmark — always vocalised, kasra on the bāʾ</span><span class=note>The diacritic is not decoration. It is what separates the brand from a medical homograph. See §26.</span></div>
+    <div class="card stat"><span class="v ">SHABIM</span><span class="k">The Latin wordmark</span><span class=note>ALA-LC correct. Pronounced SHA-bim.</span></div>
+    <div class="card stat"><span class="v ">SHBM</span><span class="k">The monogram only</span><span class=note>Four etched letters for lids, uniforms and the facade — never the spoken name.</span></div>
+  </div>
+ </div>
+ <div class="melt"></div>
+ <div class="callout sun">
+  <b>A change from the original brief.</b> The name was drafted as <span class="en">SHABM</span> in Latin. Verification
+  says do not ship that. Three reasons, each independently sufficient: (1) no vowel between B and M means no
+  English, French or Turkish speaker can pronounce it on sight — fatal for a franchise business that lives or dies on
+  word of mouth; (2) the obvious fix, <span class="en">SHABAM</span>, sits one letter from <span class="en">SHIBAM</span> — the UNESCO city in
+  Ḥaḍramawt <em>and</em> Shibam Coffee Co., a live Yemeni-coffee chain with a filed USPTO mark (97667800) in the same
+  Nice classes; (3) <span class="en">SHABIM</span> is the ALA-LC transliteration of <span class="ar">شَبِم</span>, the exact vocalisation in
+  al-Mutanabbī's line. Keep <span class="en">SHBM</span> as an etched monogram. Spend the name on <span class="en">SHABIM</span>.
+ </div>
+ </div>
+</section><section class="s tint" id="s2">
+ <div class="in">
+  <div class="eyebrow"><span class="n">I · 02</span><span class="act">THE INSIGHT</span></div>
+  <h2 class="title">الفكرة</h2>
+  
+  
+ <div class="grid g3">
+  <div class="card stat"><span class="v ">134</span><span class="k">days a year above 40°C in Baghdad</span><span class=note>And ~46 days above 45°C. Record 51.8°C, 28 July 2020.</span></div>
+  <div class="card stat"><span class="v ">63%</span><span class="k">of Iraqis are under 30</span><span class=note>Median age 20.9. Population 46,118,793 — 2024 census, the first in 37 years.</span></div>
+  <div class="card stat"><span class="v sun">85</span><span class="k">branded coffee outlets in the whole of Iraq</span><span class=note>One per ~542,000 people. Saudi Arabia has one per ~6,600.</span></div>
+ </div>
+ <p class="lede">Three facts that only look unrelated. Iraq is one of the hottest inhabited countries on earth, it is
+ demographically the youngest large market in the Arab world, and its organised café sector barely exists —
+ 85 branded outlets against Saudi Arabia's 5,130. The category everyone else in the region is fighting over has not
+ arrived here yet.</p>
+ <p class="lede">Meanwhile the cold-drink product itself has been standing still. An iced latte in Baghdad in 2026 is
+ the same object it was in 2016: espresso, milk, and a cup of ice cubes that dilute it to water in eleven minutes.
+ In a city where the July average high is 45°C, that is not a product. It is a compromise everyone has agreed to
+ stop noticing.</p>
+ <div class="callout">
+  <b>SHABIM is the answer to one question:</b> what does a cold drink look like if you design it for 48°C instead of
+  apologising for it? Not a colder recipe — a colder <em>object</em>. A vessel at −80°C. A cup carved out of a block of
+  ice. Fruit frozen into the shape of the fruit. And a building that is itself a block of ice, visibly melting on a
+  Baghdad pavement.
+ </div>
+ </div>
+</section><section class="s " id="s3">
+ <div class="in">
+  <div class="eyebrow"><span class="n">I · 03</span><span class="act">THE MENU, IN SIX LINES</span></div>
+  <h2 class="title">ستّة خطوط</h2>
+  
+  <div class="grid g3" style="margin-top:.4rem"><div class="prod">
+   <div class="body">
+     <div class="ico-wrap"><svg viewBox="0 0 64 64" class="ico" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20h24l-3 30a4 4 0 0 1-4 3.6H27a4 4 0 0 1-4-3.6z"/>
+   <path d="M22.4 33h19.2" stroke-opacity=".45"/>
+   <path d="M17 16c2.6-2.4 5.6-1.2 7.4.4M40 15c2.4-2.6 6-2 8 .2M28 12.6c2-2 5.4-1.8 7.2.4" stroke-opacity=".75"/>
+   <path d="M26 43c1.6-3.4 4.4-5 8.4-4.6" stroke-opacity=".5"/></svg></div>
+     <div class="name ar">صَقيع ٨٠−</div>
+     <div class="rom en">SAQĪʿ −80 · The −80 dirty latte</div>
+     <p class="desc">A heavy-walled vessel is held at −80°C, lifted out with steel tongs, and cold milk is poured in. The milk flash-freezes into a white crust up the inner wall while the core stays liquid. A ristretto is poured through it and carves a dark channel. Nothing is diluted, because there is no ice.</p>
+     <div class="spec"><span class="pill">−20°C pre-chill, then −80°C hold</span><span class="pill">Served in tongs, on a chilled base</span><span class="pill">75 seconds</span><span class="pill">No ice, no dilution</span></div>
+     <p class="desc" style="border-top:1px solid var(--hair-soft);padding-top:.6rem;margin-top:.3rem">
+       <b style="color:var(--glacier)">Why it earns its place.</b> The proof that this works commercially already exists: Regulars in Melbourne sells around 600 glasses a day of a single −85°C drink, and the format has queues measured in hours in Singapore and Tokyo. Nobody in Iraq or the Gulf is doing it.</p>
+     <div class="price"><span class="num">$5.23</span>
+       <span class="pu">Baghdad · 8,000 IQD</span></div>
+   </div>
+ </div><div class="prod">
+   <div class="body">
+     <div class="ico-wrap"><svg viewBox="0 0 64 64" class="ico" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 44 22 52 15 20 15z"/><path d="M44 22v27l8-7V15z"/><path d="M12 22h32v27H12z"/>
+   <ellipse cx="28" cy="27" rx="9" ry="3.4"/><path d="M19 27v13c0 1.9 4 3.4 9 3.4s9-1.5 9-3.4V27"/>
+   <path d="M19 34c0 1.9 4 3.4 9 3.4s9-1.5 9-3.4" stroke-opacity=".45"/></svg></div>
+     <div class="name ar">القالَب</div>
+     <div class="rom en">AL-QĀLAB · Coffee inside the block</div>
+     <p class="desc">A block of crystal-clear ice, bored with a cylindrical cavity, is the cup. Coffee or tea goes into the block. It stays cold for over half an hour and dilutes almost not at all, because the melt surface is a fraction of what cubes give you. When the drink is gone, the block is eaten with a spoon.</p>
+     <div class="spec"><span class="pill">136 kg directional-freeze block</span><span class="pill">≈35 vessels per block</span><span class="pill">150 seconds</span><span class="pill">Eaten at the end</span></div>
+     <p class="desc" style="border-top:1px solid var(--hair-soft);padding-top:.6rem;margin-top:.3rem">
+       <b style="color:var(--glacier)">Why it earns its place.</b> Kobe's Nishimura Coffee has served this since 2016; Cafe 33 at the Hyatt Regency Kyoto charges ¥2,000 — about $13 — for it. It is the most photographed cold drink in Japan and it has never crossed into Arabic-speaking markets.</p>
+     <div class="price"><span class="num">$9.80</span>
+       <span class="pu">Baghdad · 15,000 IQD</span></div>
+   </div>
+ </div><div class="prod">
+   <div class="body">
+     <div class="ico-wrap"><svg viewBox="0 0 64 64" class="ico" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="38" rx="22" ry="10"/>
+   <path d="M10 38v4c0 5.5 9.8 10 22 10s22-4.5 22-10v-4"/>
+   <ellipse cx="24" cy="35" rx="3.6" ry="6" transform="rotate(-14 24 35)"/>
+   <ellipse cx="32" cy="34" rx="3.6" ry="6" transform="rotate(-4 32 34)"/>
+   <ellipse cx="40" cy="35" rx="3.6" ry="6" transform="rotate(8 40 35)"/>
+   <path d="M17 20c2.4-2.2 5-1 6.6.4M38 18c2.2-2.4 5.6-1.8 7.4.2" stroke-opacity=".6"/></svg></div>
+     <div class="name ar">لَفائِف</div>
+     <div class="rom en">LAFĀʾIF · Rolled ice cream</div>
+     <p class="desc">Liquid base is poured onto a −30°C steel pan, chopped with the fruit or chocolate the customer chose, spread thin, and scraped into tight rolls in front of them. Two minutes of theatre, made to order, no two portions identical.</p>
+     <div class="spec"><span class="pill">Twin −30°C pans</span><span class="pill">Made to order, in view</span><span class="pill">165 seconds</span><span class="pill">Customer picks the mix-in</span></div>
+     <p class="desc" style="border-top:1px solid var(--hair-soft);padding-top:.6rem;margin-top:.3rem">
+       <b style="color:var(--glacier)">Why it earns its place.</b> The format's first viral cycle was 2015-2018 and it never properly landed in Iraq. It is the workhorse: it draws the crowd that films the −80, and it carries the family and kids occasion the coffee items cannot.</p>
+     <div class="price"><span class="num">$4.58</span>
+       <span class="pu">Baghdad · 7,000 IQD</span></div>
+   </div>
+ </div><div class="prod">
+   <div class="body">
+     <div class="ico-wrap"><svg viewBox="0 0 64 64" class="ico" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="16" width="44" height="34" rx="3"/>
+   <path d="M10 33h44M25 16v34M39 16v34" stroke-opacity=".4"/>
+   <circle cx="17.5" cy="24.5" r="5"/><path d="M32 19.6c3 0 5 2.2 5 5s-2.2 5.4-5 5.4-5-2.4-5-5.4 2-5 5-5z"/>
+   <circle cx="46.5" cy="24.5" r="5"/>
+   <circle cx="17.5" cy="41.5" r="5"/><circle cx="32" cy="41.5" r="5"/><circle cx="46.5" cy="41.5" r="5"/>
+   <path d="M17.5 18v-2.6M32 18.2v-2.8M46.5 18v-2.6" stroke-opacity=".6"/></svg></div>
+     <div class="name ar">جَنى</div>
+     <div class="rom en">JANĀ · Frozen fruit, in the shape of the fruit</div>
+     <p class="desc">Fruit sorbet moulded and coloured into the exact form of the fruit it came from — strawberry, apricot, fig, lemon, blackberry, melon. It reads as fruit in the hand and breaks open to dense, bright sorbet. Sold as a single piece, or as a nine-piece box on crushed ice.</p>
+     <div class="spec"><span class="pill">Batch-produced, not to order</span><span class="pill">Single or box of nine</span><span class="pill">22 seconds to serve</span><span class="pill">The take-home SKU</span></div>
+     <p class="desc" style="border-top:1px solid var(--hair-soft);padding-top:.6rem;margin-top:.3rem">
+       <b style="color:var(--glacier)">Why it earns its place.</b> This is the only line that leaves the store: the box is a gift, a majlis offering, a Ramadan and Eid item, and a delivery product. It is also the one line that can later be sold through retail without a café.</p>
+     <div class="price"><span class="num">$14.38</span>
+       <span class="pu">Baghdad · 22,000 IQD</span></div>
+   </div>
+ </div><div class="prod">
+   <div class="body">
+     <div class="ico-wrap"><svg viewBox="0 0 64 64" class="ico" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h22l-2.6 33a4 4 0 0 1-4 3.7h-8.8a4 4 0 0 1-4-3.7z"/>
+   <path d="M25 27l3.4-3.4 3.6 3.4 3.6-3.4 3.4 3.4M24.4 35l3.6-3.4 3.6 3.4 3.6-3.4 3.4 3.4" stroke-opacity=".55"/>
+   <path d="M33 17V8M33 8l5-3M33 8l-5-3" stroke-opacity=".7"/></svg></div>
+     <div class="name ar">بَرَد</div>
+     <div class="rom en">BARAD · Slush and cold-pressed juice</div>
+     <p class="desc">Fresh-pressed juice and fruit slush — the everyday, high-frequency, low-consideration end of the menu. Pomegranate, orange, mango, mint-lemon.</p>
+     <div class="spec"><span class="pill">Pressed on site</span><span class="pill">70 seconds</span><span class="pill">The repeat-purchase line</span><span class="pill">Priced against the street</span></div>
+     <p class="desc" style="border-top:1px solid var(--hair-soft);padding-top:.6rem;margin-top:.3rem">
+       <b style="color:var(--glacier)">Why it earns its place.</b> Every destination brand needs an item that a customer buys twice a week without thinking. Barad is the frequency engine underneath the spectacle.</p>
+     <div class="price"><span class="num">$3.27</span>
+       <span class="pu">Baghdad · 5,000 IQD</span></div>
+   </div>
+ </div><div class="prod">
+   <div class="body">
+     <div class="ico-wrap"><svg viewBox="0 0 64 64" class="ico" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 26h30v14a11 11 0 0 1-11 11h-8a11 11 0 0 1-11-11z"/>
+   <path d="M44 30h4.6a5.4 5.4 0 0 1 0 10.8H44"/>
+   <path d="M22 18c2.4-2.4 1.6-5-.4-6.8M31 18c2.4-2.4 1.6-5-.4-6.8M40 18c2.4-2.4 1.6-5-.4-6.8" stroke-opacity=".75"/>
+   <path d="M11 55h36" stroke-opacity=".45"/></svg></div>
+     <div class="name ar">كانون</div>
+     <div class="rom en">KĀNŪN · The winter menu</div>
+     <p class="desc">From November the lighting shifts from 6500K white to 2700K amber, the ice-material surfaces glow like frozen honey instead of glacier, and the menu adds flat whites, Spanish lattes, hot chocolate, karak and Arabic coffee. The cold menu never leaves.</p>
+     <div class="spec"><span class="pill">2700K amber scheme</span><span class="pill">Nov – Mar</span><span class="pill">60 seconds</span><span class="pill">Cold menu stays on</span></div>
+     <p class="desc" style="border-top:1px solid var(--hair-soft);padding-top:.6rem;margin-top:.3rem">
+       <b style="color:var(--glacier)">Why it earns its place.</b> Baghdad's January high is 16°C. A pure ice concept would lose four months a year. Kānūn is why the model's winter floor is 73% of the annual average and not 45%.</p>
+     <div class="price"><span class="num">$3.92</span>
+       <span class="pu">Baghdad · 6,000 IQD</span></div>
+   </div>
+ </div></div><div class="callout" style="margin-top:1.4rem">
+   <b>The menu is built as a barbell, deliberately.</b> Two slow, expensive, unrepeatable spectacle items
+   (<span class="ar">صَقيع ٨٠−</span>, <span class="ar">القالَب</span>) generate the footage and the queue. Two fast, cheap, high-frequency lines
+   (<span class="ar">بَرَد</span>, <span class="ar">جَنى</span>) generate the repeat visit. One line (<span class="ar">لَفائِف</span>) brings families and children.
+   One line (<span class="ar">كانون</span>) keeps the doors worth opening in January. Take any one away and something structural breaks.
+ </div>
+ </div>
+</section><section class="s deep" id="s4">
+ <div class="in">
+  <div class="eyebrow"><span class="n">II · 04</span><span class="act">WHY IRAQ FIRST</span></div>
+  <h2 class="title">لماذا العراق أوّلاً</h2>
+  
+  
+ <p class="sub">The white space is not a projection. It is a count.</p>
+ <figure class="chart">
+  <div class="legend"><span><i style="background:var(--c1)"></i>People per branded coffee outlet — lower is a more served market</span></div>
+  <svg viewBox="0 0 760 190" class="cv " role="img" aria-label="People per branded coffee outlet: Saudi Arabia 6,600; UAE about 5,000; MENA average 26,000; Iraq 542,000." preserveAspectRatio="xMidYMid meet"><text x="176" y="32" class="rl" text-anchor="end">Saudi Arabia</text><rect x="190" y="18" width="5.4" height="22" rx="4" fill="var(--c1)"><title>Saudi Arabia: 6,600</title></rect><text x="205.4" y="34" class="vl">6,600  ·  5,130 outlets</text><text x="176" y="72" class="rl" text-anchor="end">UAE</text><rect x="190" y="58" width="4.1" height="22" rx="4" fill="var(--c1)"><title>UAE: 5,000</title></rect><text x="204.1" y="74" class="vl">5,000  ·  9,000+ cafés · Dubai alone 3,257</text><text x="176" y="112" class="rl" text-anchor="end">MENA average</text><rect x="190" y="98" width="21.1" height="22" rx="4" fill="var(--c1)"><title>MENA average: 26,000</title></rect><text x="221.1" y="114" class="vl">26,000  ·  11,163 branded outlets</text><text x="176" y="152" class="rl" text-anchor="end">Iraq</text><rect x="190" y="138" width="440.0" height="22" rx="4" fill="var(--c2)"><title>Iraq: 542,000</title></rect><text x="640.0" y="154" class="vl">542,000  ·  85 outlets</text></svg>
+  <figcaption>Sources: Project Café Middle East 2025, World Coffee Portal (MENA 11,163 branded outlets, +11.2% year on year,
+  forecast 16,460 by Nov 2029; Saudi 5,130 = 46% of the region; Iraq 85 outlets, 13th largest MENA market, forecast &gt;130 by
+  end-2029). Population from the Iraq 2024 census and national statistics. Iraq's ratio is roughly <b>80× less served</b> than Saudi Arabia's.</figcaption>
+ </figure>
+ <div class="grid g2" style="margin-top:1.6rem">
+   <div class="card">
+     <div class="cap">The market is being validated right now — by other people</div>
+     <ul class="ticks">
+       <li><b>Half Million</b>, the Riyadh chain that went 0 → 59 stores across 14 Saudi cities in seven years, is opening its first Iraq store at Iraq Mall, Baghdad.</li>
+       <li><b>%Arabica</b> has expanded to Baghdad. <b>Kyan Café</b> (Saudi) opened its first Iraq outlet. Segafredo, Mikel and Espressolab are all in.</li>
+       <li><b>Iraq Mall</b> opened in Al-Dora in February 2026: over 550,000 m², 1,000+ retail units — the largest mall in Iraq and third largest in the Middle East.</li>
+       <li>The <b>Baghdad Coffee &amp; Tea Festival</b> drew 62,000 visitors in 2024 and over 100,000 in 2025.</li>
+       <li><b>The Grinders</b>, the leading Iraqi specialty chain, launched 2020 and is now at 17 branches.</li>
+     </ul>
+     <p class="desc" style="margin-top:.8rem">Regional operators have already decided Iraq is next. The question is
+     not whether the market opens. It is who owns a category inside it before Alshaya-scale capital arrives.</p>
+   </div>
+   <div class="card">
+     <div class="cap">And it is affordable to be first</div>
+     <div class="tw "><table><thead><tr><th class=""></th><th class="n">Baghdad</th><th class="n">Riyadh</th><th class="n">Dubai</th></tr></thead><tbody><tr class=""><td class="">Monthly rent, 45 m² prime street</td><td class="n">$2,000</td><td class="n">$4,600</td><td class="n">$6,200</td></tr><tr class=""><td class="">Barista, monthly</td><td class="n">$450</td><td class="n">$1,000</td><td class="n">$1,100</td></tr><tr class=""><td class="">Store manager, monthly</td><td class="n">$1,000</td><td class="n">$2,200</td><td class="n">$2,600</td></tr><tr class=""><td class="">Replication CAPEX, one Cube</td><td class="n">$265k</td><td class="n">$370k</td><td class="n">$402k</td></tr><tr class=""><td class=""><b>Year-2 EBITDA margin, franchised</b></td><td class="n"><b>24%</b></td><td class="n"><b>22%</b></td><td class="n"><b>27%</b></td></tr></tbody><caption>Rent and wages are model inputs; see §29 for sourcing and confidence. CAPEX and EBITDA are model outputs.</caption></table></div>
+     <p class="desc" style="margin-top:.8rem">Iraq is not the cheap option. It is the option where a
+     brand can be <em>built</em> — where the cost of learning is low enough to get the format right before it is
+     exported into markets where a mistake costs three times as much.</p>
+   </div>
+ </div>
+ </div>
+</section><section class="s warm" id="s5">
+ <div class="in">
+  <div class="eyebrow"><span class="n">II · 05</span><span class="act">HEAT IS THE MARKET</span></div>
+  <h2 class="title">الحرارة هي السوق</h2>
+  
+  
+ <p class="sub">Average daily high, by month. Every cell at or above 40°C is a month where a cold-drink brand is not
+ competing with hot coffee — it is competing with dehydration.</p>
+ <figure class="chart">
+  <svg viewBox="0 0 790 318" class="cv " role="img" aria-label="Heat map of average monthly high temperatures across eight target cities, showing four to five months above 40 degrees Celsius in Iraq and the Gulf." preserveAspectRatio="xMidYMid meet"><text x="156.0" y="16" class="ax" text-anchor="middle">J</text><text x="207.0" y="16" class="ax" text-anchor="middle">F</text><text x="258.0" y="16" class="ax" text-anchor="middle">M</text><text x="309.0" y="16" class="ax" text-anchor="middle">A</text><text x="360.0" y="16" class="ax" text-anchor="middle">M</text><text x="411.0" y="16" class="ax" text-anchor="middle">J</text><text x="462.0" y="16" class="ax" text-anchor="middle">J</text><text x="513.0" y="16" class="ax" text-anchor="middle">A</text><text x="564.0" y="16" class="ax" text-anchor="middle">S</text><text x="615.0" y="16" class="ax" text-anchor="middle">O</text><text x="666.0" y="16" class="ax" text-anchor="middle">N</text><text x="717.0" y="16" class="ax" text-anchor="middle">D</text><text x="120" y="43" class="rl" text-anchor="end">Basra, Iraq</text><rect x="132.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.206"><title>Basra, Iraq, month 1: 18°C average high</title></rect><rect x="183.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.285"><title>Basra, Iraq, month 2: 21°C average high</title></rect><rect x="234.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.418"><title>Basra, Iraq, month 3: 26°C average high</title></rect><rect x="285.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.576"><title>Basra, Iraq, month 4: 32°C average high</title></rect><rect x="336.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.762"><title>Basra, Iraq, month 5: 39°C average high</title></rect><rect x="387.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.894"><title>Basra, Iraq, month 6: 44°C average high</title></rect><text x="411.0" y="42" class="cell-hot" text-anchor="middle">44</text><rect x="438.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.947"><title>Basra, Iraq, month 7: 46°C average high</title></rect><text x="462.0" y="42" class="cell-hot" text-anchor="middle">46</text><rect x="489.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.947"><title>Basra, Iraq, month 8: 46°C average high</title></rect><text x="513.0" y="42" class="cell-hot" text-anchor="middle">46</text><rect x="540.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.868"><title>Basra, Iraq, month 9: 43°C average high</title></rect><text x="564.0" y="42" class="cell-hot" text-anchor="middle">43</text><rect x="591.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Basra, Iraq, month 10: 35°C average high</title></rect><rect x="642.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.418"><title>Basra, Iraq, month 11: 26°C average high</title></rect><rect x="693.0" y="26" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.232"><title>Basra, Iraq, month 12: 19°C average high</title></rect><text x="120" y="77" class="rl" text-anchor="end">Baghdad, Iraq</text><rect x="132.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.153"><title>Baghdad, Iraq, month 1: 16°C average high</title></rect><rect x="183.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.232"><title>Baghdad, Iraq, month 2: 19°C average high</title></rect><rect x="234.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.365"><title>Baghdad, Iraq, month 3: 24°C average high</title></rect><rect x="285.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.524"><title>Baghdad, Iraq, month 4: 30°C average high</title></rect><rect x="336.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.709"><title>Baghdad, Iraq, month 5: 37°C average high</title></rect><rect x="387.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Baghdad, Iraq, month 6: 42°C average high</title></rect><text x="411.0" y="76" class="cell-hot" text-anchor="middle">42</text><rect x="438.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.921"><title>Baghdad, Iraq, month 7: 45°C average high</title></rect><text x="462.0" y="76" class="cell-hot" text-anchor="middle">45</text><rect x="489.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.921"><title>Baghdad, Iraq, month 8: 45°C average high</title></rect><text x="513.0" y="76" class="cell-hot" text-anchor="middle">45</text><rect x="540.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.815"><title>Baghdad, Iraq, month 9: 41°C average high</title></rect><text x="564.0" y="76" class="cell-hot" text-anchor="middle">41</text><rect x="591.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.603"><title>Baghdad, Iraq, month 10: 33°C average high</title></rect><rect x="642.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.365"><title>Baghdad, Iraq, month 11: 24°C average high</title></rect><rect x="693.0" y="60" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.179"><title>Baghdad, Iraq, month 12: 17°C average high</title></rect><text x="120" y="111" class="rl" text-anchor="end">Kuwait City</text><rect x="132.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.232"><title>Kuwait City, month 1: 19°C average high</title></rect><rect x="183.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.285"><title>Kuwait City, month 2: 21°C average high</title></rect><rect x="234.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.418"><title>Kuwait City, month 3: 26°C average high</title></rect><rect x="285.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.603"><title>Kuwait City, month 4: 33°C average high</title></rect><rect x="336.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.788"><title>Kuwait City, month 5: 40°C average high</title></rect><text x="360.0" y="110" class="cell-hot" text-anchor="middle">40</text><rect x="387.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.921"><title>Kuwait City, month 6: 45°C average high</title></rect><text x="411.0" y="110" class="cell-hot" text-anchor="middle">45</text><rect x="438.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.947"><title>Kuwait City, month 7: 46°C average high</title></rect><text x="462.0" y="110" class="cell-hot" text-anchor="middle">46</text><rect x="489.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.947"><title>Kuwait City, month 8: 46°C average high</title></rect><text x="513.0" y="110" class="cell-hot" text-anchor="middle">46</text><rect x="540.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Kuwait City, month 9: 42°C average high</title></rect><text x="564.0" y="110" class="cell-hot" text-anchor="middle">42</text><rect x="591.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Kuwait City, month 10: 35°C average high</title></rect><rect x="642.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.444"><title>Kuwait City, month 11: 27°C average high</title></rect><rect x="693.0" y="94" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.285"><title>Kuwait City, month 12: 21°C average high</title></rect><text x="120" y="145" class="rl" text-anchor="end">Riyadh, KSA</text><rect x="132.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.285"><title>Riyadh, KSA, month 1: 21°C average high</title></rect><rect x="183.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.365"><title>Riyadh, KSA, month 2: 24°C average high</title></rect><rect x="234.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.471"><title>Riyadh, KSA, month 3: 28°C average high</title></rect><rect x="285.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.603"><title>Riyadh, KSA, month 4: 33°C average high</title></rect><rect x="336.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.762"><title>Riyadh, KSA, month 5: 39°C average high</title></rect><rect x="387.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Riyadh, KSA, month 6: 42°C average high</title></rect><text x="411.0" y="144" class="cell-hot" text-anchor="middle">42</text><rect x="438.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.868"><title>Riyadh, KSA, month 7: 43°C average high</title></rect><text x="462.0" y="144" class="cell-hot" text-anchor="middle">43</text><rect x="489.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.868"><title>Riyadh, KSA, month 8: 43°C average high</title></rect><text x="513.0" y="144" class="cell-hot" text-anchor="middle">43</text><rect x="540.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.788"><title>Riyadh, KSA, month 9: 40°C average high</title></rect><text x="564.0" y="144" class="cell-hot" text-anchor="middle">40</text><rect x="591.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Riyadh, KSA, month 10: 35°C average high</title></rect><rect x="642.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.444"><title>Riyadh, KSA, month 11: 27°C average high</title></rect><rect x="693.0" y="128" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.312"><title>Riyadh, KSA, month 12: 22°C average high</title></rect><text x="120" y="179" class="rl" text-anchor="end">Doha, Qatar</text><rect x="132.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.312"><title>Doha, Qatar, month 1: 22°C average high</title></rect><rect x="183.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.338"><title>Doha, Qatar, month 2: 23°C average high</title></rect><rect x="234.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.444"><title>Doha, Qatar, month 3: 27°C average high</title></rect><rect x="285.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.576"><title>Doha, Qatar, month 4: 32°C average high</title></rect><rect x="336.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.762"><title>Doha, Qatar, month 5: 39°C average high</title></rect><rect x="387.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Doha, Qatar, month 6: 42°C average high</title></rect><text x="411.0" y="178" class="cell-hot" text-anchor="middle">42</text><rect x="438.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Doha, Qatar, month 7: 42°C average high</title></rect><text x="462.0" y="178" class="cell-hot" text-anchor="middle">42</text><rect x="489.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.815"><title>Doha, Qatar, month 8: 41°C average high</title></rect><text x="513.0" y="178" class="cell-hot" text-anchor="middle">41</text><rect x="540.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.762"><title>Doha, Qatar, month 9: 39°C average high</title></rect><rect x="591.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Doha, Qatar, month 10: 35°C average high</title></rect><rect x="642.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.524"><title>Doha, Qatar, month 11: 30°C average high</title></rect><rect x="693.0" y="162" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.391"><title>Doha, Qatar, month 12: 25°C average high</title></rect><text x="120" y="213" class="rl" text-anchor="end">Dubai, UAE</text><rect x="132.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.365"><title>Dubai, UAE, month 1: 24°C average high</title></rect><rect x="183.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.391"><title>Dubai, UAE, month 2: 25°C average high</title></rect><rect x="234.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.471"><title>Dubai, UAE, month 3: 28°C average high</title></rect><rect x="285.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.576"><title>Dubai, UAE, month 4: 32°C average high</title></rect><rect x="336.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.709"><title>Dubai, UAE, month 5: 37°C average high</title></rect><rect x="387.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.762"><title>Dubai, UAE, month 6: 39°C average high</title></rect><rect x="438.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.815"><title>Dubai, UAE, month 7: 41°C average high</title></rect><text x="462.0" y="212" class="cell-hot" text-anchor="middle">41</text><rect x="489.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.815"><title>Dubai, UAE, month 8: 41°C average high</title></rect><text x="513.0" y="212" class="cell-hot" text-anchor="middle">41</text><rect x="540.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.735"><title>Dubai, UAE, month 9: 38°C average high</title></rect><rect x="591.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Dubai, UAE, month 10: 35°C average high</title></rect><rect x="642.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.524"><title>Dubai, UAE, month 11: 30°C average high</title></rect><rect x="693.0" y="196" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.418"><title>Dubai, UAE, month 12: 26°C average high</title></rect><text x="120" y="247" class="rl" text-anchor="end">Erbil, Iraq</text><rect x="132.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.100"><title>Erbil, Iraq, month 1: 11°C average high</title></rect><rect x="183.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.100"><title>Erbil, Iraq, month 2: 13°C average high</title></rect><rect x="234.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.206"><title>Erbil, Iraq, month 3: 18°C average high</title></rect><rect x="285.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.365"><title>Erbil, Iraq, month 4: 24°C average high</title></rect><rect x="336.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.550"><title>Erbil, Iraq, month 5: 31°C average high</title></rect><rect x="387.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.735"><title>Erbil, Iraq, month 6: 38°C average high</title></rect><rect x="438.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Erbil, Iraq, month 7: 42°C average high</title></rect><text x="462.0" y="246" class="cell-hot" text-anchor="middle">42</text><rect x="489.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.841"><title>Erbil, Iraq, month 8: 42°C average high</title></rect><text x="513.0" y="246" class="cell-hot" text-anchor="middle">42</text><rect x="540.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.709"><title>Erbil, Iraq, month 9: 37°C average high</title></rect><rect x="591.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.497"><title>Erbil, Iraq, month 10: 29°C average high</title></rect><rect x="642.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.259"><title>Erbil, Iraq, month 11: 20°C average high</title></rect><rect x="693.0" y="230" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.100"><title>Erbil, Iraq, month 12: 13°C average high</title></rect><text x="120" y="281" class="rl" text-anchor="end">Cairo, Egypt</text><rect x="132.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.232"><title>Cairo, Egypt, month 1: 19°C average high</title></rect><rect x="183.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.285"><title>Cairo, Egypt, month 2: 21°C average high</title></rect><rect x="234.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.365"><title>Cairo, Egypt, month 3: 24°C average high</title></rect><rect x="285.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.497"><title>Cairo, Egypt, month 4: 29°C average high</title></rect><rect x="336.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.603"><title>Cairo, Egypt, month 5: 33°C average high</title></rect><rect x="387.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Cairo, Egypt, month 6: 35°C average high</title></rect><rect x="438.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Cairo, Egypt, month 7: 35°C average high</title></rect><rect x="489.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.656"><title>Cairo, Egypt, month 8: 35°C average high</title></rect><rect x="540.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.603"><title>Cairo, Egypt, month 9: 33°C average high</title></rect><rect x="591.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.524"><title>Cairo, Egypt, month 10: 30°C average high</title></rect><rect x="642.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.391"><title>Cairo, Egypt, month 11: 25°C average high</title></rect><rect x="693.0" y="264" width="48" height="24" rx="3" fill="var(--c2)" fill-opacity="0.285"><title>Cairo, Egypt, month 12: 21°C average high</title></rect></svg>
+  <figcaption>Baghdad's hot season runs 26 May – 21 September, 3.9 months with daily highs averaging above 38.9°C
+  (Weather Spark). July and August average 45°C. In July 2025, thirteen Iraqi provinces exceeded 50°C.
+  Basra's all-time record is 53.9°C.</figcaption>
+ </figure>
+ <div class="grid g3" style="margin-top:1.6rem">
+   <div class="card stat"><span class="v ">5</span><span class="k">months a year where Baghdad is above 33°C</span><span class=note>The trading peak. Model runs at 1.34–1.58× the annual average across May–September.</span></div>
+   <div class="card stat"><span class="v sun">16°C</span><span class="k">Baghdad January average high</span><span class=note>Which is why <span class="ar">كانون</span> exists. Winter is not a dead season; it is a different menu.</span></div>
+   <div class="card stat"><span class="v ">&gt;40</span><span class="k">days a year at 48.9°C+ projected for Baghdad</span><span class=note>Up from ~14 two decades ago (EU ISS). The thesis gets stronger, not weaker.</span></div>
+ </div>
+ <div class="callout" style="margin-top:1.4rem">
+  <b>The uncomfortable version of the same fact.</b> This is a business whose addressable market is expanding because
+  the climate is deteriorating. We should be honest that we are selling relief from a problem that is getting worse,
+  and that the same heat raises our own cooling costs — the model's <span class="en">stress_heat</span> case runs utilities
+  80% higher and still clears 12% EBITDA. Both things are true at once.
+ </div>
+ </div>
+</section><section class="s " id="s6">
+ <div class="in">
+  <div class="eyebrow"><span class="n">II · 06</span><span class="act">TAM · SAM · SOM</span></div>
+  <h2 class="title">حجم السوق</h2>
+  
+  
+ <p class="sub">Built bottom-up from census households, not top-down from a market-research headline.</p>
+ <div class="grid g3">
+   <div class="card stat"><span class="v ">$21.0B</span><span class="k">Baghdad household expenditure per year</span><span class=note>9,780,429 people ÷ 5.9 per household × 1,467,000 IQD monthly spend (IHSES 2023/24), at the 1,530 parallel rate.</span></div>
+   <div class="card stat"><span class="v ">$1.2B</span><span class="k">Baghdad food-away-from-home — TAM</span><span class=note>32% food share of household spend, of which ~29% is consumed outside the home.</span></div>
+   <div class="card stat"><span class="v ">$145–215M</span><span class="k">Baghdad cold drinks &amp; frozen desserts — SAM</span><span class=note>12–18% of food-service spend. The upper end reflects the temperature premium.</span></div>
+ </div>
+ <div class="grid g2" style="margin-top:1.6rem">
+   <div class="card">
+     <div class="cap">SOM — what SHABIM can actually take in Baghdad</div>
+     <div class="tw "><table><thead><tr><th class="">Step</th><th class="n">Value</th></tr></thead><tbody><tr class=""><td class="">Baghdad residents under 30</td><td class="n">≈6.0M</td></tr><tr class=""><td class="">Monthly-customer penetration at maturity</td><td class="n">5%</td></tr><tr class=""><td class="">Visits per customer per year</td><td class="n">24</td></tr><tr class=""><td class="">Average ticket</td><td class="n">$6.46</td></tr><tr class=""><td class=""><b>Baghdad obtainable revenue, 5–7 years</b></td><td class="n"><b>≈$35M / yr</b></td></tr><tr class=""><td class="">Implied SHABIM network to serve it</td><td class="n">≈45 Baghdad units</td></tr><tr class=""><td class=""><b>Plan to Year 5 — Baghdad only</b></td><td class="n"><b>24 units</b></td></tr></tbody><caption>24 Baghdad units at their modelled revenues is about $10.9M — roughly a third of the obtainable Baghdad market. It is not a plan that requires the whole city.</caption></table></div>
+   </div>
+   <div class="card">
+     <div class="cap">The regional prize, for scale</div>
+     <div class="tw "><table><thead><tr><th class="">Market</th><th class="n">Size</th><th class="">Source</th></tr></thead><tbody><tr class=""><td class="">MENA branded coffee shops</td><td class="n">11,163 outlets</td><td class="">World Coffee Portal 2025, +11.2% y/y</td></tr><tr class=""><td class="">…forecast Nov 2029</td><td class="n">16,460 outlets</td><td class="">8.1% CAGR</td></tr><tr class=""><td class="">Saudi coffee market</td><td class="n">$1.4–2.7B</td><td class="">Renub / industry est. 2025-26</td></tr><tr class=""><td class="">Saudi specialty coffee</td><td class="n">$0.95B → $2.11B</td><td class="">2025 → 2033, 10.5% CAGR</td></tr><tr class=""><td class="">UAE coffee market</td><td class="n">$3.2B+</td><td class="">2025, growing 8–9% a year</td></tr><tr class=""><td class="">UAE specialty</td><td class="n">$603M → $1.22B</td><td class="">2023 → 2030, 10.6% CAGR</td></tr><tr class=""><td class="">Egypt café market</td><td class="n">$2.51B → $4.17B</td><td class="">2024 → 2033, 5.83% CAGR</td></tr></tbody><caption>SHABIM does not need to win the coffee market. It needs to own one adjacent category — engineered cold — inside it.</caption></table></div>
+   </div>
+ </div>
+ </div>
+</section><section class="s deep" id="s7">
+ <div class="in">
+  <div class="eyebrow"><span class="n">III · 07</span><span class="act">THE POETRY, AND WHAT VERIFICATION FOUND</span></div>
+  <h2 class="title">الشِّعر على العبوة</h2>
+  
+  
+ <p class="sub">The packaging carries classical Arabic verse containing the word <span class="ar">شبم</span>. Before a single line
+ went to print, all eight of the verses originally selected were checked against the corpus. Seven of them do not exist.</p>
+ <div class="grid g2" style="margin-top:1.2rem;align-items:start">
+  <div class="card crit-card">
+    <div class="cap">Verification scorecard — the eight supplied verses</div>
+    <div class="score">
+      <div class="sc-pass"><span class="sc-n">1</span><span>authentic, correctly attributed<br><b class="ar">أبو الطيّب المتنبّي</b></span></div>
+      <div class="sc-fail"><span class="sc-n">7</span><span>not attested anywhere in the corpus</span></div>
+    </div>
+    <ul class="ticks crit">
+      <li class="ar">الشريف الرضي</li><li class="ar">الأخطل</li><li class="ar">عنترة بن شداد</li><li class="ar">ابن الرومي</li><li class="ar">البحتري</li><li class="ar">ذو الرمّة</li><li class="ar">العباس بن الأحنف</li>
+    </ul>
+    <p class="desc" style="margin-top:.8rem">The verse attributed to <span class="ar">عنترة</span> is provably not his: his
+    Muʿallaqa rhymes in <span class="ar">ميم</span>, and the line rhymes in <span class="ar">باء</span>. The one attributed to
+    <span class="ar">العباس بن الأحنف</span> uses <span class="ar">شَبائِم</span> — a plural of <span class="ar">شبم</span> that no
+    dictionary lists and that returns zero corpus hits. The set has the signature of a chatbot: one real anchor verse,
+    seven metrically competent pastiches, each attached to a famous name.</p>
+    <p class="desc"><b>Why this belongs in an investor deck.</b> Printing fabricated classical poetry on packaging, in
+    markets where every educated customer can check it in ten seconds, is a brand-ending error that costs nothing to
+    avoid and everything to make. Catching it before print is the difference between heritage and decoration.</p>
+  </div>
+  <div class="grid" style="gap:.9rem">
+   <div class="card q verse-card">
+     <span class="pill acc">VERIFIED</span>
+     <div class="verse">
+       <span class="half">وا حَرَّ قَلْباهُ مِمَّنْ قَلْبُهُ شَبِمُ</span><span class="dot">❊</span><span class="half">وَمَنْ بِجِسْمي وَحالي عِندَهُ سَقَمُ</span>
+       <span class="by ar">أبو الطيّب المتنبّي · «واحَرَّ قَلْباهُ» · البسيط، مِيمِيّة</span>
+       <span class="gl en">“Oh, the fever of my heart, for one whose heart is <b>cold</b>.” The only verse of the eight originally supplied that survived verification.</span>
+     </div>
+   </div><div class="card q verse-card">
+     <span class="pill acc">THE LEAD LINE</span>
+     <div class="verse">
+       <span class="half">شُجَّتْ بِذي شَبَمٍ مِن ماءِ مَحنِيَةٍ</span><span class="dot">❊</span><span class="half">صافٍ بِأَبطَحَ أَضحى وَهْوَ مَشمولُ</span>
+       <span class="by ar">كعب بن زهير · «بانَتْ سُعادُ» (قصيدة البُردة)، البيت الرابع · البسيط، لامِيّة</span>
+       <span class="gl en">“Mingled with <b>cold water</b> from a bend in the valley — clear, in a pebbled watercourse, chilled by the north wind.” Line 4 of the ode Kaʿb recited before the Prophet ﷺ. Lisān al-ʿArab cites this very line under the entry شبم.</span>
+     </div>
+   </div><div class="card q verse-card">
+     <span class="pill acc">KĀNŪN PACK</span>
+     <div class="verse">
+       <span class="half">لَحمُ جَزورٍ سَنِمَةٍ، في غَداةٍ شَبِمَةٍ</span><span class="dot">❊</span><span class="half">بِشِفارٍ خَذِمَةٍ، في قُدورٍ هَزِمَةٍ</span>
+       <span class="by ar">ابنة الخُسّ · سَجْع · منقول في «لسان العرب»، مادّة شبم</span>
+       <span class="gl en">Asked what the finest thing in the world was, she said: “The flesh of a fat-humped camel, on a <b>cold morning</b>, cut with keen blades, in pots that crackle.” The winter pack.</span>
+     </div>
+   </div><div class="card q verse-card">
+     <span class="pill acc">SEASONAL</span>
+     <div class="verse">
+       <span class="half">أَظَنَنْتَ ذا ثَلْجاً؟ وَذا</span><span class="dot">❊</span><span class="half">وَرْداً مِنَ الأَغْصانِ يُنْفَضْ</span>
+       <span class="by ar">أبو بكر الصَّنَوْبَري · مجزوء الكامل، ضادِيّة</span>
+       <span class="gl en">“Did you take this for snow? No — roses shaken from the branches.” From the poet who invented snow-description in Arabic. The second half gives the winter menu its name — <b class="ar">وَالوَرْدُ في كانونَ أَبْيَض</b></span>
+     </div>
+   </div>
+  </div>
+ </div>
+ <div class="grid g2" style="margin-top:1.4rem">
+   <div class="callout">
+     <b>The line that goes on every single pack.</b> <span class="ar" style="font-family:var(--vs)">«الشَّبَمُ: بَرْدُ الماءِ»</span>
+     — <span class="ar">لسان العرب</span>. It is the brand's birth certificate, it is unfalsifiable, and it plants the correct
+     meaning of the name before anyone reaches for a search engine.
+   </div>
+   <div class="callout crit">
+     <b>Two texts that must never be printed.</b> <span class="ar">«خَيْرُ الماءِ الشَّبِمُ»</span> reads as a hadith and is quoted
+     inside Lisān al-ʿArab itself — but al-Albānī graded it <span class="ar">مَوْضوع</span>, fabricated. Attributing it to the
+     Prophet ﷺ would be a far graver offence in Gulf markets than a misquoted poet. And the most beautiful cold-water phrase in
+     the entire language — <span class="ar">سورة ص، الآية ٤٢</span>, <i>&ldquo;here is a cool bath and a drink&rdquo;</i> — is
+     for the same reason unusable: Qurʾānic text cannot go on a cup that ends up in a bin. Cited here, deliberately
+     not reproduced.
+   </div>
+ </div>
+ </div>
+</section><section class="s " id="s8">
+ <div class="in">
+  <div class="eyebrow"><span class="n">III · 08</span><span class="act">THE STORE IS THE PRODUCT</span></div>
+  <h2 class="title">المبنى</h2>
+  
+  
+ <div class="grid g23" style="align-items:center">
+   <div class="scene-wrap">
+<svg viewBox="0 0 640 460" class="cv scene" role="img"
+     aria-label="Elevation of the SHABIM store: a monolithic block of clear ice on a steel plinth, lit from within, with meltwater spreading across the pavement.">
+ <defs>
+  <linearGradient id="facea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="var(--glacier)" stop-opacity=".40"/>
+    <stop offset="55%" stop-color="var(--glacier)" stop-opacity=".16"/>
+    <stop offset="100%" stop-color="var(--glacier-lift)" stop-opacity=".62"/>
+  </linearGradient>
+  <linearGradient id="sidea" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="var(--glacier)" stop-opacity=".52"/>
+    <stop offset="100%" stop-color="var(--glacier)" stop-opacity=".24"/>
+  </linearGradient>
+  <linearGradient id="topa" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="var(--glacier-lift)" stop-opacity=".55"/>
+    <stop offset="100%" stop-color="var(--glacier)" stop-opacity=".28"/>
+  </linearGradient>
+  <radialGradient id="haloa" cx="50%" cy="82%" r="62%">
+    <stop offset="0%" stop-color="var(--glacier-lift)" stop-opacity=".55"/>
+    <stop offset="100%" stop-color="var(--glacier-lift)" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="melta" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="var(--glacier-lift)" stop-opacity=".42"/>
+    <stop offset="100%" stop-color="var(--glacier-lift)" stop-opacity="0"/>
+  </linearGradient>
+ </defs>
+
+ <!-- ground glow + meltwater -->
+ <ellipse cx="322" cy="404" rx="252" ry="42" fill="url(#haloa)"/>
+ <ellipse cx="322" cy="405" rx="196" ry="24" fill="url(#melta)"/>
+ <path d="M150 406 Q220 396 322 398 T496 407 Q420 419 322 418 T150 406 Z" fill="var(--glacier-lift)" opacity=".22"/>
+
+ <!-- plinth -->
+ <path d="M148 392 L496 392 L470 406 L174 406 Z" fill="var(--ink-3)" opacity=".34"/>
+ <rect x="174" y="386" width="296" height="8" rx="2" fill="var(--ink-3)" opacity=".5"/>
+
+ <!-- top face -->
+ <path d="M196 96 L470 96 L512 128 L238 128 Z" fill="url(#topa)" stroke="var(--glacier-lift)" stroke-opacity=".45" stroke-width="1"/>
+ <!-- right face -->
+ <path d="M470 96 L512 128 L512 356 L470 388 Z" fill="url(#sidea)" stroke="var(--glacier-lift)" stroke-opacity=".4" stroke-width="1"/>
+ <!-- front face -->
+ <path d="M196 96 L470 96 L470 388 L196 388 Z" fill="url(#facea)" stroke="var(--glacier-lift)" stroke-opacity=".55" stroke-width="1.2"/>
+
+ <!-- internal fractures: irregular, never symmetric -->
+ <g stroke="var(--glacier-lift)" stroke-opacity=".40" stroke-width="1" fill="none" stroke-linecap="round">
+  <path d="M236 118 L268 196 L246 244 L282 320"/>
+  <path d="M268 196 L322 176 L360 214"/>
+  <path d="M418 122 L392 190 L424 236 L404 300 L432 356"/>
+  <path d="M392 190 L340 208"/>
+  <path d="M214 300 L262 286 L246 244"/>
+  <path d="M470 168 L492 152" stroke-opacity=".3"/>
+  <path d="M470 268 L500 250" stroke-opacity=".3"/>
+ </g>
+ <g fill="var(--glacier-lift)" opacity=".25">
+  <ellipse cx="300" cy="150" rx="3.5" ry="6"/><ellipse cx="352" cy="262" rx="2.5" ry="5"/>
+  <ellipse cx="256" cy="340" rx="3" ry="5.5"/><ellipse cx="412" cy="330" rx="2.5" ry="4.5"/>
+  <ellipse cx="386" cy="140" rx="2" ry="4"/>
+ </g>
+
+ <!-- serving aperture -->
+ <rect x="252" y="216" width="162" height="96" rx="4" fill="var(--ground)" opacity=".82"/>
+ <rect x="252" y="216" width="162" height="96" rx="4" fill="none" stroke="var(--glacier-lift)" stroke-width="1.6" stroke-opacity=".9"/>
+ <rect x="252" y="300" width="162" height="12" rx="2" fill="var(--glacier-lift)" opacity=".8"/>
+ <g opacity=".55" fill="var(--ink-2)">
+   <rect x="272" y="248" width="16" height="44" rx="2"/>
+   <rect x="296" y="258" width="26" height="34" rx="3"/>
+   <rect x="332" y="240" width="12" height="52" rx="2"/>
+   <rect x="356" y="264" width="34" height="28" rx="3"/>
+ </g>
+
+ <!-- the light spilling out of the aperture -->
+ <path d="M252 312 L414 312 L474 388 L192 388 Z" fill="var(--glacier-lift)" opacity=".16"/>
+
+ <!-- meltwater running down the front -->
+ <g stroke="var(--glacier-lift)" stroke-width="1.4" stroke-opacity=".5" fill="none" stroke-linecap="round">
+  <path d="M222 130 L222 386"/><path d="M448 112 L448 386" stroke-opacity=".32"/>
+  <path d="M204 210 L204 386" stroke-opacity=".28"/>
+ </g>
+ <g fill="var(--glacier-lift)">
+  <circle cx="222" cy="392" r="2.6" opacity=".8"/><circle cx="448" cy="396" r="2" opacity=".55"/>
+ </g>
+</svg></div>
+   <div>
+     <p class="lede">A block of ice, four metres on a side, sitting on a steel plinth on a Baghdad pavement, lit from
+     inside, with meltwater spreading across the concrete around it. It is not a shop with an ice-themed interior. It
+     is an object that looks like it should not survive the afternoon, and does.</p>
+     <ul class="ticks" style="margin-top:1rem">
+       <li><b>Facade:</b> cast acrylic (PMMA) blocks with a hand-chipped glacial texture over a steel frame, edge-lit
+       so the internal fractures glow. UV-stable, 50°C-rated, replaceable panel by panel.</li>
+       <li><b>Summer scheme:</b> 6500K cold white, high CRI, raking up through the block from concealed base LEDs.</li>
+       <li><b>Winter scheme <span class="ar">كانون</span>:</b> the same fittings driven to 2700K amber. The material stops reading as
+       glacier and starts reading as frozen honey. One DMX scene change, no rebuild.</li>
+       <li><b>The melt:</b> a filtered, chilled, recirculating film across the plinth. Small volume, visible effect.</li>
+     </ul>
+     <div class="callout crit" style="margin-top:1rem">
+       <b>The melt detail needs engineering, not just design.</b> Warm recirculated water in 45°C ambient is a
+       Legionella risk, a slip hazard, and a municipal permission question about water on a public pavement. The
+       specification is a chilled, dosed, closed-loop system with a drained catchment — or, where a landlord refuses
+       it, a fog line and a cast-resin "frozen drip" that reads identically on camera. Budgeted either way.
+     </div>
+   </div>
+ </div>
+ <div class="melt"></div>
+ <h3 class="sub-h">Four formats, one object</h3>
+ <div class="tw "><table><thead><tr><th class="">Format</th><th class="">Footprint</th><th class="">Seats</th><th class="">Where</th><th class="n">CAPEX, Baghdad</th><th class="n">Y2 revenue</th><th class="n">Y2 EBITDA</th></tr></thead><tbody><tr class=""><td class=""><b class='ar'>المُكَعَّب</b> · The Cube — flagship</td><td class="">45 m² + 60 m² terrace</td><td class="">44</td><td class="">Street corner, Mansour / Karrada / Zayouna</td><td class="n">$448,784</td><td class="n">$706,457</td><td class="n">$157,648 · 22%</td></tr><tr class=""><td class=""><b class='ar'>المُكَعَّب</b> · The Cube — replication</td><td class="">45 m² + 50 m²</td><td class="">36</td><td class="">The unit a franchisee buys</td><td class="n">$299,118</td><td class="n">$614,861</td><td class="n">$99,718 · 16%</td></tr><tr class=""><td class=""><b class='ar'>الشَّظِيَّة</b> · The Shard — kiosk</td><td class="">16 m²</td><td class="">0</td><td class="">Iraq Mall, Baghdad Mall, Mansour Mall</td><td class="n">$168,792</td><td class="n">$386,137</td><td class="n">$93,951 · 24%</td></tr><tr class=""><td class=""><b class='ar'>العَرَبَة</b> · The Cart — mobile</td><td class="">6 m²</td><td class="">0</td><td class="">Festivals, Arbaʿīn routes, corporate events</td><td class="n">~$45k</td><td class="n">seasonal</td><td class="n">event-priced</td></tr></tbody><caption>The Shard carries no ice plant. Kiosks are supplied carved blocks by the city's flagship Cube, which is what makes the network a supply chain rather than a logo licence.</caption></table></div>
+ </div>
+</section><section class="s tint" id="s9">
+ <div class="in">
+  <div class="eyebrow"><span class="n">III · 09</span><span class="act">IDENTITY SYSTEM</span></div>
+  <h2 class="title">نظام العلامة</h2>
+  
+  
+ <div class="grid g2" style="align-items:start">
+  <div>
+    <div class="cap">Palette</div>
+    <p class="desc" style="margin-bottom:1rem">Thick ice is cyan because water absorbs the red end of the spectrum;
+    the blue that survives the journey through the block is the brand's only real colour. Everything else is white,
+    meltwater grey and steel — with one warm accent held in reserve for heat data and for <span class="ar">كانون</span>.</p>
+    <div class="grid g4" style="gap:.6rem">
+      <div class="sw"><div class="chipc" style="background:#F4F9FC"></div><div class="meta"><div class="nm">جَليد Ice-white</div><div class="hx">#F4F9FC</div></div></div><div class="sw"><div class="chipc" style="background:#0E8CC4"></div><div class="meta"><div class="nm">نَهَر Glacier</div><div class="hx">#0E8CC4</div></div></div><div class="sw"><div class="chipc" style="background:#06131D"></div><div class="meta"><div class="nm">قَرّ Deep freeze</div><div class="hx">#06131D</div></div></div><div class="sw"><div class="chipc" style="background:#A8C6D6"></div><div class="meta"><div class="nm">ذَوَبان Meltwater</div><div class="hx">#A8C6D6</div></div></div><div class="sw"><div class="chipc" style="background:#C67B14"></div><div class="meta"><div class="nm">كانون Amber</div><div class="hx">#C67B14</div></div></div><div class="sw"><div class="chipc" style="background:#17A9E4"></div><div class="meta"><div class="nm">فَجْر Lift</div><div class="hx">#17A9E4</div></div></div><div class="sw"><div class="chipc" style="background:#084F70"></div><div class="meta"><div class="nm">عُمْق Deep ice</div><div class="hx">#084F70</div></div></div><div class="sw"><div class="chipc" style="background:#2C4655"></div><div class="meta"><div class="nm">رَماد Shadow</div><div class="hx">#2C4655</div></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="cap">Type</div>
+    <div class="tw "><table><thead><tr><th class="">Role</th><th class="">Face</th><th class="">Why</th></tr></thead><tbody><tr class=""><td class="">Display · wordmark</td><td class=""><b>Readex Pro</b></td><td class="">Arabic and Latin drawn together, geometric, engineered — reads as something machined, not handwritten.</td></tr><tr class=""><td class="">Classical verse</td><td class=""><b>Amiri</b></td><td class="">The finest freely-licensed Naskh; a revival of the Būlāq type. Verse set in a UI face is the tell of a brand decorating with heritage.</td></tr><tr class=""><td class="">Body · data · numerals</td><td class=""><b>IBM Plex Sans Arabic</b></td><td class="">Matched to IBM Plex Sans in Latin, with genuine tabular figures — which a financial appendix needs and most Arabic faces do not have.</td></tr></tbody></table></div>
+    <div class="callout" style="margin-top:1rem">
+      <b>Vocalise everything.</b> The wordmark is always <span class="ar">شَبِم</span>, never <span class="ar">شبم</span>. Every printed
+      verse is fully pointed. The audience a brand courts with classical poetry is precisely the audience that notices
+      when the poetry is half-pointed.
+    </div>
+  </div>
+ </div>
+ <div class="melt"></div>
+ <div class="grid g23" style="align-items:center">
+   <div>
+     <div class="cap">Packaging</div>
+     <p class="desc">Every vessel carries the same pressed crystal facet, so a cup photographed on a car dashboard is
+     identifiable as SHABIM without a logo being legible. Clear and frosted rPET and PP; the box is matte white with a
+     blind-embossed facet. Cold-activated thermochromic ink on the sleeve reveals the verse only when the drink is
+     genuinely cold — the pack proves the product's claim.</p>
+     <ul class="ticks">
+       <li>Lockup on every surface: <span class="ar">شَبِم</span> · SHABIM · <span class="ar">بَرْدُ الماء</span></li>
+       <li>Every verse cited: poet, poem, in small type. Citation is what separates heritage from decoration.</li>
+       <li>The Lisān definition line, set small, at the base of every pack.</li>
+     </ul>
+   </div>
+   <div>
+<svg viewBox="0 0 700 250" class="cv" role="img"
+     aria-label="The SHABIM packaging family: a faceted cold cup, a squat sorbet cup, an ice-block service tray, and the nine-piece Jana box.">
+ <defs>
+  <linearGradient id="pk" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0%" stop-color="var(--glacier)" stop-opacity=".26"/>
+   <stop offset="100%" stop-color="var(--glacier)" stop-opacity=".07"/>
+  </linearGradient>
+ </defs>
+ <g stroke="var(--glacier)" stroke-opacity=".7" fill="url(#pk)" stroke-width="1.4">
+  <!-- tall faceted cold cup -->
+  <path d="M46 60h84l-9 148a14 14 0 0 1-14 12.6H69A14 14 0 0 1 55 208z"/>
+  <path d="M40 52h96v10H40z"/>
+  <path d="M52 100l17-9 18 9 18-9 17 9M55 140l16-9 18 9 18-9 16 9M60 180l14-8 16 8 16-8 14 8"
+        stroke-opacity=".38" fill="none"/>
+  <!-- squat sorbet cup -->
+  <path d="M190 108h80l-7 96a13 13 0 0 1-13 11.6h-40A13 13 0 0 1 197 204z"/>
+  <path d="M184 100h92v9h-92z"/>
+  <path d="M196 148l16-8 16 8 16-8 16 8" stroke-opacity=".38" fill="none"/>
+  <!-- the ice block on its tray -->
+  <path d="M320 118h96v78h-96z"/><path d="M416 118l22-16v78l-22 16z"/><path d="M320 118l22-16h96l-22 16z"/>
+  <ellipse cx="368" cy="130" rx="24" ry="8" fill="none"/>
+  <path d="M344 130v44c0 5 11 9 24 9s24-4 24-9v-44" fill="none" stroke-opacity=".6"/>
+  <path d="M306 210h124l-10 12H316z" stroke-opacity=".8"/>
+  <!-- the nine-piece Jana box -->
+  <path d="M478 116h176v96H478z"/><path d="M478 116l20-16h176l-20 16M654 116l20-16v96l-20 16"/>
+  <path d="M478 148h176M478 180h176M537 116v96M596 116v96" stroke-opacity=".33" fill="none"/>
+  <g fill="var(--glacier)" fill-opacity=".24" stroke-opacity=".5">
+   <circle cx="507" cy="132" r="10"/><circle cx="566" cy="132" r="10"/><circle cx="625" cy="132" r="10"/>
+   <circle cx="507" cy="164" r="10"/><circle cx="566" cy="164" r="10"/><circle cx="625" cy="164" r="10"/>
+   <circle cx="507" cy="196" r="10"/><circle cx="566" cy="196" r="10"/><circle cx="625" cy="196" r="10"/>
+  </g>
+ </g>
+ <g class="pk-lab" text-anchor="middle">
+  <text x="88" y="243">Cold cup 16oz</text><text x="230" y="243">Sorbet cup</text>
+  <text x="372" y="243">Al-Qālab tray</text><text x="566" y="243">Janā box · 9</text>
+ </g>
+</svg></div>
+ </div>
+ </div>
+</section><section class="s " id="s10">
+ <div class="in">
+  <div class="eyebrow"><span class="n">III · 10</span><span class="act">THE DISTRIBUTION IS THE PRODUCT</span></div>
+  <h2 class="title">لماذا يُصوَّر</h2>
+  
+  
+ <p class="sub">This brand does not buy reach. It manufactures reasons to be filmed, and every one of them is
+ structurally hard to copy.</p>
+ <div class="grid g2">
+   <div class="card">
+     <div class="cap">The four filmable moments, and what makes each defensible</div>
+     <ol class="steps">
+       <li><b>Tongs out of the −80.</b> Cryogenic fog rolls over the counter; milk freezes to the glass in real time.
+       Copying it needs a lab-grade ULT freezer, a two-stage pre-chill protocol, and a burn-safe serving SOP.</li>
+       <li><b>Boring the block.</b> A cylinder driven into 136 kg of optically clear ice. Copying it needs a
+       directional-freezing plant and three days of lead time per block.</li>
+       <li><b>Scraping the rolls.</b> Familiar, fast, endlessly re-shootable — the everyday content that fills the
+       weeks between the set-pieces.</li>
+       <li><b>Breaking open the fruit.</b> A strawberry that is not a strawberry. The single most re-postable
+       still image in the range, and the one that travels without the store.</li>
+     </ol>
+   </div>
+   <div class="card">
+     <div class="cap">What the evidence says about scale</div>
+     <ul class="ticks">
+       <li><b>FIX Dessert Chocolatier</b>, Dubai: one bar, viral December 2023, and in Q1 2025 alone 1.2 million bars
+       sold through Dubai Duty Free — around <b>$22M of revenue</b> from a single point of sale.</li>
+       <li><b>Regulars</b>, Melbourne: about <b>600 glasses a day</b> of one −85°C drink.</li>
+       <li><b>Iraq's audience is already assembled.</b> 39.6M internet users, 23.6M on Instagram, 18.5M on Snapchat —
+       the third-largest Snapchat market in MENA after Saudi and Egypt. A single Baghdad food account,
+       <span class="en">@restaurants_of_baghdad</span>, carries 1.1M followers, and the whole Iraqi influencer sector
+       is a $15–20M market, which means reach here is still cheap.</li>
+       <li><b>And the mechanic that makes it last.</b> Crumbl rotates six flavours every week. It is the most
+       transferable durability device in the whole case set, and SHABIM's version is already in the product:
+       <span class="ar">جَنى</span> is fruit-led, so the range rotates with the Iraqi season by necessity — apricot in
+       spring, watermelon and fig in high summer, pomegranate and quince in autumn. A reason to come back that is
+       built into the supply chain rather than invented by marketing.</li>
+     </ul>
+     <div class="callout crit" style="margin-top:1rem">
+       <b>And the honest counter-argument, with the actual numbers.</b> Capital-gated retail formats like this one
+       have a documented peak-attention window of roughly <b>12–24 months</b>. Crumbl is the cautionary case, not the
+       inspiration: it passed 1,000 locations, and then per-store average unit volume declined materially from its
+       2021 peak with same-store sales negative through 2024. Rolled ice cream ran 2015–18 and was largely gone by
+       2021. SHABIM's answer is structural rather than hopeful — the barbell menu means the spectacle recruits while
+       <span class="ar">بَرَد</span> and <span class="ar">جَنى</span> retain, <span class="ar">كانون</span> holds the winter, the seasonal
+       fruit rotation gives a reason to return, and the <span class="ar">جَنى</span> box outlives any single store. The
+       bear case assumes the novelty does fade and still leaves the unit cash-positive every month.
+     </div>
+   </div>
+ </div>
+ </div>
+</section><section class="s deep" id="s11">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 11</span><span class="act">UNIT ECONOMICS — WHAT ONE CUP DOES</span></div>
+  <h2 class="title">اقتصاد الوحدة</h2>
+  
+  
+ <p class="sub">Every price and every cost below is built from a sourced Baghdad input. The full derivation for each
+ line is in the assumptions appendix.</p>
+ <div class="tw "><table><thead><tr><th class="">Item</th><th class="n">Price, Baghdad</th><th class="n">IQD</th><th class="n">COGS</th><th class="n">Gross margin</th><th class="n">Prep</th><th class="n">Share of revenue</th></tr></thead><tbody><tr class=""><td class=""><b class="ar">صَقيع ٨٠−</b> <span class="en dim">SAQĪʿ −80</span></td><td class="n">$5.23</td><td class="n">8,000</td><td class="n">$0.96</td><td class="n">82%</td><td class="n">75s</td><td class="n">30%</td></tr><tr class=""><td class=""><b class="ar">القالَب</b> <span class="en dim">AL-QĀLAB</span></td><td class="n">$9.80</td><td class="n">15,000</td><td class="n">$2.35</td><td class="n">76%</td><td class="n">150s</td><td class="n">12%</td></tr><tr class=""><td class=""><b class="ar">لَفائِف</b> <span class="en dim">LAFĀʾIF</span></td><td class="n">$4.58</td><td class="n">7,000</td><td class="n">$1.42</td><td class="n">69%</td><td class="n">165s</td><td class="n">18%</td></tr><tr class=""><td class=""><b class="ar">جَنى</b> <span class="en dim">JANĀ</span></td><td class="n">$14.38</td><td class="n">22,000</td><td class="n">$6.00</td><td class="n">58%</td><td class="n">55s</td><td class="n">8%</td></tr><tr class=""><td class=""><b class="ar">بَرَد</b> <span class="en dim">BARAD</span></td><td class="n">$3.27</td><td class="n">5,000</td><td class="n">$1.07</td><td class="n">67%</td><td class="n">70s</td><td class="n">16%</td></tr><tr class=""><td class=""><b class="ar">كانون</b> <span class="en dim">KĀNŪN</span></td><td class="n">$3.92</td><td class="n">6,000</td><td class="n">$0.72</td><td class="n">82%</td><td class="n">60s</td><td class="n">8%</td></tr><tr class="tot"><td class=""><b>Blended basket</b></td><td class="n"><b>—</b></td><td class="n">—</td><td class="n">—</td><td class="n"><b>74%</b></td><td class="n">82s avg</td><td class="n">100%</td></tr></tbody><caption>Share of revenue, not of units. Al-Qālab is 12% of revenue but only 5% of items — it is an anchor and a queue-magnet, not a volume driver.</caption></table></div>
+ <div class="grid g4" style="margin-top:1.4rem">
+   <div class="card stat"><span class="v ">$6.46</span><span class="k">Average ticket</span><span class=note>10,000 IQD · 1.45 items per transaction</span></div>
+   <div class="card stat"><span class="v ">74%</span><span class="k">Blended gross margin</span><span class=note>Before waste. COGS runs 28% of gross revenue after waste and tax.</span></div>
+   <div class="card stat"><span class="v ">87</span><span class="k">Transactions per hour at peak</span><span class=note>4 production stations, 82s average item, 72% station efficiency.</span></div>
+   <div class="card stat"><span class="v acc">57%</span><span class="k">Peak capacity used, July</span><span class=note>The model never assumes a full house. There is a third of the capacity still unsold at the hottest hour of the year.</span></div>
+ </div>
+ </div>
+</section><section class="s warm" id="s12">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 12</span><span class="act">SEASONALITY — THE SHAPE OF THE YEAR</span></div>
+  <h2 class="title">الموسمية</h2>
+  
+  
+ <p class="sub">Transactions per day, Year 2, against Baghdad's average monthly high. The business is a heat trade,
+ and <span class="ar">كانون</span> is what stops that being fatal.</p>
+ <figure class="chart">
+  <div class="legend"><span><i style="background:var(--c1)"></i>Transactions per day</span>
+    <span><i style="background:var(--c2)"></i>Baghdad average high, °C</span></div>
+  <svg viewBox="0 0 800 360" class="cv " role="img" aria-label="Monthly transactions per day rise from about 220 in January to 474 in July, tracking Baghdad's average monthly high from 16 to 45 degrees Celsius." preserveAspectRatio="xMidYMid meet"><line x1="56" y1="22.0" x2="744" y2="22.0" class="grid"/><text x="47" y="26.0" class="ax" text-anchor="end">500</text><line x1="56" y1="93.5" x2="744" y2="93.5" class="grid"/><text x="47" y="97.5" class="ax" text-anchor="end">375</text><line x1="56" y1="165.0" x2="744" y2="165.0" class="grid"/><text x="47" y="169.0" class="ax" text-anchor="end">250</text><line x1="56" y1="236.5" x2="744" y2="236.5" class="grid"/><text x="47" y="240.5" class="ax" text-anchor="end">125</text><line x1="56" y1="308.0" x2="744" y2="308.0" class="grid"/><text x="47" y="312.0" class="ax" text-anchor="end">0</text><rect x="56.0" y="194.2" width="42.6" height="113.8" rx="4" fill="var(--c1)"><title>Jan: 199 transactions/day</title></rect><text x="77.3" y="327" class="ax" text-anchor="middle">Jan</text><rect x="114.7" y="188.0" width="42.6" height="120.0" rx="4" fill="var(--c1)"><title>Feb: 210 transactions/day</title></rect><text x="136.0" y="327" class="ax" text-anchor="middle">Feb</text><rect x="173.3" y="166.8" width="42.6" height="141.2" rx="4" fill="var(--c1)"><title>Mar: 247 transactions/day</title></rect><text x="194.7" y="327" class="ax" text-anchor="middle">Mar</text><rect x="232.0" y="142.2" width="42.6" height="165.8" rx="4" fill="var(--c1)"><title>Apr: 290 transactions/day</title></rect><text x="253.3" y="327" class="ax" text-anchor="middle">Apr</text><rect x="290.7" y="102.2" width="42.6" height="205.8" rx="4" fill="var(--c1)"><title>May: 360 transactions/day</title></rect><text x="312.0" y="327" class="ax" text-anchor="middle">May</text><rect x="349.4" y="74.8" width="42.6" height="233.2" rx="4" fill="var(--c1)"><title>Jun: 408 transactions/day</title></rect><text x="370.7" y="327" class="ax" text-anchor="middle">Jun</text><rect x="408.0" y="65.6" width="42.6" height="242.4" rx="4" fill="var(--c1)"><title>Jul: 424 transactions/day</title></rect><text x="429.3" y="327" class="ax" text-anchor="middle">Jul</text><rect x="466.7" y="70.2" width="42.6" height="237.8" rx="4" fill="var(--c1)"><title>Aug: 416 transactions/day</title></rect><text x="488.0" y="327" class="ax" text-anchor="middle">Aug</text><rect x="525.4" y="105.1" width="42.6" height="202.9" rx="4" fill="var(--c1)"><title>Sep: 355 transactions/day</title></rect><text x="546.7" y="327" class="ax" text-anchor="middle">Sep</text><rect x="584.0" y="151.4" width="42.6" height="156.6" rx="4" fill="var(--c1)"><title>Oct: 274 transactions/day</title></rect><text x="605.3" y="327" class="ax" text-anchor="middle">Oct</text><rect x="642.7" y="182.2" width="42.6" height="125.8" rx="4" fill="var(--c1)"><title>Nov: 220 transactions/day</title></rect><text x="664.0" y="327" class="ax" text-anchor="middle">Nov</text><rect x="701.4" y="196.0" width="42.6" height="112.0" rx="4" fill="var(--c1)"><title>Dec: 196 transactions/day</title></rect><text x="722.7" y="327" class="ax" text-anchor="middle">Dec</text><path d="M77.3,214.4 L136.0,196.9 L194.7,167.7 L253.3,132.6 L312.0,91.7 L370.7,62.4 L429.3,44.9 L488.0,44.9 L546.7,68.3 L605.3,115.0 L664.0,167.7 L722.7,208.6" fill="none" stroke="var(--c2)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="77.3" cy="214.4" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>16°C average high</title></circle><circle cx="136.0" cy="196.9" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>19°C average high</title></circle><circle cx="194.7" cy="167.7" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>24°C average high</title></circle><circle cx="253.3" cy="132.6" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>30°C average high</title></circle><circle cx="312.0" cy="91.7" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>37°C average high</title></circle><circle cx="370.7" cy="62.4" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>42°C average high</title></circle><circle cx="429.3" cy="44.9" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>45°C average high</title></circle><circle cx="488.0" cy="44.9" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>45°C average high</title></circle><circle cx="546.7" cy="68.3" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>41°C average high</title></circle><circle cx="605.3" cy="115.0" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>33°C average high</title></circle><circle cx="664.0" cy="167.7" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>24°C average high</title></circle><circle cx="722.7" cy="208.6" r="4.5" fill="var(--c2)" stroke="var(--surface)" stroke-width="2"><title>17°C average high</title></circle><text x="312.0" y="80.7" class="vl2" text-anchor="middle">37°C</text><text x="429.3" y="33.9" class="vl2" text-anchor="middle">45°C</text><text x="722.7" y="197.6" class="vl2" text-anchor="middle">17°C</text><line x1="56" y1="308.0" x2="744" y2="308.0" class="axis"/></svg>
+  <figcaption>The trough is 196 transactions a day in December and the peak is
+  424 in July — a 2.2× swing. Without a winter menu the trough would be closer to
+  120 and the unit would be loss-making for four months of every year.</figcaption>
+ </figure>
+ <div class="grid g3" style="margin-top:1.4rem">
+   <div class="card stat"><span class="v ">$385k</span><span class="k">Revenue, May–September</span><span class=note>55% of the year in five months.</span></div>
+   <div class="card stat"><span class="v sun">$19k</span><span class="k">EBITDA, November–February</span><span class=note>Still positive. That is the whole purpose of <span class="ar">كانون</span>.</span></div>
+   <div class="card stat"><span class="v ">73%</span><span class="k">Winter floor vs annual average</span><span class=note>A pure cold concept would floor at roughly 45% and spend a third of the year underwater.</span></div>
+ </div>
+ </div>
+</section><section class="s " id="s13">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 13</span><span class="act">WHAT IT COSTS TO BUILD ONE</span></div>
+  <h2 class="title">رأس المال</h2>
+  
+  
+ <div class="grid g23" style="align-items:start">
+   <div>
+     <div class="tw "><table><thead><tr><th class="">Line</th><th class="n">Flagship prototype</th><th class="n">Replication unit</th></tr></thead><tbody><tr class=""><td class="">The ice skin — cast acrylic facade and structure</td><td class="n">$30,000</td><td class="n">$23,000</td></tr><tr class=""><td class="">Directional-freeze clear-ice plant, bore, band saw, block store</td><td class="n">$34,000</td><td class="n">$24,000</td></tr><tr class=""><td class="">MEP, HVAC for 50°C ambient, dedicated 60 kVA genset</td><td class="n">$33,000</td><td class="n">$28,000</td></tr><tr class=""><td class="">Contingency</td><td class="n">$48,084</td><td class="n">$19,569</td></tr><tr class=""><td class="">Shell, floor, ceiling, drainage, joinery</td><td class="n">$40,000</td><td class="n">$34,000</td></tr><tr class=""><td class="">Brand identity, architecture and engineering fees</td><td class="n">$35,000</td><td class="n">$6,000</td></tr><tr class=""><td class="">Key money (خلو)</td><td class="n">$30,000</td><td class="n">$22,000</td></tr><tr class=""><td class="">Working capital</td><td class="n">$30,000</td><td class="n">$22,000</td></tr><tr class=""><td class="">Sorbet batch freezer, blast freezer, fruit mould system</td><td class="n">$28,000</td><td class="n">$19,000</td></tr><tr class=""><td class="">Pre-opening: licences, training, trial production, launch</td><td class="n">$28,000</td><td class="n">$18,000</td></tr><tr class=""><td class="">Espresso machine, grinders, water treatment</td><td class="n">$18,000</td><td class="n">$11,000</td></tr><tr class=""><td class="">−86°C ULT freezer ×2 and −20°C staging freezer</td><td class="n">$16,000</td><td class="n">$11,000</td></tr><tr class=""><td class="">Tunable-white lighting, DMX control, illuminated wordmark</td><td class="n">$14,000</td><td class="n">$10,000</td></tr><tr class=""><td class="">Terrace furniture</td><td class="n">$14,000</td><td class="n">$11,000</td></tr><tr class=""><td class="">Spares and Year-1 service reserve (10% of equipment)</td><td class="n">$12,700</td><td class="n">$9,050</td></tr><tr class=""><td class="">Undercounter refrigeration, cube ice, display freezer</td><td class="n">$12,000</td><td class="n">$10,000</td></tr><tr class=""><td class="">Slush machines, juicers, blenders</td><td class="n">$9,000</td><td class="n">$7,000</td></tr><tr class=""><td class="">POS, network, CCTV, digital menu</td><td class="n">$7,000</td><td class="n">$6,000</td></tr><tr class=""><td class="">Twin −30°C rolled ice cream pans</td><td class="n">$6,000</td><td class="n">$5,000</td></tr><tr class=""><td class="">Smallwares, tongs, cryo gloves, tools</td><td class="n">$4,000</td><td class="n">$3,500</td></tr><tr class="tot"><td class=""><b>Total</b></td><td class="n"><b>$448,784</b></td><td class="n"><b>$299,118</b></td></tr></tbody><caption>Every equipment line requires a supplier quote before commitment. An independent bottom-up build-up of the same specification came to $356,300 excluding key money, working capital and brand fees — which is this table's $448,784 within a few per cent. The prototype carries $35,000 of one-time brand and architecture fees and a 12% first-of-kind contingency; the replication unit carries a $6,000 site-adaptation fee and 7%. That gap is the value the first store creates for every store after it.</caption></table></div>
+   </div>
+   <div class="grid" style="gap:.9rem">
+     <div class="card stat"><span class="v ">$449k</span><span class="k">Baghdad flagship — the founder&rsquo;s own build</span><span class=note>Prototype cost: first-of-kind engineering, full brand development, and equipment bought one unit at a time.</span></div>
+     <div class="card stat"><span class="v acc">$299k</span><span class="k">What a franchisee is quoted for a Cube</span><span class=note>After the prototype has absorbed the design cost and the network buys equipment on contract.</span></div>
+     <div class="card stat"><span class="v ">$169k</span><span class="k">What a franchisee is quoted for a Shard</span><span class=note>No ice plant — supplied by the city&rsquo;s Cube. The cheapest way into the network and the highest-returning format.</span></div>
+     <div class="callout crit">
+       <b>Key money is a legal problem, not just a cost.</b> Iraq&rsquo;s Property Lease Law No. 87 of 1979 expressly
+       prohibits <span class="ar">خلو</span> taken by landlord, tenant or broker — and it is nonetheless universal in Baghdad
+       commercial letting, observed at 25× monthly rent in Karrada. Budgeted here at 15×, and it must be structured
+       with counsel rather than paid across a table.
+     </div>
+   </div>
+ </div>
+ </div>
+</section><section class="s deep" id="s14">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 14</span><span class="act">THE FLAGSHIP P&L</span></div>
+  <h2 class="title">قائمة الدخل</h2>
+  
+  
+ <p class="sub">Company-owned Baghdad Cube. No royalty — this is the founder's own unit.</p>
+ <figure class="chart">
+  <div class="legend"><span><i style="background:var(--c1);opacity:.26"></i>Gross revenue</span>
+    <span><i style="background:var(--c3)"></i>EBITDA · % of revenue labelled inside</span></div>
+  <svg viewBox="0 0 800 380" class="cv " role="img" aria-label="Five-year revenue and EBITDA for the Baghdad flagship: revenue rises from $489k in Year 1 to $948k in Year 5, with EBITDA margin moving from 8% to 30%." preserveAspectRatio="xMidYMid meet"><line x1="74" y1="26.0" x2="784" y2="26.0" class="grid"/><text x="65" y="30.0" class="ax" text-anchor="end">$1.00M</text><line x1="74" y1="100.5" x2="784" y2="100.5" class="grid"/><text x="65" y="104.5" class="ax" text-anchor="end">$752k</text><line x1="74" y1="175.0" x2="784" y2="175.0" class="grid"/><text x="65" y="179.0" class="ax" text-anchor="end">$501k</text><line x1="74" y1="249.5" x2="784" y2="249.5" class="grid"/><text x="65" y="253.5" class="ax" text-anchor="end">$251k</text><line x1="74" y1="324.0" x2="784" y2="324.0" class="grid"/><text x="65" y="328.0" class="ax" text-anchor="end">$0</text><rect x="74.0" y="193.7" width="103.4" height="130.3" rx="4" fill="var(--c1)" opacity=".26"><title>Year 1 revenue $438,004</title></rect><rect x="74.0" y="319.9" width="103.4" height="4.1" rx="4" fill="var(--c3)"><title>Year 1 EBITDA $13,619 (3%)</title></rect><text x="125.7" y="184.7" class="vl" text-anchor="middle">$438k</text><text x="125.7" y="327.0" class="vl-in" text-anchor="middle">3%</text><text x="125.7" y="345" class="ax" text-anchor="middle">Y1</text><rect x="225.7" y="113.9" width="103.4" height="210.1" rx="4" fill="var(--c1)" opacity=".26"><title>Year 2 revenue $706,457</title></rect><rect x="225.7" y="277.1" width="103.4" height="46.9" rx="4" fill="var(--c3)"><title>Year 2 EBITDA $157,648 (22%)</title></rect><text x="277.3" y="104.9" class="vl" text-anchor="middle">$706k</text><text x="277.3" y="305.6" class="vl-in" text-anchor="middle">22%</text><text x="277.3" y="345" class="ax" text-anchor="middle">Y2</text><rect x="377.3" y="96.8" width="103.4" height="227.2" rx="4" fill="var(--c1)" opacity=".26"><title>Year 3 revenue $764,034</title></rect><rect x="377.3" y="270.9" width="103.4" height="53.1" rx="4" fill="var(--c3)"><title>Year 3 EBITDA $178,564 (23%)</title></rect><text x="429.0" y="87.8" class="vl" text-anchor="middle">$764k</text><text x="429.0" y="302.4" class="vl-in" text-anchor="middle">23%</text><text x="429.0" y="345" class="ax" text-anchor="middle">Y3</text><rect x="529.0" y="83.3" width="103.4" height="240.7" rx="4" fill="var(--c1)" opacity=".26"><title>Year 4 revenue $809,439</title></rect><rect x="529.0" y="266.6" width="103.4" height="57.4" rx="4" fill="var(--c3)"><title>Year 4 EBITDA $192,926 (24%)</title></rect><text x="580.7" y="74.3" class="vl" text-anchor="middle">$809k</text><text x="580.7" y="300.3" class="vl-in" text-anchor="middle">24%</text><text x="580.7" y="345" class="ax" text-anchor="middle">Y4</text><rect x="680.6" y="71.5" width="103.4" height="252.5" rx="4" fill="var(--c1)" opacity=".26"><title>Year 5 revenue $849,162</title></rect><rect x="680.6" y="263.3" width="103.4" height="60.7" rx="4" fill="var(--c3)"><title>Year 5 EBITDA $204,024 (24%)</title></rect><text x="732.3" y="62.5" class="vl" text-anchor="middle">$849k</text><text x="732.3" y="298.7" class="vl-in" text-anchor="middle">24%</text><text x="732.3" y="345" class="ax" text-anchor="middle">Y5</text><line x1="74" y1="324.0" x2="784" y2="324.0" class="axis"/></svg>
+ </figure>
+ <div class="tw "><table><thead><tr><th class=""></th><th class="n">Y1</th><th class="n">Y2</th><th class="n">Y3</th><th class="n">Y4</th><th class="n">Y5</th></tr></thead><tbody><tr class=""><td class="">Transactions</td><td class="n">67,854</td><td class="n">109,441</td><td class="n">118,359</td><td class="n">125,392</td><td class="n">131,547</td></tr><tr class=""><td class="">Gross revenue</td><td class="n">$438,004</td><td class="n">$706,457</td><td class="n">$764,034</td><td class="n">$809,439</td><td class="n">$849,162</td></tr><tr class=""><td class="">Sales tax (10%, deluxe classification)</td><td class="n">($43,800)</td><td class="n">($70,646)</td><td class="n">($76,403)</td><td class="n">($80,944)</td><td class="n">($84,916)</td></tr><tr class=""><td class="">Delivery commission</td><td class="n">($17,345)</td><td class="n">($27,976)</td><td class="n">($30,256)</td><td class="n">($32,054)</td><td class="n">($33,627)</td></tr><tr class=""><td class="">Cost of goods incl. waste</td><td class="n">($122,462)</td><td class="n">($197,520)</td><td class="n">($213,618)</td><td class="n">($226,313)</td><td class="n">($237,419)</td></tr><tr class=""><td class="">Labour incl. 12% social security</td><td class="n">($88,934)</td><td class="n">($92,492)</td><td class="n">($96,191)</td><td class="n">($100,039)</td><td class="n">($104,041)</td></tr><tr class=""><td class="">Rent</td><td class="n">($31,200)</td><td class="n">($32,760)</td><td class="n">($34,398)</td><td class="n">($36,118)</td><td class="n">($37,924)</td></tr><tr class=""><td class="">Utilities incl. dedicated genset</td><td class="n">($23,683)</td><td class="n">($24,630)</td><td class="n">($25,616)</td><td class="n">($26,640)</td><td class="n">($27,706)</td></tr><tr class=""><td class="">Marketing</td><td class="n">($43,800)</td><td class="n">($45,920)</td><td class="n">($49,662)</td><td class="n">($52,614)</td><td class="n">($55,196)</td></tr><tr class=""><td class="">Card fees</td><td class="n">($2,759)</td><td class="n">($4,451)</td><td class="n">($4,813)</td><td class="n">($5,099)</td><td class="n">($5,350)</td></tr><tr class=""><td class="">Other operating cost</td><td class="n">($50,400)</td><td class="n">($52,416)</td><td class="n">($54,513)</td><td class="n">($56,693)</td><td class="n">($58,961)</td></tr><tr class="tot"><td class=""><b>EBITDA</b></td><td class="n"><b>$13,619</b></td><td class="n"><b>$157,648</b></td><td class="n"><b>$178,564</b></td><td class="n"><b>$192,926</b></td><td class="n"><b>$204,024</b></td></tr><tr class="sub"><td class="">EBITDA margin</td><td class="n">3%</td><td class="n">22%</td><td class="n">23%</td><td class="n">24%</td><td class="n">24%</td></tr><tr class="sub"><td class="">Depreciation</td><td class="n">($59,826)</td><td class="n">($59,826)</td><td class="n">($59,826)</td><td class="n">($59,826)</td><td class="n">($59,826)</td></tr><tr class="sub"><td class="">Tax at 15%</td><td class="n">($0)</td><td class="n">($14,673)</td><td class="n">($17,811)</td><td class="n">($19,965)</td><td class="n">($21,630)</td></tr><tr class="tot"><td class=""><b>Net income</b></td><td class="n"><b>($46,207)</b></td><td class="n"><b>$83,148</b></td><td class="n"><b>$100,927</b></td><td class="n"><b>$113,134</b></td><td class="n"><b>$122,568</b></td></tr></tbody><caption>Year 1 trades at 62% of mature volume — two months of pre-opening, a launch spike, then the settle. Year 2 is the mature base.</caption></table></div>
+ <div class="grid g4" style="margin-top:1.4rem">
+   <div class="card stat"><span class="v ">$706k</span><span class="k">Year-2 revenue</span><span class=note>$706,457 on 424 transactions a day at the July peak.</span></div>
+   <div class="card stat"><span class="v ">22%</span><span class="k">Year-2 EBITDA margin</span><span class=note>After Iraq&rsquo;s 10% deluxe sales tax. Prime cost is 41% — Iraqi labour and rent are genuinely cheap against near-regional menu pricing, and that gap is the whole thesis.</span></div>
+   <div class="card stat"><span class="v acc">42 mo</span><span class="k">Capital payback</span><span class=note>On EBITDA, from opening.</span></div>
+   <div class="card stat"><span class="v acc">30%</span><span class="k">5-year IRR</span><span class=note>NPV at 20% discount: $168,126. Includes a 3.5× EBITDA terminal value.</span></div>
+ </div>
+ </div>
+</section><section class="s " id="s15">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 15</span><span class="act">WHAT IF WE ARE WRONG</span></div>
+  <h2 class="title">ماذا لو كنّا مخطئين</h2>
+  
+  
+ <p class="sub">Five ways this could go worse than planned, each modelled rather than asserted.</p>
+ <figure class="chart">
+  <svg viewBox="0 0 780 300" class="cv " role="img" aria-label="Year-2 EBITDA across five scenarios: bear $42k, heat thesis fails $99k, dinar shock $114k, base $201k, bull $334k." preserveAspectRatio="xMidYMid meet"><line x1="66" y1="22.0" x2="760" y2="22.0" class="grid"/><text x="57" y="26.0" class="ax" text-anchor="end">$337k</text><line x1="66" y1="73.0" x2="760" y2="73.0" class="grid"/><text x="57" y="77.0" class="ax" text-anchor="end">$253k</text><line x1="66" y1="124.0" x2="760" y2="124.0" class="grid"/><text x="57" y="128.0" class="ax" text-anchor="end">$169k</text><line x1="66" y1="175.0" x2="760" y2="175.0" class="grid"/><text x="57" y="179.0" class="ax" text-anchor="end">$84k</text><line x1="66" y1="226.0" x2="760" y2="226.0" class="grid"/><text x="57" y="230.0" class="ax" text-anchor="end">$0</text><rect x="66.0" y="217.5" width="101.0" height="8.5" rx="4" fill="var(--c2)"><title>Bear: EBITDA $13,977, 3% margin</title></rect><text x="116.5" y="209.5" class="vl" text-anchor="middle">$14k</text><text x="116.5" y="246" class="ax" text-anchor="middle">Bear</text><text x="116.5" y="264" class="ax dim" text-anchor="middle">payback &gt;60 mo</text><text x="116.5" y="280" class="ax dim" text-anchor="middle">IRR -21%</text><rect x="214.2" y="186.2" width="101.0" height="39.8" rx="4" fill="var(--c2)"><title>Heat thesis fails: EBITDA $65,744, 12% margin</title></rect><text x="264.8" y="178.2" class="vl" text-anchor="middle">$66k</text><text x="264.8" y="246" class="ax" text-anchor="middle">Heat thesis fails</text><text x="264.8" y="264" class="ax dim" text-anchor="middle">payback &gt;60 mo</text><text x="264.8" y="280" class="ax dim" text-anchor="middle">IRR 5%</text><rect x="362.5" y="177.8" width="101.0" height="48.2" rx="4" fill="var(--c2)"><title>Dinar shock: EBITDA $79,603, 13% margin</title></rect><text x="413.0" y="169.8" class="vl" text-anchor="middle">$80k</text><text x="413.0" y="246" class="ax" text-anchor="middle">Dinar shock</text><text x="413.0" y="264" class="ax dim" text-anchor="middle">payback &gt;60 mo</text><text x="413.0" y="280" class="ax dim" text-anchor="middle">IRR 9%</text><rect x="510.7" y="130.6" width="101.0" height="95.4" rx="4" fill="var(--c1)"><title>Base: EBITDA $157,648, 22% margin</title></rect><text x="561.2" y="122.6" class="vl" text-anchor="middle">$158k</text><text x="561.2" y="246" class="ax" text-anchor="middle">Base</text><text x="561.2" y="264" class="ax dim" text-anchor="middle">payback 42 mo</text><text x="561.2" y="280" class="ax dim" text-anchor="middle">IRR 30%</text><rect x="659.0" y="58.8" width="101.0" height="167.2" rx="4" fill="var(--c3)"><title>Bull: EBITDA $276,305, 30% margin</title></rect><text x="709.5" y="50.8" class="vl" text-anchor="middle">$276k</text><text x="709.5" y="246" class="ax" text-anchor="middle">Bull</text><text x="709.5" y="264" class="ax dim" text-anchor="middle">payback 29 mo</text><text x="709.5" y="280" class="ax dim" text-anchor="middle">IRR 53%</text><line x1="66" y1="226.0" x2="760" y2="226.0" class="axis"/></svg>
+  <figcaption>Year-2 EBITDA, payback and 5-year IRR under each case. Bars are coloured by direction, not by rank.</figcaption>
+ </figure>
+ <div class="tw "><table><thead><tr><th class="">Scenario</th><th class="">What it assumes</th><th class="n">Y2 EBITDA</th><th class="n">Margin</th><th class="n">Payback</th><th class="n">IRR</th></tr></thead><tbody><tr class=""><td class="">Bear</td><td class="">Volume 30% below plan, the two signature items discounted 12-15%, rent 35% higher than the sourced comparable implies, cooling costs 45% higher.</td><td class="n">$13,977</td><td class="n">3%</td><td class="n">&gt;60 mo</td><td class="n">-21%</td></tr><tr class=""><td class="">Heat thesis fails</td><td class="">The core thesis is wrong: heat does not drive the traffic we think it does. Demand index cut 22% and cooling costs raised 80% anyway.</td><td class="n">$65,744</td><td class="n">12%</td><td class="n">&gt;60 mo</td><td class="n">5%</td></tr><tr class=""><td class="">Dinar shock</td><td class="">The dinar's parallel rate moves against us by 14% and menu prices cannot be raised to compensate within the year.</td><td class="n">$79,603</td><td class="n">13%</td><td class="n">&gt;60 mo</td><td class="n">9%</td></tr><tr class=""><td class="">Sales tax on top</td><td class="">SHABIM is classified as a 'deluxe restaurant' and absorbs Iraq's 10% sales tax rather than passing it to the customer.</td><td class="n">$106,918</td><td class="n">17%</td><td class="n">56 mo</td><td class="n">17%</td></tr><tr class=""><td class="">Base</td><td class=""></td><td class="n">$157,648</td><td class="n">22%</td><td class="n">42 mo</td><td class="n">30%</td></tr><tr class=""><td class="">Bull</td><td class="">Volume 28% above plan - roughly what a genuine viral run looks like - with 8-10% pricing power on the two signatures.</td><td class="n">$276,305</td><td class="n">30%</td><td class="n">29 mo</td><td class="n">53%</td></tr></tbody><caption>The base case already absorbs Iraq's 10% deluxe sales tax; stress_sales_tax models a further 10% on top of that.</caption></table></div>
+ <div class="callout crit" style="margin-top:1.2rem">
+   <b>The bear case is the honest one to look at.</b> Volume 30% below plan, both signature items discounted, rent a
+   third above the sourced comparable, cooling costs 45% higher: the unit still generates
+   $13,977 of EBITDA in Year 2 and stays cash-positive every month — but it
+   <b>never repays its capital inside five years</b>, and the five-year IRR is
+   <b>-21%</b>: on those assumptions the money is not lost, it is stranded. That is the real
+   downside and it deserves stating plainly. Anyone putting capital in should size the position against that
+   outcome, not against the base case. Note also what would have to be true for it: a 30% volume miss <em>and</em>
+   pricing failure <em>and</em> a rent overpay <em>and</em> an energy shock, all at once.
+ </div>
+ </div>
+</section><section class="s tint" id="s16">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 16</span><span class="act">THE FRANCHISE OFFER</span></div>
+  <h2 class="title">عرض الامتياز</h2>
+  
+  
+ <p class="sub">What a franchisee pays, what they get, and what the model says they earn.</p>
+ <div class="grid g2" style="align-items:start">
+   <div>
+     <div class="tw "><table><thead><tr><th class="">Term</th><th class="n">SHABIM</th><th class="">MENA benchmark</th></tr></thead><tbody><tr class=""><td class="">Initial fee — Iraq Shard (kiosk)</td><td class="n">$15,000</td><td class="">$10.6k (Grano) · $21.3k (Café2go) · $88k (Gossip)</td></tr><tr class=""><td class="">Initial fee — Iraq Cube</td><td class="n">$25,000</td><td class="">—</td></tr><tr class=""><td class="">Initial fee — KSA</td><td class="n">$28,000</td><td class="">Mikel KSA: SAR 90k–180k ($24k–48k)</td></tr><tr class=""><td class="">Initial fee — UAE / Qatar Cube</td><td class="n">$50,000</td><td class="">—</td></tr><tr class=""><td class="">Royalty — <b>Iraq</b></td><td class="n"><b>5%</b></td><td class="">5–10% (Café2go 5, Gossip 6, Grano 7, Mikel 10)</td></tr><tr class=""><td class="">Royalty — <b>GCC</b></td><td class="n"><b>6%</b></td><td class="">Same band, at the market's own carrying capacity</td></tr><tr class=""><td class="">Marketing fund</td><td class="n">1.5% Iraq · 2% GCC</td><td class="">1–3%, spent in full and audited</td></tr><tr class=""><td class="">Term</td><td class="n">10 years, renewable</td><td class="">5–10 years typical</td></tr><tr class=""><td class="">Central supply</td><td class="n">~14% of unit revenue</td><td class="">Beans, sorbet base and colour system, moulds, carving jigs, packaging</td></tr><tr class=""><td class="">Territory</td><td class="n">Exclusive by district or city</td><td class="">Area development agreements above 3 units</td></tr></tbody><caption>Deliberately mid-band on royalty. A new brand buys adoption with terms; it does not extract on day one.</caption></table></div>
+     <div class="callout" style="margin-top:1rem">
+       <b>Why the royalty is set market by market.</b> Because the model says it has to be. At 8% an Iraqi
+       franchisee's payback stretches past four years and the offer stops being sellable; a Dubai unit clears
+       25% EBITDA and carries the standard rate comfortably. A
+       franchisor that prices its royalty off its own spreadsheet rather than off the franchisee's return ends up
+       with signed agreements and no openings.
+     </div>
+     <div class="callout" style="margin-top:1rem">
+       <b>And where the money actually comes from.</b> Not the fee, and not really the royalty either. Central supply
+       runs at ~14% of unit revenue at a 30% margin —
+       $966,478 in Year 5 alone. Franchisees cannot shop around for it: the bean
+       programme, the sorbet base and its colour system, the moulds and jigs, and — for every Shard kiosk — the carved
+       ice blocks themselves, which come from the city's Cube. The kiosk was designed without an ice plant for exactly
+       this reason.
+     </div>
+   </div>
+   <div class="card">
+     <div class="cap">What an Iraqi franchisee sees — both formats, Year 2</div>
+     <div class="tw "><table><thead><tr><th class=""></th><th class="n">Shard · kiosk</th><th class="n">Cube · street</th></tr></thead><tbody><tr class=""><td class="">Investment incl. key money and working capital</td><td class="n">$168,792</td><td class="n">$299,118</td></tr><tr class=""><td class="">Gross revenue</td><td class="n">$386,137</td><td class="n">$614,861</td></tr><tr class=""><td class="">Royalty + marketing fund to SHABIM</td><td class="n">($25,099)</td><td class="n">($39,966)</td></tr><tr class=""><td class=""><b>EBITDA</b></td><td class="n"><b>$68,852</b></td><td class="n"><b>$99,718</b></td></tr><tr class=""><td class="">EBITDA margin</td><td class="n">18%</td><td class="n">16%</td></tr><tr class=""><td class="">Capital payback</td><td class="n">41 months</td><td class="n">44 months</td></tr><tr class=""><td class=""><b>5-year IRR</b></td><td class="n"><b>33%</b></td><td class="n"><b>27%</b></td></tr></tbody><caption>Both shown AFTER the 6.5% royalty and marketing charge — which is where most franchise decks quietly show the franchisor's own unmarked P&L instead.</caption></table></div>
+     <p class="desc" style="margin-top:.8rem"><b>This is why the Shard leads the rollout.</b> It costs
+     $130,326 less to build, returns
+     a higher margin and repays faster. The Cube is the flagship, the commissary and the ice supply — the brand's
+     showpiece, mostly company-owned or sold to area developers. The kiosk is the volume product.</p>
+   </div>
+ </div>
+ </div>
+</section><section class="s deep" id="s17">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 17</span><span class="act">THE SAME UNIT, EIGHT CITIES</span></div>
+  <h2 class="title">المدن</h2>
+  
+  
+ <p class="sub">The identical format run through each market's real rent, wage, tax and price levels. Two of these
+ eight do not work, and they are named rather than buried.</p>
+ <div class="tw "><table><thead><tr><th class="">City &amp; format</th><th class="n">CAPEX</th><th class="n">Y2 revenue</th><th class="n">Y2 EBITDA</th><th class="n">Margin</th><th class="n">Payback</th><th class="n">IRR</th><th class="">Verdict</th></tr></thead><tbody><tr class=""><td class="">Baghdad · Shard</td><td class="n">$168,792</td><td class="n">$386,137</td><td class="n">$68,852</td><td class="n">18%</td><td class="n">41 mo</td><td class="n">33%</td><td class=""><span class="pill good">Phase 1</span></td></tr><tr class=""><td class="">Baghdad · Cube</td><td class="n">$299,118</td><td class="n">$614,861</td><td class="n">$99,718</td><td class="n">16%</td><td class="n">44 mo</td><td class="n">27%</td><td class=""><span class="pill good">Phase 1</span></td></tr><tr class=""><td class="">Riyadh · Shard</td><td class="n">$231,133</td><td class="n">$701,610</td><td class="n">$105,967</td><td class="n">15%</td><td class="n">40 mo</td><td class="n">34%</td><td class=""><span class="pill acc">Phase 2</span></td></tr><tr class=""><td class="">Riyadh · Cube</td><td class="n">$414,820</td><td class="n">$1,117,203</td><td class="n">$161,359</td><td class="n">14%</td><td class="n">42 mo</td><td class="n">29%</td><td class=""><span class="pill acc">Phase 2</span></td></tr><tr class=""><td class="">Dubai · Cube</td><td class="n">$448,335</td><td class="n">$1,254,317</td><td class="n">$315,199</td><td class="n">25%</td><td class="n">28 mo</td><td class="n">57%</td><td class=""><span class="pill acc">Phase 2</span></td></tr><tr class=""><td class="">Doha · Cube</td><td class="n">$437,572</td><td class="n">$1,048,338</td><td class="n">$257,245</td><td class="n">25%</td><td class="n">31 mo</td><td class="n">49%</td><td class=""><span class="pill acc">Phase 2</span></td></tr><tr class=""><td class="">Cairo · Shard</td><td class="n">$165,208</td><td class="n">$208,514</td><td class="n">($46,924)</td><td class="n">-23%</td><td class="n">&gt;60 mo</td><td class="n">negative</td><td class=""><span class="pill crit">Deferred</span></td></tr><tr class=""><td class="">Cairo · Cube</td><td class="n">$285,915</td><td class="n">$332,025</td><td class="n">($76,618)</td><td class="n">-23%</td><td class="n">&gt;60 mo</td><td class="n">negative</td><td class=""><span class="pill crit">Deferred</span></td></tr></tbody><caption>All figures are Year 2, after local consumption tax and after the 8% royalty and marketing charge.</caption></table></div>
+ <div class="grid g2" style="margin-top:1.4rem">
+   <div class="callout">
+     <b>Dubai and Doha are the margin markets; Riyadh is the volume market.</b> Dubai returns
+     25% on a 28-month payback
+     because a 5% VAT and a 9% corporate rate leave more of a high ticket behind. Riyadh's
+     14% is thinner — 15% VAT, higher rent, higher wages — but it is
+     the market with 5,130 branded outlets and the appetite to absorb thirty of ours.
+   </div>
+   <div class="callout crit">
+     <b>Egypt is excluded from the first five years, and it should be said out loud.</b> Both formats return
+     <b>negative</b> unit EBITDA — around -23% — because the
+     equipment is bought in dollars against a
+     devalued pound while the menu has to be priced in Egyptian purchasing power. Egypt is a real opportunity — a
+     $2.5bn café market heading to $4.2bn — but it needs a different vehicle: locally manufactured equipment, or the
+     <span class="ar">جَنى</span> box sold as retail CPG without a café at all. And the core argument does not even
+     transfer: Cairo has roughly 5–15 days a year above 40°C against Baghdad's ~134. SHABIM sells relief from heat
+     that Egypt, comparatively, does not have. Entering it on these numbers would burn a franchisee and take the
+     brand down with them.
+   </div>
+ </div>
+ </div>
+</section><section class="s " id="s18">
+ <div class="in">
+  <div class="eyebrow"><span class="n">IV · 18</span><span class="act">THE FRANCHISOR — WHAT AN INVESTOR BUYS</span></div>
+  <h2 class="title">شركة الامتياز</h2>
+  
+  
+ <p class="sub">Not a café. A brand that licenses a format and supplies its inputs — the asset-light half of the business.</p>
+ <figure class="chart">
+  <div class="legend"><span><i style="background:var(--c1)"></i>System-wide sales</span></div>
+  <svg viewBox="0 0 800 340" class="cv " role="img" aria-label="System-wide sales grow from $205k in Year 1 to $32.4M in Year 5 as the network reaches 44 units." preserveAspectRatio="xMidYMid meet"><line x1="74" y1="26.0" x2="742" y2="26.0" class="grid"/><text x="65" y="30.0" class="ax" text-anchor="end">$28.66M</text><line x1="74" y1="90.5" x2="742" y2="90.5" class="grid"/><text x="65" y="94.5" class="ax" text-anchor="end">$21.50M</text><line x1="74" y1="155.0" x2="742" y2="155.0" class="grid"/><text x="65" y="159.0" class="ax" text-anchor="end">$14.33M</text><line x1="74" y1="219.5" x2="742" y2="219.5" class="grid"/><text x="65" y="223.5" class="ax" text-anchor="end">$7.17M</text><line x1="74" y1="284.0" x2="742" y2="284.0" class="grid"/><text x="65" y="288.0" class="ax" text-anchor="end">$0</text><path d="M74.0,284.0 L74.0,282.3 L241.0,274.7 L408.0,249.4 L575.0,177.5 L742.0,61.6 L742.0,284.0 Z" fill="var(--c1)" opacity=".16"/><path d="M74.0,282.3 L241.0,274.7 L408.0,249.4 L575.0,177.5 L742.0,61.6" fill="none" stroke="var(--c1)" stroke-width="2.5"/><circle cx="74.0" cy="282.3" r="5" fill="var(--c1)" stroke="var(--surface)" stroke-width="2"><title>Year 1: system sales $183,962, 1 units</title></circle><text x="74.0" y="269.3" class="vl" text-anchor="middle">$184k</text><text x="74.0" y="305" class="ax" text-anchor="middle">Y1</text><text x="74.0" y="322" class="ax dim" text-anchor="middle">1 units</text><circle cx="241.0" cy="274.7" r="5" fill="var(--c1)" stroke="var(--surface)" stroke-width="2"><title>Year 2: system sales $1,030,812, 3 units</title></circle><text x="241.0" y="261.7" class="vl" text-anchor="middle">$1.03M</text><text x="241.0" y="305" class="ax" text-anchor="middle">Y2</text><text x="241.0" y="322" class="ax dim" text-anchor="middle">3 units</text><circle cx="408.0" cy="249.4" r="5" fill="var(--c1)" stroke="var(--surface)" stroke-width="2"><title>Year 3: system sales $3,841,706, 12 units</title></circle><text x="408.0" y="236.4" class="vl" text-anchor="middle">$3.84M</text><text x="408.0" y="305" class="ax" text-anchor="middle">Y3</text><text x="408.0" y="322" class="ax dim" text-anchor="middle">12 units</text><circle cx="575.0" cy="177.5" r="5" fill="var(--c1)" stroke="var(--surface)" stroke-width="2"><title>Year 4: system sales $11,830,408, 27 units</title></circle><text x="575.0" y="164.5" class="vl" text-anchor="middle">$11.83M</text><text x="575.0" y="305" class="ax" text-anchor="middle">Y4</text><text x="575.0" y="322" class="ax dim" text-anchor="middle">27 units</text><circle cx="742.0" cy="61.6" r="5" fill="var(--c1)" stroke="var(--surface)" stroke-width="2"><title>Year 5: system sales $24,709,709, 47 units</title></circle><text x="742.0" y="48.6" class="vl" text-anchor="middle">$24.71M</text><text x="742.0" y="305" class="ax" text-anchor="middle">Y5</text><text x="742.0" y="322" class="ax dim" text-anchor="middle">47 units</text><line x1="74" y1="284.0" x2="742" y2="284.0" class="axis"/></svg>
+ </figure>
+ <div class="tw "><table><thead><tr><th class=""></th><th class="n">Y1</th><th class="n">Y2</th><th class="n">Y3</th><th class="n">Y4</th><th class="n">Y5</th></tr></thead><tbody><tr class=""><td class="">Units — company-owned</td><td class="n">1</td><td class="n">1</td><td class="n">2</td><td class="n">2</td><td class="n">2</td></tr><tr class=""><td class="">Units — franchised</td><td class="n">0</td><td class="n">2</td><td class="n">10</td><td class="n">25</td><td class="n">45</td></tr><tr class=""><td class=""><b>Units trading</b></td><td class="n"><b>1</b></td><td class="n"><b>3</b></td><td class="n"><b>12</b></td><td class="n"><b>27</b></td><td class="n"><b>47</b></td></tr><tr class=""><td class="">System-wide sales</td><td class="n">$183,962</td><td class="n">$1,030,812</td><td class="n">$3,841,706</td><td class="n">$11,830,408</td><td class="n">$24,709,709</td></tr><tr class=""><td class="">Franchise &amp; area development fees</td><td class="n">$0</td><td class="n">$30,000</td><td class="n">$341,000</td><td class="n">$727,000</td><td class="n">$965,000</td></tr><tr class=""><td class="">Royalty</td><td class="n">$0</td><td class="n">$16,218</td><td class="n">$149,001</td><td class="n">$571,934</td><td class="n">$1,309,654</td></tr><tr class=""><td class="">Marketing fund (pass-through)</td><td class="n">$0</td><td class="n">$4,865</td><td class="n">$46,932</td><td class="n">$183,852</td><td class="n">$424,713</td></tr><tr class=""><td class="">Central supply margin</td><td class="n">$0</td><td class="n">$13,623</td><td class="n">$115,785</td><td class="n">$428,884</td><td class="n">$966,478</td></tr><tr class=""><td class="">Company-owned store revenue</td><td class="n">$183,962</td><td class="n">$706,457</td><td class="n">$1,084,928</td><td class="n">$1,618,878</td><td class="n">$1,698,324</td></tr><tr class=""><td class=""><b>Franchisor revenue</b></td><td class="n"><b>$183,962</b></td><td class="n"><b>$771,163</b></td><td class="n"><b>$1,737,646</b></td><td class="n"><b>$3,530,548</b></td><td class="n"><b>$5,364,169</b></td></tr><tr class=""><td class="">Head office</td><td class="n">($240,000)</td><td class="n">($480,000)</td><td class="n">($860,000)</td><td class="n">($1,360,000)</td><td class="n">($1,880,000)</td></tr><tr class=""><td class="">Field support &amp; openings</td><td class="n">($0)</td><td class="n">($30,400)</td><td class="n">($129,580)</td><td class="n">($282,701)</td><td class="n">($420,566)</td></tr><tr class=""><td class="">Marketing fund spent</td><td class="n">($0)</td><td class="n">($4,865)</td><td class="n">($46,932)</td><td class="n">($183,852)</td><td class="n">($424,713)</td></tr><tr class=""><td class="">Company-owned store cost</td><td class="n">($178,242)</td><td class="n">($548,809)</td><td class="n">($831,367)</td><td class="n">($1,233,026)</td><td class="n">($1,290,276)</td></tr><tr class="tot"><td class=""><b>Franchisor EBITDA</b></td><td class="n"><b>($234,280)</b></td><td class="n"><b>($292,911)</b></td><td class="n"><b>($130,234)</b></td><td class="n"><b>$470,969</b></td><td class="n"><b>$1,348,614</b></td></tr><tr class="sub"><td class="">Margin on franchisor revenue</td><td class="n">-127%</td><td class="n">-38%</td><td class="n">-7%</td><td class="n">13%</td><td class="n">25%</td></tr></tbody><caption>Head office is deliberately heavy — $240k in Year 1 rising to $1.88M by Year 5, about $40,000 per trading unit, covering an R&D kitchen, a supply-chain function, disclosure-document preparation and registration in each jurisdiction, and trademark protection across eight countries. Understating head office is the most common way a franchise plan lies to itself.</caption></table></div>
+ <div class="grid g4" style="margin-top:1.4rem">
+   <div class="card stat"><span class="v ">47</span><span class="k">Units trading by end of Year 5</span><span class=note>2 company-owned, the rest franchised, after a 5% annual closure allowance.</span></div>
+   <div class="card stat"><span class="v ">$24.71M</span><span class="k">System-wide sales, Year 5</span><span class=note>$24,709,709 across 47 units.</span></div>
+   <div class="card stat"><span class="v acc">$1.35M</span><span class="k">Franchisor EBITDA, Year 5</span><span class=note>25% margin. Crosses into profit in Year 4.</span></div>
+   <div class="card stat"><span class="v acc">41% · 6.4×</span><span class="k">IRR and MOIC on a $1.75M raise</span><span class=note>Exit enterprise value $10,788,912 at 8× Year-5 EBITDA.</span></div>
+ </div>
+ </div>
+</section><section class="s tint" id="s19">
+ <div class="in">
+  <div class="eyebrow"><span class="n">V · 19</span><span class="act">THE ROLLOUT</span></div>
+  <h2 class="title">خارطة الطريق</h2>
+  
+  
+ <div class="timeline">
+  <div class="tl">
+    <div class="tl-y">Year 1</div>
+    <div class="tl-b">
+      <div class="tl-h">Baghdad — prove the object</div>
+      <p>One flagship Cube on a Mansour, Karrada or Zayouna corner. The whole year is spent getting the −80 protocol, the ice-block yield and the sorbet mould cycle to a standard that can be written into a manual. Trademark filed in Iraq across classes 30, 32, 29, 35 and 43. LLC formation begins immediately: registration takes 6–10 weeks and the security check is the binding constraint on the launch date.</p>
+      <div class="spec"><span class="pill">1 Cube</span><span class="pill">IP filed in Iraq</span><span class="pill">Operating manual written</span><span class="pill">Content engine live</span></div>
+    </div>
+  </div><div class="tl">
+    <div class="tl-y">Year 2</div>
+    <div class="tl-b">
+      <div class="tl-h">Baghdad — prove it repeats, and prove it repeats CHEAPLY</div>
+      <p>The first two franchised Shard kiosks open in Baghdad malls, supplied with carved blocks from the flagship Cube. This is the year the commissary model is tested, not the year the estate grows. The purpose is twelve months of audited multi-unit trading — what a Gulf master franchisee and a Saudi disclosure document both require before anyone serious will engage.</p>
+      <div class="spec"><span class="pill">3 units</span><span class="pill">First franchisees signed</span><span class="pill">Central ice commissary live</span><span class="pill">12 months of audited data</span></div>
+    </div>
+  </div><div class="tl">
+    <div class="tl-y">Year 3</div>
+    <div class="tl-b">
+      <div class="tl-h">Cross the Gulf</div>
+      <p>Saudi and UAE entry. The KSA Franchise Law route is the gate: a disclosure document in Arabic, delivered at least 14 days before signing, and every agreement registered with the Ministry of Commerce within 90 days. Riyadh enters on Shards, Dubai on a Cube, both under area development agreements rather than one-off units. A second company-owned Cube opens as the Gulf showcase.</p>
+      <div class="spec"><span class="pill">12 units</span><span class="pill">KSA disclosure registered</span><span class="pill">Riyadh + Dubai</span><span class="pill">Franchisor near breakeven</span></div>
+    </div>
+  </div><div class="tl">
+    <div class="tl-y">Year 4</div>
+    <div class="tl-b">
+      <div class="tl-h">Density before geography</div>
+      <p>Depth in the four proven cities rather than new flags: Baghdad into double figures, Riyadh to a real cluster, Doha added. Central supply becomes a genuine business — beans, sorbet base, moulds, packaging and blocks — and the marketing fund reaches a size that buys regional campaigns.</p>
+      <div class="spec"><span class="pill">27 units</span><span class="pill">Doha added</span><span class="pill">Supply chain at scale</span><span class="pill">First profitable year</span></div>
+    </div>
+  </div><div class="tl">
+    <div class="tl-y">Year 5</div>
+    <div class="tl-b">
+      <div class="tl-h">Scale, and decide about Egypt</div>
+      <p>47 units trading, $24.7M of system-wide sales. Egypt and the Levant are re-underwritten on local equipment manufacturing and a retail <span class='ar'>جَنى</span> line — or deferred again. The brand is now either a credible master-franchise counterparty for a regional group, or an acquisition target for one.</p>
+      <div class="spec"><span class="pill">47 units</span><span class="pill">$24.7M system sales</span><span class="pill">Egypt re-underwritten</span><span class="pill">Exit optionality</span></div>
+    </div>
+  </div>
+ </div>
+ <div class="melt"></div>
+ <h3 class="sub-h">Iraq beyond Baghdad — where Phase 1 goes next</h3>
+ <p class="lede">78.8% of Iraqis — 36.3 million people — live outside Baghdad governorate, and the branded-café count
+ for all of them is a rounding error.</p>
+ <div class="tw "><table><thead><tr><th class="">City</th><th class="n">Population</th><th class="">Case</th><th class="">Caution</th></tr></thead><tbody><tr class=""><td class=""><b>Basra</b></td><td class="n">3.0M</td><td class="">The hottest large city in the target set — its 53.9°C record is the highest reliably measured temperature in the Eastern Hemisphere. If the heat thesis is right anywhere, it is right here.</td><td class="">Water quality: the 2018 crisis hospitalised roughly 118,000 people. An RO plant is not optional.</td></tr><tr class=""><td class=""><b>Erbil</b></td><td class="n">~1.6M</td><td class="">3.4 million visitors in 2025; the Kurdistan Region passed 8 million in 2024. Higher disposable income, more expatriates, a functioning mall sector.</td><td class="">Cooler than Baghdad — 42°C July high — so the winter menu matters more, not less.</td></tr><tr class=""><td class=""><b>Mosul / Nineveh</b></td><td class="n">3.7M</td><td class="">The largest under-served governorate in the country, rebuilding, and almost entirely unbranded.</td><td class="">Infrastructure and logistics remain the binding constraint.</td></tr><tr class=""><td class=""><b>Najaf &amp; Karbala</b></td><td class="n">~3.0M combined</td><td class="">Enormous, sustained religious tourism.</td><td class=""><b>Do not model Arbaʿīn as revenue.</b> During Arbaʿīn, commercial food service is actively suppressed because the <span class='ar'>مواكب</span> give food and drink away free. Karbala is a year-round pilgrimage business, not a two-week spike.</td></tr></tbody><caption>Governorate populations from the 2024 census. Phase 1 depth in Iraq comes before any new country.</caption></table></div>
+
+ </div>
+</section><section class="s " id="s20">
+ <div class="in">
+  <div class="eyebrow"><span class="n">V · 20</span><span class="act">WHY THIS IS HARD TO COPY</span></div>
+  <h2 class="title">الخندق</h2>
+  
+  
+ <p class="sub">Anyone can buy a rolled-ice-cream pan. Four things stack into something that is not worth a
+ competitor's trouble.</p>
+ <div class="grid g2">
+   <div class="card"><div class="cap">01 · The cold chain is the barrier</div>
+     <p>A −86°C ULT freezer, a directional-freezing ice plant with a three-day block cycle, a blast freezer and a
+     sorbet mould system are not a café's normal equipment list. They need a dedicated generator, a specialist service
+     contract, and staff trained in handling surfaces that cause cold burns. A competitor can copy one item on the
+     menu. Copying the operation means rebuilding the back of house.</p></div>
+   <div class="card"><div class="cap">02 · The kiosks depend on the Cube</div>
+     <p>A Shard carries no ice plant. Its blocks come from the city's flagship Cube. That is a deliberate architecture:
+     it lets kiosks open at $168,792 instead of $299,118,
+     and it makes the network a supply chain rather than a logo licence — the franchisee cannot shop around for the
+     one input the signature product depends on.</p></div>
+   <div class="card"><div class="cap">03 · The name cannot be taken</div>
+     <p><span class="ar">شَبِم</span> is a real classical word with a verifiable dictionary entry, no existing F&amp;B
+     registration anywhere in MENA, and a documented poetic lineage. Filed across five Nice classes in each market it
+     is a defensible mark — unlike a descriptive name like "Ice" or "Cold", which is unregistrable in every one of
+     these jurisdictions.</p></div>
+   <div class="card"><div class="cap">04 · The archive compounds</div>
+     <p>The verse programme, the vocalised typography, the seasonal <span class="ar">كانون</span> identity and the
+     verification discipline behind them are a body of work, not a look. A competitor can copy a facade in a season.
+     Assembling a defensible classical-Arabic identity takes scholarship they have no reason to fund.</p></div>
+ </div>
+ <div class="melt"></div>
+ <div class="grid g3">
+   <div class="card stat"><span class="v ">3 days</span><span class="k">per clear-ice block cycle</span><span class=note>Directional freezing cannot be rushed. It is the operation&rsquo;s natural throttle, and its natural moat.</span></div>
+   <div class="card stat"><span class="v sun">30–42</span><span class="k">Al-Qālab vessels per day, from one block maker</span><span class=note>Against a modelled peak demand of ~31/day in July. One machine, at its ceiling, in the hottest month.</span></div>
+   <div class="card stat"><span class="v ">5</span><span class="k">Nice classes to file</span><span class=note>43 (café services), 30 (coffee, ices), 32 (non-alcoholic drinks), 29 (frozen fruit), 35 (franchise and retail).</span></div>
+ </div>
+ <div class="melt"></div>
+ <h3 class="sub-h">The four constraints that shaped the design</h3>
+ <p class="lede">Engineering that was checked before it was drawn. Each of these would have been discovered on site,
+ expensively, by anyone who did not check first.</p>
+ <div class="grid g2" style="margin-top:1.2rem">
+   <div class="card"><div class="cap">A −80°C freezer cannot live in a Baghdad kitchen</div>
+     <p>Commercial ULT freezers are rated to a maximum <b>30–32°C ambient</b>. Above that they lose the ability to hold
+     temperature, and they reject 0.7–1.5 kW of heat into the room while doing it. The ULT sits in a separately
+     conditioned back-of-house cell, not behind the bar — and that cell's cooling is in the MEP budget, not discovered later.</p></div>
+   <div class="card"><div class="cap">A glass cube costs 2.2× a normal café to cool</div>
+     <p>A 25 m² all-glass kiosk at 50°C ambient carries a <b>15.4 kW</b> peak cooling load — 0.22 kW/m² against
+     0.08–0.10 for a conventional café — and needs 5–6 tons of T3-rated AC. <b>32% of that load is solar gain</b>,
+     which is the cheapest part to design out: selective-coated laminates, a ventilated cavity behind the acrylic, and
+     condensers shaded and off the roof.</p></div>
+   <div class="card"><div class="cap">Solid acrylic ice blocks are unaffordable</div>
+     <p>100 mm cast acrylic runs $476–1,071/m² from a Chinese mill and up to $2,975/m² branded. A facade of genuine
+     solid blocks is not a budget decision, it is an impossibility. The ice depth is achieved with 20–30 mm sheet,
+     surface texture, internal lamination and edge lighting — ~70 m² installed for
+     $30,000.</p></div>
+   <div class="card"><div class="cap">Water is an input, not a utility</div>
+     <p>The Tigris near Kadhimiya has been measured at 540,000 coliform per 100 mL. Ice is a food, and a carved block
+     that a customer eats has to meet food-grade microbiological standards. A reverse-osmosis plant is not optional
+     equipment — Basra's 2018 water crisis put roughly 118,000 people in hospital — and clear ice needs deionised
+     water anyway to freeze without occlusions.</p></div>
+ </div>
+ <div class="callout" style="margin-top:1.4rem">
+   <b>One correction worth showing, because it goes to how these numbers were built.</b> An early version of this
+   model used twelve monthly seasonality multipliers that were intended to average 1.0 and actually averaged 1.117 —
+   quietly inflating every revenue line by 11.7%. It was caught in review and the vectors are now normalised, so the
+   monthly <em>shape</em> is the forecast and the <em>level</em> comes only from the transactions-per-day assumption
+   where it can be argued with. Every number in this deck is downstream of that fix.
+ </div>
+ </div>
+</section><section class="s deep" id="s21">
+ <div class="in">
+  <div class="eyebrow"><span class="n">V · 21</span><span class="act">RISK REGISTER</span></div>
+  <h2 class="title">المخاطر</h2>
+  
+  
+ <p class="sub">Ten things that could go wrong, ranked by severity, each with what is actually being done about it.
+ Nothing here is a discovery an investor should be making on their own.</p>
+ <div class="risks">
+ <div class="risk r-critical">
+   <div class="r-head"><span class="pill crit">Critical</span>
+     <h4>The −80°C vessel can injure a customer</h4></div>
+   <div class="r-body"><p class="r-what">Skin contact with metal at −80°C causes cold burns in seconds, and a vessel taken straight from −80°C into 45°C ambient can fracture from thermal shock.</p><p class="r-mit"><b>Mitigation.</b> A two-stage protocol, exactly as the Melbourne operator runs it: −20°C pre-chill, then −80°C hold. Steel tongs, never bare hands. Thick-walled borosilicate, never thin glass or bare metal. A chilled base and a sleeve on every serve, a hold-time before hand-off, and a written SOP that is part of the franchise manual and the training certification. Liability insurance sized for it before the first store opens.</p></div>
+ </div><div class="risk r-critical">
+   <div class="r-head"><span class="pill crit">Critical</span>
+     <h4>Power failure destroys the freezer load</h4></div>
+   <div class="r-body"><p class="r-what">Baghdad's grid delivers 8–12 hours a day; 2025 peak demand was 55 GW against 27 GW of supply, and the December 2025 Iranian gas halt cut a further 4,000–4,500 MW. A ULT freezer that thaws loses its entire contents.</p><p class="r-mit"><b>Mitigation.</b> A dedicated 60 kVA generator with automatic transfer, not a neighbourhood generator subscription — this is why the model carries $26k of annual utilities rather than the $5.4k a shared connection would cost. Plus UPS on controls, temperature telemetry with alarms to a phone, and enough thermal mass that a two-hour outage is survivable.</p></div>
+ </div><div class="risk r-high">
+   <div class="r-head"><span class="pill sun">High</span>
+     <h4>The name has a medical homograph</h4></div>
+   <div class="r-body"><p class="r-what"><span class='ar'>الشَّبَم</span> is the standard modern Arabic term for phimosis. Arabic Wikipedia's article at the exact string <span class='ar'>شبم</span> is the urology page. A customer, journalist or competitor will find this.</p><p class="r-mit"><b>Mitigation.</b> Vocalise the wordmark as <span class='ar'>شَبِم</span> with a kasra — the medical term is consistently <span class='ar'>الشَّبَم</span> with a fatḥa. Lock the definition into the lockup so the word never travels alone. Own every modified search query within twelve months. And brief the team with a confident answer rather than an embarrassed one.</p></div>
+ </div><div class="risk r-high">
+   <div class="r-head"><span class="pill sun">High</span>
+     <h4>Key money is illegal and universal</h4></div>
+   <div class="r-body"><p class="r-what">Property Lease Law No. 87 of 1979 prohibits <span class='ar'>خلو</span>. It is nonetheless demanded on essentially every good Baghdad pitch, observed at 25× monthly rent.</p><p class="r-mit"><b>Mitigation.</b> Structure it with counsel as a documented premium or fit-out contribution rather than an undocumented cash payment, and prefer landlords who will take a longer lease at a higher rent instead. Budgeted at 15×.</p></div>
+ </div><div class="risk r-high">
+   <div class="r-head"><span class="pill sun">High</span>
+     <h4>The novelty fades — and this is the likeliest way to lose</h4></div>
+   <div class="r-body"><p class="r-what">Capital-gated spectacle formats have a documented peak-attention window of 12–24 months. Crumbl passed 1,000 stores and then watched per-store volumes fall from their 2021 peak with same-store sales negative through 2024. Rolled ice cream ran 2015–18 and was largely gone by 2021. Separately, the base rate is unforgiving: about 26–27% of restaurants fail in year one and 59–60% within three — lower than the folklore 90%, but not low.</p><p class="r-mit"><b>Mitigation.</b> The barbell menu is the structural answer: spectacle recruits, <span class='ar'>بَرَد</span> and <span class='ar'>جَنى</span> retain, <span class='ar'>كانون</span> holds the winter, the seasonal fruit rotation supplies a Crumbl-style reason to return that is built into the supply chain rather than invented by marketing, and the <span class='ar'>جَنى</span> box is a retail product that survives the café. The bear case models exactly this fade and still leaves the unit cash-positive every month at 3% EBITDA — it simply does not repay its capital inside five years.</p></div>
+ </div><div class="risk r-medium">
+   <div class="r-head"><span class="pill ">Medium</span>
+     <h4>Currency and pricing</h4></div>
+   <div class="r-body"><p class="r-what">The dinar trades at 1,310 official and ~1,530 parallel — a 16–17% premium. Equipment and beans are bought in dollars; the menu is sold in dinars.</p><p class="r-mit"><b>Mitigation.</b> The model uses the parallel rate throughout, never the official one. Menu prices are reviewed twice a year. The <span class='en'>stress_fx</span> case models a further 14% adverse move with no price response and still clears 13% EBITDA.</p></div>
+ </div><div class="risk r-medium">
+   <div class="r-head"><span class="pill ">Medium</span>
+     <h4>Classification as a deluxe venue</h4></div>
+   <div class="r-body"><p class="r-what">Iraq has no general VAT but levies a 10% sales tax on deluxe restaurants and hotels. A café selling a $9.80 drink may well be classified deluxe.</p><p class="r-mit"><b>Mitigation.</b> Assumed in the base case, not treated as an upside. A further 10% on top is modelled separately and the unit still clears 17% EBITDA.</p></div>
+ </div><div class="risk r-medium">
+   <div class="r-head"><span class="pill ">Medium</span>
+     <h4>Foreign ownership and repatriation</h4></div>
+   <div class="r-body"><p class="r-what">Foreign ownership of an Iraqi LLC is generally capped at 49%, and five banks plus three payment firms have been barred from the CBI dollar auction.</p><p class="r-mit"><b>Mitigation.</b> The Iraqi operating company is majority Iraqi-owned by design. The franchisor IP entity sits offshore and is paid royalties under a registered licence — the standard structure, and the reason the IP must be filed before the first franchise agreement is signed, not after.</p></div>
+ </div><div class="risk r-medium">
+   <div class="r-head"><span class="pill ">Medium</span>
+     <h4>Security and perception</h4></div>
+   <div class="r-body"><p class="r-what">The US State Department maintains a Level 4 &lsquo;Do Not Travel&rsquo; advisory for Iraq.</p><p class="r-mit"><b>Mitigation.</b> It is also true that Iraq recorded $5.7bn of tourism revenue in 2024, up 25%, that Baghdad was Arab Tourism Capital 2025, and that Half Million, %Arabica and Kyan are all opening there. Both facts belong in the same paragraph. Practically: 24-hour site security is in the cost base, and no international staff are required to operate a unit.</p></div>
+ </div><div class="risk r-low">
+   <div class="r-head"><span class="pill ">Low</span>
+     <h4>The word's darker senses</h4></div>
+   <div class="r-body"><p class="r-what">Lisān al-ʿArab notes that the Arabs called poison and death <span class='ar'>شَبِم</span>, for their coldness.</p><p class="r-mit"><b>Mitigation.</b> A lexicographer's footnote, not live usage. Disclosed here so it is not discovered later, and consciously kept out of the family-facing brand voice.</p></div>
+ </div>
+ </div>
+ </div>
+</section><section class="s warm" id="s22">
+ <div class="in">
+  <div class="eyebrow"><span class="n">V · 22</span><span class="act">THE ASK — TWO TRACKS</span></div>
+  <h2 class="title">الطلب</h2>
+  
+  
+ <p class="sub">These are separable. The first does not require the second.</p>
+ <div class="grid g2" style="align-items:start">
+   <div class="card track">
+     <span class="pill">TRACK A · SELF-FUNDED</span>
+     <h3>Build the Baghdad flagship</h3>
+     <div class="big-n">$448,784</div>
+     <p class="desc">Founder capital. One Cube on a Baghdad corner, built as the prototype and the proof. No outside
+     equity, no dilution, and no obligation to anyone else's timetable.</p>
+     <div class="tw "><table><thead><tr><th class="">Use of funds</th><th class="n">Amount</th></tr></thead><tbody><tr class=""><td class="">Fit-out, ice skin, lighting, MEP and generator</td><td class="n">$117,000</td></tr><tr class=""><td class="">Production equipment</td><td class="n">$127,000</td></tr><tr class=""><td class="">Brand, architecture and engineering</td><td class="n">$35,000</td></tr><tr class=""><td class="">Key money, furniture, POS</td><td class="n">$51,000</td></tr><tr class=""><td class="">Pre-opening and working capital</td><td class="n">$58,000</td></tr><tr class=""><td class=""><b>Total</b></td><td class="n"><b>$448,784</b></td></tr></tbody></table></div>
+     <div class="grid g3" style="gap:.5rem;margin-top:.9rem">
+       <div class="card stat"><span class="v ">42<span class="u">mo</span></span><span class="k">Payback</span></div>
+       <div class="card stat"><span class="v ">30%</span><span class="k">5-yr IRR</span></div>
+       <div class="card stat"><span class="v ">$158k</span><span class="k">Y2 EBITDA</span></div>
+     </div>
+   </div>
+   <div class="card track accent">
+     <span class="pill acc">TRACK B · GROWTH CAPITAL</span>
+     <h3>Build the franchisor</h3>
+     <div class="big-n acc">$1.75M</div>
+     <p class="desc">Raised once the flagship has twelve months of trading behind it — which is also what the Saudi
+     Franchise Law and any credible Gulf master franchisee require before they will engage. The money builds the
+     company that licenses the format, not more cafés.</p>
+     <div class="tw "><table><thead><tr><th class="">Use of funds</th><th class="n">Amount</th><th class="n">Share</th></tr></thead><tbody><tr class=""><td class="">Head office through to breakeven: brand, ops, training, R&amp;D kitchen</td><td class="n">$620,000</td><td class="n">35%</td></tr><tr class=""><td class="">One further company-owned Cube (Year 3, the Gulf showcase)</td><td class="n">$449,000</td><td class="n">26%</td></tr><tr class=""><td class="">Central ice and supply commissary, plus first inventory</td><td class="n">$230,000</td><td class="n">13%</td></tr><tr class=""><td class="">IP, disclosure documents and registration in five jurisdictions</td><td class="n">$185,000</td><td class="n">11%</td></tr><tr class=""><td class="">Launch marketing across Iraq and the Gulf</td><td class="n">$150,000</td><td class="n">8%</td></tr><tr class=""><td class="">Contingency</td><td class="n">$116,000</td><td class="n">7%</td></tr><tr class=""><td class=""><b>Total</b></td><td class="n"><b>$1,750,000</b></td><td class="n"><b>100%</b></td></tr></tbody><caption>Peak cumulative cash need is $1.11M in Year 3; the raise carries 58% headroom over it. Only ONE company-owned unit sits inside this raise — the Year-1 flagship is Track A, funded before it. A franchisor that spends investor capital building its own estate is not asset-light, it is a restaurant group with extra paperwork.</caption></table></div>
+     <div class="grid g3" style="gap:.5rem;margin-top:.9rem">
+       <div class="card stat"><span class="v acc">41%</span><span class="k">IRR</span></div>
+       <div class="card stat"><span class="v acc">6.4×</span><span class="k">MOIC</span></div>
+       <div class="card stat"><span class="v acc">$10.79M</span><span class="k">Exit EV</span></div>
+     </div>
+   </div>
+ </div>
+ <div class="melt"></div>
+ <h3 class="sub-h">The team this needs — and what is still an open seat</h3>
+ <p class="lede">Stated as roles rather than names, because that is what is honest at this stage. A franchise business
+ fails on the operating bench long before it fails on the concept.</p>
+ <div class="grid g4" style="margin-top:1.1rem">
+   <div class="card"><div class="cap">Filled</div><h3 style="font-size:var(--step-1)">Founder</h3>
+     <p>Owns the concept, funds Track A, holds the Iraqi operating relationships. Baghdad-based.</p></div>
+   <div class="card"><div class="cap">Hire — Year 1, critical</div><h3 style="font-size:var(--step-1)">Head of production</h3>
+     <p>A cold-chain and pastry technician, not a barista. Owns the −80 protocol, the clear-ice programme and the
+     sorbet mould cycle, and writes the manual the whole franchise is licensed against.</p></div>
+   <div class="card"><div class="cap">Hire — Year 1</div><h3 style="font-size:var(--step-1)">Brand and content lead</h3>
+     <p>Arabic-first. Runs the verse programme, the seasonal identity and the content engine that is this brand&rsquo;s
+     entire distribution channel.</p></div>
+   <div class="card"><div class="cap">Hire — Year 2, before any franchise sale</div><h3 style="font-size:var(--step-1)">Franchise director</h3>
+     <p>Has taken a MENA brand through Saudi Ministry of Commerce registration before. This is the seat where an
+     inexperienced hire costs a year.</p></div>
+ </div>
+ <div class="callout crit" style="margin-top:1.2rem">
+   <b>Open before any capital moves.</b> Trademark clearance searches at SAIP and the Iraqi Ministry of Industry and
+   Minerals. Supplier quotes for the nine imported equipment categories. Three real landlord conversations on named
+   Baghdad corners. A tax ruling on whether SHABIM is a &ldquo;deluxe&rdquo; venue for Iraq&rsquo;s 10% sales tax.
+   Confirmation of three verse wordings against printed critical editions. The full list, with the order to close
+   them in, is in §23.
+ </div>
+ <div class="callout" style="margin-top:1.4rem">
+   <b>The sequencing is the point.</b> Every franchise business that fails does so by selling territories before the
+   format is proven, then spending the fee income firefighting units it cannot support. SHABIM sells nothing until
+   one store has run a full Baghdad summer <em>and</em> a full Baghdad winter, and the operating manual has been written
+   from what actually happened rather than from what was planned.
+ </div>
+ </div>
+</section><section class="s tint" id="s23">
+ <div class="in">
+  <div class="eyebrow"><span class="n">APP · 23</span><span class="act">ASSUMPTIONS, SOURCES AND WHAT IS STILL UNKNOWN</span></div>
+  <h2 class="title">الافتراضات والمصادر</h2>
+  
+  
+ <p class="sub"><b>H</b> — hard-sourced. <b>E</b> — estimate, with the derivation stated. Every figure in this deck
+ traces to a row below or to the model file behind it.</p>
+ <div class="tw "><table><thead><tr><th class="">Assumption</th><th class="n">Value</th><th class="">Grade</th><th class="">Source or derivation</th></tr></thead><tbody><tr class=""><td class="">Iraq population</td><td class="n">46,118,793</td><td class=""><span class="pill good">H</span></td><td class="">2024 census, Ministry of Planning — first census in 37 years</td></tr><tr class=""><td class="">Baghdad Governorate population</td><td class="n">9,780,429</td><td class=""><span class="pill good">H</span></td><td class="">2024 census; 21.2% of Iraq; ~85% urban</td></tr><tr class=""><td class="">Iraq median age / under-30 share</td><td class="n">20.9 yrs / ~63%</td><td class=""><span class="pill ">H/E</span></td><td class="">UN WPP 2024; census age structure</td></tr><tr class=""><td class="">IQD per USD — parallel market</td><td class="n">1,530</td><td class=""><span class="pill good">H</span></td><td class="">Iraqi News, Baghdad rates, 16 Aug 2026. Official CBI rate 1,310; premium 16–17%</td></tr><tr class=""><td class="">Iraq corporate income tax</td><td class="n">15%</td><td class=""><span class="pill good">H</span></td><td class="">PwC Worldwide Tax Summaries. 35% applies to oil and gas only</td></tr><tr class=""><td class="">Iraq consumption tax</td><td class="n">no VAT; 10% on deluxe venues</td><td class=""><span class="pill good">H</span></td><td class="">Assumed to apply to SHABIM in the base case</td></tr><tr class=""><td class="">Employer social security</td><td class="n">12%</td><td class=""><span class="pill good">H</span></td><td class="">Workers' Retirement and Social Security Law, private sector</td></tr><tr class=""><td class="">Iraq minimum wage</td><td class="n">350,000 IQD/month</td><td class=""><span class="pill good">H</span></td><td class="">Art. 63, Labour Law No. 37 of 2015</td></tr><tr class=""><td class="">Baghdad barista salary</td><td class="n">$450/month</td><td class=""><span class="pill ">H/E</span></td><td class="">Sourced vacancies: 450–600k IQD evening shift, 750k full shift</td></tr><tr class=""><td class="">Baghdad flagship rent</td><td class="n">$2,600/month</td><td class=""><span class="pill ">H/E</span></td><td class="">Comparables: Mansour 350 m² at $10.00/m²; Zayouna 200 m² at $27.50/m²</td></tr><tr class=""><td class="">Key money</td><td class="n">15× monthly rent</td><td class=""><span class="pill ">H/E</span></td><td class="">Observed at 25× in Karrada. Prohibited by Law No. 87 of 1979 — see risk register</td></tr><tr class=""><td class="">Grid supply, Baghdad</td><td class="n">8–12 h/day</td><td class=""><span class="pill good">H</span></td><td class="">2025 peak demand 55 GW vs 27 GW supply</td></tr><tr class=""><td class="">Commercial electricity tariff</td><td class="n">60 IQD/kWh</td><td class=""><span class="pill good">H</span></td><td class="">Federal Iraq</td></tr><tr class=""><td class="">Generator subscription</td><td class="n">12,000 IQD/ampere/month</td><td class=""><span class="pill good">H</span></td><td class="">Baghdad governorate tariff, 24-hour service</td></tr><tr class=""><td class="">Diesel pump price</td><td class="n">$0.190/litre</td><td class=""><span class="pill good">H</span></td><td class="">Iraq, subsidised</td></tr><tr class=""><td class="">Roasted specialty coffee, landed Baghdad</td><td class="n">$14–22/kg</td><td class=""><span class="pill ">H/E</span></td><td class="">≈$0.25–0.40 per 18 g double; $0.40 used</td></tr><tr class=""><td class="">HORECA milk, Baghdad</td><td class="n">1,100–1,300 IQD/litre</td><td class=""><span class="pill good">H</span></td><td class="">Retail 1,588–1,600 IQD/litre</td></tr><tr class=""><td class="">PET cup + lid, delivered Baghdad</td><td class="n">$0.07–0.13</td><td class=""><span class="pill good">H</span></td><td class="">Custom moulding and print adds 30–60%; double wall roughly doubles again</td></tr><tr class=""><td class="">Delivery commission</td><td class="n">22%</td><td class=""><span class="pill ">H/E</span></td><td class="">Talabat 15–30% regionally; Lezzoo estimated 15–25%. Not Iraq-verified</td></tr><tr class=""><td class="">Baghdad climate</td><td class="n">45°C July/Aug average high</td><td class=""><span class="pill good">H</span></td><td class="">Weather Spark; hot season 26 May – 21 Sep; record 51.8°C, 28 Jul 2020</td></tr><tr class=""><td class="">Iraq branded coffee outlets</td><td class="n">85</td><td class=""><span class="pill good">H</span></td><td class="">Project Café Middle East 2025, World Coffee Portal; 13th in MENA</td></tr><tr class=""><td class="">MENA branded coffee outlets</td><td class="n">11,163 → 16,460 by 2029</td><td class=""><span class="pill good">H</span></td><td class="">World Coffee Portal; +11.2% y/y, 8.1% CAGR</td></tr><tr class=""><td class="">Franchise royalty benchmark</td><td class="n">5–10%</td><td class=""><span class="pill good">H</span></td><td class="">Café2go 5%, Gossip 6%, Grano 7%, Mikel KSA 10%</td></tr><tr class=""><td class="">Franchise fee benchmark</td><td class="n">$10.6k – $88k</td><td class=""><span class="pill good">H</span></td><td class="">Grano, Café2go, Gossip; Mikel KSA SAR 90–180k</td></tr><tr class=""><td class="">Transactions per day, mature</td><td class="n">300</td><td class=""><span class="pill ">E</span></td><td class="">Independent research anchor 300/day. Regulars, Melbourne: ~600/day of one drink</td></tr><tr class=""><td class="">Average ticket</td><td class="n">$6.46</td><td class=""><span class="pill ">E</span></td><td class="">10,000 IQD; 1.45 items per transaction</td></tr><tr class=""><td class="">Station efficiency</td><td class="n">72%</td><td class=""><span class="pill ">E</span></td><td class="">Order-taking, restocking, cleaning and hand-off losses against theoretical throughput</td></tr><tr class=""><td class="">Ramp, Year 1</td><td class="n">62% of mature</td><td class=""><span class="pill ">E</span></td><td class="">Two months of pre-opening, a launch spike, then the settle</td></tr><tr class=""><td class="">Waste</td><td class="n">6.5%</td><td class=""><span class="pill ">E</span></td><td class="">Fruit in 45°C ambient, milk, sorbet reject, block breakage</td></tr><tr class=""><td class="">Rent escalation</td><td class="n">5%/yr</td><td class=""><span class="pill ">E</span></td><td class="">Standard in Baghdad; conservative for GCC malls</td></tr><tr class=""><td class="">Franchised-unit closures</td><td class="n">5%/yr from Y3</td><td class=""><span class="pill ">E</span></td><td class="">No network is closure-free; a plan that assumes zero is not a plan</td></tr><tr class=""><td class="">Exit multiple, franchisor</td><td class="n">8× EBITDA</td><td class=""><span class="pill ">E</span></td><td class="">Below quoted franchisor multiples, deliberately</td></tr></tbody></table></div>
+ <div class="melt"></div>
+ <h3 class="sub-h">What is still unknown</h3>
+ <p class="lede">A plan that does not list its own gaps is a pitch, not a plan. These are the open items, in the order
+ they should be closed.</p>
+ <ol class="steps" style="margin-top:1rem"><li>Every equipment line needs a real supplier quote. Clear-ice plant, ULT freezers and the sorbet mould system are quote-only categories and the CAPEX table will move when they come back.</li><li>Baghdad rent and key money are anchored on two sourced listings and one observed key-money ratio. Three real landlord conversations on actual target corners would replace an estimate with a number.</li><li>Talabat's and Lezzoo's Iraq commission rates are regional figures, not Iraq-verified. A merchant conversation settles it.</li><li>Trademark registers have not been searched. SAIP (Saudi) and the Iraqi Ministry of Industry and Minerals need formal clearance searches before any spend on the wordmark — SAIP's public database shows registered rights only, not pending applications.</li><li>Whether Iraq is a Madrid Protocol party determines whether one international filing works or seven national ones are needed. Unverified.</li><li>Three of the six replacement verses (al-Ṣanawbarī, al-Buḥturī, al-Farazdaq) are high-confidence on attribution but need their exact wording confirmed against printed critical editions before they go on a primary SKU.</li><li>Whether <span class='ar'>شبم</span> carries any unintended sense in Baghdadi, Basrawi, Khaliji, Egyptian or Levantine colloquial has not been tested. Research covered Modern Standard Arabic and the medieval lexica only.</li><li>Whether SHABIM falls inside Iraq's 'deluxe restaurant' classification for the 10% sales tax. Assumed yes; needs a ruling from a local tax adviser.</li></ol>
+ <div class="callout" style="margin-top:1.6rem">
+   <b>Principal sources.</b> Iraq Ministry of Planning 2024 Census · IHSES 2023/24 · IMF Article IV 2025 ·
+   World Coffee Portal, Project Café Middle East 2025 · Central Bank of Iraq and Iraqi News FX rates ·
+   Weather Spark and weather-atlas climate normals · DataReportal Digital 2026: Iraq · PwC Worldwide Tax Summaries ·
+   Lisān al-ʿArab (Ibn Manẓūr), al-Qāmūs al-Muḥīṭ (al-Fīrūzābādī), Tāj al-ʿArūs (al-Zabīdī) ·
+   aldiwan.net and Shamela poetry corpora · Saudi Ministry of Commerce Franchise Law 2019 and implementing regulations ·
+   Broadsheet Melbourne (Regulars, −85°C) · Tasting Table and Japankuru (Kobe Nishimura, Cafe 33 Kyoto) ·
+   Newsweek and CNBC (FIX Dessert Chocolatier) · Renub, Deep Market Insights, Ken Research (GCC and Egypt market sizing).
+ </div>
+ </div>
+</section>
+</main>
+<footer class="end">
+  <div class="in">
+    <p class="wordmark ar" style="font-size:var(--step-4);margin-bottom:.5rem">شَبِم</p>
+    <p class="sub" style="max-width:60ch">A brand is a promise about a physical thing. This one promises cold —
+    the specific, classical, water-cold that Arabic has a word for and nobody has used commercially.</p>
+    <div class="melt"></div>
+    <p class="fnote">
+      Prepared 2026-08. All financial figures are model outputs from a fully parameterised model; the
+      assumptions and their sourcing grade are in §23. Currency conversions use the Iraqi dinar's parallel-market rate
+      of 1,530 per USD, not the official CBI rate of 1,310 —
+      the parallel rate is what applies to imported equipment and dollar-denominated costs, and using the official
+      rate would overstate dollar revenue by roughly 17%.
+      <br><br>
+      This document contains forward-looking projections that depend on assumptions which have not all been verified.
+      Equipment costs require supplier quotes. Rent and key money require landlord negotiation. Trademark clearance
+      searches have not been run. It is a plan, presented with its own gaps marked, and it is not an offer of
+      securities.
+    </p>
+  </div>
+</footer>
+<script>
+(function(){
+  var rail=document.querySelector('.rail'), secs=[].slice.call(document.querySelectorAll('section.s')),
+      links=[].slice.call(document.querySelectorAll('.topbar nav a'));
+  function onScroll(){
+    var h=document.documentElement, p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    rail.style.setProperty('--melt',(p*100).toFixed(2)+'%');
+    var best=null;
+    secs.forEach(function(s){ if(s.getBoundingClientRect().top<=140) best=s.id; });
+    links.forEach(function(a){
+      var ids=(a.dataset.range||'').split(',');
+      a.setAttribute('aria-current', ids.indexOf(best)>-1 ? 'true':'false');
+    });
+  }
+  document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  var c=document.getElementById('caustics');
+  if(!c) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ctx=c.getContext('2d'), t=0, raf=null, W=0, H=0;
+  function size(){ var r=c.getBoundingClientRect(), d=Math.min(devicePixelRatio||1,1.6);
+    W=c.width=Math.max(1,r.width*d); H=c.height=Math.max(1,r.height*d); }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var s=Math.min(W,H)/900, n=13;
+    for(var i=0;i<n;i++){
+      var a=i*2.399+t*0.16, r=(0.16+0.62*((i*37)%100)/100)*Math.min(W,H);
+      var x=W*0.5+Math.cos(a)*r*0.72, y=H*0.62+Math.sin(a*1.31)*r*0.42;
+      var rad=(70+((i*53)%120))*s;
+      var g=ctx.createRadialGradient(x,y,0,x,y,rad);
+      g.addColorStop(0,'rgba(120,215,255,0.16)'); g.addColorStop(1,'rgba(120,215,255,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,rad,0,6.2832); ctx.fill();
+    }
+    ctx.strokeStyle='rgba(150,225,255,0.10)'; ctx.lineWidth=1.1*s;
+    for(var j=0;j<7;j++){
+      ctx.beginPath();
+      for(var k=0;k<=44;k++){
+        var px=W*k/44, py=H*(0.30+j*0.075)+Math.sin(k*0.34+t*0.5+j)*16*s+Math.cos(k*0.13-t*0.3)*9*s;
+        k?ctx.lineTo(px,py):ctx.moveTo(px,py);
+      }
+      ctx.stroke();
+    }
+  }
+  function loop(){ t+=0.006; draw(); raf=requestAnimationFrame(loop); }
+  size(); draw();
+  addEventListener('resize',function(){ size(); draw(); },{passive:true});
+  if(!reduce){
+    var io=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting){ if(!raf) loop(); } else { cancelAnimationFrame(raf); raf=null; }
+    },{threshold:0.02});
+    io.observe(c);
+  }
+})();
+</script>
