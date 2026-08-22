@@ -20,8 +20,9 @@ SLOTS = {
     "b95d8990": "cube_dawn",     "265d06aa": "face_detail",
     "799dd8b6": "menu_flank",    "e098dac5": "menu_flank_macro",
     # products
-    "b2491ca7": "p_saqee80",     "eee0f1da": "p_qalab",
-    "fe961503": "p_boba",        "f56a0493": "p_lafaif",
+    "adbfb895": "p_saqee80",     "9513411e": "p_qalab",
+    "fe961503": "p_boba",        "4fb9c19b": "p_lafaif",
+    "f56a0493": "line",
     "010d8564": "p_jana",        "16239204": "p_radhadh",
     "1730bd76": "spread",
     # brand and collateral
