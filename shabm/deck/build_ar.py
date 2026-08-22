@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """شَبِم — يبني العرض من مخرجات النموذج المالي مباشرة."""
 
+import base64
 import json, os
 from art import cube_exterior, cube_interior, ICON
 
@@ -36,6 +37,46 @@ def iqd(u):
 def N(x):
     """Latin numerals, isolated so RTL never reorders them."""
     return f'<span class="n">{x}</span>'
+
+
+# ── photography ────────────────────────────────────────────────────────────
+IMG_DIR = os.path.join(HERE, "img")
+_IMG_CACHE = {}
+
+
+def has_img(key):
+    """A render is available for this slot if a file with that stem exists."""
+    if key in _IMG_CACHE:
+        return _IMG_CACHE[key] is not None
+    for ext in (".webp", ".jpg", ".jpeg", ".png"):
+        p = os.path.join(IMG_DIR, key + ext)
+        if os.path.exists(p):
+            mime = {"webp": "image/webp", "png": "image/png"}.get(ext[1:], "image/jpeg")
+            with open(p, "rb") as fh:
+                _IMG_CACHE[key] = f"data:{mime};base64," + base64.b64encode(fh.read()).decode()
+            return True
+    _IMG_CACHE[key] = None
+    return False
+
+
+def img(key, alt, cap="", cls="", fallback=""):
+    """Embed the render for this slot, or fall back to the drawing.
+
+    Every image is inlined as a data URI: the published page runs under a CSP
+    that blocks every external host, so a linked image would simply not load."""
+    if has_img(key):
+        return (f'<figure class="ph {cls}"><img src="{_IMG_CACHE[key]}" alt="{alt}" loading="lazy">'
+                f'{f"<figcaption>{cap}</figcaption>" if cap else ""}</figure>')
+    if fallback:
+        return (f'<figure class="fg {cls}">{fallback}'
+                f'{f"<figcaption>{cap}</figcaption>" if cap else ""}</figure>')
+    return ""
+
+
+def _phrow(shots, cls, style, grid="phgrid"):
+    """A row of renders, or nothing at all when none have been dropped in yet."""
+    cells = "".join(img(k, c, c, cls=cls) for k, c in shots if has_img(k))
+    return f'<div class="{grid}" style="{style}">{cells}</div>' if cells else ""
 
 
 # ── مخططات: حبر واحد بثلاث شفافيات، مع تسمية مباشرة لكل قيمة ─────────────────
@@ -76,22 +117,60 @@ def col_months(months, vals, temps, w=880, h=380, lab=""):
     return "".join(o)
 
 
-def hbars(rows, w=880, pad=250, fmt=lambda v: f"{v:,.0f}", lab=""):
-    rowh, n = 44, len(rows)
-    h = n * rowh + 22
-    iw = w - pad - 170
+def hbars(rows, w=880, pad=0, fmt=lambda v: f"{v:,.0f}", lab="", unit=""):
+    """Horizontal bars, RTL-safe. text-anchor resolves against the inline base
+    direction, so inside an RTL page 'start' is the RIGHT edge — the earlier
+    build assumed LTR and stacked the label, the value and the bar on top of
+    one another. Here each row gets its own two lines and nothing can collide:
+    the name and the number sit on a caption line above a full-width track."""
+    rowh, n = 62, len(rows)
+    h = n * rowh + 8
     mx = max(v for _, v, _ in rows) or 1
     o = [sv(w, h, lab)]
     for i, (t, v, note) in enumerate(rows):
-        y = 10 + i * rowh
-        bl = max(3, iw * v / mx)
-        cls = "s1" if i == n - 1 else "s2"
-        o.append(f'<text x="{w-pad+14}" y="{y+20}" class="rl" text-anchor="start" '
-                 f'transform="translate(0,0)">{t}</text>')
-        o.append(f'<rect x="{w-pad-bl:.1f}" y="{y+5}" width="{bl:.1f}" height="22" rx="3" class="{cls}">'
-                 f'<title>{t}: {fmt(v)}</title></rect>')
-        o.append(f'<text x="{w-pad-bl-12:.1f}" y="{y+21}" class="vl" text-anchor="end">{fmt(v)}'
-                 f'{f"  ·  {note}" if note else ""}</text>')
+        y = i * rowh
+        bl = max(2.5, w * v / mx)
+        cls = "s1" if i == n - 1 else ("s2" if i == 0 else "s3")
+        o.append(f'<text x="{w}" y="{y+15}" class="rl" text-anchor="start">{t}</text>')
+        o.append(f'<text x="0" y="{y+15}" class="vl" text-anchor="start" '
+                 f'style="direction:ltr;unicode-bidi:isolate">{fmt(v)}{unit}</text>')
+        o.append(f'<rect x="0" y="{y+24}" width="{w}" height="14" rx="3" class="trk"/>')
+        o.append(f'<rect x="{w-bl:.1f}" y="{y+24}" width="{bl:.1f}" height="14" rx="3" '
+                 f'class="{cls}"><title>{t}: {fmt(v)}{unit}</title></rect>')
+        if note:
+            o.append(f'<text x="{w}" y="{y+53}" class="nl" text-anchor="start">{note}</text>')
+    o.append("</svg>")
+    return "".join(o)
+
+
+def smalls(series, w=880, cw=106, ch=64, lab=""):
+    """One mini column chart per SKU, all on a SHARED y-scale so the panels are
+    comparable at a glance — the whole point of small multiples. Monochrome:
+    the peak month is inked, the rest sit back."""
+    n = len(series)
+    cols = max(1, min(n, int(w // (cw + 14))))
+    rows = (n + cols - 1) // cols
+    rowh = ch + 52
+    h = rows * rowh
+    mx = max(max(v for v in vals) for _, vals, _ in series) or 1
+    o = [sv(w, h, lab)]
+    for i, (name, vals, tot) in enumerate(series):
+        r, c = divmod(i, cols)
+        # RTL: the first panel sits at the RIGHT edge
+        x0 = w - (c + 1) * (cw + 14) + 14
+        y0 = r * rowh
+        o.append(f'<text x="{x0+cw}" y="{y0+12}" class="rl" text-anchor="start">{name}</text>')
+        o.append(f'<text x="{x0+cw}" y="{y0+28}" class="vl" text-anchor="start" '
+                 f'style="direction:ltr;unicode-bidi:isolate">{tot}</text>')
+        bw = cw / 12.0
+        pk = vals.index(max(vals))
+        for m, v in enumerate(vals):
+            bh = max(1.0, ch * v / mx)
+            bx = x0 + cw - (m + 1) * bw
+            o.append(f'<rect x="{bx+0.7:.1f}" y="{y0+36+ch-bh:.1f}" width="{bw-1.4:.1f}" '
+                     f'height="{bh:.1f}" class="{"s1" if m == pk else "s3"}">'
+                     f'<title>{name} · {MONS[m]}: {v:,.0f}</title></rect>')
+        o.append(f'<line x1="{x0}" y1="{y0+36+ch}" x2="{x0+cw}" y2="{y0+36+ch}" class="ax"/>')
     o.append("</svg>")
     return "".join(o)
 
@@ -449,8 +528,10 @@ S.append(sec(1, "٠١", "الاسم", f'''
  <div class="grid" style="gap:.8rem">
   {fig("شَبِم", "الشعار العربي — مشكولٌ دائماً بكسرة الباء",
        "الحركة ليست زخرفة. الشَّبَم بالفتحة هو المصطلح الطبّي الحديث لتضيّق القُلفة؛ شَبِم بالكسرة هو الصفة الشعرية. حرفٌ واحد يفصل بينهما.")}
-  {fig("SHABIM", "الشعار اللاتيني", "نطقٌ واضح من أول نظرة. وSHABM بلا حركة لا يستطيع أحدٌ قراءتها، وSHABAM تصطدم بـShibam Coffee التي تملك علامةً مسجَّلة في الفئات نفسها.")}
-  {fig("SHBM", "الحرفُ المونوغرام فقط", "محفوراً على الأغطية والزيّ والواجهة. لا يُستعمل اسماً منطوقاً أبداً.")}
+  {fig("SHBM", "الشكلُ اللاتيني — أربعةُ حروفٍ صامتة",
+       "قرارٌ مقصود: العلامةُ عربيّةٌ أولاً وآخِراً، واللاتينيّ مونوغرامٌ بصريّ لا اسمٌ منطوق. يُحفَر على الأغطية والزيّ والواجهة، ويُقرأ «شَبِم» دائماً.")}
+  {fig("عربيٌّ بالكامل", "لغةُ العلامة",
+       "لا نسخةَ إنجليزية موازية: القائمة، والعبوة، واللافتة، والتطبيق — كلُّها بالعربية. في سوقٍ يترجم كلُّ منافسيه أسماءهم إلى اللاتينية، العربيّةُ وحدها هي التمايز.")}
  </div>
 </div>''', cls="q"))
 
@@ -550,13 +631,19 @@ def product_block(p):
 </div>'''
 
 
+_prod_row = _phrow([("p_" + p["k"], p["ar"]) for p in PRODUCTS], "sq",
+                   "margin-bottom:2.6rem", "phgrid g3")
+
 S.append(sec(4, "٠٤", "المنتجات", f'''
 <div class="note" style="margin-bottom:2.6rem">
  <b>كلُّ تاريخٍ في هذا القسم مُتحقَّقٌ منه، بما فيه ما لا يخدمنا.</b> ستّةُ ملفّاتٍ بحثيّةٍ مستقلّة تتبّعت لكلِّ صنف:
  من اخترعه ومتى، وأيَّ حسابٍ نشر أيَّ مقطعٍ في أيِّ يوم، وكم بلغ، وماذا حدث للفئة <b>بعد</b> الذروة.
  والنتيجةُ ليست ستّةَ أصنافٍ صاعدة: <b>جَنى</b> يعيش ذروتَه الآن، و<b>صَقيع ٨٠−</b> عمرُه أربعةَ عشر شهراً،
  و<b>لَفائِف</b> في انكماشٍ موثَّق منذ ٢٠٢٢ — وهذا مُدرَجٌ في النموذج لا مُخفىً عنه.
-</div>''' + "".join(product_block(p) for p in PRODUCTS) + f'''
+</div>''' + _prod_row
+ + "".join(product_block(p) for p in PRODUCTS)
+ + (img("spread", "القائمةُ كاملة", "القائمةُ كاملةً في طلبٍ واحد.") if has_img("spread") else "")
+ + f'''
 <div class="note hard" style="margin-top:2.4rem">
  <b>القائمة مبنيّةٌ كأثقالٍ على طرفَين، عن قصد.</b> صنفان بطيئان غاليان لا يُنسَيان
  (<b>صَقيع ٨٠−</b> و<b>القالَب</b>) يصنعان اللقطةَ والطابور. وثلاثة أصنافٍ سريعة رخيصة عالية التردُّد
@@ -571,9 +658,16 @@ S.append(sec(4, "٠٤", "المنتجات", f'''
 </div>'''))
 
 # ── ٥ · المكعّب من الخارج ──────────────────────────────────────────────────
-S.append(sec(5, "٠٥", "المُكعَّب من الخارج", f'''
+_EXT_SHOTS = [("cube_day", "نهاراً — الساعةُ الثانية عشرة، خمسٌ وأربعون درجة"),
+              ("cube_night", "ليلاً — الكتلةُ مضاءةٌ من داخلها"),
+              ("cube_dawn", "الفجر — ماءُ الليلة على الإسفلت"),
+              ("cube_rear", "من الخلف — البارُ يلفّ الجناحَين والظهر")]
+_ext = "".join(img(k, c, c, cls="wide") for k, c in _EXT_SHOTS if has_img(k))
+
+S.append(sec(5, "٠٥", "المُكعَّب من الخارج", (
+ f'''<div class="phgrid" style="margin-bottom:2.4rem">{_ext}</div>''' if _ext else "") + f'''
 <div class="grid gA" style="align-items:center">
- <div>{cube_exterior()}</div>
+ <div>{cube_exterior()}{img("face_detail","الفتحاتُ الثلاث","الفتحاتُ الثلاث، عن قرب: شاشةٌ للطلب، وشبّاكٌ للاستلام، وفتحةٌ لإرجاع الأكواب.",cls="sq") if has_img("face_detail") else ""}</div>
  <div>
   <p class="lede">ليس مكعّباً هندسيّاً. كتلةُ ثلجٍ <b>مائلة</b>، حوافُّها مأكولةٌ بالذوبان، أضلاعُها غير مستقيمة،
   وقاعدتُها أضيق من قمّتها — كما تفعل كتلةُ ثلجٍ حقيقية تركتها تحت الشمس.</p>
@@ -592,13 +686,32 @@ S.append(sec(5, "٠٥", "المُكعَّب من الخارج", f'''
    والتجويفُ بينهما مُهوّى، فيُسقِط معامل الكسب الشمسي من ٠.٣٥ إلى ٠.٢٧ ويطرد ٣ كيلوواط حرارية.
    أمّا الكتلُ الأكريليكية المصمتة فليست خياراً: المتر المربّع بسماكة ١٠٠ ملم يكلّف حتى ٢,٩٧٥ دولاراً.
   </div>
+  <div class="note hard" style="margin-top:1.2rem">
+   <b>كتلةٌ مُصمَتة، لا واجهةُ زجاج.</b> لا يستطيع أحدٌ أن يرى الداخل من أيّ زاوية: المادّةُ مُعتِمةٌ تنشر الضوء
+   ولا تنقل الصورة. وفي المبنى كلِّه <b>ثلاثُ فتحاتٍ فقط</b> — شاشةُ الطلب، وشبّاكُ الاستلام، وفتحةُ إرجاع الأكواب —
+   ولكلٍّ منها ظهرٌ مغلقٌ من المادّة نفسها، فهي صناديقُ تمريرٍ لا نوافذ. الغموضُ هنا ليس أسلوباً بصرياً فحسب:
+   هو أيضاً ما يجعل حفظَ البرودة ممكناً عند خمسٍ وأربعين درجة.
+  </div>
  </div>
 </div>''', cls="d"))
+
+_INT_SHOTS = [("interior", "الداخل — بارٌ للإنتاج، لا صالةَ جلوس"),
+              ("interior_menu", "القائمةُ محفورةٌ في الجدار، والشاشاتُ من فتحاتٍ في المادّة")]
+_SVC_SHOTS = [("order_screen", "الطلبُ على شاشة — بلا كاشير"),
+              ("hatch_collect", "الاستلامُ من شبّاكٍ ذاتيّ"),
+              ("hatch_return", "إرجاعُ الكوب — بلا تواصلٍ مع أحد"),
+              ("barista", "معطفٌ شتويّ، في آب"),
+              ("bar_seats", "بارٌ من المادّة نفسها")]
+
+_int_row = _phrow(_INT_SHOTS, "wide", "margin:2rem 0 .5rem")
+_svc_row = _phrow(_SVC_SHOTS, "sq", "margin-top:2rem", "phgrid g3")
 
 # ── ٦ · المكعّب من الداخل ──────────────────────────────────────────────────
 S.append(sec(6, "٠٦", "المُكعَّب من الداخل", f'''
 <p class="sub">٢٥ متراً مربّعاً. كشكٌ حقيقي بمقاسٍ حقيقي — لا مطعم.</p>
+{_int_row}
 <div style="margin-top:2rem">{cube_interior()}</div>
+{_svc_row}
 <div class="grid g3" style="margin-top:2.2rem">
  <div class="g"><div class="cap">بارد فعلاً، لا مجازاً</div>
   <p>جوفُ الكشك مُبرَّدٌ كغرفةِ تبريد. العاملون يرتدون معاطفَ شتويّة في آب. هذا ليس تفصيلاً جمالياً بل هو المنتج:
@@ -619,38 +732,37 @@ S.append(sec(6, "٠٦", "المُكعَّب من الداخل", f'''
 </div>'''))
 
 # ── ٧ · العلامة ────────────────────────────────────────────────────────────
-S.append(sec(7, "٠٧", "العلامة والعبوة", f'''
+_BRAND_SHOTS = [("brand_sheet","الشعارُ بأربع معالجات — غائرٌ ومحفورٌ ومطبوعٌ ومقطوع"),
+                ("packaging","عائلةُ العبوات — كلُّها من مادّةِ الثلج نفسها"),
+                ("uniform","زيُّ العاملين — معطفٌ شتويّ في عزّ الصيف"),
+                ("card","بطاقةُ العمل — لوحٌ مثلَّجٌ شفّاف، الاسمُ غائرٌ بلا حبر"),
+                ("menu_card","القائمةُ محفورةٌ ومضاءةٌ من الحافة")]
+_brand_row = _phrow(_BRAND_SHOTS, "sq", "margin-bottom:2.4rem", "phgrid g3")
+
+S.append(sec(7, "٠٧", "العلامة والعبوة", _brand_row + f'''
 <div class="grid gB" style="align-items:start">
  <div class="grid" style="gap:1rem">
   {"".join(f"""<div class="g flat"><div class="verse">{v['a']}<span class="sep">❊</span>{v['b']}
    <span class="by">{v['by']}</span><span class="gl">{v['gl']}</span></div></div>""" for v in VERSES)}
  </div>
  <div>
-  <p class="lede">العبوةُ تحمل شِعراً عربياً كلاسيكياً فيه كلمة <b>شبم</b>. وقبل أن يُطبع بيتٌ واحد،
-  تحقّقنا من الأبيات الثمانية التي اختِيرت أولاً مقابل مدوّنة الشعر العربي.</p>
-  <div class="g" style="margin-top:1.4rem">
-   <div class="cap">نتيجة التحقّق</div>
-   <div class="grid g2" style="gap:.8rem">
-    <div><span class="vnum">١ من ٨</span><span class="vlab">صحيحٌ ونسبتُه صحيحة — المتنبّي</span></div>
-    <div><span class="vnum">٧ من ٨</span><span class="vlab">لا وجود لها في أيّ مصدر</span></div>
-   </div>
-   <p style="margin-top:1rem">البيتُ المنسوب إلى <b>عنترة</b> يستحيل أن يكون له: معلّقتُه ميميّةٌ والبيت رائيُّ
-   القافية بالباء. والبيتُ المنسوب إلى <b>العباس بن الأحنف</b> يستعمل جمعاً «شَبائِم» لا يذكره معجمٌ واحد.
-   هذا نمطُ قائمةٍ وَلّدها روبوتُ محادثة: بيتٌ حقيقيٌّ واحد، وسبعُ محاكاةٍ موزونةٍ مُعلَّقةٍ بأسماءٍ مشهورة.</p>
-   <p style="margin-top:.8rem"><b>ولهذا يُذكر هنا:</b> طباعةُ شعرٍ مُختلَق على عبوةٍ في سوقٍ يستطيع كلُّ متعلّمٍ فيه
-   التحقّق خلال عشر ثوانٍ خطأٌ يُنهي علامة، وكلفةُ تفاديه صفر.</p>
-  </div>
+  <p class="lede">العلامةُ عربيّةٌ بالكامل: الاسم، والقائمة، والعبوة، واللافتة، والتطبيق.
+  و<b>SHBM</b> مونوغرامٌ محفور لا اسمٌ منطوق. في سوقٍ يُترجِم فيه كلُّ منافسٍ اسمَه إلى اللاتينية،
+  التمسّكُ بالعربية وحدها هو أرخصُ تمايزٍ وأصعبُه تقليداً.</p>
+  <p class="lede">والعبوةُ تحمل شِعراً عربياً كلاسيكياً فيه كلمة <b>شبم</b> — لا كزينة، بل لأنّ الكلمة نفسها
+  جاءتنا من هذا الشعر. البيتُ الأوّل من <b>بانَتْ سُعاد</b>، وهو البيتُ الذي يستشهد به لسانُ العرب في مادّة «شبم»
+  نفسها. أي أنّ العبوة تشرح الاسمَ بالمصدر الذي أخذنا منه الاسم.</p>
   <ul class="tk" style="margin-top:1.4rem">
    <li>سطرُ لسان العرب على <b>كلّ</b> عبوة: «الشَّبَمُ: بَرْدُ الماءِ».</li>
    <li>كلُّ بيتٍ مُوثَّق: اسمُ الشاعر واسمُ القصيدة بخطٍّ صغير. التوثيقُ هو ما يفصل العلامةَ التي <b>تستعمل</b>
    التراث عن التي <b>تتزيّن</b> به.</li>
    <li>كلُّ نصٍّ مشكولٌ بالكامل. الجمهورُ الذي يُغرى بالشعر هو نفسه الذي يلاحظ الشكلَ الناقص.</li>
    <li>حبرٌ حسّاس للبرودة على الكُمّ: البيتُ لا يظهر إلا حين يكون المشروب بارداً فعلاً. العبوةُ تُثبِت ادّعاء المنتج.</li>
+   <li>سلسلةُ أبياتٍ متبدّلة عبر المواسم: العبوةُ تصير شيئاً يُجمَع، لا شيئاً يُرمى.</li>
   </ul>
   <div class="note" style="margin-top:1.4rem">
-   <b>نصّان لا يُطبعان أبداً.</b> «خَيْرُ الماءِ الشَّبِمُ» يُقرأ كحديثٍ نبوي وقد حكم عليه الألباني بأنّه
-   <b>موضوع</b>. ونصٌّ قرآني — سورة ص، الآية ٤٢ — أجملُ عبارةٍ عن الماء البارد في اللغة كلّها، ولا يجوز أن تُوضع
-   على كوبٍ يُرمى في سلّة. ذُكِرا هنا قصداً ولم يُنقَلا.
+   <b>قاعدةٌ واحدة في اختيار النصّ.</b> لا يُطبَع بيتٌ إلا بعد مطابقته على طبعةٍ محقَّقة، ولا يُطبَع نصٌّ
+   دينيّ — لا قرآنٌ ولا حديث — على شيءٍ يُرمى في سلّة. القائمةُ النهائية والمراجع في ملفّ اللغة.
   </div>
  </div>
 </div>''', cls="q"))
@@ -659,14 +771,16 @@ S.append(sec(7, "٠٧", "العلامة والعبوة", f'''
 S.append(sec(8, "٠٨", "السوق", f'''
 <p class="sub">المساحةُ الفارغة ليست تقديراً. هي عَدّ.</p>
 <figure style="margin-top:2rem">
- {hbars([("السعودية", 6600, "٥,١٣٠ فرعاً"),
-         ("الإمارات", 5000, "أكثر من ٩,٠٠٠ مقهى"),
-         ("متوسط المنطقة", 26000, "١١,١٦٣ فرعاً مُعلَّماً"),
-         ("العراق", 542000, "٨٥ فرعاً")],
-        lab="عدد السكان لكل مقهى مُعلَّم: السعودية ٦٦٠٠، الإمارات ٥٠٠٠، متوسط المنطقة ٢٦٠٠٠، العراق ٥٤٢٠٠٠")}
- <figcaption>عدد السكان لكل فرعِ مقهىً مُعلَّم — كلّما قلّ الرقم كان السوق مخدوماً أكثر.
- المصدر: <span class="en">Project Café Middle East 2025, World Coffee Portal</span>. نسبةُ العراق أقلُّ خدمةً
- بنحو <b>٨٠ ضعفاً</b> من السعودية.</figcaption>
+ {hbars([("السعودية", 152, "٥,١٣٠ فرعاً مُعلَّماً · ٣٣.٣ مليون نسمة"),
+         ("متوسّط المنطقة", 38, "١١,١٦٣ فرعاً مُعلَّماً عبر أسواق التقرير"),
+         ("العراق", 1.8, "٨٥ فرعاً مُعلَّماً · ٤٦.١ مليون نسمة")],
+        fmt=lambda v: f"{v:,.1f}" if v < 10 else f"{v:,.0f}",
+        unit="",
+        lab="فروع المقاهي المُعلَّمة لكل مليون نسمة: السعودية ١٥٢، متوسط المنطقة ٣٨، العراق ١.٨")}
+ <figcaption><b>فرعُ مقهىً مُعلَّم لكلّ مليون نسمة.</b> الأساسُ واحدٌ في الأعمدة الثلاثة —
+ الفروعُ المُعلَّمة وحدها، من <span class="en">Project Café Middle East 2025</span> — فالعراق أقلُّ خدمةً
+ من السعودية بنحو <b>٨٥ ضعفاً</b>. (الإماراتُ خارج العمود عمداً: رقمُها المتداول «أكثر من ٩,٠٠٠ مقهى»
+ يَعُدّ كلَّ المقاهي لا المُعلَّمة منها، ووضعُه إلى جانب رقمٍ مُعلَّم يُفسِد المقارنة.)</figcaption>
 </figure>
 <div class="grid g2" style="margin-top:2.2rem">
  <div class="g"><div class="cap">والسوق يُثبَت الآن — بأموال غيرنا</div>
@@ -695,6 +809,7 @@ S.append(sec(8, "٠٨", "السوق", f'''
 
 # ── ٩ · الأرقام ────────────────────────────────────────────────────────────
 _cap = FLAG["capacity"]; _b = FLAG["basket"]; _m2 = FLAG["monthly_y2"]
+_cx = FLAG["capex"]["items"]
 S.append(sec(9, "٠٩", "الأرقام", f'''
 <p class="sub">كلُّ سعرٍ وكلُّ كلفة مبنيّان على مُدخَلٍ بغداديٍّ مصدره معروف. الاشتقاق الكامل في الملحق.</p>
 {tbl(["الصنف", ("السعر",), ("د.ع",), ("الكلفة",), ("هامش",), ("زمن",), ("حصّة الإيراد",)],
@@ -773,7 +888,207 @@ S.append(sec(9, "٠٩", "الأرقام", f'''
 
 # ── ١٠ · الامتياز ──────────────────────────────────────────────────────────
 _F = A["franchise"]
-S.append(sec(10, "١٠", "الامتياز", f'''
+# ── ١٠ · كم نبيع من كلّ صنف ────────────────────────────────────────────────
+_ipt   = _b["items_per_ticket"]
+_share = _b["unit_share"]
+_SKU   = [("صَقيع ٨٠−","saqee80"),("القالَب","qalab"),("لُؤلُؤ","boba"),("لَفائِف","lafaif"),
+          ("جَنى — قطعة","jana_piece"),("جَنى — علبة","jana_box"),("بَرَد","radhadh")]
+_units = {k: [m["transactions"] * _ipt * _share[k] for m in _m2] for _, k in _SKU}
+_ytot  = {k: sum(v) for k, v in _units.items()}
+_gt    = sum(_ytot.values())
+_peak  = {k: max(v) for k, v in _units.items()}
+
+S.append(sec(10, "١٠", "كم نبيع من كلّ صنف", f'''
+<p class="sub">السنةُ الثانية، شهراً بشهر، صنفاً بصنف. هذه هي خطّةُ الإنتاج لا التوقّع فقط.</p>
+
+<figure style="margin-top:2rem">
+ {smalls([(ar, [round(x) for x in _units[k]], f"{_ytot[k]:,.0f}") for ar, k in _SKU],
+         lab="المبيعات الشهرية بالوحدات لكل صنف في السنة الثانية")}
+ <figcaption>وحداتٌ مُباعة شهرياً، والرقمُ تحت كلّ اسمٍ هو إجمالي السنة. المقياسُ مشترَكٌ بين اللوحات السبع
+ فهي قابلةٌ للمقارنة مباشرةً، والعمودُ الداكن في كلّ لوحةٍ هو شهرُ الذروة — <b>تموز</b> في جميعها بلا استثناء.
+ الإجمالي <b class="n">{_gt:,.0f}</b> وحدة في السنة، من <b class="n">{sum(m["transactions"] for m in _m2):,.0f}</b> عمليةِ بيع
+ بمعدّل <b class="n">{_ipt}</b> صنفٍ لكلّ عملية.</figcaption>
+</figure>
+
+<div style="margin-top:2.4rem">
+ {tbl(["الصنف"] + [(x,) for x in MONS] + [("السنة",)],
+      [[ar] + [(f"{_units[k][i]:,.0f}",) for i in range(12)] + [(f"<b>{_ytot[k]:,.0f}</b>",)]
+       for ar, k in _SKU]
+      + [(["<b>الإجمالي</b>"]
+          + [(f'<b>{sum(_units[k][i] for _, k in _SKU):,.0f}</b>',) for i in range(12)]
+          + [(f"<b>{_gt:,.0f}</b>",)], "tot")],
+      cap="وحداتٌ مُباعة — السنة الثانية عند ٣٠٠ عمليةٍ يومياً كمتوسّطٍ سنوي")}
+</div>
+
+<div class="grid g3" style="margin-top:2rem">
+ <div class="g"><div class="cap">ما يعنيه هذا للإنتاج</div>
+  <ul class="tk">
+   <li><b>القالَب</b> يبلغ <b class="n">{_peak["qalab"]/30.4:.0f}</b> كأساً في اليوم في تموز.
+   ومصنعُ الثلج الواحد يعطي ٣٠ إلى ٤٢. أي أنّه يعمل عند طاقته الكاملة في الذروة بلا احتياط —
+   ولهذا الوحدةُ الثانية مُدرَجةٌ في السنة الثانية لا الأولى.</li>
+   <li><b>صَقيع ٨٠−</b> يبلغ <b class="n">{_peak["saqee80"]/30.4:.0f}</b> كأساً يومياً، وكلُّ كأسٍ يحتاج
+   ١٢ ساعةَ مكوثٍ في المُجمِّد. أي أنّ سعةَ الغد تُحدَّد الليلة، والمُجمِّدتان ليستا ترفاً.</li>
+   <li><b>لَفائِف</b> يبلغ <b class="n">{_peak["lafaif"]/30.4:.0f}</b> حصّةً يومياً على صحنَين
+   بطاقة ١٥.٧ حصّة/ساعة لكلٍّ منهما — أي <b class="n">{_peak["lafaif"]/30.4/(2*15.7):.1f}</b> ساعةَ صحنٍ فعليّة.</li>
+  </ul>
+ </div>
+ <div class="g"><div class="cap">ولماذا لا يُقرَأ الجدولُ كإيراد</div>
+  <p><b>جَنى — قطعة</b> هو الأكثرُ عدداً بعد بَرَد، لكنّه ليس الأكثرَ إيراداً: القطعةُ الواحدة
+  {usd(MENU["jana_piece"]["price_usd_baghdad"],2)} بينما <b>القالَب</b> {usd(MENU["qalab"]["price_usd_baghdad"],2)}.
+  عددُ الوحدات هو خطّةُ المطبخ، وحصّةُ الإيراد هي خطّةُ الأعمال، ولا يجوز الخلطُ بينهما.</p>
+  <p style="margin-top:.8rem">ولهذا كلُّ الأرقام في هذا القسم <b>وحدات</b>، وكلُّ الأرقام في القسم
+  <span class="n">09</span> <b>دنانير</b>.</p>
+ </div>
+ <div class="g"><div class="cap">أرقامٌ تُشترى بها المواد</div>
+  {tbl(["المُدخَل", ("الكمّيةُ السنوية",)], [
+    ["بُنٌّ محمَّص", (f'{_ytot["saqee80"]*0.018:,.0f} كغم',)],
+    ["قوالبُ ثلجٍ شفّاف", (f'{_ytot["qalab"]/100:,.0f} قالباً',)],
+    ["قطعُ سوربيه مصبوبة", (f'{(_ytot["jana_piece"]+_ytot["jana_box"]*9):,.0f} قطعة',)],
+    ["تابيوكا جافّة", (f'{_ytot["boba"]*0.06:,.0f} كغم',)],
+    ["أكوابٌ وأغطيةٌ وملاعق", (f'{_gt:,.0f} طقم',)],
+  ])}
+  <p style="margin-top:1rem;font-size:var(--s--2);color:var(--ink-4);line-height:1.9">
+  الاشتقاقات: ١٨ غم بُنٍّ للجرعة المزدوجة · ٩٠–١١٠ كأساً من القالب الواحد ·
+  العلبةُ تسعُ تسعَ قطع · ٦٠ غم تابيوكا للكأس. هذه هي قائمةُ الشراء الأولى،
+  وهي أيضاً ما يُتفاوَض عليه مع المورّدين قبل الافتتاح لا بعده.</p>
+ </div>
+</div>''', cls="d"))
+
+# ── ١١ · الكلفة سطراً سطراً ────────────────────────────────────────────────
+_EQ  = A["formats"]["cube_flagship"]["equipment"]
+_SHORT = {"brand":"الهويّة والتصميم","ult":"مُجمِّدتا ٨٦−","skin_out":"القشرةُ الخارجية",
+          "frame":"الهيكلُ والأساس","fitout_in":"التجهيزُ الداخلي","chiller":"تبريدُ الغرفة",
+          "juice":"محطّةُ العصير","batch":"مُجمِّدةُ الدفعات","espresso":"الإسبريسو",
+          "genset":"المولّدة","bar":"بارُ الثلج","light":"الإضاءةُ والحفر","kiosks":"شاشاتُ الطلب"}
+_CAT = [("shell","الغلافُ والإنشاء"),("power","التبريدُ والطاقة"),
+        ("prod","معدّاتُ الإنتاج"),("front","البارُ والإضاءة"),("sys","الأنظمةُ والهويّة")]
+def _eqrows():
+    out = []
+    for cat, catlab in _CAT:
+        lines = [e for e in _EQ if e["cat"] == cat]
+        out.append(([f'<b>{catlab}</b>', ("",), ("",),
+                     (f'<b>{usd(sum(l["total_usd"] for l in lines))}</b>',)], "sub"))
+        for e in lines:
+            q = f'{e["qty"]:,.0f}' if e["qty"] != 1 else "١"
+            out.append([f'<span style="padding-inline-start:1rem">{e["ar"]}</span>',
+                        (q,), (usd(e["unit_usd"]),), (usd(e["total_usd"]),)])
+    out.append((["<b>مجموعُ الجدول</b>", ("",), ("",),
+                 (f'<b>{usd(sum(e["total_usd"] for e in _EQ))}</b>',)], "tot"))
+    return out
+
+S.append(sec(11, "١١", "الكلفة سطراً سطراً", f'''
+<p class="sub">كلُّ معدّةٍ وكلُّ متر. لا سطرَ واحدٌ اسمُه «متنوّعات».</p>
+
+<div class="note hard" style="margin-top:1.6rem">
+ <b>أُعيد بناءُ هذا الرقم من الصفر، وانخفض ٢٩٪.</b> النسخةُ الأولى قالت <span class="n">$538,944</span>،
+ وهو رقمٌ لا يُصدَّق لكشكٍ مساحتُه ٢٥ متراً — نحو <span class="n">$21,500</span> للمتر المربّع.
+ وكانت تحمل ثلاثةَ أخطاءٍ حقيقية:
+ <b>أوّلاً</b> عُدّةُ الامتياز — وثيقةُ الإفصاح ودليلُ التشغيل ومنهجُ التدريب، بـ<span class="n">$45,000</span> —
+ كانت مُحمَّلةً على الفرع، وهي كلفةُ الشركة المانحة تُكتَب مرّةً وتستعملها كلُّ الفروع بعده؛ نُقِلت إلى مكانها.
+ <b>ثانياً</b> مصنعُ ثلجٍ بثلاث وحداتٍ بـ<span class="n">$34,000</span> حيث الطلبُ الناضج ٢٤ كأساً في اليوم
+ ووحدةٌ واحدة تعطي ٣٠ إلى ٤٢. <b>ثالثاً</b> تقديرٌ إجماليٌّ للغلاف بدل حسابِ مساحةٍ فعليّة.
+ الرقمُ اليوم <b class="n">{usd(FLAG["capex"]["total"])}</b>، والاستردادُ نزل من ٤٢.٥ شهراً إلى
+ <b class="n">{FLAG["payback_months"]:.1f}</b> — أي <b>داخل</b> نطاق الأربعة والعشرين إلى ستّة وثلاثين شهراً
+ الذي يكتتب عليه المستثمر الخليجي، بعد أن كان خارجه.
+</div>
+
+{_phrow([("line","خطُّ الإنتاج — أربعةُ أمتارٍ من الفولاذ، وكلُّ ما في الجدول واقفٌ عليها"),
+         ("ice_room","مصنعُ الثلج الشفّاف — التجميدُ الاتّجاهي ثم المنشار")],
+        "wide", "margin-top:2rem")}
+<div style="margin-top:2rem">
+ {tbl(["البند", ("العدد",), ("سعرُ الوحدة",), ("الإجمالي",)], _eqrows(),
+      cap="جدولُ المعدّات والإنشاء — بغداد، أسعارٌ واصلةٌ ومركَّبة")}
+</div>
+
+<div class="grid g2" style="margin-top:2rem;align-items:start">
+ <div class="g"><div class="cap">وما يُضاف فوق الجدول</div>
+  {tbl(["البند", ("المبلغ",)], [
+    ["احتياطيُّ قطع الغيار والخدمة — ١٠٪ من معدّات الإنتاج", (usd(_cx["spares_service_reserve"]),)],
+    ["الخُلُوّ — ١٥ ضعفَ الإيجار", (usd(_cx["key_money"]),)],
+    ["ما قبل الافتتاح — تدريبٌ وتجاربُ إنتاجٍ وإجازات", (usd(_cx["pre_opening"]),)],
+    ["رأسُ المال العامل", (usd(_cx["working_capital"]),)],
+    ["الطوارئ ١٢٪", (usd(_cx["contingency"]),)],
+    (["<b>الإجمالي الكلّي</b>", (f'<b>{usd(FLAG["capex"]["total"])}</b>',)], "tot"),
+  ])}
+  <p style="margin-top:1rem;font-size:var(--s--2);color:var(--ink-4);line-height:1.9">
+  <b>الخُلُوّ محظورٌ قانوناً</b> بقانون إيجار العقار ٨٧ لسنة ١٩٧٩، ومع ذلك هو عُرفٌ شاملٌ في بغداد.
+  رُصِد عند ٢٥ ضعفَ الإيجار في الكرّادة؛ نحن نُدرِج ١٥ ضعفاً ونُبنِيه في العقد لا خارجه.</p>
+ </div>
+ <div class="g"><div class="cap">الخمسةُ الكبار — أين يذهب النصف</div>
+  {hbars([(_SHORT.get(e["key"], e["ar"].split("—")[0].strip()), e["total_usd"], "")
+          for e in sorted(_EQ, key=lambda x: -x["total_usd"])[:5]][::-1],
+         w=400, fmt=lambda v: f"${v:,.0f}",
+         lab="أكبر خمسة بنود في جدول الكلفة")}
+  <p style="margin-top:1rem">خمسةُ بنودٍ من ثمانيةٍ وعشرين تحمل
+  <b class="n">{sum(e["total_usd"] for e in sorted(_EQ,key=lambda x:-x["total_usd"])[:5])/sum(e["total_usd"] for e in _EQ):.0%}</b>
+  من الجدول. وأيُّ تفاوضٍ جادّ يبدأ منها، لا من الأدوات الصغيرة.</p>
+  <p style="margin-top:.8rem"><b>ودرجةُ التوثيق:</b> البنودُ المستوردة أسعارُها من نطاقاتٍ مرصودة،
+  أمّا الإنشاءُ والتركيب فتقديراتٌ تحتاج عرضَين مقاولَين قبل الالتزام. هذا آخرُ رقمٍ يجب أن يتحرّك
+  قبل التوقيع، وقد يتحرّك في الاتجاهين.</p>
+ </div>
+</div>''', cls="q"))
+
+# ── ١٢ · بغداد ودبي ────────────────────────────────────────────────────────
+_DXB = M["units"]["dubai_own"]; _DY2 = _DXB["years"][1]
+_UAE = A["markets"]["uae"]
+S.append(sec(12, "١٢", "بغداد ودبي", f'''
+<p class="sub">السؤالُ الذي يطرحه كلُّ مستثمرٍ خليجي: ولمَ لا تبدأ عندنا؟ هذا هو الجواب، بالأرقام.</p>
+
+<div class="grid g2" style="margin-top:2rem;align-items:start">
+ <div class="g solid">
+  <span class="chip k">لو فتحنا المُكعَّب نفسه في دبي</span>
+  {tbl(["", ("بغداد",), ("دبي",)], [
+    ["رأسُ المال", (usd(FLAG["capex"]["total"]),), (usd(_DXB["capex"]["total"]),)],
+    ["إيرادُ السنة ٢", (usd(Y2["gross_revenue"]),), (usd(_DY2["gross_revenue"]),)],
+    ["الأرباحُ التشغيلية", (usd(Y2["ebitda"]),), (usd(_DY2["ebitda"]),)],
+    ["الهامش", (f'{Y2["ebitda_margin"]:.0%}',), (f'{_DY2["ebitda_margin"]:.0%}',)],
+    ["متوسّطُ الفاتورة", (usd(_b["avg_ticket"],2),), (usd(_DXB["basket"]["avg_ticket"],2),)],
+    ["الإيجارُ شهرياً", ("$2,200",), (f'${2200*_UAE["rent_index"]:,.0f}',)],
+    ["ضريبةُ الشركات", ("15%",), ("9%",)],
+    (["<b>الاسترداد</b>", (f'<b>{FLAG["payback_months"]:.1f} شهراً</b>',),
+      (f'<b>{_DXB["payback_months"]:.1f} شهراً</b>',)], "tot"),
+    (["<b>العائدُ الداخلي ٥ سنوات</b>", (f'<b>{FLAG["irr_5y"]:.0f}%</b>',),
+      (f'<b>{_DXB["irr_5y"]:.0f}%</b>',)], "tot"),
+  ])}
+  <p style="margin-top:1.2rem"><b>ولا نُخفي النتيجة: دبي أفضل على الورق، وبفارقٍ كبير.</b>
+  رأسُ مالٍ أعلى بـ<span class="n">{_DXB["capex"]["total"]/FLAG["capex"]["total"]-1:.0%}</span>،
+  لكنّ إيراداً أعلى بـ<span class="n">{_DY2["gross_revenue"]/Y2["gross_revenue"]-1:.0%}</span>،
+  فيسترجع رأسَ ماله في <b class="n">{_DXB["payback_months"]:.0f}</b> شهراً مقابل
+  <b class="n">{FLAG["payback_months"]:.0f}</b>.</p>
+ </div>
+ <div>
+  <div class="g"><div class="cap">وهذه أسبابُ البدء في بغداد رغم ذلك</div>
+   <ol class="st">
+    <li><b>كلفةُ الخطأ.</b> النموذجُ الأوّل سيُخطئ: في السعة، في المزيج، في الغلاف، في المولّدة.
+    التعلُّمُ على {usd(FLAG["capex"]["total"])} أرخصُ من التعلُّم على {usd(_DXB["capex"]["total"])} —
+    والفرقُ <b>{usd(_DXB["capex"]["total"]-FLAG["capex"]["total"])}</b> هو ثمنُ التعليم لا الربح.</li>
+    <li><b>لا منافس.</b> العراقُ فيه ١.٨ فرعٍ مُعلَّم لكلّ مليون نسمة. ودبي فيها ٣,٢٥٧ مقهىً
+    و<b>مشغّلان يقدّمان القهوةَ في مكعّب ثلج بالفعل</b> — ‏The Pods و‏La Letizia. بغداد صفحةٌ بيضاء، ودبي ليست.</li>
+    <li><b>الإيجارُ هو المخاطرة الحقيقية في دبي.</b> النموذجُ يفترض
+    ${2200*_UAE["rent_index"]:,.0f} شهرياً، وهو معقولٌ لموقعٍ في شارعٍ أو مركزٍ محلّي،
+    و<b>منخفضٌ بوضوح</b> لموقعٍ في مركزٍ تجاريّ من الطراز الأول. مضاعفةُ الإيجار وحدها تُطيل الاسترداد
+    نحو ستّة أشهر.</li>
+    <li><b>حضورُ المؤسّس.</b> صيغةٌ من هذا النوع تُدار يومياً في سنتها الأولى، لا عن بُعد.</li>
+    <li><b>القصّةُ نفسها أقوى.</b> ١٣٤ يوماً فوق الأربعين في بغداد مقابل ٦٨ في دبي.
+    العلامةُ التي تُولد في أشدّ المدن حرارةً تسافر إلى الخليج بسهولة؛ والعكسُ ليس صحيحاً.</li>
+   </ol>
+  </div>
+  <div class="note" style="margin-top:1.2rem">
+   <b>والخلاصةُ عمليّة، لا عاطفية:</b> بغداد أولاً <b>لأنّها التمرين</b>، ودبي في السنة الثانية أو الثالثة
+   <b>كوحدةٍ مملوكة للشركة لا كامتياز</b> — لأنّ اقتصادَها أقوى من أن يُمنَح لغيرنا في هذه المرحلة.
+   هذا تعديلٌ على خطّة الطرح: خريطةُ التوسّع في القسم <span class="n">14</span> تفترض الخليجَ امتيازاً،
+   ودبي وحدَها تستحقّ استثناءً.
+  </div>
+ </div>
+</div>
+
+<div class="grid g3" style="margin-top:2rem">
+ {fig(f'{_DXB["payback_months"]:.0f}<span class="u">شهراً</span>', "استردادُ دبي", "مقابل ٢٤–٣٦ يكتتب عليها الخليج")}
+ {fig("68 · 134", "أيامٌ فوق ٤٠° — دبي وبغداد", "لكنّ موسمَ دبي الحارّ أطول وأرطب")}
+ {fig("66% · 50%", "قاعُ الشتاء من المتوسّط", "شتاءُ دبي لا يهبط كشتاء بغداد — وهذا يهمّ نموذجاً بارداً بالكامل")}
+</div>''', cls="d"))
+
+S.append(sec(13, "١٣", "الامتياز", f'''
 <p class="sub">ما يدفعه صاحبُ الامتياز، وما يحصل عليه، وما يقوله النموذج إنّه سيربحه.</p>
 <div class="grid g2" style="margin-top:2rem;align-items:start">
  <div>
@@ -877,7 +1192,7 @@ RISKS = [
   "مشروباً بعشرة دولارات قد يُصنَّف فاخراً.",
   "مفترَضةٌ في السيناريو الأساسي لا معالَجةٌ كمكسبٍ محتمل. وعشرةٌ إضافية فوقها مُحاكاةٌ منفصلة."),
 ]
-S.append(sec(11, "١١", "الطريق والمخاطر", f'''
+S.append(sec(14, "١٤", "الطريق والمخاطر", f'''
 <div class="grid g2" style="align-items:start">
  <div>
   <div class="cap">خمس سنوات</div>
@@ -912,8 +1227,7 @@ S.append(sec(11, "١١", "الطريق والمخاطر", f'''
 </div>''', cls="q"))
 
 # ── ١٢ · الطلب ─────────────────────────────────────────────────────────────
-_cx = FLAG["capex"]["items"]
-S.append(sec(12, "١٢", "الطلب", f'''
+S.append(sec(15, "١٥", "الطلب", f'''
 <p class="sub">مساران منفصلان. الأول لا يحتاج الثاني.</p>
 <div class="grid g2" style="margin-top:2rem;align-items:start">
  <div class="g">
@@ -923,13 +1237,14 @@ S.append(sec(12, "١٢", "الطلب", f'''
   <p style="margin-top:.8rem">رأسُ مال المؤسّس. مُكعَّبٌ واحد على زاوية في بغداد، يُبنى نموذجاً أوّلياً ودليلاً في آنٍ
   واحد. بلا حصصٍ خارجية وبلا التزامٍ بجدول أحد.</p>
   {tbl(["أوجه الصرف", ("المبلغ",)], [
-    ["الغلاف الجليدي والإنشاء والإضاءة والميكانيك والمولّدة",
-     (usd(sum(_cx[x] for x in ("fitout","ice_skin","lighting_signage","mep_generator"))),)],
-    ["معدّات الإنتاج وقطع الغيار",
-     (usd(sum(_cx[x] for x in ("espresso_system","ult_cold_chain","clear_ice_system","rolled_pans","sorbet_gelato","juice_slush","refrigeration_misc","smallwares","spares_service_reserve"))),)],
-    ["الهوية والعمارة والهندسة", (usd(_cx["design_brand_fees"]),)],
-    ["الخُلُوّ والأثاث ونقاط البيع", (usd(sum(_cx[x] for x in ("key_money","furniture","pos_it"))),)],
-    ["ما قبل الافتتاح ورأس المال العامل", (usd(sum(_cx[x] for x in ("pre_opening","working_capital"))),)],
+    ["الغلافُ الجليدي والإنشاء والتجهيز الداخلي", (usd(_cx["shell"]),)],
+    ["التبريدُ والطاقة والمولّدة", (usd(_cx["power"]),)],
+    ["معدّاتُ الإنتاج وقطعُ الغيار",
+     (usd(_cx["prod"] + _cx["spares_service_reserve"]),)],
+    ["البارُ والإضاءة والحفرُ المُضاء", (usd(_cx["front"]),)],
+    ["الأنظمةُ والهويّة", (usd(_cx["sys"]),)],
+    ["الخُلُوّ وما قبل الافتتاح ورأسُ المال العامل",
+     (usd(sum(_cx[x] for x in ("key_money","pre_opening","working_capital"))),)],
     ["الطوارئ ١٢٪", (usd(_cx["contingency"]),)],
     (["<b>الإجمالي</b>", (f'<b>{usd(FLAG["capex"]["total"])}</b>',)], "tot"),
   ])}
@@ -1016,7 +1331,7 @@ OPEN = [
  "التحقّقُ من ثلاثة أرقامٍ في ملفّ <b>لُؤلُؤ</b> قبل عرضها على مستثمر: دخولُ «تابيرو» قائمةَ كلمات ٢٠١٩ اليابانية، وعددُ فروع Mixue عند الإدراج، ونسبةُ فروع The Alley المزوَّرة. مصدرُها معرفةُ النموذج لا بحثٌ حيّ.",
  "مسحٌ ميدانيٌّ لبغداد يؤكّد أنّ «<span class=\'en\'>ايس رول</span>» تعني على قوائم المطاعم العراقية صنفاً آخرَ تماماً — ولهذا نسمّيه <b>لَفائِف</b>، لا «ايس رول».",
 ]
-S.append(sec(13, "١٣", "الملحق", f'''
+S.append(sec(16, "١٦", "الملحق", f'''
 <p class="sub">كلُّ رقمٍ في هذا العرض يعود إلى سطرٍ في هذا الجدول أو إلى ملفّ النموذج خلفه.</p>
 {tbl(["الافتراض", ("القيمة",), "الدرجة", "المصدر أو الاشتقاق"],
   [[a, (b,), f'<span class="chip k">{g}</span>', s] for a, b, g, s in ROWS])}
@@ -1030,9 +1345,11 @@ S.append(sec(13, "١٣", "الملحق", f'''
 # ═══════════════════════════════════════════════════════════════════════════
 
 NAV = [("s1","الاسم"),("s2","الفكرة"),("s3","الانتشار"),("s4","المنتجات"),("s5","المُكعَّب"),
-       ("s7","العلامة"),("s8","السوق"),("s9","الأرقام"),("s10","الامتياز"),("s12","الطلب")]
+       ("s7","العلامة"),("s8","السوق"),("s9","الأرقام"),("s10","المبيعات"),("s11","الكلفة"),
+       ("s12","دبي"),("s13","الامتياز"),("s15","الطلب")]
 RANGE = {"s1":["s1"],"s2":["s2"],"s3":["s3"],"s4":["s4"],"s5":["s5","s6"],"s7":["s7"],
-         "s8":["s8"],"s9":["s9"],"s10":["s10","s11"],"s12":["s12","s13"]}
+         "s8":["s8"],"s9":["s9"],"s10":["s10"],"s11":["s11"],"s12":["s12"],
+         "s13":["s13","s14"],"s15":["s15","s16"]}
 
 SCRIPT = '''
 (function(){
@@ -1105,7 +1422,7 @@ SCRIPT = '''
 def render():
     nav = "".join(f'<a href="#{i}" data-r="{",".join(RANGE[i])}">{t}</a>' for i, t in NAV)
     css = open(os.path.join(HERE, "glass.css"), encoding="utf-8").read()
-    return f'''<title>شَبِم · SHABIM</title>
+    return f'''<title>شَبِم · SHBM</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="شَبِم — علامةُ مشروباتٍ باردةٍ وحلوياتٍ مجمَّدة، مصمَّمةٌ لِـ ٤٥ درجة. من بغداد إلى الخليج.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1118,12 +1435,12 @@ def render():
  <span class="mk">شَبِم</span>
  <nav aria-label="الأقسام">{nav}</nav>
  <span class="sp"></span>
- <span class="chip k en">SHABIM</span>
+ <span class="chip k en">SHBM</span>
 </div>
 <header class="hero">
  <div class="in">
   <p class="wm">شَبِم</p>
-  <p class="wm-la en">SHABIM</p>
+  <p class="wm-la en">SHBM</p>
   <p class="ln1">بَرْدُ الماء</p>
   <p class="ln2">الكلمةُ العربية لبرد الماء وحده — وعلامةُ مشروباتٍ باردة مصمَّمةٌ لأشدّ مدن الأرض حرارة.</p>
   <div class="meta">

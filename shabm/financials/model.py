@@ -262,12 +262,24 @@ class Unit:
         f = self.fmt
         m = self.mkt
         items = {}
-        for k, v in f["capex"].items():
-            idx = m["fitout_index"] if k in ("fitout", "furniture", "lighting_signage", "mep_generator") else m["equip_index"]
-            items[k] = v * idx
-        equip_keys = ("espresso_system", "ult_cold_chain", "clear_ice_system", "rolled_pans",
-                      "sorbet_gelato", "juice_slush", "refrigeration_misc", "smallwares")
-        items["spares_service_reserve"] = sum(items.get(x, 0) for x in equip_keys) * A["ops"]["spares_pct"]
+        sched = f.get("equipment")
+        if sched:
+            # Every capex bucket is the sum of its own line items, so a price
+            # change in one machine moves the headline with nothing else touched.
+            for it in sched:
+                idx = m["fitout_index"] if it["idx"] == "fitout" else m["equip_index"]
+                items[it["cat"]] = items.get(it["cat"], 0) + it["total_usd"] * idx
+            equip_spend = sum(it["total_usd"] * m["equip_index"]
+                              for it in sched if it["idx"] == "equip" and it["cat"] == "prod")
+        else:
+            for k, v in f["capex"].items():
+                idx = m["fitout_index"] if k in ("fitout", "furniture", "lighting_signage",
+                                                 "mep_generator") else m["equip_index"]
+                items[k] = v * idx
+            equip_spend = sum(items.get(x, 0) for x in
+                              ("espresso_system", "ult_cold_chain", "clear_ice_system", "rolled_pans",
+                               "sorbet_gelato", "juice_slush", "refrigeration_misc", "smallwares"))
+        items["spares_service_reserve"] = equip_spend * A["ops"]["spares_pct"]
         items["key_money"] = f["key_money_usd"] * m["rent_index"]
         items["pre_opening"] = f["pre_opening_usd"] * m["cost_index"]
         items["working_capital"] = f["working_capital_usd"] * m["cost_index"]

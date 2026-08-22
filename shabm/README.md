@@ -1,4 +1,4 @@
-# شَبِم · SHABIM
+# شَبِم · SHBM
 
 An Arabic **all-cold** drinks and frozen-dessert brand engineered for 45 °C — Baghdad first, then the Gulf.
 
@@ -29,15 +29,18 @@ Verified replacements are in `research/poetry_report.md` §3. The lead line is K
 Two texts are prohibited outright: «خَيْرُ الماءِ الشَّبِمُ» reads as hadith and was graded **موضوع**
 (fabricated) by al-Albānī; and Qurʾānic text cannot go on disposable packaging.
 
-### 2. The Latin name should be SHABIM, not SHABM
+### 2. The Latin name is SHBM — four consonants, and that is deliberate
 
-- **SHABM** has no vowel between B and M. No English, French or Turkish speaker can pronounce it on sight —
-  fatal for a franchise that spreads by word of mouth.
-- **SHABAM**, the obvious fix, sits one letter from **SHIBAM** — the UNESCO city in Ḥaḍramawt *and*
-  Shibam Coffee Co., a live Yemeni-coffee chain with a filed USPTO mark (97667800) in the same Nice classes.
-- **SHABIM** is the ALA-LC transliteration of شَبِم — the exact vocalisation in al-Mutanabbī's line.
+The brand is **Arabic first and Arabic only**: the name, the menu, the packaging, the signage, the app.
+**SHBM** is a debossed monogram for lids, uniforms and the facade — never a spoken name, never expanded.
 
-Keep **SHBM** as an etched monogram for lids, uniforms and the facade. Never as the spoken name.
+The trade-off was raised and accepted by the founder: SHBM has no vowel between B and M, so a non-Arabic
+speaker cannot pronounce it on sight. That is the cost of refusing to translate. The two alternatives were
+worse for different reasons — SHABAM sits one letter from **SHIBAM**, the UNESCO city in Ḥaḍramawt *and*
+Shibam Coffee Co., which holds a filed USPTO mark (97667800) in the same Nice classes; and SHABIM buys
+pronounceability by making the Latin form the real name, which is the opposite of the brand's position.
+
+Practical consequence: file the Arabic mark **شَبِم** as the primary, with SHBM as a device mark alongside.
 
 ### 3. الشَّبَم is the modern Arabic medical term for phimosis
 
@@ -65,6 +68,8 @@ the rolled-ice-cream SKU is named **لَفائِف**, never «ايس رول». C
 | `deck/art.py` | Hand-authored SVG: the tilted melting cube, the booth interior, six product icons. |
 | `deck/mkpreview.py` | Wraps `deck.html` in the host's `<head>` skeleton so it can be screenshotted locally. |
 | `deck/shot.py` | Playwright screenshot pass. `python3 shot.py light` / `dark`. |
+| `deck/ref.py` | Renders the cube drawings to PNG, to hand an image model as a visual reference. |
+| `deck/img/` | **Drop chosen renders here.** The build finds them by filename and inlines them. See `img/README.md`. |
 | `financials/model.py` | The financial model. Three entities: flagship, franchisee, franchisor. |
 | `financials/assumptions.json` | Every input, each with a sourcing note graded H (sourced) or E (estimate). |
 | `financials/model_output.json` | Model output, consumed by the deck. |
@@ -106,12 +111,13 @@ distance the whole thing appears to be steaming with cold.
 
 | | |
 |---|---|
-| Baghdad flagship CAPEX | $538,944 |
+| Baghdad flagship CAPEX | **$381,479** (was $538,944 — rebuilt line by line, see below) |
 | Year-2 revenue / EBITDA | $719,250 / $183,426 (26%) |
-| Payback / 5-year IRR | 42.5 months / 29.6% |
+| Payback / 5-year IRR | **32.2 months** / 41% |
 | Iraq franchised Shard — the volume format | $184,842 CAPEX · 38.5-month payback · 36.8% IRR |
 | Franchisor, Year 5 | 47 units · $25,357,456 system sales · $1,551,723 EBITDA |
 | Raise / return | $1.75M · 45% IRR · 7.5× MOIC |
+| *Dubai company-owned Cube, for comparison* | *$589,478 CAPEX · $1,467,270 revenue · 36% EBITDA · 20.9-month payback · 72% IRR* |
 
 **Bear case:** the unit stays cash-positive every month but never repays its capital inside five years.
 Size any position against that, not against the base case.
@@ -121,12 +127,52 @@ trough runs at 47% of the annual average and there is no hot menu to carry it. T
 rather than burying it, and the model cuts 30% of the roster in months below 0.60 seasonality.
 
 **The weakness to push on:** the franchisor's *recurring* revenue — royalty plus central supply — does not cover
-head office until Year 5. A third of Year-5 EBITDA comes from two company-owned stores. On these assumptions
-SHABIM reaches Year 5 as a promising franchisor, not yet a self-sustaining one.
+head office until Year 5. A third of Year-5 EBITDA comes from two company-owned stores.
 
 **Egypt is excluded** from the first five years: both formats return negative unit EBITDA at a corrected
-price index, and the core argument does not transfer — Cairo has roughly 5–15 days a year above 40 °C
-against Baghdad's ~134.
+price index, and Cairo has roughly 5–15 days a year above 40 °C against Baghdad's ~134.
+
+---
+
+## The CAPEX was too high. It was rebuilt line by line.
+
+The first build said **$538,944** for a 25 m² booth — about $21,500 per square metre, which is not credible.
+It carried three real errors, all now corrected in `financials/assumptions.json` as a 28-line equipment
+schedule that the model sums into buckets (nothing is typed twice):
+
+1. **The $45,000 franchise toolkit was on the unit.** The disclosure document, operations manual, training
+   curriculum and site-adaptation kit are written once and used by every unit after the first. That is a
+   franchisor cost. It was moved to franchisor Year-1 head office — carried, not deleted.
+2. **A three-machine ice plant at $34,000** where mature demand is 24 vessels/day and one Clinebell CB300
+   yields 30–42. Cut to one machine at $6,500; the second is scheduled for Year 2, because at peak
+   (≈38/day in July) one unit runs at 100% with no redundancy. That is disclosed on the slide.
+3. **A lump-sum shell estimate** instead of an area calculation. The envelope is now priced per m²:
+   98 m² of 25 mm cast acrylic at $153, 98 m² of multiwall polycarbonate at $45, plus frame, freight and erection.
+
+Also raised, not cut: the juice/slush station went **$9,000 → $14,000**, because a $700–1,800 granita machine
+does not survive a Baghdad summer on 8–12 hours of grid power, and بَرَد is 21% of units.
+
+Net: **$381,479**, and payback falls from 42.5 to **32.2 months** — inside the 24–36 month band Gulf investors
+underwrite to, where it previously sat outside.
+
+---
+
+## Dubai vs Baghdad
+
+A company-owned Dubai Cube is modelled as `dubai_own` for a like-for-like comparison. It is **better on every
+financial line**: 20.9-month payback against 32.2, 72% IRR against 41%, 36% EBITDA margin against 26%. The deck
+says so plainly rather than burying it.
+
+Baghdad still goes first, for reasons the model does not price: the first unit will be wrong somewhere, and
+learning on $381k is cheaper than learning on $589k; Iraq has 1.8 branded outlets per million people and no
+competitor, while Dubai has 3,257 coffee shops and **two operators already serving coffee in an ice cube**
+(The Pods, La Letizia); and the founder can be on site daily in year one.
+
+**The number to attack in the Dubai case is rent.** The model carries $6,820/month, which is plausible for a
+street or community-mall pitch and clearly low for super-prime. Doubling it costs roughly six months of payback.
+
+The strategic conclusion the deck now draws: Dubai in year two or three as a **company-owned** unit, not a
+franchise — its economics are too strong to give away at this stage.
 
 ---
 
@@ -150,16 +196,36 @@ Still open from that research: **بَرَد is sold at one flat price that hides
 
 ---
 
+## Photography
+
+The deck ships with hand-authored SVG drawings in every image slot, so it is complete without a single
+external file. Thirty photoreal renders were generated on Higgsfield against those drawings as visual
+references — exterior day/night/dawn/rear, the three openings, the interior and production line, all six
+products, packaging, uniform, business card, engraved menu.
+
+**They are not in the HTML.** This session's egress policy blocks the CDN those renders are served from
+(`d8j0ntlcm91z4.cloudfront.net` returns 403 at the proxy), so the bytes cannot be fetched here, and the
+published page runs under a CSP that blocks external images anyway — every image has to be inlined.
+
+To put them in: download the picks from the Higgsfield gallery, drop them into `deck/img/` under the
+filenames listed in `deck/img/README.md`, then run `python3 build_ar.py && python3 mkpreview.py`. Each slot
+falls back to its drawing when the file is absent, so a partial set is fine and nothing breaks.
+
+---
+
 ## Open items, in the order to close them
 
 1. Trademark clearance searches — SAIP (Saudi) and the Iraqi Ministry of Industry and Minerals.
 2. Supplier quotes for the nine imported equipment categories.
 3. Three landlord conversations on named Baghdad corners, to replace an estimated rent with a real one.
-4. A tax ruling on whether SHABIM is a "deluxe" venue for Iraq's 10% sales tax (assumed yes in the base case).
+4. A tax ruling on whether SHBM is a "deluxe" venue for Iraq's 10% sales tax (assumed yes in the base case).
 5. Confirm three verse wordings against printed critical editions before they go on a primary SKU.
 6. Whether Iraq is a Madrid Protocol party — decides one international filing versus seven national ones.
 7. Price-tier the بَرَد line; the flat 5,000 IQD is the largest remaining pricing defect on the menu.
-8. Re-verify three model-knowledge claims in the لُؤلُؤ dossier before showing them to an investor:
+8. **Two contractor bids on the shell and installation.** The imported equipment lines are priced off observed
+   bands; the build lines are estimates and are the last numbers that should move before signing.
+9. **A real Dubai rent quote** for a named pitch. It is the single assumption the Dubai case turns on.
+10. Re-verify three model-knowledge claims in the لُؤلُؤ dossier before showing them to an investor:
    the 2019 Japanese buzzword listing, Mixue's outlet count at IPO, and The Alley's counterfeit ratio.
-9. Talabat and Lezzoo Iraq commission rates, from a merchant conversation rather than a regional average.
-10. Test whether شبم carries any unintended sense in Baghdadi, Basrawi, Khaliji, Egyptian or Levantine colloquial.
+11. Talabat and Lezzoo Iraq commission rates, from a merchant conversation rather than a regional average.
+12. Test whether شبم carries any unintended sense in Baghdadi, Basrawi, Khaliji, Egyptian or Levantine colloquial.

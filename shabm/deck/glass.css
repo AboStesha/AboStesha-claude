@@ -1,5 +1,5 @@
 /* ==========================================================================
-   شَبِم · SHABIM — «شفاف»
+   شَبِم · SHBM — «شفاف»
    A colourless system. No hue anywhere: the brand's own product, a 12 cm carved
    clear-ice vessel, computes to #FCFEFF — chroma 0.8. It is optically colourless,
    so the identity is too. Everything is ink, glass, blur and dew.
@@ -313,3 +313,20 @@ footer.end .in { max-width: var(--maxw); margin-inline:auto; }
 .tl-t { display:block; font-size: var(--s--1); color: var(--ink-2); line-height:1.65; }
 @media (max-width: 900px){ .tl-r { grid-template-columns: repeat(2, minmax(0,1fr)); gap:1.1rem 0; } }
 @media (max-width: 560px){ .tl-r { grid-template-columns: 1fr; gap:1rem 0; } }
+
+/* chart additions: bar track and a secondary note line */
+svg.cv .trk { fill: var(--ink); fill-opacity: .06; }
+svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
+
+/* photography: renders drop into these slots; the line drawings stand in
+   until they do, so the deck is complete either way. */
+.ph, .fg { margin: 0; }
+.ph img { width: 100%; height: auto; display: block; border-radius: 10px;
+          border: 1px solid var(--hair-2); background: var(--surface-in); }
+.ph figcaption, .fg figcaption { margin-top: .6rem; font-size: var(--s--2);
+          color: var(--ink-4); line-height: 1.75; }
+.phgrid { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0,1fr)); }
+.phgrid.g3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 820px){ .phgrid, .phgrid.g3 { grid-template-columns: 1fr; } }
+.ph.wide img { aspect-ratio: 16/9; object-fit: cover; }
+.ph.sq img { aspect-ratio: 3/2; object-fit: cover; }

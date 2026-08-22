@@ -166,26 +166,16 @@
     "cleaner": 1
    },
    "staff_peak_extra": 2,
-   "pre_opening_usd": 28000,
+   "pre_opening_usd": 18000,
    "working_capital_usd": 30000,
    "capex": {
-    "fitout": 34000,
-    "ice_skin": 46000,
-    "lighting_signage": 16000,
-    "mep_generator": 52000,
-    "espresso_system": 18000,
-    "ult_cold_chain": 16000,
-    "clear_ice_system": 34000,
-    "rolled_pans": 6000,
-    "sorbet_gelato": 28000,
-    "juice_slush": 14000,
-    "refrigeration_misc": 12000,
-    "smallwares": 4000,
-    "furniture": 11000,
-    "pos_it": 7000,
-    "design_brand_fees": 82000
+    "shell": 66404,
+    "power": 40000,
+    "prod": 97000,
+    "front": 19502,
+    "sys": 30000
    },
-   "_capex_note": "Q — every equipment line needs a supplier quote. This is a PROTOTYPE cost: it carries one-time brand and architecture fees ($35k) and first-of-kind engineering. See cube_rollout for replication cost.",
+   "_capex_note": "مُشتقٌّ من جدول المعدّات أدناه، سطراً سطراً. أُعيد بناؤه من الأساس بعد أن تبيّن أنّ النسخةَ الأولى (٣٨٠,٠٠٠$ قبل الطوارئ) كانت تحمل ثلاثةَ أخطاء: عُدّةُ الامتياز مُحمَّلةٌ على الفرع لا على الشركة المانحة، ومصنعُ ثلجٍ بثلاث وحداتٍ حيث تكفي واحدة، وتقديرٌ إجماليٌّ للغلاف بدل حسابِ مساحة.",
    "_other_note": "E — the specialist-refrigeration service contract (a -80C ULT unit and a directional-freeze ice plant are not maintained by a general fridge engineer), RO water and ice-plant consumables, genset servicing, insulated and dry-ice delivery packaging, 24-hour security, cleaning, insurance, municipal and health licences, accounting, uniforms, staff meals, and a continuous training budget - Iraqi F&B turnover is high and this format cannot be run by untrained staff.",
    "_skin_note": "H/E — a VENTILATED INSULATED double skin, not a sheet of acrylic. Outer leaf: 20-30 mm cast acrylic, textured and edge-lit ($95-214/m2 from a Chinese mill; branded runs $286-595). Inner leaf: polycarbonate multiwall, the only cheap translucent material with real insulation - U 1.5-2.4 at $18-90/m2. Solid acrylic blocks are not an option: 100 mm cast acrylic is $476-1,071/m2 Chinese and up to $2,975 branded. The ventilated cavity drops SHGC from 0.35 to 0.27 and rejects 3,010 W, worth 15 kWh/day.",
    "capex_contingency_pct": 0.12,
@@ -194,7 +184,289 @@
    "_brand_note": "H/E — REVISED UP from $35,000. A full identity, packaging system, interior concept and franchise toolkit is quoted at $282,000 from a Dubai agency, $214,320 from a Riyadh studio and $81,792 from a Beirut studio. The Beirut tier is budgeted. This is a one-time prototype cost; replication units carry a site-adaptation fee instead.",
    "_capex_notes": {
     "juice_slush": "H — revised up from $9,000. A $700-1,800 Chinese 3-bowl granita machine does not survive a Baghdad summer on 8-12h grid power; the specified unit is a Ugolini HT 3/1 or Elmeco First Class FC-3 at $5,500-7,500, plus a commercial citrus press and cold-side prep. Radhadh is 21% of units — the second-largest SKU by volume — so this was the third under-provisioned line in the build. Source: research/04-equipment-capex.json §7."
-   }
+   },
+   "equipment": [
+    {
+     "key": "frame",
+     "ar": "الهيكلُ الفولاذي والأساسُ المعزول ومنظومةُ تصريف الذوبان",
+     "qty": 1,
+     "unit_usd": 14000,
+     "total_usd": 14000,
+     "cat": "shell",
+     "idx": "fitout",
+     "note": "E — حديدٌ مُصنَّع ٢.٥ طن بـ١,٢٠٠$/طن، أرضيّةٌ معزولة ٢٥م² بـ١٢٠$/م²، أساساتٌ ومصطبة، ونصب."
+    },
+    {
+     "key": "skin_out",
+     "ar": "القشرةُ الخارجية — أكريليك مصبوب ٢٥ ملم، منقوشٌ ومُضاءٌ من الحافة",
+     "qty": 98,
+     "unit_usd": 153,
+     "total_usd": 14994,
+     "cat": "shell",
+     "idx": "fitout",
+     "note": "H — مطحنةٌ صينية ٩٥–٢١٤$/م². الأكريليك المصمت ١٠٠ ملم غيرُ وارد: ٤٧٦–١,٠٧١$/م² صيني و٢,٩٧٥$ للعلامات."
+    },
+    {
+     "key": "skin_in",
+     "ar": "القشرةُ الداخلية — بولي كربونات متعدّد الجدران",
+     "qty": 98,
+     "unit_usd": 45,
+     "total_usd": 4410,
+     "cat": "shell",
+     "idx": "fitout",
+     "note": "H — ١٨–٩٠$/م². المادّةُ الشفّافة الرخيصة الوحيدة ذات عزلٍ حقيقي: U من ١.٥ إلى ٢.٤."
+    },
+    {
+     "key": "skin_frame",
+     "ar": "إطارُ الألمنيوم والتثبيتاتُ وعزلُ التجويف المُهوّى",
+     "qty": 1,
+     "unit_usd": 9000,
+     "total_usd": 9000,
+     "cat": "shell",
+     "idx": "fitout",
+     "note": "E — التجويفُ المُهوّى يُنزل معامل الكسب الشمسي من ٠.٣٥ إلى ٠.٢٧ ويطرد ٣ ك.و حرارية."
+    },
+    {
+     "key": "freight",
+     "ar": "الشحنُ البحري والجماركُ والتخليص",
+     "qty": 1,
+     "unit_usd": 5000,
+     "total_usd": 5000,
+     "cat": "shell",
+     "idx": "equip",
+     "note": "E — حاويةُ أربعين قدماً من نينغبو إلى أمّ قصر ثم براً إلى بغداد."
+    },
+    {
+     "key": "erect",
+     "ar": "التركيبُ في الموقع",
+     "qty": 1,
+     "unit_usd": 6000,
+     "total_usd": 6000,
+     "cat": "shell",
+     "idx": "fitout",
+     "note": "E — فريقٌ من ستّة، عشرةُ أيام، مع رافعة."
+    },
+    {
+     "key": "fitout_in",
+     "ar": "التجهيزُ الداخلي — ألواحُ غرفةٍ باردة، فولاذ، أرضيّة، تصريف",
+     "qty": 25,
+     "unit_usd": 520,
+     "total_usd": 13000,
+     "cat": "shell",
+     "idx": "fitout",
+     "note": "E — ٥٢٠$/م² لتجهيزٍ بدرجة غرفةٍ باردة، لا لتجهيز مقهى."
+    },
+    {
+     "key": "genset",
+     "ar": "مولّدةُ ديزل صامتة ٤٥ ك.ف.أ مع لوحةِ نقلٍ آلي",
+     "qty": 1,
+     "unit_usd": 11000,
+     "total_usd": 11000,
+     "cat": "power",
+     "idx": "fitout",
+     "note": "H — الشبكةُ تعطي ٨–١٢ ساعة. مولّدةٌ مشتركة مع الحيّ تُتلف حمولةَ مُجمِّدٍ عند كلّ تحويل."
+    },
+    {
+     "key": "chiller",
+     "ar": "وحدةُ تبريد الغرفة الباردة ١٢ ك.و — مُكثِّفٌ استوائيّ ومُبخِّران",
+     "qty": 1,
+     "unit_usd": 13000,
+     "total_usd": 13000,
+     "cat": "power",
+     "idx": "fitout",
+     "note": "H/E — مُصنَّفةٌ للعمل عند ٥٠° محيط. معاملُ الأداء ينهار من ١.١٩ عند ٣٠° إلى ١.٠٠ عند ٤٥°."
+    },
+    {
+     "key": "mist_vent",
+     "ar": "منظومةُ الرذاذ وتهويةُ الواجهة",
+     "qty": 1,
+     "unit_usd": 4500,
+     "total_usd": 4500,
+     "cat": "power",
+     "idx": "fitout",
+     "note": "E — الرذاذُ المنعش هو أيضاً تبريدٌ تبخيري للواجهة."
+    },
+    {
+     "key": "elec",
+     "ar": "اللوحاتُ الكهربائية والتمديدات",
+     "qty": 1,
+     "unit_usd": 7000,
+     "total_usd": 7000,
+     "cat": "power",
+     "idx": "fitout",
+     "note": "E"
+    },
+    {
+     "key": "plumb",
+     "ar": "السباكةُ والتصريفُ ومعالجةُ المياه بالتناضح العكسي",
+     "qty": 1,
+     "unit_usd": 4500,
+     "total_usd": 4500,
+     "cat": "power",
+     "idx": "fitout",
+     "note": "E — التناضحُ العكسي شرطٌ لصفاء قوالب الثلج، لا رفاهية."
+    },
+    {
+     "key": "espresso",
+     "ar": "مكنةُ إسبريسو تجارية مجموعتان + مطحنتان",
+     "qty": 1,
+     "unit_usd": 12000,
+     "total_usd": 12000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — مكنةٌ تجارية بمجموعتين ٧,٥٠٠–٩,٠٠٠$ ومطحنتان ٣,٥٠٠$."
+    },
+    {
+     "key": "ult",
+     "ar": "مُجمِّدتا ٨٦− درجة (واحدةٌ عاملة وواحدةٌ احتياط)",
+     "qty": 2,
+     "unit_usd": 8000,
+     "total_usd": 16000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — النطاقُ المرصود ٢,٧٣٢–١٠,٢٩٩$ للوحدات الصغيرة والمتوسطة. الاحتياطُ ليس ترفاً: الكأسُ يحتاج ١٢ ساعةَ مكوث، فتعطُّلُ ليلةٍ يعني يوماً بلا الصنف الأول."
+    },
+    {
+     "key": "clinebell",
+     "ar": "مصنعُ الثلج الاتّجاهي Clinebell CB300 — وحدةٌ واحدة",
+     "qty": 1,
+     "unit_usd": 6500,
+     "total_usd": 6500,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — ٣,٨٠٠–٧,٠٠٠$ جديدة. تعطي قالبَين ×١٣٦ كغم كلَّ ٣.٧٥ يوم = ٣٠–٤٢ كأساً يومياً. الطلبُ الناضج ٢٤/يوم والذروة ٣٥. وحدةٌ واحدة تكفي السنةَ الأولى وتعمل عند ١٠٠٪ في الذروة بلا احتياط — الثانيةُ في السنة الثانية."
+    },
+    {
+     "key": "ice_store",
+     "ar": "مُجمِّدةُ تخزين القوالب ومنشارٌ شريطي وعدّةُ النحت",
+     "qty": 1,
+     "unit_usd": 7500,
+     "total_usd": 7500,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "E"
+    },
+    {
+     "key": "pans",
+     "ar": "صحنا اللفائف عند ٣٠− درجة",
+     "qty": 2,
+     "unit_usd": 3000,
+     "total_usd": 6000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — ١,٨٠٠ واط، صحن ٥٠ سم، يصل درجةَ التجميد في ٣ دقائق."
+    },
+    {
+     "key": "batch",
+     "ar": "مُجمِّدةُ دفعاتٍ للسوربيه",
+     "qty": 1,
+     "unit_usd": 12000,
+     "total_usd": 12000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H/E — إيطاليّةٌ متوسّطة. جَنى يُنتَج على دفعاتٍ لا عند الطلب، وهذا سببُ ربحيّته."
+    },
+    {
+     "key": "blast",
+     "ar": "مُجمِّدةُ صدمة",
+     "qty": 1,
+     "unit_usd": 6000,
+     "total_usd": 6000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "E — لازمةٌ لتثبيت قوالب الفاكهة قبل التغليف."
+    },
+    {
+     "key": "moulds",
+     "ar": "قوالبُ سيليكون بلاتيني على هيئة الفاكهة",
+     "qty": 1,
+     "unit_usd": 2500,
+     "total_usd": 2500,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — سيليكون بلاتيني مهنيّ يعمل من ٦٠− إلى ٢٣٠+. القوالبُ الرخيصة هي سببُ أنّ أغلب التقليد يبدو لعبة."
+    },
+    {
+     "key": "juice",
+     "ar": "محطّةُ العصير والسلاش — Ugolini HT 3/1 وعصّارةُ حمضيات",
+     "qty": 1,
+     "unit_usd": 13000,
+     "total_usd": 13000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — آلةُ سلاش صينية بـ٧٠٠–١,٨٠٠$ لا تنجو من صيف بغداد على ٨–١٢ ساعةَ شبكة. بَرَد ٢١٪ من الوحدات."
+    },
+    {
+     "key": "fridges",
+     "ar": "ثلّاجاتُ التحضير والتخزين",
+     "qty": 1,
+     "unit_usd": 8000,
+     "total_usd": 8000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "E"
+    },
+    {
+     "key": "boba_st",
+     "ar": "غلّايةُ اللؤلؤ ومحطّةُ الشاي",
+     "qty": 1,
+     "unit_usd": 3500,
+     "total_usd": 3500,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "H — اللآلئُ تُغلى ٢٥–٤٠ دقيقة وتُنقَع ٢٠–٣٠، ولها أربعُ ساعاتٍ قبل الرمي."
+    },
+    {
+     "key": "small",
+     "ar": "الأدواتُ الصغيرة والأواني",
+     "qty": 1,
+     "unit_usd": 4000,
+     "total_usd": 4000,
+     "cat": "prod",
+     "idx": "equip",
+     "note": "E"
+    },
+    {
+     "key": "bar",
+     "ar": "بارُ الثلج المحيط ومقاعدُه — من المادّة نفسها",
+     "qty": 26,
+     "unit_usd": 327,
+     "total_usd": 8502,
+     "cat": "front",
+     "idx": "fitout",
+     "note": "E — منضدةٌ من الأكريليك المصبوب ١٤ متراً طولياً بـ٢٦٠$/م.ط، و٢٦ مقعداً بـ١٨٠$. البارُ يلفّ ثلاثَ جهات، وواجهةُ الخدمة تبقى خالية."
+    },
+    {
+     "key": "light",
+     "ar": "الإضاءةُ الداخلية والحفرُ المُضاءُ من الحافة والواجهة",
+     "qty": 1,
+     "unit_usd": 11000,
+     "total_usd": 11000,
+     "cat": "front",
+     "idx": "fitout",
+     "note": "E — القائمةُ محفورةٌ في الجدار ومُضاءةٌ من الحافة: هي اللافتةُ والمنيو معاً."
+    },
+    {
+     "key": "kiosks",
+     "ar": "شاشتا الطلب الذاتي ونقطةُ البيع وشاشاتُ الأرقام والشبكة",
+     "qty": 1,
+     "unit_usd": 8000,
+     "total_usd": 8000,
+     "cat": "sys",
+     "idx": "equip",
+     "note": "E — كشكا طلبٍ بـ١,٨٠٠$ للواحد. لا كاشير، فهاتان الشاشتان هما نقطةُ البيع كلُّها."
+    },
+    {
+     "key": "brand",
+     "ar": "الهويّةُ والتصميمُ المعماري للبووث — الوحدةُ الأولى",
+     "qty": 1,
+     "unit_usd": 22000,
+     "total_usd": 22000,
+     "cat": "sys",
+     "idx": "equip",
+     "note": "H/E — خُفِّضت من ٨٢,٠٠٠$. عرضُ استوديو بيروت البالغ ٨١,٧٩٢$ يشمل عُدّةَ الامتياز الكاملة، وهذه كلفةُ الشركة المانحة لا كلفةُ الفرع: نُقِل منها ٤٥,٠٠٠$ إلى ما قبل تشغيل الشركة المانحة. الباقي هويّةٌ وعبوةٌ وتصميمُ بووثٍ لوحدةٍ واحدة."
+    }
+   ]
   },
   "cube_rollout": {
    "label": "المُكَعَّب — the Cube (replication unit, post-prototype)",
@@ -431,7 +703,8 @@
     0.66
    ],
    "sales_tax_pct": 0.05,
-   "royalty_wht": 0.0
+   "royalty_wht": 0.0,
+   "_dubai_note": "المقارنةُ المباشرة مع بغداد تقوم على ستّة فروقٍ فقط، وكلُّها في الجدول: السعرُ أعلى ٧٠٪، والإيجارُ أعلى ٣.١ أضعاف، والتجهيزُ أعلى ٦٠٪، والمعدّاتُ أعلى ١٠٪ فقط (المصدرُ صينيٌّ في الحالتين والفارقُ شحنٌ وجمارك)، والأجورُ أعلى نحو ثلاثة أضعاف، وضريبةُ الشركات ٩٪ فوق ٣٧٥ ألف درهم بدل ١٥٪. والفارقُ السابع لا يظهر في جدول: بغداد فيها ١٣٤ يوماً فوق الأربعين، ودبي نحو ٨٠ — لكنّ موسمَ دبي الحارّ أطول وأكثرُ رطوبةً، وشتاءَها لا يهبط كشتاء بغداد: قاعُ الموسم في دبي ٦٦٪ من المتوسّط مقابل ٥٠٪ في بغداد. الشتاءُ هو ما يقتل نموذجاً بارداً بالكامل، لا الصيف."
   },
   "qatar": {
    "label": "قطر — Qatar",
@@ -572,6 +845,12 @@
    "market": "iraq",
    "label": "Iraq franchised Shard (kiosk)",
    "royalty_applied": 0.065
+  },
+  "dubai_own": {
+   "format": "cube_flagship",
+   "market": "uae",
+   "label": "Dubai flagship Cube (company-owned) — the comparison case",
+   "royalty_applied": 0.0
   }
  },
  "franchise": {
@@ -602,13 +881,13 @@
   ],
   "_adf_note": "H/E — REVISED DOWN. Country master fees for an emerging brand with fewer than ten units run $50,000-150,000; an earlier draft of this plan booked $150,000-300,000, above the band. These are area development fees for multi-unit territories, not country master licences — a country master would cut the franchisor's per-unit take by roughly half and is deliberately not in the plan.",
   "hq_cost_schedule": [
-   240000,
+   285000,
    480000,
    860000,
    1360000,
    1880000
   ],
-  "_hq_note": "E — Year 1: founder, brand lead, ops lead, trainer. Year 5: a 13-person support office with an R&D kitchen, a supply-chain function, franchise legal counsel, disclosure-document preparation and registration in each jurisdiction, and trademark protection across eight countries — about $40,000 of head office per trading unit. Understating head office is the most common way a franchise plan lies to itself, so this line is deliberately heavier than the benchmarks.",
+  "_hq_note": "E — Year 1: founder, brand lead, ops lead, trainer. Year 5: a 13-person support office with an R&D kitchen, a supply-chain function, franchise legal counsel, disclosure-document preparation and registration in each jurisdiction, and trademark protection across eight countries — about $40,000 of head office per trading unit. Understating head office is the most common way a franchise plan lies to itself, so this line is deliberately heavier than the benchmarks. Year 1 also carries the $45,000 franchise toolkit — the disclosure document, the operations manual, the training curriculum and the site-adaptation kit — which the first build previously and wrongly loaded onto the Baghdad unit's capex. It is a franchisor asset: it is written once and used by every unit after the first.",
   "hq_dep_usd": 60000,
   "support_cost_per_unit_usd": 4200,
   "opening_support_cost_usd": 11000,

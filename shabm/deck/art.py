@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""SHABIM — colourless SVG illustration. Ink, glass and vapour only."""
+"""SHBM — colourless SVG illustration. Ink, glass and vapour only."""
 
 
 def cube_exterior():
@@ -130,41 +130,79 @@ def cube_exterior():
   <text x="452" y="252" text-anchor="middle" font-family="Cairo, sans-serif" font-weight="300"
         font-size="86" fill="currentColor" fill-opacity=".62" letter-spacing="2">شَبِم</text>
   <text x="452" y="284" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="300"
-        font-size="13" fill="currentColor" fill-opacity=".34" letter-spacing="11">SHABIM</text>
+        font-size="13" fill="currentColor" fill-opacity=".34" letter-spacing="11">SHBM</text>
 
-  <!-- right hatch: place your order -->
-  <rect x="560" y="330" width="88" height="66" rx="4" fill="currentColor" fill-opacity=".05"
-        stroke="currentColor" stroke-opacity=".4" stroke-width="1.2"/>
-  <rect x="574" y="344" width="60" height="34" rx="2" fill="currentColor" fill-opacity=".2"/>
-  <text x="604" y="414" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
-        fill="currentColor" fill-opacity=".5">اطلب</text>
+  <!-- RIGHT: the order point is a touchscreen set into the ice, not a hatch.
+       Nobody takes your order; you place it yourself on the glass. -->
+  <rect x="556" y="292" width="96" height="128" rx="5" fill="currentColor" fill-opacity=".04"
+        stroke="currentColor" stroke-opacity=".38" stroke-width="1.2"/>
+  <rect x="566" y="302" width="76" height="108" rx="3" fill="currentColor" fill-opacity=".26"/>
+  <g stroke="currentColor" stroke-opacity=".5" stroke-width="1.4" fill="none" stroke-linecap="round">
+   <path d="M576 320 H614 M576 334 H626 M576 348 H606"/>
+  </g>
+  <rect x="576" y="368" width="50" height="16" rx="8" fill="currentColor" fill-opacity=".55"/>
+  <text x="604" y="438" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
+        fill="currentColor" fill-opacity=".5">اطلب — شاشةُ لمس</text>
 
-  <!-- left hatch: collect, with the order-number screen carved above it -->
+  <!-- LEFT: collection. A sealed pass-through box — the customer's panel opens,
+       but its back wall is the same opaque ice material, so the inside of the
+       booth is never visible through the opening. -->
   <rect x="258" y="330" width="88" height="66" rx="4" fill="currentColor" fill-opacity=".05"
         stroke="currentColor" stroke-opacity=".4" stroke-width="1.2"/>
-  <rect x="272" y="344" width="60" height="34" rx="2" fill="currentColor" fill-opacity=".2"/>
+  <rect x="272" y="344" width="60" height="34" rx="2" fill="url(#fC)"
+        stroke="currentColor" stroke-opacity=".34" stroke-width="1"/>
+  <g stroke="currentColor" stroke-opacity=".22" stroke-width="1" fill="none">
+   <path d="M272 344 L280 338 M332 344 L324 338"/>
+  </g>
   <rect x="272" y="300" width="60" height="22" rx="3" fill="currentColor" fill-opacity=".28"/>
   <text x="302" y="316" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13"
         font-weight="500" fill="currentColor" fill-opacity=".9">٤٢</text>
   <text x="302" y="414" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
-        fill="currentColor" fill-opacity=".5">استلم</text>
+        fill="currentColor" fill-opacity=".5">استلم — شبّاكٌ ذاتيّ</text>
 
-  <!-- returns slot, low and unattended -->
-  <rect x="418" y="368" width="66" height="26" rx="3" fill="currentColor" fill-opacity=".05"
+  <!-- CENTRE: cup return. Third and last opening. Also back-panelled. -->
+  <rect x="418" y="368" width="66" height="26" rx="3" fill="url(#fC)"
         stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
   <text x="451" y="412" text-anchor="middle" font-family="Cairo, sans-serif" font-size="11"
         fill="currentColor" fill-opacity=".38">إرجاع الأكواب</text>
 
-  <!-- perimeter bar and stools wrapping the block -->
-  <g stroke="currentColor" stroke-opacity=".3" stroke-width="1.2" fill="none">
-   <path d="M120 470 L206 470"/><path d="M700 462 L792 462"/>
-   <path d="M128 470 L128 522 M170 470 L170 522 M198 470 L198 522"/>
-   <path d="M714 462 L714 516 M752 462 L752 516 M784 462 L784 516"/>
+  <!-- The perimeter bar wraps THREE sides — the two flanks and the back. The
+       service face stays clear, so nobody sits between a customer and the
+       hatches. Counter and stools are the same cast ice material as the block. -->
+  <g>
+   <!-- right flank: counter running back into depth -->
+   <path d="M672 470 L826 452 L838 470 L680 490 Z" fill="url(#fC)"
+         stroke="currentColor" stroke-opacity=".32" stroke-width="1.1"/>
+   <g stroke="currentColor" stroke-opacity=".26" stroke-width="1.1" fill="none">
+    <path d="M700 488 L702 528 M746 482 L748 522 M792 476 L794 516"/>
+   </g>
+   <g fill="url(#fA)" stroke="currentColor" stroke-opacity=".3" stroke-width="1">
+    <ellipse cx="701" cy="486" rx="15" ry="5"/><ellipse cx="747" cy="480" rx="15" ry="5"/>
+    <ellipse cx="793" cy="474" rx="15" ry="5"/>
+   </g>
+   <!-- left flank: counter turning the corner and continuing behind the block -->
+   <path d="M64 486 L214 470 L206 488 L58 504 Z" fill="url(#fC)"
+         stroke="currentColor" stroke-opacity=".32" stroke-width="1.1"/>
+   <g stroke="currentColor" stroke-opacity=".26" stroke-width="1.1" fill="none">
+    <path d="M92 502 L90 542 M138 496 L136 536 M184 490 L182 530"/>
+   </g>
+   <g fill="url(#fA)" stroke="currentColor" stroke-opacity=".3" stroke-width="1">
+    <ellipse cx="91" cy="500" rx="15" ry="5"/><ellipse cx="137" cy="494" rx="15" ry="5"/>
+    <ellipse cx="183" cy="488" rx="15" ry="5"/>
+   </g>
   </g>
-  <g fill="currentColor" opacity=".2">
-   <ellipse cx="112" cy="488" rx="16" ry="5"/><ellipse cx="86" cy="502" rx="16" ry="5"/>
-   <ellipse cx="806" cy="482" rx="16" ry="5"/><ellipse cx="832" cy="496" rx="16" ry="5"/>
+
+  <!-- the service apron: deliberately empty ground in front of the hatches -->
+  <g stroke="currentColor" stroke-opacity=".18" stroke-width="1"
+     stroke-dasharray="4 6" fill="none">
+   <path d="M246 536 L640 524"/>
   </g>
+  <text x="443" y="556" text-anchor="middle" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">واجهةُ الخدمة تبقى خالية — لا جلوسَ أمام الشبّاكَين</text>
+  <text x="884" y="404" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">بارٌ من الثلج يلفّ الجهاتِ الثلاث</text>
+  <text x="884" y="424" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".34">كتلةٌ مصمتة: ثلاثُ فتحاتٍ فقط، ولكلٍّ ظهرٌ مُعتِم</text>
 
   <!-- misting nozzles under the overhang, and their drift -->
   <g filter="url(#soft)" opacity=".34">
