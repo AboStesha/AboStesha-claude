@@ -79,11 +79,15 @@ cd financials && python3 model.py && cd ../deck && python3 build.py
 | Year-2 revenue / EBITDA | $706,457 / $157,648 (22%) |
 | Payback / 5-year IRR | 42 months / 30% |
 | Iraq franchised Shard — the volume format | $168,792 CAPEX · 41-month payback · 33% IRR |
-| Franchisor, Year 5 | 47 units · $24.7M system sales · $1.35M EBITDA |
-| Raise / return | $1.75M · 41% IRR · 6.4× MOIC |
+| Franchisor, Year 5 | 47 units · $24,709,709 system sales · $1,424,457 EBITDA |
+| Raise / return | $1.75M · 42% IRR · 6.8× MOIC |
 
 **Bear case:** the unit stays cash-positive every month but never repays its capital inside five years.
 Size any position against that, not against the base case.
+
+**The weakness to push on:** the franchisor's *recurring* revenue — royalty plus central supply — does not cover
+head office until Year 5, and even then only by $181,409. A third of Year-5 EBITDA comes from two company-owned
+stores. On these assumptions SHABIM reaches Year 5 as a promising franchisor, not yet a self-sustaining one.
 
 **Egypt is excluded** from the first five years: both formats return negative unit EBITDA at a corrected
 price index, and the core argument does not transfer — Cairo has roughly 5–15 days a year above 40 °C

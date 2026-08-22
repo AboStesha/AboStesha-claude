@@ -1086,6 +1086,14 @@ S.append(sec(16, "IV · 16", "عرض الامتياز", "THE FRANCHISE OFFER",
        ["Central supply", (f'~{_F["supply_share_of_rev"]*100:.0f}% of unit revenue',), "Beans, sorbet base and colour system, moulds, carving jigs, packaging"],
        ["Territory", ("Exclusive by district or city",), "Area development agreements above 3 units"],
      ], caption="Deliberately mid-band on royalty. A new brand buys adoption with terms; it does not extract on day one.")}
+ <div class="callout crit" style="margin-top:1rem">
+       <b>And the number that will be challenged.</b> Gulf F&amp;B investors underwrite franchise units to a
+       <b>24–36 month payback</b>. Only Dubai ({U["dubai_fr"]["payback_months"]:.0f} months) and Doha
+       ({U["doha_fr"]["payback_months"]:.0f}) sit inside that band on this model; the Iraqi and Riyadh units are at
+       41–42. Three levers close the gap and all three are live: centralising ice production (already done — it takes
+       {usd(27600)} out of every franchised Cube), the Shard format instead of the Cube, and a higher AUV than the
+       deliberately conservative 300 transactions a day this model assumes. None of them is assumed here.
+     </div>
      <div class="callout" style="margin-top:1rem">
        <b>Why the royalty is set market by market.</b> Because the model says it has to be. At 8% an Iraqi
        franchisee's payback stretches past four years and the offer stops being sellable; a Dubai unit clears
@@ -1193,11 +1201,31 @@ S.append(sec(18, "IV · 18", "شركة الامتياز", "THE FRANCHISOR — WH
    [(["<b>Franchisor EBITDA</b>"] + [(f'<b>{usd(y["ebitda"])}</b>',) for y in FR["years"]], "tot")] +
    [(["Margin on franchisor revenue"] + [(f'{y["ebitda_margin"]*100:.0f}%',) for y in FR["years"]], "sub")],
    caption="Head office is deliberately heavy — $240k in Year 1 rising to $1.88M by Year 5, about $40,000 per trading unit, covering an R&D kitchen, a supply-chain function, disclosure-document preparation and registration in each jurisdiction, and trademark protection across eight countries. Understating head office is the most common way a franchise plan lies to itself.")}
+ <div class="melt"></div>
+ <h3 class="sub-h">The part of this an investor should push on hardest</h3>
+ <p class="lede">Franchisor revenue is not all the same quality. Opening fees and area development fees are one-off:
+ they arrive when a unit is signed and never again. Royalty and central supply are recurring: they arrive every year
+ the unit trades. A franchisor is only really a franchisor when the recurring half covers head office.</p>
+ {table(["", ("Y1",), ("Y2",), ("Y3",), ("Y4",), ("Y5",)],
+   [["Recurring revenue — royalty + supply", ] + [(usd(y["recurring_revenue"]),) for y in FR["years"]],
+    ["One-off revenue — opening and area fees", ] + [(usd(y["fee_revenue"]),) for y in FR["years"]],
+    ["Company-owned store revenue", ] + [(usd(y["own_store_revenue"]),) for y in FR["years"]],
+    (["<b>Recurring EBITDA — royalty + supply less head office and field support</b>"]
+      + [(f'<b>{usd(y["recurring_ebitda"])}</b>',) for y in FR["years"]], "tot"),
+   ], caption="Royalty is shown NET of withholding tax at source — 15% out of Saudi and Iraq, 20% out of Egypt, nil from the UAE. A 6% headline royalty out of Riyadh is a 5.1% royalty received. Omitting this overstates Year-5 franchisor revenue by about $131,000.")}
+ <div class="callout crit" style="margin-top:1.2rem">
+   <b>Read that bottom row honestly.</b> The recurring engine does not cover head office until Year 5, and even then
+   only by {usd(FR["years"][4]["recurring_ebitda"])}. Roughly a third of Year-5 EBITDA comes from two company-owned
+   stores rather than from franchising, and a further slice of franchise revenue is one-off fees. On these
+   assumptions SHABIM reaches Year 5 as a <em>promising</em> franchisor, not yet a self-sustaining one. Getting the
+   recurring line comfortably ahead of head office needs either more units, a higher unit AUV, or a leaner centre —
+   and the plan should be judged on which of those three the team can actually deliver.
+ </div>
  <div class="grid g4" style="margin-top:1.4rem">
    {stat(f'{FR["years"][4]["units_total"]}', 'Units trading by end of Year 5', '2 company-owned, the rest franchised, after a 5% annual closure allowance.')}
    {stat(k(FR["years"][4]["system_sales"]), 'System-wide sales, Year 5', f'{usd(FR["years"][4]["system_sales"])} across {FR["years"][4]["units_total"]} units.')}
    {stat(k(FR["years"][4]["ebitda"]), 'Franchisor EBITDA, Year 5', f'{FR["years"][4]["ebitda_margin"]*100:.0f}% margin. Crosses into profit in Year 4.', 'acc')}
-   {stat(f'{FR["irr_pct"]:.0f}% · {FR["moic"]:.1f}×', 'IRR and MOIC on a ' + k(A["raise"]["amount_usd"]) + ' raise', f'Exit enterprise value {usd(FR["exit_ev"])} at {A["raise"]["exit_multiple"]:.0f}× Year-5 EBITDA.', 'acc')}
+   {stat(f'{FR["irr_pct"]:.0f}%<span class="u">IRR</span>', f'{FR["moic"]:.1f}× on a ' + k(A["raise"]["amount_usd"]) + ' raise', f'Exit enterprise value {usd(FR["exit_ev"])} at {A["raise"]["exit_multiple"]:.0f}× Year-5 EBITDA.', 'acc')}
  </div>''', cls=""))
 
 # ── ACT V — THE ROAD ──────────────────────────────────────────────────────────
@@ -1221,12 +1249,13 @@ S.append(sec(19, "V · 19", "خارطة الطريق", "THE ROLLOUT",
    ("Baghdad — prove it repeats, and prove it repeats CHEAPLY",
     "The first two franchised Shard kiosks open in Baghdad malls, supplied with carved blocks from the flagship Cube. "
     "This is the year the commissary model is tested, not the year the estate grows. The purpose is twelve months of "
-    "audited multi-unit trading — what a Gulf master franchisee and a Saudi disclosure document both require before "
-    "anyone serious will engage.",
+    "audited multi-unit trading. The Saudi Franchise Law's gate is explicit about this: a franchisor must have operated "
+    "the business model for at least one year with at least one outlet before it can franchise in the Kingdom.",
     ["3 units", "First franchisees signed", "Central ice commissary live", "12 months of audited data"]),
    ("Cross the Gulf",
     "Saudi and UAE entry. The KSA Franchise Law route is the gate: a disclosure document in Arabic, delivered at least "
-    "14 days before signing, and every agreement registered with the Ministry of Commerce within 90 days. Riyadh enters "
+    "14 days before signing — $15,000-40,000 and 8-16 weeks to prepare — and every agreement registered with the "
+    "Ministry of Commerce within 90 days, with fines to SAR 500,000 for breach. Riyadh enters "
     "on Shards, Dubai on a Cube, both under area development agreements rather than one-off units. A second "
     "company-owned Cube opens as the Gulf showcase.",
     ["12 units", "KSA disclosure registered", "Riyadh + Dubai", "Franchisor near breakeven"]),
@@ -1264,11 +1293,12 @@ S.append(sec(20, "V · 20", "الخندق", "WHY THIS IS HARD TO COPY",
      sorbet mould system are not a café's normal equipment list. They need a dedicated generator, a specialist service
      contract, and staff trained in handling surfaces that cause cold burns. A competitor can copy one item on the
      menu. Copying the operation means rebuilding the back of house.</p></div>
-   <div class="card"><div class="cap">02 · The kiosks depend on the Cube</div>
-     <p>A Shard carries no ice plant. Its blocks come from the city's flagship Cube. That is a deliberate architecture:
-     it lets kiosks open at {usd(U["baghdad_kiosk_fr"]["capex"]["total"])} instead of {usd(U["baghdad_fr"]["capex"]["total"])},
-     and it makes the network a supply chain rather than a logo licence — the franchisee cannot shop around for the
-     one input the signature product depends on.</p></div>
+   <div class="card"><div class="cap">02 · No franchised unit makes its own ice</div>
+     <p>Clear-ice production is centralised in each city's commissary Cube and the blocks are sold into the network.
+     Every franchised unit — Shard and Cube alike — buys them. That takes about {usd(27600)} of capex out of each
+     franchised Cube, shortens its payback, adds roughly 1.5 points to the franchisor's take rate, and makes the
+     network a supply chain rather than a logo licence. The franchisee cannot shop around for the one input the
+     signature product depends on.</p></div>
    <div class="card"><div class="cap">03 · The name cannot be taken</div>
      <p><span class="ar">شَبِم</span> is a real classical word with a verifiable dictionary entry, no existing F&amp;B
      registration anywhere in MENA, and a documented poetic lineage. Filed across five Nice classes in each market it
@@ -1495,8 +1525,13 @@ ASSUMPTION_ROWS = [
  ("Baghdad climate", "45°C July/Aug average high", "H", "Weather Spark; hot season 26 May – 21 Sep; record 51.8°C, 28 Jul 2020"),
  ("Iraq branded coffee outlets", "85", "H", "Project Café Middle East 2025, World Coffee Portal; 13th in MENA"),
  ("MENA branded coffee outlets", "11,163 → 16,460 by 2029", "H", "World Coffee Portal; +11.2% y/y, 8.1% CAGR"),
- ("Franchise royalty benchmark", "5–10%", "H", "Café2go 5%, Gossip 6%, Grano 7%, Mikel KSA 10%"),
- ("Franchise fee benchmark", "$10.6k – $88k", "H", "Grano, Café2go, Gossip; Mikel KSA SAR 90–180k"),
+ ("Franchise royalty benchmark", "5–10%", "H", "Café2go 5%, Gossip 6%, Grano 7%, Mikel KSA 10%. US FDDs: Dunkin' 5.9%, Cinnabon 6.0%, Gong Cha 6.0%, Tim Hortons 4.5%"),
+ ("Franchise fee benchmark", "$10.6k – $88k", "H", "Grano, Café2go, Gossip; Mikel KSA SAR 90–180k. GCC single-unit market practice $20k–50k"),
+ ("Area development fee band", "$50k – $150k", "H", "Country master for a brand with &lt;10 units. SHABIM books $90k/$140k/$170k in Y3–Y5"),
+ ("Royalty withholding tax", "KSA 15% · Egypt 20% · Qatar 5% · UAE 0%", "H", "Netted from royalty in the model. Iraq ~15%, low confidence"),
+ ("Gulf franchise payback band", "24–36 months", "H", "What Gulf F&amp;B investors underwrite to. SHABIM's Cube sits outside it at 41–42; Dubai and Doha inside"),
+ ("Saudi Franchise Law gate", "1 year / 1 outlet", "H", "Operating history required before franchising in KSA; FDD in Arabic 14 days before signature; registration within 90 days"),
+ ("FDD preparation and registration", "$15k–40k · 8–16 weeks", "H", "Drafting, Arabic translation, Ministry of Commerce registration"),
  ("Transactions per day, mature", "300", "E", "Independent research anchor 300/day. Regulars, Melbourne: ~600/day of one drink"),
  ("Average ticket", f"${_b['avg_ticket']:.2f}", "E", f"{iqd(_b['avg_ticket'])} IQD; 1.45 items per transaction"),
  ("Station efficiency", "72%", "E", "Order-taking, restocking, cleaning and hand-off losses against theoretical throughput"),
@@ -1523,7 +1558,15 @@ OPEN = [
  "Whether <span class='ar'>شبم</span> carries any unintended sense in Baghdadi, Basrawi, Khaliji, Egyptian or Levantine "
  "colloquial has not been tested. Research covered Modern Standard Arabic and the medieval lexica only.",
  "Whether SHABIM falls inside Iraq's 'deluxe restaurant' classification for the 10% sales tax. Assumed yes; needs a "
- "ruling from a local tax adviser.",
+ "ruling from a local tax adviser. It is a 10-point revenue swing on every Iraqi unit and it flows straight through "
+ "to the royalty base.",
+ "Whether the sorbet base is genuinely non-substitutable. Nearly half the franchisor's take rate rests on a "
+ "franchisee being unable to buy an equivalent base locally. Formulation and supply agreements have to protect it, "
+ "and if they cannot, the supply-margin line has to come down.",
+ "Two real contractor quotes for a 45 m² unit in Riyadh and Dubai. The modelled hard capex works out at roughly "
+ "$6,100/m², which is 3.5–7.6× a normal specialty café — plausible for this format, but unverified.",
+ "Withholding tax on royalties out of Iraq. The ~15% used here is low-confidence and the non-resident retention "
+ "regime is applied inconsistently in practice.",
 ]
 
 S.append(sec(23, "APP · 23", "الافتراضات والمصادر", "ASSUMPTIONS, SOURCES AND WHAT IS STILL UNKNOWN",

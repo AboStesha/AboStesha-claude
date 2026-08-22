@@ -352,8 +352,11 @@ def franchisor(A, unit_models):
             royalty_base += base
             mkt_of = A["unit_scenarios"].get(mk, {}).get("market", "iraq")
             rr = F["royalty_by_market"].get(mkt_of, F["royalty_by_market"]["default"])
-            royalty += base * rr["royalty"]
-            adfund += base * rr["ad_fund"]
+            # Royalties paid to a non-resident IP holder are taxed at source. Not netting this
+            # is one of the commonest overstatements in a cross-border franchise plan.
+            wht = A["markets"].get(mkt_of, {}).get("royalty_wht", 0.0)
+            royalty += base * rr["royalty"] * (1 - wht)
+            adfund += base * rr["ad_fund"] * (1 - wht)
         # 4. supply-chain margin: proprietary beans, sorbet base, packaging, ice moulds
         supply = royalty_base * F["supply_share_of_rev"] * F["supply_margin_pct"]
 
@@ -363,6 +366,7 @@ def franchisor(A, unit_models):
         own_rev = own_trading * unit_models["baghdad_own"]["years"][min(y, 4)]["gross_revenue"] * F["own_store_blend"]
 
         gross_rev = fee_rev + adf + royalty + adfund + supply + own_rev
+        _ = None
 
         # --- franchisor costs ---
         hq = F["hq_cost_schedule"][y] if y < len(F["hq_cost_schedule"]) else F["hq_cost_schedule"][-1]
@@ -382,6 +386,8 @@ def franchisor(A, unit_models):
             "opened_this_year": opened_own + opened_fr,
             "system_sales": r0(royalty_base + own_rev),
             "fee_revenue": r0(fee_rev + adf),
+            "recurring_revenue": r0(royalty + supply),
+            "recurring_ebitda": r0(royalty + supply - hq - support_cost - opening_cost),
             "royalty": r0(royalty),
             "ad_fund": r0(adfund),
             "supply_margin": r0(supply),

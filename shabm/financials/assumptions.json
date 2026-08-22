@@ -226,7 +226,7 @@
     "mep_generator": 28000,
     "espresso_system": 11000,
     "ult_cold_chain": 11000,
-    "clear_ice_system": 24000,
+    "clear_ice_system": 0,
     "rolled_pans": 5000,
     "sorbet_gelato": 19000,
     "juice_slush": 7000,
@@ -238,7 +238,8 @@
    },
    "_capex_note": "Design fees drop from $35k to a $6k site-adaptation fee; equipment is bought on a network contract. This is the number a franchisee is quoted.",
    "capex_contingency_pct": 0.07,
-   "_cont_note": "E — 7%, not the prototype's 12%: the design is built, the drawings exist, and equipment is bought on a network contract with known landed cost."
+   "_cont_note": "E — 7%, not the prototype's 12%: the design is built, the drawings exist, and equipment is bought on a network contract with known landed cost.",
+   "_ice_note": "NO franchised unit has an ice plant. Clear-ice production is centralised in each city's company-owned or lead Cube and the blocks are sold into the network. This removes ~$27,600 of capex from every franchised Cube, shortens its payback, and raises the franchisor's take rate by about 1.5 points — the same argument that shaped the Shard, applied to the Cube as well."
   },
   "shard_kiosk": {
    "label": "الشَّظِيَّة — the Shard (mall kiosk)",
@@ -337,7 +338,8 @@
     0.73
    ],
    "_seas_note": "H-shaped — Baghdad average highs May-Sep: 37/42/45/45/41°C; hot season 26 May - 21 Sept; Jan high 16°C. Trough months are carried by the Kahraman winter menu, which is why the winter floor is 0.73 and not 0.45.",
-   "sales_tax_pct": 0.1
+   "sales_tax_pct": 0.1,
+   "royalty_wht": 0.15
   },
   "ksa": {
    "label": "السعودية — Saudi Arabia",
@@ -375,7 +377,8 @@
     0.88,
     0.78
    ],
-   "sales_tax_pct": 0.15
+   "sales_tax_pct": 0.15,
+   "royalty_wht": 0.15
   },
   "uae": {
    "label": "الإمارات — UAE",
@@ -413,7 +416,8 @@
     0.92,
     0.82
    ],
-   "sales_tax_pct": 0.05
+   "sales_tax_pct": 0.05,
+   "royalty_wht": 0.0
   },
   "qatar": {
    "label": "قطر — Qatar",
@@ -450,7 +454,8 @@
     0.9,
     0.8
    ],
-   "sales_tax_pct": 0.0
+   "sales_tax_pct": 0.0,
+   "royalty_wht": 0.05
   },
   "egypt": {
    "label": "مصر — Egypt",
@@ -488,7 +493,8 @@
     0.86,
     0.76
    ],
-   "sales_tax_pct": 0.14
+   "sales_tax_pct": 0.14,
+   "royalty_wht": 0.2
   }
  },
  "unit_scenarios": {
@@ -569,18 +575,18 @@
   "royalty_pct": 0.05,
   "ad_fund_pct": 0.015,
   "_royalty_note": "H-benchmarked, and set market by market rather than globally. MENA café royalties are observed at 5-10% (Café2go 5, Gossip 6, Grano 7, Mikel KSA 10). SHABIM charges 5% + 1.5% in IRAQ and 6% + 2% in the GCC. The reason is arithmetic, not generosity: at 8% an Iraqi franchisee's payback stretches past four years and the offer stops being sellable, while a Dubai unit clears 27% EBITDA and can carry the standard rate comfortably. A franchisor that prices royalty off its own spreadsheet instead of off the franchisee's return ends up with signed agreements and no openings.",
-  "supply_share_of_rev": 0.14,
+  "supply_share_of_rev": 0.19,
   "supply_margin_pct": 0.3,
-  "_supply_note": "E — franchisees buy the proprietary inputs from the network and cannot substitute them: the roasted bean programme, the sorbet base and its colour system, the fruit moulds and carving jigs, the crystalline packaging — and, for every Shard kiosk, the carved ice blocks themselves, which come from the city's Cube. That is ~14% of unit revenue passing through central supply at a 30% margin, or about 4.2% of system sales. It is the line that grows with the estate, cannot be shopped around, and is the reason the kiosk format was designed without an ice plant.",
+  "_supply_note": "E — franchisees buy the proprietary inputs from the network and cannot substitute them: the roasted bean programme, the sorbet base and its colour system, the fruit moulds and carving jigs, the crystalline packaging — and, for EVERY franchised unit, the carved ice blocks, which come from the city's commissary Cube. That is ~19% of unit revenue through central supply at a 30% margin, about 5.7% of system sales. It is the line that grows with the estate and cannot be shopped around. CAVEAT: this rests on the sorbet base being genuinely non-substitutable. If a franchisee can buy an equivalent base locally, nearly half the franchisor's take rate is at risk. Formulation and supply agreements must protect it.",
   "new_unit_year_weight": 0.42,
   "area_dev_fee_schedule": [
    0,
    0,
-   150000,
-   250000,
-   300000
+   90000,
+   140000,
+   170000
   ],
-  "_adf_note": "E — area development / master fees for KSA (Y3), UAE + Egypt (Y4), and a further country (Y5).",
+  "_adf_note": "H/E — REVISED DOWN. Country master fees for an emerging brand with fewer than ten units run $50,000-150,000; an earlier draft of this plan booked $150,000-300,000, above the band. These are area development fees for multi-unit territories, not country master licences — a country master would cut the franchisor's per-unit take by roughly half and is deliberately not in the plan.",
   "hq_cost_schedule": [
    240000,
    480000,
@@ -715,5 +721,6 @@
   "stress_fx": "The dinar's parallel rate moves against us by 14% and menu prices cannot be raised to compensate within the year.",
   "stress_sales_tax": "SHABIM is classified as a 'deluxe restaurant' and absorbs Iraq's 10% sales tax rather than passing it to the customer."
  },
- "_tax_note": "Consumption taxes are deducted from gross revenue, not passed through, because MENA menu boards are quoted tax-inclusive and the customer sees one price. Iraq: no general VAT, but a 10% sales tax applies to deluxe restaurants and hotels — SHABIM assumes it is classified deluxe and absorbs it. KSA VAT 15%, UAE 5%, Egypt 14%, Qatar nil."
+ "_tax_note": "Consumption taxes are deducted from gross revenue, not passed through, because MENA menu boards are quoted tax-inclusive and the customer sees one price. Iraq: no general VAT, but a 10% sales tax applies to deluxe restaurants and hotels — SHABIM assumes it is classified deluxe and absorbs it. KSA VAT 15%, UAE 5%, Egypt 14%, Qatar nil.",
+ "_wht_note": "H — withholding tax on royalties paid to a non-resident IP holder: Saudi Arabia 15%, Egypt 20%, Qatar 5%, UAE 0%, Iraq ~15% (low confidence; Iraq's non-resident retention regime is applied inconsistently and needs local counsel). A 6% headline royalty out of Saudi is a 5.1% royalty received. The UAE's nil rate is the reason the IP-holding company sits there."
 }
