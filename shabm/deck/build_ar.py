@@ -782,6 +782,7 @@ _MENU_ROWS = [(MENU[k]["ar"], iqd(MENU[k]["price_usd_baghdad"]))
               for k in ("saqee80", "qalab", "boba", "lafaif", "jana_piece",
                         "jana_box", "radhadh")]
 _BRAND_ART = [
+ ("logo_carved", "الاسمُ محفورٌ في الكتلة — غائرٌ لا مطبوع", illus.brand_sheet, "wide"),
  ("brand_sheet", "الشعارُ بأربع معالجات — غائرٌ ومحفورٌ ومطبوعٌ ومقطوع", illus.brand_sheet, "wide"),
  ("packaging",   "عائلةُ العبوات — كلُّها من المادّة نفسها",              illus.packaging,   "wide"),
  ("menu_card",   "القائمةُ محفورةٌ في لوحٍ ومُضاءةٌ من الحافة",           lambda: illus.menu_slab(_MENU_ROWS), "sq"),
@@ -1521,7 +1522,7 @@ def render():
    <span class="chip k">شركة الامتياز {kk(A["raise"]["amount_usd"])} · عائد {FR["irr_pct"]:.0f}%</span>
   </div>
   <div class="hero-cube">
-   {img("cube_day", "المُكعَّب من الخارج",
+   {img("cube_hero", "المُكعَّب من الخارج", "المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، والاسمُ محفورٌ فيها.", cls="wide") if has_img("cube_hero") else img("cube_day", "المُكعَّب من الخارج",
         "المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، ثلاثُ فتحاتٍ فقط.",
         cls="wide", fallback=cube_exterior())}
   </div>

@@ -66,18 +66,20 @@ def cube_exterior():
   <!-- plinth, tilted with the block -->
   <path d="M196 496 L716 484 L700 512 L212 524 Z" fill="currentColor" opacity=".13"/>
 
+  <!-- Everything on the block leans together; the ground does not. -->
+  <g transform="translate(452,320) skewY(-3.4) rotate(-1.6) translate(-452,-320)">
   <!-- ============ THE BLOCK — leaning, eroded, never a clean cube ============ -->
   <!-- right/side face -->
-  <path d="M660 126 L742 176 L716 486 L648 500 Z" fill="url(#fB)"/>
+  <path d="M664 132 L748 190 L716 486 L648 500 Z" fill="url(#fB)"/>
   <!-- top face, sagging where it has melted -->
-  <path d="M236 148 C300 128 470 112 660 126 L742 176 C560 166 388 176 262 196 Z" fill="url(#fC)"/>
+  <path d="M244 126 C312 104 486 108 664 132 L748 190 C566 176 392 178 268 198 Z" fill="url(#fC)"/>
   <!-- front face: edges bowed and rounded by melt, base narrower than the top -->
-  <path d="M236 148 C300 128 470 112 660 126
+  <path d="M244 126 C312 104 486 108 664 132
            L648 500 C540 512 372 510 224 498
-           C222 380 226 250 236 148 Z" fill="url(#fA)"/>
+           C220 372 228 240 244 126 Z" fill="url(#fA)"/>
   <!-- outline, deliberately soft and uneven -->
-  <path d="M236 148 C300 128 470 112 660 126 L742 176 L716 486 L648 500
-           C540 512 372 510 224 498 C222 380 226 250 236 148 Z"
+  <path d="M244 126 C312 104 486 108 664 132 L748 190 L716 486 L648 500
+           C540 512 372 510 224 498 C220 372 228 240 244 126 Z"
         fill="none" stroke="currentColor" stroke-opacity=".34" stroke-width="1.3" stroke-linejoin="round"/>
   <path d="M660 126 L648 500 M660 126 L742 176" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="1"/>
 
@@ -124,13 +126,33 @@ def cube_exterior():
    <ellipse cx="259" cy="502" rx="2.6" ry="3.6"/><ellipse cx="630" cy="504" rx="2.2" ry="3.2"/>
    <ellipse cx="339" cy="346" rx="1.8" ry="2.6"/><ellipse cx="718" cy="490" rx="2" ry="2.8"/>
   </g>
+  <!-- water leaving the bottom edge along its whole length -->
+  <g stroke="currentColor" stroke-opacity=".26" stroke-width="1.1" fill="none" stroke-linecap="round">
+   <path d="M286 506 C284 520 286 530 284 540"/><path d="M348 509 C346 524 348 534 346 546"/>
+   <path d="M410 511 C408 528 410 538 408 550"/><path d="M472 511 C470 528 472 538 470 550"/>
+   <path d="M534 509 C532 524 534 534 532 546"/><path d="M596 506 C594 520 596 530 594 540"/>
+  </g>
+  <g fill="currentColor" opacity=".3">
+   <ellipse cx="284" cy="542" rx="2" ry="2.8"/><ellipse cx="408" cy="552" rx="2.2" ry="3"/>
+   <ellipse cx="532" cy="548" rx="2" ry="2.8"/>
+  </g>
 
   <!-- ============ THE FACE ============================================
        A closed block. Carved name, three openings, and nothing else at all. -->
-  <text x="436" y="236" text-anchor="middle" font-family="Cairo, sans-serif" font-weight="300"
-        font-size="80" fill="currentColor" fill-opacity=".62" letter-spacing="2">شَبِم</text>
-  <text x="436" y="266" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="300"
-        font-size="12" fill="currentColor" fill-opacity=".34" letter-spacing="10">SHBM</text>
+  <!-- The name is CUT INTO the block, not printed on it: a bright lip on the
+       upper edge of the stroke and shadow gathering in the bottom of the cut. -->
+  <g font-family="Cairo, sans-serif" font-weight="300" font-size="80" letter-spacing="2"
+     text-anchor="middle">
+   <text x="436" y="239" fill="currentColor" fill-opacity=".34">شَبِم</text>
+   <text x="436" y="234" fill="currentColor" fill-opacity=".10">شَبِم</text>
+   <text x="436" y="236" fill="none" stroke="currentColor" stroke-opacity=".22"
+         stroke-width="1.1">شَبِم</text>
+  </g>
+  <g font-family="Space Grotesk, sans-serif" font-weight="300" font-size="12"
+     letter-spacing="10" text-anchor="middle">
+   <text x="436" y="267" fill="currentColor" fill-opacity=".3">SHBM</text>
+   <text x="436" y="265" fill="currentColor" fill-opacity=".12">SHBM</text>
+  </g>
 
   <!-- RIGHT — order, on a screen. -->
   <rect x="512" y="298" width="126" height="126" rx="6" fill="currentColor" fill-opacity=".04"
@@ -185,6 +207,8 @@ def cube_exterior():
   </g>
   <text x="760" y="410" text-anchor="start" font-family="Cairo, sans-serif" font-size="11"
         fill="currentColor" fill-opacity=".46">الجانبُ الأيمن</text>
+
+  </g>
 
   <!-- plan inset: a rectangle with three marks on one side, and nothing else -->
   <g transform="translate(742,520)">
