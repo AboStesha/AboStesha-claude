@@ -46,7 +46,12 @@
   "spares_pct": 0.1,
   "_spares_note": "H/E — a spares and Year-1 service reserve at 10% of equipment CAPEX. Nine imported equipment categories, a three-day lead on the ice plant and no local service network for a ULT freezer: a broken part with a six-week lead time closes the signature product.",
   "capex_contingency_pct": 0.12,
-  "_contingency_note": "H/E — 12% contingency on the whole build. First-of-kind, importing nine equipment categories into Iraq, with a landed-cost uplift of 28-40% over FOB China that is itself an estimate."
+  "_contingency_note": "H/E — 12% contingency on the whole build. First-of-kind, importing nine equipment categories into Iraq, with a landed-cost uplift of 28-40% over FOB China that is itself an estimate.",
+  "rolled_pan_throughput_per_hour": 15.7,
+  "_pan_note": "H — measured realistic throughput of one -30 C rolled ice cream pan. Vendors quote 25-35/hour. The model now treats the pans as a SEPARATE constraint from the general production stations, because a rolled portion cannot be made anywhere else. Pooling them was an error.",
+  "winter_labour_threshold": 0.6,
+  "winter_labour_cut": 0.3,
+  "_winter_labour_note": "E — in any month whose seasonality index falls below 0.60, the roster is cut 30%: short hours, a skeleton production crew, and the rest of the team on training, recipe development and the Ramadan build-up. This is what an all-cold concept has to do in a Baghdad December, and pretending otherwise would put a fictitious loss in the model."
  },
  "menu": {
   "saqee80": {
@@ -65,8 +70,8 @@
    "desc": "Coffee or tea served inside a hand-carved block of crystal-clear ice. Eaten with a spoon at the end.",
    "price_usd_baghdad": 9.8,
    "_price_note": "15,000 IQD. H-anchored: Cafe 33 (Hyatt Regency Kyoto) and Nishimura Coffee Kobe charge ¥2,000 ≈ $13 for the same format. Baghdad priced 25% below the Japanese original.",
-   "cogs_usd_baghdad": 2.35,
-   "_cogs_note": "H/E — carved ice vessel $1.20 (RO water, directional-freeze power, 45% carving waste, freezer storage, 2.5 min carve at the sourced Baghdad ice-tech wage) + 200ml coffee/tea $0.45 + syrup $0.15 + steel-look tray, spoon, base card $0.55.",
+   "cogs_usd_baghdad": 1.72,
+   "_cogs_note": "H/E — REVISED DOWN on measured yield. A 300 lb block yields 90-110 vessels, not the 35 an earlier draft assumed, and only 30-36% of block mass reaches the customer. Marginal in-house vessel cost is $0.63 (energy 0.08-0.10 kWh per vessel, which is 7x the textbook latent-heat figure once COP collapse at 45C ambient is counted). Plus 200ml cold-brew or tea $0.45, syrup $0.15, tray, spoon and base card $0.49.",
    "prep_seconds": 150
   },
   "lafaif": {
@@ -77,7 +82,8 @@
    "_price_note": "7,000 IQD.",
    "cogs_usd_baghdad": 1.42,
    "_cogs_note": "H/E — 120ml dairy base $0.62 + mix-ins and toppings $0.45 + cup, dome lid, spoon $0.35.",
-   "prep_seconds": 165
+   "prep_seconds": 229,
+   "_prep_note": "H — REVISED UP. Vendors claim 25-35 servings/hour per pan; measured realistic throughput is 15.7/hour, i.e. 229 seconds. This is also the worst product on the menu by gross profit per minute of production time: $1.15 against the Jana box's $9.97, a ratio of 8.7x. It stays because it draws families and children, not because it earns its station."
   },
   "jana_piece": {
    "ar": "جَنى",
@@ -109,121 +115,127 @@
    "_cogs_note": "H/E — 300ml fruit $0.75 + cup, lid, straw $0.32.",
    "prep_seconds": 70
   },
-  "kahraman": {
-   "ar": "كَهرَمان",
-   "en": "Kahraman (winter hot menu)",
-   "desc": "Winter barista menu — flat white, Spanish latte, hot chocolate, karak, Arabic coffee.",
-   "price_usd_baghdad": 3.92,
-   "_price_note": "6,000 IQD. Sits above the 3,300 IQD Baghdad cappuccino benchmark on specialty positioning.",
-   "cogs_usd_baghdad": 0.72,
-   "_cogs_note": "H/E — 18g espresso $0.40 + milk $0.14 + double-wall cup, lid, sleeve $0.18.",
-   "prep_seconds": 60
+  "boba": {
+   "ar": "لُؤلُؤ",
+   "en": "Lu'lu' — brown sugar boba",
+   "desc": "Original brown-sugar bubble tea. Warm muscovado syrup is painted down the inside of a frozen cup so it streaks like tiger stripes, then cold milk and hand-cooked tapioca pearls.",
+   "price_usd_baghdad": 5.23,
+   "_price_note": "8,000 IQD. Bubble tea sits at the same price point as the -80 latte in Baghdad and above it in the Gulf; Gong Cha and Chatime price AED 22-28 in the UAE.",
+   "cogs_usd_baghdad": 1.05,
+   "_cogs_note": "E — tapioca pearls 60g cooked $0.28 + muscovado syrup $0.19 + 180ml milk $0.19 + tea base $0.07 + cup, sealing film and wide straw $0.32.",
+   "prep_seconds": 85
   }
  },
  "formats": {
   "cube_flagship": {
-   "label": "المُكَعَّب — the Cube (street flagship, Baghdad prototype)",
-   "area_m2": 45,
-   "terrace_m2": 60,
-   "seats": 44,
-   "prod_stations": 4,
-   "peak_equivalent_hours": 8.5,
+   "label": "المُكَعَّب — the Cube (refrigerated street booth, Baghdad prototype)",
+   "area_m2": 25,
+   "terrace_m2": 38,
+   "seats": 26,
+   "prod_stations": 3,
+   "peak_equivalent_hours": 8.0,
    "_peh_note": "E — a 15-hour summer trading day does not run at peak throughput. 8.5 peak-equivalent hours is the demand ceiling used to cap revenue.",
-   "items_per_ticket": 1.45,
+   "items_per_ticket": 1.42,
    "baseline_tx_per_day": 300,
    "_tx_note": "E — mature Year-2 annual average. Cross-checks: the independent research anchor for a Baghdad unit is 300/day; Regulars (Melbourne) sells 600 glasses/day of a single -85C drink. Peak summer months reach ~440/day in this model, winter ~205/day.",
    "delivery_share": 0.18,
    "mix": {
-    "saqee80": 0.3,
+    "saqee80": 0.26,
     "qalab": 0.12,
-    "lafaif": 0.18,
+    "boba": 0.16,
+    "lafaif": 0.14,
     "jana_piece": 0.08,
-    "jana_box": 0.08,
-    "radhadh": 0.16,
-    "kahraman": 0.08
+    "jana_box": 0.09,
+    "radhadh": 0.15
    },
-   "_mix_note": "Share of REVENUE, not units. The model solves back to unit shares. Al-Qalab is deliberately capped at 12% of revenue: it is the slowest item to make (150s) and the scarcest input (carved ice), so it is an anchor and a queue-magnet, not a volume driver.",
-   "rent_usd_month": 2600,
-   "_rent_note": "H/E — sourced Baghdad comparables: 350 m2 on 14 Ramadan St, Mansour at $3,500/month ($10.00/m2/month); 200 m2 in Zayouna near Dream Mall at $5,500/month ($27.50/m2/month). Small prime-pitch units carry the higher rate. Research range for a 30-60 m2 prime street unit: $1,400-3,000/month. SHABIM's flagship is budgeted at the top of that band because a destination format needs a corner site and a terrace, not a mid-block shop.",
+   "_mix_note": "Share of REVENUE, not units. Al-Qalab is capped at 12%: it is the scarcest input and, with Lafa'if, the slowest to make. Lafa'if is cut to 14% because it earns $1.15 of gross profit per minute of production time against the Jana box's $9.97.",
+   "rent_usd_month": 2200,
+   "_rent_note": "H/E — a 25 m2 enclosed booth on a ~60 m2 corner footprint including the perimeter bar. Sourced Baghdad comparables: 350 m2 on 14 Ramadan St, Mansour at $10.00/m2/month; 200 m2 in Zayouna near Dream Mall at $27.50/m2/month. Small prime-pitch footprints carry the higher rate.",
    "key_money_usd": 30000,
    "_key_note": "H/E - Key money observed at $25,000 on a Karrada shop renting at $1,000/month, i.e. 25x monthly rent; SHABIM budgets 15x. LEGAL WARNING: Property Lease Law No. 87 of 1979 expressly prohibits key money (خلو) taken by landlord, tenant or broker. It is nonetheless universal in Baghdad commercial letting. Budget it, but structure it - see the risk register.",
-   "utilities_base_usd_month": 700,
-   "utilities_cooling_usd_month": 1250,
-   "_util_note": "H/E — Two ways to power this store, and the cheap one is not available to us. Sourced: Iraq commercial tariff 60 IQD/kWh; national grid delivers 8-12 h/day (peak 2025 demand 55 GW against 27 GW supply); Baghdad neighbourhood-generator subscription set by the governorate at 12,000 IQD per ampere/month for 24-hour 'golden' service; diesel at the pump $0.190/litre. A 50 m2 store of this type draws ~230 kWh/day in peak summer, plus 70-80 kWh/day if the ice facade is single-glazed. On a shared neighbourhood generator that is ~$450/month all-in. SHABIM does not use one: a -80C ULT freezer and a directional-freeze ice plant cannot survive a shared generator's switchovers and load-shedding, so the unit carries a dedicated 60 kVA set. That is the difference between $450/month and the $1,600-2,200/month in this model - and it is the price of never losing a freezer load.",
+   "utilities_base_usd_month": 800,
+   "utilities_cooling_usd_month": 2000,
+   "_util_note": "H/E — THIS IS NOT A CAFE'S ENERGY BILL, because this is not a cafe. The booth interior is held as a cold room, so the envelope is fighting a 30-35 K delta in 45-50 C ambient, on top of a -80 C ULT freezer, a directional-freeze ice plant and two -30 C pans. Sourced: Iraq commercial tariff 60 IQD/kWh; the national grid delivers 8-12 h/day (2025 peak demand 55 GW against 27 GW supply); Baghdad generator subscription 12,000 IQD per ampere/month; diesel $0.190/litre. A dedicated 60 kVA set is not optional - a shared neighbourhood generator's switchovers would cost a freezer load. Refrigeration COP also collapses at Baghdad ambient: 1.00 at 45 C against 1.19 at 30 C on the roll pans.",
    "other_opex_usd_month": 4200,
    "staff_core": {
     "manager": 1,
     "head_barista": 2,
-    "barista": 4,
+    "barista": 3,
     "ice_tech": 2,
-    "runner": 2,
+    "runner": 1,
     "cleaner": 1
    },
-   "staff_peak_extra": 3,
+   "staff_peak_extra": 2,
    "pre_opening_usd": 28000,
    "working_capital_usd": 30000,
    "capex": {
-    "fitout": 40000,
-    "ice_skin": 30000,
-    "lighting_signage": 14000,
-    "mep_generator": 33000,
+    "fitout": 34000,
+    "ice_skin": 46000,
+    "lighting_signage": 16000,
+    "mep_generator": 52000,
     "espresso_system": 18000,
     "ult_cold_chain": 16000,
     "clear_ice_system": 34000,
     "rolled_pans": 6000,
     "sorbet_gelato": 28000,
-    "juice_slush": 9000,
+    "juice_slush": 14000,
     "refrigeration_misc": 12000,
     "smallwares": 4000,
-    "furniture": 14000,
+    "furniture": 11000,
     "pos_it": 7000,
-    "design_brand_fees": 35000
+    "design_brand_fees": 82000
    },
    "_capex_note": "Q — every equipment line needs a supplier quote. This is a PROTOTYPE cost: it carries one-time brand and architecture fees ($35k) and first-of-kind engineering. See cube_rollout for replication cost.",
    "_other_note": "E — the specialist-refrigeration service contract (a -80C ULT unit and a directional-freeze ice plant are not maintained by a general fridge engineer), RO water and ice-plant consumables, genset servicing, insulated and dry-ice delivery packaging, 24-hour security, cleaning, insurance, municipal and health licences, accounting, uniforms, staff meals, and a continuous training budget - Iraqi F&B turnover is high and this format cannot be run by untrained staff.",
-   "_skin_note": "H/E — ~70 m2 of facade in 20-30 mm cast acrylic, fabricated, sub-framed and installed: $21,000-44,000. A facade of SOLID acrylic blocks is not affordable and should not be specified: 100 mm cast acrylic runs $476-1,071/m2 from a Chinese mill and $1,428-2,975/m2 branded. The ice depth is achieved with surface texture, internal lamination and edge lighting, not with mass.",
-   "capex_contingency_pct": 0.12
+   "_skin_note": "H/E — a VENTILATED INSULATED double skin, not a sheet of acrylic. Outer leaf: 20-30 mm cast acrylic, textured and edge-lit ($95-214/m2 from a Chinese mill; branded runs $286-595). Inner leaf: polycarbonate multiwall, the only cheap translucent material with real insulation - U 1.5-2.4 at $18-90/m2. Solid acrylic blocks are not an option: 100 mm cast acrylic is $476-1,071/m2 Chinese and up to $2,975 branded. The ventilated cavity drops SHGC from 0.35 to 0.27 and rejects 3,010 W, worth 15 kWh/day.",
+   "capex_contingency_pct": 0.12,
+   "rolled_pans": 2,
+   "_staff_note": "Self-service ordering and two unattended hatches - one for collection, one for returns - remove most of the front-of-house headcount a cafe of this volume would need. Production staff are all behind the glass.",
+   "_brand_note": "H/E — REVISED UP from $35,000. A full identity, packaging system, interior concept and franchise toolkit is quoted at $282,000 from a Dubai agency, $214,320 from a Riyadh studio and $81,792 from a Beirut studio. The Beirut tier is budgeted. This is a one-time prototype cost; replication units carry a site-adaptation fee instead.",
+   "_capex_notes": {
+    "juice_slush": "H — revised up from $9,000. A $700-1,800 Chinese 3-bowl granita machine does not survive a Baghdad summer on 8-12h grid power; the specified unit is a Ugolini HT 3/1 or Elmeco First Class FC-3 at $5,500-7,500, plus a commercial citrus press and cold-side prep. Radhadh is 21% of units — the second-largest SKU by volume — so this was the third under-provisioned line in the build. Source: research/04-equipment-capex.json §7."
+   }
   },
   "cube_rollout": {
    "label": "المُكَعَّب — the Cube (replication unit, post-prototype)",
-   "area_m2": 45,
-   "terrace_m2": 50,
-   "seats": 36,
-   "prod_stations": 4,
-   "peak_equivalent_hours": 8.0,
-   "items_per_ticket": 1.42,
+   "area_m2": 25,
+   "terrace_m2": 32,
+   "seats": 22,
+   "prod_stations": 3,
+   "peak_equivalent_hours": 7.8,
+   "items_per_ticket": 1.4,
    "baseline_tx_per_day": 268,
    "delivery_share": 0.2,
    "mix": {
-    "saqee80": 0.3,
-    "qalab": 0.11,
-    "lafaif": 0.19,
+    "saqee80": 0.26,
+    "qalab": 0.12,
+    "boba": 0.16,
+    "lafaif": 0.14,
     "jana_piece": 0.08,
-    "jana_box": 0.08,
-    "radhadh": 0.16,
-    "kahraman": 0.08
+    "jana_box": 0.09,
+    "radhadh": 0.15
    },
-   "rent_usd_month": 2200,
+   "rent_usd_month": 1900,
    "key_money_usd": 22000,
-   "utilities_base_usd_month": 640,
-   "utilities_cooling_usd_month": 1150,
+   "utilities_base_usd_month": 740,
+   "utilities_cooling_usd_month": 1850,
    "other_opex_usd_month": 3500,
    "staff_core": {
     "manager": 1,
     "head_barista": 1,
-    "barista": 4,
+    "barista": 3,
     "ice_tech": 1,
-    "runner": 2,
+    "runner": 1,
     "cleaner": 1
    },
    "staff_peak_extra": 3,
    "pre_opening_usd": 18000,
    "working_capital_usd": 22000,
    "capex": {
-    "fitout": 34000,
-    "ice_skin": 23000,
-    "lighting_signage": 10000,
-    "mep_generator": 28000,
+    "fitout": 28000,
+    "ice_skin": 34000,
+    "lighting_signage": 12000,
+    "mep_generator": 44000,
     "espresso_system": 11000,
     "ult_cold_chain": 11000,
     "clear_ice_system": 0,
@@ -232,14 +244,15 @@
     "juice_slush": 7000,
     "refrigeration_misc": 10000,
     "smallwares": 3500,
-    "furniture": 11000,
+    "furniture": 9000,
     "pos_it": 6000,
-    "design_brand_fees": 6000
+    "design_brand_fees": 9000
    },
    "_capex_note": "Design fees drop from $35k to a $6k site-adaptation fee; equipment is bought on a network contract. This is the number a franchisee is quoted.",
    "capex_contingency_pct": 0.07,
    "_cont_note": "E — 7%, not the prototype's 12%: the design is built, the drawings exist, and equipment is bought on a network contract with known landed cost.",
-   "_ice_note": "NO franchised unit has an ice plant. Clear-ice production is centralised in each city's company-owned or lead Cube and the blocks are sold into the network. This removes ~$27,600 of capex from every franchised Cube, shortens its payback, and raises the franchisor's take rate by about 1.5 points — the same argument that shaped the Shard, applied to the Cube as well."
+   "_ice_note": "NO franchised unit has an ice plant. Clear-ice production is centralised in each city's company-owned or lead Cube and the blocks are sold into the network. This removes ~$27,600 of capex from every franchised Cube, shortens its payback, and raises the franchisor's take rate by about 1.5 points — the same argument that shaped the Shard, applied to the Cube as well.",
+   "rolled_pans": 2
   },
   "shard_kiosk": {
    "label": "الشَّظِيَّة — the Shard (mall kiosk)",
@@ -248,17 +261,17 @@
    "seats": 0,
    "prod_stations": 2,
    "peak_equivalent_hours": 7.5,
-   "items_per_ticket": 1.28,
+   "items_per_ticket": 1.26,
    "baseline_tx_per_day": 195,
    "delivery_share": 0.1,
    "mix": {
-    "saqee80": 0.34,
+    "saqee80": 0.3,
     "qalab": 0.06,
-    "lafaif": 0.2,
+    "boba": 0.19,
+    "lafaif": 0.16,
     "jana_piece": 0.11,
-    "jana_box": 0.09,
-    "radhadh": 0.15,
-    "kahraman": 0.05
+    "jana_box": 0.08,
+    "radhadh": 0.1
    },
    "rent_usd_month": 2400,
    "key_money_usd": 12000,
@@ -280,9 +293,9 @@
    "working_capital_usd": 14000,
    "capex": {
     "fitout": 22000,
-    "ice_skin": 17000,
+    "ice_skin": 22000,
     "lighting_signage": 8000,
-    "mep_generator": 4000,
+    "mep_generator": 14000,
     "espresso_system": 11000,
     "ult_cold_chain": 11000,
     "clear_ice_system": 0,
@@ -296,7 +309,8 @@
     "design_brand_fees": 5000
    },
    "_capex_note": "No clear-ice plant: kiosks are supplied carved blocks from the city's Cube commissary. That is the supply-chain lock.",
-   "capex_contingency_pct": 0.07
+   "capex_contingency_pct": 0.07,
+   "rolled_pans": 1
   }
  },
  "markets": {
@@ -324,20 +338,20 @@
    },
    "_wage_note": "H — Iraq federal statutory minimum wage 350,000 IQD/month (Art. 63, Labour Law No. 37 of 2015). Sourced Baghdad cafe vacancies: 450,000-600,000 IQD for an evening shift (17:00-01:00), 750,000 IQD for a full shift - a 1.67x ratio. SHABIM budgets full-shift rates ($450/mo = ~688,000 IQD for a barista) because a -80 and clear-ice operation cannot be run by transient evening staff. Employer social security 12% (Workers' Retirement and Social Security Law).",
    "seasonality": [
-    0.74,
-    0.78,
-    0.92,
-    1.08,
-    1.34,
-    1.52,
-    1.58,
-    1.55,
-    1.32,
+    0.52,
+    0.62,
+    0.86,
     1.02,
-    0.82,
-    0.73
+    1.38,
+    1.62,
+    1.7,
+    1.66,
+    1.36,
+    0.98,
+    0.66,
+    0.5
    ],
-   "_seas_note": "H-shaped — Baghdad average highs May-Sep: 37/42/45/45/41°C; hot season 26 May - 21 Sept; Jan high 16°C. Trough months are carried by the Kahraman winter menu, which is why the winter floor is 0.73 and not 0.45.",
+   "_seas_note": "H-shaped and REVISED DOWN HARD. Baghdad average highs May-Sep are 37/42/45/45/41 C; the hot season runs 26 May - 21 Sept; the January high is 16 C. An earlier version of this plan carried a hot-drinks winter menu and floored the trough at 73% of the annual average. That menu is gone - SHABIM serves cold only - so the honest trough is 47%. February and March carry a Ramadan lift. AND A STRUCTURAL TAILWIND WORTH NAMING: Ramadan moves about eleven days earlier every year. It runs 8 Feb - 9 Mar in 2027, 28 Jan - 25 Feb in 2028, 17 Jan - 14 Feb in 2029 and 6 Jan - 4 Feb in 2030 - migrating straight into the two months this concept is weakest, and bringing with it the single biggest evening cold-drink occasion in the Iraqi and Gulf year.",
    "sales_tax_pct": 0.1,
    "royalty_wht": 0.15
   },
@@ -364,18 +378,18 @@
     "cleaner": 650
    },
    "seasonality": [
-    0.8,
+    0.62,
+    0.66,
     0.84,
-    0.95,
-    1.08,
-    1.28,
-    1.42,
+    1.02,
+    1.3,
     1.48,
-    1.46,
-    1.28,
-    1.05,
-    0.88,
-    0.78
+    1.56,
+    1.54,
+    1.32,
+    1.04,
+    0.76,
+    0.6
    ],
    "sales_tax_pct": 0.15,
    "royalty_wht": 0.15
@@ -403,18 +417,18 @@
     "cleaner": 700
    },
    "seasonality": [
-    0.82,
+    0.66,
+    0.7,
     0.86,
-    0.96,
-    1.06,
-    1.24,
-    1.38,
-    1.44,
-    1.42,
+    1.02,
     1.26,
+    1.42,
+    1.5,
+    1.48,
+    1.3,
     1.08,
-    0.92,
-    0.82
+    0.82,
+    0.66
    ],
    "sales_tax_pct": 0.05,
    "royalty_wht": 0.0
@@ -441,18 +455,18 @@
     "cleaner": 680
    },
    "seasonality": [
-    0.82,
+    0.66,
+    0.7,
     0.86,
-    0.96,
-    1.08,
-    1.26,
-    1.4,
+    1.04,
+    1.28,
     1.44,
-    1.42,
-    1.26,
+    1.5,
+    1.48,
+    1.3,
     1.06,
-    0.9,
-    0.8
+    0.8,
+    0.64
    ],
    "sales_tax_pct": 0.0,
    "royalty_wht": 0.05
@@ -480,18 +494,18 @@
     "cleaner": 180
    },
    "seasonality": [
-    0.78,
-    0.82,
-    0.94,
-    1.06,
-    1.26,
-    1.42,
-    1.5,
+    0.6,
+    0.64,
+    0.84,
+    1.02,
+    1.3,
     1.48,
-    1.28,
-    1.04,
-    0.86,
-    0.76
+    1.58,
+    1.56,
+    1.32,
+    1.02,
+    0.72,
+    0.58
    ],
    "sales_tax_pct": 0.14,
    "royalty_wht": 0.2
@@ -702,7 +716,7 @@
    "menu.jana_piece.price_usd_baghdad": 0.86,
    "menu.jana_box.price_usd_baghdad": 0.86,
    "menu.radhadh.price_usd_baghdad": 0.86,
-   "menu.kahraman.price_usd_baghdad": 0.86
+   "menu.boba.price_usd_baghdad": 0.86
   },
   "stress_sales_tax": {
    "menu.saqee80.price_usd_baghdad": 0.909,
@@ -711,7 +725,7 @@
    "menu.jana_piece.price_usd_baghdad": 0.909,
    "menu.jana_box.price_usd_baghdad": 0.909,
    "menu.radhadh.price_usd_baghdad": 0.909,
-   "menu.kahraman.price_usd_baghdad": 0.909
+   "menu.boba.price_usd_baghdad": 0.909
   }
  },
  "_scenario_notes": {

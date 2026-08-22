@@ -1,0 +1,309 @@
+{
+ "product": "رَذاذ / RADHADH — fresh-pressed juice and fruit slush (granita) — SHABM's frequency engine.\n\n⚠️ PROVENANCE WARNING — READ FIRST. This session had **zero live research capability**. The WebSearch budget (200/200) was fully consumed by sibling agents before this task started, and the egress proxy returned EGRESS_BLOCKED on *every* host tested (en.wikipedia.org, ar.wikipedia.org, britannica.com, etymonline.com). I therefore used the two sources actually available to me:\n(1) **[REPO-VERIFIED]** — the sibling research dossiers in /home/user/AboStesha-claude/shabm/research/*.json, which WERE live-sourced when searches still worked, plus the financial model in /home/user/AboStesha-claude/shabm/financials/;\n(2) **[MODEL-KNOWLEDGE]** — my own knowledge, tagged with the exact book, archive or URL a fact-checker must open. I have NOT invented a single view count. Where I cannot source a number I say so and give the retrieval method.\n\nWHAT THIS PRODUCT IS IN THE SHABM SYSTEM — and it is not what the founders think it is.\nThe model prices Radhadh at IQD 5,000 ($3.27) against $1.07 COGS, 70 seconds of prep. It is 15% of *revenue* but **21.2% of *units*** in the flagship Cube — the **second-largest SKU by volume in the entire business**, behind only Saqee' −80 (23.0%). [/home/user/AboStesha-claude/shabm/financials/model_output.json, assumptions.json]\n\nThat gap between 15% of revenue and 21% of units is the whole strategic point, and the Arabic deck section must lead with it: **الرَّذاذ ليس البطل، بل هو العادَة.** The carved ice block (Al-Qalab) is what people photograph. The juice and the slush are what they come back for on the 41 °C Tuesday when they will not pay IQD 15,000. Radhadh is the **retention product**; the spectacle is the **acquisition product**. A deck that presents them as one \"concept\" will be marked down by any investor who has run F&B.\n\nTwo sub-lines that must be priced apart (this is the single most actionable finding in the repo):\n• **العَصير / fresh-pressed** — orange 300 ml needs 750 g of oranges at 40% yield → 70.6% GM at IQD 5,000. Pomegranate needs ~700 g at 45% yield → **38.2% GM at the same price.**\n• **الرَّذاذ / slush-granita** — 120 g purée + ice + syrup → **78.3% GM at IQD 5,000.**\nA flat price across those two invites the customer to self-select into the worst item in the store: a **40-percentage-point margin spread inside one menu line.** [/home/user/AboStesha-claude/shabm/research/12-menu-pricing.json, FINDING 5]",
+ "origin": "## 1. THE HONEST VERSION OF THE GRANITA STORY — and why the honest version is better brand copy than the romantic one\n\n**The romantic claim you will see everywhere:** \"The Arabs invented granita in Sicily by mixing Etna snow with fruit juice.\" **[MODEL-KNOWLEDGE, med]**\n\n**The defensible claim, which is what the deck should print:** the Arabs did not invent a dessert in Sicily. They installed the *four preconditions* of granita — sugar, citrus, the chilled-drink concept, and an industrial snow supply chain — and Sicily assembled them over the following seven centuries. That is a *stronger* story, because every link in it is documentable and none of it can be knocked down by a food historian on Twitter.\n\n### 1.1 The Arab period in Sicily — the dates **[MODEL-KNOWLEDGE, med-high; verify against Alex Metcalfe, *The Muslims of Medieval Italy*, Edinburgh UP, 2009]**\n- **June 827 CE** — an Aghlabid force from Ifrīqiya lands at **Mazara del Vallo** under Asad ibn al-Furāt. The invasion of Sicily begins.\n- **831** — Palermo (بَلَرْم *Balarm*) falls and becomes the capital of the Emirate of Sicily.\n- **878** — Syracuse falls. **902** — Taormina falls; the conquest is effectively complete.\n- **1061–1091** — Norman reconquest; **Noto**, the last Muslim-held town, falls in **1091**. Roughly **264 years** of Arab rule, and Arabic remained a living administrative and spoken language in Sicily well into the Norman period under Roger II.\n\n### 1.2 What the Arabs actually brought — this is the load-bearing part\n**[MODEL-KNOWLEDGE, med-high; the standard reference is Andrew Watson, *Agricultural Innovation in the Early Islamic World*, Cambridge UP, 1983, and Clifford Wright, *A Mediterranean Feast*, Morrow 1999]**\n1. **Sugar cane** (*qasab al-sukkar* قَصَب السُّكَّر) — cultivated and refined in Sicily under Arab rule. Without cane sugar there is no syrup, and without syrup there is no granita: sugar is what stops water freezing into a solid brick.\n2. **Citrus** — the bitter orange (نارَنْج *nāranj*), the lemon (لَيْمون *laymūn*) and the citron. Sicilian lemon granita is genealogically an Arab import twice over: the fruit AND the sweetening.\n3. **The chilled drink itself** — **شَراب / شَرْبة *sharāb / sharba***, from the root **ش-ر-ب** (*shariba*, \"to drink\"). A sweetened, fruit- or flower-flavoured concentrate, diluted and served cold.\n4. **Snow as a traded commodity** — the practice, not the mountain. Sicily had snow before 827; what arrived was the habit of *systematically harvesting, storing, taxing and selling it*.\n\n### 1.3 The etymology — the single best line in this whole section **[MODEL-KNOWLEDGE, high; verify: OED entries \"sherbet\", \"sorbet\", \"syrup\", \"julep\"]**\nArabic **شَراب** *sharāb* branches into three European words that all end up in a drinks menu:\n- شَراب → Turkish **şerbet** → Italian **sorbetto** (16th c., via Ottoman contact — NOT directly from Sicilian Arabic; this nuance matters) → French **sorbet** → English **sherbet / sorbet**.\n- شَراب → medieval Latin **siropus / syrupus** → English **syrup**.\n- Persian **گُلاب** *gulāb* (\"rose water\") → Arabic **جُلاب** *julāb* → **(a)** medieval Latin *julapium* → French *julep* → English **julep**; and **(b)** straight into the modern Levantine/Iraqi **جَلّاب** *jallāb* still sold from a brass urn today.\n\n**Deck line, Arabic-ready:** «كلمةُ *sorbet* وكلمةُ *syrup* في كلِّ قائمةِ مشروباتٍ في العالم — أصلُهُما واحدٌ: شَراب. والجَلّاب الذي يُباع اليوم في بغداد اسمُه من *گُلاب*، ماء الورد، من موائد بني العباس.»\n\n### 1.4 The snow supply chain — the *neviere* **[MODEL-KNOWLEDGE, med; the canonical source is Elizabeth David, *Harvest of the Cold Months: The Social History of Ice and Ices*, Michael Joseph, 1994 — hand this book to whoever writes the final Arabic copy]**\n- Snow was harvested on **Etna (3,357 m)** and in the **Nebrodi, Madonie and Peloritani** ranges, compacted into stone-lined pits called **neviere** (sing. *neviera*; Sicilian *nivera*), insulated with volcanic ash, straw, ferns and leaves.\n- The men of the trade were the **nivaroli**. Loads moved **by mule, at night**, to the coastal towns.\n- Sicilian snow was **exported** — to Malta (under contract to the Order of St John) and to Naples. **[MODEL-KNOWLEDGE, med-low — verify in David, *Harvest of the Cold Months*, chs. on Italy and Malta]**\n- The **Bishop of Catania is repeatedly reported to have held the rights/lease over Etna's snow** (a *gabella della neve*). **[MODEL-KNOWLEDGE, low — flagged as a claim to verify, not to print unchecked.]**\n- The trade survived until **mechanical refrigeration killed it in the late 19th–early 20th century.**\n\n### 1.5 The technology step that turned scraped snow into granita **[MODEL-KNOWLEDGE, med]**\n- The primitive form is the **Sicilian *rattata* / *grattata*** — snow scraped and dressed with juice, honey, jasmine water or almond milk. This is *shaved ice*, not granita.\n- Granita proper required the **pozzetto**: a wooden bucket holding a tin or zinc cylinder, packed around with **ice and salt**. This is not folklore, it is physical chemistry: the **NaCl–water eutectic sits at −21.1 °C**, far below the freezing point of a sugared juice. That is what allows a *churned* frozen product. The salt-and-ice technique spread through Italy in the **16th century**.\n- **Antonio Latini**, *Lo Scalco alla Moderna* (Naples, **1692** and **1694**, 2 vols) — carries the first printed Italian *sorbetti* recipes, including a milk sorbet. **[MODEL-KNOWLEDGE, med-high]**\n- **Francesco Procopio dei Coltelli** (Procopio Cutò), a Sicilian, opened **Café Procope in Paris in 1686** and is credited with popularising sorbet/gelato in France. **[MODEL-KNOWLEDGE, med — parts of this story are legendary; treat as colour, not as fact.]**\n- The **word \"granita\"** is Italian *granito* = grainy/granular (*grana*, \"grain\"), attested in the frozen-dessert sense in the **19th century**. The name is a *texture* claim. **[MODEL-KNOWLEDGE, med]**\n\n### 1.6 The three schools of Sicilian granita — useful because they define texture **[MODEL-KNOWLEDGE, med]**\n| School | Signature | Texture |\n|---|---|---|\n| **Messina** | caffè, limone, mandorla, gelso — served with **brioscia cu' tuppu** (brioche col tuppo) for breakfast | Finest crystal; churned continuously; almost creamy |\n| **Catania** | mandorla, pistacchio, caffè con panna | Medium crystal |\n| **Palermo / Trapani** | anguria (watermelon), gelsi (mulberry) | Coarsest; visibly granular |\n**\"Granita siciliana\" is listed among Italy's PAT (Prodotti Agroalimentari Tradizionali) for Sicily, maintained by MASAF.** **[MODEL-KNOWLEDGE, med — verify on the MASAF PAT register.]**\n\n---\n\n## 2. THE PART THAT BELONGS TO BAGHDAD — and it predates Sicily\n\nThis is the section that makes SHABM's story native rather than borrowed. **Sicily got the snow-drink habit from the Arabs. The Arabs had it in Iraq first.**\n\n### 2.1 Snow (ثَلْج *thalj*) as an Abbasid luxury commodity **[MODEL-KNOWLEDGE, med]**\n- Snow was carried down to Baghdad from the **Zagros** and from Persia and Armenia, packed for insulation, and sold in the city. Arabic sources refer to snow merchants (**ثَلّاجون** *thallājūn*) and to snow-stores (**خَزائن الثَّلْج**).\n- **Caliph al-Mahdī (r. 158–169 AH / 775–785 CE) is reported as the first caliph to have snow transported to Mecca**, for the Hajj. **[MODEL-KNOWLEDGE, med-low — the report appears in al-Ṭabarī, *Taʾrīkh al-rusul wa-l-mulūk*, and in al-Suyūṭī, *Taʾrīkh al-Khulafāʾ*. VERIFY THE EXACT WORDING before printing — this is the single most quotable line in the brand story and therefore the one most likely to be fact-checked.]**\n- The Persian **یخچال *yakhchāl*** — the conical adobe ice-house with metre-thick *sārūj* walls, wind-catchers and qanat-fed freezing pools — is the surviving physical evidence of the technology. Extant examples at **Meybod, Yazd, Kerman and Sirjan.** **[MODEL-KNOWLEDGE, med-high]**\n- The Japanese parallel, worth one line for a global audience: **Sei Shōnagon's *Makura no Sōshi* (The Pillow Book), c. 1002 CE**, lists among \"elegant things\" — *shaved ice with amazura syrup, served in a new metal bowl*. **Shaved-ice-with-syrup is a documented luxury on three continents by the 11th century.** **[MODEL-KNOWLEDGE, med-high]**\n\n### 2.2 The actual Abbasid drinks — with the cookbooks to cite **[MODEL-KNOWLEDGE, med-high on the books, med on individual recipes]**\nTwo primary sources, both translated, both citable in a deck:\n- **Ibn Sayyār al-Warrāq, *Kitāb al-Ṭabīkh*** (Baghdad, 10th century, c. 940s–960s) — translated by **Nawal Nasrallah as *Annals of the Caliphs' Kitchens*, Brill, Leiden, 2007.** Contains chapters on **cold drinks, on chilling water, and on cooling a room.** This is the book to build the Arabic heritage slide from.\n- **al-Baghdādī (Muḥammad b. al-Ḥasan), *Kitāb al-Ṭabīkh*, 623 AH / 1226 CE** — translated by **A. J. Arberry, \"A Baghdad Cookery Book,\" *Islamic Culture* 13 (1939)**, reprinted in **Charles Perry (ed.), *Medieval Arab Cookery*, Prospect Books, 2001.**\n\nThe drinks themselves, with their names intact — every one of these is a menu line waiting to be written:\n| Arabic | Transliteration | What it is | Live today? |\n|---|---|---|---|\n| **سَكَنْجَبين** | *sikanjabīn* | Oxymel — vinegar + honey/sugar syrup, often with mint. From Persian *sirka* (vinegar) + *angabīn* (honey). The Abbasid summer drink, poured over snow. | Yes — Iran, Levant |\n| **جُلاب** | *julāb* | Rose-water syrup ← Persian *gulāb* | Yes — as **جَلّاب** *jallāb* |\n| **فُقّاع** | *fuqqāʿ* | Lightly fermented barley drink, drunk cold | Largely lost |\n| **شَراب التَّمْر الهِنْدي** | *sharāb al-tamr al-hindī* | Tamarind — literally \"the Indian date\" | **Yes — Baghdad, daily** |\n| **شَراب الرُّمّان** | *sharāb al-rummān* | Pomegranate | Yes |\n| **قَمَر الدين** | *qamar al-dīn* | Apricot leather, soaked and pressed | Yes — Ramadan |\n\n**Deck line, Arabic-ready:** «قبل أن تعرفَ صقلّيةُ الثلجَ بأربعةِ قرون، كان الثلجُ يُحمَلُ إلى بغداد من جبالِ الشمال، ويُخزَّنُ في خزائنَ تحت الأرض، ويُباعُ في السوق. الرَّذاذُ ليس فكرةً مستوردة. إنّه استعادة.»\n\n**Honest caveat that protects the brand:** the direct line *sharbat → granita* is a **reconstruction**, not a documented recipe lineage. Say \"the Arabs brought the sugar, the citrus, the chilled-drink concept and the snow trade to Sicily\" — which is defensible — rather than \"the Arabs invented granita,\" which a specialist will contest.\n\n---\n\n## 3. THE MODERN INVENTIONS — dated, named, checkable **[all MODEL-KNOWLEDGE; confidence noted]**\n| Product | Inventor | Where | When | Conf. |\n|---|---|---|---|---|\n| **Frappé** (the Greek shaken cold coffee) | **Dimitris Vakondios**, a Nestlé employee | **Thessaloniki International Fair** | **1957** | med-high |\n| **ICEE** (the carbonated slush) | **Omar Knedlik** — his soda fountain broke, he put the bottles in the freezer | **Coffeyville, Kansas** | machine **1960** | med-high |\n| **Slurpee** | 7-Eleven licenses the ICEE machine (**1965**); name coined by ad man **Bob Stanford** (**1966**) | USA | **1965–66** | med |\n| **Slush Puppie** | **Will Radcliff** | **Cincinnati, Ohio** | **1970** | med |\n| **Frappuccino** | **Andrew Frank** at **The Coffee Connection** (George Howell), Boston, **1992**; Starbucks acquires the chain **1994**, launches nationally **1995** | Boston → global | **1992–95** | med |\n| **Bingsu as a franchise** | **Sulbing (설빙)**, founded by Jung Seon-hee | **Busan, Korea** | **2013**; ~490 stores in ~2 years | low-med |\n| **Booza / بوظة with mastic & mallets** | **Bakdash (بكداش)**, Souq al-Hamidiyya | **Damascus** | **founded 1885** — the most-filmed cold-dessert scene in the Arab world | med |\n\n**The commercial giant nobody in this deck has cited yet, and they must: 蜜雪冰城 Mixue Bingcheng.** Founded **1997 in Zhengzhou** by Zhang Hongchao. By 2024 it had roughly **45,000 stores** — **more outlets than McDonald's or Starbucks**, making it the largest F&B chain on earth by store count. It **IPO'd on the HKEX on 3 March 2025** to an extraordinarily oversubscribed retail book. Its hero product is **冰鲜柠檬水 — fresh iced lemonade at RMB 4 (~$0.55).** **[MODEL-KNOWLEDGE, med on the arc, low on the exact figures — VERIFY against the HKEX prospectus.]**\n\n**Why this matters more to Radhadh than any granita history:** Mixue is the definitive proof that **the cheapest cold drink on the menu, sold at the highest frequency, is what builds the largest chain in the world** — not the hero SKU. That is precisely the argument for Radhadh, delivered at 45,000-store scale.",
+ "virality": "## ⚠️ STATE THIS PLAINLY BEFORE ANYTHING ELSE\n**I could not verify a single view count in this session.** No WebSearch (budget 200/200 exhausted by sibling agents), no WebFetch (every host EGRESS_BLOCKED). Everything below is either **[REPO-VERIFIED]** (live-sourced by a sibling agent while search still worked) or **[MODEL-KNOWLEDGE]** with the exact retrieval method named. **I have not fabricated a number.** Where the brief asks for \"N million views, posted by X on DATE,\" and I do not have it, I say **[GAP]** and tell you how to get it in ten minutes.\n\n---\n\n## 1. THE ONE VIRAL TRANSMISSION THAT IS ACTUALLY PROVEN INTO IRAQ **[REPO-VERIFIED]**\nThis is the most valuable single fact for the Arabic deck and it is already sitting in the repo, unused:\n\n> **INEWS TV Iraq ran a segment titled «شوكولاتة دبي.. ترند جديد يغزو أسواق العراق»** (\"Dubai chocolate — a new trend invading Iraq's markets\"), with TikTok discovery pages showing **Iraqi pricing and named shops in Baghdad and Mosul.**\n> *[/home/user/AboStesha-claude/shabm/research/07-viral-analogs.json — tagged SESSION-VERIFIED when live search was available]*\n\n**Why it matters for a juice line:** it demonstrates, empirically and in the target market, that a **purely aesthetic, high-markup, Gulf-origin F&B format crosses into Iraqi retail via TikTok within months.** That is the entire distribution thesis for Radhadh, observed working.\n\nThe originating video, for the record: **@mariavehera257 on TikTok, ~December 2023**, ASMR cross-section of FIX Dessert Chocolatier's *\"Can't Get Knafeh Of It\"* bar. **Reported at ~80–120 million views; figures vary by outlet and date.** **[MODEL-KNOWLEDGE, LOW — range only, do not print a single figure.]**\n\n---\n\n## 2. THE VIRAL MECHANICS OF A SLUSH — why this product is *structurally* more filmable than the ice block\n\nA granita/slush is one of the few F&B items whose **entire value proposition is visible in under two seconds of muted vertical video**. That is not a marketing opinion, it is a format observation, and it is what makes Radhadh a *content* asset despite being the cheap item:\n1. **The auger.** A slush machine's transparent bowl with a turning auger is continuous, hypnotic, loopable motion. It films itself. It needs no operator, no narration, no reveal.\n2. **Colour saturation at 100%.** Mango, pomegranate, watermelon, lemon-mint and blue curaçao-style syrups hit the exact chroma that short-form compression and phone screens flatter.\n3. **The layer pour.** A layered slush — heavy purée base, mid granita, light foam — is a **20-second content unit with a built-in payoff** (the moment the straw punches through the strata).\n4. **The frost line.** Condensation blooming down a cup wall in a 45 °C street is the single most legible visual signal of \"cold\" ever recorded.\n5. **It is cheap enough to be bought *because* it was filmed.** A viewer will not travel across Baghdad for a IQD 15,000 carved ice block on a whim. They will buy a IQD 4,000–5,000 slush on the way past. **Virality converts to purchase at low price points at a far higher rate than at high ones** — the conversion tax of a high ticket is the reason spectacle brands with only a hero SKU stall.\n\n---\n\n## 3. DATED VIRAL MOMENTS IN COLD DRINKS — what I can name, with confidence flags\n\n| Moment | Date | What actually happened | Confidence |\n|---|---|---|---|\n| **Starbucks \"Pink Drink\"** | viral on Instagram **2016**; made a **permanent menu item April 2017** | The cleanest proof in the industry that a *customer-invented, purely photogenic cold drink* can force itself onto a global menu. A Refresher + coconut milk, invented by customers, named by customers. | **med-high — verify via Starbucks Stories newsroom, April 2017** |\n| **\"Dirty soda\" / Swig** | founded **2010**, St. George, Utah, by **Nicole Tanner**; TikTok explosion **2021–22**; amplified by an **Olivia Rodrigo \"Dirty Diet Coke\" TikTok in early 2022** | A soda-plus-syrup-plus-cream category built almost entirely on short-form video, scaling to hundreds of US units. Directly analogous to a layered slush. | **med on the arc, LOW on the Rodrigo date and on unit counts — verify** |\n| **McDonald's Grimace Shake** | **launched 12 June 2023**; the horror-parody trend ran through late June–July 2023 | **#grimaceshake is widely reported to have passed ~3 billion TikTok views** — this is a **hashtag aggregate**, not one video. McDonald's Q2 2023 US comparable sales were reported at **+10.3%**, with management crediting the shake. **The best documented case of a viral cold drink moving a public company's reported comps.** | **LOW on both numbers — verify: TikTok hashtag page + McDonald's Q2 2023 earnings release** |\n| **Dubai chocolate → Iraq** | video **~Dec 2023**; Iraqi retail transmission confirmed by **INEWS TV Iraq** | See §1. | **[REPO-VERIFIED]** on the Iraq transmission; **LOW** on the view count |\n| **Dalgona coffee — the counter-example** | global explosion **~March–April 2020**; Google Trends collapse by **~June 2020** | **An ~8–12 week half-life.** It died because it was a *recipe*: anyone could make it at home with instant coffee and a whisk. | **[REPO-VERIFIED] high on the arc** |\n\n**The Dalgona lesson applied honestly to Radhadh — and the deck must not dodge this:** a fruit slush is **closer to Dalgona than to the ice block.** Anyone can buy a slush machine. The defence is not the recipe; it is everything in the `hard_to_copy` section below. Say so in the deck before an investor says it for you.\n\n---\n\n## 4. [GAP] — WHAT I COULD NOT GET, AND EXACTLY HOW TO GET IT (30 minutes of work)\n\nI have **no verified hashtag aggregate or single-video view count for any slush/juice hashtag.** Do not let anyone insert one into the deck unsourced. Pull them live:\n\n**Method A — TikTok Creative Center** (free, no login, gives official view totals):\n`ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag` — filter by **region = Iraq / Saudi Arabia / UAE**, then pull:\n`#slushie` `#slush` `#granita` `#frozenlemonade` `#juicebar` `#freshjuice`\n**Arabic — these are the ones that matter and nobody has pulled them:**\n`#عصير` `#عصير_طبيعي` `#عصيرات` `#شربت` `#جلاب` `#تمر_هندي` `#ليمون_نعناع` `#كوكتيل_عصير` `#عصير_بغداد` `#مشروبات_باردة`\n**Label every figure explicitly as a HASHTAG AGGREGATE, not a single-video count.** An investor who catches that elision discounts the whole deck.\n\n**Method B — Google Trends, free, and more persuasive than TikTok for this product.** Search `عصير`, `جلاب`, `تمر هندي`, `قمر الدين`, `عرق سوس` restricted to **Iraq, 2019–2026.** You will get a **hard, repeating annual spike at Ramadan and a summer plateau.** A Google Trends screenshot showing five consecutive years of the same seasonal spike is **better deck evidence than any view count**, because it proves *recurring* demand rather than one moment. This is the chart I would build the slide around.\n\n**Method C — the Iraqi-specific fact nobody has quantified yet, and it may be the strongest in the entire deck.**\nDuring **Muharram and Arbaeen**, the *mawākib* on the Karbala route distribute **free cold drinks — شربت الزبيب (raisin sharbat), water, tamarind, laban — at a scale that has no equivalent anywhere on earth.** Iraqi government figures for **Arbaeen routinely report in the range of 20–25 million visitors** (e.g. ~21–22 million cited for recent years). **[MODEL-KNOWLEDGE, LOW — verify with the Iraqi Ministry of Interior / Karbala Governorate annual statement.]**\n**The strategic reading:** Iraq is not a market that needs to be taught to drink cold sharbat. **It runs the largest annual free cold-drink distribution operation in the world.** The cultural permission for شربت is total; SHABM is not introducing a behaviour, it is charging for one. Get the official number and put it on a slide.\n\n---\n\n## 5. WHAT SELLS IN IRAQI AND GULF JUICE CULTURE — ranked, and honestly flagged\n\n**⚠️ I have NO sourced volume ranking for Iraqi cold drinks. The following is my ESTIMATE with the derivation shown. Do not print it as fact.**\n\n**Sourced anchors I do have [REPO-VERIFIED]:**\n- **Iraq sugary soft drinks market: $2.1 bn (2024)** — value down 3.7% y/y but **volumes up strongly** *(IndexBox / Euromonitor)*\n- **Baghdad Soft Drinks Co (ISX: IBSD)**, exclusive **PepsiCo** bottler for Iraq, 1,400+ staff, **~7.2 million bottles/month** *(company profile, 2026)*\n- **Iraq ice cream market $39M (2024), +152% y/y** *(IndexBox)* — the y/y jump is eye-catching and should be stress-tested before use.\n\n**My ESTIMATED volume ranking for Iraqi out-of-home cold drinks [LOW confidence]:**\n1. **Bottled water** — dominant, but not a juice-shop item\n2. **Carbonated soft drinks** — Iraq is a strongly Pepsi-skewed market; anchored on the 7.2M bottles/month bottler figure\n3. **لَبَن / شَنينة** *(salted yoghurt drink)* — accompanies the national grilled-meat meal; near-universal attach rate\n4. **عصير البرتقال** *(fresh orange)* — the default juice-shop item, and the one with a defensible 70.6% GM\n5. **ليمون نعناع** *(lemon-mint)* — the default café cold drink across Iraq, the Levant and the Gulf\n6. **عرق سوس** *(liquorice root)* + **تمر هندي** *(tamarind)* — the brass-urn street icons; **Ramadan-spiked**\n7. **شربت الزبيب** *(raisin sharbat)* — **Muharram/Ashura-spiked**, Baghdad and Karbala\n8. **جَلّاب** — more Levantine than Iraqi natively, but present and Ramadan-driven\n9. **قمر الدين** *(apricot leather)* — Ramadan only\n\n**Derivation:** anchored on the sourced Pepsi bottler volume for CSD; laban ranked on its universal attachment to the masgouf/kebab meal; orange and lemon-mint ranked because they appear on essentially every Iraqi café and juice-shop menu; the sharbat family ranked below them because they are **seasonal spikes rather than daily volume.** **Nothing here is sourced. Commission one week of physical menu-and-footfall observation in Karrada, Mansour and Zayouna and this becomes real data cheaply.**\n\n**The menu implication, which is sourced:** the three highest-margin, most filmable, most seasonally-defensible Radhadh SKUs are **ليمون نعناع (lemon-mint slush), رُمّان (pomegranate — but ONLY at a premium price), and بطّيخ (watermelon, peak summer)**. The seasonal fruit calendar makes the line a *self-rotating menu* at zero cost — the Crumbl mechanic, for free. *[/home/user/AboStesha-claude/shabm/research/07-viral-analogs.json §2.2]*",
+ "taste_arabic": [
+  "بَرْدٌ يَتَكَسَّرُ عَلى اللِّسانِ، ثُمَّ يَذوب.",
+  "حَبٌّ ثَلْجِيٌّ ناعِمٌ كَالرَّذاذ: لا يُمْضَغُ ولا يُشْرَب.",
+  "حُموضَةٌ صافِيَةٌ تَفْتَحُ الحَلْق، وحَلاوَةٌ خَفيفَةٌ لا تَعْلَق.",
+  "نَعْناعٌ يُطارِدُ اللَّيْمونَ حَتّى آخِرِ الرَّشْفَة.",
+  "أَوَّلُ رَشْفَةٍ تُطْفِئُ تَمُّوز."
+ ],
+ "numbers": [
+  {
+   "claim": "Radhadh (juice/slush) share of UNITS in the flagship Cube — the second-largest SKU by volume in the whole business, behind only Saqee' −80 at 23.01%",
+   "value": "21.23%",
+   "source": "/home/user/AboStesha-claude/shabm/financials/model_output.json — basket.unit_share.radhadh, cube_flagship",
+   "confidence": "high"
+  },
+  {
+   "claim": "Radhadh share of REVENUE in the flagship Cube — the gap vs 21.2% of units IS the strategic point: it is the frequency engine, not the hero",
+   "value": "15%",
+   "source": "/home/user/AboStesha-claude/shabm/financials/assumptions.json — formats.cube_flagship.mix.radhadh",
+   "confidence": "high"
+  },
+  {
+   "claim": "Radhadh menu price, Baghdad",
+   "value": "IQD 5,000 (USD 3.27)",
+   "source": "assumptions.json menu.radhadh.price_usd_baghdad; anchored on observed Baghdad fresh juice IQD 2,000–4,000",
+   "confidence": "high"
+  },
+  {
+   "claim": "Radhadh blended COGS and gross margin at IQD 5,000",
+   "value": "USD 1.07 COGS / 67.3% GM",
+   "source": "/home/user/AboStesha-claude/shabm/research/12-menu-pricing.json §3.2",
+   "confidence": "high"
+  },
+  {
+   "claim": "Gross-margin spread INSIDE the single Radhadh menu line at a flat IQD 5,000 price — slush vs pomegranate. The core menu-architecture finding",
+   "value": "78.3% (fruit slush) vs 38.2% (pomegranate) = a 40.1-point spread",
+   "source": "12-menu-pricing.json FINDING 5",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Orange juice 300 ml — fruit input required and wholesale price. This is why juice is a procurement business, not a recipe business",
+   "value": "750 g oranges at 40% yield; oranges IQD 1,225/kg → 70.6% GM",
+   "source": "Iraqi Ministry of Agriculture wholesale bulletins 2026, via 12-menu-pricing.json",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Fruit slush 300–400 ml input — the reason slush is the margin engine and juice is not",
+   "value": "120 g purée + ice + syrup = USD 0.35 fruit cost → 78.3% GM",
+   "source": "12-menu-pricing.json §1.5(e)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Recommended Radhadh price tiering to fix the 40-point spread",
+   "value": "Slush IQD 4,000 (72.8% GM) / Orange & seasonal IQD 5,000 (70.6%) / Pomegranate & premium IQD 7,500 (58.8%)",
+   "source": "12-menu-pricing.json FINDING 5 recommendation",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Radhadh production time — the fastest-to-serve item on the menu after the freezer pull",
+   "value": "70 seconds",
+   "source": "assumptions.json menu.radhadh.prep_seconds",
+   "confidence": "high"
+  },
+  {
+   "claim": "Juice/slush station load as a resource-constrained flow shop — it is NOT the bottleneck at 60 tx/hr but gets tight at 88",
+   "value": "0.50 servers at 60 tx/hr; 0.73 servers at 88 tx/hr (at 72% efficiency)",
+   "source": "12-menu-pricing.json §5.2",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad days per year above 40 °C — the structural demand base for a cold drink",
+   "value": "≈134 days",
+   "source": "ESTIMATE derived in 02-iraq-baghdad-market.json from climate normals: Jun/Jul/Aug mean daily highs of 42/45/45 °C = 92 days, plus ~10–14 days of late May and ~20–25 of September (Weather Spark; weather-atlas)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad hot season length and threshold",
+   "value": "3.9 months, 26 May – 21 September, daily highs averaging above 38.9 °C",
+   "source": "Weather Spark, Baghdad station 103217, via 02-iraq-baghdad-market.json",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad July and August mean daily high",
+   "value": "45 °C (July mean high 44.4 °C per Weather Spark; 45.6 °C per weather-atlas)",
+   "source": "Weather Spark / timeanddate / weather-atlas Baghdad normals",
+   "confidence": "high"
+  },
+  {
+   "claim": "Baghdad all-time record high",
+   "value": "51.8 °C (125.2 °F), 28 July 2020",
+   "source": "Washington Post, August 2020, via 02-iraq-baghdad-market.json",
+   "confidence": "high"
+  },
+  {
+   "claim": "Iraq sugary soft drinks market — the sourced scale anchor for cold-drink demand",
+   "value": "USD 2.1 bn (2024); value −3.7% y/y but volumes up strongly",
+   "source": "IndexBox / Euromonitor 2024, via 02-iraq-baghdad-market.json",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad Soft Drinks Co (ISX: IBSD), exclusive PepsiCo bottler for Iraq — throughput",
+   "value": "~7.2 million bottles/month; 1,400+ staff",
+   "source": "Company profile 2026, via 02-iraq-baghdad-market.json",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad observed fresh juice street price — the benchmark Radhadh is priced against",
+   "value": "IQD 2,000–4,000 (USD 1.30–2.60)",
+   "source": "ESTIMATE in 02-iraq-baghdad-market.json, derived from sourced MoA fruit wholesale costs (~IQD 400–700 raw material per 300 ml) at standard MENA juice-bar markups of 4–6×",
+   "confidence": "low"
+  },
+  {
+   "claim": "Baghdad blended iced drink / frappuccino benchmark and cappuccino benchmark",
+   "value": "~IQD 4,900 blended iced; IQD 3,300 cappuccino",
+   "source": "world-prices.com and hikersbay.com Baghdad 2026, via 12-menu-pricing.json",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Granita/slush 3-bowl machine — the cheap trap vs the machine that survives a Baghdad summer",
+   "value": "Chinese $700–1,800 vs Ugolini HT 3/1 or Elmeco First Class FC-3 at $5,500–7,500",
+   "source": "/home/user/AboStesha-claude/shabm/research/04-equipment-capex.json §7",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Recommended juice/slush station capex vs what the financial model currently carries — a flagged under-provision on the second-largest SKU by volume",
+   "value": "$13,000–16,000 recommended vs $9,000 in the model",
+   "source": "04-equipment-capex.json — 'third under-provisioned line'",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad commercial block ice retail price — the living Iraqi ice economy SHABM is building on",
+   "value": "IQD 4,000/block ≈ IQD 267/kg ≈ USD 0.20/kg",
+   "source": "Al-Araby Al-Jadeed, «باعة الثلج في العراق.. يبرّدون حرارة الطقس اللاهب»; 964media tag «معامل الثلج», via 03-baghdad-operating-costs.json",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad grid electricity availability — the constraint that decides whether a slush bowl holds its crystal",
+   "value": "8–12 hours/day",
+   "source": "Middle East Monitor Aug 2026, via 07-viral-analogs.json / 02-iraq-baghdad-market.json",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Baghdad private generator cost — the real cost of running a slush machine 15 hours a day",
+   "value": "~USD 8.40/ampere/month baseline; operator quotes to IQD 25,000 (~USD 19)/ampere in summer",
+   "source": "Renewable Energies journal Jan 2025; operator quotes 2025, via sibling research",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Water required for the frozen programme, and why municipal water is unusable",
+   "value": "~247 L/day feed water for ice alone at 40% RO recovery; budget 600–1,000 L/day with juices and cleaning",
+   "source": "ESTIMATE in 09-ops-food-safety.json §water; Baghdad tap-water unsuitability sourced to 'Assessment of Tigris River Water Quality for Drinking Purposes in Baghdad City' (IIETA/IJEI)",
+   "confidence": "medium"
+  },
+  {
+   "claim": "NaCl–ice eutectic temperature — the physics that turned scraped Sicilian snow into churned granita in the 16th century",
+   "value": "−21.1 °C",
+   "source": "Standard physical-chemistry constant",
+   "confidence": "high"
+  },
+  {
+   "claim": "Duration of Arab rule in Sicily — the window in which sugar, citrus, sharbat and the snow trade arrived",
+   "value": "827 CE (Aghlabid landing at Mazara del Vallo) to 1091 CE (fall of Noto) = 264 years",
+   "source": "MODEL-KNOWLEDGE — verify against Alex Metcalfe, The Muslims of Medieval Italy, Edinburgh UP 2009",
+   "confidence": "medium"
+  },
+  {
+   "claim": "First caliph reported to have snow transported to Mecca — the single most quotable Abbasid line, and the one most likely to be fact-checked",
+   "value": "al-Mahdī, r. 158–169 AH / 775–785 CE",
+   "source": "MODEL-KNOWLEDGE — reported in al-Ṭabarī, Taʾrīkh al-rusul wa-l-mulūk, and al-Suyūṭī, Taʾrīkh al-Khulafāʾ. VERIFY EXACT WORDING BEFORE PRINT",
+   "confidence": "low"
+  },
+  {
+   "claim": "Date of the Baghdadi cookbook containing the chapters on cold drinks and chilling water",
+   "value": "Ibn Sayyār al-Warrāq, Kitāb al-Ṭabīkh, 10th century (c. 940s–960s)",
+   "source": "MODEL-KNOWLEDGE — translated by Nawal Nasrallah as Annals of the Caliphs' Kitchens, Brill, Leiden, 2007",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Second primary Baghdadi source, translated and citable",
+   "value": "al-Baghdādī, Kitāb al-Ṭabīkh, 623 AH / 1226 CE",
+   "source": "MODEL-KNOWLEDGE — A. J. Arberry, 'A Baghdad Cookery Book', Islamic Culture 13 (1939); repr. in Charles Perry (ed.), Medieval Arab Cookery, Prospect Books 2001",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Shaved ice with syrup documented as an aristocratic luxury in Japan",
+   "value": "c. 1002 CE — Sei Shōnagon, Makura no Sōshi, 'shaved ice with amazura syrup in a new metal bowl'",
+   "source": "MODEL-KNOWLEDGE — Ivan Morris translation, The Pillow Book of Sei Shōnagon",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Greek frappé invention",
+   "value": "1957, Thessaloniki International Fair, by Nestlé employee Dimitris Vakondios",
+   "source": "MODEL-KNOWLEDGE",
+   "confidence": "medium"
+  },
+  {
+   "claim": "ICEE / Slurpee invention and licensing",
+   "value": "Omar Knedlik, Coffeyville, Kansas — machine 1960; 7-Eleven licensed 1965, 'Slurpee' name coined by Bob Stanford 1966",
+   "source": "MODEL-KNOWLEDGE",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Slush Puppie invention",
+   "value": "Will Radcliff, Cincinnati, Ohio, 1970",
+   "source": "MODEL-KNOWLEDGE",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Frappuccino invention and acquisition",
+   "value": "Andrew Frank at The Coffee Connection, Boston, 1992; Starbucks acquired the chain 1994 and launched nationally 1995",
+   "source": "MODEL-KNOWLEDGE",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Starbucks Pink Drink — a customer-invented photogenic cold drink forced onto a global permanent menu",
+   "value": "Instagram-viral 2016; permanent menu item April 2017",
+   "source": "MODEL-KNOWLEDGE — verify via Starbucks Stories newsroom, April 2017",
+   "confidence": "medium"
+  },
+  {
+   "claim": "Mixue Bingcheng 蜜雪冰城 — the definitive proof that the cheapest, highest-frequency cold drink builds the largest chain on earth",
+   "value": "Founded 1997 Zhengzhou; ~45,000 stores by 2024 (more than McDonald's or Starbucks); HKEX IPO 3 March 2025; hero SKU 冰鲜柠檬水 fresh iced lemonade at RMB 4 (~USD 0.55)",
+   "source": "MODEL-KNOWLEDGE — VERIFY against the HKEX prospectus and 2024 annual filing",
+   "confidence": "low"
+  },
+  {
+   "claim": "Sulbing (설빙) — fastest café-format franchise ramp on record for a shaved-ice product",
+   "value": "Founded 2013 Busan; ~490 stores in ~2 years",
+   "source": "MODEL-KNOWLEDGE, via 07-viral-analogs.json §2.9",
+   "confidence": "low"
+  },
+  {
+   "claim": "McDonald's Grimace Shake — best documented case of a viral cold drink moving a public company's reported comps",
+   "value": "Launched 12 June 2023; #grimaceshake widely reported past ~3 bn TikTok views (HASHTAG AGGREGATE, not one video); McDonald's Q2 2023 US comparable sales reported +10.3%",
+   "source": "MODEL-KNOWLEDGE — VERIFY via TikTok hashtag page and McDonald's Q2 2023 earnings release. Do not print unverified",
+   "confidence": "low"
+  },
+  {
+   "claim": "Dubai chocolate originating video — the format whose transmission into Iraq is repo-verified",
+   "value": "@mariavehera257 on TikTok, ~December 2023; reported ~80–120 million views (figures vary by outlet)",
+   "source": "MODEL-KNOWLEDGE via 07-viral-analogs.json §2.1 — range only, do not print a single figure",
+   "confidence": "low"
+  },
+  {
+   "claim": "Dalgona coffee — the counter-example that defines what a copyable cold drink is worth",
+   "value": "Global explosion ~March–April 2020; Google Trends collapse by ~June 2020 — an 8–12 week half-life",
+   "source": "07-viral-analogs.json §2.11 — tagged SESSION-VERIFIED on the arc",
+   "confidence": "high"
+  },
+  {
+   "claim": "Arbaeen pilgrimage to Karbala — the largest annual free cold-drink distribution operation in the world, and the cultural permission structure for شربت in Iraq",
+   "value": "~20–25 million visitors reported in recent years",
+   "source": "MODEL-KNOWLEDGE — MUST be verified against the Iraqi Ministry of Interior / Karbala Governorate annual statement before use",
+   "confidence": "low"
+  },
+  {
+   "claim": "Baghdad cold-drinks and frozen-dessert SAM",
+   "value": "USD 145–215 million/year",
+   "source": "ESTIMATE in 02-iraq-baghdad-market.json: Baghdad F&B spend ~USD 6.7 bn × 12–18% specialty-cold share, elevated above temperate norm because of ~134 days/yr above 40 °C",
+   "confidence": "low"
+  },
+  {
+   "claim": "Bakdash (بكداش), Souq al-Hamidiyya, Damascus — the most-filmed cold-dessert scene in the Arab world",
+   "value": "Founded 1885",
+   "source": "MODEL-KNOWLEDGE",
+   "confidence": "medium"
+  }
+ ],
+ "sources": [
+  "/home/user/AboStesha-claude/shabm/research/02-iraq-baghdad-market.json — Iraq/Baghdad demand, 2024 census, climate normals, beverage market, SAM build (live-sourced by sibling agent)",
+  "/home/user/AboStesha-claude/shabm/research/12-menu-pricing.json — Radhadh recipe costing, the 40-point margin spread, price tiering, flow-shop station loads",
+  "/home/user/AboStesha-claude/shabm/research/04-equipment-capex.json §7 — slush/juice equipment tiers, Ugolini/Elmeco vs Chinese, under-provision finding",
+  "/home/user/AboStesha-claude/shabm/research/09-ops-food-safety.json — water/RO train, HACCP, crystal growth and heat shock",
+  "/home/user/AboStesha-claude/shabm/research/03-baghdad-operating-costs.json — Baghdad block-ice economics, power stack, health licensing of «مثلجات»",
+  "/home/user/AboStesha-claude/shabm/research/07-viral-analogs.json — viral F&B analogs, the INEWS TV Iraq transmission finding, Dalgona counter-example",
+  "/home/user/AboStesha-claude/shabm/research/01-language-and-poetry.json — root ش-ب-م in Lisān al-ʿArab / Qāmūs / Tāj al-ʿArūs; Nice classes 29/30/32/35/43",
+  "/home/user/AboStesha-claude/shabm/financials/assumptions.json and model_output.json — Radhadh price, COGS, prep seconds, unit and revenue mix",
+  "Weather Spark, Baghdad station 103217 — hot season length, July/August normals",
+  "Washington Post, August 2020 — Baghdad all-time record 51.8 °C, 28 July 2020",
+  "IndexBox — Iraq Soft Drinks and Iraq Ice Cream Market Reports 2024/2025 (via Euromonitor)",
+  "Iraqi Ministry of Agriculture wholesale price bulletins, 2026 — orange and banana wholesale",
+  "world-prices.com and hikersbay.com, Baghdad 2026 — cappuccino and blended-iced benchmarks",
+  "Al-Araby Al-Jadeed, «باعة الثلج في العراق.. يبرّدون حرارة الطقس اللاهب»; 964media tag «معامل الثلج»",
+  "Elizabeth David, Harvest of the Cold Months: The Social History of Ice and Ices (Michael Joseph, 1994) — THE canonical source on snow trade, Sicilian neviere, ice houses and sorbetti. Hand this to whoever writes the Arabic copy",
+  "Nawal Nasrallah (trans.), Annals of the Caliphs' Kitchens: Ibn Sayyār al-Warrāq's Tenth-Century Baghdadi Cookbook (Brill, Leiden, 2007) — chapters on cold drinks, chilling water, cooling a room",
+  "A. J. Arberry, 'A Baghdad Cookery Book' (al-Baghdādī, Kitāb al-Ṭabīkh, 623 AH/1226 CE), Islamic Culture 13 (1939); repr. in Charles Perry (ed.), Medieval Arab Cookery (Prospect Books, 2001)",
+  "al-Ṭabarī, Taʾrīkh al-rusul wa-l-mulūk (SUNY translation series) and al-Suyūṭī, Taʾrīkh al-Khulafāʾ — al-Mahdī and snow to Mecca. VERIFY WORDING",
+  "Hugh Kennedy, When Baghdad Ruled the Muslim World (Da Capo, 2005) — Abbasid court consumption and luxury supply chains",
+  "Alex Metcalfe, The Muslims of Medieval Italy (Edinburgh UP, 2009) — dates of the Emirate of Sicily",
+  "Andrew Watson, Agricultural Innovation in the Early Islamic World (Cambridge UP, 1983); Clifford Wright, A Mediterranean Feast (Morrow, 1999) — Arab transfer of sugar cane and citrus to Sicily",
+  "Mary Taylor Simeti, Pomp and Sustenance: Twenty-Five Centuries of Sicilian Food (Knopf, 1989) — granita, neviere, the Sicilian schools",
+  "Antonio Latini, Lo Scalco alla Moderna (Naples, 1692 and 1694) — first printed Italian sorbetti recipes",
+  "MASAF (Italian Ministry of Agriculture) PAT register, Sicily — entry for 'granita siciliana'. VERIFY",
+  "Oxford English Dictionary — entries 'sherbet', 'sorbet', 'syrup', 'julep' (the شراب and گلاب chains)",
+  "Sei Shōnagon, Makura no Sōshi (The Pillow Book), c. 1002 CE — Ivan Morris translation; shaved ice with amazura syrup",
+  "Meng Yuanlao 孟元老, 東京夢華錄 Dongjing Meng Hua Lu (1147) — iced-drink stalls in Song-dynasty Kaifeng",
+  "TikTok Creative Center hashtag tool — ads.tiktok.com/business/creativecenter/inspiration/popular/hashtag — TO BE PULLED LIVE for #عصير #عصيرات #شربت #جلاب #تمر_هندي #ليمون_نعناع #slushie #granita, region-filtered to Iraq/KSA/UAE",
+  "Google Trends (Iraq, 2019–2026) for عصير / جلاب / تمر هندي / قمر الدين / عرق سوس — TO BE PULLED LIVE; the five-year seasonal spike chart is stronger deck evidence than any view count",
+  "Mixue Bingcheng 蜜雪冰城 — HKEX IPO prospectus and filings, March 2025. TO BE VERIFIED",
+  "McDonald's Q2 2023 earnings release — Grimace Shake and US comparable sales. TO BE VERIFIED",
+  "Starbucks Stories newsroom, April 2017 — Pink Drink added to the permanent menu. TO BE VERIFIED",
+  "Iraqi Ministry of Interior / Karbala Governorate — annual Arbaeen visitor figures. TO BE VERIFIED",
+  "SESSION CONSTRAINT: WebSearch budget 200/200 exhausted before this task began; WebFetch returned EGRESS_BLOCKED on every host attempted (en.wikipedia.org, ar.wikipedia.org, britannica.com, etymonline.com). No figure in this report was verified live in this session."
+ ],
+ "hard_to_copy": "## START BY CONCEDING THE POINT — then win the real argument\n\n**A fruit slush is the most copyable thing SHABM sells.** Anyone in Baghdad can buy a 3-bowl slush machine for $700–1,800 and squeeze an orange. If the Arabic deck claims a defensible moat on the *recipe*, the first investor who has ever visited a juice shop will dismantle the slide. **Say it first: «الرَّذاذ ليس سرًّا. الرَّذاذ عادَة.»** — then make the five arguments that are actually true.\n\n---\n\n### 1. The moat is the electricity, not the fruit — and this is the strongest one\nA slush machine must hold its bowl in a narrow product-temperature window (roughly **−2 to −4 °C**) **continuously, 15 hours a day, against a 45–50 °C back-of-house ambient**, in a city with **8–12 grid hours per day** *[Middle East Monitor Aug 2026, via repo]*.\n\nEvery power cut re-melts the bowl. Every re-freeze **coarsens the crystal** — the same Ostwald-ripening mechanism that ruins sorbet *[09-ops-food-safety.json: \"heat shock is the enemy… every temperature cycle grows ice crystals\"]*. The competitor who buys the $1,800 Chinese machine has not bought a cheaper slush machine; **he has bought a machine that produces a visibly worse product by August and fails by the second summer.** The repo says this in as many words: *\"Cheap 3-bowl slush machines are the #1 breakdown item in Gulf/Iraqi cafés… the $2,000 saving versus an Ugolini is spent within two summers on service calls and lost trading days.\"*\n\n**SHABM's answer is capital and engineering, not a recipe:** Ugolini HT 3/1 or Elmeco First Class FC-3 class ($5,500–7,500), **T3-rated cooling (52 °C, not the standard T1 35 °C)**, dedicated on-site generation, and **8–12% of equipment capex held as a spares and service reserve** — because there is **no OEM service agent in Iraq for Ugolini**, and an imported compressor is six weeks of dead revenue. *[04-equipment-capex.json]*\n\n**Deck line:** «المنافس يستطيع أن يشتري ماكينة رَذاذ. لا يستطيع أن يشتري كهرباءَ مستمرّة في بغداد.»\n\n### 2. The moat is the water\nA slush is **70–85% water by mass.** Baghdad municipal water is not usable — most urban Baghdad households already drink bottled water *[Assessment of Tigris River Water Quality, IIETA/IJEI, via repo]*. The product requires a full treatment train (sediment → carbon → softener → RO → UV → 0.2 µm) sized at **600–1,000 L/day**, with an opaque, insulated, shaded buffer tank. That train is shared with the espresso machine and the clear-ice programme — **budget it once, size it for three.** It is a capex line and a compliance system, and Baghdad's health-licence instructions **explicitly name «مثلجات» as a supervised category.** A street competitor is not building it.\n\n### 3. The moat is the menu architecture, not the menu\nThe genuinely proprietary insight in this product line is **the 40-point margin spread and the tiering that fixes it.** A copyist will do what every juice shop does: price the whole board flat and let customers self-select into pomegranate at 38.2% GM. SHABM's three-tier structure — **slush IQD 4,000 / orange IQD 5,000 / pomegranate IQD 7,500** — is the difference between a 67% line and a 75% line at identical volume. **That is not a secret recipe; it is menu engineering, and almost nobody in the market does it.**\n\n### 4. The moat is that Radhadh does not have to win on its own\nThis is the argument that reframes the whole section. **Radhadh is not a standalone juice shop competing with juice shops.** It is the **low-consideration attach SKU inside a destination people already travelled to for the spectacle.** Its structural advantages as a purchase are exactly the ones that make it un-competable *in that position*:\n- **Pre-approved.** No one deliberates over fresh juice. It carries a health halo, no cultural gatekeeping (unlike specialty coffee), no religious or dietary exclusion, no caffeine restriction.\n- **It is the item bought for the child.** It is the only line on the menu a parent buys *in addition to* their own order. That is why it runs at 21.2% of units on 15% of revenue.\n- **It cannot be substituted at the moment of thirst.** At 45 °C, on a street, three minutes matters. A home juicer is not a competitor to a 70-second serve.\n- **It is the return visit.** The IQD 15,000 carved ice block is a once-a-month photograph. The IQD 4,000 lemon-mint slush is the Tuesday habit that pays the rent between photographs.\n\n**Deck line:** «الشِّهرةُ تجلب الزبون مرّة. الرَّذاذُ يُعيده.»\n\n### 5. The moat is the seasonal fruit calendar — a rotating menu at zero cost\nCrumbl's real product was never a cookie; it was **a weekly release schedule** that manufactured a reason to return, a reason to post, and free content *[07-viral-analogs.json §2.2]*. Radhadh gets the same mechanic **for free**, because Iraqi fruit is seasonal: **apricot in spring → watermelon and melon at peak summer → pomegranate in autumn → citrus in winter.** The line is *inherently* a rotating menu. That is a genuine, defensible, zero-cost answer to \"what stops this going stale,\" and it is currently nowhere in the deck.\n\n---\n\n## ⚠️ THE THREE THINGS THAT ARE NOT A MOAT — cut them before an investor does\n1. **\"Ancient Arab heritage.\"** Heritage is *positioning*, not defensibility. Anyone can print «شراب» on a cup. Use the Abbasid story to earn permission and price, never to claim protection.\n2. **\"Fresh-pressed.\"** Every juice shop in Baghdad says this. It is table stakes.\n3. **\"Our own syrups.\"** A recipe walks out of the door with the first employee who leaves. **Iraq is first-to-file in practice, is not a Madrid Protocol member, and trademark pendency runs 12–24 months** *[01-language-and-poetry.json, SESSION-VERIFIED]*. File **شَبِم** and **رَذاذ** in **Nice classes 32 and 43** in **both Arabic and Latin script, before launch.** On this product line, the trademark is worth more than the formulation — because the formulation is not defensible and the name is."
+}

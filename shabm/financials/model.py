@@ -121,20 +121,43 @@ class Unit:
 
     # ---- capacity -----------------------------------------------------------
     def capacity(self):
-        """Peak-hour throughput, constrained by prep seconds per item and stations."""
-        secs = 0.0
+        """Peak-hour throughput. Two SEPARATE constraints, not one pooled queue:
+
+        1. the general production stations, which make everything except rolled ice cream;
+        2. the -30C pans, which are the only place a rolled portion can be made.
+
+        An earlier version pooled them, which quietly assumed a barista could make a
+        rolled ice cream at the espresso machine. The binding constraint is whichever
+        of the two runs out first."""
+        A = self.A
         b = self.basket()
-        for k, u in b["unit_share"].items():
-            secs += u * self.menu[k]["prep_seconds"]
-        avg_item_secs = secs
+        eff = A["ops"]["station_efficiency"]
+        rolled = b["unit_share"].get("lafaif", 0.0)
+
+        # general stations handle every item except lafaif
+        gen_secs = sum(u * self.menu[k]["prep_seconds"]
+                       for k, u in b["unit_share"].items() if k != "lafaif")
+        gen_share = 1.0 - rolled
         stations = self.fmt["prod_stations"]
-        eff = self.A["ops"]["station_efficiency"]
-        items_per_hour = stations * 3600 / avg_item_secs * eff
-        tx_per_hour = items_per_hour / b["items_per_ticket"]
+        gen_items_hr = (stations * 3600 * eff / (gen_secs / gen_share)) if gen_share > 0 else 0
+        tx_from_gen = (gen_items_hr / gen_share) / b["items_per_ticket"] if gen_share > 0 else 1e9
+
+        # pans handle lafaif only
+        pans = self.fmt.get("rolled_pans", 1)
+        pan_items_hr = pans * A["ops"]["rolled_pan_throughput_per_hour"] * eff
+        tx_from_pan = (pan_items_hr / rolled) / b["items_per_ticket"] if rolled > 0 else 1e9
+
+        tx_per_hour = min(tx_from_gen, tx_from_pan)
+        binding = "rolled ice cream pans" if tx_from_pan < tx_from_gen else "production stations"
+        avg_item_secs = sum(u * self.menu[k]["prep_seconds"] for k, u in b["unit_share"].items())
         return {
             "avg_item_prep_seconds": r1(avg_item_secs),
             "stations": stations,
-            "peak_items_per_hour": r0(items_per_hour),
+            "rolled_pans": pans,
+            "tx_per_hour_stations": r0(tx_from_gen),
+            "tx_per_hour_pans": r0(tx_from_pan),
+            "binding_constraint": binding,
+            "peak_items_per_hour": r0(tx_per_hour * b["items_per_ticket"]),
             "peak_tx_per_hour": r0(tx_per_hour),
         }
 
@@ -208,16 +231,20 @@ class Unit:
         return rows
 
     def labour_monthly(self, month_idx, seas_mult):
-        """Core team all year + seasonal extras scaled to demand."""
+        """Core team + seasonal extras, and a reduced winter crew.
+
+        With no hot menu the two trough months barely trade, so the roster shrinks:
+        short hours, a skeleton production crew, and the rest of the team on
+        training, R&D and the Ramadan build-up."""
         A = self.A
         w = self.mkt["wages"]
         core = self.fmt["staff_core"]
         peak_extra = self.fmt["staff_peak_extra"]
-        # extras scale with how far above trough the month sits
         extra = peak_extra * max(0.0, (seas_mult - 0.75) / (1.55 - 0.75))
-        cost = 0.0
-        for role, n in core.items():
-            cost += n * w[role]
+        cost = sum(n * w[role] for role, n in core.items())
+        thr = A["ops"]["winter_labour_threshold"]
+        if seas_mult < thr:
+            cost *= (1 - A["ops"]["winter_labour_cut"])
         cost += extra * w["barista"]
         return cost * (1 + A["ops"]["employer_oncost_pct"])
 
