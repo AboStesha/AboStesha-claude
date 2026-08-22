@@ -1520,6 +1520,11 @@ def render():
    <span class="chip k">الفرع الأول {kk(FLAG["capex"]["total"])} · استرداد {FLAG["payback_months"]:.0f} شهراً</span>
    <span class="chip k">شركة الامتياز {kk(A["raise"]["amount_usd"])} · عائد {FR["irr_pct"]:.0f}%</span>
   </div>
+  <div class="hero-cube">
+   {img("cube_day", "المُكعَّب من الخارج",
+        "المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، ثلاثُ فتحاتٍ فقط.",
+        cls="wide", fallback=cube_exterior())}
+  </div>
  </div>
 </header>
 <main>{"".join(S)}</main>

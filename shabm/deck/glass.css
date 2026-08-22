@@ -343,3 +343,10 @@ svg.cv .nl  { fill: var(--ink-4); font-family: var(--ar); font-size: 11px; }
 .eqline svg.eq { width:44px; height:36px; flex:0 0 44px; color: var(--ink-2); }
 tr.sub .eqline, thead .eqline { padding-inline-start:0; }
 @media (max-width:700px){ .eqline svg.eq { display:none; } }
+
+/* the cube on the opening page: the first thing anyone sees is the thing itself */
+.hero-cube { margin-top: clamp(2.4rem, 1.4rem + 3vw, 4.5rem); }
+.hero-cube .ph img { max-height: 62vh; object-fit: cover; }
+.hero-cube .fg { border: 0; background: transparent; padding: 0; }
+.hero-cube .fg svg { max-height: 60vh; }
+.hero-cube figcaption { text-align: center; }
