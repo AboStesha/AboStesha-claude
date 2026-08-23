@@ -20,7 +20,7 @@ SLOTS = {
     # arrive by hand through Drive instead of by job id.
     "cube_hero": "cube_hero", "face_detail": "face_detail",
     "menu_card": "menu_card", "spread": "spread",
-    "frozen_wall": "frozen_wall", "ice_bar": "ice_bar",
+    "frozen_wall": "frozen_wall", "ice_bar": "ice_bar", "roof_mist": "roof_mist",
     # the final exterior set: a closed block, three openings, menu flank
     "99459816": "cube_day",      "7478ee00": "cube_night",
     "2f54bf6b": "cube_dawn",     "a8366b1c": "face_detail",
