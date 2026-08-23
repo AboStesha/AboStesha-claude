@@ -15,6 +15,10 @@ RAW, OUT = os.path.join(HERE, "raw"), os.path.join(HERE, "img")
 LONG_EDGE, QUALITY = 1500, 74          # keeps the published page well under 16 MB
 
 SLOTS = {
+    # approved by the founder and dropped in raw/ under their own slot name,
+    # because the Higgsfield CDNs are blocked to this session and the files
+    # arrive by hand through Drive instead of by job id.
+    "cube_hero": "cube_hero", "face_detail": "face_detail",
     # the final exterior set: a closed block, three openings, menu flank
     "99459816": "cube_day",      "7478ee00": "cube_night",
     "2f54bf6b": "cube_dawn",     "a8366b1c": "face_detail",
