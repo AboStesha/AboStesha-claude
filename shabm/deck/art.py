@@ -36,7 +36,8 @@ def cube_exterior():
  </defs>
 
  <g color="currentColor">
-  <!-- ground shadow + meltwater spreading, irregular not oval -->
+  <!-- ground: shadow and meltwater ride the tipped base contact line -->
+  <g transform="translate(0,14) translate(452,530) skewY(-3.6) translate(-452,-530)">
   <ellipse cx="452" cy="530" rx="330" ry="46" fill="url(#pud)"/>
   <path d="M170 528 C250 508 330 500 452 502 C574 504 668 512 742 532
            C700 556 580 566 452 566 C324 566 216 552 170 528 Z"
@@ -51,6 +52,7 @@ def cube_exterior():
    <path d="M452 566 C450 578 456 588 470 594"/>
    <path d="M380 560 C362 572 344 578 322 580" stroke-opacity=".15"/>
   </g>
+  </g>
 
   <!-- cold vapour spilling off the base and rolling outward -->
   <g filter="url(#soft2)" opacity=".5">
@@ -63,11 +65,10 @@ def cube_exterior():
    <ellipse cx="712" cy="482" rx="60" ry="22" fill="currentColor" opacity=".2"/>
   </g>
 
-  <!-- plinth, tilted with the block -->
-  <path d="M196 496 L716 484 L700 512 L212 524 Z" fill="currentColor" opacity=".13"/>
-
   <!-- Everything on the block leans together; the ground does not. -->
-  <g transform="translate(452,320) skewY(-3.4) rotate(-1.6) translate(-452,-320)">
+  <g transform="translate(452,340) skewY(-3.8) rotate(-2.6) translate(-452,-340)">
+  <!-- plinth, leaning with the block -->
+  <path d="M196 496 L716 484 L700 516 L212 528 Z" fill="currentColor" opacity=".13"/>
   <!-- ============ THE BLOCK — leaning, eroded, never a clean cube ============ -->
   <!-- right/side face -->
   <path d="M652 108 L800 178 L790 458 L646 500 Z" fill="url(#fB)"/>
@@ -230,12 +231,6 @@ def cube_exterior():
   <text x="874" y="508" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
         fill="currentColor" fill-opacity=".34">مسقطٌ أفقي · مكعّب ٤.٢ × ٤.٢ × ٤.٢</text>
 
-  <text x="884" y="110" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">كتلةٌ مصمتة: لا جلوسَ ولا مظلّةَ ولا نافذة</text>
-  <text x="884" y="132" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">ثلاثُ فتحاتٍ فقط، ولا يظهر الداخلُ أبداً</text>
-  <text x="884" y="154" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".34">ندىً وبخارٌ وماءٌ يسيل — ولا شيءَ غير ذلك</text>
 
   <!-- misting nozzles under the overhang, and their drift -->
   <g filter="url(#soft)" opacity=".34">

@@ -150,7 +150,7 @@
    },
    "_mix_note": "Share of REVENUE, not units. Al-Qalab is capped at 12%: it is the scarcest input and, with Lafa'if, the slowest to make. Lafa'if is cut to 14% because it earns $1.15 of gross profit per minute of production time against the Jana box's $9.97.",
    "rent_usd_month": 1350,
-   "_rent_note": "H/E — خُفِّض من ٢,٢٠٠$ مع تصغير البصمة: ١٨ م² مغلقة على قدمٍ إجمالية نحو ٤٠ م² شاملةً البار المحيط، بدل ٦٠ م². المقارنات البغدادية: ٣٥٠ م² في ١٤ رمضان بالمنصور بـ١٠$/م²/شهر، و٢٠٠ م² في زيّونة بـ٢٧.٥$/م². البصماتُ الصغيرة في المواقع المميّزة تحمل السعرَ الأعلى للمتر.",
+   "_rent_note": "H/E — خُفِّض من ٢,٢٠٠$ مع تصغير البصمة: ١٨ م² مغلقة على قدمٍ إجمالية نحو ٢٤ م² شاملةَ شريطِ الوقوف أمام الفتحات فقط، بدل ٦٠ م². المقارنات البغدادية: ٣٥٠ م² في ١٤ رمضان بالمنصور بـ١٠$/م²/شهر، و٢٠٠ م² في زيّونة بـ٢٧.٥$/م². البصماتُ الصغيرة في المواقع المميّزة تحمل السعرَ الأعلى للمتر.",
    "key_money_usd": 20250,
    "_key_note": "H/E - Key money observed at $25,000 on a Karrada shop renting at $1,000/month, i.e. 25x monthly rent; SHABIM budgets 15x. LEGAL WARNING: Property Lease Law No. 87 of 1979 expressly prohibits key money (خلو) taken by landlord, tenant or broker. It is nonetheless universal in Baghdad commercial letting. Budget it, but structure it - see the risk register.",
    "utilities_base_usd_month": 800,
