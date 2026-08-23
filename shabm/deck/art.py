@@ -68,19 +68,19 @@ def cube_exterior():
   <!-- Everything on the block leans together; the ground does not. -->
   <g transform="translate(452,340) skewY(-3.8) rotate(-2.6) translate(-452,-340)">
   <!-- ============ THE BLOCK — leaning, eroded, never a clean cube ============ -->
-  <!-- left/side face — the menu flank, which is why the camera stands here -->
-  <path d="M240 104 L92 174 L76 458 L220 500 Z" fill="url(#fB)"/>
+  <!-- right/side face — the menu flank, which is why the camera stands here -->
+  <path d="M652 108 L800 178 L790 458 L646 500 Z" fill="url(#fB)"/>
   <!-- top face, sagging where it has melted -->
-  <path d="M240 104 C312 84 480 84 652 108 L592 176 C470 160 220 158 92 174 Z" fill="url(#fC)"/>
+  <path d="M240 104 C312 84 480 84 652 108 L800 178 C620 156 430 158 300 172 Z" fill="url(#fC)"/>
   <!-- front face: edges bowed and rounded by melt, base narrower than the top -->
   <path d="M240 104 C312 84 480 84 652 108
            L646 500 C536 514 366 512 220 500
            C214 366 224 228 240 104 Z" fill="url(#fA)"/>
   <!-- outline, deliberately soft and uneven -->
-  <path d="M652 108 C480 84 312 84 240 104 L92 174 L76 458 L220 500
-           C366 512 536 514 646 500 L652 108 Z"
+  <path d="M240 104 C312 84 480 84 652 108 L800 178 L790 458 L646 500
+           C536 514 366 512 220 500 C214 366 224 228 240 104 Z"
         fill="none" stroke="currentColor" stroke-opacity=".34" stroke-width="1.3" stroke-linejoin="round"/>
-  <path d="M232 122 L212 500 M232 122 L150 172" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="1"/>
+  <path d="M660 126 L648 500 M660 126 L742 176" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="1"/>
 
   <!-- internal fissures — irregular, never mirrored -->
   <g stroke="currentColor" stroke-opacity=".2" stroke-width=".9" fill="none" stroke-linecap="round">
@@ -119,11 +119,11 @@ def cube_exterior():
    <path d="M262 200 C260 300 258 400 259 496"/>
    <path d="M632 158 C630 260 628 380 630 498" stroke-opacity=".2"/>
    <path d="M340 178 C338 250 337 300 339 340" stroke-opacity=".16"/>
-   <path d="M150 200 C148 300 146 400 150 470" stroke-opacity=".18"/>
+   <path d="M726 186 C724 300 722 400 718 484" stroke-opacity=".18"/>
   </g>
   <g fill="currentColor" opacity=".4">
    <ellipse cx="259" cy="502" rx="2.6" ry="3.6"/><ellipse cx="630" cy="504" rx="2.2" ry="3.2"/>
-   <ellipse cx="339" cy="346" rx="1.8" ry="2.6"/><ellipse cx="150" cy="476" rx="2" ry="2.8"/>
+   <ellipse cx="339" cy="346" rx="1.8" ry="2.6"/><ellipse cx="718" cy="490" rx="2" ry="2.8"/>
   </g>
   <!-- water leaving the bottom edge along its whole length -->
   <g stroke="currentColor" stroke-opacity=".26" stroke-width="1.1" fill="none" stroke-linecap="round">
@@ -187,25 +187,25 @@ def cube_exterior():
   <text x="431" y="318" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13"
         fill="currentColor" fill-opacity=".5">ارجِع</text>
 
-  <!-- ============ THE LEFT FLANK =====================================
+  <!-- ============ THE RIGHT FLANK =====================================
        The only thing on the whole block besides the name and the openings:
        the finished products, frozen into the panel, priced above each. -->
   <g stroke="currentColor" stroke-opacity=".26" stroke-width="1" fill="none">
-   <path d="M226 146 L104 202 M226 226 L104 282 M226 306 L102 362 M226 386 L102 434"/>
+   <path d="M666 146 L788 202 M666 226 L788 282 M666 306 L790 362 M666 386 L790 434"/>
   </g>
   <g stroke="currentColor" stroke-opacity=".36" stroke-width="1.1" fill="url(#fC)">
-   <rect x="172" y="160" width="26" height="42" rx="2"/>
-   <ellipse cx="185" cy="160" rx="13" ry="4"/>
-   <rect x="166" y="242" width="26" height="36" rx="2"/>
-   <rect x="166" y="320" width="22" height="38" rx="11"/>
-   <circle cx="176" cy="404" r="14"/>
+   <rect x="694" y="160" width="26" height="42" rx="2"/>
+   <ellipse cx="707" cy="160" rx="13" ry="4"/>
+   <rect x="700" y="242" width="26" height="36" rx="2"/>
+   <rect x="704" y="320" width="22" height="38" rx="11"/>
+   <circle cx="716" cy="404" r="14"/>
   </g>
   <g fill="currentColor" opacity=".1">
-   <ellipse cx="185" cy="182" rx="24" ry="30"/><ellipse cx="179" cy="260" rx="23" ry="28"/>
-   <ellipse cx="177" cy="340" rx="21" ry="28"/><ellipse cx="176" cy="404" rx="22" ry="24"/>
+   <ellipse cx="707" cy="182" rx="24" ry="30"/><ellipse cx="713" cy="260" rx="23" ry="28"/>
+   <ellipse cx="715" cy="340" rx="21" ry="28"/><ellipse cx="716" cy="404" rx="22" ry="24"/>
   </g>
-  <text x="86" y="520" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
-        fill="currentColor" fill-opacity=".46">الجانبُ الأيسر</text>
+  <text x="812" y="470" text-anchor="start" font-family="Cairo, sans-serif" font-size="11"
+        fill="currentColor" fill-opacity=".46">الجانبُ الأيمن</text>
 
   </g>
 
@@ -220,10 +220,10 @@ def cube_exterior():
     <rect x="60" y="69" width="8" height="6" rx="1"/>
     <rect x="78" y="69" width="12" height="6" rx="1"/>
    </g>
-   <path d="M34 22 L34 68" stroke="currentColor" stroke-opacity=".5" stroke-width="3"/>
+   <path d="M98 22 L98 68" stroke="currentColor" stroke-opacity=".5" stroke-width="3"/>
    <text x="66" y="82" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9"
          fill="currentColor" fill-opacity=".42">الخدمة</text>
-   <text x="18" y="12" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9"
+   <text x="118" y="18" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9"
          fill="currentColor" fill-opacity=".42">القائمة</text>
   </g>
   <text x="874" y="508" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
@@ -455,7 +455,7 @@ def flank_menu(items):
         f'<circle cx="{(i*97)%W}" cy="{70+((i*53)%196)}" r="{1.2+(i%3)*0.7}"/>' for i in range(34))
     return f'''
 <svg viewBox="0 0 {W} {H}" class="cv scene" role="img"
- aria-label="الجانب الأيسر من المكعّب: المنتجات النهائية مجمّدة داخل اللوح بقياسها الحقيقي وفوق كلٍّ منها اسمه وسعره.">
+ aria-label="الجانب الأيمن من المكعّب: المنتجات النهائية مجمّدة داخل اللوح بقياسها الحقيقي وفوق كلٍّ منها اسمه وسعره.">
  <defs>
   <linearGradient id="fC" x1=".1" y1="0" x2=".9" y2="1">
    <stop offset="0%" stop-color="currentColor" stop-opacity=".055"/>
@@ -471,7 +471,7 @@ def flank_menu(items):
   {"".join(cells)}
   <g fill="currentColor" opacity=".22">{dew}</g>
   <text x="{W}" y="34" text-anchor="start" font-family="Cairo, sans-serif" font-size="13"
-        fill="currentColor" fill-opacity=".5">الجانبُ الأيسر — المنتجاتُ نفسها، بقياسها الحقيقي، مجمّدةً في الجدار</text>
+        fill="currentColor" fill-opacity=".5">الجانبُ الأيمن — المنتجاتُ نفسها، بقياسها الحقيقي، مجمّدةً في الجدار</text>
   <text x="0" y="292" text-anchor="end" font-family="Cairo, sans-serif" font-size="11"
         fill="currentColor" fill-opacity=".36">لا مُلصَق ولا شاشة: القائمةُ مصبوبةٌ مرّةً واحدة</text>
  </g>
