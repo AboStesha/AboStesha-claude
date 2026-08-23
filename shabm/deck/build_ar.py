@@ -1535,7 +1535,7 @@ def render():
  <div class="in">
   <p class="wm">شَبِم</p>
   <p class="wm-la en">SHBM</p>
-  <p class="ln1">بَرْدُ الماء</p>
+  <p class="ln1">البَرْدُ اللَّطيف</p>
   <p class="ln2">الكلمةُ العربية للبردِ اللطيفِ المنعش — وعلامةُ مشروباتٍ باردة مصمَّمةٌ لأشدّ مدن الأرض حرارة.</p>
   <div class="meta">
    <span class="chip">بغداد ← العراق ← الخليج</span>
@@ -1543,19 +1543,26 @@ def render():
    <span class="chip k">الفرع الأول {kk(FLAG["capex"]["total"])} · استرداد {FLAG["payback_months"]:.0f} شهراً</span>
    <span class="chip k">شركة الامتياز {kk(A["raise"]["amount_usd"])} · عائد {FR["irr_pct"]:.0f}%</span>
   </div>
-  <div class="hero-cube">
-   {img("cube_hero", "المُكعَّب من الخارج", "المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، والاسمُ محفورٌ فيها.", cls="wide") if has_img("cube_hero") else img("cube_day", "المُكعَّب من الخارج",
-        "المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، ثلاثُ فتحاتٍ فقط.",
-        cls="wide", fallback=cube_exterior())}
-  </div>
  </div>
 </header>
+<section class="opener">
+ <div class="in">
+  {img("cube_hero", "المُكعَّب من الخارج",
+       "المُكعَّب على رصيفٍ تجاريٍّ في بغداد: كتلةٌ واحدة، ثلاثُ فتحاتٍ فقط، والقائمةُ مجمّدةٌ في جدارها.",
+       cls="wide") if has_img("cube_hero") else img("cube_day", "المُكعَّب من الخارج",
+       "المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، ثلاثُ فتحاتٍ فقط.",
+       cls="wide", fallback=cube_exterior())}
+  {img("face_detail", "الفتحاتُ الثلاث",
+       "الوجهُ عن قرب: شاشةُ «اطلب»، وفتحةُ «ارجِع» للأكواب الفارغة، وشبّاكُ «استلم» ورقمُ الطلب فوقه.",
+       cls="wide") if has_img("face_detail") else ""}
+ </div>
+</section>
 <main>{"".join(S)}</main>
 <footer class="end">
  <div class="in">
   <p class="wm" style="font-size:var(--s-4)">شَبِم</p>
-  <p class="sub" style="margin-top:.8rem">العلامةُ وعدٌ عن شيءٍ مادّي. وعدُنا هو البرد — البردُ المحدَّد الكلاسيكيّ
-  الذي للماء وحده، الذي في العربية كلمةٌ له، ولم يستعمله أحدٌ تجارياً بعد.</p>
+  <p class="sub" style="margin-top:.8rem">العلامةُ وعدٌ عن شيءٍ مادّي. وعدُنا هو البرد — البردُ اللطيفُ المنعش،
+  الذي في العربية كلمةٌ له وحده، ولم يستعملها أحدٌ تجارياً بعد.</p>
   <hr class="hr">
   <p class="fn">
    أُعِدَّ في {A["_meta"]["as_of"]}. كلُّ رقمٍ مالي هنا مُخرَجٌ من نموذجٍ كاملِ المعامِلات، وافتراضاتُه ودرجةُ

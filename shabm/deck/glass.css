@@ -345,8 +345,10 @@ tr.sub .eqline, thead .eqline { padding-inline-start:0; }
 @media (max-width:700px){ .eqline svg.eq { display:none; } }
 
 /* the cube on the opening page: the first thing anyone sees is the thing itself */
-.hero-cube { margin-top: clamp(2.4rem, 1.4rem + 3vw, 4.5rem); }
-.hero-cube .ph img { max-height: 62vh; object-fit: cover; }
-.hero-cube .fg { border: 0; background: transparent; padding: 0; }
+/* the exterior photograph, standing on its own directly after the cover */
+.opener { padding: clamp(2rem, 1rem + 4vw, 5rem) 0 0; }
+.opener .ph img { max-height: 78vh; object-fit: cover; }
+.opener .fg { border: 0; background: transparent; padding: 0; }
+.opener .fg + .fg { margin-top: clamp(1.2rem, .6rem + 2vw, 2.4rem); }
 .hero-cube .fg svg { max-height: 60vh; }
 .hero-cube figcaption { text-align: center; }

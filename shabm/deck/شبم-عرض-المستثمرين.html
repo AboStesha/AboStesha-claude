@@ -358,9 +358,11 @@ tr.sub .eqline, thead .eqline { padding-inline-start:0; }
 @media (max-width:700px){ .eqline svg.eq { display:none; } }
 
 /* the cube on the opening page: the first thing anyone sees is the thing itself */
-.hero-cube { margin-top: clamp(2.4rem, 1.4rem + 3vw, 4.5rem); }
-.hero-cube .ph img { max-height: 62vh; object-fit: cover; }
-.hero-cube .fg { border: 0; background: transparent; padding: 0; }
+/* the exterior photograph, standing on its own directly after the cover */
+.opener { padding: clamp(2rem, 1rem + 4vw, 5rem) 0 0; }
+.opener .ph img { max-height: 78vh; object-fit: cover; }
+.opener .fg { border: 0; background: transparent; padding: 0; }
+.opener .fg + .fg { margin-top: clamp(1.2rem, .6rem + 2vw, 2.4rem); }
 .hero-cube .fg svg { max-height: 60vh; }
 .hero-cube figcaption { text-align: center; }
 </style>
@@ -376,7 +378,7 @@ tr.sub .eqline, thead .eqline { padding-inline-start:0; }
  <div class="in">
   <p class="wm">شَبِم</p>
   <p class="wm-la en">SHBM</p>
-  <p class="ln1">بَرْدُ الماء</p>
+  <p class="ln1">البَرْدُ اللَّطيف</p>
   <p class="ln2">الكلمةُ العربية للبردِ اللطيفِ المنعش — وعلامةُ مشروباتٍ باردة مصمَّمةٌ لأشدّ مدن الأرض حرارة.</p>
   <div class="meta">
    <span class="chip">بغداد ← العراق ← الخليج</span>
@@ -384,8 +386,11 @@ tr.sub .eqline, thead .eqline { padding-inline-start:0; }
    <span class="chip k">الفرع الأول $282k · استرداد 30 شهراً</span>
    <span class="chip k">شركة الامتياز $1.75M · عائد 44%</span>
   </div>
-  <div class="hero-cube">
-   <figure class="fg wide">
+ </div>
+</header>
+<section class="opener">
+ <div class="in">
+  <figure class="fg wide">
 <svg viewBox="0 0 900 620" class="cv scene" role="img"
  aria-label="واجهة كشك شبم: كتلة ثلج مائلة تتصبب ندى وتذوب على الرصيف، يتصاعد منها بخار بارد، وعليها اسم شبم بالعربية.">
  <defs>
@@ -617,9 +622,9 @@ tr.sub .eqline, thead .eqline { padding-inline-start:0; }
   </g>
  </g>
 </svg><figcaption>المُكعَّب على رصيفٍ في بغداد: كتلةٌ مائلة، مغلقةٌ بالكامل، ثلاثُ فتحاتٍ فقط.</figcaption></figure>
-  </div>
+  
  </div>
-</header>
+</section>
 <main><section class="s q" id="s1">
  <div class="in">
   <div class="eb"><span class="num">٠١</span><span class="ln"></span></div>
@@ -2134,8 +2139,8 @@ tr.sub .eqline, thead .eqline { padding-inline-start:0; }
 <footer class="end">
  <div class="in">
   <p class="wm" style="font-size:var(--s-4)">شَبِم</p>
-  <p class="sub" style="margin-top:.8rem">العلامةُ وعدٌ عن شيءٍ مادّي. وعدُنا هو البرد — البردُ المحدَّد الكلاسيكيّ
-  الذي للماء وحده، الذي في العربية كلمةٌ له، ولم يستعمله أحدٌ تجارياً بعد.</p>
+  <p class="sub" style="margin-top:.8rem">العلامةُ وعدٌ عن شيءٍ مادّي. وعدُنا هو البرد — البردُ اللطيفُ المنعش،
+  الذي في العربية كلمةٌ له وحده، ولم يستعملها أحدٌ تجارياً بعد.</p>
   <hr class="hr">
   <p class="fn">
    أُعِدَّ في 2026-08. كلُّ رقمٍ مالي هنا مُخرَجٌ من نموذجٍ كاملِ المعامِلات، وافتراضاتُه ودرجةُ
