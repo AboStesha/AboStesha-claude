@@ -807,7 +807,7 @@ _BRAND_ART = [
  ("logo_carved", "الاسمُ محفورٌ في الكتلة — غائرٌ لا مطبوع", illus.brand_sheet, "wide"),
  ("brand_sheet", "الشعارُ بأربع معالجات — غائرٌ ومحفورٌ ومطبوعٌ ومقطوع", illus.brand_sheet, "wide"),
  ("packaging",   "عائلةُ العبوات — كلُّها من المادّة نفسها",              illus.packaging,   "wide"),
- ("menu_card",   "القائمةُ محفورةٌ في لوحٍ ومُضاءةٌ من الحافة",           lambda: illus.menu_slab(_MENU_ROWS), "sq"),
+ ("menu_card",   "لوحُ القائمة — دراسةُ مادّةٍ وإضاءة، لا القائمةَ النهائية",  lambda: illus.menu_slab(_MENU_ROWS), "sq"),
  ("uniform",     "زيُّ العاملين — معطفٌ شتويّ في عزّ الصيف",             illus.uniform,     "sq"),
  ("card",        "بطاقةُ العمل — الاسمُ غائرٌ بلا حبر",                   illus.card,        "sq"),
 ]
@@ -819,6 +819,14 @@ _brand_row = ('<div class="phgrid" style="margin-bottom:1.4rem">'
                         for k, c, fn, cl in _BRAND_ART if cl == "sq") + '</div>')
 
 S.append(sec(7, "٠٧", "العلامة والعبوة", _brand_row + f'''
+<div class="note" style="margin-bottom:2rem">
+ <b>ملاحظةٌ على لوح القائمة أعلاه.</b> الصورةُ دراسةُ مادّةٍ وإضاءة — كيف يبدو النقشُ الغائرُ في لوحٍ من
+ الثلج ومُضاءً من حافّته — و<b>ليست القائمةَ النهائية</b>. الأصنافُ والأسعارُ المكتوبةُ فيها من توليدٍ
+ تجريبيّ لا من هذا النموذج: فيها بابٌ للمشروبات الساخنة، وهو ما تقوم عليه فكرةُ شَبِم بنفيه —
+ <b>لا شيءَ ساخنٌ يُقدَّم هنا</b> — وأسعارُها ليست بالدينار. القائمةُ المعتمدةُ هي الستّةُ في القسم
+ <span class="n">٠٦</span> بأسعارها: صَقيع ٨,٠٠٠ · القالَب ١٥,٠٠٠ · لُؤلُؤ ٨,٠٠٠ · لَفائِف ٧,٠٠٠ ·
+ بَرَد ٥,٠٠٠ · جَنى ٣,٠٠٠ ديناراً. يُعاد إنتاجُ اللوح بهذه الستّة قبل أيّ استعمالٍ تسويقيّ.
+</div>
 <div class="grid gB" style="align-items:start">
  <div class="grid" style="gap:1rem">
   {"".join(f"""<div class="g flat"><div class="verse">{v['a']}<span class="sep">❊</span>{v['b']}
