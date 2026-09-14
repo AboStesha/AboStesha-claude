@@ -5,6 +5,7 @@ three stage-and-screen illusion concepts (The Golden Stroke, Let It Grow, Sympho
 a sync playbook, comparison, recommendation and production plan.
 
 - Final PDF v3 (17 pages, 1920×1080): https://d2ol7oe51mr4n9.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/bef6afb5-3712-4dee-8f47-33045c8bb328.pdf
+- Arabic edition (same 17 pages, RTL, built from `index_ar.html`): https://d2ol7oe51mr4n9.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/04e23a23-5d90-4dc6-8069-f3fafee983f0.pdf
 - Source: `index.html` (self-contained deck, Google Fonts: Inter / Cormorant Garamond / Michroma)
 - Concept frames were generated with Higgsfield (GPT Image 2.5) using the event-kit stage render as reference;
   they are expected at `img/gen_0.jpg … gen_30.jpg` (not committed; indices 4–5, 7–9 and 14–20 are unused).
