@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>بدور سيجنتشر — لحظة الإطلاق</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=Michroma&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F3F2; --ink:#141414; --ink2:#3A3A3A; --mute:#8C8C8C; --line:#D9D9D6;
+    --gold:#CC8C2E; --gold2:#E7B45A; --green:#3B5D44; --green2:#1A311D; --wood:#532F0F;
+    --dark:#0B0B0B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#222;font-family:'IBM Plex Sans Arabic','Inter',Helvetica,Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  @page{size:1920px 1080px;margin:0}
+  .page{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);page-break-after:always;break-after:page}
+  .page:last-child{page-break-after:auto}
+  .dark{background:var(--dark);color:#fff}
+  /* chrome */
+  .hdr{position:absolute;left:120px;right:120px;top:88px;display:flex;justify-content:space-between;align-items:flex-start}
+  .hdr h1{font-size:44px;font-weight:700;letter-spacing:0;line-height:1.25}
+  .hdr h1 small{display:block;font-size:16px;font-weight:600;letter-spacing:0;color:var(--gold);margin-bottom:12px}
+  .hoe{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:#6f6f6f;margin-top:8px;white-space:nowrap}
+  .hoe i{font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:17px;color:#6f6f6f}
+  .dark .hoe,.dark .hoe i{color:#bdbdbd}
+  .ftr{position:absolute;left:120px;right:120px;bottom:64px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--mute)}
+  .ftr b{color:var(--ink);font-weight:700;margin-inline-end:22px}
+  .dark .ftr b{color:#fff}
+  .ftr .pg{display:flex;align-items:center;gap:18px}
+  .ftr .em{width:34px;height:34px;opacity:.85}
+  /* type */
+  .kicker{font-size:16px;letter-spacing:0;color:var(--gold);font-weight:600}
+  .lead{font-size:26px;line-height:1.6;font-weight:400;color:var(--ink2)}
+  .body{font-size:19px;line-height:1.7;color:var(--ink2)}
+  .dark .body,.dark .lead{color:#d6d6d6}
+  .wm{font-family:'Michroma',sans-serif;letter-spacing:.14em;line-height:1}
+  .wm small{display:block;font-size:.34em;letter-spacing:.62em;margin-top:.42em;padding-left:.15em}
+  .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;color:var(--gold);font-size:120px;line-height:.8}
+  /* helpers */
+  .grid{position:absolute;left:120px;right:120px;top:210px;bottom:150px}
+  .img{background:#ddd center/cover no-repeat;border-radius:6px}
+  .full{position:absolute;inset:0;background:center/cover no-repeat}
+  .fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 30%,rgba(0,0,0,.42) 62%,rgba(0,0,0,.92) 100%)}
+  .pill{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:100px;padding:6px 18px;font-size:14px;letter-spacing:0;font-weight:600}
+  .rule{height:1px;background:var(--line)}
+  .dark .rule{background:#333}
+  /* concept hero */
+  .hero-txt{position:absolute;left:120px;bottom:150px;right:120px;display:flex;justify-content:space-between;align-items:flex-end}
+  .hero-txt h2{font-size:100px;font-weight:700;letter-spacing:0;line-height:1.18;color:#fff}
+  .hero-txt h2 span{display:block;font-size:22px;font-weight:600;letter-spacing:0;color:var(--gold2);margin-bottom:18px;text-shadow:0 2px 18px rgba(0,0,0,.9)}
+  .hero-txt p{width:560px;font-size:22px;line-height:1.65;color:#e8e8e8}
+  /* beats */
+  .beats{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;height:100%}
+  .beat{display:flex;flex-direction:column}
+  .beat .img{height:302px;margin-bottom:26px}
+  .beat .t{display:flex;align-items:baseline;gap:16px;margin-bottom:12px}
+  .beat .t .n{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:54px;color:var(--gold);line-height:1}
+  .beat .t h3{font-size:26px;font-weight:700;letter-spacing:0}
+  .beat .t .tc{margin-inline-start:auto;font-size:13px;letter-spacing:.12em;color:var(--mute);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+  .beat p{font-size:18px;line-height:1.65;color:var(--ink2)}
+  .beat .cue{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--ink)}
+  .beat .cue b{color:var(--gold);letter-spacing:0;font-size:13px;margin-inline-end:8px}
+  .beats4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:34px 48px}
+  .beats4 .beat{display:grid;grid-template-columns:500px 1fr;grid-template-rows:auto auto 1fr;column-gap:24px;align-content:start}
+  .beats4 .beat .img{grid-row:1/4;grid-column:1;width:500px;height:281px;margin:0}
+  .beats4 .beat .t{grid-column:2;margin-bottom:8px}
+  .beats4 .beat .t h3{font-size:21px;white-space:nowrap}
+  .beats4 .beat .t .tc{font-size:11px;letter-spacing:.12em;white-space:nowrap}
+  .beats4 .beat .t{gap:12px}
+  .beats4 .beat .t .n{font-size:44px}
+  .beats4 .beat p{grid-column:2;font-size:14.5px;line-height:1.6}
+  .beats4 .beat .cue{grid-column:2;font-size:12.5px;line-height:1.5;padding-top:10px;margin-top:12px;align-self:end}
+  /* screen page */
+  .scr{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;height:100%}
+  .scr .wall{position:relative}
+  .scr .wall .img{height:500px;border-radius:220px/22px;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+  .scr .wall .cap{margin-top:18px;font-size:14px;color:var(--mute);letter-spacing:0}
+  .scr .wall .viral{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .scr .wall .viral .box{border-inline-start:3px solid var(--gold);padding-inline-start:20px}
+  .scr .wall .viral h4,.spec h4{font-size:15px;letter-spacing:0;color:var(--gold);font-weight:700;margin-bottom:10px}
+  .scr .wall .viral p{font-size:17px;line-height:1.6;color:var(--ink2)}
+  .spec{display:flex;flex-direction:column;gap:26px}
+  .spec ul{list-style:none}
+  .spec li{font-size:17px;line-height:1.6;color:var(--ink2);padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:16px}
+  .spec li:last-child{border-bottom:0}
+  .spec li em{font-style:normal;color:var(--ink);font-weight:600;min-width:130px}
+  /* table */
+  table{width:100%;border-collapse:collapse}
+  th{font-size:14px;letter-spacing:0;color:var(--mute);font-weight:600;text-align:start;padding:0 0 18px 0;padding-inline-end:18px;border-bottom:1px solid var(--ink)}
+  td{padding:26px 0;padding-inline-end:18px;border-bottom:1px solid var(--line);font-size:19px;line-height:1.55;vertical-align:top;color:var(--ink2)}
+  td:first-child{font-weight:700;color:var(--ink);font-size:22px;width:300px}
+  .dots{letter-spacing:4px;color:var(--gold);font-size:22px}
+  .dots span{color:#d5d5d2}
+  /* playbook */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 48px}
+  .rules div{border-top:2px solid var(--ink);padding-top:18px}
+  .rules div i{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:44px;color:var(--gold);line-height:1;margin-bottom:10px}
+  .rules h4{font-size:21px;font-weight:700;margin-bottom:8px;letter-spacing:0}
+  .rules p{font-size:16px;line-height:1.65;color:var(--ink2)}
+  .ltr{direction:ltr;unicode-bidi:isolate}
+  .hoe.ar{letter-spacing:0;font-size:15px;font-weight:500;text-transform:none}
+  .lat{font-family:'Inter',Helvetica,Arial,sans-serif}
+</style>
+</head>
+<body>
+
+<!-- 01 COVER -->
+<section class="page dark">
+  <div class="full" style="background-image:url(img/gen_0.jpg)"></div>
+  <div class="fade"></div>
+  <div style="position:absolute;left:120px;top:88px;display:flex;gap:16px;align-items:center">
+    <span class="hoe" style="margin:0">Nofakha &nbsp;·&nbsp; House <i>of</i> Experience</span>
+  </div>
+  <div style="position:absolute;right:120px;top:88px" class="hoe ar">مقترح إبداعي &nbsp;·&nbsp; شاشة المسرح الرئيسي</div>
+  <div style="position:absolute;left:120px;bottom:150px;right:120px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div>
+      <div class="kicker" style="color:var(--gold2);margin-bottom:22px;font-size:20px">بدور سيجنتشر &nbsp;·&nbsp; الكشف الرسمي عن المشروع</div>
+      <h1 style="font-size:124px;font-weight:700;letter-spacing:0;line-height:1.15;color:#fff">لحظة<br>الإطلاق</h1>
+      <p style="margin-top:30px;font-size:24px;line-height:1.65;color:#e6e6e6;max-width:820px">ثلاث خدع بصرية تجمع المسرح بالشاشة على جدار LED الرئيسي، حيث يتحوّل مؤدٍّ حيّ وفيلم مُعدّ مسبقًا إلى لحظة واحدة مستحيلة.</p>
+    </div>
+    <div style="text-align:left;color:#fff">
+      <div class="wm" dir="ltr" style="font-size:54px;display:inline-block">BUDOOR<small>Signature</small></div>
+      <div style="margin-top:44px;font-size:15px;line-height:2;color:#bdbdbd;letter-spacing:0;text-align:right">
+        <div><span style="color:#7d7d7d">العميل</span>&nbsp;&nbsp; بدور بغداد</div>
+        <div><span style="color:#7d7d7d">الفعالية</span>&nbsp;&nbsp; إطلاق مشروع عقاري &nbsp;·&nbsp; 28 آب 2026</div>
+        <div><span style="color:#7d7d7d">الموضع</span>&nbsp;&nbsp; جدار LED المنحني للمسرح الرئيسي</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 THE BRIEF -->
+<section class="page">
+  <div class="hdr"><h1><small>01 — الموجز</small>شاشة واحدة. مؤدٍّ واحد. لحظة واحدة.</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid" style="display:grid;grid-template-columns:1.1fr .9fr;gap:64px">
+    <div>
+      <div class="img" style="height:470px;background-image:url(img/stage_ref.jpg);border:2px solid #e0342f;box-shadow:0 0 0 6px rgba(224,52,47,.12)"></div>
+      <div style="margin-top:16px;font-size:14px;color:var(--mute);letter-spacing:.06em">المنطقة المحدّدة: جدار LED المنحني بطول 25 مترًا وقطعة الشعار في منتصف المسرح الرئيسي. كل ما يُعرض على هذا الجدار فيلم مُعدّ مسبقًا.</div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+        <div style="border-top:1px solid var(--line);padding-top:12px"><div style="font-size:12px;letter-spacing:.24em;color:var(--mute)">07:50</div><div style="font-size:16px;font-weight:600;margin-top:6px">الافتتاح ومقدّم الحفل بالذكاء الاصطناعي</div></div>
+        <div style="border-top:1px solid var(--line);padding-top:12px"><div style="font-size:12px;letter-spacing:.24em;color:var(--mute)">08:05</div><div style="font-size:16px;font-weight:600;margin-top:6px">كلمة الرئيس التنفيذي</div></div>
+        <div style="border-top:3px solid var(--gold);padding-top:10px"><div style="font-size:12px;letter-spacing:.24em;color:var(--gold)">08:12 · 5 دقائق</div><div style="font-size:16px;font-weight:700;margin-top:6px">الكشف الرسمي عن المشروع</div></div>
+        <div style="border-top:1px solid var(--line);padding-top:12px"><div style="font-size:12px;letter-spacing:.24em;color:var(--mute)">08:17</div><div style="font-size:16px;font-weight:600;margin-top:6px">عرض المشروع</div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:30px">
+      <p class="lead">في تمام الساعة 08:12 مساءً يقول جدول الفعالية: <b>«الكشف الرسمي عن المشروع — فيديو كشف سينمائي مع إضاءة وصوت غامرَين».</b> نقترح أن نجعل هذا الفيديو أكثر خمس دقائق يتحدّث عنها الحضور في تلك الليلة.</p>
+      <div class="rule"></div>
+      <div class="body">
+        <p style="margin-bottom:14px"><b style="color:var(--ink)">ما هي الفكرة.</b> يُعرض فيلم على الجدار، وقد تدرّب مؤدٍّ على المسرح عليه إطارًا بإطار، فتبدو الشاشة وكأنها تستجيب ليديه: خطٌّ يتبع قلمًا، وماءٌ يُسكب داخل صورة، وقماشٌ يكشف ما خلفه.</p>
+        <p style="margin-bottom:14px"><b style="color:var(--ink)">لماذا تنجح.</b> لا يستطيع الجمهور أن يميّز أين ينتهي المؤدّي وأين تبدأ الشاشة. وفي تلك المسافة بالذات ينفجر التصفيق وتُرفع الهواتف.</p>
+        <p><b style="color:var(--ink)">ما يجب أن تكونه.</b> بدور سيجنتشر بلا لبس: الأسود والذهبي والأخضر، وتوقيع، وبيانو، ومدينة تنمو من قلب الطبيعة.</p>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:auto">
+        <span class="pill">فقرة من 5 دقائق</span><span class="pill">250 ضيفًا</span><span class="pill">جدار LED بدقة <span class="ltr">P2.5</span></span><span class="pill">مُقفَل على الكود الزمني</span>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">02</div></div>
+</section>
+
+<!-- 03 REFERENCES -->
+<section class="page">
+  <div class="hdr"><h1><small>02 — ما تعلّمناه من المراجع</small>لماذا صدّق العالم ما رآه</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:56px">
+    <div>
+      <div class="img" style="height:158px;background-image:url(img/refs_hermes.jpg);background-size:contain;background-color:#111"></div>
+      <div style="margin-top:22px;text-align:right" class="kicker lat" dir="ltr">Hermès × Les French Twins</div>
+      <p class="body" style="margin-top:10px">حصان وعربة مرسومان بالخط. يسحب المؤدّي وشاحًا حريريًا حقيقيًا من داخل الرسم، ثم يتحوّل الرسم إلى حصان حقيقي يخرج من شقٍّ في الشاشة.</p>
+      <ul class="body" style="margin-top:16px;padding-inline-start:22px;line-height:1.8">
+        <li><b>الرسم الخطّي يخفي الفاصل.</b> عالمٌ مرسوم يغفر خطأ بثلاثة إطارات؛ أما الواقعي فلا يغفر.</li>
+        <li><b>شيءٌ يغادر الشاشة.</b> الوشاح هو الدليل على أن الأمر «حقيقي».</li>
+        <li><b>المستحيل يأتي أخيرًا.</b> خدعة واحدة لا يمكن تفسيرها، تُدَّخر للنهاية.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="img" style="height:118px;background-image:url(img/refs_darvis.jpg);background-size:contain;background-color:#111"></div>
+      <div style="margin-top:22px;text-align:right" class="kicker lat" dir="ltr">Darvis × Autumn Lake</div>
+      <p class="body" style="margin-top:10px">قماشٌ أحمر يعيد طلاء سيارة، وكراتٌ تُرمى «إلى داخل» الشاشة، ورجلٌ يخرج من باب على الشاشة، ومطرٌ يهطل على مظلّات حقيقية.</p>
+      <ul class="body" style="margin-top:16px;padding-inline-start:22px;line-height:1.8">
+        <li><b>اليد تقود والشاشة تتبع.</b> كل تأثير يبدأ بعد اللمسة ببضعة إطارات.</li>
+        <li><b>خدعة واحدة بثلاثة أحجام.</b> صغيرة، ثم متوسطة، ثم الجدار كلّه.</li>
+        <li><b>الختام على العميل.</b> الإطار الأخير هو الشعار دائمًا، والقاعة واقفة تصفّق.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">03</div></div>
+</section>
+
+<!-- 04 DIVIDER -->
+<section class="page dark">
+  <div class="full" style="background-image:url(img/gen_11.jpg);opacity:.35;background-position:center 30%"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(270deg,rgba(11,11,11,.95) 0%,rgba(11,11,11,.6) 60%,rgba(11,11,11,.2) 100%)"></div>
+  <div style="position:absolute;right:120px;top:88px" class="hoe">House <i>of</i> Experience</div>
+  <div style="position:absolute;right:120px;top:270px;max-width:1100px">
+    <div class="kicker" style="color:var(--gold2);font-size:20px">ثلاثة مفاهيم</div>
+    <h2 style="font-size:140px;font-weight:700;letter-spacing:0;line-height:1.15;margin-top:20px">ثلاث طرق<br>لتوقيع<br>الليلة.</h2>
+    <p style="margin-top:34px;font-size:24px;line-height:1.65;color:#d2d2d2;max-width:760px">كل مفهوم مبنيّ على شيء تملكه بدور سيجنتشر أصلًا: التوقيع في اسمها، والنبتة التي يأخذها كل ضيف إلى بيته، والبيانو من فيلمها الإعلاني. وكلٌّ منها ينتهي بالمدينة.</p>
+  </div>
+  <div style="position:absolute;left:120px;bottom:150px;display:flex;flex-direction:column;gap:22px;text-align:left">
+    <div><span class="num" style="font-size:64px">01</span>&nbsp;&nbsp;<span style="font-size:30px;font-weight:700">اللمسة الذهبية</span></div>
+    <div><span class="num" style="font-size:64px">02</span>&nbsp;&nbsp;<span style="font-size:30px;font-weight:700">دعها تنمو</span></div>
+    <div><span class="num" style="font-size:64px">03</span>&nbsp;&nbsp;<span style="font-size:30px;font-weight:700">سيمفونية الأرض الخام</span></div>
+  </div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">04</div></div>
+</section>
+
+<!-- 05 CONCEPT 01 HERO -->
+<section class="page dark">
+  <div class="full" style="background-image:url(img/gen_2.jpg)"></div>
+  <div class="fade"></div>
+  <div style="position:absolute;right:120px;top:88px" class="hoe ar">المفهوم 01</div>
+  <div style="position:absolute;left:120px;top:88px" class="hoe">House <i>of</i> Experience</div>
+  <div class="hero-txt">
+    <h2><span>المفهوم 01 &nbsp;·&nbsp; مؤدٍّ واحد &nbsp;·&nbsp; أداة واحدة &nbsp;·&nbsp; 90 ثانية</span>اللمسة<br>الذهبية</h2>
+    <p>بدور سيجنتشر هي، حرفيًا، توقيع. قلمٌ ذهبي واحد، وخطٌّ من الضوء لا يتوقف عن الحركة، وفي النهاية يكون الخط قد رسم المدينة كلّها ووقّعها.</p>
+  </div>
+</section>
+
+<!-- 06 CONCEPT 01 BEATS -->
+<section class="page">
+  <div class="hdr"><h1><small>المفهوم 01 — اللمسة الذهبية</small>اللحظة، مشهدًا بمشهد</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid"><div class="beats">
+    <div class="beat"><div class="img" style="background-image:url(img/gen_1.jpg)"></div>
+      <div class="t"><span class="n">1</span><h3>اللمسة</h3><span class="tc">0:00 – 0:20</span></div>
+      <p>الجدار أسود. يدخل المؤدّي حاملًا قلم خطٍّ ذهبيًا بطول متر ويلمس الشاشة. يولد خطٌّ من الحبر الذهبي تحت السنّ تمامًا، مع نغمة بيانو واحدة.</p>
+      <div class="cue"><b>المزامنة</b>نقطة اللمس 1 مثبّتة بشريط على الأرض. يبدأ الحبر بعد 8 إطارات من ملامسة السنّ للشاشة.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_2.jpg)"></div>
+      <div class="t"><span class="n">2</span><h3>الرسم</h3><span class="tc">0:20 – 1:05</span></div>
+      <p>كل حركة من الذراع تجرّ الخط عبر الجدار البالغ طوله 25 مترًا. تظهر الشوارع ومساقط الفلل والنخيل والحديقة المركزية كرسم خطّي ذهبي، حيٌّ واحد لكل إيماءة.</p>
+      <div class="cue"><b>المزامنة</b>تسع نقاط لمس عبر الجدار. الخط ينتظر اليد دائمًا، ولا يحدث العكس أبدًا.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_3.jpg)"></div>
+      <div class="t"><span class="n">3</span><h3>التوقيع</h3><span class="tc">1:05 – 1:30</span></div>
+      <p>الضربة الأخيرة توقّع المخطط. يسحب المؤدّي التوقيع من الجدار فيظهر في يده مجسّمًا ذهبيًا مضيئًا، بينما يشتعل الرسم الخطّي ليتحوّل إلى اللقطة الجوية الكاملة لبدور سيجنتشر.</p>
+      <div class="cue"><b>المزامنة</b>يرتفع المجسّم على رافعة أرضية عند 1:12. أشعة وقصاصات ذهبية والشعار مع الوتر الأخير.</div></div>
+  </div></div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">06</div></div>
+</section>
+
+<!-- 07 CONCEPT 01 SCREEN -->
+<section class="page">
+  <div class="hdr"><h1><small>المفهوم 01 — اللمسة الذهبية</small>ما يعرضه الجدار</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid"><div class="scr">
+    <div class="wall">
+      <div class="img" style="background-image:url(img/gen_12.jpg)"></div>
+      <div class="cap">محتوى الشاشة · إطار <span class="ltr">21:9</span> عند 0:48 · الخط في منتصف الضربة، والمخطط نصف مرسوم</div>
+      <div class="viral">
+        <div class="box"><h4>اللقطة التي ستنتشر</h4><p>السحب. يغادر التوقيع الشاشة ويظهر في اليد. كاميرا مركزية، على بعد 12 مترًا، بارتفاع الهاتف.</p></div>
+        <div class="box"><h4>الربط بالعلامة</h4><p>اسم المشروع هو الخدعة نفسها. لا أحد يحتاج إلى من يشرح له ما رآه للتوّ.</p></div>
+      </div>
+    </div>
+    <div class="spec">
+      <div><h4>الأدوات</h4><ul>
+        <li><em>القلم الذهبي</em>بطول متر واحد، طرف LED، زناد لاسلكي لانفجار الحبر</li>
+        <li><em>التوقيع</em>مجسّم ذهبي مضيء على رافعة أرضية أو يُناوَل من الكواليس</li>
+        <li><em>علامات الأرض</em>تسع علامات بشريط ذهبي مطابقة لخريطة بكسلات الشاشة</li>
+      </ul></div>
+      <div><h4>الشاشة</h4><ul>
+        <li><em>الأسلوب</em>رسم خطّي ذهبي على أسود، مع تلألؤ جزيئات عند طرف القلم</li>
+        <li><em>الكشف</em>يشتعل الرسم الخطّي ليتحوّل إلى المخطط الرئيسي الجوي الواقعي</li>
+        <li><em>الصوت</em>بيانو منفرد يتصاعد إلى اللحن الكامل للإعلان التلفزيوني</li>
+      </ul></div>
+      <div><h4>الصعوبة</h4><ul>
+        <li><em>المؤدّي</em>راقص أو ساحر واحد، يومان من البروفات</li>
+        <li><em>المخاطرة</em>منخفضة. الرسم الخطّي يغفر الأخطاء الزمنية الصغيرة</li>
+      </ul></div>
+    </div>
+  </div></div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">07</div></div>
+</section>
+
+<!-- 08 CONCEPT 02 HERO -->
+<section class="page dark">
+  <div class="full" style="background-image:url(img/gen_27.jpg)"></div>
+  <div class="fade"></div>
+  <div style="position:absolute;right:120px;top:88px" class="hoe ar">المفهوم 02</div>
+  <div style="position:absolute;left:120px;top:88px" class="hoe">House <i>of</i> Experience</div>
+  <div class="hero-txt">
+    <h2><span>المفهوم 02 &nbsp;·&nbsp; ساحر &nbsp;·&nbsp; شجرة حقيقية ثم الجدار &nbsp;·&nbsp; 1:30</span>دعها<br>تنمو</h2>
+    <p>بذرة تُوضع في أصيص، وتنمو منها شجرة حقيقية أمام الحضور، في خدعة شجرة البرتقال الكلاسيكية. يكمل الجدار من حيث تتوقف الشجرة، ويسقيها الساحر بمرشّة حقيقية، فتنمو المدينة كلّها من تلك البذرة الواحدة.</p>
+  </div>
+</section>
+
+<!-- 09 CONCEPT 02 BEATS -->
+<section class="page">
+  <div class="hdr"><h1><small>المفهوم 02 — دعها تنمو</small>اللحظة، مشهدًا بمشهد</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid"><div class="beats beats4">
+    <div class="beat"><div class="img" style="background-image:url(img/gen_28.jpg)"></div>
+      <div class="t"><span class="n">1</span><h3>البذرة</h3><span class="tc">0:00 – 0:25</span></div>
+      <p>الجدار أسود. بقعة ضوء واحدة على الساحر وطاولة صغيرة عليها أصيص فارغ عند قاعدة الجدار. يُسقط بذرة ذهبية في التربة، ويمرّر يديه فوقها، فترتفع شجرة حقيقية من الأصيص أمام الجمهور وأوراقها تتفتّح، كما في مشهد شجرة البرتقال من فيلم <span class="lat">The Illusionist</span>.</p>
+      <div class="cue"><b>المزامنة</b>خدعة مسرحية بلا شاشة. مجسّم شجرة ميكانيكي داخل الأصيص يرتفع إلى متر واحد خلال نحو ثماني ثوانٍ بإشارة من المؤدّي.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_29.jpg)"></div>
+      <div class="t"><span class="n">2</span><h3>التسليم</h3><span class="tc">0:25 – 0:45</span></div>
+      <p>تتوقف الشجرة الحقيقية عن النمو عند متر واحد. يتراجع خطوة، وفوق الأصيص تمامًا يلتقط الجدار الجذع: يواصل النمو على الشاشة، بجذور تتوهّج ذهبًا عند القاعدة وأغصان تمتدّ بالذهبي والأخضر، فتُقرأ الشجرة الحقيقية وشجرة الشاشة شجرةً واحدة.</p>
+      <div class="cue"><b>المزامنة</b>الأصيص على علامة أرضية ثابتة تحت عمود بكسلات مطابق. يبدأ جذع الشاشة بعد 10 إطارات من تثبيت المجسّم.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_30.jpg)"></div>
+      <div class="t"><span class="n">3</span><h3>الماء</h3><span class="tc">0:45 – 1:05</span></div>
+      <p>يلتقط مرشّة ذهبية حقيقية ويسقي الشجرة الحقيقية، ماءٌ حقيقي في الأصيص. وعلى الجدار، يصعد ماءٌ ذهبي من الأصيص عبر الجذع فتندفع الشجرة إلى الأعلى، بتاجٍ بأخضر بدور، أوراقها فلل، وأغصانها شوارع.</p>
+      <div class="cue"><b>المزامنة</b>يتدفّق الماء الذهبي فقط حين تميل المرشّة؛ في الأصيص صينية مخفيّة. تنمو الشجرة مع السكب.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_6.jpg)"></div>
+      <div class="t"><span class="n">4</span><h3>الهزّة</h3><span class="tc">1:05 – 1:30</span></div>
+      <p>يمسك الجذع الحقيقي ويهزّه. يُسقط التاج على الشاشة آلاف الأوراق الذهبية، وفي الإطار نفسه تمطر أوراق ذهبية حقيقية من الجسر المعلّق فوق المسرح والصفوف الأمامية. ثم يتحوّل التاج إلى المخطط الرئيسي الجوي.</p>
+      <div class="cue"><b>المزامنة</b>إسقاط الأوراق يُطلقه خادم الوسائط على الكود الزمني، لا باليد. يقف الضيوف تحت وابلٍ من الذهب.</div></div>
+  </div></div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">09</div></div>
+</section>
+
+<!-- 10 CONCEPT 02 SCREEN -->
+<section class="page">
+  <div class="hdr"><h1><small>المفهوم 02 — دعها تنمو</small>ما يعرضه الجدار</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid"><div class="scr">
+    <div class="wall">
+      <div class="img" style="background-image:url(img/gen_13.jpg)"></div>
+      <div class="cap">محتوى الشاشة · إطار <span class="ltr">21:9</span> عند 1:00 · الشجرة مكتملة النمو فوق الشجرة الحقيقية، فلل في التاج، وأولى الأوراق تتساقط</div>
+      <div class="viral">
+        <div class="box"><h4>اللقطة التي ستنتشر</h4><p>شجرة حقيقية تنمو من بذرة على المسرح، ثم تواصل النمو على الجدار، ثم يحوّلها ماءٌ حقيقي إلى مدينة. كاميرا مركزية، لقطة ضيّقة على الأصيص ثم واسعة.</p></div>
+        <div class="box"><h4>الربط بالعلامة</h4><p>«ازرع توقيعك. دعه ينمو.» التفاعل الذي قام به كل ضيف عند المدخل، تقوم به العلامة الآن على مقياس مدينة.</p></div>
+      </div>
+    </div>
+    <div class="spec">
+      <div><h4>الأدوات</h4><ul>
+        <li><em>خدعة الشجرة</em>مجسّم شجرة برتقال ميكانيكي: شجرة مطويّة داخل أصيص مثقّل، ترتفع إلى متر واحد بمحرّك سيرفو، بأوراق حقيقية، يطلقها المؤدّي</li>
+        <li><em>البذرة والطاولة</em>بذرة LED، طاولة سوداء مستديرة صغيرة على علامة أرضية ثابتة تحت عمود البكسلات المطابق</li>
+        <li><em>المرشّة</em>مرشّة ذهبية، ماء حقيقي، صينية مخفيّة داخل الأصيص</li>
+        <li><em>إسقاط الأوراق</em>ستارة كابوكي أو 4 نافخات قصاصات على الجسر المعلّق، أوراق ذهبية معدنية</li>
+      </ul></div>
+      <div><h4>الشاشة</h4><ul>
+        <li><em>الأسلوب</em>ينمو جذع الشاشة من النقطة الواقعة فوق الشجرة الحقيقية تمامًا؛ جذور ذهبية، تاج أخضر داكن، فلل واقعية على هيئة أوراق</li>
+        <li><em>الكشف</em>يذوب التاج ليتحوّل إلى المخطط الرئيسي الجوي</li>
+        <li><em>الصوت</em>بيانو ووتريات، وتصاعد واحد مع الهزّة</li>
+      </ul></div>
+      <div><h4>الصعوبة</h4><ul>
+        <li><em>المؤدّي</em>ساحر واحد، يومان من البروفات، وبناء المجسّم 3 أسابيع</li>
+        <li><em>المخاطرة</em>متوسطة. مجسّم الشجرة والتعليق؛ يُختبر كلاهما في اليوم الأول</li>
+      </ul></div>
+    </div>
+  </div></div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">10</div></div>
+</section>
+
+<!-- 11 CONCEPT 03 HERO -->
+<section class="page dark">
+  <div class="full" style="background-image:url(img/gen_21.jpg)"></div>
+  <div class="fade"></div>
+  <div style="position:absolute;right:120px;top:88px" class="hoe ar">المفهوم 03</div>
+  <div style="position:absolute;left:120px;top:88px" class="hoe">House <i>of</i> Experience</div>
+  <div class="hero-txt">
+    <h2><span>المفهوم 03 &nbsp;·&nbsp; مايسترو وثلاثي &nbsp;·&nbsp; الإعلان التلفزيوني حيًّا على المسرح &nbsp;·&nbsp; 1:45</span>سيمفونية<br>الأرض الخام</h2>
+    <p>مايسترو في منتصف المسرح يعطي الإشارة لثلاثة موسيقيين واحدًا تلو الآخر. عازف البيانو يضع الأساسات، وعازف الغيتار يُنبت الحدائق، وعازفة الكمان تملأ الماء، ومعًا يكملون البيوت، بينما تلوّن عصا المايسترو الجدار.</p>
+  </div>
+</section>
+
+<!-- 12 CONCEPT 03 BEATS -->
+<section class="page">
+  <div class="hdr"><h1><small>المفهوم 03 — سيمفونية الأرض الخام</small>اللحظة، مشهدًا بمشهد</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid"><div class="beats beats4">
+    <div class="beat"><div class="img" style="background-image:url(img/gen_22.jpg)"></div>
+      <div class="t"><span class="n">1</span><h3>الأساسات</h3><span class="tc">0:00 – 0:25</span></div>
+      <p>مسرح أسود وجدار أسود. بقعة ضوء خافتة تجد المايسترو في المنتصف. يشير بعصاه إلى البيانو الأبيض الكبير، فتُفتح بقعة ضوء على عازف البيانو، وعلى الجدار تنطوي ستارة ذهبية لتنفتح فوق البيانو. ترتفع النغمات الأولى ذهبًا، ثم تتحوّل إلى طلاء، وترسم قاعدة المشروع: القطع والشوارع والشبكة.</p>
+      <div class="cue"><b>المزامنة</b>تنفتح الستارة بعد 8 إطارات من إشارة العصا. يعزف عازف البيانو على نقرة إيقاع؛ وكل جملة موسيقية ترسم حيًّا واحدًا.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_23.jpg)"></div>
+      <div class="t"><span class="n">2</span><h3>الحدائق</h3><span class="tc">0:25 – 0:50</span></div>
+      <p>تنطفئ البقعة. يلتفت المايسترو يمينًا؛ تُفتح بقعة ضوء على عازف الغيتار وتنفتح الستارة اليمنى فوقه. تنساب نغماته إلى الجدار فتنبت النباتات على التخطيط نفسه وتملأ المنتصف، مع لقطات قريبة لأوراق تتفتّح.</p>
+      <div class="cue"><b>المزامنة</b>يتبع النمو إيقاع العزف. وحيثما تمرّ العصا تترك ضربة فرشاة ذهبية على الجدار.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_24.jpg)"></div>
+      <div class="t"><span class="n">3</span><h3>الماء</h3><span class="tc">0:50 – 1:15</span></div>
+      <p>تنطفئ البقعة. يلتفت المايسترو يسارًا؛ تُفتح بقعة ضوء على عازفة الكمان وتنفتح الستارة اليسرى. تنسكب نغماتها من القوس وتصير ماءً يملأ البحيرة وقنوات الحديقة المركزية.</p>
+      <div class="cue"><b>المزامنة</b>يرتفع الماء مع كل جملة موسيقية؛ ونغمة ممدودة تُبقي سطح الماء ساكنًا كالمرآة.</div></div>
+    <div class="beat"><div class="img" style="background-image:url(img/gen_25.jpg)"></div>
+      <div class="t"><span class="n">4</span><h3>المدينة</h3><span class="tc">1:15 – 1:45</span></div>
+      <p>بقع الضوء الثلاث كلّها، والستائر الثلاث كلّها مفتوحة. يقود المايسترو بضربات واسعة، وترسم العصا البيوت والحدائق والأضواء عبر الجدار بينما يعزف الثلاثي معًا، حتى يقف المشروع كاملًا ومتوهّجًا.</p>
+      <div class="cue"><b>المزامنة</b>كل فيلا تكتمل على ضربة الإيقاع القوية. والضربة الأخيرة للعصا تكتب الشعار؛ أشعة وقصاصات مع الوتر الأخير.</div></div>
+  </div></div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">12</div></div>
+</section>
+
+<!-- 13 CONCEPT 03 SCREEN -->
+<section class="page">
+  <div class="hdr"><h1><small>المفهوم 03 — سيمفونية الأرض الخام</small>ما يعرضه الجدار</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid"><div class="scr">
+    <div class="wall">
+      <div class="img" style="background-image:url(img/gen_26.jpg)"></div>
+      <div class="cap">محتوى الشاشة · إطار <span class="ltr">21:9</span> عند 1:05 · ثلاث ستائر، وثلاث مراحل من المدينة: الأساسات والحدائق والماء، وضربة فرشاة المايسترو عبرها</div>
+      <div class="viral">
+        <div class="box"><h4>اللقطة التي ستنتشر</h4><p>الإشارة. يشير المايسترو، فتضرب بقعة الضوء، وتنفتح الستارة على الجدار في الثانية نفسها، ثلاث مرات متتالية.</p></div>
+        <div class="box"><h4>الربط بالعلامة</h4><p>إنه الإعلان التلفزيوني حيًّا: عازف البيانو، واللحن، والوعد الذي في العنوان؛ أرضٌ خام تتحوّل إلى سيمفونية تعزفها ثلاث آلات.</p></div>
+      </div>
+    </div>
+    <div class="spec">
+      <div><h4>المسرح</h4><ul>
+        <li><em>المايسترو</em>في منتصف المقدّمة وظهره إلى القاعة، بعصا ذهبية بطرف LED؛ المؤدّي الوحيد الذي يلمس الجدار</li>
+        <li><em>البيانو</em>البيانو الأبيض الكبير، يُنقل إلى المنتصف لهذا الفصل، مزوّد بميكروفون ومضاء</li>
+        <li><em>الغيتار والكمان</em>يمين المسرح ويساره، بلاقط لاسلكية</li>
+        <li><em>بقع الضوء</em>أربع بقع ضوء بروفايل، واحدة لكل مؤدٍّ، تُطلق من الكود الزمني نفسه الذي يشغّل الجدار</li>
+      </ul></div>
+      <div><h4>الشاشة</h4><ul>
+        <li><em>الأسلوب</em>ستائر مسرح ذهبية تنفتح لكل موسيقي؛ النغمات تصير طلاءً؛ وأربع طبقات تُبنى بالترتيب: أساسات ذهبية، حدائق خضراء، ماء مضاء بالذهب، بيوت واقعية</li>
+        <li><em>العصا</em>تترك ضربة فرشاة ذهبية حيثما تشير؛ والضربة الأخيرة تكتب الشعار</li>
+        <li><em>الصوت</em>ثلاثي حيّ على نقرة إيقاع فوق لحن الإعلان التلفزيوني، ممدودًا إلى 1:45</li>
+      </ul></div>
+      <div><h4>الصعوبة</h4><ul>
+        <li><em>المؤدّون</em>مايسترو وثلاثة موسيقيين، يومان من البروفات</li>
+        <li><em>المخاطرة</em>منخفضة إلى متوسطة. الموسيقيون يعزفون على نقرة إيقاع؛ والعصا وحدها لها نقاط لمس: ثلاث إشارات والضربة الأخيرة</li>
+      </ul></div>
+    </div>
+  </div></div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">13</div></div>
+</section>
+
+<!-- 14 PLAYBOOK -->
+<section class="page">
+  <div class="hdr"><h1><small>03 — كيف يبدو الأمر حيًّا</small>دليل المزامنة</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid" style="display:grid;grid-template-columns:.95fr 1.05fr;gap:60px">
+    <div>
+      <div class="img" style="height:420px;background-image:url(img/gen_10.jpg)"></div>
+      <div style="margin-top:16px;font-size:14px;color:var(--mute);letter-spacing:.06em">البروفة التقنية: يعرض الجدار شبكة نقاط اللمس المرقّمة، وتحمل الأرض العلامات المطابقة، ويدير منادي العرض كل شيء من كود زمني واحد.</div>
+      <div style="margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:14px 24px;font-size:17px;line-height:1.6;color:var(--ink2)">
+        <b style="color:var(--gold)" class="ltr">D-15</b><span>اعتماد القصة المصوّرة والأنيماتيك؛ ويبدأ المؤدّي التدريب على إسقاط بمقياس <span class="ltr">1:1</span>.</span>
+        <b style="color:var(--gold)" class="ltr">D-7</b><span>الرندر النهائي على خريطة بكسلات الشاشة؛ وإقفال ورقة الإشارات ومسار النقر وإشارات الإضاءة.</span>
+        <b style="color:var(--gold)" class="ltr">D-1</b><span>اختبار تقني وبروفة نهائية كاملة على الجدار الحقيقي، كما في الجدول الزمني للفعالية.</span>
+      </div>
+    </div>
+    <div class="rules">
+      <div><i>1</i><h4>ساعة واحدة</h4><p>الفيديو والإضاءة والضباب والقصاصات ونقرة الإيقاع تعمل كلّها من كود زمني SMPTE واحد على خادم الوسائط. لا شيء يُطلق باليد.</p></div>
+      <div><i>2</i><h4>اليد تقود</h4><p>كل تأثير يبدأ بعد اللمسة بما بين 6 و10 إطارات، ولا يسبقها أبدًا. التأخّر غير مرئي؛ أما التبكير فيكسر السحر.</p></div>
+      <div><i>3</i><h4>تسع علامات</h4><p>نقاط اللمس مثبّتة بشريط على الأرض ومربوطة بخريطة بكسلات الجدار، فيصبح «مكان اليد» رقمًا لا تخمينًا.</p></div>
+      <div><i>4</i><h4>إطارات الانتظار</h4><p>لكل خدعة مقطع انتظار قابل للتكرار يستطيع المشغّل التوقف عنده إذا تأخّر المؤدّي ثانية. الجمهور لا يراه أبدًا.</p></div>
+      <div><i>5</i><h4>الكاميرا هي الحكم</h4><p>كل حركة مرسومة لزاوية البطل: في المنتصف، على بعد 12 مترًا، بارتفاع الهاتف. وتُقصّ نسخة <span class="ltr">9:16</span> من النسخة الرئيسية للسوشيال في الليلة نفسها.</p></div>
+      <div><i>6</i><h4>التدريب حتى الإطار</h4><p>خمسة عشر يومًا للمحتوى والتدريب، ويومان على الجدار الحقيقي. المؤدّي يعدّ الموسيقى لا الثواني.</p></div>
+    </div>
+  </div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">14</div></div>
+</section>
+
+<!-- 15 COMPARISON -->
+<section class="page">
+  <div class="hdr"><h1><small>04 — الاختيار</small>جنبًا إلى جنب</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid" style="display:grid;grid-template-columns:1.35fr .65fr;gap:64px">
+    <div>
+      <table>
+        <tr><th></th><th>الربط بالعلامة</th><th>عامل الإبهار</th><th>التعقيد</th><th>اللقطة التي يشاركها الناس</th></tr>
+        <tr><td>01<br>اللمسة الذهبية</td><td><span class="dots">●●●●●</span><br><span style="font-size:15px;color:var(--mute)">الاسم هو الخدعة</span></td><td><span class="dots">●●●●<span>●</span></span></td><td>منخفض<br><span style="font-size:15px;color:var(--mute)">مؤدٍّ واحد، أداة واحدة</span></td><td>التوقيع يغادر الشاشة إلى اليد</td></tr>
+        <tr><td>02<br>دعها تنمو</td><td><span class="dots">●●●●<span>●</span></span><br><span style="font-size:15px;color:var(--mute)">نبتة سيجنتشر، والوعد الأخضر</span></td><td><span class="dots">●●●●●</span></td><td>متوسط<br><span style="font-size:15px;color:var(--mute)">مجسّم الشجرة، التعليق، إسقاط الأوراق</span></td><td>شجرة حقيقية تنمو من بذرة على المسرح ثم تواصل النمو على الجدار</td></tr>
+        <tr><td>03<br>سيمفونية الأرض الخام</td><td><span class="dots">●●●●●</span><br><span style="font-size:15px;color:var(--mute)">الإعلان التلفزيوني حيًّا، بثلاث آلات</span></td><td><span class="dots">●●●●●</span></td><td>متوسط<br><span style="font-size:15px;color:var(--mute)">مايسترو و3 موسيقيين، 4 بقع ضوء</span></td><td>إشارة المايسترو: إشارة، بقعة ضوء، ستارة، ثلاث مرات متتالية</td></tr>
+      </table>
+      <div style="margin-top:64px">
+        <div class="kicker" style="margin-bottom:18px">الكشف بثلاثة فصول · 4:45 ضمن فقرة الخمس دقائق</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;align-items:stretch">
+          <div style="background:var(--green2);color:#fff;padding:18px 20px;border-radius:4px"><div style="font-size:12px;letter-spacing:0;opacity:.7">الفصل الأول · 0:00</div><div style="font-size:18px;font-weight:700;margin-top:6px">سيمفونية الأرض الخام</div><div style="font-size:13px;opacity:.75;margin-top:4px">النشأة الموسيقية</div></div>
+          <div style="background:var(--gold);color:#141414;padding:18px 20px;border-radius:4px"><div style="font-size:12px;letter-spacing:0;opacity:.7">الفصل الثاني · 1:45</div><div style="font-size:18px;font-weight:700;margin-top:6px">اللمسة الذهبية</div><div style="font-size:13px;opacity:.75;margin-top:4px">اللمسة الأولى</div></div>
+          <div style="background:var(--green);color:#fff;padding:18px 20px;border-radius:4px"><div style="font-size:12px;letter-spacing:0;opacity:.7">الفصل الثالث · 3:15</div><div style="font-size:18px;font-weight:700;margin-top:6px">دعها تنمو</div><div style="font-size:13px;opacity:.75;margin-top:4px">الطبقة الطبيعية</div></div>
+          <div style="background:#141414;color:#fff;padding:18px 20px;border-radius:4px;min-width:150px"><div style="font-size:12px;letter-spacing:0;opacity:.7">4:45</div><div style="font-size:18px;font-weight:700;margin-top:6px">الشعار والرئيس التنفيذي</div><div style="font-size:13px;opacity:.75;margin-top:4px">الكشف الجوي</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <div class="kicker">توصيتنا</div>
+      <p class="lead" style="font-size:24px"><b>نفّذوا المفاهيم الثلاثة كشفًا واحدًا من خمس دقائق بثلاثة فصول.</b> حقيبة الفعالية تعد أصلًا بـ«افتتاح من ثلاثة فصول: النشأة الموسيقية، اللمسة الأولى، الطبقة الطبيعية». وهذه هي تلك الفصول.</p>
+      <div class="body" style="display:grid;grid-template-columns:auto 1fr;gap:12px 20px">
+        <b style="color:var(--gold);white-space:nowrap">الفصل الأول</b><span>سيمفونية الأرض الخام · <span style="color:var(--mute)">النشأة الموسيقية</span> · 1:45</span>
+        <b style="color:var(--gold);white-space:nowrap">الفصل الثاني</b><span>اللمسة الذهبية · <span style="color:var(--mute)">اللمسة الأولى</span> · 1:30</span>
+        <b style="color:var(--gold);white-space:nowrap">الفصل الثالث</b><span>دعها تنمو · <span style="color:var(--mute)">الطبقة الطبيعية</span> · 1:30، ثم اللقطة الجوية والشعار وإشارة الرئيس التنفيذي</span>
+      </div>
+      <div class="rule"></div>
+      <p class="body">وإن كان لا بدّ من واحد: <b style="color:var(--ink)">اللمسة الذهبية.</b> تحمل اسم العلامة في الخدعة نفسها، وتحتاج إلى مؤدٍّ واحد وأداة واحدة، وهي الأكثر تسامحًا في الأداء.</p>
+    </div>
+  </div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">15</div></div>
+</section>
+
+<!-- 16 PRODUCTION -->
+<section class="page">
+  <div class="hdr"><h1><small>05 — الإنتاج</small>ما نقدّمه، وما نحتاج إليه</h1><div class="hoe">House <i>of</i> Experience</div></div>
+  <div class="grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px">
+    <div class="spec">
+      <div><h4>المخرجات</h4><ul>
+        <li><em>النسخة الرئيسية</em>فيلم كامل على خريطة البكسلات الأصلية للجدار المنحني والقطعة المركزية، 25 إطارًا في الثانية، بصيغة ProRes</li>
+        <li><em>الكود الزمني</em>مسار SMPTE مع ورقة إشارات للإضاءة والضباب والقصاصات ونقرة الإيقاع</li>
+        <li><em>نسخة البروفة</em>نسخة مصغّرة مع الشبكة المرقّمة والعدّ التمهيدي للمؤدّي</li>
+        <li><em>نسخة السوشيال</em>نسخة عمودية <span class="ltr">9:16</span> من النسخة الرئيسية لمنشورات الليلة</li>
+      </ul></div>
+    </div>
+    <div class="spec">
+      <div><h4>الفريق</h4><ul>
+        <li><em>الإبداع</em>مخرج وكاتب عرض، صوت واحد للمسرح والشاشة</li>
+        <li><em>الشاشة</em>فريق ثلاثي الأبعاد وموشن يعمل من المخطط الرئيسي للمشروع وأصول الإعلان التلفزيوني</li>
+        <li><em>المسرح</em>ساحر أو راقص، عازف بيانو، منادي عرض، مشغّل خادم الوسائط</li>
+        <li><em>الموسيقى</em>مؤلّف الإعلان التلفزيوني لتمديد اللحن إلى خمس دقائق</li>
+      </ul></div>
+    </div>
+    <div class="spec">
+      <div><h4>الخطوات التالية</h4><ul>
+        <li><em>الأسبوع 1</em>اختيار المفهوم أو نسخة الفصول الثلاثة؛ وتأكيد المؤدّي وعازف البيانو</li>
+        <li><em>الأسبوع 1</em>خريطة بكسلات الشاشة ومخطط المسرح وعلامات الأرض من الفريق التقني</li>
+        <li><em>الأسبوع 2</em>القصة المصوّرة والأنيماتيك للاعتماد؛ وبدء البروفات</li>
+        <li><em>الأسبوعان 3 و4</em>الرندر النهائي، نسخة البروفة، البروفة النهائية على الجدار</li>
+      </ul></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:120px;right:120px;bottom:150px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end">
+    <div class="img" style="height:300px;background-image:url(img/tvc_frames.jpg);background-position:top"></div>
+    <p class="body">يُقصّ فيلم الشاشة بلغة الإعلان التلفزيوني نفسها: عازف البيانو نفسه، وقصة الأرض الخام التي تصير بيتًا، واللوحة اللونية نفسها. ما يُعرض على الجدار في 28 آب هو الفيلم الذي ستشاهده المدينة على الهواء في اليوم التالي.</p>
+  </div>
+  <div class="ftr"><div><b>بدور سيجنتشر</b>مفهوم الإطلاق على المسرح</div><div class="pg">16</div></div>
+</section>
+
+<!-- 17 CLOSE -->
+<section class="page dark">
+  <div class="full" style="background-image:url(img/gen_3.jpg);opacity:.5"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(11,11,11,.2) 0%,rgba(11,11,11,.92) 75%)"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+    <div class="wm" dir="ltr" style="font-size:72px;color:#fff">BUDOOR<small>Signature</small></div>
+    <div style="width:80px;height:1px;background:var(--gold);margin:56px 0"></div>
+    <h2 style="font-size:56px;font-weight:300;letter-spacing:0;line-height:1.3">لنوقّع الليلة.</h2>
+    <p style="margin-top:26px;font-size:18px;letter-spacing:.3em;text-transform:uppercase;color:#bdbdbd">Nofakha &nbsp;·&nbsp; House <i style="font-family:'Cormorant Garamond',serif;text-transform:none;letter-spacing:0;font-size:22px">of</i> Experience</p>
+  </div>
+</section>
+
+</body>
+</html>
