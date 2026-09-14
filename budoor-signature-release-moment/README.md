@@ -4,7 +4,7 @@ Creative proposal for the main-stage LED wall at the Budoor Signature launch (28
 three stage-and-screen illusion concepts (The Golden Stroke, Let It Grow, Symphony of a Raw Space),
 a sync playbook, comparison, recommendation and production plan.
 
-- Final PDF v2 (17 pages, 1920×1080): https://d2ol7oe51mr4n9.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/fd774286-03fc-4577-afbc-83a4cf53947c.pdf
+- Final PDF v2 (17 pages, 1920×1080): https://d2ol7oe51mr4n9.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/bef6afb5-3712-4dee-8f47-33045c8bb328.pdf
 - Source: `index.html` (self-contained deck, Google Fonts: Inter / Cormorant Garamond / Michroma)
 - Concept frames were generated with Higgsfield (GPT Image 2.5) using the event-kit stage render as reference;
   they are expected at `img/gen_0.jpg … gen_30.jpg` (not committed; indices 4–5, 7–9 and 14–20 are unused).
