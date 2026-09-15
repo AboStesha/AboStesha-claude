@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Uruk LifeHub — Executive Proposal</title>
+<link rel="stylesheet" href="fonts/fonts-static.css">
+<style>/* Uruk LifeHub — Apple visual language
+   Type: Inter (SF Pro stand-in) + Noto Sans Arabic (SF Arabic stand-in)
+   Palette: Apple neutrals; one signature gradient used sparingly. */
+
+@page { size: 1920px 1080px; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+:root {
+  --bg: #fbfbfd; --card: #f5f5f7; --card2: #ffffff;
+  --ink: #1d1d1f; --ink2: #6e6e73; --ink3: #86868b;
+  --line: rgba(0,0,0,.09); --accent: #0071e3;
+  --grad: linear-gradient(90deg, #0a84ff 0%, #bf5af2 55%, #ff9f0a 100%);
+}
+.slide.dark {
+  --bg: #000; --card: #161617; --card2: #1d1d1f;
+  --ink: #f5f5f7; --ink2: #a1a1a6; --ink3: #86868b;
+  --line: rgba(255,255,255,.12); --accent: #2997ff;
+}
+
+.slide {
+  width: 1920px; height: 1080px; position: relative; overflow: hidden;
+  page-break-after: always; break-after: page;
+  background: var(--bg); color: var(--ink);
+  font-family: "Inter", -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px; line-height: 1.35; letter-spacing: -0.006em;
+  padding: 44px 72px 40px; display: flex; flex-direction: column; gap: 20px;
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+
+.ar { font-family: "Noto Sans Arabic", "Inter", sans-serif; direction: rtl; unicode-bidi: isolate; display: block; text-align: right; letter-spacing: 0; }
+.ar.d { font-size: 14.5px; line-height: 1.55; color: var(--ink2); }
+.ar.v { font-size: 16px; line-height: 1.6; color: var(--ink); }
+.ar.v.lead { font-size: 19px; line-height: 1.65; color: var(--ink2); margin-top: 18px; }
+.ar.sub { font-size: 15px; font-weight: 600; color: var(--ink); margin-top: 6px; }
+.ar.strong { color: var(--ink); font-weight: 600; }
+.ar.kar { display: inline; font-size: 13px; font-weight: 600; color: var(--ink3); margin-left: 12px; }
+.ar.arh { font-size: 30px; font-weight: 600; line-height: 1.45; color: var(--ink2); }
+.ar.arh.big { font-size: 30px; margin-top: 18px; color: var(--ink2); text-align: left; }
+.ar.chip-ar { display: inline; font-size: 12px; }
+
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- top bar */
+.top { display: flex; justify-content: space-between; align-items: center; height: 44px; }
+.idx { display: flex; align-items: center; gap: 14px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink3); font-weight: 500; }
+.idx .n { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: .04em; }
+.idx .sep { width: 1px; height: 14px; background: var(--line); }
+.brand { display: flex; align-items: center; gap: 14px; }
+.bt b { display: block; font-size: 17px; letter-spacing: .06em; font-weight: 700; line-height: 1.05; }
+.bt b span { font-weight: 400; }
+.bt small { display: block; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink3); margin-top: 4px; }
+
+/* ---------- masthead */
+.mast { display: flex; justify-content: space-between; align-items: flex-end; gap: 60px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.kicker { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink3); font-weight: 600; margin-bottom: 12px; }
+h1 { margin: 0; font-size: 56px; line-height: 1.04; letter-spacing: -0.03em; font-weight: 700; }
+h1.giant { font-size: 150px; line-height: .92; letter-spacing: -0.05em; font-weight: 800; white-space: nowrap; }
+h2 { margin: 0; font-size: 46px; line-height: 1.06; letter-spacing: -0.03em; font-weight: 700; }
+h2.xl { font-size: 62px; }
+.mast-r { max-width: 700px; }
+
+/* ---------- footer */
+.foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 30px; font-size: 12.5px; color: var(--ink3); letter-spacing: .02em; }
+.foot .fc { text-align: center; flex: 1; }
+.foot .fr { text-align: right; }
+.foot b { color: var(--ink); font-weight: 600; }
+.chain { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; }
+.chain .ar { display: inline; color: var(--ink3); font-weight: 400; }
+.chain i { font-style: normal; color: var(--ink3); }
+
+/* ---------- primitives */
+.card { background: var(--card); border-radius: 26px; padding: 30px 32px; }
+.k { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--ink); margin-bottom: 14px; display: flex; align-items: baseline; }
+.k.small { font-size: 11px; margin-bottom: 8px; color: var(--accent); }
+.k .ar { text-transform: none; }
+.kv { padding: 14px 0; border-top: 1px solid var(--line); }
+.kv:first-child { border-top: 0; padding-top: 0; }
+.kv .k { margin-bottom: 6px; }
+
+.li { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+.li:first-of-type { border-top: 0; }
+.li.tight { padding: 11px 0; }
+.lit { flex: 1; display: flex; justify-content: space-between; align-items: baseline; gap: 18px; }
+.lit .t { font-size: 17px; font-weight: 600; letter-spacing: -0.012em; white-space: nowrap; }
+.lit .ar.d { flex: 1; }
+.badge { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; letter-spacing: 0; }
+.badge.sym { font-size: 16px; font-weight: 500; }
+.slide.dark .badge { background: #f5f5f7; color: #000; }
+
+.num { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .06em; display: block; margin-bottom: 10px; }
+.note { margin-top: 18px; background: var(--card2); border-radius: 18px; padding: 16px 20px; }
+.slide.dark .note { background: var(--card2); }
+.note.wide { margin-top: 26px; }
+.arrow { font-style: normal; color: var(--ink3); font-size: 26px; font-weight: 300; align-self: center; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: var(--card2); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.chips { display: flex; gap: 10px; margin-top: 22px; }
+.bignum { font-size: 104px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; margin: 6px 0 8px; }
+.bignum span { font-weight: 500; color: var(--ink3); letter-spacing: -0.02em; font-size: .7em; }
+.rng { display: block; font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: var(--accent); margin-bottom: 6px; }
+
+/* ---------- passport card */
+.pcard { width: 420px; height: 264px; border-radius: 22px; padding: 26px 28px; color: #f5f5f7; transform-origin: center; position: relative;
+  background: radial-gradient(120% 140% at 0% 0%, #3a3a3c 0%, #1c1c1e 45%, #000 100%);
+  box-shadow: 0 40px 80px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.18); display: flex; flex-direction: column; justify-content: space-between; }
+.pcard::after { content: ""; position: absolute; inset: 0; border-radius: 22px; background: linear-gradient(115deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 40%); pointer-events: none; }
+.pc-top { display: flex; justify-content: space-between; align-items: center; }
+.pc-nfc { display: inline-flex; gap: 3px; align-items: flex-end; }
+.pc-nfc i { display: block; width: 7px; border: 1.5px solid rgba(255,255,255,.7); border-left: 0; border-radius: 0 10px 10px 0; }
+.pc-nfc i:nth-child(1) { height: 10px; } .pc-nfc i:nth-child(2) { height: 16px; } .pc-nfc i:nth-child(3) { height: 22px; }
+.pc-name { font-size: 24px; font-weight: 700; letter-spacing: .04em; line-height: 1.12; }
+.pc-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+.pc-foot small { display: block; font-size: 10px; letter-spacing: .18em; color: #a1a1a6; }
+.pc-foot b { display: block; font-size: 12px; letter-spacing: .2em; color: #2997ff; margin-top: 4px; }
+.pc-chip { width: 42px; height: 30px; border-radius: 7px; background: linear-gradient(135deg, #e6d5a4, #b89b5d); box-shadow: inset 0 0 0 1px rgba(0,0,0,.25); }
+
+/* ================================================================ slide 1 */
+.s1 .s1-hero { display: flex; justify-content: space-between; align-items: flex-end; padding: 6px 0 4px; }
+.s1 .tag-en { font-size: 40px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.12; text-align: right; }
+.s1 .s1-tag .ar.d { font-size: 18px; margin-top: 14px; color: var(--ink2); }
+.s1 .s1-grid { display: grid; grid-template-columns: 1.15fr 1fr 1fr 1.15fr; gap: 16px; }
+.s1 .card { padding: 20px 24px; }
+.s1 .kv { padding: 10px 0; }
+.s1 .kv .ar.v { font-size: 14.5px; color: var(--ink2); }
+.s1 .opp .bignum { font-size: 76px; margin: 10px 0 8px; }
+.s1 .opp .ar.v { color: var(--ink2); font-size: 14.5px; }
+.s1 .serve { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.s1 .sv { background: var(--card2); border-radius: 16px; padding: 14px 16px; }
+.s1 .sv b { display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.s1 .li.tight { padding: 8px 0; }
+.s1 .li .badge { width: 28px; height: 28px; font-size: 11px; }
+.s1 .lit { flex-direction: column; align-items: flex-start; gap: 2px; }
+.s1 .lit .t { font-size: 15px; }
+.s1 .lit .ar.d { font-size: 13px; text-align: left; direction: rtl; align-self: flex-start; }
+.s1 .s1-eco .eco-h { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+.s1 .eco { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.s1 .eco-t { background: var(--card); border-radius: 20px; padding: 16px 20px; }
+.s1 .eco-t b { display: block; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+
+/* ================================================================ slide 2 */
+.s2 .s2-grid { display: grid; grid-template-columns: 470px 1fr 520px; gap: 20px; }
+.s2 .market .bignum { font-size: 84px; margin: 6px 0 4px; }
+.s2 .market .ar.v { color: var(--ink2); }
+.s2 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.s2 .st { background: var(--card2); border-radius: 16px; padding: 12px 16px; }
+.s2 .st b { display: block; font-size: 28px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 2px; }
+.s2 .insight { margin-top: 16px; background: var(--card2); border-radius: 16px; padding: 14px 16px; }
+.s2 .center { display: flex; flex-direction: column; justify-content: space-between; padding: 6px 10px; }
+.s2 .steps3 { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.s2 .step { text-align: center; background: var(--card); border-radius: 999px; padding: 12px 26px; }
+.s2 .step b { display: block; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+.s2 .step .ar.d { text-align: center; font-size: 12.5px; }
+.s2 .statement { text-align: center; }
+.s2 .statement h2 { font-size: 64px; }
+.s2 .statement .ar.v { text-align: center; color: var(--ink2); font-size: 19px; margin-top: 14px; }
+.s2 .scenario { text-align: center; border-top: 1px solid var(--line); padding-top: 18px; }
+.s2 .scenario .k.small { justify-content: center; }
+.s2 .calc { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; }
+.s2 .eq { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; color: var(--accent); margin-top: 2px; }
+.s2 .scenario .ar.d { text-align: center; margin-top: 6px; }
+.s2 .assets .li { padding: 12px 0; }
+.s2 .assets .lit { flex-direction: column; align-items: flex-start; gap: 2px; }
+.s2 .assets .lit .ar.d { text-align: left; align-self: flex-start; }
+.s2 .adds { margin-top: 14px; background: var(--card2); border-radius: 16px; padding: 14px 16px; }
+.s2 .s2-bottom { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+.s2 .row5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.s2 .eng { background: var(--card); border-radius: 18px; padding: 14px 16px; }
+.s2 .eng b { display: block; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.s2 .row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.s2 .rd { background: var(--card); border-radius: 18px; padding: 14px 16px; }
+.s2 .rd .rng { font-size: 24px; margin-bottom: 2px; }
+.s2 .rd b { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 4px; }
+
+/* ================================================================ slide 3 */
+.s3 .s3-grid { display: grid; grid-template-columns: 520px 1fr 520px; gap: 20px; }
+.s3 .card { padding: 22px 26px; }
+.s3 .card .ar.v.lead { font-size: 14.5px; margin-top: 0; margin-bottom: 4px; line-height: 1.5; }
+.s3 .card .li.tight { padding: 6px 0; }
+.s3 .card .lit .t { font-size: 16px; }
+.s3 .card .badge { width: 30px; height: 30px; }
+.s3 .card .lit { flex-direction: column; align-items: flex-start; gap: 1px; }
+.s3 .card .lit .ar.d { text-align: left; align-self: flex-start; font-size: 13.5px; }
+.s3 .card .note { margin-top: 10px; padding: 12px 16px; }
+.s3 .flag { display: grid; grid-template-rows: auto 1fr auto; gap: 8px; padding: 4px 12px 0; }
+.s3 .flag h2 { font-size: 50px; }
+.s3 .flag-copy .ar.v { color: var(--ink2); font-size: 16px; margin-top: 10px; }
+.s3 .chips { margin-top: 14px; }
+.s3 .flag-card .pcard { transform: scale(.8) !important; }
+.s3 .flag-card { display: flex; align-items: center; justify-content: center; }
+.s3 .flag-foot { text-align: center; }
+.s3 .flag-foot b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.s3 .flag-foot .ar.d { text-align: center; margin-top: 4px; }
+.s3 .row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.s3 .eng4 { background: var(--card); border-radius: 20px; padding: 14px 18px; display: flex; flex-direction: column; }
+.s3 .eng4 .num { margin-bottom: 4px; }
+.s3 .eng4 b { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+.s3 .eng4 .ar.d { margin-top: 4px; font-size: 13px; line-height: 1.45; }
+.s3 .eng4 .ar.sub { margin-top: 2px; }
+.s3 .eng4-f { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.s3 .eng4-f .ar { margin-top: 0; }
+
+/* ================================================================ slide 4 */
+.s4 .s4-grid { display: grid; grid-template-columns: 1fr 640px 520px; gap: 20px; align-items: center; flex: 1; }
+.s4 .s4-copy .ar.v.lead { font-size: 18px; }
+.s4 .quote { margin-top: 22px; border-inline-end: 3px solid var(--accent); padding-inline-end: 18px; }
+.s4 .quote .ar.v { color: var(--ink2); }
+.s4 .s4-card { display: flex; align-items: center; justify-content: center; height: 100%; }
+.s4 .card .lit { flex-direction: column; align-items: flex-start; gap: 2px; }
+.s4 .card .lit .ar.d { text-align: left; align-self: flex-start; }
+.s4 .journey { background: var(--card); border-radius: 26px; padding: 22px 34px; }
+.s4 .jrow { display: flex; align-items: center; justify-content: space-between; }
+.s4 .jstep { text-align: center; width: 190px; }
+.s4 .jstep .badge { margin: 0 auto 10px; width: 40px; height: 40px; font-size: 14px; }
+.s4 .jstep b { display: block; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; }
+.s4 .jstep .ar.d { text-align: center; }
+
+/* ================================================================ slide 5 */
+.s5 .s5-grid { display: grid; grid-template-columns: 1fr 880px; gap: 40px; align-items: center; flex: 1; }
+.s5 .acad { height: 100%; align-content: stretch; }
+.s5 .ac { display: flex; flex-direction: column; justify-content: center; }
+.s5 .acad { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.s5 .ac { background: var(--card); border-radius: 20px; padding: 22px 24px; }
+.s5 .ac b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+.s5 .row5 { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 12px; }
+.s5 .port b { display: block; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+.s5 .seg small { display: block; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); font-weight: 600; }
+.s5 .seg .code { display: block; font-size: 34px; font-weight: 700; letter-spacing: -0.03em; margin: 6px 0 6px; }
+
+/* ================================================================ slide 6 */
+.s6 .s6-grid { display: grid; grid-template-columns: 1fr 640px; gap: 60px; align-items: center; flex: 1; }
+.s6 .lpw { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 34px; }
+.s6 .lp b { display: block; font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+.s6 .outcomes { display: grid; grid-template-columns: 1.4fr repeat(5, 1fr); gap: 0; background: var(--card); border-radius: 26px; padding: 22px 30px; align-items: center; }
+.s6 .oc-h { padding-inline-end: 24px; }
+.s6 .oc-h b { display: block; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.s6 .oc { text-align: center; border-inline-start: 1px solid var(--line); padding: 4px 8px; }
+.s6 .oc .sym { display: block; font-size: 26px; font-weight: 500; color: var(--accent); margin-bottom: 6px; }
+.s6 .oc b { display: block; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; }
+.s6 .oc .ar.d { text-align: center; }
+
+/* ================================================================ slide 7 */
+.s7 .s7-grid { display: grid; grid-template-columns: 500px 1fr 500px; gap: 20px; align-items: stretch; flex: 1; }
+.s7 .s7-grid .card { display: flex; flex-direction: column; justify-content: center; }
+.s7 .opt { padding: 16px 0; border-top: 1px solid var(--line); }
+.s7 .opt:first-of-type { border-top: 0; }
+.s7 .opt b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px; }
+.s7 .bridge { display: flex; flex-direction: column; justify-content: center; gap: 22px; padding: 0 14px; }
+.s7 .bridge-row { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.s7 .node { flex: 1; background: var(--card); border-radius: 22px; padding: 26px 26px; text-align: center; }
+.s7 .node b { display: block; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+.s7 .node .ar.d { text-align: center; }
+.s7 .swap { font-size: 40px; color: var(--accent); }
+.s7 .bridge .note { margin-top: 0; background: var(--card); text-align: center; }
+.s7 .bridge .note .ar.v { text-align: center; color: var(--ink2); }
+.s7 .flow { background: var(--card); border-radius: 26px; padding: 22px 34px; }
+.s7 .frow { display: flex; align-items: center; justify-content: space-between; }
+.s7 .fstep { width: 280px; text-align: center; }
+.s7 .fstep .num { margin-bottom: 4px; }
+.s7 .fstep b { display: block; font-size: 16px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+.s7 .fstep .ar.d { text-align: center; }
+
+/* ================================================================ slide 8 */
+.s8 .s8-grid { display: grid; grid-template-columns: 1fr 520px 560px; gap: 24px; align-items: center; flex: 1; }
+.s8 h1 { font-size: 48px; white-space: nowrap; }
+.s8 .concept { text-align: center; border: 1px solid var(--line); border-radius: 26px; padding: 40px 30px; }
+.s8 .concept .kicker { margin-bottom: 14px; }
+.s8 .concept-name { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.s8 .concept .ar.d { text-align: center; margin-top: 12px; }
+.s8 .card .lit { flex-direction: column; align-items: flex-start; gap: 2px; }
+.s8 .card .lit .ar.d { text-align: left; align-self: flex-start; }
+.s8 .row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.s8 .md { background: var(--card); border-radius: 20px; padding: 20px 22px; }
+.s8 .md b { display: block; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px; }
+
+/* ================================================================ slide 9 */
+.s9 .s9-top { display: grid; grid-template-columns: 1fr 80px 1fr; gap: 20px; align-items: center; }
+.s9 .own .ar.v { color: var(--ink2); font-size: 15.5px; }
+.s9 .own ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; }
+.s9 .own li { font-size: 15px; font-weight: 500; padding-left: 14px; position: relative; }
+.s9 .own li::before { content: ""; position: absolute; left: 0; top: .6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.s9 .times { font-size: 64px; font-weight: 700; text-align: center; line-height: 1; }
+.s9 .row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.s9 .day { background: var(--card); border-radius: 20px; padding: 18px 22px; }
+.s9 .day .rng { font-size: 28px; margin-bottom: 2px; }
+.s9 .day b { display: block; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+.s9 .s9-bottom { display: grid; grid-template-columns: 1fr 640px; gap: 24px; align-items: center; flex: 1; }
+.s9 .decision h2 { font-size: 52px; }
+.s9 .decision .ar.v { color: var(--ink2); margin-top: 14px; font-size: 16px; }
+.s9 .cta { display: inline-block; margin-top: 18px; background: var(--accent); color: #fff; border-radius: 999px; padding: 12px 22px; font-size: 14px; font-weight: 600; letter-spacing: .02em; }
+.s9 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.s9 .bd { padding: 10px 0; border-top: 1px solid var(--line); }
+.s9 .bd:nth-child(-n+2) { border-top: 0; padding-top: 0; }
+.s9 .bd b { display: block; font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+
+/* ---------- density refinements */
+.s3 .card { padding: 20px 26px; }
+.s5 .acad { height: auto; }
+.s5 .ac { padding: 30px 30px; }
+.s5 .ac b { font-size: 24px; margin-bottom: 10px; }
+.s5 .ac .ar.d { font-size: 16.5px; }
+.s5 .s5-copy .note.wide .ar.v { font-size: 16.5px; }
+.s7 .opt { padding: 24px 0; }
+.s7 .opt b { font-size: 24px; margin-bottom: 8px; }
+.s7 .opt .ar.d { font-size: 16px; }
+.s7 .node { padding: 32px 28px; }
+.s7 .node b { font-size: 28px; }
+.s7 .node .ar.d { font-size: 15.5px; }
+.s7 .bridge .note .ar.v { font-size: 17px; }
+.s6 .lp { padding: 28px 28px; }
+.s6 .card .lit .t { font-size: 18px; }
+.s6 .card .li { padding: 17px 0; }
+.s8 .md { padding: 24px 24px; }
+.s8 .md b { font-size: 19px; }
+.s8 .card .li { padding: 17px 0; }
+.s4 .card .li { padding: 16px 0; }
+</style>
+</head>
+<body>
+<section class="slide dark s1">
+<header class="top">
+  <div class="idx"><span class="n">01</span><span class="sep"></span><span class="lbl">Master visual</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#f5f5f7" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#f5f5f7" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#f5f5f7"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="s1-hero">
+  <div class="s1-title">
+    <div class="kicker">Global Learning &amp; Opportunity Passport</div>
+    <h1 class="giant">Uruk<br>LifeHub</h1>
+    <span class="ar arh big">جواز أوروك للتعلّم والمهارات والفرص العالمية</span>
+  </div>
+  <div class="s1-tag">
+    <div class="tag-en">One identity.<br>One journey.<br><span class="grad">Endless opportunities.</span></div>
+    <span class="ar d">هوية واحدة • رحلة واحدة • فرص لا تنتهي</span>
+  </div>
+</div>
+<div class="s1-grid">
+  <div class="card col">
+    <div class="kv"><div class="k">Our vision <span class="ar kar">رؤيتنا</span></div><span class="ar v">أن تصبح أوروك منصة تعليم وفرص ترافق الطالب من القبول وحتى ما بعد التخرج.</span></div>
+    <div class="kv"><div class="k">Our mission <span class="ar kar">مهمتنا</span></div><span class="ar v">ربط التعلم والاعتماد والتوظيف والمسارات الدولية في تجربة رقمية واحدة.</span></div>
+    <div class="kv"><div class="k">The promise <span class="ar kar">وعدنا</span></div><span class="ar v">جامعة واحدة. جواز واحد. عالم من الفرص.</span></div>
+  </div>
+  <div class="card col opp">
+    <div class="k">The opportunity <span class="ar kar">الفرصة</span></div>
+    <div class="bignum">21,043<span>+</span></div>
+    <span class="ar v">طالب وخريج قاعدة أولية قابلة للتفعيل</span>
+  </div>
+  <div class="card col">
+    <div class="k">Who we serve <span class="ar kar">من نخدم؟</span></div>
+    <div class="serve"><div class="sv"><b>Students</b><span class="ar d">الطلاب</span></div><div class="sv"><b>Alumni</b><span class="ar d">الخريجون</span></div><div class="sv"><b>Professionals</b><span class="ar d">المهنيون</span></div><div class="sv"><b>Companies</b><span class="ar d">الشركات</span></div></div>
+  </div>
+  <div class="card col">
+    <div class="k">Our four pillars <span class="ar kar">ركائزنا</span></div>
+    <div class="li tight"><span class="badge ">01</span><div class="lit"><div class="t">Learn</div><span class="ar d">تعلّم من محتوى وبرامج رسمية</span></div></div><div class="li tight"><span class="badge ">02</span><div class="lit"><div class="t">Certify</div><span class="ar d">اعتمد مهاراتك بشهادات موثقة</span></div></div><div class="li tight"><span class="badge ">03</span><div class="lit"><div class="t">Connect</div><span class="ar d">تواصل مع المجتمع والخبراء</span></div></div><div class="li tight"><span class="badge ">04</span><div class="lit"><div class="t">Advance</div><span class="ar d">تقدّم نحو التدريب والعمل</span></div></div>
+  </div>
+</div>
+<div class="s1-eco">
+  <div class="eco-h">The Uruk LifeHub ecosystem <span class="ar kar">منظومة أوروك المتكاملة</span></div>
+  <div class="eco"><div class="eco-t"><span class="num">01</span><b>Uruk Pass</b><span class="ar d">جواز تعليمي وهوية رقمية موثقة</span></div><div class="eco-t"><span class="num">02</span><b>Uruk Academy</b><span class="ar d">تعليم مستمر وشهادات مهنية</span></div><div class="eco-t"><span class="num">03</span><b>Uruk Career</b><span class="ar d">مهارات وتدريب ووظائف</span></div><div class="eco-t"><span class="num">04</span><b>Uruk Pro</b><span class="ar d">تدريب الشركات والحكومة</span></div><div class="eco-t"><span class="num">05</span><b>Uruk Global</b><span class="ar d">مسارات دولية ودرجات مزدوجة</span></div><div class="eco-t"><span class="num">06</span><b>Uruk Community</b><span class="ar d">الخريجون والإرشاد والفعاليات</span></div></div>
+</div>
+<footer class="foot"><div class="fl"><span class="chain">Learn <span class="ar ">تعلّم</span> <i>›</i> Certify <span class="ar ">اعتمد</span> <i>›</i> Connect <span class="ar ">تواصل</span> <i>›</i> Advance <span class="ar ">تقدّم</span></span></div><div class="fc"></div><div class="fr">Powered &amp; operated by Aspire Gate</div></footer>
+</section>
+<section class="slide s2">
+<header class="top">
+  <div class="idx"><span class="n">02</span><span class="sep"></span><span class="lbl">Executive data</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Data • Business case • Delivery roadmap</div><h1>Uruk LifeHub — Executive Opportunity</h1></div>
+  <div class="mast-r"><span class="ar arh">من أصول قائمة إلى منصة نمو وتعليم مدى الحياة</span></div>
+</div>
+<div class="s2-grid">
+  <div class="card market">
+    <div class="k">The immediate market <span class="ar kar">السوق الفوري</span></div>
+    <div class="bignum">21,043<span>+</span></div>
+    <span class="ar v">طالب وخريج كقاعدة أولية قابلة للتفعيل</span>
+    <div class="stats"><div class="st"><b>14,629</b><span class="ar d">طالب مسجل 2023/24</span></div><div class="st"><b>6,414</b><span class="ar d">خريج تراكمي حتى 2023/24</span></div><div class="st"><b>13</b><span class="ar d">كلية ومحفظة تخصصات واسعة</span></div><div class="st"><b>90</b><span class="ar d">يومًا لإطلاق أول MVP</span></div></div>
+    <div class="insight"><div class="k small">Executive insight</div><span class="ar v">القيمة ليست في بيع دورة واحدة؛ بل في استمرار العلاقة والإيراد مع الطالب والخريج مدى الحياة.</span></div>
+  </div>
+  <div class="center">
+    <div class="steps3">
+      <div class="step"><b>Digitize</b><span class="ar d">رقمنة</span></div><i class="arrow">›</i>
+      <div class="step"><b>Commercialize</b><span class="ar d">تسويق وربحية</span></div><i class="arrow">›</i>
+      <div class="step"><b>Globalize</b><span class="ar d">انتشار دولي</span></div>
+    </div>
+    <div class="statement">
+      <h2>One platform.<br>Multiple revenue <span class="grad">engines.</span></h2>
+      <span class="ar v">منصة واحدة تربط التعلم والشهادات والتوظيف والمسارات الدولية</span>
+    </div>
+    <div class="scenario">
+      <div class="k small">Illustrative scenario</div>
+      <div class="calc">1,000 × 200,000 IQD</div>
+      <div class="eq">= 200M IQD</div>
+      <span class="ar d">إيراد إجمالي قبل المصروفات — مثال توضيحي</span>
+    </div>
+  </div>
+  <div class="card assets">
+    <div class="k">Existing assets <span class="ar kar">الأصول القائمة</span></div>
+    <div class="li "><span class="badge ">01</span><div class="lit"><div class="t">Continuing Education</div><span class="ar d">مركز قائم ودورات حضورية وهجينة</span></div></div><div class="li "><span class="badge ">02</span><div class="lit"><div class="t">IELTS Center</div><span class="ar d">مركز رسمي بالتعاون مع المجلس الثقافي البريطاني</span></div></div><div class="li "><span class="badge ">03</span><div class="lit"><div class="t">National Exams</div><span class="ar d">تدريب واختبارات للمتقدمين للدراسات العليا</span></div></div><div class="li "><span class="badge ">04</span><div class="lit"><div class="t">Academic Capacity</div><span class="ar d">كليات ومختبرات وهيئة تدريس وخبرات تخصصية</span></div></div>
+    <div class="adds"><div class="k small">Aspire Gate adds</div><span class="ar v">المنصة، الجواز التعليمي، التشغيل، التسويق، الشراكات، الشركات، والانتشار الدولي.</span></div>
+  </div>
+</div>
+<div class="s2-bottom">
+  <div class="engines">
+    <div class="k">Revenue engines <span class="ar kar">محركات الإيراد</span></div>
+    <div class="row5"><div class="eng"><b>Memberships</b><span class="ar d">عضويات الطلاب والخريجين</span></div><div class="eng"><b>Professional Education</b><span class="ar d">التعليم المهني والشهادات المصغرة</span></div><div class="eng"><b>Corporate Training</b><span class="ar d">برامج الشركات والحكومة</span></div><div class="eng"><b>Certification</b><span class="ar d">الاختبارات والشهادات الدولية</span></div><div class="eng"><b>Global Pathways</b><span class="ar d">المسارات والدرجات المزدوجة</span></div></div>
+  </div>
+  <div class="roadmap">
+    <div class="k">Launch roadmap <span class="ar kar">من الهوية إلى التشغيل</span></div>
+    <div class="row4"><div class="rd"><span class="rng">0-30</span><b>Brand &amp; Blueprint</b><span class="ar d">اعتماد الهوية ونموذج العمل</span></div><div class="rd"><span class="rng">31-90</span><b>MVP Launch</b><span class="ar d">جواز أوروك و3–5 برامج</span></div><div class="rd"><span class="rng">6-12</span><b>Scale</b><span class="ar d">الشركات والتوظيف والخريجون</span></div><div class="rd"><span class="rng">12-24</span><b>Globalize</b><span class="ar d">المسارات الدولية والدرجة المزدوجة</span></div></div>
+  </div>
+</div>
+<footer class="foot"><div class="fl">Source: Uruk University published statistics (2023/24) and official university website.</div><div class="fc"></div><div class="fr">Uruk University × Aspire Gate • One university • One passport • A world of opportunity</div></footer>
+</section>
+<section class="slide s3">
+<header class="top">
+  <div class="idx"><span class="n">03</span><span class="sep"></span><span class="lbl">The offer</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Strategy • Brand • Platform • Partnerships • Operation • Growth</div><h1>What Aspire Gate delivers</h1></div>
+  <div class="mast-r"><span class="ar arh">ماذا ستقدم Aspire Gate لجامعة أوروك؟</span></div>
+</div>
+<div class="s3-grid">
+  <div class="card">
+    <div class="k">Aspire Gate builds &amp; operates</div>
+    <span class="ar v lead">نحوّل أصول الجامعة الحالية إلى منظومة مملوكة لأوروك، قابلة للتوسع والتشغيل وتحقيق الإيراد.</span>
+    <div class="li tight"><span class="badge ">01</span><div class="lit"><div class="t">Strategy &amp; Business Model</div><span class="ar d">تصميم الرؤية، المنتجات، التسعير ونموذج الشراكة</span></div></div><div class="li tight"><span class="badge ">02</span><div class="lit"><div class="t">Brand &amp; Experience</div><span class="ar d">هوية Uruk LifeHub وتجربة الجواز التعليمي</span></div></div><div class="li tight"><span class="badge ">03</span><div class="lit"><div class="t">Digital Platform</div><span class="ar d">منصة العضوية، التعلم، الشارات والفرص</span></div></div><div class="li tight"><span class="badge ">04</span><div class="lit"><div class="t">Partner Ecosystem</div><span class="ar d">شهادات دولية، جامعات وشبكة أصحاب أعمال</span></div></div><div class="li tight"><span class="badge ">05</span><div class="lit"><div class="t">Launch &amp; Operation</div><span class="ar d">تشغيل البرامج والمجتمع والتسويق والقياس</span></div></div>
+    <div class="note"><div class="k small">Ownership principle</div><span class="ar v">العلامة والعلاقة مع الطالب ملك الجامعة؛ Aspire Gate تبني وتشغّل وتوسّع.</span></div>
+  </div>
+  <div class="flag">
+    <div class="flag-copy">
+      <div class="kicker">The flagship product</div>
+      <h2>Uruk Education <span class="grad">Passport</span></h2>
+      <span class="ar v">هوية تعليمية رقمية ترافق الطالب من القبول، إلى المهارات والشهادات، ثم التدريب والتوظيف والدراسة الدولية.</span>
+      <div class="chips"><span class="chip">Learn</span><span class="chip">Certify</span><span class="chip">Connect</span><span class="chip">Advance</span></div>
+    </div>
+    <div class="flag-card"><div class="pcard" style="transform:scale(1.0)">
+  <div class="pc-top"><svg class="emblem" width="34" height="34" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#f5f5f7" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#f5f5f7" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#f5f5f7"/>
+</svg><span class="pc-nfc"><i></i><i></i><i></i></span></div>
+  <div class="pc-name">URUK<br>EDUCATION<br>PASSPORT</div>
+  <div class="pc-foot"><div><small>GLOBAL LEARNING ID</small><b>MEMBER</b></div><span class="pc-chip"></span></div>
+</div></div>
+    <div class="flag-foot"><b>One student • One identity • One lifelong journey</b><span class="ar d">منتج واحد يربط كل نقاط التعلّم والاعتماد والفرص داخل الجامعة وخارجها</span></div>
+  </div>
+  <div class="card">
+    <div class="k">Value created <span class="ar kar">القيمة للجامعة</span></div>
+    <span class="ar v lead">الهدف ليس إضافة دورات فقط، بل بناء ذراع نمو جديد يدعم الجامعة أكاديميًا وتجاريًا ودوليًا.</span>
+    <div class="li tight"><span class="badge sym">∞</span><div class="lit"><div class="t">Lifetime Relationship</div><span class="ar d">استمرار العلاقة مع الطالب والخريج مدى الحياة</span></div></div><div class="li tight"><span class="badge sym">↑</span><div class="lit"><div class="t">Recurring Revenue</div><span class="ar d">عضويات وبرامج وشهادات ومسارات قابلة للتكرار</span></div></div><div class="li tight"><span class="badge sym">◎</span><div class="lit"><div class="t">Employability</div><span class="ar d">ربط المهارات والشهادات بفرص التدريب والعمل</span></div></div><div class="li tight"><span class="badge sym">↗</span><div class="lit"><div class="t">Global Positioning</div><span class="ar d">مسارات دولية ودرجات مزدوجة وشراكات عالمية</span></div></div><div class="li tight"><span class="badge sym">◆</span><div class="lit"><div class="t">Corporate Market</div><span class="ar d">برامج للشركات والمؤسسات والجهات الحكومية</span></div></div>
+    <div class="note"><div class="k small">The outcome</div><span class="ar v">جامعة أقرب للطالب، أقوى في السوق، وأكثر اتصالًا بالعالم.</span></div>
+  </div>
+</div>
+<div class="s3-engines">
+  <div class="k">The four solution engines <span class="ar kar">محركات الحل الأربعة</span></div>
+  <div class="row4"><div class="eng4"><span class="num">01</span><b>Uruk LifeHub</b><span class="ar sub">الجواز التعليمي والمنصة الرقمية</span><span class="ar d">عضوية سنوية، هوية رقمية، تعلم، شارات، مجتمع وملف إنجاز قابل للمشاركة.</span><div class="eng4-f"><span class="ar d strong">المنتج المميز الذي يربط المنظومة كلها</span></div></div><div class="eng4"><span class="num">02</span><b>Continuing Education 2.0</b><span class="ar sub">تحويل المركز إلى وحدة أعمال</span><span class="ar d">أكاديميات سوقية، Micro-credentials، برامج حضورية وهجينة وتدريب مؤسسي.</span><div class="eng4-f"><span class="ar d strong">إيراد متكرر ومخزون برامج قابل للتوسع</span></div></div><div class="eng4"><span class="num">03</span><b>Certification &amp; Career</b><span class="ar sub">الاعتماد والتوظيف</span><span class="ar d">شهادات دولية، اختبارات، تدريب، Career Hub، شبكة شركات وفرص عمل.</span><div class="eng4-f"><span class="ar d strong">تحسين جاهزية الخريجين وقيمة العلامة</span></div></div><div class="eng4"><span class="num">04</span><b>Global Pathways</b><span class="ar sub">المسارات الدولية والدرجة المزدوجة</span><span class="ar d">Articulation، تبادل، Dual Degree، ودراسة جدوى وتأسيس المسار الأمريكي.</span><div class="eng4-f"><span class="ar d strong">انتشار دولي مع تنفيذ قانوني وأكاديمي مرحلي</span></div></div></div>
+</div>
+<footer class="foot"><div class="fl"><b>Uruk University</b> owns</div><div class="fc">One university • One passport • Multiple growth engines</div><div class="fr"><b>Aspire Gate</b> builds &amp; operates</div></footer>
+</section>
+<section class="slide s4">
+<header class="top">
+  <div class="idx"><span class="n">04</span><span class="sep"></span><span class="lbl">The passport</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">One identity • One record • One lifelong journey</div><h1>The Uruk Education Passport</h1></div>
+  <div class="mast-r"><span class="ar arh">هوية تعليمية واحدة ترافق الطالب مدى الحياة</span></div>
+</div>
+<div class="s4-grid">
+  <div class="s4-copy">
+    <div class="kicker">The student's lifelong learning ID</div>
+    <h2 class="xl">Every achievement.<br>One trusted <span class="grad">record.</span></h2>
+    <span class="ar v lead">جواز رقمي يجمع ما يتعلمه الطالب، وما ينجزه، وما يحصل عليه من شهادات وخبرات وفرص — داخل أوروك وخارجها.</span>
+    <div class="quote"><span class="ar v">لا ينتهي عند التخرج؛ بل يتحول إلى قناة مستمرة للتعلم والتوظيف والتواصل مع الجامعة.</span></div>
+  </div>
+  <div class="s4-card"><div class="pcard" style="transform:scale(1.35)">
+  <div class="pc-top"><svg class="emblem" width="34" height="34" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#f5f5f7" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#f5f5f7" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#f5f5f7"/>
+</svg><span class="pc-nfc"><i></i><i></i><i></i></span></div>
+  <div class="pc-name">URUK<br>EDUCATION<br>PASSPORT</div>
+  <div class="pc-foot"><div><small>GLOBAL LEARNING ID</small><b>MEMBER</b></div><span class="pc-chip"></span></div>
+</div></div>
+  <div class="card">
+    <div class="k">Inside every passport <span class="ar kar">داخل كل جواز</span></div>
+    <div class="li "><span class="badge ">ID</span><div class="lit"><div class="t">Verified Identity</div><span class="ar d">هوية أكاديمية ومهنية موثقة</span></div></div><div class="li "><span class="badge ">01</span><div class="lit"><div class="t">Learning Record</div><span class="ar d">المسارات والدورات والتقدم</span></div></div><div class="li "><span class="badge ">02</span><div class="lit"><div class="t">Credential Wallet</div><span class="ar d">الشهادات والشارات الرقمية</span></div></div><div class="li "><span class="badge ">03</span><div class="lit"><div class="t">Experience Portfolio</div><span class="ar d">المشروعات والتدريب والخبرة</span></div></div><div class="li "><span class="badge ">04</span><div class="lit"><div class="t">Opportunity Access</div><span class="ar d">وظائف ومنح ومسارات دولية</span></div></div>
+  </div>
+</div>
+<div class="journey">
+  <div class="k">The lifelong journey <span class="ar kar">رحلة الطالب داخل المنظومة</span></div>
+  <div class="jrow"><div class="jstep"><span class="badge">1</span><b>Join</b><span class="ar d">القبول وتفعيل الهوية</span></div><i class="arrow">›</i><div class="jstep"><span class="badge">2</span><b>Learn</b><span class="ar d">محتوى ومسارات تعلم</span></div><i class="arrow">›</i><div class="jstep"><span class="badge">3</span><b>Certify</b><span class="ar d">شهادات واعتمادات</span></div><i class="arrow">›</i><div class="jstep"><span class="badge">4</span><b>Experience</b><span class="ar d">تدريب ومشروعات</span></div><i class="arrow">›</i><div class="jstep"><span class="badge">5</span><b>Advance</b><span class="ar d">عمل ودراسة دولية</span></div><i class="arrow">›</i><div class="jstep"><span class="badge">∞</span><b>Return</b><span class="ar d">تعلم وعلاقة مستمرة</span></div></div>
+</div>
+<footer class="foot"><div class="fl"></div><div class="fc">Uruk LifeHub • Learn • Certify • Connect • Advance</div><div class="fr"></div></footer>
+</section>
+<section class="slide s5">
+<header class="top">
+  <div class="idx"><span class="n">05</span><span class="sep"></span><span class="lbl">Continuing Ed.</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Market-led academies • Professional credentials • Corporate training</div><h1>Continuing Education 2.0</h1></div>
+  <div class="mast-r"><span class="ar arh">تحويل المركز القائم إلى ذراع نمو وتعليم مهني</span></div>
+</div>
+<div class="s5-grid">
+  <div class="s5-copy">
+    <div class="kicker">The strategic shift</div>
+    <h2 class="xl">From training center<br>to growth <span class="grad">business unit.</span></h2>
+    <span class="ar v lead">من دورات منفصلة إلى محفظة أكاديميات وبرامج وشهادات تخدم الأفراد والشركات والمؤسسات.</span>
+    <div class="note wide"><div class="k small">Build on a proven base <span class="ar kar">البناء على أساس قائم</span></div><span class="ar v">لدى أوروك مركز تعليم مستمر وبرامج حضورية وأونلاين، ومركز IELTS بالتعاون مع المجلس الثقافي البريطاني، واعتماد لتنفيذ الامتحانات الوطنية. المقترح يحوّل هذه الأصول إلى منظومة منتجات وتسويق وتشغيل قابلة للتوسع.</span></div>
+  </div>
+  <div class="acad"><div class="ac"><b>AI &amp; Technology</b><span class="ar d">الذكاء الاصطناعي، الأمن السيبراني، البرمجة والبيانات</span></div><div class="ac"><b>Healthcare Skills</b><span class="ar d">المختبرات، الصيدلة، الأسنان والمهارات الطبية</span></div><div class="ac"><b>Business &amp; Leadership</b><span class="ar d">الإدارة، التمويل، المشروعات وريادة الأعمال</span></div><div class="ac"><b>English &amp; IELTS</b><span class="ar d">اللغة الإنجليزية، الإعداد للاختبارات والمسارات الدولية</span></div><div class="ac"><b>Creative &amp; Digital</b><span class="ar d">التصميم، الإعلام، المحتوى والتسويق الرقمي</span></div><div class="ac"><b>Corporate Solutions</b><span class="ar d">برامج مصممة للشركات والوزارات والمؤسسات</span></div></div>
+</div>
+<div class="s5-model">
+  <div class="k">The business model <span class="ar kar">نموذج التشغيل التجاري</span></div>
+  <div class="row5">
+    <div class="card port"><b>One portfolio</b><span class="ar d">برامج قصيرة، Micro-credentials، شهادات دولية، تدريب مؤسسي وعضويات.</span></div>
+    <div class="card seg"><small>Students</small><b class="code">B2C</b><span class="ar d">مهارات إضافية أثناء الدراسة</span></div><div class="card seg"><small>Alumni &amp; Professionals</small><b class="code">B2C+</b><span class="ar d">ترقية مهنية وإعادة تأهيل</span></div><div class="card seg"><small>Companies</small><b class="code">B2B</b><span class="ar d">تدريب فرق ومشروعات تطوير</span></div><div class="card seg"><small>Government</small><b class="code">B2G</b><span class="ar d">برامج وطنية وتنمية قدرات</span></div>
+  </div>
+</div>
+<footer class="foot"><div class="fl">Official basis: Uruk University website - Continuing Education, IELTS and National Exams announcements (2025).</div><div class="fc"></div><div class="fr">Continuing Education becomes the commercial engine of Uruk LifeHub</div></footer>
+</section>
+<section class="slide s6">
+<header class="top">
+  <div class="idx"><span class="n">06</span><span class="sep"></span><span class="lbl">Career engine</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Learn • Prove • Show • Connect • Work</div><h1>Certification &amp; Employability</h1></div>
+  <div class="mast-r"><span class="ar arh">نحو خريج يمتلك دليلًا موثقًا على مهاراته</span></div>
+</div>
+<div class="s6-grid">
+  <div class="s6-copy">
+    <div class="kicker">The employability promise</div>
+    <h2 class="xl">Turn learning into<br><span class="grad">visible value.</span></h2>
+    <span class="ar v lead">نربط التعلم بالاختبار والاعتماد والملف المهني، ثم نفتح للطالب أبواب التدريب والشركات والوظائف.</span>
+    <div class="lpw"><div class="card lp"><span class="num">01</span><b>Learn</b><span class="ar d">مسار مهاري مرتبط بسوق العمل</span></div><div class="card lp"><span class="num">02</span><b>Prove</b><span class="ar d">اختبار وشهادة وشارة موثقة</span></div><div class="card lp"><span class="num">03</span><b>Work</b><span class="ar d">تدريب ومقابلات وفرص وظيفية</span></div></div>
+  </div>
+  <div class="card">
+    <div class="k">The evidence stack <span class="ar kar">ملف الإنجاز</span></div>
+    <div class="li "><span class="badge ">1</span><div class="lit"><div class="t">Micro-credentials</div><span class="ar d">مسارات قصيرة مرتبطة بمهارة واضحة</span></div></div><div class="li "><span class="badge ">2</span><div class="lit"><div class="t">International Certifications</div><span class="ar d">شهادات مهنية معترف بها عالميًا</span></div></div><div class="li "><span class="badge ">3</span><div class="lit"><div class="t">Digital Badges</div><span class="ar d">إثبات رقمي قابل للمشاركة والتحقق</span></div></div><div class="li "><span class="badge ">4</span><div class="lit"><div class="t">Project Portfolio</div><span class="ar d">مشروعات وتطبيقات وخبرات حقيقية</span></div></div><div class="li "><span class="badge ">5</span><div class="lit"><div class="t">Employer Access</div><span class="ar d">شبكة شركات وفرص وتوجيه مهني</span></div></div>
+  </div>
+</div>
+<div class="outcomes">
+  <div class="oc-h"><b>Success outcomes</b><span class="ar d">مؤشرات تقيس القيمة وليس الحضور فقط</span></div>
+  <div class="oc"><span class="sym">%</span><b>Completion</b><span class="ar d">إتمام المسارات</span></div><div class="oc"><span class="sym">✓</span><b>Certification</b><span class="ar d">اجتياز الاختبارات</span></div><div class="oc"><span class="sym">↗</span><b>Internships</b><span class="ar d">فرص التدريب</span></div><div class="oc"><span class="sym">◆</span><b>Employers</b><span class="ar d">شركاء التوظيف</span></div><div class="oc"><span class="sym">∞</span><b>Alumni Value</b><span class="ar d">تفاعل الخريجين</span></div>
+</div>
+<footer class="foot"><div class="fl"></div><div class="fc">The passport becomes a verified bridge between Uruk talent and employers</div><div class="fr"></div></footer>
+</section>
+<section class="slide s7">
+<header class="top">
+  <div class="idx"><span class="n">07</span><span class="sep"></span><span class="lbl">Global pathways</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Articulation • Exchange • Joint delivery • Dual degree</div><h1>Global Pathways &amp; Dual Degrees</h1></div>
+  <div class="mast-r"><span class="ar arh">مسارات دولية تبدأ من أوروك وتنتهي بفرص عالمية</span></div>
+</div>
+<div class="s7-grid">
+  <div class="card">
+    <div class="k">Pathway options <span class="ar kar">الخيارات</span></div>
+    <div class="opt"><b>Articulation</b><span class="ar d">معادلة واعتماد ساعات للانتقال إلى جامعة شريكة</span></div><div class="opt"><b>2+2 / 3+1 Models</b><span class="ar d">دراسة جزء في أوروك واستكمال البرنامج بالخارج</span></div><div class="opt"><b>Exchange &amp; Mobility</b><span class="ar d">فصل أو تدريب أو مشروع دولي للطالب</span></div>
+  </div>
+  <div class="bridge">
+    <div class="bridge-row">
+      <div class="node"><b>Uruk University</b><span class="ar d">القاعدة الأكاديمية والطالب والبرنامج المحلي</span></div>
+      <span class="swap">⇄</span>
+      <div class="node"><b>Global Partner</b><span class="ar d">الاعتماد الدولي والتنقل والدرجة الشريكة</span></div>
+    </div>
+    <div class="note wide"><span class="ar v">Aspire Gate تقود تحديد الشركاء، تصميم النموذج، تنسيق المسارات، ودعم التفاوض والتنفيذ — بينما تبقى الموافقات الأكاديمية والقانونية شرطًا أساسيًا لكل مسار.</span></div>
+  </div>
+  <div class="card">
+    <div class="k">Dual degree model <span class="ar kar">الدرجة المزدوجة</span></div>
+    <div class="opt"><b>Curriculum Alignment</b><span class="ar d">مواءمة المناهج ونواتج التعلم والساعات</span></div><div class="opt"><b>Joint Quality Governance</b><span class="ar d">حوكمة جودة ومراجعة أكاديمية مشتركة</span></div><div class="opt"><b>Two Awards</b><span class="ar d">درجتان وفق القواعد والاعتمادات المعمول بها</span></div>
+  </div>
+</div>
+<div class="flow">
+  <div class="k">From opportunity to approved program <span class="ar kar">من الفرصة إلى البرنامج المعتمد</span></div>
+  <div class="frow"><div class="fstep"><span class="num">01</span><b>Prioritize</b><span class="ar d">اختيار 2-3 برامج ذات طلب مرتفع</span></div><i class="arrow">›</i><div class="fstep"><span class="num">02</span><b>Match</b><span class="ar d">تحديد الجامعات والشركاء الأنسب</span></div><i class="arrow">›</i><div class="fstep"><span class="num">03</span><b>Map</b><span class="ar d">مواءمة الساعات والمناهج والجودة</span></div><i class="arrow">›</i><div class="fstep"><span class="num">04</span><b>Approve</b><span class="ar d">الموافقات والتعاقد والحوكمة</span></div><i class="arrow">›</i><div class="fstep"><span class="num">05</span><b>Launch</b><span class="ar d">التسويق والقبول والتشغيل</span></div></div>
+</div>
+<footer class="foot"><div class="fl"></div><div class="fc">Start with few high-value programs • Prove the model • Then scale</div><div class="fr"></div></footer>
+</section>
+<section class="slide s8">
+<header class="top">
+  <div class="idx"><span class="n">08</span><span class="sep"></span><span class="lbl">U.S. platform</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#1d1d1f" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#1d1d1f" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#1d1d1f"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#1d1d1f"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Feasibility • Legal &amp; accreditation • Academic model • Launch</div><h1>A U.S. University Platform — Built in Phases</h1></div>
+  <div class="mast-r"><span class="ar arh">خيار استراتيجي للتوسع في الولايات المتحدة دون قفزة غير محسوبة</span></div>
+</div>
+<div class="s8-grid">
+  <div class="s8-copy">
+    <div class="kicker">The strategic option</div>
+    <h2 class="xl">Build the platform<br>before the <span class="grad">campus.</span></h2>
+    <span class="ar v lead">يمكن لأوروك إنشاء حضور أكاديمي أمريكي تدريجي يدعم المسارات الدولية والبرامج المهنية والدرجات المشتركة، ثم يتطور وفق الجدوى والموافقات.</span>
+    <div class="note wide"><div class="k small">Why it matters</div><span class="ar v">بوابة للشراكات والاعتماد الدولي، جذب طلبة جدد، خدمة الجاليات، وتعزيز القيمة العالمية لعلامة أوروك.</span></div>
+  </div>
+  <div class="concept">
+    <div class="kicker">Proposed concept</div>
+    <div class="concept-name">Uruk University <span class="grad">USA</span></div>
+    <span class="ar d">اسم تصوري يخضع للدراسة القانونية والاعتماد</span>
+  </div>
+  <div class="card">
+    <div class="k">The four-stage feasibility path</div>
+    <div class="li "><span class="badge ">1</span><div class="lit"><div class="t">Strategic Feasibility</div><span class="ar d">السوق، الولاية، الطلبة، البرامج، التمويل والشركاء</span></div></div><div class="li "><span class="badge ">2</span><div class="lit"><div class="t">Legal &amp; Accreditation</div><span class="ar d">الكيان، الترخيص، الاعتماد والالتزام التنظيمي</span></div></div><div class="li "><span class="badge ">3</span><div class="lit"><div class="t">Academic &amp; Operating Model</div><span class="ar d">الحوكمة، البرامج، أعضاء هيئة التدريس، الجودة والتقنية</span></div></div><div class="li "><span class="badge ">4</span><div class="lit"><div class="t">Phased Launch</div><span class="ar d">شراكات وبرامج أولًا، ثم توسع مؤسسي مدروس</span></div></div>
+  </div>
+</div>
+<div class="models">
+  <div class="k">Models to evaluate <span class="ar kar">نماذج يجب مقارنتها قبل القرار</span></div>
+  <div class="row4"><div class="md"><b>Learning &amp; Professional Center</b><span class="ar d">بداية مرنة للبرامج المهنية والتعليم المستمر</span></div><div class="md"><b>Pathway College</b><span class="ar d">برامج انتقال ومسارات مرتبطة بشركاء أمريكيين</span></div><div class="md"><b>Academic Affiliate</b><span class="ar d">تعاون أكاديمي أعمق ضمن إطار قانوني معتمد</span></div><div class="md"><b>Private University</b><span class="ar d">المسار الكامل إذا أثبتت الجدوى والاعتماد ملاءمته</span></div></div>
+</div>
+<footer class="foot"><div class="fl">Concept only — subject to independent legal, regulatory, accreditation, financial and academic feasibility.</div><div class="fc"></div><div class="fr">A phased decision reduces risk and builds evidence before major capital commitment</div></footer>
+</section>
+<section class="slide dark s9">
+<header class="top">
+  <div class="idx"><span class="n">09</span><span class="sep"></span><span class="lbl">The decision</span></div>
+  <div class="brand"><svg class="emblem" width="40" height="40" viewBox="0 0 40 40" fill="none">
+  <circle cx="20" cy="20" r="19" stroke="#f5f5f7" stroke-opacity=".22" stroke-width="1.2"/>
+  <path d="M6 22a14 8 0 1 0 28 0" stroke="#f5f5f7" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>
+  <rect x="9" y="25" width="22" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="13" y="19" width="14" height="4" rx="1" fill="#f5f5f7"/>
+  <rect x="17" y="13" width="6" height="4" rx="1" fill="#f5f5f7"/>
+</svg><div class="bt"><b>URUK <span>LIFEHUB</span></b><small>Powered &amp; operated by Aspire Gate</small></div></div>
+</header>
+<div class="mast lg">
+  <div class="mast-l"><div class="kicker">Align • Design • Build • Launch • Measure • Scale</div><h1>Proposed Partnership &amp; 90-Day Launch</h1></div>
+  <div class="mast-r"><span class="ar arh">من الرؤية إلى أول منتج يعمل ويحقق قيمة قابلة للقياس</span></div>
+</div>
+<div class="s9-top">
+  <div class="card own">
+    <div class="k">Uruk University owns</div>
+    <span class="ar v">العلامة، العلاقة مع الطالب، الأصول الأكاديمية، المحتوى الجامعي والقرار المؤسسي.</span>
+    <ul><li>Academic governance and approvals</li><li>Faculty and facilities</li><li>Student and alumni access</li><li>Local institutional relationships</li></ul>
+  </div>
+  <div class="times grad">×</div>
+  <div class="card own">
+    <div class="k">Aspire Gate builds &amp; operates</div>
+    <span class="ar v">الاستراتيجية، تجربة الجواز، المنصة، المنتجات، الشراكات، التسويق والتشغيل والنمو.</span>
+    <ul><li>Product and commercial model</li><li>Technology and experience design</li><li>Certification and global partners</li><li>Launch, operations and performance</li></ul>
+  </div>
+</div>
+<div class="days">
+  <div class="k">The first 90 days <span class="ar kar">أول 90 يومًا</span></div>
+  <div class="row3"><div class="day"><span class="rng">0-30</span><b>Align &amp; Design</b><span class="ar d">الهوية، نموذج الشراكة، الأولويات، التسعير ومؤشرات النجاح</span></div><div class="day"><span class="rng">31-60</span><b>Build &amp; Prepare</b><span class="ar d">نسخة الجواز الأولى، 3-5 برامج، الشركاء وخطة التسويق</span></div><div class="day"><span class="rng">61-90</span><b>Launch &amp; Learn</b><span class="ar d">إطلاق Pilot، تسجيل أول دفعة، قياس التجربة والتحسين</span></div></div>
+</div>
+<div class="s9-bottom">
+  <div class="decision">
+    <div class="kicker">The recommended decision</div>
+    <h2>Approve a joint discovery<br>&amp; design <span class="grad">sprint.</span></h2>
+    <span class="ar v">تشكيل فريق مشترك لمدة 30 يومًا لإقرار النموذج، اختيار أول المنتجات، وتحديد نطاق الـMVP والجدوى التجارية قبل أي التزام واسع.</span>
+    <span class="cta">Start with a 30-day executive sprint</span>
+  </div>
+  <div class="card board">
+    <div class="k">What the board will see <span class="ar kar">مؤشرات القرار</span></div>
+    <div class="grid2"><div class="bd"><b>Members</b><span class="ar d">العضويات النشطة</span></div><div class="bd"><b>Enrollments</b><span class="ar d">التسجيل والإيراد</span></div><div class="bd"><b>Credentials</b><span class="ar d">الشهادات والإنجاز</span></div><div class="bd"><b>Employers</b><span class="ar d">شركاء التدريب والعمل</span></div><div class="bd"><b>Pathways</b><span class="ar d">الشراكات الدولية</span></div><div class="bd"><b>Satisfaction</b><span class="ar d">تجربة الطالب والشريك</span></div></div>
+  </div>
+</div>
+<footer class="foot"><div class="fl"></div><div class="fc">Uruk University × Aspire Gate • One university • One passport • A world of opportunity</div><div class="fr"></div></footer>
+</section>
+</body>
+</html>
