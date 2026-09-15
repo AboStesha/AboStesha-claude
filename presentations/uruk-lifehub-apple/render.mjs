@@ -17,7 +17,7 @@ await page.evaluate(() => document.fonts.ready);
 const audit = await page.evaluate(() => [...document.querySelectorAll('.slide')].map((s, i) => {
   const r = s.getBoundingClientRect();
   let maxBottom = 0;
-  s.querySelectorAll('*').forEach(el => { const b = el.getBoundingClientRect(); if (b.width && b.height && !el.closest('.bg')) maxBottom = Math.max(maxBottom, b.bottom - r.top); });
+  s.querySelectorAll('*').forEach(el => { const b = el.getBoundingClientRect(); if (b.width && b.height && !el.closest('.bg') && !el.closest('.glow')) maxBottom = Math.max(maxBottom, b.bottom - r.top); });
   return `${i + 1}:${Math.round(maxBottom)}`;
 }));
 console.log('content bottoms (limit 1040):', audit.join(' '));
