@@ -4,11 +4,15 @@ head=src.split('</style>')[0]
 head=head.replace('<title>بدور سيجنتشر — لحظة الإطلاق</title>','<title>بدور سيجنتشر — بذرة التوقيع</title>')
 extra='''
   /* show deck */
-  .sb{display:grid;grid-template-columns:1120px 1fr;gap:48px;align-content:start}
-  .sb .img{width:1120px;height:630px}
-  .sb .txt{display:flex;flex-direction:column;gap:16px;height:630px}
+  .sb{display:grid;grid-template-columns:1000px 1fr;grid-template-rows:562px 1fr;gap:18px 48px;height:720px}
+  .sb .img{grid-row:1;grid-column:1;width:1000px;height:562px}
+  .sb .say{grid-row:2;grid-column:1;border-inline-start:3px solid var(--gold);padding-inline-start:20px;align-self:start}
+  .sb .say h4{font-size:13px;color:var(--gold);font-weight:700;margin-bottom:5px}
+  .sb .say p{font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .sb .say p i{color:var(--mute);font-style:normal;font-size:14px}
+  .sb .txt{grid-row:1/3;grid-column:2;display:flex;flex-direction:column;gap:14px;height:720px}
   .sb .tcbig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:var(--gold);direction:ltr;unicode-bidi:isolate;text-align:right;line-height:1}
-  .sb h3{font-size:30px;font-weight:700;line-height:1.3;margin-bottom:6px}
+  .sb h3{font-size:30px;font-weight:700;line-height:1.3;margin-bottom:4px}
   .sb .blk h4{font-size:14px;color:var(--gold);font-weight:700;margin-bottom:4px}
   .sb .blk p{font-size:16.5px;line-height:1.6;color:var(--ink2)}
   .sb .cue{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--ink)}
