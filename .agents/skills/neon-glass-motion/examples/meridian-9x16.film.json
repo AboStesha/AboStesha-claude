@@ -1,0 +1,16 @@
+{
+  "title": "Meridian — launch film (9:16)",
+  "ratio": "9:16",
+  "fps": 30,
+  "brand": { "name": "Meridian", "color": "#6633EE", "url": "meridian.app" },
+  "look": { "temperature": 0, "energy": 0.6, "density": 0.55 },
+  "audio": null,
+  "beats": [
+    { "id": "open",  "shot": "type",    "dur": 3.4, "text": "Meeting times nobody hates.", "bar": true, "icon": "calendar", "note": "Lead with the sharpest line, typed into a glass prompt bar." },
+    { "id": "reads", "shot": "device",  "dur": 3.6, "ui": "calendar", "text": "Reads every team calendar", "note": "How it works, shown not told: a glowing calendar in a glass phone." },
+    { "id": "picks", "shot": "rings",   "dur": 3.2, "icon": "clock", "text": "Picks the cheapest slot", "note": "The decision moment: a pulse that settles on one answer." },
+    { "id": "cut",   "shot": "number",  "dur": 3.0, "value": "40%", "label": "fewer meetings", "hero": true, "cut": "flash", "note": "The number gets its own beat, in the brand purple." },
+    { "id": "works", "shot": "orbit",   "dur": 3.4, "items": ["Google", "Outlook"], "icon": "calendar", "text": "Works where you work" },
+    { "id": "end",   "shot": "endcard", "dur": 3.4, "cta": "Free under ten people" }
+  ]
+}

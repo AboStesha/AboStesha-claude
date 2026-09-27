@@ -1,0 +1,17 @@
+{
+  "title": "Meridian — launch film (16:9)",
+  "ratio": "16:9",
+  "fps": 30,
+  "brand": { "name": "Meridian", "color": "#6633EE", "url": "meridian.app" },
+  "look": { "temperature": 0, "energy": 0.65, "density": 0.6 },
+  "audio": null,
+  "beats": [
+    { "id": "open",   "shot": "title",   "dur": 4.2, "text": "Meeting times nobody hates.", "sub": "Meet Meridian", "note": "Hero line first: light sweeps behind it, slow push-in." },
+    { "id": "ask",    "shot": "type",    "dur": 4.0, "text": "When is everyone free?", "bar": true, "icon": "search", "note": "The question every team types, in a glass search bar." },
+    { "id": "reads",  "shot": "device",  "dur": 4.6, "kind": "window", "ui": "calendar", "text": "Reads every team calendar" },
+    { "id": "picks",  "shot": "rings",   "dur": 4.0, "icon": "clock", "text": "Picks the cheapest slot", "camera": "drift" },
+    { "id": "cut",    "shot": "number",  "dur": 3.8, "value": "40%", "label": "fewer meetings", "hero": true, "cut": "flash", "note": "The proof point: slams in with a shockwave, brand purple." },
+    { "id": "works",  "shot": "orbit",   "dur": 4.4, "items": ["Google", "Outlook"], "icon": "calendar", "text": "Works with your calendars" },
+    { "id": "end",    "shot": "endcard", "dur": 5.0, "cta": "Free under ten people" }
+  ]
+}

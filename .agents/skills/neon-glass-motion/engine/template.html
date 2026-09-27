@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>
+{{FILM_CONFIG}}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="generator" content="Neon Glass Motion">
+<title>{{TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts load without blocking the page; the engine waits for them (max 6 s) before painting text.
+     Offline, the film falls back to system fonts and still plays. -->
+<link data-ngm-font rel="stylesheet" media="print"
+      onload="this.media='all';this.setAttribute('data-state','ok')" onerror="this.setAttribute('data-state','error')"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&family=JetBrains+Mono:wght@400;700&family=Noto+Kufi+Arabic:wght@400..900&display=block">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #000; color: #e8eaf0; }
+  body { overflow: hidden; -webkit-text-size-adjust: 100%; }
+  canvas { display: block; }
+  .ngm-fatal { position: fixed; inset: 0; display: grid; place-items: center; padding: 24px; box-sizing: border-box;
+    background: #000; color: #e8eaf0; font: 15px/1.5 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+  .ngm-fatal > div { max-width: 560px; border: 1px solid rgba(255, 80, 110, .35); border-radius: 14px; padding: 20px 22px;
+    background: linear-gradient(#0d0e13, #08090c); box-shadow: 0 0 60px rgba(255, 60, 100, .12); }
+  .ngm-fatal b { color: #ff5c7a; display: block; margin-bottom: 6px; font-size: 16px; }
+  .ngm-fatal code { font: 13px/1.5 "JetBrains Mono", ui-monospace, monospace; color: #c9ccd6; white-space: pre-wrap; word-break: break-word; }
+</style>
+</head>
+<body>
+<script>
+{{ENGINE}}
+</script>
+<script>
+(function boot() {
+  function fatal(msg) {
+    if (window.NGM && NGM.fatal) { NGM.fatal(msg); return; }
+    var d = document.createElement('div');
+    d.className = 'ngm-fatal';
+    d.innerHTML = '<div><b>This film could not start</b><code></code></div>';
+    d.querySelector('code').textContent = String(msg);
+    document.body.appendChild(d);
+  }
+  if (!window.NGM || typeof NGM.load !== 'function') {
+    fatal('The animation engine did not load. The file may be incomplete; rebuild it with scripts/build.py.');
+    return;
+  }
+  if (!window.FILM || typeof window.FILM !== 'object') {
+    fatal('The settings block at the top of this file (window.FILM = { ... }) could not be read.\n' +
+          'Usually a missing comma, quote or bracket after an edit. Open the file in a text editor and check that block.');
+    return;
+  }
+  try {
+    NGM.load(window.FILM);
+    if (!NGM.renderMode) NGM.player();
+  } catch (e) {
+    console.error(e);
+    fatal((e && e.message) || e);
+  }
+})();
+</script>
+</body>
+</html>
