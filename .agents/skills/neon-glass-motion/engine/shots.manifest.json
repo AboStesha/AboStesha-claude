@@ -1,0 +1,101 @@
+{
+  "_comment": "Single source of truth for shot types. validate.py reads this; each engine/shots/<name>.js must register a shot with the same name and honour these params. 'words' fields are on-screen text and must be <= 5 words each.",
+  "shots": {
+    "title": {
+      "file": "shots/title.js",
+      "purpose": "Hero line reveal. A light sweep passes behind big centred text, glow swells, slow push-in. Best opener or closer of an idea.",
+      "minDur": 1.8, "maxDur": 6,
+      "params": {
+        "text": {"type": "string", "required": true, "words": true},
+        "sub":  {"type": "string", "required": false, "words": true, "note": "small secondary line under the title"}
+      }
+    },
+    "type": {
+      "file": "shots/type.js",
+      "purpose": "Text types on character by character; the last character typed flashes white then cools to the beat colour. With bar=true it sits in a dark glass search/prompt bar with a caret and a leading icon.",
+      "minDur": 2.0, "maxDur": 7,
+      "params": {
+        "text":  {"type": "string", "required": true, "words": true},
+        "bar":   {"type": "boolean", "required": false, "default": false},
+        "icon":  {"type": "icon", "required": false, "default": "search", "note": "leading icon inside the bar"},
+        "sub":   {"type": "string", "required": false, "words": true, "note": "appears after typing completes"}
+      }
+    },
+    "number": {
+      "file": "shots/number.js",
+      "purpose": "A concrete figure slams in (scale overshoot) with a bloom flash and a shockwave ring; optional count-up; short label below.",
+      "minDur": 1.8, "maxDur": 5,
+      "params": {
+        "value":   {"type": "string", "required": true, "note": "e.g. '40%', '9s', '10x', '$0', '1M+'. Not word-limited but keep <= 6 characters"},
+        "label":   {"type": "string", "required": false, "words": true},
+        "countUp": {"type": "boolean", "required": false, "default": true, "note": "counts up the numeric part when the value has one"}
+      }
+    },
+    "tiles": {
+      "file": "shots/tiles.js",
+      "purpose": "A grid of dark matte glass icon tiles; they light up one after another (rim light + icon glow), optional caption.",
+      "minDur": 2.2, "maxDur": 6,
+      "params": {
+        "icons":  {"type": "icon[]", "required": true, "note": "3-6 icon names from the core icon set"},
+        "labels": {"type": "string[]", "required": false, "words": true, "note": "one short label per tile (<= 2 words recommended)"},
+        "text":   {"type": "string", "required": false, "words": true}
+      }
+    },
+    "rings": {
+      "file": "shots/rings.js",
+      "purpose": "A glass orb pulses; concentric rings expand outward in waves with a shockwave on the downbeat; a line of text sits over/under it.",
+      "minDur": 1.8, "maxDur": 6,
+      "params": {
+        "text": {"type": "string", "required": false, "words": true},
+        "icon": {"type": "icon", "required": false, "note": "icon drawn inside the orb"}
+      }
+    },
+    "device": {
+      "file": "shots/device.js",
+      "purpose": "A dark glass device (phone, window or card) with rim light, slow push-in; simple glowing UI inside (calendar grid, list rows, bar chart, chat bubbles or code lines). Caption outside the device.",
+      "minDur": 2.5, "maxDur": 7,
+      "params": {
+        "kind": {"type": "enum", "values": ["phone", "window", "card"], "required": false, "default": "auto", "note": "auto = phone in 9:16, window in 16:9, card in 1:1"},
+        "ui":   {"type": "enum", "values": ["calendar", "list", "chart", "chat", "code"], "required": false, "default": "list"},
+        "text": {"type": "string", "required": false, "words": true}
+      }
+    },
+    "orbit": {
+      "file": "shots/orbit.js",
+      "purpose": "A glowing core with glass chips orbiting it on tilted elliptical paths (integrations, platforms, partners). Chips carry short names.",
+      "minDur": 2.5, "maxDur": 7,
+      "params": {
+        "items": {"type": "string[]", "required": true, "words": true, "note": "2-6 short names, e.g. ['Google', 'Outlook']"},
+        "text":  {"type": "string", "required": false, "words": true},
+        "icon":  {"type": "icon", "required": false, "note": "icon at the core"}
+      }
+    },
+    "stack": {
+      "file": "shots/stack.js",
+      "purpose": "2-3 short lines arrive one after another on hard light hits, each lighting up then settling; earlier lines dim slightly. For short lists of benefits.",
+      "minDur": 2.4, "maxDur": 6,
+      "params": {
+        "lines": {"type": "string[]", "required": true, "words": true, "note": "2-3 lines"}
+      }
+    },
+    "endcard": {
+      "file": "shots/endcard.js",
+      "purpose": "Logo lockup: brand wordmark (or embedded logo image) with a glass glyph and light bloom, call to action and URL. Always the last beat.",
+      "minDur": 2.2, "maxDur": 6,
+      "params": {
+        "cta": {"type": "string", "required": false, "words": true, "note": "e.g. 'Free for teams under ten'"},
+        "url": {"type": "string", "required": false, "note": "defaults to film.brand.url"}
+      }
+    }
+  },
+  "commonBeatFields": {
+    "id":     {"type": "string", "required": false},
+    "dur":    {"type": "number", "required": true, "note": "seconds; quantised to whole frames"},
+    "shot":   {"type": "enum", "required": true},
+    "camera": {"type": "enum", "values": ["push", "pull", "still", "drift"], "default": "push"},
+    "cut":    {"type": "enum", "values": ["hard", "flash"], "default": "hard", "note": "flash = 2-frame white-hot flash at the start of the beat"},
+    "hero":   {"type": "boolean", "default": false, "note": "beat uses the brand colour instead of its place on the spectrum arc"},
+    "note":   {"type": "string", "required": false, "note": "free text for humans; not rendered"}
+  },
+  "icons": ["calendar", "clock", "check", "bolt", "lock", "chart", "globe", "chat", "star", "users", "code", "search", "mail", "bell", "heart", "cart", "card", "cloud", "shield", "sparkle", "play", "arrow", "plus", "home", "camera", "music", "doc", "gear", "pin", "phone"]
+}
