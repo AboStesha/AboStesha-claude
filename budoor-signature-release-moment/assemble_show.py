@@ -17,6 +17,8 @@ extra='''
   .sb .blk p{font-size:16.5px;line-height:1.6;color:var(--ink2)}
   .sb .cue{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--ink)}
   .sb .cue b{color:var(--gold);margin-inline-end:8px}
+  .sb .seg{font-size:13px;color:var(--mute);line-height:1.5}
+  .sb .seg b{color:var(--gold);font-weight:700}
   .plan{display:flex;flex-direction:column;gap:18px;height:100%}
   .plan .wall{height:110px;border:2px solid var(--gold);border-radius:600px/60px;display:flex;align-items:center;justify-content:center;background:#141414;color:var(--gold2);font-size:15px}
   .plan .floor{flex:1;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:20px;background:#e9e9e6;border-radius:8px;padding:28px;align-items:center}
@@ -28,12 +30,42 @@ extra='''
   .plan .spot em{font-style:normal;font-size:13px;line-height:1.5;color:var(--ink2);margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
   .plan .aud{border:1px dashed #bbb;border-radius:8px;padding:14px;text-align:center;font-size:15px;color:var(--ink2)}
   .plan .cam{text-align:center;font-size:13px;color:var(--mute)}
-  .states{top:200px;bottom:120px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:auto auto;gap:24px 24px;align-content:start}
-  .st{grid-column:span 2}
-  .st.wide{grid-column:span 3}
+  .states{top:190px;bottom:100px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px;align-content:start}
   .st .img{aspect-ratio:21/9;width:100%}
-  .st .t{margin-top:10px;font-size:13.5px;line-height:1.5;color:var(--ink2)}
-  .st .t b{display:block;color:var(--gold);font-size:13px;margin-bottom:3px;direction:ltr;text-align:right}
+  .st .t{margin-top:8px;font-size:13px;line-height:1.45;color:var(--ink2)}
+  .st .t b{display:block;color:var(--gold);font-size:13px;margin-bottom:2px;direction:ltr;text-align:right}
+  .tour{grid-column:1/-1;display:flex;gap:24px;align-items:flex-start;border-top:1px solid var(--line);padding-top:14px}
+  .tour .tl{flex:1}
+  .tour .tl b{display:block;color:var(--gold);font-size:13px;direction:ltr;text-align:right}
+  .tour .tl h4{font-size:18px;font-weight:700;margin:2px 0 4px}
+  .tour .tl p{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+  .tour .tr{width:213px}
+  .tour .tr .img{width:213px;height:120px}
+  .tour .tr span{display:block;margin-top:5px;font-size:12.5px;color:var(--ink2)}
+  /* program page */
+  .prog{display:flex;flex-direction:column;gap:30px}
+  .pcards{display:grid;grid-template-columns:repeat(9,1fr);gap:14px}
+  .pc{display:flex;flex-direction:column}
+  .pc .img{aspect-ratio:16/9;width:100%;border-radius:4px}
+  .pc .pn{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;color:var(--gold);line-height:1;margin-top:12px}
+  .pc h4{font-size:15.5px;font-weight:700;line-height:1.45;margin-top:6px;min-height:45px}
+  .pc p{font-size:12.5px;line-height:1.55;color:var(--ink2);margin-top:6px;flex:1}
+  .pc .pd{margin-top:10px;padding-top:8px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+  .pc .pd b{font-size:13px;color:var(--gold)}
+  .pc .pd span{font-size:11.5px;color:var(--mute);direction:ltr;unicode-bidi:isolate;letter-spacing:.04em}
+  .pbar{display:flex;flex-direction:column;gap:8px}
+  .pbar .acts,.pbar .segs{display:flex;gap:3px}
+  .pbar .acts div{border-top:2px solid var(--ink);padding-top:6px;font-size:13px;font-weight:700;color:var(--ink);text-align:center}
+  .pbar .segs div{height:54px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px}
+  .pbar .ticks{position:relative;height:18px}
+  .pbar .ticks span{position:absolute;top:0;font-size:12px;color:var(--mute);direction:ltr;letter-spacing:.04em;white-space:nowrap}
+  .psum{font-size:17px;color:var(--ink2)}
+  .psum b{color:var(--ink)}
+  .pacts{display:flex;gap:24px;border-top:1px solid var(--line);padding-top:18px}
+  .pacts b{display:block;font-size:17px;font-weight:700}
+  .pacts span{display:block;font-size:13px;color:var(--gold);margin:3px 0 6px}
+  .pacts span i{font-style:normal}
+  .pacts p{font-size:14.5px;line-height:1.6;color:var(--ink2)}
   .script{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-content:start}
   .script .col{display:flex;flex-direction:column}
   .script .ln{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
