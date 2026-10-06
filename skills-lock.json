@@ -12,6 +12,12 @@
       "sourceType": "github",
       "skillPath": "plugins/startup-business-analyst/skills/startup-financial-modeling/SKILL.md",
       "computedHash": "4618e2ecf456d323c6b26c7a1fc441830779823cee191cccb782eb837ba84068"
+    },
+    "claude-council": {
+      "source": "faroukahmed89-droid/claude-council-khalifa",
+      "sourceType": "github",
+      "skillPath": "skills/claude-council/SKILL.md",
+      "computedHash": "44c12a20e35811160c709a42e5673e1e146e6bef107f08cca237e54262fb1188"
     }
   }
 }
