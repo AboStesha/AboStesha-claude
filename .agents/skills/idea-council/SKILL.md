@@ -1,5 +1,5 @@
 ---
-name: claude-council
+name: idea-council
 description: Stress-test a business idea with a 4-agent council — the Believer argues FOR it, the Skeptic tries to kill it, the Investor asks if real money shows up, and the Judge rules BUILD / FIX FIRST / KILL with one 10-minute de-risk action. Remembers every verdict in council.md so ideas can be re-judged later. Use when the user says "council", "claude council", "run the council", "is my business idea good", "should I build this", "judge my idea", "المجلس", "مجلس كلود", or pastes a business idea and wants an honest verdict. Also use for "what changed since the last verdict" / re-judging an idea already in council.md.
 ---
 
