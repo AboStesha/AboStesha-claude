@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Axi Academy — Gold 01</title>
+<style>
+  @font-face { font-family: AR; font-weight: 200; src: url(../assets/fonts/readex-pro-arabic-200-normal.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+  @font-face { font-family: AR; font-weight: 300; src: url(../assets/fonts/readex-pro-arabic-300-normal.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+  @font-face { font-family: AR; font-weight: 400; src: url(../assets/fonts/readex-pro-arabic-400-normal.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+  @font-face { font-family: AR; font-weight: 600; src: url(../assets/fonts/readex-pro-arabic-600-normal.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+  @font-face { font-family: AR; font-weight: 700; src: url(../assets/fonts/readex-pro-arabic-700-normal.woff2) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC; }
+  @font-face { font-family: IN; font-weight: 300; src: url(../assets/fonts/inter-latin-300-normal.woff2) format('woff2'); }
+  @font-face { font-family: IN; font-weight: 400; src: url(../assets/fonts/inter-latin-400-normal.woff2) format('woff2'); }
+  @font-face { font-family: IN; font-weight: 600; src: url(../assets/fonts/inter-latin-600-normal.woff2) format('woff2'); }
+  @font-face { font-family: IN; font-weight: 700; src: url(../assets/fonts/inter-latin-700-normal.woff2) format('woff2'); }
+  @font-face { font-family: IN; font-weight: 800; src: url(../assets/fonts/inter-latin-800-normal.woff2) format('woff2'); }
+  html, body { margin: 0; background: #000; }
+  canvas { display: block; width: 1920px; height: 1080px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="../assets/brand_paths.js"></script>
+<script src="engine.js"></script>
+<script src="fx.js"></script>
+<script src="glass.js"></script>
+<script src="goldkit.js"></script>
+<script src="words.js"></script>
+<script src="film.js"></script>
+<script src="kit.js"></script>
+<script src="brand.js"></script>
+<script src="scenes1.js"></script>
+<script src="scenes2.js"></script>
+<script src="scenes3.js"></script>
+<script>
+  const cv = document.getElementById('c');
+  const ctx = cv.getContext('2d');
+  const q = new URLSearchParams(location.search);
+  window.SAMPLES = parseInt(q.get('samples') || '6', 10);
+  window.ready = (async () => {
+    const faces = [['AR', 200], ['AR', 300], ['AR', 400], ['AR', 600], ['AR', 700], ['IN', 300], ['IN', 400], ['IN', 600], ['IN', 700], ['IN', 800]];
+    await Promise.all(faces.map(([f, w]) => document.fonts.load(`${w} 40px ${f}`, f === 'AR' ? 'استراتيجية' : 'EUR/USD 1.0842')));
+    await document.fonts.ready;
+    await GL.loadImages('../assets/img/');
+    return true;
+  })();
+  window.renderAt = (t, n) => { FILM.frame(ctx, t, { samples: n || window.SAMPLES }); return true; };
+  window.ready.then(() => {
+    if (q.has('t')) renderAt(parseFloat(q.get('t')));
+    if (q.has('play')) { const t0 = performance.now() - (parseFloat(q.get('from') || 0) * 1000); const loop = () => { renderAt((performance.now() - t0) / 1000, 1); requestAnimationFrame(loop); }; loop(); }
+  });
+</script>
+</body>
+</html>
