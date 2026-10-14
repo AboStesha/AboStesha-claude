@@ -15,7 +15,7 @@
     const cur = pAt(L, tt); stick(ctx, L.x, L.o, cur, hi - 8, lo + 8, 120, { wick: 7 });
     ctx.save(); ctx.setLineDash([8, 7]); ctx.strokeStyle = dark ? hexA(C.white, 0.4) : hexA(C.ink, 0.4); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(L.x - 150, L.o); ctx.lineTo(L.x + 150, L.o); ctx.stroke(); ctx.restore();
     txt(ctx, 'الافتتاح', L.x + 160, L.o + 9, { size: 22, w: 'S', color: dark ? SIL : C.slate, align: 'left', dir: 'rtl' });
-    if (t < L.t1) { ctx.fillStyle = dark ? C.white : C.ink; ctx.beginPath(); ctx.arc(L.x + 80, cur, 9, 0, 6.283); ctx.fill(); lat(ctx, '◀', L.x + 96, cur + 8, { size: 20, w: 400, color: dark ? C.white : C.ink }); }
+    if (t < L.t1) { ctx.fillStyle = dark ? C.white : C.ink; ctx.beginPath(); ctx.arc(L.x + 80, cur, 9, 0, 6.283); ctx.fill(); }
   };
   sfx(S7.t0 - 0.42, 'ripple', 0.2); sfx(LA.t0, 'riser', 0.1, { d: LA.t1 - LA.t0 }); sfx(LA.t1, 'pop', 0.18, { f: 900, pan: 0.4 }); ksfx(w(17, 3), 'bounce', 0.2, 1200);
   sfx(LB.t0, 'whoosh', 0.12, { d: LB.t1 - LB.t0, up: false }); sfx(LB.t1, 'pop', 0.18, { f: 420, pan: -0.4 }); ksfx(w(19, 2), 'drop', 0.2, 700);

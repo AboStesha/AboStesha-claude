@@ -77,7 +77,7 @@
     const n = sp.cuts.length - 1; const stg = o.stagger == null ? 0.045 : o.stagger; const mode = o.mode || 'drop';
     const alpha = o.alpha == null ? 1 : o.alpha;
     if (o.out != null && o.out >= 1) return sp.w;
-    ctx.save(); ctx.globalAlpha = alpha;
+    const ga = ctx.globalAlpha; ctx.save(); ctx.globalAlpha = ga * alpha;
     if (mode === 'stretch') {
       const k = Math.max(0.02, springU(lt, 13, 0.32)); const sy = clamp(1 / Math.sqrt(k), 0.7, 1.6);
       const cx = right - sp.w / 2;
@@ -86,7 +86,7 @@
     }
     if (mode === 'slam') {
       const k = springU(lt, 16, 0.5); const sc = lerp(2.4, 1, k); const cx = right - sp.w / 2;
-      ctx.globalAlpha = alpha * clamp(lt * 8); ctx.translate(cx, y - size * 0.35); ctx.scale(sc, sc); ctx.translate(-cx, -(y - size * 0.35));
+      ctx.globalAlpha = ga * alpha * clamp(lt * 8); ctx.translate(cx, y - size * 0.35); ctx.scale(sc, sc); ctx.translate(-cx, -(y - size * 0.35));
       ctx.drawImage(sp.cv, left0, top); ctx.restore(); return sp.w;
     }
     if (mode === 'snap') {
@@ -109,7 +109,7 @@
       if (tk < -0.0001 && mode !== 'bounce') continue;
       if (o.out != null && o.out > 0) { const q = clamp(o.out * 1.6 - (n - 1 - k) * 0.04); oy += (o.outDir || -1) * ei(q, 0, 1) * size * 1.4; al *= 1 - q; }
       if (al <= 0) continue;
-      ctx.save(); ctx.globalAlpha = alpha * al;
+      ctx.save(); ctx.globalAlpha = ga * alpha * al;
       if (mode === 'rise') { ctx.beginPath(); ctx.rect(dx - 4, y - size * 2.2, srcW + 8, size * 2.65); ctx.clip(); }
       const pivX = dx + srcW / 2, pivY = y;
       ctx.translate(pivX + ox, pivY + oy); ctx.rotate(rot); ctx.scale(sxk, 1); ctx.translate(-pivX, -pivY);
@@ -140,7 +140,7 @@
     const m = measure(ctx, s, size, o.w || 'R'); const align = o.align || 'right';
     const xr = align === 'right' ? x : align === 'center' ? x + m / 2 : x + m;
     const pw = clamp(p * 1.35);
-    ctx.save(); ctx.translate(xr, y); ctx.rotate(rot); ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.save(); ctx.translate(xr, y); ctx.rotate(rot); ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha);
     ctx.beginPath(); ctx.rect(-m * pw - 6, -size * 1.6, m * pw + 12, size * 2.4); ctx.clip();
     txt(ctx, s, 0, 0, { size, w: o.w || 'R', color: col });
     ctx.restore();
@@ -157,7 +157,7 @@
 
   // ---------- onion-skin trail ----------
   function ghosts(ctx, n, dt, t, drawAt, o = {}) {
-    for (let k = n; k >= 1; k--) { ctx.save(); ctx.globalAlpha = (o.alpha || 0.5) * (1 - k / (n + 1)); drawAt(t - k * dt, k); ctx.restore(); }
+    for (let k = n; k >= 1; k--) { ctx.save(); ctx.globalAlpha *= (o.alpha || 0.5) * (1 - k / (n + 1)); drawAt(t - k * dt, k); ctx.restore(); }
     drawAt(t, 0);
   }
 
@@ -182,8 +182,8 @@
 
   // ---------- particles (deterministic orbits) ----------
   function swarm(ctx, n, seed, t, posFn, o = {}) {
-    const r = rng(seed); for (let i = 0; i < n; i++) { const a = r(), b = r(), c = r(); const [x, y, s, col, al] = posFn(i, a, b, c, t); if (al <= 0) continue; ctx.globalAlpha = al; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, s, 0, 6.283); ctx.fill(); }
-    ctx.globalAlpha = 1;
+    const ga = ctx.globalAlpha; const r = rng(seed); for (let i = 0; i < n; i++) { const a = r(), b = r(), c = r(); const [x, y, s, col, al] = posFn(i, a, b, c, t); if (al <= 0) continue; ctx.globalAlpha = ga * al; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, s, 0, 6.283); ctx.fill(); }
+    ctx.globalAlpha = ga;
   }
 
   // ---------- transitions (hard edges, no crossfades) ----------

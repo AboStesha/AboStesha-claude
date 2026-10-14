@@ -125,17 +125,17 @@
     let q = p; if (o.reveal != null) q = subPath(p, o.from || 0, o.reveal); if (q.length < 2) return;
     const w = o.width || (ink === 'paper' ? 3 : ink === 'steel' ? 3.5 : 3.5);
     const col = o.color || INK[ink].line; const a = o.alpha == null ? 1 : o.alpha;
-    ctx.save(); ctx.lineCap = o.cap || 'round'; ctx.lineJoin = 'round';
+    ctx.save(); const ga0 = ctx.globalAlpha; ctx.lineCap = o.cap || 'round'; ctx.lineJoin = 'round';
     if (o.dash) ctx.setLineDash(o.dash);
     if (ink === 'paper' && !o.clean) {
       const t = o.t || 0;
-      ctx.strokeStyle = col; ctx.globalAlpha = 0.9 * a; ctx.lineWidth = w; tracePts(ctx, boil(q, t, o.amp == null ? 0.9 : o.amp, o.seed || 1)); ctx.stroke();
-      ctx.globalAlpha = 0.4 * a; ctx.lineWidth = w * 0.5; tracePts(ctx, boil(q, t + 0.37, (o.amp == null ? 0.9 : o.amp) * 1.8, (o.seed || 1) + 5)); ctx.stroke();
+      ctx.strokeStyle = col; ctx.globalAlpha = ga0 * 0.9 * a; ctx.lineWidth = w; tracePts(ctx, boil(q, t, o.amp == null ? 0.9 : o.amp, o.seed || 1)); ctx.stroke();
+      ctx.globalAlpha = ga0 * 0.4 * a; ctx.lineWidth = w * 0.5; tracePts(ctx, boil(q, t + 0.37, (o.amp == null ? 0.9 : o.amp) * 1.8, (o.seed || 1) + 5)); ctx.stroke();
     } else if (ink === 'dark' && !o.clean) {
-      ctx.strokeStyle = col; ctx.globalAlpha = a; ctx.lineWidth = w; tracePts(ctx, q); ctx.stroke();
+      ctx.strokeStyle = col; ctx.globalAlpha = ga0 * a; ctx.lineWidth = w; tracePts(ctx, q); ctx.stroke();
       ctx.strokeStyle = C.white; ctx.lineWidth = Math.max(1, w * 0.3); tracePts(ctx, q); ctx.stroke();
     } else {
-      ctx.strokeStyle = col; ctx.globalAlpha = a; ctx.lineWidth = w; tracePts(ctx, q); ctx.stroke();
+      ctx.strokeStyle = col; ctx.globalAlpha = ga0 * a; ctx.lineWidth = w; tracePts(ctx, q); ctx.stroke();
     }
     ctx.restore();
   }
@@ -160,7 +160,7 @@
   // scan-line fill (dark ink): horizontal lines on an 8 px pitch, thickness = how lit the surface is
   function scanFill(ctx, clip, o = {}) {
     const [bx, by, bw, bh] = o.box; const pitch = o.pitch || 8; const lit = o.lit == null ? 0.5 : o.lit;
-    ctx.save(); clip(ctx); ctx.clip(); ctx.fillStyle = o.color || C.white; ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.save(); clip(ctx); ctx.clip(); ctx.fillStyle = o.color || C.white; ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha);
     const th = Math.max(0.6, pitch * lit * 0.8); const prog = o.progress == null ? 1 : o.progress;
     for (let y = Math.floor(by / pitch) * pitch; y < by + bh; y += pitch) { if ((y - by) / bh > prog) break; ctx.fillRect(bx, y + (pitch - th) / 2, bw, th); }
     ctx.restore();
@@ -173,7 +173,7 @@
     ctx.save(); ctx.font = font(o.size || 32, o.w || 'R'); ctx.direction = o.dir || 'rtl';
     ctx.textAlign = o.align || 'right'; ctx.textBaseline = o.base || 'alphabetic';
     if (o.track) ctx.letterSpacing = o.track + 'px';
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha; ctx.fillStyle = o.color || C.ink;
+    ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha); ctx.fillStyle = o.color || C.ink;
     ctx.fillText(s, x, y); const m = ctx.measureText(s).width; ctx.restore(); return m;
   }
   function measure(ctx, s, size, w = 'R', track = 0) { ctx.save(); ctx.font = font(size, w); if (track) ctx.letterSpacing = track + 'px'; const m = ctx.measureText(s).width; ctx.restore(); return m; }
@@ -181,7 +181,7 @@
   function lat(ctx, s, x, y, o = {}) {
     ctx.save(); ctx.font = `${o.w || 400} ${o.size || 28}px IN`; ctx.direction = 'ltr'; ctx.textAlign = o.align || 'left'; ctx.textBaseline = o.base || 'alphabetic';
     if (o.track) ctx.letterSpacing = o.track + 'px';
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha; ctx.fillStyle = o.color || C.ink; ctx.fillText(s, x, y); const m = ctx.measureText(s).width; ctx.restore(); return m;
+    ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha); ctx.fillStyle = o.color || C.ink; ctx.fillText(s, x, y); const m = ctx.measureText(s).width; ctx.restore(); return m;
   }
   // text rising through a slot (clip between y0..y1)
   function slotText(ctx, s, x, y, o, clipY0, clipY1) {
@@ -203,7 +203,7 @@
   }
   function drawMark(ctx, key, x, y, h, color, alpha = 1) { // x,y = top-left; h = height in px
     const m = brandPaths()[key]; const [vx, vy, vw, vh] = m.vb; const s = h / vh;
-    ctx.save(); ctx.globalAlpha = alpha; ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-vx, -vy); ctx.fillStyle = color; ctx.strokeStyle = color; ctx.lineJoin = 'round';
+    ctx.save(); ctx.globalAlpha *= alpha; ctx.translate(x, y); ctx.scale(s, s); ctx.translate(-vx, -vy); ctx.fillStyle = color; ctx.strokeStyle = color; ctx.lineJoin = 'round';
     m.fills.forEach((f) => ctx.fill(f.p, f.rule)); m.strokes.forEach((st) => { ctx.lineWidth = st.w; ctx.stroke(st.p); }); ctx.restore();
     return vw * s;
   }
@@ -221,7 +221,7 @@
 
   // red focus triangles (brand device)
   function tri(ctx, x, y, s, dir, color = C.red, alpha = 1) { // dir: 'r','l','u','d','br','bl'
-    ctx.save(); ctx.fillStyle = color; ctx.globalAlpha = alpha; ctx.beginPath();
+    ctx.save(); ctx.fillStyle = color; ctx.globalAlpha *= alpha; ctx.beginPath();
     if (dir === 'r') { ctx.moveTo(x - s / 2, y - s * 0.6); ctx.lineTo(x + s / 2, y); ctx.lineTo(x - s / 2, y + s * 0.6); }
     else if (dir === 'l') { ctx.moveTo(x + s / 2, y - s * 0.6); ctx.lineTo(x - s / 2, y); ctx.lineTo(x + s / 2, y + s * 0.6); }
     else if (dir === 'u') { ctx.moveTo(x - s * 0.6, y + s / 2); ctx.lineTo(x, y - s / 2); ctx.lineTo(x + s * 0.6, y + s / 2); }

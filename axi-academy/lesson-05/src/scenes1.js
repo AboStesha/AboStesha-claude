@@ -21,13 +21,13 @@
   // one candlestick: x centre, open/close/high/low in px (y), body width, colour (auto by direction)
   function stick(ctx, x, yo, yc, yh, yl, bw, o = {}) {
     const up = yc <= yo; const col = o.color || (up ? C.mint : C.red); const a = o.alpha == null ? 1 : o.alpha;
-    ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = o.wickColor || col; ctx.fillStyle = col; ctx.lineWidth = o.wick || Math.max(2, bw * 0.12); ctx.lineCap = 'round';
+    ctx.save(); ctx.globalAlpha *= a; ctx.strokeStyle = o.wickColor || col; ctx.fillStyle = col; ctx.lineWidth = o.wick || Math.max(2, bw * 0.12); ctx.lineCap = 'round';
     ctx.beginPath(); ctx.moveTo(x, yh); ctx.lineTo(x, Math.min(yo, yc)); ctx.moveTo(x, Math.max(yo, yc)); ctx.lineTo(x, yl); ctx.stroke();
     if (o.hollow) { ctx.lineWidth = o.wick || 3; ctx.strokeRect(x - bw / 2, Math.min(yo, yc), bw, Math.max(2, Math.abs(yc - yo))); } else ctx.fillRect(x - bw / 2, Math.min(yo, yc), bw, Math.max(2, Math.abs(yc - yo)));
     ctx.restore();
   }
   // OHLC bar
-  function obar(ctx, x, yo, yc, yh, yl, tw, col, a = 1) { ctx.save(); ctx.globalAlpha = a; ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x, yh); ctx.lineTo(x, yl); ctx.moveTo(x - tw, yo); ctx.lineTo(x, yo); ctx.moveTo(x, yc); ctx.lineTo(x + tw, yc); ctx.stroke(); ctx.restore(); }
+  function obar(ctx, x, yo, yc, yh, yl, tw, col, a = 1) { ctx.save(); ctx.globalAlpha *= a; ctx.strokeStyle = col; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x, yh); ctx.lineTo(x, yl); ctx.moveTo(x - tw, yo); ctx.lineTo(x, yo); ctx.moveTo(x, yc); ctx.lineTo(x + tw, yc); ctx.stroke(); ctx.restore(); }
   // chart-type icons for option cards
   function icon(ctx, kind, cx, cy, s, col) {
     ctx.save(); ctx.translate(cx, cy); ctx.scale(s, s); ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
@@ -62,7 +62,7 @@
     FX.bg(ctx, 'light');
     K.cap(ctx, wl(0, 0, 5), 280, t, { size: 62, out: K.outAt(t, w(1, 0) - 0.25) });
     const mv = eio(t, w(1, 0) - 0.2, 0.6); const tw = K.wordsWidth(wl(0, 6, 7), { size: 210 });
-    ctx.save(); ctx.translate(960, lerp(560, 330, mv)); ctx.scale(lerp(1, 0.55, mv), lerp(1, 0.55, mv)); ctx.translate(-960, 0);
+    ctx.save(); ctx.translate(960, lerp(560, 400, mv)); ctx.scale(lerp(1, 0.5, mv), lerp(1, 0.5, mv)); ctx.translate(-960, 0);
     K.words(ctx, wl(0, 6, 7), 960 + tw / 2, 0, t, { size: 210, color: C.ink, stagger: 0.045 }); ctx.restore();
     // a chart line sketches itself under the title
     const lp = inv(w(0, 7), w(0, 7) + 1.0, t) * (1 - mv);
@@ -71,7 +71,7 @@
     if (mv > 0) {
       K.cap(ctx, wl(1), 240, t, { size: 52 });
       WL.forEach(([pair, p0, dir], i) => {
-        const p = eo(t, w(1, 4) + i * 0.15, 0.4); if (p <= 0) return; const y = 470 + i * 96; const tq = Math.floor(t * 10) / 10; const v = p0 * (1 + dir * 0.0006 * Math.sin(tq * 3 + i) + 0.0002 * Math.sin(tq * 11 + i * 2));
+        const p = eo(t, w(1, 4) + i * 0.15, 0.4); if (p <= 0) return; const y = 530 + i * 92; const tq = Math.floor(t * 10) / 10; const v = p0 * (1 + dir * 0.0006 * Math.sin(tq * 3 + i) + 0.0002 * Math.sin(tq * 11 + i * 2));
         ctx.save(); ctx.globalAlpha = p; ctx.translate(0, (1 - p) * 30); ctx.fillStyle = '#FFFFFF'; A.roundRect(ctx, 560, y - 40, 800, 80, 14); ctx.fill(); ctx.strokeStyle = hexA(C.slate, 0.3); ctx.lineWidth = 1.5; ctx.stroke();
         lat(ctx, pair, 1320, y + 11, { size: 30, w: 700, color: C.ink, align: 'right' }); lat(ctx, v.toFixed(pair.includes('JPY') ? 2 : 4), 600, y + 12, { size: 34, w: 600, color: C.ink });
         const up = Math.sin(tq * 3 + i) * dir > 0; ctx.fillStyle = up ? C.mint : C.red; ctx.beginPath(); if (up) { ctx.moveTo(870, y - 14); ctx.lineTo(856, y + 10); ctx.lineTo(884, y + 10); } else { ctx.moveTo(870, y + 14); ctx.lineTo(856, y - 10); ctx.lineTo(884, y - 10); } ctx.closePath(); ctx.fill();
@@ -175,7 +175,7 @@
     const sp = eo(t, w(9, 1) - 0.2, 0.4);
     if (sp > 0) {
       const cw = 110, g = 14, tot = TF.length * cw + (TF.length - 1) * g; const mv = eio(t, w(10, 0) - 0.2, 0.5);
-      ctx.save(); ctx.translate(0, lerp(0, -110, mv)); ctx.globalAlpha = sp;
+      ctx.save(); ctx.globalAlpha = sp * (1 - mv);
       TF.forEach((f, i) => { const x = 960 + tot / 2 - (i + 1) * cw - i * g; const sel = i === 3 && t > TFP; ctx.fillStyle = sel ? C.ink : '#FFFFFF'; ctx.strokeStyle = sel ? C.ink : hexA(C.slate, 0.5); ctx.lineWidth = 1.6; A.roundRect(ctx, x, 330, cw, 60, 30); ctx.fill(); ctx.stroke(); lat(ctx, f, x + cw / 2, 370, { size: 24, w: 700, color: sel ? C.white : C.charcoal, align: 'center' }); });
       ctx.restore();
       K.cap(ctx, wl(9), 250, t, { size: 54, out: K.outAt(t, w(10, 0) - 0.25) });

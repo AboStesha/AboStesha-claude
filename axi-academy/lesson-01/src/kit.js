@@ -21,7 +21,7 @@
     if (lt == null || lt < 0) return;
     const b = K.bounce(lt, o.h0 == null ? 320 : o.h0, o.t1 || 0.3, o.k || 0.3);
     const sq = b.sq * (o.squash == null ? 0.55 : o.squash); const sx = 1 + sq, sy = 1 - sq * 0.8;
-    ctx.save(); ctx.fillStyle = o.color || C.red; ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.save(); ctx.fillStyle = o.color || C.red; ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha);
     ctx.translate(x, y + r - b.y); ctx.scale(sx, sy); ctx.beginPath(); ctx.arc(0, -r, r, 0, 6.283); ctx.fill(); ctx.restore();
   };
 
@@ -51,7 +51,7 @@
     const p = o.p == null ? 1 : o.p; if (p <= 0) return;
     const size = o.size || 30; const h = o.h || 72; const tw = measure(ctx, s, size, 'B'); const w = tw + h * 1.1;
     const sc = lerp(0.6, 1, p);
-    ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc); ctx.globalAlpha = clamp(p * 1.6) * (o.alpha == null ? 1 : o.alpha);
+    ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc); ctx.globalAlpha *= clamp(p * 1.6) * (o.alpha == null ? 1 : o.alpha);
     roundRect(ctx, -w / 2, -h / 2, w, h, h / 2); ctx.fillStyle = o.fill || C.red; ctx.fill();
     if (o.stroke) { ctx.strokeStyle = o.stroke; ctx.lineWidth = 2; ctx.stroke(); }
     txt(ctx, s, 0, size * 0.36, { size, w: 'B', color: o.color || C.white, align: 'center' });
@@ -64,7 +64,7 @@
     const tw = latn ? (ctx.save(), ctx.font = `${o.w || 600} ${size}px IN`, ctx.measureText(s).width + (ctx.restore(), 0)) : measure(ctx, s, size, o.w || 'S');
     const h = size * 1.8, w = tw + size * 1.3; const align = o.align || 'right';
     const xr = align === 'right' ? x : align === 'center' ? x + w / 2 : x + w;
-    ctx.save(); ctx.globalAlpha = clamp(p * 2) * (o.alpha == null ? 1 : o.alpha);
+    ctx.save(); ctx.globalAlpha *= clamp(p * 2) * (o.alpha == null ? 1 : o.alpha);
     const sc = lerp(0.7, 1, eo(p, 0, 1)); ctx.translate(xr - w / 2, y); ctx.scale(sc, sc);
     roundRect(ctx, -w / 2, -h / 2, w, h, o.r == null ? h / 2 : o.r);
     if (o.fill) { ctx.fillStyle = o.fill; ctx.fill(); }
@@ -78,7 +78,7 @@
   K.card = function (ctx, x, y, w, h, o = {}) {
     const p = o.p == null ? 1 : o.p; if (p <= 0) return;
     const ch = o.chamfer == null ? 44 : o.chamfer; const dark = o.dark;
-    ctx.save(); ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * clamp(p * 1.5);
+    ctx.save(); ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha) * clamp(p * 1.5);
     const yy = y + (1 - eo(p, 0, 1)) * 40;
     ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x + w - ch, yy); ctx.lineTo(x + w, yy + ch); ctx.lineTo(x + w, yy + h); ctx.lineTo(x, yy + h); ctx.closePath();
     ctx.fillStyle = dark ? 'rgba(20,22,26,0.78)' : 'rgba(255,255,255,0.72)'; ctx.fill();
@@ -117,7 +117,7 @@
   K.priceLine = function (ctx, fr, vals, p, o = {}) {
     const m = Math.max(2, Math.floor(vals.length * clamp(p))); const pts = []; for (let i = 0; i < m; i++) pts.push([fr.X(i), fr.Y(vals[i])]);
     if (p < 1 && m < vals.length) { const f = vals.length * clamp(p) - m; const i = m - 1; if (i + 1 < vals.length) pts.push([fr.X(i + f), fr.Y(lerp(vals[i], vals[i + 1], f))]); }
-    ctx.save(); ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = o.color || C.ink; ctx.lineWidth = o.width || 3.2; ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.save(); ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = o.color || C.ink; ctx.lineWidth = o.width || 3.2; ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha);
     ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke();
     if (o.fill) { ctx.lineTo(pts[pts.length - 1][0], fr.box[1] + fr.box[3]); ctx.lineTo(pts[0][0], fr.box[1] + fr.box[3]); ctx.closePath(); ctx.fillStyle = o.fill; ctx.fill(); }
     ctx.restore();
@@ -127,20 +127,20 @@
   };
   K.drawCandles = function (ctx, fr, cs, p, o = {}) {
     const n = Math.floor(cs.length * clamp(p)); const bw = Math.max(3, (fr.box[2] / cs.length) * (o.body || 0.62));
-    const up = o.up || C.mint, dn = o.down || C.red;
+    const up = o.up || C.mint, dn = o.down || C.red; const ga = ctx.globalAlpha;
     for (let i = 0; i < n; i++) {
       const c = cs[i]; const x = fr.X(i); const k = i === n - 1 ? clamp((cs.length * clamp(p) - n) * 3 + 0.3) : 1;
-      const col = c.c >= c.o ? up : dn; ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = o.wick || 2; ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+      const col = c.c >= c.o ? up : dn; ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = o.wick || 2; ctx.globalAlpha = ga * (o.alpha == null ? 1 : o.alpha);
       const yo = fr.Y(c.o), yc = fr.Y(lerp(c.o, c.c, k));
       ctx.beginPath(); ctx.moveTo(x, fr.Y(lerp(Math.max(c.o, c.c), c.h, k))); ctx.lineTo(x, fr.Y(lerp(Math.min(c.o, c.c), c.l, k))); ctx.stroke();
       ctx.fillRect(x - bw / 2, Math.min(yo, yc), bw, Math.max(2, Math.abs(yc - yo)));
     }
-    ctx.globalAlpha = 1;
+    ctx.globalAlpha = ga;
   };
   // dashed horizontal level with label (label right-aligned at the right end, Arabic + optional latin)
   K.level = function (ctx, fr, v, p, o = {}) {
     if (p <= 0) return; const y = fr.Y(v); const x0 = fr.box[0], x1 = fr.box[0] + fr.box[2];
-    ctx.save(); ctx.setLineDash(o.dash || [14, 10]); ctx.lineWidth = o.width || 2.2; ctx.strokeStyle = o.color || C.slate; ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.save(); ctx.setLineDash(o.dash || [14, 10]); ctx.lineWidth = o.width || 2.2; ctx.strokeStyle = o.color || C.slate; ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha);
     ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(lerp(x1, x0, eo(p, 0, 1)), y); ctx.stroke(); ctx.restore();
     if (o.label) txt(ctx, o.label, x1 + (o.labelDx == null ? -6 : o.labelDx), y - 14, { size: o.size || 26, w: o.lw || 'S', color: o.labelColor || o.color || C.slate, alpha: clamp((p - 0.3) * 2) });
     if (o.latin) lat(ctx, o.latin, x0 + 6, y - 14, { size: (o.size || 26) * 0.8, w: 600, color: o.labelColor || o.color || C.slate, alpha: clamp((p - 0.4) * 2) });
@@ -179,11 +179,12 @@
 
   // follow-through snake: leader position fn(t) -> [x,y]; n dots lagging dt each, shrinking
   K.snake = function (ctx, fn, t, n, dt, o = {}) {
+    const ga = ctx.globalAlpha;
     for (let k = n - 1; k >= 0; k--) {
       const [x, y] = fn(t - k * dt); const q = 1 - k / n; const r = (o.r || 12) * (0.35 + 0.65 * q);
-      ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * (0.25 + 0.75 * q); ctx.fillStyle = o.color || C.red; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fill();
+      ctx.globalAlpha = ga * (o.alpha == null ? 1 : o.alpha) * (0.25 + 0.75 * q); ctx.fillStyle = o.color || C.red; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fill();
     }
-    ctx.globalAlpha = 1;
+    ctx.globalAlpha = ga;
   };
 
   // ---------- word → particles (disintegrate right→left, drifting up-left) ----------
@@ -197,13 +198,13 @@
       sp.parts = parts; sp.st = st;
     }
     const r = rng(o.seed || 3); const cw = sp.cv.width; const st = sp.st;
-    ctx.save(); ctx.fillStyle = col;
+    const ga = ctx.globalAlpha; ctx.save(); ctx.fillStyle = col;
     for (const [px, py] of sp.parts) {
       const a = r(), b = r(), c = r();
       const delay = (1 - px / cw) * 0.5 + c * 0.12; const q = clamp((p - delay) / 0.5);
       if (q >= 1) continue;
       const e = q * q; const dx = -e * (160 + 520 * a), dy = -e * (60 + 300 * b) + Math.sin(q * 6 + a * 9) * 14 * q;
-      ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * (1 - q); const z = st * (1 - 0.55 * q) + 0.6;
+      ctx.globalAlpha = ga * (o.alpha == null ? 1 : o.alpha) * (1 - q); const z = st * (1 - 0.55 * q) + 0.6;
       ctx.fillRect(left0 + px + dx, top + py + dy, z, z);
     }
     ctx.restore();

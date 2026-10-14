@@ -21,7 +21,7 @@
   // ---------------------------------------------------------------- lesson helpers
   // metal coin with a currency symbol
   function coin(ctx, x, y, r, sym, o = {}) {
-    ctx.save(); ctx.translate(x, y); ctx.scale(o.sx == null ? 1 : o.sx, 1); ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.save(); ctx.translate(x, y); ctx.scale(o.sx == null ? 1 : o.sx, 1); ctx.globalAlpha *= (o.alpha == null ? 1 : o.alpha);
     ctx.fillStyle = K.metal(ctx, -r, r); ctx.beginPath(); ctx.arc(0, 0, r, 0, 6.283); ctx.fill();
     ctx.strokeStyle = o.rim || C.ink; ctx.lineWidth = Math.max(2, r * 0.05); ctx.stroke(); ctx.lineWidth = Math.max(1.5, r * 0.03); ctx.beginPath(); ctx.arc(0, 0, r * 0.78, 0, 6.283); ctx.stroke();
     lat(ctx, sym, 0, r * 0.3, { size: r * (sym.length > 1 ? 0.62 : 0.86), w: 700, color: C.ink, align: 'center' });
