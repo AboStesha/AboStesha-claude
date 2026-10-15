@@ -2,7 +2,7 @@
 import subprocess, sys, io
 from PIL import Image, ImageDraw
 out, vids = sys.argv[1], sys.argv[2:]
-TIMES = [[0.40, 0.75, 1.35, 2.25, 4.99], [0.45, 1.10, 1.52, 2.10, 4.99], [0.45, 1.05, 1.55, 2.45, 4.99]]
+TIMES = [[0.40, 0.75, 1.35, 2.25, 4.98], [0.45, 1.10, 1.52, 2.10, 4.98], [0.45, 1.05, 1.55, 2.45, 4.98]]
 NAMES = ['A · Ink', 'B · Market', 'C · Light']
 tw, th = 384, 216; S = Image.new('RGB', (tw * 5, th * 3)); d = ImageDraw.Draw(S)
 for r, (v, ts) in enumerate(zip(vids, TIMES)):

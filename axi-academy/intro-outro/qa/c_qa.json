@@ -1,0 +1,57 @@
+{
+ "file": "sting_c.mp4",
+ "size_mb": 11.56,
+ "duration": 5.0,
+ "video": {
+  "codec_name": "h264",
+  "profile": "High",
+  "width": 1920,
+  "height": 1080,
+  "pix_fmt": "yuv420p",
+  "r_frame_rate": "60/1",
+  "avg_frame_rate": "60/1",
+  "nb_read_frames": "300",
+  "color_space": "bt709",
+  "color_primaries": "bt709",
+  "color_transfer": "bt709",
+  "color_range": "tv"
+ },
+ "audio": {
+  "codec_name": "aac",
+  "sample_rate": "48000",
+  "channels": 2,
+  "bit_rate": "322371",
+  "duration": "5.000000",
+  "lufs_i": -14.3,
+  "true_peak_dbtp": -1.1,
+  "lra": 1.1
+ },
+ "frames_decoded": 300,
+ "identical_runs": [
+  [
+   0,
+   7
+  ],
+  [
+   17,
+   20
+  ],
+  [
+   26,
+   31
+  ],
+  [
+   234,
+   284
+  ],
+  [
+   285,
+   299
+  ]
+ ],
+ "final_vs_client": {
+  "mean_abs": 2.11,
+  "p99": 6.0,
+  "logo_band_mean_abs": 2.5
+ }
+}

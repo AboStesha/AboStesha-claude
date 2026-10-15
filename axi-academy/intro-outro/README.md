@@ -10,6 +10,29 @@ All three are 1920×1080 at 60 fps (300 frames), with motion graphics and sound 
 | `AxiAcademy_Intro_B_Market.mp4` | **Market** — kinetic, punchy | A live candlestick chart climbs on a dark trading screen. The camera whip-zooms into the newest candle, and the two halves of the nib slam shut around it, so the candle becomes the cut-out. The light background rises like the market. The red tip launches up like a price arrow, the bars lock in, and the words slide out from behind the nib. |
 | `AxiAcademy_Intro_C_Light.mp4` | **Light** — cinematic | In the dark the red tip sparks and the candle, as the filament, flickers on. The nib glows like a light bulb, with light rays and floating dust. The room brightens into the brand gradient, then two beams of light spread from the nib to reveal the words. A final glint closes it. |
 
+`stills/preview.jpg` shows key moments of all three.
+
+## QA
+
+QA was run on each delivered file. The checks:
+- **Streams** with `ffprobe`.
+- **Loudness** with `ffmpeg ebur128`.
+- **Every frame** on per-second sheets in `qa/*_sheet_s0…s4.jpg`; all were viewed.
+- **Last frame** compared with the client image.
+
+| File | Size | Frames · fps | Video | Audio | Last frame vs client |
+|---|---|---|---|---|---|
+| A · Ink | 16.2 MB | 300 · 60/1 CFR | H.264 High, 1920×1080, yuv420p, BT.709 | AAC 48 kHz stereo, −14.2 LUFS, −1.4 dBTP | mean Δ 2.1/255 |
+| B · Market | 11.9 MB | 300 · 60/1 CFR | same | −14.1 LUFS, −1.2 dBTP | mean Δ 2.1/255 |
+| C · Light | 11.6 MB | 300 · 60/1 CFR | same | −14.3 LUFS, −1.1 dBTP | mean Δ 2.1/255 |
+
+**Held frames.** In each film the lockup holds still at the end:
+- A: from 4.0 s.
+- B: from 3.95 s, after a soft light sweep behind the lockup.
+- C: from 3.9 s.
+
+C also opens on 0.13 s of black, and its flicker leaves a few dark frames that are intentionally identical. The audio was measured, not listened to.
+
 ## The final frame
 
 The lockup was rebuilt as vectors from the client's image `ref/final_frame.webp`, measured in its 2000×1125 space and drawn at ×0.96.
