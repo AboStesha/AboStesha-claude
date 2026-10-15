@@ -28,9 +28,9 @@
     ctx.save(); ctx.globalAlpha *= clamp(k * 2) * (o.alpha == null ? 1 : o.alpha); ctx.translate((1 - Math.min(1, k)) * 80, 0);
     panel(ctx, x - wv, y, wv, hv, { r: 18, fill: 'rgba(22,23,27,0.94)', stroke: o.hot ? hexA(o.col, 0.9) : 'rgba(255,255,255,0.10)' });
     ctx.fillStyle = o.col; A.roundRect(ctx, x - 20, y + 22, 6, hv - 44, 3); ctx.fill();
-    txt(ctx, name, x - 40, y + 44, { size: 30, w: 'S', color: P.white }); if (sub) txt(ctx, sub, x - 40, y + 82, { size: 20, w: 'R', color: P.dim });
-    if (val) val(ctx, x - wv + 24, y + 74);
-    if (o.badge > 0) { ctx.save(); ctx.globalAlpha *= clamp(o.badge * 2); const s = o.badgeS; const ww = measure(ctx, s, 18, 'S') + 26; A.roundRect(ctx, x - wv + 20, y + 10, ww, 28, 14); ctx.strokeStyle = P.gold; ctx.lineWidth = 1.5; ctx.stroke(); txt(ctx, s, x - wv + 20 + ww / 2, y + 30, { size: 18, w: 'S', color: P.gold, align: 'center' }); ctx.restore(); }
+    txt(ctx, name, x - 40, y + 46, { size: 30, w: 'S', color: P.white }); if (sub) txt(ctx, sub, x - 40, y + 86, { size: 20, w: 'R', color: P.dim });
+    if (val) val(ctx, x - wv + 24, y + 48);
+    if (o.badge > 0) { ctx.save(); ctx.globalAlpha *= clamp(o.badge * 2); const s = o.badgeS; const ww = measure(ctx, s, 18, 'S') + 26; A.roundRect(ctx, x - wv + 20, y + hv - 40, ww, 28, 14); ctx.strokeStyle = P.gold; ctx.lineWidth = 1.5; ctx.stroke(); txt(ctx, s, x - wv + 20 + ww / 2, y + hv - 20, { size: 18, w: 'S', color: P.gold, align: 'center' }); ctx.restore(); }
     ctx.restore();
   }
   const range = (a, b) => `${String(((a % 24) + 24) % 24).padStart(2, '0')}:00–${String(((b % 24) + 24) % 24).padStart(2, '0')}:00`;
@@ -72,7 +72,7 @@
     const ck = sp(t, TE.common, 14, 0.7);
     if (ck > 0) { ctx.save(); ctx.globalAlpha *= clamp(ck * 2); const s = 'تقسيم شائع، غير رسمي'; const s2 = ' · أوقات تقريبية'; const a2 = clamp((t - TE.approx) / 0.25); const ww = measure(ctx, s, 24, 'S') + (a2 > 0 ? measure(ctx, s2, 24, 'S') * a2 : 0) + 44; A.roundRect(ctx, 1840 - ww, 168, ww, 50, 25); ctx.fillStyle = 'rgba(22,23,27,0.94)'; ctx.fill(); ctx.strokeStyle = 'rgba(255,255,255,0.14)'; ctx.lineWidth = 1.5; ctx.stroke(); txt(ctx, s, 1818, 202, { size: 24, w: 'S', color: P.white }); if (a2 > 0) txt(ctx, s2, 1818 - measure(ctx, s, 24, 'S'), 202, { size: 24, w: 'S', color: P.gold, alpha: a2 }); ctx.restore(); }
     const hot = (a, b) => t >= a && t < b;
-    sessCard(ctx, 1840, 262, 'الآسيوية', 'دوام طوكيو', (c, x, y) => { if (t > TE.three - 0.1) wheels(c, '00:00–00:00', '03:00–12:00', t, TE.three - 0.1, x, y + 4, 28, { align: 'left', color: '#E9D29A', w: 700, stagger: 0.05 }); }, t, TE.asia, { col: '#E9D29A', hot: hot(TE.asia, TE.lon), badge: clamp((t - TE.year) / 0.2), badgeS: 'طوال السنة' });
+    sessCard(ctx, 1840, 262, 'الآسيوية', 'دوام طوكيو', (c, x, y) => { if (t > TE.three - 0.1) wheels(c, '00:00–00:00', '03:00–12:00', t, TE.three - 0.1, x, y + 4, 28, { align: 'left', color: '#E9D29A', w: 700, stagger: 0.05, }); }, t, TE.asia, { col: '#E9D29A', hot: hot(TE.asia, TE.lon), badge: clamp((t - TE.year) / 0.2), badgeS: 'طوال السنة' });
     sessCard(ctx, 1840, 390, 'لندن', '8 ص – 5 م بالتوقيت المحلي', (c, x, y) => { if (t > TE.eight - 0.1) wheelSeq(c, [[0, '00:00–00:00'], [TE.eight - 0.1, '10:00–19:00'], [TE.w4 - 0.1, '11:00–20:00']], t, x, y + 4, 28, { align: 'left', color: '#C4C8CC', w: 700, stagger: 0.05 }); }, t, TE.lon, { col: '#C4C8CC', hot: hot(TE.lon, TE.ovl) });
     sessCard(ctx, 1840, 518, 'نيويورك', '8 ص – 5 م بالتوقيت المحلي', (c, x, y) => { if (t > TE.eight + 0.2) wheelSeq(c, [[0, '00:00–00:00'], [TE.eight + 0.2, '15:00–00:00'], [TE.w4, '16:00–01:00'], [TE.differ, '15:00–00:00']], t, x, y + 4, 28, { align: 'left', color: '#8FA6AE', w: 700, stagger: 0.05, dir: t > TE.differ ? -1 : 1 }); }, t, TE.ny, { col: '#8FA6AE', hot: hot(TE.ny, TE.ovl) });
     // overlap counter (left column)
