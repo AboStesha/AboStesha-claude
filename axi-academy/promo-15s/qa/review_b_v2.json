@@ -1,0 +1,65 @@
+{
+ "checks": [
+  {"n": 1, "name": "Frame count", "status": "PASS", "severity": "BLOCK", "evidence": "decoded nb_read_frames=900 = output_target.frames 900"},
+  {"n": 2, "name": "Presentation timing", "status": "PASS", "severity": "BLOCK", "evidence": "60/1 CFR; 900 PTS on the i/60 grid, off-grid 0"},
+  {"n": 3, "name": "Duration and ending", "status": "PASS", "severity": "BLOCK", "evidence": "video endpoint 15.000 s; audio 0-15.000 s; last frame f899 is the full end card"},
+  {"n": 4, "name": "Format and color", "status": "PASS", "severity": "BLOCK", "evidence": "1080x1920 SAR 1:1 yuv420p tv, bt709 primaries/transfer/matrix, H.264 High"},
+  {"n": 5, "name": "Audio", "status": "PASS", "severity": "FIX", "evidence": "AAC-LC 48 kHz stereo, new mix (Mixkit track 201 + CC0 SFX bed), -14.0 LUFS integrated, true peak -2.5 dBTP on the encoded file; mix stream copied (md5 equal to audio/mix.m4a). Measured, not listened"},
+  {"n": 6, "name": "Complete visual coverage", "status": "PASS", "severity": "BLOCK", "evidence": "15 per-second sheets (60 frames each) viewed: [0,900) and seconds 0-15 without gaps; native crops of all text events"},
+  {"n": 7, "name": "Story, trick or motif", "status": "PASS", "severity": "BLOCK", "evidence": "question -> answer pill -> click -> 1000 free seats -> learning path to pro -> one word per beat -> seat booked -> X sting -> end card, as plan/creative-plan.json"},
+  {"n": 8, "name": "Identity and cast", "status": "N/A", "severity": "BLOCK", "evidence": "no people in the film (pure motion graphics)"},
+  {"n": 9, "name": "Text, logos and marks", "status": "PASS", "severity": "BLOCK", "evidence": "every authored line read at native/half size (f170, f300, f470, f520, f550, f580, f610, f650, f850): spelling and RTL order correct, final ي dots present, Western digits in Inter, official logo and X paths"},
+  {"n": 10, "name": "Mask edges", "status": "N/A", "severity": "FIX", "evidence": "no mattes or keyed footage"},
+  {"n": 11, "name": "Bars and edges", "status": "PASS", "severity": "BLOCK", "evidence": "no bars; the dolly peaks at 1.09 so the command bar keeps >= 38 px margins; the turning card stays inside the frame"},
+  {"n": 12, "name": "Cadence and retiming", "status": "PASS", "severity": "FIX", "evidence": "898 of 900 frames unique; holds only f2-3 (empty gradient before the logo fades in) and f81-82 (caret blink), both intended"},
+  {"n": 13, "name": "Text placement", "status": "PASS", "severity": "FIX", "evidence": "all mandatory text inside the 10 % top / 15 % bottom safe zones; risk strip 1262-1484 readable for the last 3 s (from 12.0 s); decorative chip rows sit at 1545-1735"},
+  {"n": 14, "name": "Look and material", "status": "PASS", "severity": "FIX", "evidence": "night UI glass on near-black, mist/slate accents, red only on the caret, streak, CTA and seat (<10 %); fast moves now use 16-sample motion blur (f63-70, f185-205, f385-395, f498-503)"},
+  {"n": 15, "name": "Declared source reuse", "status": "N/A", "severity": "BLOCK", "evidence": "no reference footage reused"},
+  {"n": 16, "name": "Cut/event positions", "status": "PASS", "severity": "FIX", "evidence": "scene changes on the 120 BPM grid B(k)=1.40+0.5k: drop f84, bloom f204, click f234, count f264, card f384, words f504/f534/f564/f594, seat f624, sting f666, end f720"},
+  {"n": 17, "name": "Source frames used once", "status": "N/A", "severity": "FIX", "evidence": "no source placements"},
+  {"n": 18, "name": "Generation logic", "status": "N/A", "severity": "FIX", "evidence": "no generated clips (0 credits)"},
+  {"n": 19, "name": "Energy vs reference", "status": "PASS", "severity": "FIX", "evidence": "cuts 0.97x, flashes 0.62x, shake frames 1.00x, camera movement 0.98x, motion energy 0.67x (v1 was 0.59x: FAIL, repaired)"}
+ ],
+ "per_second": {
+  "0": "logo fades in white on the primary gradient (f9-24), holds",
+  "1": "logo shrinks, night falls from the top (f62-70), red caret blinks (f70-83); drop f84: command bar grows, typing starts f92",
+  "2": "question types letter by letter with a slow dolly-in to 1.09; text turns red f177",
+  "3": "question squashes into a red streak (f185-189), bloom flash f204-206, answer pill + cursor, click f234 with ripple",
+  "4": "ripple rings, dotted globe rises, odometer starts f265",
+  "5": "odometer rolls to 1000 (f346-355); 'لأول 1000 طالب فقط' from f325",
+  "6": "1000 holds to f383; learning-path card flies in tilted (f385-395) and keeps turning; progress 0-72 %",
+  "7": "progress 75-100 %, steps checked, card turns and floats; toast 'اكتمل المسار' f476",
+  "8": "card exits with blur (f498-503); flash; 'قريباً.' (f507-533); flash; 'مجانية.' from f537",
+  "9": "'مجانية.'; flash f564; 'لأول 1000 طالب.' (f567-593); flash; 'فقط.' from f597",
+  "10": "'فقط.'; flash f624; seat map, red seat, red button; cursor click f637-640; toast 'تم حجز مقعدك' from f644",
+  "11": "flash to white f666-670; X drops f671-677, lands with ripple, holds, shrinks f717-719",
+  "12": "end card builds: logo, name letter by letter (f724-746), tagline types, chip, offer, CTA f764-769, url pill f774; chip rows fade in from f758; risk strip from f721",
+  "13": "end card live: two chip rows scroll in opposite directions; CTA pumps on every beat, light sweep f780-786",
+  "14": "same; second sweep f840-846; film ends on the full end card f899"
+ },
+ "detail_evidence": [
+  {"path": "qa/crops/b_v2_text1.jpg", "frames": [170, 300, 470, 650], "what": "question, pill + odometer, learning-path card, seat map + button + toast"},
+  {"path": "qa/crops/b_v2_text2.jpg", "frames": [520, 550, 580, 610], "what": "one word per beat with red full stops"},
+  {"path": "qa/crops/b_v2_end.jpg", "frames": [850], "what": "end card at native size: name, tagline, chip, offer, CTA, url, risk strip, chips"},
+  {"path": "qa/fix2c_b.jpg", "frames": [66], "what": "night-fall wipe with 16-sample blur (was 6-step banding)"}
+ ],
+ "findings": [
+  "no BLOCK items open",
+  "v1 -> v2 repairs verified on the v2 file: dead holds (typing 0.01, card 0.04, end card 0.00 motion) now move; stepped blur on the night wipe and card moves smoothed; energy floor met",
+  "note: the decorative chip text is small (36 px); it is decoration, not required information"
+ ],
+ "motion_snapshots": [
+  {"gate": "pre_render", "revision": "film v2 (repair pass after the v1 gate)", "inspected_source": "v1 output: all 900 frames (15 per-second sheets) + per-second motion measure; v2 previews: stills f66, f110, f170, f400, f440, f470, f786, f840",
+   "reviews": {
+    "timing": {"evidence": "v1 per-second motion: s00 0.04, s02 0.01, s07 0.04, s13 0.03, s14 0.00; whole film 0.383 vs reference 0.64 (0.59x)", "decision": "keep every beat position; fill the dead holds with purposeful continuous motion: dolly-in while the question types (1.7-2.9 s), the card keeps turning while the path completes (6.75-8.2 s), end card CTA pumps on every beat with a light sweep every 2 beats", "defects": ["typing and card holds read frozen", "end card fully static for 2 s"], "unchanged": "120 BPM grid, scene order, word timings, sting and end-card start"},
+    "spatial": {"evidence": "v1 sheets: command bar small for the hook; card fixed in one pose for 1.4 s; empty band under the risk strip (1490-1780)", "decision": "dolly peaks at 1.09 (1.12 touched the frame edges in the preview); card yaw drift -0.24 -> +0.12 rad with a 14 px float and a 6 % push, kept inside the frame; two chip rows in the empty band moving in opposite directions", "defects": ["command bar at 1.12 left 11 px margins (preview f170) -> reduced to 1.09"], "unchanged": "safe zones, logo/watermark positions, risk strip position"},
+    "detail": {"evidence": "v1 f63-69 night wipe and card entrance/exit showed 6-step banding; index.html capped sub-samples at 8", "decision": "16-sample motion blur on the fast windows (cap raised to 16); chips reuse the SaaS pill language of the film; red stays on CTA/seat/caret only", "defects": ["stepped blur on fast moves"], "unchanged": "palette, type, glass material, official marks"}
+   }},
+  {"gate": "pre_delivery", "revision": "film v2 rendered (out/axipromo-b-1015_v2.mp4)", "inspected_source": "all 900 output frames in 15 per-second sheets + native text crops f170, f300, f470, f520, f550, f580, f610, f650, f850",
+   "reviews": {
+    "timing": {"evidence": "energy check: cuts 0.97x, flashes 0.62x, shake 1.00x, motion 0.67x; holds f2-3 and f81-82 only", "decision": "accept: every hold now carries motion and each scene change stays on the beat", "defects": [], "unchanged": "beat grid and event frames listed in the gate"},
+    "spatial": {"evidence": "sheets s02 (dolly), s06-s07 (card turning), s12-s14 (chips + pump)", "decision": "accept: no element leaves the frame, mandatory text stays inside safe zones", "defects": [], "unchanged": "composition per scene"},
+    "detail": {"evidence": "native crops: all words correct, RTL order, Inter digits, dotted final ي, risk strip readable; wipe smear smooth at native size", "decision": "accept", "defects": [], "unchanged": "look and brand marks"}
+   }}
+ ]
+}

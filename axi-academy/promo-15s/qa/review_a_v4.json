@@ -1,0 +1,66 @@
+{
+ "checks": [
+  {"n": 1, "name": "Frame count", "status": "PASS", "severity": "BLOCK", "evidence": "decoded nb_read_frames=900 = output_target.frames 900"},
+  {"n": 2, "name": "Presentation timing", "status": "PASS", "severity": "BLOCK", "evidence": "60/1 CFR; 900 PTS on the i/60 grid, off-grid 0"},
+  {"n": 3, "name": "Duration and ending", "status": "PASS", "severity": "BLOCK", "evidence": "video endpoint 15.000 s; audio 0-15.000 s; last frame f899 is the full end card"},
+  {"n": 4, "name": "Format and color", "status": "PASS", "severity": "BLOCK", "evidence": "1080x1920 SAR 1:1 yuv420p tv, bt709 primaries/transfer/matrix, H.264 High"},
+  {"n": 5, "name": "Audio", "status": "PASS", "severity": "FIX", "evidence": "AAC-LC 48 kHz stereo, new mix (Mixkit track 726 + CC0 SFX bed), -14.0 LUFS integrated, true peak -3.4 dBTP on the encoded file; mix stream copied. Measured, not listened"},
+  {"n": 6, "name": "Complete visual coverage", "status": "PASS", "severity": "BLOCK", "evidence": "15 per-second sheets (60 frames each) of the v4 file viewed: [0,900) and seconds 0-15 without gaps; native/half-size crops of the text events"},
+  {"n": 7, "name": "Story, trick or motif", "status": "PASS", "severity": "BLOCK", "evidence": "the red dot = the zero: logo iris -> learn trading -> from zero to pro (dot becomes the full stop) -> learn, learn, practise, trade -> Axi Academy soon -> free, first 1000 students, only -> one red seat 'yours' -> dive into the seat -> X sting -> end card, as plan/creative-plan.json"},
+  {"n": 8, "name": "Identity and cast", "status": "N/A", "severity": "BLOCK", "evidence": "no people in the film (pure motion graphics)"},
+  {"n": 9, "name": "Text, logos and marks", "status": "PASS", "severity": "BLOCK", "evidence": "every authored line read on the v4 file (f150, f280, f470, f610, f850) and on v3 crops for unchanged scenes (f230, f400, f530, f655): spelling and RTL order correct, final ي dots present, Western digits in Inter, official logo and X paths"},
+  {"n": 10, "name": "Mask edges", "status": "N/A", "severity": "FIX", "evidence": "no mattes or keyed footage"},
+  {"n": 11, "name": "Bars and edges", "status": "PASS", "severity": "BLOCK", "evidence": "no bars; beat pumps capped (HEXP kick 45/22) so held words stay inside the frame; entrances that start off-frame are intended moves"},
+  {"n": 12, "name": "Cadence and retiming", "status": "PASS", "severity": "FIX", "evidence": "896 of 900 frames unique; holds only f0-3 (black before the dot appears) and f324-325 (settled 'تعلّم' before the cut), both intended"},
+  {"n": 13, "name": "Text placement", "status": "PASS", "severity": "FIX", "evidence": "mandatory text inside the 10 % top / 15 % bottom safe zones; risk strip 1350-1572 readable for the last 3 s (from 12.0 s); 'لأول 1000 طالب' now has ~40 px word gaps (was ~11 px in v1-v3)"},
+  {"n": 14, "name": "Look and material", "status": "PASS", "severity": "FIX", "evidence": "ink/off-white/slate kinetic type, red only on the dot, seat, CTA and X (<10 %); fast moves use 16-sample motion blur (iris, slides, squash, whip, rise, dive)"},
+  {"n": 15, "name": "Declared source reuse", "status": "N/A", "severity": "BLOCK", "evidence": "no reference footage reused"},
+  {"n": 16, "name": "Cut/event positions", "status": "PASS", "severity": "FIX", "evidence": "scene changes on the 134 BPM grid B(k)=1.40+0.4478k: drop f84, p2 f191, line f299, name f406, offer f514, seat f621, sting f675, end f729"},
+  {"n": 17, "name": "Source frames used once", "status": "N/A", "severity": "FIX", "evidence": "no source placements"},
+  {"n": 18, "name": "Generation logic", "status": "N/A", "severity": "FIX", "evidence": "no generated clips (0 credits)"},
+  {"n": 19, "name": "Energy vs reference", "status": "PASS", "severity": "FIX", "evidence": "cuts 1.39x, flashes 0.91x, shake frames 0.71x, camera movement 0.97x, motion energy 0.65x (v1: shake 0.58x and motion 0.55x FAIL; repaired in v2/v3)"}
+ ],
+ "per_second": {
+  "0": "black, the red dot pops with rings (f4-16), iris opens to the slate gradient (f17-25, 16-sample blur), logo builds (f26-40), holds",
+  "1": "logo shrinks, iris closes to the dot (f63-71), dot anticipates; drop f84: flash, 'تعلّم' slams with burst; 'التداول' enters from the left f111-119",
+  "2": "'تعلّم / التداول' pumps on beats f138 and f165 (scale + width kick + impact shake)",
+  "3": "pair squashes into a streak (f183-191), flash to white, 'من الصفر' writes on in hairline with the zero ring (f194-199), thickens toward the beat (f226+)",
+  "4": "'إلى الاحتراف' slams (f245-249 width stretch), the dot flies in as the full stop (f250-253), hold with push, whip (f291-293), white",
+  "5": "'تعلّم' writes with the red pen dot (f301-306), cut to 'ثم تعلّم' repetition rows (f326-352), 'ثم تدرّب' fades in",
+  "6": "three practice copies of 'تدرّب' settle (f360-375), 'ثم تداول' slides in, red full stop lands (f391-399), flash, 'أكاديمية' mask rise begins",
+  "7": "'أكاديمية آكسي' builds letter by letter (to f437), lift wave on the beat (f433-440), 'قريباً' rises with the blinking dot and loading line (f461-469)",
+  "8": "loading line fills, wave on beat f487; flash; 'مجانية' slams with letter spread and shake (f514-523)",
+  "9": "'مجانية' rises, odometer 'لأول 1000 طالب' counts while the 1000-dot grid lights (f541-589), 'فقط' stamp (f595-599)",
+  "10": "full grid + 'فقط' with impact shake; seat pick: grid fades, red seat + 'مقعدك' pin (f622-637), 'احجز مقعدك الآن' rises letter by letter (f630-649)",
+  "11": "dive into the red seat (f665-675, 16-sample blur), white, X drops (f681-689) and lands with shake and ripple, holds",
+  "12": "X shrinks (f727-729); end card builds: logo, name, chip 'قريباً', tagline, offer, CTA pill (f761-769), url; risk strip from f721",
+  "13": "end card live: outlined marquees 'من الصفر · إلى الاحتراف' (top) and 'تعلّم · تدرّب · تداول' (bottom) drift in opposite directions; CTA pumps on every beat, light sweep f794-799",
+  "14": "same; second sweep f848-856; film ends on the full end card f899"
+ },
+ "detail_evidence": [
+  {"path": "qa/crops/a_v4_text.jpg", "frames": [150, 280, 470, 610], "what": "v4 file: learn trading, to pro with red full stop, Axi Academy + soon, offer line with fixed spacing and complete grid"},
+  {"path": "qa/crops/a_v4_end.jpg", "frames": [850], "what": "v4 end card at native size: name, chip, tagline, offer, CTA with sweep, url, risk strip, marquees"},
+  {"path": "qa/crops/a_v3_text1.jpg", "frames": [150, 230, 280, 400], "what": "v3 crops of scenes unchanged in v4 (from zero ring, then trade)"},
+  {"path": "qa/crops/a_v3_text2.jpg", "frames": [470, 530, 610, 655], "what": "v3 crops: free, seat pin and CTA (unchanged in v4 except the offer line)"},
+  {"path": "qa/fix2b_a.jpg", "frames": [138, 165], "what": "beat pumps at native half size: width kick stays inside the frame"}
+ ],
+ "findings": [
+  "no BLOCK items open",
+  "v1 -> v4 repairs verified on the v4 file: dead holds pump on the beat, end card is live, stepped blur smoothed, energy floor met, offer line spacing and grid corner fixed",
+  "note: the width-stretch slams (f245-249, f514-523) read as smeared type for 4-9 frames; this is the authored landing effect"
+ ],
+ "motion_snapshots": [
+  {"gate": "pre_render", "revision": "film v4 (repairs after the v1-v3 gates)", "inspected_source": "v1 output: all 900 frames + per-second motion; v2/v3 outputs: all 900 frames each; previews of the repairs: stills f138, f165, f434, f440, f556, f668, f798, f830, f600, f610, f615",
+   "reviews": {
+    "timing": {"evidence": "v1 per-second motion s02 0.20, s07 0.22, s13 0.03, s14 0.02; whole film 0.715 vs ref 1.29 (0.55x); shake 1.47/s vs 2.53 (0.58x); v2 shake 1.40/s (0.55x)", "decision": "keep the beat grid; the held pair pumps on beats 2 and 3, a lift wave runs through the name on beats 13 and 15, the CTA pumps on every end-card beat with a sweep every 2 beats; impact shakes on the three hardest hits (to pro, only, X landing)", "defects": ["dead holds after slams", "static end card", "too few impact shakes"], "unchanged": "scene order, beat positions, flash cuts, end-card start"},
+    "spatial": {"evidence": "v2 preview f138 showed the HEXP kick of 80 pushing 'تعلّم' past the left edge; v3 f610 showed 'لأول1000' cramped and a ragged grid corner", "decision": "kick reduced to 45/22 and scale punch to 6 %; offer line gaps widened to ~40 px; the grid lights 4 % ahead so it is complete at 1000; marquees placed in the empty bands above the name and below the risk strip", "defects": ["word overflow on the punch (fixed)", "cramped offer line (fixed)", "incomplete grid corner (fixed)"], "unchanged": "safe zones, logo/watermark, risk strip position"},
+    "detail": {"evidence": "v1 iris, slides, dive showed stepped copies; index.html capped sub-samples at 8", "decision": "16-sample motion blur on the fast windows (cap raised to 16); outlined wide-type marquee keeps the kinetic-type vocabulary on the end card; red kept to dot/seat/CTA/X", "defects": ["stepped blur on fast moves (fixed)"], "unchanged": "palette, Readex Pro HEXP type system, official marks"}
+   }},
+  {"gate": "pre_delivery", "revision": "film v4 rendered (out/axipromo-a-1015_v4.mp4)", "inspected_source": "all 900 output frames in 15 per-second sheets + crops f150, f280, f470, f610, f850 of the v4 file",
+   "reviews": {
+    "timing": {"evidence": "energy check: cuts 1.39x, flashes 0.91x, shake 0.71x, movement 0.97x, motion 0.65x; holds f0-3 and f324-325 only", "decision": "accept: every hold now moves on the music and each scene change stays on the beat", "defects": [], "unchanged": "beat grid and event frames listed in the gate"},
+    "spatial": {"evidence": "sheets s02 (pumps), s07-s08 (wave), s09-s10 (offer line, grid), s12-s14 (end card)", "decision": "accept: nothing required leaves the frame; mandatory text stays inside safe zones", "defects": [], "unchanged": "composition per scene"},
+    "detail": {"evidence": "crops: all words correct, RTL order, Inter digits, dotted final ي, risk strip readable", "decision": "accept", "defects": [], "unchanged": "look and brand marks"}
+   }}
+ ]
+}

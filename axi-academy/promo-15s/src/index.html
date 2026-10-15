@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Axi Academy promo</title>
+<style>html,body{margin:0;background:#090A0D}canvas{display:block;width:1080px;height:1920px}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="assets/brand_paths.js"></script>
+<script src="lib.js"></script>
+<script src="film.js"></script>
+<script>
+(function () {
+  const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+  const sub = document.createElement('canvas'); sub.width = 1080; sub.height = 1920; const sx = sub.getContext('2d');
+  const faces = [];
+  for (let h = 0; h <= 100; h += 5) faces.push(new FontFace('RX' + h, 'url(fonts/ReadexPro-VF.ttf)', { weight: '160 700', variationSettings: "'HEXP' " + h }));
+  faces.push(new FontFace('IN', 'url(fonts/Inter-VF.ttf)', { weight: '100 900' }));
+  const ready = Promise.all(faces.map((f) => f.load().then((ff) => { document.fonts.add(ff); })));
+  const SHUT = 0.75 / 60;
+  window.hfPage = {
+    width: 1080, height: 1920, fps: 60, frames: 900, ready, audio: 'audio/mix.m4a',
+    render(t, f) {
+      const N = Math.max(1, Math.min(16, FILM.blur(t)));
+      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1;
+      if (N === 1) { FILM.draw(ctx, t); return; }
+      for (let i = 0; i < N; i++) {
+        const ts = t + ((i + 0.5) / N - 0.5) * SHUT;
+        sx.setTransform(1, 0, 0, 1, 0, 0); sx.globalAlpha = 1; FILM.draw(sx, ts);
+        ctx.globalAlpha = 1 / (i + 1); ctx.drawImage(sub, 0, 0);
+      }
+      ctx.globalAlpha = 1;
+    },
+  };
+})();
+</script>
+</body>
+</html>
