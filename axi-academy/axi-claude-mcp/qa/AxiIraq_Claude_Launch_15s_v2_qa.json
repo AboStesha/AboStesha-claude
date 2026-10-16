@@ -1,0 +1,31 @@
+{
+ "file": "AxiIraq_Claude_Launch_15s_v2.mp4",
+ "size_mb": 15.59,
+ "duration": 15.0,
+ "video": {
+  "codec_name": "h264",
+  "profile": "High",
+  "width": 1080,
+  "height": 1920,
+  "pix_fmt": "yuv420p",
+  "r_frame_rate": "60/1",
+  "avg_frame_rate": "60/1",
+  "nb_read_frames": "900",
+  "color_space": "bt709",
+  "color_primaries": "bt709",
+  "color_transfer": "bt709",
+  "color_range": "tv"
+ },
+ "audio": {
+  "codec_name": "aac",
+  "sample_rate": "48000",
+  "channels": 2,
+  "bit_rate": "322471",
+  "duration": "15.000000",
+  "lufs_i": -17.1,
+  "true_peak_dbtp": -1.6,
+  "lra": 4.4
+ },
+ "frames_decoded": 900,
+ "identical_runs": []
+}
