@@ -9,7 +9,7 @@ These are vertical ads for Reels, TikTok and Stories: 1080×1920 at 60 fps, 15 s
 | File | What it says |
 |---|---|
 | `AxiAcademy_Ad1_Benefits.mp4` | **«شنو راح تتعلّم؟»**: what a student gets. Hook «تريد تتعلّم **التداول؟** هاي خطّتك الكاملة», then the logo, then six module cards that tick on the beat, then «من الصفر إلى الاحتراف» with the red tip as the full stop, then the X sting and the call to action. |
-| `AxiAcademy_Ad2_Offer.mp4` | **The offer**: «إذا تعبت تدوّر… من وين تبدي تتعلّم؟» over an endless search. The red tip drops like a pin: «آكسي لگتلك **الحل**». Then «وسوّتلك أكاديمية تداول متكاملة» with the six modules, then **«بونص إيداع $50 لأول 10 خريجين»** with ten graduation caps lighting up and «تُطبّق الشروط والأحكام», then the X sting and the call to action. |
+| `AxiAcademy_Ad2_Offer.mp4` | **The offer**: «إذا تعبت تدوّر… من وين تبدي تتعلّم؟» over an endless search. The red tip drops like a pin: «آكسي لگتلك», then **«الحل»** slams in red on its own line above the nib. Then «وسوّتلك أكاديمية تداول متكاملة» with the six modules, then **«بونص إيداع $50 لأول 10 خريجين»** with ten graduation caps lighting up and «تُطبّق الشروط والأحكام», then the X sting and the call to action. |
 
 ## Content and compliance
 
@@ -43,6 +43,17 @@ The soundtrack is synthesised in `audio/score.py` on a 128 BPM grid of 8 bars ×
 | Ad 2 | Tense D-minor ticking and typing while the search floods. The pin drops into a bright D-major drop, then a half-time build into the **$50** hit with a cash ring, ten rising notes for the ten caps, and the X sting. |
 
 In the voice windows the music is lowered by 5 dB and dipped between 1 and 3 kHz. Each bed is mastered to −17 LUFS with a true peak at or below −1 dBTP. The beds are also delivered as `audio/bed_ad1.wav` and `audio/bed_ad2.wav`.
+
+## QA
+
+Both files are 1080×1920 at 60 fps with 900 frames. Video is H.264 High, yuv420p, BT.709, CRF 16. Audio is AAC, 48 kHz stereo, 320 kb/s.
+
+| File | Size | Loudness | True peak |
+|---|---|---|---|
+| `AxiAcademy_Ad1_Benefits.mp4` | 11.8 MB | −17.1 LUFS | −1.3 dBTP |
+| `AxiAcademy_Ad2_Offer.mp4` | 10.7 MB | −17.1 LUFS | −1.2 dBTP |
+
+Every frame was checked on per-second sheets: `qa/ad1_s0.jpg` … `qa/ad2_s14.jpg`, plus `qa/*_qa.json` and the last frames. The only still holds are the end cards. `stills/preview.jpg` shows five key frames from each ad.
 
 ## Files
 

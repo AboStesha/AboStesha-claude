@@ -162,6 +162,7 @@ def design_ad2():
         tt = Bt(19) + i * BEAT / 4
         mus.add(pluck(midi(scale[i]), 0.5, 1.1), tt, 0.24, -0.5 + i / 9); sfx.add(pop(1200 + 80 * i, 0.05), tt, 0.14)
     mus.add(stab([62, 66, 69, 74, 78]), Bt(19) + 10 * BEAT / 4, 0.3)
+    sfx.add(ting(5200, 0.9), Bt(21.6), 0.07)                                                     # glint on the $50
     sfx.add(whoosh(0.3, 300, 4000, 68, (0.85, 0.15)), Bt(24) - 0.3, 0.5); sfx.add(slam(), Bt(24) + 0.2, 0.9)  # X sting
     mus.add(stab([62, 66, 69, 74, 78]), Bt(25.6), 0.42); mus.add(sub_boom(55, 40, 2.0, 1.3), Bt(25.6), 0.5)
     pads(mus, 25.6, 32, [D, D], 0.36, 1700); drums(mus, 26, 32, 0.4, 0.09, 0.0, half=True); arp(mus, 26, 31, [D, Am], 0.05, 12)

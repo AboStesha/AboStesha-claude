@@ -41,7 +41,7 @@
       ar(ctx, '؟', x, y, { w: 700, size: q.s, alpha: a });
     });
     // search bar with typing
-    const bu = eo(t, 0.15, 0.45);
+    const bu = eo(t, -0.05, 0.45);
     ctx.save(); ctx.globalAlpha *= bu; ctx.translate(0, (1 - bu) * 40);
     glass(ctx, 80, 700, 920, 124, { r: 62, fill: 'rgba(28,30,34,0.96)', stroke: 'rgba(255,255,255,0.35)', lw: 3 });
     ring(ctx, 930, 755, 20, 5, C.white, 0.9); ctx.save(); ctx.strokeStyle = C.white; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(916, 770); ctx.lineTo(902, 786); ctx.stroke(); ctx.restore();
@@ -50,12 +50,24 @@
     if (Math.floor(t * 3.2) % 2 === 0 || n < chars.length) { ctx.fillStyle = C.white; ctx.fillRect(880 - tw - 10, 736, 4, 56); }
     ctx.restore();
     // headline (dialect)
-    arWords(ctx, 'إذا تعبت تدوّر', W / 2, 430, t, { t0: 0.0, st: 0.1, d: 0.45, w: 700, size: 108 });
+    arWords(ctx, 'إذا تعبت تدوّر', W / 2, 430, t, { t0: -0.12, st: 0.1, d: 0.45, w: 700, size: 108 });
     arWords(ctx, 'من وين تبدي تتعلّم؟', W / 2, 570, t, { t0: 0.95, st: 0.1, d: 0.45, w: 700, size: 92, alpha: 0.92 });
     ctx.restore();
     // the red tip drops like a pin onto the search bar
     const pin = T_TURN - 0.3, pd = clamp((t - pin) / 0.22);
     if (t > pin) { K.nibGroup(ctx, W / 2, lerp(-140, 650, pd * pd), 2.2, { nib: 0, bars: 0 }); }
+  }
+
+  // ---------- offer-scene accents ----------
+  const DUST = (() => { const r = rng(21), o = []; for (let i = 0; i < 42; i++) o.push({ x: r() * 2 - 1, y: r() * 1300, v: 14 + r() * 34, r: 1.4 + r() * 2.6, a: 0.12 + r() * 0.34, f: 0.5 + r() * 1.2, ph: r() * 6 }); return o; })();
+  function glint(ctx, x, y, t, t0, s = 64) {
+    const d = t - t0; if (d < 0 || d > 0.55) return; const u = d / 0.55, e = Math.sin(Math.PI * u), k = e * s;
+    ctx.save(); ctx.translate(x, y); ctx.rotate(u * 0.8); ctx.globalAlpha *= e;
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, k * 0.9); g.addColorStop(0, 'rgba(255,255,255,0.55)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, k * 0.9, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = C.white; ctx.beginPath();
+    for (let j = 0; j < 4; j++) { const a = (j * Math.PI) / 2; ctx.lineTo(Math.cos(a) * k, Math.sin(a) * k); ctx.lineTo(Math.cos(a + Math.PI / 4) * k * 0.14, Math.sin(a + Math.PI / 4) * k * 0.14); }
+    ctx.closePath(); ctx.fill(); ctx.restore();
   }
 
   // ---------- mortarboard ----------
@@ -82,34 +94,41 @@
       const sTop = lerp(top, 700, outN), sS = lerp(s, 0.8, outN);
       ripple(ctx, W / 2, 1000, t, land, { r0: 60, r1: 700, w: 6, n: 3, a: 0.5 });
       K.stacked(ctx, W / 2, sTop, sS, { axi: eo(t, T_ACAD + 0.05, 0.45), acad: eo(t, T_ACAD + 0.15, 0.45) });
-      // headline 2 (dialect): آكسي · لگتلك · الحل (red)
+      // headline 2 (dialect): «آكسي لگتلك» drops in word by word, then «الحل» (red) slams in alone on its own line
       const outH = ei(t, T_ACAD - 0.3, 0.3);
       if (outH < 1) {
-        ctx.save(); ctx.translate(0, -outH * 300); ctx.globalAlpha *= 1 - outH;
-        const words = [['آكسي', B(6.4), C.white], ['لگتلك', B(7), C.white], ['الحل', B(7.6), C.red]];
-        const sz = 118, ws = words.map(([w]) => arW(ctx, w, { w: 700, size: sz })), gap = arW(ctx, ' ', { w: 700, size: sz }), tot = ws.reduce((a, b) => a + b) + gap * 2;
+        const hh = shake(t, [B(7.6)], 10, 0.1, 6);
+        ctx.save(); ctx.translate(hh.x, hh.y - outH * 300); ctx.globalAlpha *= 1 - outH;
+        const words = [['آكسي', B(6.4)], ['لگتلك', B(7)]];
+        const sz = 112, ws = words.map(([w]) => arW(ctx, w, { w: 700, size: sz })), gap = arW(ctx, ' ', { w: 700, size: sz }) + 6, tot = ws[0] + ws[1] + gap;
         let xr = W / 2 + tot / 2;
-        words.forEach(([w, t0, col], i) => {
-          const u = sp(t, t0, 3, 0.45); if (u > 0) { ctx.save(); ctx.translate(xr - ws[i] / 2, 470); ctx.scale(lerp(1.6, 1, u), lerp(1.6, 1, u)); ar(ctx, w, 0, 0, { w: 700, size: sz, color: col, alpha: clamp(u * 3) }); ctx.restore(); }
+        words.forEach(([w, t0], i) => {
+          const u = sp(t, t0, 3, 0.5); if (u > 0) ar(ctx, w, xr - ws[i] / 2, 400 - (1 - u) * 110, { w: 700, size: sz, alpha: clamp(u * 3) });
           xr -= ws[i] + gap;
         });
-        sparks(ctx, W / 2 - tot / 2 + ws[2] / 2, 430, t, B(7.6) + 0.05, { color: C.red, n: 12, len: 140, r0: 70 });
+        const hs = 210, hy = 668, hc = hy - hs * 0.3, u = sp(t, B(7.6), 3, 0.45);
+        if (u > 0) { ctx.save(); ctx.translate(W / 2, hc); ctx.scale(lerp(1.4, 1, u), lerp(1.4, 1, u)); ar(ctx, 'الحل', 0, hy - hc, { w: 700, size: hs, color: C.red, alpha: clamp(u * 4) }); ctx.restore(); }
+        sparks(ctx, W / 2, hc, t, B(7.6) + 0.04, { color: C.red, n: 14, len: 150, r0: 215, w: 5 });
         ctx.restore();
       }
       // 3 · «وسوّتلك» / «أكاديمية تداول متكاملة»
       if (t > T_ACAD - 0.1) {
         arWords(ctx, 'وسوّتلك', W / 2, 300, t, { t0: T_ACAD, st: 0.08, d: 0.4, w: 400, size: 64, alpha: 0.92 });
         arWords(ctx, 'أكاديمية تداول متكاملة', W / 2, 440, t, { t0: T_ACAD + 0.25, st: 0.12, d: 0.45, w: 700, size: 80 });
-        // module chips fly in and snap into a 2 x 3 grid under the logo
+        // module chips rise into a 2 x 3 grid under the logo (RTL order), each red tick popping as its chip lands
         CHIPS.forEach((c, i) => {
-          const t0 = T_ACAD + 0.75 + i * 0.12, u = eo(t, t0, 0.55); if (u <= 0) return;
-          const col = i % 2, row = Math.floor(i / 2), w = 448, h = 84, x = col ? 92 : W - 92 - w, y = 1250 + row * 104;
-          const a = hash(i * 7.7) * Math.PI * 2, fx = Math.cos(a) * 700 * (1 - u), fy = Math.sin(a) * 500 * (1 - u);
-          ctx.save(); ctx.translate(fx, fy); ctx.globalAlpha *= clamp(u * 2);
-          glass(ctx, x, y, w, h, { r: 42, fill: 'rgba(20,22,26,0.8)', stroke: 'rgba(255,255,255,0.3)' });
-          disc(ctx, x + w - 42, y + h / 2, 17, C.red);
-          ctx.save(); ctx.strokeStyle = C.white; ctx.lineWidth = 4.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(x + w - 50, y + h / 2); ctx.lineTo(x + w - 44, y + h / 2 + 6); ctx.lineTo(x + w - 33, y + h / 2 - 7); ctx.stroke(); ctx.restore();
-          ar(ctx, c, x + w - 76, y + h / 2 + 13, { w: 600, size: c.length > 14 ? 30 : 36, align: 'right' });
+          const t0 = T_ACAD + 0.75 + i * 0.12, u = sp(t, t0, 2.4, 0.62); if (u <= 0) return;
+          const col = i % 2, row = Math.floor(i / 2), w = 430, h = 92, x = col ? 100 : W - 100 - w, y = 1232 + row * 112, cx = x + w / 2, cy = y + h / 2;
+          const k = lerp(0.86, 1, u);
+          ctx.save(); ctx.globalAlpha *= clamp((t - t0) / 0.1); ctx.translate(cx, cy + (1 - u) * 70); ctx.scale(k, k); ctx.translate(-cx, -cy);
+          glass(ctx, x, y, w, h, { r: 46, fill: 'rgba(20,22,26,0.8)', stroke: 'rgba(255,255,255,0.3)' });
+          const ck = sp(t, t0 + 0.14, 3.2, 0.42);
+          if (ck > 0) {
+            ctx.save(); ctx.translate(x + w - 46, cy); ctx.scale(ck, ck); disc(ctx, 0, 0, 19, C.red);
+            ctx.strokeStyle = C.white; ctx.lineWidth = 4.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(-8, 0); ctx.lineTo(-2, 6); ctx.lineTo(9, -7); ctx.stroke(); ctx.restore();
+          }
+          let fs = 36; while (fs > 26 && arW(ctx, c, { w: 600, size: fs }) > w - 104) fs -= 2;
+          ar(ctx, c, x + w - 82, cy + fs * 0.36, { w: 600, size: fs, align: 'right' });
           ctx.restore();
         });
       }
@@ -124,9 +143,15 @@
       K.bgDark(ctx);
       // soft vertical light from the top behind the number
       const beam = smooth(inv(T_OFFER, T_OFFER + 0.6, t)) * (1 - inv(T_X - 0.3, T_X, t));
-      if (beam > 0) { const g = ctx.createLinearGradient(0, 0, 0, 1300); g.addColorStop(0, 'rgba(255,255,255,0.16)'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.save(); ctx.globalAlpha = beam; ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(W / 2 - 160, 0); ctx.lineTo(W / 2 + 160, 0); ctx.lineTo(W / 2 + 420, 1300); ctx.lineTo(W / 2 - 420, 1300); ctx.closePath(); ctx.fill(); ctx.restore(); }
-      const out = ei(t, T_X - 0.28, 0.28), hs = shake(t, [B(17.5)], 12, 0.12, 5);
-      ctx.save(); ctx.translate(W / 2 + hs.x, 900 + hs.y); ctx.scale(1 + out * 0.5, 1 + out * 0.5); ctx.translate(-W / 2, -900); ctx.globalAlpha *= 1 - out;
+      if (beam > 0) {
+        const g = ctx.createLinearGradient(0, 0, 0, 1340); g.addColorStop(0, 'rgba(255,255,255,0.16)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.save(); ctx.globalAlpha = beam; ctx.translate(W / 2, -40); ctx.rotate(0.035 * Math.sin((t - T_OFFER) * 1.4)); ctx.fillStyle = g;
+        ctx.beginPath(); ctx.moveTo(-160, 0); ctx.lineTo(160, 0); ctx.lineTo(420, 1340); ctx.lineTo(-420, 1340); ctx.closePath(); ctx.fill(); ctx.restore();
+        // dust drifting up through the light
+        DUST.forEach((p) => { const y = (((p.y - (t - T_OFFER) * p.v) % 1300) + 1300) % 1300, x = W / 2 + p.x * (150 + 250 * (y / 1300)) + 14 * Math.sin(t * p.f + p.ph); disc(ctx, x, y, p.r, C.white, beam * p.a * (1 - y / 1300)); });
+      }
+      const out = ei(t, T_X - 0.28, 0.28), hs = shake(t, [B(17.5)], 12, 0.12, 5), push = (1 + 0.04 * smooth(inv(B(17.5), T_X, t))) * (1 + out * 0.5);
+      ctx.save(); ctx.translate(W / 2 + hs.x, 900 + hs.y); ctx.scale(push, push); ctx.translate(-W / 2, -900); ctx.globalAlpha *= 1 - out;
       arWords(ctx, 'بونص إيداع', W / 2, 430, t, { t0: T_OFFER + 0.05, st: 0.12, d: 0.45, w: 700, size: 96 });
       // hero $50: odometer 00 → 50, then lands with a flash
       const cnt = cio(t, B(16.6), B(1.6)) * 50, hu = eo(t, B(16.4), 0.4), landT = B(17.5);
@@ -134,6 +159,7 @@
         ctx.save(); ctx.globalAlpha *= hu; ctx.translate(W / 2, 790); const k = 1 + 0.08 * Math.exp(-Math.max(0, t - landT) / 0.1) * (t > landT ? 1 : 0); ctx.scale(k, k);
         const dw = K.wheels(ctx, cnt, 70, 0, { digits: 2, size: 330, w: 800 });
         lat(ctx, '$', 70 - dw / 2 - 62, -10, { w: 700, size: 190 });
+        glint(ctx, 70 + dw / 2 - 26, -330 * 0.7 + 26, t, B(21.6));
         ctx.restore();
         sparks(ctx, W / 2, 680, t, landT, { n: 14, len: 220, r0: 230, w: 5 });
       }
@@ -143,7 +169,8 @@
         const row = Math.floor(i / 5), col = i % 5, x = W / 2 + (2 - col) * 176, y = 1170 + row * 150;
         const ap = eo(t, B(18.4) + i * 0.03, 0.4); if (ap <= 0) continue;
         const lit = clamp((t - (B(19) + i * BEAT / 4)) / 0.08);
-        ctx.save(); ctx.globalAlpha *= ap; cap(ctx, x, y + (1 - ap) * 30, lit, 1.15 + 0.12 * Math.exp(-Math.max(0, t - (B(19) + i * BEAT / 4)) / 0.1) * (lit > 0 ? 1 : 0)); ctx.restore();
+        const wv = t - (B(22) + i * 0.04), bump = wv > 0 && wv < 0.36 ? Math.sin((Math.PI * wv) / 0.36) : 0;
+        ctx.save(); ctx.globalAlpha *= ap; cap(ctx, x, y + (1 - ap) * 30 - 14 * bump, lit, 1.15 + 0.12 * Math.exp(-Math.max(0, t - (B(19) + i * BEAT / 4)) / 0.1) * (lit > 0 ? 1 : 0) + 0.07 * bump); ctx.restore();
       }
       const tc = eo(t, B(20), 0.45); if (tc > 0) ar(ctx, 'تُطبّق الشروط والأحكام', W / 2, 1490, { w: 400, size: 34, alpha: 0.72 * tc });
       ctx.restore();
@@ -160,7 +187,7 @@
     if (uu > 0) {
       lat(ctx, 'axi.com/ar', W / 2, 1090 + (1 - uu) * 20, { w: 600, size: 46, color: C.ink, alpha: uu });
       K.mixLine(ctx, [{ t: 'بونص إيداع' }, { t: '$50', lat: true }, { t: 'لأول' }, { t: '10', lat: true }, { t: 'خريجين' }], W / 2, 1160, { w: 600, lw: 700, size: 36, gap: 11, color: C.ink, alpha: uu });
-      ar(ctx, 'تُطبّق الشروط والأحكام', W / 2, 1206, { w: 400, size: 26, color: C.graphite, alpha: uu * 0.85 });
+      ar(ctx, 'تُطبّق الشروط والأحكام', W / 2, 1208, { w: 500, size: 30, color: C.ink, alpha: uu * 0.78 });
     }
     K.riskStrip(ctx, t, T_END, 1250);
   }
