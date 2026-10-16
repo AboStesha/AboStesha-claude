@@ -1,10 +1,11 @@
 """QA for one delivered ident: streams, loudness, every frame on per-second sheets, held runs, and the last frame's
 logo compared with the official file placed at the final position.
-Usage: python3 qa.py video.mp4 ref/logo.webp outdir white|ink"""
+Usage: python3 qa.py video.mp4 ref/logo.webp outdir white|ink [first]
+With "first" (the outro), the logo check runs on the first frame, and the last frame is checked for black."""
 import json, subprocess, sys, os
 import numpy as np
 from PIL import Image
-vid, ref, out, mode = sys.argv[1:5]; os.makedirs(out, exist_ok=True); tag = os.path.splitext(os.path.basename(vid))[0]
+vid, ref, out, mode = sys.argv[1:5]; which = sys.argv[5] if len(sys.argv) > 5 else 'last'; os.makedirs(out, exist_ok=True); tag = os.path.splitext(os.path.basename(vid))[0]
 S, OX, OY, W, H = 0.34, 200.0, 910 - 1453 / 2 * 0.34, 1080, 1920
 def run(*a): return subprocess.run(a, capture_output=True, text=True)
 pr = json.loads(run('ffprobe', '-v', 'error', '-count_frames', '-show_streams', '-show_format', '-of', 'json', vid).stdout)
@@ -39,7 +40,12 @@ for s in range((n + 59) // 60):
 # the last frame's logo against the official file at the final placement
 last = subprocess.run(['ffmpeg', '-v', 'error', '-sseof', '-0.02', '-i', vid, '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], capture_output=True).stdout
 open(f'{out}/{tag}_last.png', 'wb').write(last)
-Lf = np.asarray(Image.open(f'{out}/{tag}_last.png').convert('L')).astype(np.float64) / 255
+first = subprocess.run(['ffmpeg', '-v', 'error', '-i', vid, '-frames:v', '1', '-f', 'image2pipe', '-vcodec', 'png', '-'], capture_output=True).stdout
+open(f'{out}/{tag}_first.png', 'wb').write(first)
+if which == 'first':
+    lastL = np.asarray(Image.open(f'{out}/{tag}_last.png').convert('L')).astype(np.float64)
+    rep['last_frame_black'] = {'mean_luma': round(float(lastL.mean()), 2), 'max_luma': int(lastL.max())}
+Lf = np.asarray(Image.open(f'{out}/{tag}_{which}.png').convert('L')).astype(np.float64) / 255
 A = Image.open(ref).convert('RGBA').split()[3].crop((0, 0, 2000, 1453))
 lw, lh = round(2000 * S), round(1453 * S); x0, y0 = round(OX), round(OY)
 R = np.asarray(A.resize((lw, lh), Image.LANCZOS)).astype(np.float64) / 255
@@ -48,6 +54,6 @@ bg = np.median(np.concatenate([Lf[y0 - 40:y0 - 10, x0:x0 + lw].ravel(), Lf[y0 + 
 fg = 1.0 if mode == 'white' else np.percentile(box, 0.5)
 cov = np.clip((box - bg) / (fg - bg), 0, 1)                    # estimated logo coverage per pixel
 mR, mF = R > 0.5, cov > 0.5
-rep['logo_vs_official'] = {'iou': round(float((mR & mF).sum() / (mR | mF).sum()), 4), 'mean_abs_coverage_diff': round(float(np.abs(cov - R).mean()), 4),
+rep['logo_check_frame'] = which; rep['logo_vs_official'] = {'iou': round(float((mR & mF).sum() / (mR | mF).sum()), 4), 'mean_abs_coverage_diff': round(float(np.abs(cov - R).mean()), 4),
                            'bg_level': round(float(bg), 3), 'logo_level': round(float(fg), 3)}
-json.dump(rep, open(f'{out}/{tag}_qa.json', 'w'), indent=1); print(json.dumps({k: rep[k] for k in ('size_mb', 'frames_decoded', 'identical_runs', 'logo_vs_official')}), rep['audio']['lufs_i'], rep['audio']['true_peak_dbtp'])
+json.dump(rep, open(f'{out}/{tag}_qa.json', 'w'), indent=1); print(json.dumps({k: rep[k] for k in ('size_mb', 'frames_decoded', 'identical_runs', 'logo_vs_official', 'last_frame_black') if k in rep}), rep['audio']['lufs_i'], rep['audio']['true_peak_dbtp'])

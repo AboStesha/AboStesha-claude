@@ -1,5 +1,5 @@
 """Sound design for the three 4-second Axi Iraq idents, synthesised and synced to each film's timeline.
-Usage: python ident.py a|b|c|all outdir   →  ident_a.wav … (48 kHz stereo, −14 LUFS, true peak ≤ −1 dBTP)"""
+Usage: python ident.py a|b|c|ao|all (or a comma list) outdir   →  ident_a.wav … (48 kHz stereo, −14 LUFS, true peak ≤ −1 dBTP)"""
 import sys, os
 import numpy as np
 import soundfile as sf
@@ -97,9 +97,35 @@ def cue_c():
     return mix_out(sfx, mus, 0.12, 1.2, 7)
 
 
+def cue_ao():
+    """Ascend outro: the intro's chord rings on, descending notes as «العراق» un-writes, the market falls back in, the
+    dot leaps down to the x, the stroke sucks in, then the ticks ride on and everything fades out with the picture."""
+    sfx, mus = sk.Bus(), sk.Bus(); rng = np.random.default_rng(5)
+    mus.add(pad([50, 54, 57, 64, 69], 1.5, 2400, 0.02, 1.1, 4, 1.0), 0.0, 0.55); mus.add(bell(midi(86), 1.6, 2.0), 0.04, 0.06)
+    for i, m in enumerate([76, 74, 71, 69]):                    # «العراق» un-writes, last part first
+        mus.add(mallet(midi(m), 1.2, 0.7), 0.26 + i * 0.07, 0.11, -0.4 + i * 0.27)
+    sfx.add(whoosh(0.62, 4200, 220, 21, (0.45, 0.55)), 0.42, 0.32)                     # the dark screen falls
+    sfx.add(whoosh(0.3, 500, 4800, 22, (0.75, 0.25)), 0.6, 0.26, -0.5)                 # the a slides away
+    sfx.add(whoosh(0.2, 900, 6500, 23, (0.75, 0.25)), 0.68, 0.2, -0.2); sfx.add(click(4200, 0.012, 24), 0.7, 0.2, -0.2)
+    sfx.add(zip_up(0.24, 25)[::-1].copy(), 0.76, 0.2, 0.4)                               # the i sinks
+    g = sine_glide(1500, 620, 0.3, 1.2) * env(int(0.3 * SR), 0.01, 0.1, 0.6, 0.12); sfx.add(g, 0.86, 0.12, 0.2)
+    sfx.add(blip(880, 0.07), 1.16, 0.14); sfx.add(click(5200, 0.012, 26), 1.16, 0.3); sfx.add(kick(0.25), 1.16, 0.3)
+    sfx.add(reverse_swell(0.28, 27, 1500), 1.08, 0.32); sfx.add(click(6500, 0.015, 28), 1.36, 0.32); sfx.add(sub_boom(60, 36, 0.9, 1.4), 1.36, 0.3)
+    tt = 1.36                                                   # the market rides on, then winds down
+    while tt < 3.4:
+        fade = 1.0 - max(0.0, (tt - 2.75) / 0.65)
+        sfx.add(click(2800 + rng.random() * 2600, 0.01, int(tt * 991)), tt, (0.1 + 0.08 * min(1, (tt - 1.36) / 0.6)) * fade, rng.uniform(-0.5, 0.5))
+        tt += 0.075 + 0.03 * max(0.0, (tt - 2.6) / 0.8)
+    mus.add(pad([50, 57, 62, 64, 66], 2.3, 1800, 0.6, 0.9, 31, 1.0) * np.linspace(1, 0.0, int(2.3 * SR))[:, None] ** 0.8, 1.3, 0.34)
+    for b in np.arange(1.36, 2.9, 60 / 128 / 2):               # a soft pulse under the ride
+        mus.add(sk.bass_pluck(midi(38), 0.14, 700), float(b), 0.2 * (1 - (b - 1.36) / 1.6))
+    sfx.add(sub_boom(52, 32, 1.4, 1.1), 2.78, 0.22); mus.add(ting(5200, 0.9), 3.24, 0.035, 0.3)
+    return mix_out(sfx, mus, 0.22)
+
+
 if __name__ == '__main__':
     which, out = sys.argv[1], sys.argv[2]; os.makedirs(out, exist_ok=True)
-    for k in ('abc' if which == 'all' else which):
-        x = {'a': cue_a, 'b': cue_b, 'c': cue_c}[k]()
+    for k in (['a', 'b', 'c', 'ao'] if which == 'all' else which.split(',')):
+        x = {'a': cue_a, 'b': cue_b, 'c': cue_c, 'ao': cue_ao}[k]()
         p = os.path.join(out, f'ident_{k}.wav'); sf.write(p, x.astype(np.float32), SR, subtype='PCM_24')
         print(f'{p}  {len(x) / SR:.2f}s  {sk.lufs(x):.2f} LUFS  TP {sk.true_peak(x):.2f} dBTP')

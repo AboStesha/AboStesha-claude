@@ -12,6 +12,20 @@ All three are vertical, 1080×1920 at 60 fps (240 frames), with motion graphics 
 
 `stills/preview.jpg` shows key moments of all three.
 
+### Outro for A
+
+`AxiIraq_Outro_A_Ascend.mp4` is «Ascend» in reverse, 4 s, 1080×1920 at 60 fps.
+- **Opening.** It opens on the intro's exact last frame: the white logo over the primary gradient, with a passing halo.
+- **The logo comes apart.**
+  - «العراق» un-writes left to right, last part first, and the dark trading screen falls over the gradient from the top.
+  - The a slides away, the arm of the x lifts off and the i sinks like a candle.
+  - The i's dot turns mint and leaps back onto the top of the x, where it becomes the live price head.
+  - The x deflates into one straight rising line.
+- **The market rides on.** The line comes alive and keeps rising through monochrome Japanese candles: hollow candles are up and filled candles are down. The price tag ticks up as the camera follows.
+- **Ending.** The chart fades to black, the mint head goes out last, and the final 0.35 s is pure black.
+
+The line keeps rising rather than reversing down, so the outro never ends on a falling market. `stills/preview_outro.jpg` shows key moments.
+
 ## Brand rules followed
 
 From `../BRAND.md`:
@@ -39,6 +53,7 @@ Every sound is synthesised in `audio/ident.py` and synced to each film's events,
 
 | Version | Sounds |
 |---|---|
+| A outro | The intro's chord rings on. Descending notes play as «العراق» un-writes, a falling whoosh brings in the dark screen, whooshes carry the parts away, and a descending blip leaps onto the x. The stroke sucks in, then market ticks ride on over a soft pulse and fade out with the picture. |
 | A | Price ticks that speed up and a filtered riser. A snap and sub hit as the line locks. A rising blip and a ting as the tick becomes the i's dot. A zip, snaps and an airy rise into a warm D-major chord, then four mallet notes for «العراق». |
 | B | A low drone and laser-like guide sweeps with ticks. Plotter-pen scratches. Fills that swell into a deep hit with a minor-7 chord, then a resolving C-major chord and a bell when «العراق» completes. |
 | C | Air before each drop. Heavy slab landings with marimba notes rising through D-major pentatonic, and lighter taps for «العراق». A rising press into a deep stamp with a chord bloom. |
@@ -56,6 +71,7 @@ QA was run on each delivered file. The checks:
 | A · Ascend | 4.2 MB | 240 · 60/1 | -14.3 LUFS, -1.4 dBTP | 0.990 | 3.92 s |
 | B · Blueprint | 3.1 MB | 240 · 60/1 | -14.1 LUFS, -1.4 dBTP | 0.991 | 3.32 s |
 | C · Drop | 2.9 MB | 240 · 60/1 | -14.1 LUFS, -1.1 dBTP | 0.991 | 3.47 s |
+| A · Outro | 4.4 MB | 240 · 60/1 | -14.2 LUFS, -1.4 dBTP | 0.991 (first frame) | black from 3.64 s (last frame luma 0) |
 
 The audio was measured, not listened to.
 
@@ -65,7 +81,7 @@ The audio was measured, not listened to.
 |---|---|
 | `assets/logo.js` | The traced logo: SVG path data per part in the 2000×1453 space of the official file. |
 | `src/kit.js` | Easing, brand colours, the logo as paths, outline tracing, backgrounds, grain and light effects. |
-| `src/film_a.js`, `film_b.js`, `film_c.js` | The three films. Each is `draw(ctx, t)` with motion-blur sub-samples. |
+| `src/film_a.js`, `film_b.js`, `film_c.js`, `film_ao.js` | The three films and A's outro (`?film=ao`). Each is `draw(ctx, t)` with motion-blur sub-samples. |
 | `src/index.html` | Renders a film: open `src/index.html?film=a&play` to preview live, or add `?t=2.5` for one frame. |
 | `tools/render.mjs` | Renders lossless PNG frames in parallel Chromium workers, encodes H.264 (BT.709, CRF 14) and muxes AAC 320k: `node tools/render.mjs --film a --audio audio/ident_a.wav --out out.mp4` |
 | `tools/still.mjs`, `tools/sheet.py`, `tools/qa.py` | Stills, contact sheets, and the QA script: streams, loudness, every frame on per-second sheets, and the last frame's logo against the official file. |
