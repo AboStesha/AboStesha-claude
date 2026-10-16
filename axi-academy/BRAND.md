@@ -43,9 +43,10 @@ Approved text/bg pairs: ink/off-white, ink/frosted-steel, white/eclipse, white/a
 - No kashida, no italic/oblique, no justify on short text, no synthetic weights. Diacritics only where needed for disambiguation.
 
 ## Logo & X mark
+- **Client rule (Oct 2026): never use the X mark on its own.** Wherever an X would close, sign or mark a video (closing sting, watermark, end mark, big decorative X), use the **Axi Iraq logo (axi / العراق)** instead. Official file: `brand/AxiIraq_Logo_Stacked_Ink.webp` (ink on white; recolor to white on dark or gradient). Videos already delivered stay as they are.
 - Arabic material → stacked **axi / العراق** (العراق in Rabar Bold, weight-matched). Never re-typeset; use the official file.
 - Logo colors: ink on light (default), white on dark/gradient/red. Red logo on white = logo-only cases.
-- Placement (RTL): logo **top-right** inside margin; closing element (X mark or CTA) **bottom-left**. Logo centered only on covers/openers.
+- Placement (RTL): logo **top-right** inside margin; closing element (logo or CTA) **bottom-left**. Logo centered only on covers/openers.
 - Clear space = X height (2 stroke units). Min 120 px digital.
 - **X mark**: never shown with the full logo in the same element — **except video: logo opens, X closes.** Never flipped, rotated in 2D, recolored, outlined, glowed, gap closed, or retyped.
 - 3D X (hero): matte white top face, depth ¼ unit, grey-green sides, single light top-right, soft shadow. No chrome/gold/reflections. Motion: slow rotation around ONE vertical axis, or drop-and-settle with slight bounce. Never bends/flips/morphs.
@@ -55,8 +56,8 @@ Approved text/bg pairs: ink/off-white, ink/frosted-steel, white/eclipse, white/a
 | Element | Rule |
 |---|---|
 | Open | Axi Iraq logo, **white on primary gradient, 1.5 s**, with identity sound |
-| Close | **X sting centered, 1 s**, then CTA screen with red pill button |
-| Watermark | White X, **60% opacity, 4% of frame width, bottom-left**, whole video |
+| Close | **Axi Iraq logo sting centered** (not the X), then CTA screen with red pill button |
+| Watermark | White **Axi Iraq logo** (not the X), **60% opacity, bottom-left**, at least the 120 px minimum logo width, whole video |
 | Subtitles | Rabar Regular, white, **4% of frame height**, max 2 lines, centered, on semi-transparent strip in the lower third, above platform UI |
 | Safe zones | **15% bottom, 10% top** free of important text |
 | Disclosure | Risk-warning strip in the **last 3 s** of every promotional video |
@@ -96,7 +97,7 @@ Standard risk strip (Arabic, pending legal):
 Risk line height ≥2% of frame.
 
 ## Pre-publish checklist
-Logo official + correct color + clear space · logo top-right, right size · X not with logo (except video open/close) · Rabar real weights, numbers in Latin font · red <10%, mint = gains only · name spelled «آكسي العراق» / «Axi Iraq» · no banned words, risk strip present · imagery per rules · Arabic proofread · format/size correct.
+Logo official + correct color + clear space · logo top-right, right size · Axi Iraq logo, never the X on its own · Rabar real weights, numbers in Latin font · red <10%, mint = gains only · name spelled «آكسي العراق» / «Axi Iraq» · no banned words, risk strip present · imagery per rules · Arabic proofread · format/size correct.
 
 ## Assets needed from client
 `AxiIraq_Logo_Stacked_[Ink|White|Red].svg` · `AxiIraq_X_[Red|Ink|White].svg` · `Rabar_016/017/018.ttf` · `AxiIraq_Ident_Open` / `AxiIraq_Sting_X` (MOV/MP4 + sound) · Asmaa studio photos/footage.
