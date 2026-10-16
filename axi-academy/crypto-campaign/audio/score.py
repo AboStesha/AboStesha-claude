@@ -232,6 +232,7 @@ def design_c3():
     for k, tt in enumerate(taps): sfx.add(tap(100 + k), tt, 0.42); sfx.add(click(2600, 0.012, 200 + k), tt + 0.004, 0.1)
     for tt in (B(7.6), B(34.2)): sfx.add(whoosh(0.4, 2500, 600, int(tt * 5), (0.3, 0.7)), tt, 0.12)
     for tt in (B(10.6), B(19), B(26.6), B(44.5)): sfx.add(whoosh(0.3, 800, 4500, int(tt * 3), (0.5, 0.5)), tt - 0.05, 0.1, -0.4)
+    sfx.add(whoosh(0.3, 4500, 800, int(B(17.5) * 3), (0.5, 0.5)), B(17.5) - 0.05, 0.08, 0.4)  # back to home
     sfx.add(chime(midi(84)), B(15.6), 0.08); sfx.add(pop(1200, 0.07), B(15.6) + 0.05, 0.12)
     # the market list scrolls
     for k in range(12): sfx.add(click(3600, 0.005, 300 + k), B(21) + k * 0.09, 0.04)

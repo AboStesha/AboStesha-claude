@@ -20,7 +20,7 @@
   ];
   const BTCP = CC.path(70, 31, 0.68);
   const T_TAPDEP = b(7), T_SHEET = b(7.6), T_TAPCARD = b(10), T_AMT = b(10.6), KEYS = [b(11.8), b(12.6), b(13.4)], T_CONT = b(15), T_DONE = b(15.6);
-  const T_MKT = b(19), T_SCROLL = b(21), T_TAPBTC = b(26), T_DET = b(26.6);
+  const T_BACK = b(17.5), T_MKT = b(19), T_SCROLL = b(21), T_TAPBTC = b(26), T_DET = b(26.6);
   const T_TAPBUY = b(33.6), T_BUYSHEET = b(34.2), T_TAPCONF = b(39.5), T_OK = b(41), T_WAL = b(44.5);
 
   function home(ctx, S, t, bal) {
@@ -154,39 +154,56 @@
     UI.tabBar(ctx, S, 2);
   }
 
-  // the phone's current screen, with RTL push transitions (new screens come in from the left)
+  // RTL push: the new screen slides in from the left over the old one, which drifts right and dims.
+  // Both stay opaque, so the phone's black glass never shows through mid-transition.
+  function edge(ctx, S) { const g = ctx.createLinearGradient(S.x + S.w, 0, S.x + S.w + 34, 0); g.addColorStop(0, 'rgba(9,10,13,0.16)'); g.addColorStop(1, 'rgba(9,10,13,0)'); ctx.fillStyle = g; ctx.fillRect(S.x + S.w, S.y, 34, S.h); }
+  function pushIn(ctx, S, e, oldFn, newFn) {
+    if (e < 1) { ctx.save(); ctx.translate(S.w * 0.3 * e, 0); oldFn(); ctx.fillStyle = rgba(INK, 0.2 * e); ctx.fillRect(S.x, S.y, S.w, S.h); ctx.restore(); }
+    ctx.save(); ctx.translate(-S.w * (1 - e), 0); newFn(); if (e < 1) edge(ctx, S); ctx.restore();
+  }
+  // back: the top screen leaves to the left and the one under it returns from the right
+  function popOut(ctx, S, e, oldFn, newFn) {
+    ctx.save(); ctx.translate(S.w * 0.3 * (1 - e), 0); newFn(); if (e < 1) { ctx.fillStyle = rgba(INK, 0.2 * (1 - e)); ctx.fillRect(S.x, S.y, S.w, S.h); } ctx.restore();
+    if (e < 1) { ctx.save(); ctx.translate(-S.w * e, 0); oldFn(); edge(ctx, S); ctx.restore(); }
+  }
+  // the phone's current screen
   function screen(ctx, S, t) {
     const push = (tA, d = 0.35) => cio(t, tA, d);
     if (t < T_AMT) {
-      const h = home(ctx, S, t, '$2,450.00'); const su = eo(t, T_SHEET, 0.45) * (1 - push(T_AMT - 0.05, 0.3));
-      fundSheet(ctx, S, t, su, t > T_TAPCARD ? 0 : -1);
+      home(ctx, S, t, '$2,450.00'); fundSheet(ctx, S, t, eo(t, T_SHEET, 0.45), t > T_TAPCARD ? 0 : -1);
       return;
     }
-    if (t < T_DONE + 0.9) {
+    if (t < T_BACK) {
       const n = KEYS.filter((k) => t > k).length, digits = '500'.slice(0, n), pk = KEYS.findIndex((k) => t > k - 0.05 && t < k + 0.12);
-      const e = push(T_AMT, 0.35); ctx.save(); ctx.translate(-S.w * (1 - e), 0);
-      amountScreen(ctx, S, t, digits, { pressed: pk >= 0 ? '500'[pk] : null, press: press(t, T_CONT), done: t > T_CONT });
-      ctx.restore();
-      if (t > T_AMT && e < 1) { ctx.save(); ctx.translate(S.w * e * 0.3, 0); ctx.globalAlpha *= 1 - e; home(ctx, S, t, '$2,450.00'); ctx.restore(); }
-      UI.toast(ctx, S.x + 24, S.y + 96, S.w - 48, 'تم الإيداع بنجاح', eo(t, T_DONE, 0.35) * (1 - ei(t, T_DONE + 0.75, 0.2)));
+      pushIn(ctx, S, push(T_AMT), () => { home(ctx, S, t, '$2,450.00'); fundSheet(ctx, S, t, 1, 0); },
+        () => amountScreen(ctx, S, t, digits, { pressed: pk >= 0 ? '500'[pk] : null, press: press(t, T_CONT), done: t > T_CONT }));
+      toast(ctx, S, t);
       return;
     }
-    if (t < T_MKT) { home(ctx, S, t, '$2,950.00'); return; }
+    if (t < T_MKT) {
+      popOut(ctx, S, push(T_BACK), () => { amountScreen(ctx, S, t, '500', { done: true }); toast(ctx, S, t); }, () => home(ctx, S, t, '$2,950.00'));
+      return;
+    }
     if (t < T_DET) {
-      const e = push(T_MKT, 0.35), sc = 560 * cio(t, T_SCROLL, 1.2) * (1 - cio(t, T_SCROLL + 1.5, 0.7));
-      ctx.save(); ctx.translate(-S.w * (1 - e), 0); markets(ctx, S, t, sc, smooth(inv(T_TAPBTC - 0.4, T_TAPBTC, t))); ctx.restore();
-      if (e < 1) { ctx.save(); ctx.globalAlpha *= 1 - e; home(ctx, S, t, '$2,950.00'); ctx.restore(); }
+      const sc = 560 * cio(t, T_SCROLL, 1.2) * (1 - cio(t, T_SCROLL + 1.5, 0.7));
+      pushIn(ctx, S, push(T_MKT), () => home(ctx, S, t, '$2,950.00'), () => markets(ctx, S, t, sc, smooth(inv(T_TAPBTC - 0.4, T_TAPBTC, t))));
       return;
     }
     if (t < T_OK) {
-      const e = push(T_DET, 0.35); ctx.save(); ctx.translate(-S.w * (1 - e), 0); detail(ctx, S, t, T_DET, { press: press(t, T_TAPBUY) }); ctx.restore();
+      pushIn(ctx, S, push(T_DET), () => markets(ctx, S, t, 0, 1), () => detail(ctx, S, t, T_DET, { press: press(t, T_TAPBUY) }));
       buySheet(ctx, S, t, eo(t, T_BUYSHEET, 0.45), { press: press(t, T_TAPCONF), loading: t > T_TAPCONF + 0.12, glow: smooth(inv(T_TAPCONF - 1.2, T_TAPCONF - 0.9, t)) });
       return;
     }
-    if (t < T_WAL) { done(ctx, S, t, T_OK); return; }
-    const e = push(T_WAL, 0.35); ctx.save(); ctx.translate(-S.w * (1 - e), 0); wallet(ctx, S, t, T_WAL); ctx.restore();
-    if (e < 1) { ctx.save(); ctx.globalAlpha *= 1 - e; done(ctx, S, t, T_OK); ctx.restore(); }
+    if (t < T_WAL) {
+      // the success screen fades up over the loading sheet
+      const f = eo(t, T_OK, 0.3);
+      if (f < 1) { detail(ctx, S, t, T_DET); buySheet(ctx, S, t, 1, { loading: true }); }
+      ctx.save(); ctx.globalAlpha *= f; done(ctx, S, t, T_OK); ctx.restore();
+      return;
+    }
+    pushIn(ctx, S, push(T_WAL), () => done(ctx, S, t, T_OK), () => wallet(ctx, S, t, T_WAL));
   }
+  function toast(ctx, S, t) { UI.toast(ctx, S.x + 24, S.y + 96, S.w - 48, 'تم الإيداع بنجاح', eo(t, T_DONE, 0.35) * (1 - ei(t, T_DONE + 0.75, 0.2))); }
   function press(t, tc) { const d = t - tc; return d > -0.04 && d < 0.18 ? Math.sin(Math.PI * clamp((d + 0.04) / 0.22)) : 0; }
   // where the finger taps (screen-space points computed from the layout of each screen)
   function taps(S) {

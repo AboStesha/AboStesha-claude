@@ -1,6 +1,7 @@
 // Frame-accurate render of one sting: N headless Chromium workers draw t = i/fps (lossless PNG frames),
 // pipe them into ffmpeg segments, then concat and mux the soundtrack.
 // Usage: node render.mjs --film a --audio sting_a.wav --out out.mp4 [--fps 60 --workers 4 --frames 300 --work dir --crf 12 --query mode=green]
+// --only 0,2 re-renders just those worker segments and reuses the others already in --work (same --frames and --workers).
 import { chromium } from '/opt/node-tools/node_modules/playwright-core/index.mjs';
 import { spawn, execFileSync } from 'child_process';
 import path from 'path'; import fs from 'fs';
@@ -29,7 +30,12 @@ async function worker(k, a, b) {
   ff.stdin.end(); await br.close(); return done;
 }
 const per = Math.ceil(frames / workers); const jobs = [];
-for (let k = 0; k < workers; k++) { const a = k * per, b = Math.min(frames, a + per); if (a < b) jobs.push(worker(k, a, b)); }
+const only = args.only ? new Set(String(args.only).split(',').map(Number)) : null;
+for (let k = 0; k < workers; k++) {
+  const a = k * per, b = Math.min(frames, a + per); if (a >= b) continue;
+  const seg = path.join(work, `seg_${k}.mp4`);
+  if (only && !only.has(k)) { if (!fs.existsSync(seg)) throw new Error('missing ' + seg); jobs.push(Promise.resolve(seg)); } else jobs.push(worker(k, a, b));
+}
 const segs = await Promise.all(jobs);
 const list = path.join(work, 'segments.txt'); fs.writeFileSync(list, segs.map((s) => `file '${s}'`).join('\n'));
 const out = args.out || path.join(work, 'final.mp4');
