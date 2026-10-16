@@ -310,7 +310,7 @@
   CC.endCard = (ctx, t, t0, o = {}) => {
     const cy = o.cy || 760, dark = !!o.dark, ink = dark ? '#FFFFFF' : CC.INK;
     K.logoReveal(ctx, W / 2, cy, o.lw || 520, t, t0, { color: ink });
-    if (o.cta) K.ctaPill(ctx, W / 2, cy + (o.pillDy || 330), t, t0 + 0.55, o.cta, { tb: o.tb, w: o.pw || 640, h: 124, size: 52 });
+    if (o.cta) K.ctaPill(ctx, W / 2, cy + (o.pillDy || 330), t, t0 + 0.55, o.cta, { tb: o.tb, beat: o.beat, w: o.pw || 640, h: 124, size: 52 });
     const su = eo(t, t0 + 0.85, 0.45);
     if (su > 0 && (o.sub || o.subParts)) { ctx.save(); ctx.globalAlpha *= su; ctx.translate(0, (1 - su) * 20); if (o.subParts) K.mixLine(ctx, o.subParts, W / 2, cy + 480, { size: 40, lsize: 38, w: 400, lw: 600, color: dark ? 'rgba(255,255,255,0.86)' : '#393B40', gap: 12 }); else ar(ctx, o.sub, W / 2, cy + 480, { w: 400, size: 40, color: dark ? 'rgba(255,255,255,0.86)' : '#393B40' }); ctx.restore(); }
     ar(ctx, 'تداول بميزتك', W / 2, cy + 590, { w: 600, size: 44, color: o.tagColor || (dark ? 'rgba(255,255,255,0.7)' : '#626466'), alpha: eo(t, t0 + 1.2, 0.5) });

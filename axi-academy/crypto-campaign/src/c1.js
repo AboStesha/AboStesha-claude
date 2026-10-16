@@ -134,7 +134,7 @@
     CC.darkStage(ctx, t, { dx: -(t - T_END) * 20 });
     ctx.save(); camera(ctx, t, T_END, 15, { s0: 1.04, s1: 1.0, drift: 3 });
     CC.coin(ctx, W / 2, 470, 120 * clamp(sp(t, T_END + 0.1, 2.2, 0.6), 0, 1.1), { a: (t - T_END) * 1.4 + 1, ticker: 'BTC', shadow: 0.4 });
-    CC.endCard(ctx, t, T_END + 0.15, { dark: true, cy: 870, cta: 'امتلك أول عملة لك', tb: b(28), subParts: [{ t: 'Buy Crypto', lat: true }, { t: '· في تطبيق آكسي' }] });
+    CC.endCard(ctx, t, T_END + 0.15, { dark: true, cy: 870, cta: 'امتلك أول عملة لك', tb: b(28), beat: b(1), subParts: [{ t: 'Buy Crypto', lat: true }, { t: '· في تطبيق آكسي' }] });
     ctx.restore();
   } };
 

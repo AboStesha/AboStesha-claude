@@ -167,7 +167,7 @@
   const S5 = { t0: T_END, t1: 45.01, render(ctx, t) {
     CC.darkStage(ctx, t, { dx: -t * 20 });
     ctx.save(); camera(ctx, t, T_END, 45, { s0: 1.04, s1: 1.0, drift: 3 });
-    CC.endCard(ctx, t, T_END + 0.2, { dark: true, cy: 860, cta: 'اختر طريقتك الآن', tb: b(69), subParts: [{ t: 'Buy Crypto · CFDs · Perpetuals', lat: true }] });
+    CC.endCard(ctx, t, T_END + 0.2, { dark: true, cy: 860, cta: 'اختر طريقتك الآن', tb: b(69), beat: b(1), subParts: [{ t: 'Buy Crypto · CFDs · Perpetuals', lat: true }] });
     ctx.restore();
   } };
 

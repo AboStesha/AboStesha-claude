@@ -229,7 +229,7 @@
   function ctaPill(ctx, cx, cy, t, t0, label, o = {}) {
     const u = sp(t, t0, 2.6, 0.5); if (u <= 0) return;
     const w = o.w || 560, h = o.h || 116;
-    const tb = o.tb == null ? t0 + 0.4 : o.tb, ph = t > tb ? (t - tb) % (2 * BEAT) : 99, pump = 1 + 0.035 * Math.exp(-ph / 0.12);
+    const bt = o.beat || BEAT, tb = o.tb == null ? t0 + 0.4 : o.tb, ph = t > tb ? (t - tb) % (2 * bt) : 99, pump = 1 + 0.035 * Math.exp(-ph / 0.12);   // pumps every 2 beats of o.beat
     ctx.save(); ctx.translate(cx, cy); ctx.scale(u * pump, u * pump);
     rr(ctx, -w / 2, -h / 2, w, h, h / 2); ctx.fillStyle = C.red; ctx.fill();
     ar(ctx, label, 0, h * 0.17, { w: 700, size: o.size || 52, color: C.white });

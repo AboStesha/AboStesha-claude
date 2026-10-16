@@ -302,7 +302,7 @@
     ctx.save(); camera(ctx, t, T_END, 30, { s0: 1.03, s1: 1.0, drift: 3 });
     const pu = sp(t, T_END + 0.1, 2.0, 0.7);
     if (pu > 0) { ctx.save(); ctx.translate(W / 2, 470 + (1 - clamp(pu)) * 200); ctx.scale(0.3, 0.3); ctx.translate(-PH.w / 2, -PH.h / 2); CC.phone(ctx, 0, 0, PH.w, PH.h, (c, s) => wallet(c, s, t, T_END - 2), { shadow: 0.25 }); ctx.restore(); }
-    CC.endCard(ctx, t, T_END + 0.2, { cy: 900, cta: 'حمّل تطبيق آكسي', tb: b(56), subParts: [{ t: 'متاح على' }, { t: 'iOS', lat: true }, { t: 'و' }, { t: 'Android', lat: true }] });
+    CC.endCard(ctx, t, T_END + 0.2, { cy: 900, cta: 'حمّل تطبيق آكسي', tb: b(56), beat: b(1), subParts: [{ t: 'متاح على' }, { t: 'iOS', lat: true }, { t: 'و' }, { t: 'Android', lat: true }] });
     ctx.restore();
   } };
 
