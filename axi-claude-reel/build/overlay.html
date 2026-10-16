@@ -1,0 +1,218 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../fonts/local.css">
+<style>
+:root{--red:#E4002B;--yellow:#FFD400;--ink:#111;--mint:#3BE8B0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden}
+body{font-family:'Alexandria',sans-serif;color:#fff}
+.layer{position:absolute;inset:0}
+.abs{position:absolute}
+.c{left:0;right:0;text-align:center}
+.ar{direction:rtl}
+.en{font-family:'Inter',sans-serif;direction:ltr}
+.hide{display:none}
+/* hook */
+#h1{top:250px;font-weight:800;font-size:62px;color:var(--red)}
+#h2{top:300px;font-weight:900;font-size:190px;color:var(--red);line-height:1.15}
+#h3{top:540px;font-weight:800;font-size:64px;color:var(--ink)}
+/* connect */
+#cTitle{top:210px;font-weight:800;font-size:56px;color:var(--ink)}
+.pill{position:absolute;top:330px;height:96px;border-radius:48px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);display:flex;align-items:center;gap:16px;padding:0 34px;font-family:'Inter';font-weight:800;font-size:44px;color:#111}
+#pAxi{left:90px}#pCl{right:90px}
+.chk{width:46px;height:46px;border-radius:50%;background:#18B26B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px}
+.star{color:#D97757;font-size:52px}
+#link{position:absolute;top:376px;left:440px;width:200px;height:4px;background:repeating-linear-gradient(90deg,#111 0 14px,transparent 14px 26px)}
+#dot{position:absolute;top:366px;width:24px;height:24px;border-radius:50%;background:var(--red);box-shadow:0 0 18px var(--red)}
+/* chat */
+#chat{left:0;top:0;width:1080px;height:1300px}
+#hdr{top:185px;left:60px;right:60px;height:70px;display:flex;justify-content:space-between;align-items:center}
+#hdr .l{font-family:'Inter';font-weight:800;font-size:34px;color:#eee;display:flex;gap:14px;align-items:center}
+#hdr .g{width:16px;height:16px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}
+#demo{font-weight:800;font-size:26px;color:#111;background:var(--yellow);border-radius:20px;padding:6px 18px}
+#view{top:275px;left:60px;width:960px;height:815px;overflow:hidden}
+#msgs{position:absolute;bottom:0;left:0;width:960px;display:flex;flex-direction:column;gap:22px}
+.m{overflow:hidden;transform-origin:50% 100%}
+.ub{align-self:flex-start;direction:rtl;background:#2B2B30;border-radius:32px;padding:22px 34px;font-weight:500;font-size:42px;color:#fff;max-width:820px}
+.tool{direction:ltr;font-family:'Inter';font-weight:600;font-size:28px;color:#9a9aa3;display:flex;gap:12px;align-items:center;padding-left:6px}
+.tool b{color:#D97757;font-weight:800}
+.card{background:#1B1B1F;border:2px solid #2E2E35;border-radius:30px;padding:28px 30px}
+.card h4{direction:rtl;font-weight:800;font-size:38px;color:#fff;margin-bottom:18px}
+.row{position:relative;direction:ltr;font-family:'Inter';font-weight:600;font-size:31px;color:#ddd;display:grid;grid-template-columns:190px 120px 120px 210px 1fr;padding:14px 8px;border-top:1px solid #2E2E35}
+.row.hd{color:#7d7d86;font-size:24px;border-top:none;padding-top:0}
+.pos{color:#33D17A}.neg{color:#FF5A6E}
+.hl{position:absolute;top:126px;height:300px;border:4px solid var(--yellow);border-radius:18px;box-shadow:0 0 24px rgba(255,212,0,.5)}
+.tot{direction:rtl;margin-top:14px;font-weight:800;font-size:34px;color:#fff}
+.ok{border-color:#1F8F5A;background:#132219}
+.ok .t{direction:rtl;font-weight:800;font-size:38px;color:#fff}
+#inp{top:1110px;left:60px;width:960px;height:150px;border-radius:38px;background:#1A1A1E;border:3px solid var(--red);box-shadow:0 0 50px rgba(228,0,43,.55),inset 0 0 20px rgba(228,0,43,.15)}
+#itxt{position:absolute;right:40px;top:44px;direction:rtl;font-weight:500;font-size:42px;color:#fff;white-space:nowrap}
+#itxt.ph{color:#6c6c75}
+#send{position:absolute;left:24px;top:33px;width:84px;height:84px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;font-family:'Inter';font-weight:800}
+#boom{top:520px;paint-order:stroke fill;font-weight:900;font-size:230px;color:var(--yellow);-webkit-text-stroke:6px #111;text-shadow:0 14px 0 #111}
+/* steps */
+#sLab{top:150px;font-family:'Inter';font-weight:800;font-size:58px;color:#fff}
+#sTit{top:232px;padding-left:0;font-weight:900;font-size:96px;color:var(--yellow);white-space:nowrap}
+#sChk{top:140px;left:660px;width:84px;height:84px;border-radius:50%;background:#18B26B;display:flex;align-items:center;justify-content:center;font-size:52px;color:#fff;box-shadow:0 0 60px rgba(24,178,107,.7)}
+/* help */
+#help{top:70px;font-weight:900;font-size:76px;color:var(--ink)}
+/* cta */
+#ctaIcon{top:70px;left:440px;width:200px;height:200px}
+#cta1{top:290px;font-weight:800;font-size:76px;color:var(--ink)}
+#cta2{top:370px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:26px}
+#cta2 .w{font-family:'Inter';font-weight:800;font-size:178px;color:var(--red);letter-spacing:-4px;display:flex}
+#cta2 .w span{display:inline-block}
+#arr{width:150px;height:150px;border-radius:34px;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:100px;font-family:'Inter';font-weight:800;box-shadow:0 12px 30px rgba(228,0,43,.35)}
+#cta3{top:600px;font-weight:800;font-size:58px;color:var(--ink)}
+#cta4{top:690px;font-weight:500;font-size:40px;color:#555}
+/* top layer */
+#logo{top:44px;left:44px;width:104px;height:104px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Inter';font-weight:800;font-size:40px;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#q{top:1330px;paint-order:stroke fill;font-weight:900;font-size:120px;color:#fff;-webkit-text-stroke:5px #111;text-shadow:0 10px 0 #111}
+#q span{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
+#disc{top:1858px;font-weight:500;font-size:28px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.9)}
+#subs{top:1290px;font-weight:800;font-size:54px;color:#fff;-webkit-text-stroke:3px #111;paint-order:stroke fill}
+</style></head>
+<body>
+<div id="under" class="layer">
+  <div id="h1" class="abs c ar"></div>
+  <div id="h2" class="abs c ar">يتداول</div>
+  <div id="h3" class="abs c ar">بس بالحچي</div>
+
+  <div id="cTitle" class="abs c ar">ربطت Claude ويه حساب Axi</div>
+  <div id="pAxi" class="pill"><span>axi MT5</span><span class="chk">✓</span></div>
+  <div id="pCl" class="pill"><span class="star">✳</span><span>Claude</span></div>
+  <div id="link"></div><div id="dot"></div>
+
+  <div id="chat" class="abs">
+    <div id="hdr" class="abs"><div class="l"><span class="g"></span>Claude · Axi MCP</div><div id="demo" class="ar">حساب تجريبي</div></div>
+    <div id="view" class="abs"><div id="msgs">
+      <div id="m1" class="m ub">شنو صفقاتي المفتوحة؟</div>
+      <div id="m2" class="m tool"><b>axi</b> get_positions <span class="dots"></span></div>
+      <div id="m3" class="m card" style="position:relative">
+        <h4>صفقاتك المفتوحة</h4>
+        <div class="row hd"><span>SYMBOL</span><span>SIDE</span><span>LOTS</span><span>P/L</span><span>STOP LOSS</span></div>
+        <div class="row"><span>XAUUSD</span><span>BUY</span><span>0.50</span><span class="pos">+$412.60</span><span>2,318.0</span></div>
+        <div class="row"><span>EURUSD</span><span>SELL</span><span>1.00</span><span class="neg">−$38.20</span><span>1.0950</span></div>
+        <div class="row"><span>US30</span><span>BUY</span><span>0.20</span><span class="pos">+$96.40</span><span>38,900</span></div>
+        <div class="tot">المجموع: <span class="en pos">+$470.80</span></div>
+        <div id="hlPL" class="hl" style="left:458px;width:220px"></div>
+        <div id="hlSL" class="hl" style="left:672px;width:240px"></div>
+      </div>
+      <div id="m4" class="m ub">سكّر صفقة الذهب</div>
+      <div id="m5" class="m tool"><b>axi</b> close_position XAUUSD <span class="dots"></span></div>
+      <div id="m6" class="m card ok"><div class="t">✓ تم إغلاق صفقة XAUUSD · الربح <span class="en pos">+$412.60</span></div></div>
+      <div id="m7" class="m tool"><b>axi</b> get_trade_history <span class="dots"></span></div>
+      <div id="m8" class="m card">
+        <h4>سجل التداول</h4>
+        <div class="row"><span>XAUUSD</span><span>BUY</span><span>0.50</span><span class="pos">+$412.60</span><span>اليوم</span></div>
+        <div class="row"><span>GBPUSD</span><span>SELL</span><span>0.80</span><span class="pos">+$121.30</span><span>أمس</span></div>
+        <div class="row"><span>NAS100</span><span>BUY</span><span>0.10</span><span class="neg">−$54.10</span><span>أمس</span></div>
+      </div>
+    </div></div>
+    <div id="inp" class="abs"><div id="send">↑</div><div id="itxt"></div></div>
+  </div>
+  <div id="boom" class="abs c ar">بوم!</div>
+
+  <div id="sLab" class="abs c en"></div>
+  <div id="sTit" class="abs c ar"></div>
+  <div id="sChk" class="abs">✓</div>
+
+  <div id="help" class="abs c ar">تحتاج مساعدة؟</div>
+
+  <img id="ctaIcon" class="abs" src="cta_icon.png">
+  <div id="cta1" class="abs c ar">اكتب كلمة</div>
+  <div id="cta2" class="abs"><div class="w"><span>C</span><span>L</span><span>A</span><span>U</span><span>D</span><span>E</span></div><div id="arr">↓</div></div>
+  <div id="cta3" class="abs c ar">بالتعليقات</div>
+  <div id="cta4" class="abs c ar">وأدزلك الدليل كامل ويا رابط الكونكتر</div>
+</div>
+
+<div id="top" class="layer">
+  <div id="logo" class="abs">axi</div>
+  <div id="q" class="abs c ar"><span>تريد تسويها؟</span></div>
+  <div id="disc" class="abs c ar">مو نصيحة مالية · تداول العقود بالرافعة بيه مخاطرة عالية</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eb=x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const show=(id,on)=>{$(id).style.display=on?'':'none'};
+const inR=(t,a,b)=>t>=a&&t<b;
+function popIn(id,t,t0,d=.32,from=.6){const p=P(t,t0,t0+d);const e=eb(p);const el=$(id);el.style.opacity=cl(p*3);el.style.transform=`scale(${from+(1-from)*e})`;}
+function slideUp(id,t,t0,d=.3,dy=60){const p=eo(P(t,t0,t0+d));const el=$(id);el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`;}
+function typeText(str,t,a,b){const n=[...str].length;const k=Math.round(n*P(t,a,b));return [...str].slice(0,k).join('');}
+function glitch(id,t,t0){const k=1-P(t,t0,t0+.45);const el=$(id);if(k<=0){el.style.textShadow='';return}
+  const r=Math.sin(t*97)*14*k, g=Math.cos(t*71)*10*k;
+  el.style.textShadow=`${r}px 0 rgba(255,0,60,.85), ${-r}px ${g/2}px rgba(0,230,255,.85)`;}
+function grow(id,t,t0,d=.28){ // reveal element pushing others
+  const el=$(id);const p=t>=t0;el.style.display=p?'':'none';if(!p)return;
+  const e=eo(P(t,t0,t0+d));el.style.maxHeight=(e*700)+'px';el.style.opacity=cl(e*1.5);el.style.transform=`scale(${.94+.06*e})`;}
+function dots(id,t,t0,t1){const el=document.querySelector('#'+id+' .dots');if(!el)return;el.textContent=t<t1?'·'.repeat(1+Math.floor(t*6)%3):'✓';}
+
+const STEPS=[[21.22,25.76,'Step 1','ادخل بوابة AXI'],[25.76,31.16,'Step 2','ضيفه بـ CLAUDE'],[31.16,34.34,'Step 3','سجّل دخول ووافق'],[34.34,36.20,'Step 4','صار CONNECTED']];
+
+window.render=function(t,layer){
+  $('under').style.display=layer==='under'?'':'none';
+  $('top').style.display=layer==='top'?'':'none';
+  if(layer==='top'){
+    show('logo',t>=4.26); if(t>=4.26) popIn('logo',t,4.30,.35,.3);
+    show('q',inR(t,19.94,21.22)); if(inR(t,19.94,21.22)) popIn('q',t,19.98,.3,.5);
+    show('disc',t>=38.5); if(t>=38.5) slideUp('disc',t,38.7,.4,20);
+    return;
+  }
+  // HOOK 0-4.26
+  const A=t<4.26; show('h1',A);show('h2',A&&t>=1.85);show('h3',A&&t>=2.35);
+  if(A){ $('h1').textContent=typeText('هسه Claude يگدر يدير حسابك…',t,.12,1.5);
+    if(t>=1.85){const p=P(t,1.85,2.2);$('h2').style.clipPath=`inset(0 0 0 ${(1-eo(p))*100}%)`;$('h2').style.transform=`scale(${1.25-.25*eb(p)})`;glitch('h2',t,1.85);}
+    if(t>=2.35) slideUp('h3',t,2.35,.3,40);}
+  // CONNECT 4.26-7.52
+  const B=inR(t,4.26,7.52); ['cTitle','pAxi','pCl','link','dot'].forEach(i=>show(i,B));
+  if(B){ slideUp('cTitle',t,4.30,.35,40);
+    const pa=eo(P(t,4.45,4.85)),pc=eo(P(t,4.6,5.0));
+    $('pAxi').style.transform=`translateX(${-(1-pa)*500}px)`;$('pAxi').style.opacity=pa;
+    $('pCl').style.transform=`translateX(${(1-pc)*500}px)`;$('pCl').style.opacity=pc;
+    const pl=P(t,5.0,5.3);$('link').style.clipPath=`inset(0 ${(1-pl)*100}% 0 0)`;
+    const pd=((t-5.3)/1.1)%1;$('dot').style.display=t>5.3?'':'none';$('dot').style.left=(440+pd*176)+'px';}
+  // CHAT 7.52-19.94
+  const C=inR(t,7.52,19.94); show('chat',C);
+  if(C){
+    slideUp('chat',t,7.52,.3,80);
+    grow('m1',t,9.90);grow('m2',t,10.05);dots('m2',t,10.05,10.80);grow('m3',t,10.84,.3);
+    grow('m4',t,15.55);grow('m5',t,15.62);dots('m5',t,15.62,15.86);grow('m6',t,15.86);
+    grow('m7',t,16.75);dots('m7',t,16.75,17.15);grow('m8',t,17.15,.35);
+    $('hlPL').style.opacity=inR(t,12.3,13.35)?eo(P(t,12.3,12.5)):0;
+    $('hlSL').style.opacity=inR(t,13.3,14.3)?eo(P(t,13.3,13.5)):0;
+    let txt='',ph=false;
+    if(t<9.9) txt=typeText('شنو صفقاتي المفتوحة؟',t,7.75,9.55);
+    else if(inR(t,14.3,15.55)) txt=typeText('سكّر صفقة الذهب',t,14.3,15.3);
+    if(!txt){txt='اسأل Claude عن حسابك…';ph=true}
+    const caret=(!ph&&Math.floor(t*3)%2===0)?'|':'';
+    $('itxt').textContent=txt+caret;$('itxt').className=ph?'ph':'';
+    const sp=(inR(t,9.82,10.0)||inR(t,15.47,15.65))?.85:1;$('send').style.transform=`scale(${sp})`;
+  }
+  show('boom',inR(t,10.84,11.95));
+  if(inR(t,10.84,11.95)){const p=P(t,10.84,11.1);$('boom').style.transform=`scale(${.3+.7*eb(p)}) rotate(${-8+3*Math.sin(t*20)*(1-p)}deg)`;$('boom').style.opacity=1-P(t,11.7,11.95);glitch('boom',t,10.84);}
+  // STEPS
+  let st=null;for(const s of STEPS) if(inR(t,s[0],s[1])) st=s;
+  show('sLab',!!st);show('sTit',!!st);show('sChk',st&&st[2]==='Step 4');
+  if(st){ $('sLab').textContent=st[2]; slideUp('sLab',t,st[0]+.02,.25,30);
+    $('sTit').textContent=st[3]; const p=P(t,st[0]+.1,st[0]+.42);
+    $('sTit').style.clipPath=`inset(0 0 0 ${(1-eo(p))*100}%)`; $('sTit').style.opacity=1; glitch('sTit',t,st[0]+.1);
+    if(st[2]==='Step 4'){popIn('sChk',t,34.55,.4,.2);}
+  }
+  // HELP 36.2-38.5
+  show('help',inR(t,36.2,38.5)); if(inR(t,36.2,38.5)) slideUp('help',t,36.25,.3,40);
+  // CTA 38.5+
+  const J=t>=38.5; ['ctaIcon','cta1','cta2','cta3','cta4'].forEach(i=>show(i,J));
+  if(J){ popIn('ctaIcon',t,38.55,.4,.2); $('ctaIcon').style.transform+=` rotate(${Math.sin(t*3)*4}deg)`;
+    slideUp('cta1',t,38.75,.3,40);
+    $('cta2').style.opacity=1;
+    [...document.querySelectorAll('#cta2 .w span')].forEach((s,i)=>{const p=P(t,38.95+i*.06,39.3+i*.06);s.style.transform=`translateY(${(1-eb(p))*-140}px)`;s.style.opacity=cl(p*3);});
+    const pa=P(t,39.4,39.75);$('arr').style.transform=`scale(${eb(pa)}) translateY(${Math.sin(t*6)*8}px)`;$('arr').style.opacity=cl(pa*3);
+    slideUp('cta3',t,39.6,.3,40);
+    show('cta4',t>=40.5); if(t>=40.5) slideUp('cta4',t,40.5,.3,30);
+  }
+};
+</script></body></html>
