@@ -1,6 +1,6 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<link rel="stylesheet" href="../fonts/local.css">
+<link rel="stylesheet" href="../fonts/local.css"><link rel="stylesheet" href="../fonts/serif_local.css">
 <style>
 :root{--red:#E4002B;--yellow:#FFD400;--ink:#111;--mint:#3BE8B0}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -57,7 +57,7 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
 /* help */
 #help{top:70px;font-weight:900;font-size:76px;color:var(--ink)}
 /* cta */
-#ctaIcon{top:70px;left:440px;width:200px;height:200px}
+#ctaIcon{top:80px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:40px}
 #cta1{top:290px;font-weight:800;font-size:76px;color:var(--ink)}
 #cta2{top:370px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:26px}
 #cta2 .w{font-family:'Inter';font-weight:800;font-size:178px;color:var(--red);letter-spacing:-4px;display:flex}
@@ -66,7 +66,7 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
 #cta3{top:600px;font-weight:800;font-size:58px;color:var(--ink)}
 #cta4{top:690px;font-weight:500;font-size:40px;color:#555}
 /* top layer */
-#logo{top:44px;left:44px;width:104px;height:104px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Inter';font-weight:800;font-size:40px;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#logo{top:44px;left:44px;width:108px;height:108px;border-radius:26px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 #q{top:1330px;paint-order:stroke fill;font-weight:900;font-size:120px;color:#fff;-webkit-text-stroke:5px #111;text-shadow:0 10px 0 #111}
 #q span{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
 #disc{top:1858px;font-weight:500;font-size:28px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.9)}
@@ -79,15 +79,15 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
   <div id="h3" class="abs c ar">بس بالحچي</div>
 
   <div id="cTitle" class="abs c ar">ربطت Claude ويه حساب Axi</div>
-  <div id="pAxi" class="pill"><span>axi MT5</span><span class="chk">✓</span></div>
-  <div id="pCl" class="pill"><span class="star">✳</span><span>Claude</span></div>
+  <div id="pAxi" class="pill"><img src="axi_icon.png" style="width:60px;height:60px;border-radius:15px;margin-left:-18px"><span>MT5</span><span class="chk">✓</span></div>
+  <div id="pCl" class="pill"><img src="claude_orange.png" style="width:56px;height:56px"><span style="font-family:'Source Serif 4';font-weight:600;font-size:50px;letter-spacing:-1px">Claude</span></div>
   <div id="link"></div><div id="dot"></div>
 
   <div id="chat" class="abs">
-    <div id="hdr" class="abs"><div class="l"><span class="g"></span>Claude · Axi MCP</div><div id="demo" class="ar">حساب تجريبي</div></div>
+    <div id="hdr" class="abs"><div class="l"><img src="claude_orange.png" style="width:40px;height:40px"><span style="font-family:'Source Serif 4';font-weight:600;font-size:38px">Claude</span><span style="color:#777">·</span><img src="axi_icon.png" style="width:38px;height:38px;border-radius:9px">MCP<span class="g"></span></div><div id="demo" class="ar">حساب تجريبي</div></div>
     <div id="view" class="abs"><div id="msgs">
       <div id="m1" class="m ub">شنو صفقاتي المفتوحة؟</div>
-      <div id="m2" class="m tool"><b>axi</b> get_positions <span class="dots"></span></div>
+      <div id="m2" class="m tool"><img src="axi_icon.png" style="width:32px;height:32px;border-radius:8px"> get_positions <span class="dots"></span></div>
       <div id="m3" class="m card" style="position:relative">
         <h4>صفقاتك المفتوحة</h4>
         <div class="row hd"><span>SYMBOL</span><span>SIDE</span><span>LOTS</span><span>P/L</span><span>STOP LOSS</span></div>
@@ -99,9 +99,9 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
         <div id="hlSL" class="hl" style="left:672px;width:240px"></div>
       </div>
       <div id="m4" class="m ub">سكّر صفقة الذهب</div>
-      <div id="m5" class="m tool"><b>axi</b> close_position XAUUSD <span class="dots"></span></div>
+      <div id="m5" class="m tool"><img src="axi_icon.png" style="width:32px;height:32px;border-radius:8px"> close_position XAUUSD <span class="dots"></span></div>
       <div id="m6" class="m card ok"><div class="t">✓ تم إغلاق صفقة XAUUSD · الربح <span class="en pos">+$412.60</span></div></div>
-      <div id="m7" class="m tool"><b>axi</b> get_trade_history <span class="dots"></span></div>
+      <div id="m7" class="m tool"><img src="axi_icon.png" style="width:32px;height:32px;border-radius:8px"> get_trade_history <span class="dots"></span></div>
       <div id="m8" class="m card">
         <h4>سجل التداول</h4>
         <div class="row"><span>XAUUSD</span><span>BUY</span><span>0.50</span><span class="pos">+$412.60</span><span>اليوم</span></div>
@@ -119,7 +119,7 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
 
   <div id="help" class="abs c ar">تحتاج مساعدة؟</div>
 
-  <img id="ctaIcon" class="abs" src="cta_icon.png">
+  <div id="ctaIcon" class="abs"><img src="axi_icon.png" style="width:170px;height:170px;border-radius:40px;box-shadow:0 10px 26px rgba(228,0,43,.3)"><img src="claude_tile.png" style="width:196px;height:196px;margin:-13px"></div>
   <div id="cta1" class="abs c ar">اكتب كلمة</div>
   <div id="cta2" class="abs"><div class="w"><span>C</span><span>L</span><span>A</span><span>U</span><span>D</span><span>E</span></div><div id="arr">↓</div></div>
   <div id="cta3" class="abs c ar">بالتعليقات</div>
@@ -127,7 +127,7 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
 </div>
 
 <div id="top" class="layer">
-  <div id="logo" class="abs">axi</div>
+  <img id="logo" class="abs" src="axi_icon.png">
   <div id="q" class="abs c ar"><span>تريد تسويها؟</span></div>
   <div id="disc" class="abs c ar">مو نصيحة مالية · تداول العقود بالرافعة بيه مخاطرة عالية</div>
 </div>

@@ -4,6 +4,7 @@ work = sys.argv[1]
 N = 1084
 SEG_STARTS = [0, 106, 188, 530, 644, 779, 858, 905, 962]
 BOOM = 271
+START = 106  # presenter enters at main 4.26s = 0:08 in the final cut
 
 def dec(path, fmt, w, h, ch):
     p = subprocess.Popen(['ffmpeg', '-v', 'error', '-i', path, '-f', 'rawvideo', '-pix_fmt', fmt, '-s', f'{w}x{h}', '-'],
@@ -61,6 +62,7 @@ def avatar_layer(f, frame, matte):
         if shift:
             rgb = np.roll(rgb, shift, 0); a = np.roll(a, shift, 0); a[:shift] = 0
         return rgb, a
+    if f < START: return None, None
     fr = cv2.resize(frame, (AW, AH), interpolation=cv2.INTER_AREA).astype(np.float32)
     mm = cv2.resize(matte, (AW, AH), interpolation=cv2.INTER_LINEAR).astype(np.float32) / 255
     rgb = np.zeros((H, W, 3), np.float32); ma = np.zeros((H, W), np.float32)
@@ -69,7 +71,7 @@ def avatar_layer(f, frame, matte):
     a = np.maximum(cardm, ma * above_card)
     # card entrance at start, and punch at BOOM
     sc = 1.0; dy = 0
-    if f < 10: dy = int((1 - eo(f / 10)) * 700)
+    if f < START + 10: dy = int((1 - eo((f - START) / 10)) * 700)
     if BOOM <= f < BOOM + 9: sc = 1 + 0.07 * (1 - eo((f - BOOM) / 9))
     if sc != 1 or dy:
         M = np.float32([[sc, 0, (1 - sc) * 540], [0, sc, (1 - sc) * 1650 + dy]])
@@ -88,7 +90,7 @@ for f in range(N):
     u = under().astype(np.float32)
     out = blend(b, u[..., :3], u[..., 3] / 255)
     rgb, a = avatar_layer(f, av(), mt())
-    out = blend(out, rgb, a)
+    if rgb is not None: out = blend(out, rgb, a)
     tp = top().astype(np.float32)
     out = blend(out, tp[..., :3], tp[..., 3] / 255)
     if BOOM <= f < BOOM + 8:
