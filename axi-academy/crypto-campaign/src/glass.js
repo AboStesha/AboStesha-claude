@@ -146,12 +146,14 @@
     glass(ctx, xc - sw / 2, -60, sw, H + 120, { tone: o.tone || 'light', r: 0, lift: 0.6, refract: 14, lw: 1.5 });
     ctx.restore();
   }
-  // the frame frosts over, the next one comes in behind the frost and clears
+  // the frame frosts over, the next one dissolves in under the frost and clears (no hard swap mid-cut)
   function frostCut(ctx, u, o = {}) {
     ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
-    const src = u < 0.5 ? BA : BB, k = u < 0.5 ? smooth(u * 2) : smooth((1 - u) * 2);
-    ctx.drawImage(src, 0, 0); snap(src, 10); ctx.globalAlpha = k; ctx.drawImage(FR, 0, 0, W, H);
-    ctx.globalAlpha = k * 0.18; ctx.fillStyle = o.tint || '#FFFFFF'; ctx.fillRect(0, 0, W, H); ctx.restore();
+    const fa = smooth(clamp(u * 2)), fb = smooth(clamp((1 - u) * 2)), mix = smooth(inv(0.3, 0.7, u));
+    ctx.drawImage(BA, 0, 0); snap(BA, 10); ctx.globalAlpha = fa; ctx.drawImage(FR, 0, 0, W, H);
+    bbx.save(); bbx.setTransform(1, 0, 0, 1, 0, 0); snap(BB, 10); bbx.globalAlpha = fb; bbx.drawImage(FR, 0, 0, W, H); bbx.restore();
+    ctx.globalAlpha = mix; ctx.drawImage(BB, 0, 0);
+    ctx.globalAlpha = lerp(fa, fb, mix) * 0.18; ctx.fillStyle = o.tint || '#FFFFFF'; ctx.fillRect(0, 0, W, H); ctx.restore();
   }
   // zoom through: the outgoing frame scales up and frosts, the incoming one settles from slightly larger
   function zoomCut(ctx, u, o = {}) {
