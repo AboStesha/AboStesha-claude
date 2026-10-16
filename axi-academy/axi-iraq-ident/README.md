@@ -1,0 +1,61 @@
+# Axi Iraq — 4-second logo ident (intro = outro), three styles
+
+These are three versions of one 4-second logo ident for **Axi Iraq**. Each one opens and closes a video.
+
+All three are vertical, 1080×1920 at 60 fps (240 frames), with motion graphics and sound effects and no voice. Each builds the official **axi / العراق** logo and holds the finished logo for about the last second.
+
+| File | Style | Idea | Final frame |
+|---|---|---|---|
+| `AxiIraq_Ident_A_Ascend.mp4` | **Ascend** — kinetic, market | A live price line rides up a dark trading screen with the camera on its head and a ticking price tag. It irons out into one straight rising line, the exact axis of the x, and inflates into the x's long stroke. The leading tick leaps up and becomes the dot of the i. The i rises under it like a candle, then the arm of the x and the a snap in. The market rises into the brand gradient and «العراق» writes in right to left. | White logo on the primary gradient (the brand's video-open spec) |
+| `AxiIraq_Ident_B_Blueprint.mp4` | **Blueprint** — precise, premium | Construction guides shoot across a black drafting grid: the baseline, the x-height, the a's circle and the 51.7° axis of the x. Plotter heads trace every outline, then each letter floods solid white and the guides retract. «العراق» is traced and filled right to left while the camera pulls back from the a to the full mark. | White logo on the tertiary dark gradient |
+| `AxiIraq_Ident_C_Drop.mp4` | **Drop** — tactile, 3D | Seen from above, the letters are thick matte slabs. They drop out of the camera onto a light tabletop in true perspective, one after another, each landing with a bounce, a sliding shadow and a nudge of the camera. «العراق» follows right to left. The slabs then press flat into the table like a stamp, and the logo is printed in ink. | Ink logo on the light gradient |
+
+`stills/preview.jpg` shows key moments of all three.
+
+## Brand rules followed
+
+From `../BRAND.md`:
+- **Logo.** Only the official Axi Iraq logo is used, never the X on its own (see the client rule there).
+- **Colours.**
+  - Gradients are vertical only.
+  - Red is used only as a tiny accent: B's angle arc and plotter node.
+  - A's rising chart uses mint, the brand's colour for gains.
+- **Numbers.** They use Inter.
+- **Placement.** The logo is centred, as on an opener.
+
+## The logo
+
+The logo was traced from the client's file, `ref/logo.webp`, which is `../brand/AxiIraq_Logo_Stacked_Ink.webp`, by `tools/vectorize.py` into nine separately animatable parts:
+- a,
+- the x's body and arm,
+- the i's stem and dot,
+- the four connected pieces of «العراق».
+
+The source file is itself an old polygon trace: the bowl of the a is made of straight facets, and there are small pixel notches. The tracer therefore applies a corner-preserving smoothing. Real corners, those that turn by more than 28°, stay sharp, and only the facets and jaggies are smoothed out.
+
+## Audio
+
+Every sound is synthesised in `audio/ident.py` and synced to each film's events, so there are no third-party licences. Each mix is mastered to −14 LUFS with a true peak at or below −1 dBTP.
+
+| Version | Sounds |
+|---|---|
+| A | Price ticks that speed up and a filtered riser. A snap and sub hit as the line locks. A rising blip and a ting as the tick becomes the i's dot. A zip, snaps and an airy rise into a warm D-major chord, then four mallet notes for «العراق». |
+| B | A low drone and laser-like guide sweeps with ticks. Plotter-pen scratches. Fills that swell into a deep hit with a minor-7 chord, then a resolving C-major chord and a bell when «العراق» completes. |
+| C | Air before each drop. Heavy slab landings with marimba notes rising through D-major pentatonic, and lighter taps for «العراق». A rising press into a deep stamp with a chord bloom. |
+
+## QA
+
+QA results are added together with the rendered files.
+
+## Files
+
+| Path | Contents |
+|---|---|
+| `assets/logo.js` | The traced logo: SVG path data per part in the 2000×1453 space of the official file. |
+| `src/kit.js` | Easing, brand colours, the logo as paths, outline tracing, backgrounds, grain and light effects. |
+| `src/film_a.js`, `film_b.js`, `film_c.js` | The three films. Each is `draw(ctx, t)` with motion-blur sub-samples. |
+| `src/index.html` | Renders a film: open `src/index.html?film=a&play` to preview live, or add `?t=2.5` for one frame. |
+| `tools/render.mjs` | Renders lossless PNG frames in parallel Chromium workers, encodes H.264 (BT.709, CRF 14) and muxes AAC 320k: `node tools/render.mjs --film a --audio audio/ident_a.wav --out out.mp4` |
+| `tools/still.mjs`, `tools/sheet.py`, `tools/qa.py` | Stills, contact sheets, and the QA script: streams, loudness, every frame on per-second sheets, and the last frame's logo against the official file. |
+| `tools/vectorize.py` | The tracer that produced `assets/logo.js`. |
+| `audio/ident.py`, `audio/synthkit.py` | The sound design and the shared synth kit. |
