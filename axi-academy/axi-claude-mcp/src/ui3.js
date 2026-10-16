@@ -63,7 +63,7 @@
     ctx.save();
     [0, 1, 2].forEach((i) => disc(ctx, x + 40 + i * 26, y + bar / 2, 8, 'rgba(20,20,19,0.18)'));
     rr(ctx, x + 132, y + 16, w - 172, bar - 32, (bar - 32) / 2); ctx.fillStyle = 'rgba(255,255,255,0.72)'; ctx.fill();
-    T(ctx, o.url || '', x + 162, y + bar / 2 + 9, { size: 24, color: GREY });
+    ctx.globalAlpha *= o.urlAlpha == null ? 1 : o.urlAlpha; T(ctx, o.url || '', x + 162, y + bar / 2 + 9, { size: 24, color: GREY });
     ctx.restore();
     return { x: x + 14, y: y + bar, w: w - 28, h: h - bar - 14 };
   };

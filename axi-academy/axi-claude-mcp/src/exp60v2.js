@@ -16,13 +16,14 @@
     { x: 45, y: -80, w: 100, h: 1300, c: '#F4B79C', a: 0.55, sp: 0.45, amp: 30, ph: 0 },
     { x: 1030, y: 200, w: 280, h: 1800, c: CL.blue, a: 0.6, sp: 0.35, amp: 40, ph: 2 },
   ];
-  // on the light steel stage: soft white light, with a warm (Claude) or cool (Axi) side glow
-  const lightP = (warm) => [
-    { x: 160, y: -200, w: 360, h: 2000, c: warm ? '#F2B9A0' : '#FFFFFF', a: warm ? 0.55 : 0.35, sp: 0.3, amp: 60, ph: 0 },
+  // on the light steel stage: soft white light, with a warm (Claude, w = 1) or cool (Axi, w = 0) side glow
+  const mixc = (a, b, u) => { const ca = [1, 3, 5].map((i) => parseInt(a.substr(i, 2), 16)), cb = [1, 3, 5].map((i) => parseInt(b.substr(i, 2), 16)); return `rgb(${ca.map((v, k) => Math.round(lerp(v, cb[k], u))).join(',')})`; };
+  const lightP = (w) => [
+    { x: 160, y: -200, w: 360, h: 2000, c: mixc('#FFFFFF', '#F2B9A0', w), a: lerp(0.35, 0.55, w), sp: 0.3, amp: 60, ph: 0 },
     { x: 930, y: -100, w: 300, h: 2000, c: '#FFFFFF', a: 0.3, sp: 0.25, amp: 70, ph: 2 },
-    { x: 560, y: 1200, w: 500, h: 900, c: warm ? '#E9A88C' : '#DDE5E8', a: 0.35, sp: 0.4, amp: 120, ph: 4 },
+    { x: 560, y: 1200, w: 500, h: 900, c: mixc('#DDE5E8', '#E9A88C', w), a: 0.35, sp: 0.4, amp: 120, ph: 4 },
   ];
-  const lightStage = (ctx, t, warm, o = {}) => stage(ctx, t, { grad: STEEL, pillars: lightP(warm), blend: 'source-over', soft: 20, dx: o.dx || 0 });
+  const lightStage = (ctx, t, warm, o = {}) => stage(ctx, t, { grad: STEEL, pillars: lightP(+warm), blend: 'source-over', soft: 20, dx: o.dx || 0 });
 
   // ---------------- 1 · hook ----------------
   const S0 = { t0: 0, t1: T_NEED, render(ctx, t) {
@@ -73,7 +74,7 @@
     } },
     { t0: s(0, 2.45), t1: s(1, 3.0), url: 'Axi · client portal', axi: true, draw: (ctx, t) => {
       const tab = t > s(0, 3.7) ? 2 : 0;
-      U3.axiSettings(ctx, RV, t, { tab, reveal: eo(t, s(0, 3.72), 0.4), tabHint: tab === 2 ? 0 : smooth(inv(s(0, 3.0), s(0, 3.3), t)), copied: t > s(1, 0.9) ? clamp(1 - smooth(inv(s(1, 2.4), s(1, 2.7), t))) : 0, connectPress: press(t, s(1, 2.6)), connectGlow: smooth(inv(s(1, 2.0), s(1, 2.3), t)) * (t < s(1, 2.7) ? 1 : 0) });
+      U3.axiSettings(ctx, RV, t, { tab, reveal: eo(t, s(0, 3.72), 0.4), tabHint: tab === 2 ? 0 : smooth(inv(s(0, 3.0), s(0, 3.3), t)), copied: eo(t, s(1, 0.9), 0.14) * clamp(1 - smooth(inv(s(1, 2.4), s(1, 2.7), t))), connectPress: press(t, s(1, 2.6)), connectGlow: smooth(inv(s(1, 2.0), s(1, 2.3), t)) * (t < s(1, 2.7) ? 1 : 0) });
     } },
     { t0: s(1, 3.0), t1: s(4, 4.8), url: 'claude.ai/customize/connectors', draw: (ctx, t) => {
       U3.claudeCustomize(ctx, RV, t, { tab: t > s(2, 0.75) ? 1 : 0, tabHint: t < s(2, 0.75) ? smooth(inv(s(2, 0.1), s(2, 0.4), t)) : 0, addPress: press(t, s(2, 2.0)), addGlow: smooth(inv(s(2, 1.3), s(2, 1.6), t)) * (t < s(2, 2.1) ? 1 : 0) });
@@ -84,7 +85,7 @@
       U3.addConnector2(ctx, RV, a2, t, { hiAuth: bump(t, s(4, 0.3), s(4, 1.7)), hiOauth: bump(t, s(4, 1.9), s(4, 3.3)), press: press(t, s(4, 4.35)), glow: smooth(inv(s(4, 3.7), s(4, 4.0), t)) * (t < s(4, 4.4) ? 1 : 0) });
     } },
     { t0: s(4, 4.8), t1: s(5, 1.8), url: 'claude.ai/customize/connectors', draw: (ctx, t) => {
-      U3.connector(ctx, RV, t, { state: t < s(5, 0.4) ? 'checking' : 'expired', press: press(t, s(5, 1.5)), glow: smooth(inv(s(5, 0.9), s(5, 1.2), t)) * (t < s(5, 1.55) ? 1 : 0) });
+      fadeStates(ctx, t, s(5, 0.32), { state: 'checking' }, { state: 'expired', press: press(t, s(5, 1.5)), glow: smooth(inv(s(5, 0.9), s(5, 1.2), t)) * (t < s(5, 1.55) ? 1 : 0) });
     } },
     { t0: s(5, 1.8), t1: s(5, 3.45), url: 'Axi · sign in', axi: true, draw: (ctx, t) => {
       const pw = '•'.repeat(U2.typed('xxxxxxxxxx', t, s(5, 2.15), 26).n);
@@ -94,9 +95,15 @@
       U3.axiConsent(ctx, RV, t, { scopes: (t - s(5, 3.6)) / 0.25, press: press(t, s(5, 6.05)), glow: smooth(inv(s(5, 5.3), s(5, 5.6), t)) * (t < s(5, 6.1) ? 1 : 0) });
     } },
     { t0: s(5, 6.6), t1: T_END + 1, url: 'claude.ai/customize/connectors', draw: (ctx, t) => {
-      U3.connector(ctx, RV, t, { state: 'connected', toast: eo(t, s(6, 0.2), 0.45), tools: eo(t, s(6, 1.1), 0.4), toolsT: (t - s(6, 1.1)) / 0.2 });
+      fadeStates(ctx, t, s(6, 0.0), { state: 'checking' }, { state: 'connected', toast: eo(t, s(6, 0.2), 0.45), tools: eo(t, s(6, 1.1), 0.4), toolsT: (t - s(6, 1.1)) / 0.2 });
     } },
   ];
+  // the connector page changing state: a short cross-fade from state a to state b starting at tc
+  function fadeStates(ctx, t, tc, a, b) {
+    const u = smooth(inv(tc, tc + 0.18, t));
+    if (u < 1) U3.connector(ctx, RV, t, a);
+    if (u > 0) { ctx.save(); ctx.globalAlpha *= u; U3.connector(ctx, RV, t, b); ctx.restore(); }
+  }
   function press(t, tc) { const d = t - tc; return d > -0.04 && d < 0.2 ? Math.sin(Math.PI * clamp((d + 0.04) / 0.24)) : 0; }
   function bump(t, a, b) { return smooth(inv(a, a + 0.3, t)) * (1 - smooth(inv(b - 0.3, b, t))); }
   const cur = (o, k) => o[k];
@@ -113,7 +120,8 @@
     [s(3, 0.1), ...map(P.cus.add)], [s(3, 0.25), ...map(P.d1.name)], [s(3, 0.3), ...map(P.d1.name), 1],
     [s(3, 1.3), ...map(P.d1.name)], [s(3, 1.55), ...map(P.d1.url)], [s(3, 1.6), ...map(P.d1.url), 1],
     [s(3, 2.9), ...map(P.d1.url)], [s(3, 3.45), ...map(P.d1.cont)], [s(3, 3.55), ...map(P.d1.cont), 1],
-    [s(4, 0.1), ...map(P.d1.cont)], [s(4, 0.45), ...map([P.d2.auth[0] + 30, P.d2.auth[1] + 6])],
+    [s(3, 3.85), ...map(P.d1.cont)], [s(3, 4.45), ...map([P.d2.auth[0] + 420, P.d2.auth[1] + 130])],
+    [s(4, 0.1), ...map([P.d2.auth[0] + 420, P.d2.auth[1] + 130])], [s(4, 0.45), ...map([P.d2.auth[0] + 30, P.d2.auth[1] + 6])],
     [s(4, 1.7), ...map([P.d2.auth[0] + 30, P.d2.auth[1] + 6])], [s(4, 2.1), ...map([P.d2.oauth[0] + 30, P.d2.oauth[1] + 6])], [s(4, 2.2), ...map([P.d2.oauth[0] + 30, P.d2.oauth[1] + 6]), 1],
     [s(4, 3.6), ...map([P.d2.oauth[0] + 30, P.d2.oauth[1] + 6])], [s(4, 4.25), ...map(P.d2.add)], [s(4, 4.35), ...map(P.d2.add), 1],
     [s(5, 0.6), ...map(P.d2.add)], [s(5, 1.4), ...map(P.con.reconnect)], [s(5, 1.5), ...map(P.con.reconnect), 1],
@@ -140,15 +148,19 @@
     mixLine(ctx, CAPS[i][1], W - 80 - nw - 30, 330, { size: 36, lsize: 34, w: 400, lw: 600, color: 'rgba(255,255,255,0.86)', align: 'right', gap: 10 });
     ctx.restore();
   }
+  // 0 on Axi pages, 1 on Claude pages, blended over 0.6 s around each page change
+  function warmth(t) { let w = PAGES[0].axi ? 0 : 1; for (let k = 1; k < PAGES.length; k++) w = lerp(w, PAGES[k].axi ? 0 : 1, smooth(inv(PAGES[k].t0 - 0.3, PAGES[k].t0 + 0.3, t))); return w; }
   const S2 = { t0: ST[0], t1: T_END, render(ctx, t) {
     const pg = PAGES.find((p) => t >= p.t0 && t < p.t1) || PAGES[PAGES.length - 1];
-    lightStage(ctx, t, !pg.axi, { dx: Math.sin(t * 0.2) * 40 });
+    lightStage(ctx, t, warmth(t), { dx: Math.sin(t * 0.2) * 40 });
     dust(ctx, t, { a: 0.25, dy: -t * 60 });
     header(ctx, t);
     snap(ctx.canvas);
     const wu = sp(t, ST[0] - 0.05, 2.2, 0.7);
     ctx.save(); ctx.globalAlpha *= clamp((t - ST[0] + 0.05) / 0.12); ctx.translate(0, (1 - clamp(wu, 0, 1.2)) * 120);
-    U3.win(ctx, WIN.x, WIN.y, WIN.w, WIN.h, { url: pg.url, glint: clamp((t - ST[0] - 0.2) / 0.8) });
+    // the address dips out and back in when the page (and its URL) changes
+    const uc = PAGES.reduce((m, p, k) => (k && p.url !== PAGES[k - 1].url ? Math.min(m, Math.abs(t - p.t0)) : m), 9), urlAlpha = smooth(inv(0.04, 0.16, uc));
+    U3.win(ctx, WIN.x, WIN.y, WIN.w, WIN.h, { url: pg.url, urlAlpha, glint: clamp((t - ST[0] - 0.2) / 0.8) });
     ctx.save(); ctx.beginPath(); ctx.roundRect(R.x, R.y, R.w, R.h, [6, 6, 24, 24]); ctx.clip(); ctx.translate(R.x, R.y); ctx.scale(KZ, KZ);
     PAGES.forEach((p) => { if (t < p.t0 - 0.01 || t >= p.t1) return; const a = smooth(inv(p.t0, p.t0 + 0.2, t)) * (1 - smooth(inv(p.t1 - 0.15, p.t1, t))); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; p.draw(ctx, t); ctx.restore(); });
     ctx.restore(); ctx.restore();
