@@ -14,8 +14,8 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
 .hide{display:none}
 /* hook */
 #h1{top:250px;font-weight:800;font-size:62px;color:var(--red)}
-#h2{top:300px;font-weight:900;font-size:190px;color:var(--red);line-height:1.15}
-#h3{top:540px;font-weight:800;font-size:64px;color:var(--ink)}
+#h2{top:335px;font-weight:900;font-size:190px;color:var(--red);line-height:1.15}
+#h3{top:585px;font-weight:800;font-size:64px;color:var(--ink)}
 /* connect */
 #cTitle{top:210px;font-weight:800;font-size:56px;color:var(--ink)}
 .pill{position:absolute;top:330px;height:96px;border-radius:48px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.12);display:flex;align-items:center;gap:16px;padding:0 34px;font-family:'Inter';font-weight:800;font-size:44px;color:#111}
@@ -75,10 +75,10 @@ body{font-family:'Alexandria',sans-serif;color:#fff}
 <body>
 <div id="under" class="layer">
   <div id="h1" class="abs c ar"></div>
-  <div id="h2" class="abs c ar">يتداول</div>
-  <div id="h3" class="abs c ar">بس بالحچي</div>
+  <div id="h2" class="abs c ar">التداول</div>
+  <div id="h3" class="abs c ar"></div>
 
-  <div id="cTitle" class="abs c ar">ربطت Claude ويه حساب Axi</div>
+  <div id="cTitle" class="abs c ar"></div>
   <div id="pAxi" class="pill"><img src="axi_icon.png" style="width:60px;height:60px;border-radius:15px;margin-left:-18px"><span>MT5</span><span class="chk">✓</span></div>
   <div id="pCl" class="pill"><img src="claude_orange.png" style="width:56px;height:56px"><span style="font-family:'Source Serif 4';font-weight:600;font-size:50px;letter-spacing:-1px">Claude</span></div>
   <div id="link"></div><div id="dot"></div>
@@ -149,6 +149,9 @@ function glitch(id,t,t0){const k=1-P(t,t0,t0+.45);const el=$(id);if(k<=0){el.sty
 function grow(id,t,t0,d=.28){ // reveal element pushing others
   const el=$(id);const p=t>=t0;el.style.display=p?'':'none';if(!p)return;
   const e=eo(P(t,t0,t0+d));el.style.maxHeight=(e*700)+'px';el.style.opacity=cl(e*1.5);el.style.transform=`scale(${.94+.06*e})`;}
+function words(id,t,list){const el=$(id);
+  if(!el.dataset.w){el.innerHTML=list.map(w=>`<span style="display:inline-block">${w[0]}</span>`).join(' ');el.dataset.w=1;}
+  [...el.children].forEach((sp,i)=>{const p=eo(P(t,list[i][1],list[i][1]+.18));sp.style.opacity=p;sp.style.transform=`translateY(${(1-p)*26}px) scale(${.9+.1*p})`;});}
 function dots(id,t,t0,t1){const el=document.querySelector('#'+id+' .dots');if(!el)return;el.textContent=t<t1?'·'.repeat(1+Math.floor(t*6)%3):'✓';}
 
 const STEPS=[[21.22,25.76,'Step 1','ادخل بوابة AXI'],[25.76,31.16,'Step 2','ضيفه بـ CLAUDE'],[31.16,34.34,'Step 3','سجّل دخول ووافق'],[34.34,36.20,'Step 4','صار CONNECTED']];
@@ -162,19 +165,19 @@ window.render=function(t,layer){
     show('disc',t>=38.5); if(t>=38.5) slideUp('disc',t,38.7,.4,20);
     return;
   }
-  // HOOK 0-4.26
-  const A=t<4.26; show('h1',A);show('h2',A&&t>=1.85);show('h3',A&&t>=2.35);
-  if(A){ $('h1').textContent=typeText('هسه Claude يگدر يدير حسابك…',t,.12,1.5);
-    if(t>=1.85){const p=P(t,1.85,2.2);$('h2').style.clipPath=`inset(0 0 0 ${(1-eo(p))*100}%)`;$('h2').style.transform=`scale(${1.25-.25*eb(p)})`;glitch('h2',t,1.85);}
-    if(t>=2.35) slideUp('h3',t,2.35,.3,40);}
+  // HOOK 0-4.26 (word-synced to the voiceover)
+  const A=t<4.26; show('h1',A);show('h2',A&&t>=1.82);show('h3',A&&t>=2.22);
+  if(A){ words('h1',t,[['هسه',0.0],['Claude',0.38],['يگدر',0.86],['يدير',1.28],['حساب',1.50]]);
+    if(t>=1.82){const p=P(t,1.82,2.12);$('h2').style.clipPath=`inset(0 0 0 ${(1-eo(p))*100}%)`;$('h2').style.transform=`scale(${1.25-.25*eb(p)})`;glitch('h2',t,1.82);}
+    words('h3',t,[['مالك…',2.22],['بس',2.70],['بالحچي!',3.26]]);}
   // CONNECT 4.26-7.52
   const B=inR(t,4.26,7.52); ['cTitle','pAxi','pCl','link','dot'].forEach(i=>show(i,B));
-  if(B){ slideUp('cTitle',t,4.30,.35,40);
-    const pa=eo(P(t,4.45,4.85)),pc=eo(P(t,4.6,5.0));
+  if(B){ words('cTitle',t,[['ربطت',4.26],['Claude',4.78],['ويه',5.28],['حساب',5.55],['Axi',6.04]]);
+    const pc=eo(P(t,4.78,5.12)),pa=eo(P(t,6.04,6.38));
     $('pAxi').style.transform=`translateX(${-(1-pa)*500}px)`;$('pAxi').style.opacity=pa;
     $('pCl').style.transform=`translateX(${(1-pc)*500}px)`;$('pCl').style.opacity=pc;
-    const pl=P(t,5.0,5.3);$('link').style.clipPath=`inset(0 ${(1-pl)*100}% 0 0)`;
-    const pd=((t-5.3)/1.1)%1;$('dot').style.display=t>5.3?'':'none';$('dot').style.left=(440+pd*176)+'px';}
+    const pl=P(t,6.45,6.8);$('link').style.clipPath=`inset(0 ${(1-pl)*100}% 0 0)`;
+    const pd=((t-6.8)/0.7)%1;$('dot').style.display=t>6.8?'':'none';$('dot').style.left=(440+pd*176)+'px';}
   // CHAT 7.52-19.94
   const C=inR(t,7.52,19.94); show('chat',C);
   if(C){
