@@ -58,7 +58,31 @@ Changes the client asked for:
 
 ### QA (v2)
 
-Final renders and QA are in progress.
+Both files are 1080×1920 at 60 fps, CFR. Video is H.264 High, yuv420p, BT.709, CRF 16. Audio is AAC, 48 kHz stereo, about 320 kb/s.
+
+| File | Size | Frames | Loudness | True peak |
+|---|---|---|---|---|
+| `AxiIraq_Claude_Launch_15s_v2.mp4` | 15.6 MB | 900 | −17.1 LUFS | −1.6 dBTP |
+| `AxiIraq_Claude_HowTo_60s_v2.mp4` | 35.4 MB | 3600 | −17.1 LUFS | −1.4 dBTP |
+
+- **Every frame** is on per-second sheets in `qa/` (`*_v2_s0.jpg` …), with `*_v2_qa.json` and the last frames.
+- **Stills before rendering.** Fixes from that pass:
+  - The hook, the «what you need» scene, the Claude switch and both end cards were centred.
+  - The capability cards got bigger data rows.
+  - The approval text no longer overlaps the Deny button.
+  - Two connector dialogs are no longer cut off at the bottom.
+- **15 s render, viewed in full.** Every frame was viewed and nothing needed changing.
+- **60 s render, viewed every other frame.** Fixes from that pass, then a re-render:
+  - At three page changes, the warm/cool light behind the window switched in one frame. It now blends.
+  - The address text doubled for a frame at page changes. It now dips out and back.
+  - «Copied» and «Connection issue» popped in. They now fade.
+  - After Accept, the page sat almost empty for two seconds. It now shows «Checking connection…» until the status turns Connected, as in Axi's walkthrough.
+  - After Continue, the cursor rested on the next dialog's Add button. It now moves aside.
+- **Final 60 s render, checked by diff.** It was compared frame by frame with the first render; only the fixed seconds changed (14, 16–17, 36–37, 42–44 s), and those were viewed again.
+- **Pops.** A one-frame jump detector finds only intended changes:
+  - 15 s: the CTA pumping on the beat (13.6 s, 14.5 s).
+  - 60 s: the URL field taking focus (25.0 s) and the paste (25.4 s).
+- **Not listened to.** The audio was measured only.
 
 ## v1 — first delivery
 
