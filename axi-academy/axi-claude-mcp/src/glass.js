@@ -61,6 +61,7 @@
     ivory: { fill: 'rgba(250,249,245,0.70)', rim: [1.0, 0.45], sheen: 0.34, shadow: 0.32, edge: 0.35 },    // Claude
     clay: { fill: 'rgba(217,119,87,0.26)', rim: [0.80, 0.18], sheen: 0.22, shadow: 0.36, edge: 0.22 },     // Claude terracotta glass
     red: { fill: 'rgba(228,0,46,0.34)', rim: [0.75, 0.18], sheen: 0.22, shadow: 0.36, edge: 0.2 },         // Axi red glass (small chips only)
+    white: { fill: 'rgba(255,255,255,0.56)', rim: [1.0, 0.6], sheen: 0.42, shadow: 0.20, edge: 0.65 },     // frosted white, for light scenes
   };
   // a glass panel: o.tone, r, ch + corner, alpha, lift (shadow depth), glint (0..1 sweep), refract (px), lw
   function glass(ctx, x, y, w, h, o = {}) {
@@ -235,5 +236,7 @@
     }
   }
 
-  G.GL = { AX, CL, rgba, mk, LO, PO, snap, shape, glass, TONE, stage, dust, candles, film, camera, swing, popWords, trackIn, lockup, CUTS, FR };
+  // Axi's primary gradient as used in its own campaign film (darker steel on top, near-white below; vertical)
+  const STEEL = [[0, '#5B727C'], [0.55, '#8FA2AA'], [1, '#EEF1F2']];
+  G.GL = { AX, CL, rgba, mk, LO, PO, snap, shape, glass, TONE, stage, dust, candles, film, camera, swing, popWords, trackIn, lockup, CUTS, FR, STEEL };
 })(window);

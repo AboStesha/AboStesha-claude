@@ -9,7 +9,16 @@ mastered to -17 LUFS (true peak <= -1.3 dBTP) to leave room for the voice and th
   exp60 — 60 s: the same palette, calmer; every on-screen action has its sound (typing, clicks, the paste, the
           dialog, the connection chime, the approval), the groove builds through the six steps and resolves on the CTA.
 
-Usage: python -I score.py ad15|exp60 out.wav
+  v2 (glassmorphism re-cut):
+  ad15v2  — 15 s: an airy build under the hook with three rising notes for the three glass steps, a drop on the first
+            glass slab, a switch-click and chime when Claude turns on, typing and a soft reveal for the assistant's
+            answer, a swish and three ticks per capability card (with the approval click and ding on card 04), a big
+            chord on the CTA.
+  exp60v2 — 60 s: follows Axi's own walkthrough; every click, keystroke, paste, dialog, the "expired" notice, the
+            consent and the "connected" toast has its sound; the groove eases off for the dialog choices and lifts
+            again for the connection, then resolves on the end card.
+
+Usage: python -I score.py ad15|exp60|ad15v2|exp60v2 out.wav
 """
 import os, sys
 import numpy as np
@@ -165,9 +174,129 @@ def design_exp60():
     sfx.add(bell(midi(88), 1.6, 2.0), Bt(120) + 0.02, 0.08); sfx.add(pop(900, 0.1), Bt(120) + 0.55, 0.28)
     return sfx, mus, VO60
 
+# ---------------------------------------------------------------- ad 15 v2
+# scene times from src/ad15v2.js: T1 = beat 6, T2 = beat 10, T3 = beat 14, T4 = beat 25; five capability cards from T3
+VO15V2 = [(0.25, 2.7), (2.95, 4.85), (5.0, 6.6), (6.8, 11.5), (11.9, 14.7)]
+def design_ad15v2():
+    sk.set_duration(15.0); sfx, mus = Bus(), Bus()
+    T1, T2, T3, T4 = Bt(6), Bt(10), Bt(14), Bt(25); DT = (T4 - T3) / 5
+    # 1 hook: air and a filtered pulse building into the first slab
+    pads(mus, 0, 6, PROG, 0.3, 1100); arp(mus, 0, 6, PROG, 0.075)
+    for k in range(8): mus.add(bass_pluck(midi(33), BEAT * 0.4, 380 + 90 * k), Bt(2 + k * 0.5), 0.2 + 0.02 * k)
+    for k in range(4): mus.add(hat(0.04, 70 + k), Bt(4 + k * 0.5 + 0.25), 0.06, 0.3)
+    sfx.add(whoosh(0.5, 500, 5500, 1, (0.55, 0.45)), 0.12, 0.2, -0.3)            # glass shard crossing
+    sfx.add(reverse_swell(0.6, 2, 2600), 0.32, 0.16); sfx.add(ting(3400, 1.0), 0.9, 0.05)   # «Claude» settles
+    sfx.add(zip_up(0.2, 3), 0.42, 0.08)                                            # orange underline
+    for k, tt in enumerate((0.55, 0.64, 0.86, 0.95, 1.04)): sfx.add(pop(900 + 70 * k, 0.07), tt, 0.11, (k % 2 - 0.5) * 0.4)
+    for k, m in enumerate((69, 72, 76)): mus.add(mallet(midi(m), 1.2, 1.2), 1.27 + 0.12 * k, 0.16)   # the three glass steps
+    sfx.add(blip(1760, 0.05), 1.68, 0.07)
+    sfx.add(whoosh(0.55, 400, 6000, 4, (0.5, 0.5)), 2.0, 0.18, 0.3)                # second shard
+    sfx.add(riser(1.0, 5), T1 - 1.0, 0.26); sfx.add(reverse_swell(0.3, 6, 1500), T1 - 0.3, 0.26)
+    # 2 the slab drops into Axi's light scene: impact, then Claude switches on
+    sfx.add(whoosh(0.42, 300, 5200, 7, (0.5, 0.5)), T1 - 0.21, 0.22)
+    sfx.add(sub_boom(58, 34, 1.4, 1.6), T1, 0.55); sfx.add(kick(0.35), T1, 0.5); mus.add(stab([57, 64, 69, 72]), T1, 0.4)
+    for k in range(4): sfx.add(pop(1000 + 60 * k, 0.06), T1 + 0.05 + 0.07 * k, 0.08)
+    sfx.add(zip_up(0.25, 8), T1 + 0.12, 0.1); sfx.add(pop(1200, 0.08), T1 + 0.38, 0.18)
+    sfx.add(click(2400, 0.02, 9), T1 + 0.87, 0.34); sfx.add(mouse(10), T1 + 0.86, 0.3)
+    sfx.add(chime(), T1 + 0.95, 0.1); sfx.add(sub_boom(70, 50, 0.6, 1.2), T1 + 0.95, 0.12)
+    drums(mus, 6, 9.5, 0.46, 0.09, 0.24); bassline(mus, 6, 9.5, ROOTS, 0.34); pads(mus, 6, 14, PROG, 0.28, 1700); arp(mus, 6, 14, PROG, 0.06)
+    # 3 zoom into the assistant
+    sfx.add(whoosh(0.4, 400, 5000, 11, (0.6, 0.4)), T2 - 0.2, 0.2); sfx.add(kick(0.3), T2, 0.42); sfx.add(sub_boom(62, 38, 0.9, 1.3), T2, 0.3)
+    drums(mus, 10, 25, 0.46, 0.095, 0.25); bassline(mus, 10, 25, ROOTS, 0.35)
+    for k in range(3): sfx.add(pop(950 + 80 * k, 0.07), T2 + 0.05 + 0.08 * k, 0.1)
+    for k in range(2): sfx.add(pop(1300 + 120 * k, 0.08), T2 + 0.28 + 0.1 * k, 0.15)
+    sfx.add(whoosh(0.35, 600, 4500, 12, (0.6, 0.4)), T2 + 0.2, 0.15, -0.2)
+    typing(sfx, T2 + 0.4, 24, 34, 0.065, 13); sfx.add(pop(1300, 0.07), T2 + 1.12, 0.18)
+    for k in range(3): sfx.add(blip(1400 + 150 * k, 0.04), T2 + 1.06 + 0.07 * k, 0.04)
+    for k in range(3): sfx.add(pop(1100 + 140 * k, 0.07), T2 + 1.25 + 0.12 * k, 0.15, (k - 1) * 0.3)
+    # 4 the five capability cards (clay slab in)
+    sfx.add(whoosh(0.42, 300, 5200, 14, (0.5, 0.5)), T3 - 0.21, 0.22); sfx.add(sub_boom(58, 34, 1.2, 1.5), T3, 0.42); mus.add(stab([53, 60, 65, 69]), T3, 0.34)
+    pads(mus, 14, 25, PROG, 0.27, 1900); arp(mus, 14, 25, PROG, 0.065)
+    for i in range(5):
+        t0 = T3 + i * DT
+        if i: sfx.add(whoosh(0.3, 500, 6000, 20 + i, (0.6, 0.4)), t0 - 0.12, 0.17, 0.35 * (1 if i % 2 else -1))
+        sfx.add(blip(1320 + 110 * i, 0.04), t0 + 0.02, 0.05)
+        for k in range(3): sfx.add(click(3000 + 400 * k, 0.008, 30 + 3 * i + k), t0 + 0.16 + 0.07 * k, 0.11, (k - 1) * 0.3)
+        if i == 3: sfx.add(mouse(40), t0 + 0.6, 0.45); sfx.add(chime(midi(84)), t0 + 0.68, 0.13); sfx.add(pop(1500, 0.07), t0 + 0.7, 0.14)
+    sfx.add(riser(0.9, 41), T4 - 0.9, 0.25); sfx.add(reverse_swell(0.3, 42, 1500), T4 - 0.3, 0.24)
+    # 5 CTA: the last slab, a big chord, Claude switches on again
+    sfx.add(whoosh(0.4, 300, 5200, 43, (0.5, 0.5)), T4 - 0.2, 0.2)
+    sfx.add(sub_boom(55, 34, 2.0, 1.4), T4, 0.52); sfx.add(kick(0.35), T4, 0.46)
+    mus.add(stab([57, 64, 69, 72, 76], 1.0), T4, 0.45); pads(mus, 25, 32, [[57, 64, 69, 72, 76]], 0.36, 2200)
+    drums(mus, 26, 31.5, 0.34, 0.08, 0.0, half=True); arp(mus, 26, 31.5, [[57, 64, 69, 72]], 0.05)
+    sfx.add(bell(midi(88), 1.6, 2.0), T4 + 0.02, 0.08); sfx.add(pop(1100, 0.08), T4 + 0.38, 0.16)
+    for k in range(3): sfx.add(pop(950 + 80 * k, 0.07), T4 + 0.55 + 0.07 * k, 0.1)
+    sfx.add(click(2400, 0.02, 44), T4 + 0.62, 0.28); sfx.add(chime(), T4 + 0.7, 0.07)
+    sfx.add(pop(900, 0.1), T4 + 0.85, 0.28); sfx.add(pop(1250, 0.07), T4 + 1.1, 0.14); sfx.add(ting(3000, 1.0), T4 + 1.45, 0.04)
+    return sfx, mus, VO15V2
+
+# ---------------------------------------------------------------- exp 60 v2
+# scene times from src/exp60v2.js: need at beat 8, steps 01–07 at beats 16, 30, 40, 50, 63, 77, 95, end card at beat 112
+VO60V2 = [(0.2, 3.6), (3.9, 7.3), (7.7, 13.0), (14.2, 18.4), (18.9, 23.1), (23.6, 28.6), (29.7, 35.4), (36.2, 44.2), (44.6, 51.8), (52.8, 59.2)]
+def design_exp60v2():
+    sk.set_duration(60.0); sfx, mus = Bus(), Bus()
+    ST = [Bt(b) for b in (16, 30, 40, 50, 63, 77, 95, 112)]; s = lambda i, x: ST[i] + x; T_NEED, T_END = Bt(8), ST[7]
+    def tap(t, seed, g=0.42): sfx.add(mouse(seed), t, g); sfx.add(click(2600, 0.012, seed + 500), t + 0.005, 0.12)
+    def page(t, seed): sfx.add(whoosh(0.28, 900, 4200, seed, (0.5, 0.5)), t - 0.06, 0.08, 0.2)
+    # 1 hook (dark): the two tiles meet
+    pads(mus, 0, 8, PROG, 0.28, 1200); arp(mus, 0, 8, PROG, 0.06)
+    sfx.add(whoosh(0.35, 600, 5000, 1, (0.6, 0.4)), 0.0, 0.16)
+    for k in range(3): sfx.add(pop(900 + 80 * k, 0.07), 0.05 + 0.09 * k, 0.12)
+    sfx.add(reverse_swell(0.4, 2, 2200), 0.2, 0.1)
+    sfx.add(whoosh(0.5, 300, 3500, 3, (0.7, 0.3)), 0.85, 0.16); sfx.add(kick(0.3), 1.0, 0.3); sfx.add(sub_boom(62, 40, 0.9, 1.3), 1.0, 0.25)
+    sfx.add(zip_up(0.3, 4), 1.1, 0.1); sfx.add(chime(), 1.5, 0.06)
+    # 2 what you need (slab)
+    sfx.add(riser(0.9, 5), T_NEED - 0.9, 0.18); sfx.add(whoosh(0.42, 300, 5200, 6, (0.5, 0.5)), T_NEED - 0.21, 0.2)
+    sfx.add(sub_boom(58, 34, 1.3, 1.5), T_NEED, 0.48); mus.add(stab([57, 64, 69, 72]), T_NEED, 0.38); sfx.add(kick(0.35), T_NEED, 0.42)
+    pads(mus, 8, 16, PROG, 0.26, 1500); arp(mus, 8, 16, PROG, 0.05); drums(mus, 8, 16, 0.3, 0.07, 0.0, half=True)
+    for k in range(3): sfx.add(pop(1000 + 70 * k, 0.07), T_NEED + 0.05 + 0.08 * k, 0.1)
+    for k, tt in enumerate((T_NEED + 0.35, T_NEED + 0.75)):
+        sfx.add(whoosh(0.3, 500, 4000, 7 + k, (0.6, 0.4)), tt - 0.05, 0.12, 0.4 * (1 if k else -1)); sfx.add(pop(1300, 0.07), tt + 0.3, 0.18); sfx.add(blip(1760, 0.05), tt + 0.36, 0.07)
+    # 3 the seven steps (frost): groove under the walkthrough, a swish per step, every action has its sound
+    sfx.add(whoosh(0.5, 2500, 500, 10, (0.4, 0.6)), ST[0] - 0.25, 0.16)
+    drums(mus, 16, 63, 0.36, 0.08, 0.18); bassline(mus, 16, 63, ROOTS, 0.28, 820); pads(mus, 16, 112, PROG, 0.24, 1700); arp(mus, 16, 63, PROG, 0.045)
+    drums(mus, 63, 77, 0.28, 0.07, 0.0, half=True); bassline(mus, 63, 77, ROOTS, 0.22, 650)        # dialog choices: ease off
+    drums(mus, 77, 112, 0.38, 0.085, 0.2); bassline(mus, 77, 112, ROOTS, 0.3, 880); arp(mus, 77, 112, PROG, 0.05)
+    for i in range(1, 7): sfx.add(whoosh(0.3, 500, 5000, 100 + i, (0.7, 0.3)), ST[i] - 0.2, 0.12, 0.3); sfx.add(blip(1320 + 80 * i, 0.04), ST[i] + 0.02, 0.05)
+    # 01 sign in → Settings → MCP Management
+    tap(s(0, 0.35), 11); typing(sfx, s(0, 0.45), 17, 26, 0.07, 12); tap(s(0, 1.55), 13); typing(sfx, s(0, 1.6), 10, 28, 0.07, 14)
+    tap(s(0, 2.3), 15); page(s(0, 2.45), 16); tap(s(0, 3.65), 17); sfx.add(pop(1100, 0.07), s(0, 3.72), 0.12)
+    # 02 copy the URL, Connect next to Claude
+    tap(s(1, 0.85), 18); sfx.add(pop(1500, 0.06), s(1, 0.9), 0.14); tap(s(1, 2.6), 19); page(s(1, 3.0), 20)
+    # 03 Customize → Connectors → Add
+    tap(s(2, 0.72), 21); sfx.add(pop(1000, 0.06), s(2, 0.78), 0.1); tap(s(2, 2.0), 22); sfx.add(whoosh(0.3, 3000, 600, 23, (0.3, 0.7)), s(2, 2.12), 0.12); sfx.add(pop(900, 0.09), s(2, 2.3), 0.16)
+    # 04 name, paste, Continue
+    tap(s(3, 0.3), 24); typing(sfx, s(3, 0.45), 7, 12, 0.08, 25); tap(s(3, 1.6), 26)
+    sfx.add(click(3200, 0.01, 27), s(3, 1.82), 0.16); sfx.add(click(3600, 0.01, 28), s(3, 1.92), 0.16); sfx.add(sk.plip(), s(3, 2.0), 0.12); sfx.add(zip_up(0.2, 29), s(3, 2.02), 0.08)
+    tap(s(3, 3.55), 30); sfx.add(whoosh(0.3, 3000, 600, 31, (0.3, 0.7)), s(3, 3.7), 0.1); sfx.add(pop(950, 0.08), s(3, 3.95), 0.14)
+    # 05 keep the suggested options, Add
+    sfx.add(ting(2600, 0.8), s(4, 0.35), 0.035); sfx.add(ting(2900, 0.8), s(4, 1.95), 0.035); tap(s(4, 2.2), 32)
+    tap(s(4, 4.35), 33); sfx.add(whoosh(0.35, 2500, 500, 34, (0.4, 0.6)), s(4, 4.45), 0.12); page(s(4, 4.8), 35)
+    # 06 "connection expired" → Reconnect → sign in → review the permissions → Accept
+    sfx.add(blip(880, 0.08), s(5, 0.4), 0.1); sfx.add(blip(660, 0.1), s(5, 0.5), 0.08)
+    tap(s(5, 1.5), 36); page(s(5, 1.8), 37); typing(sfx, s(5, 2.15), 10, 26, 0.07, 38); tap(s(5, 3.1), 39); page(s(5, 3.45), 40)
+    sfx.add(zip_up(0.25, 41), s(5, 3.62), 0.08)
+    for k in range(4): sfx.add(click(3000 + 300 * k, 0.008, 42 + k), s(5, 3.65) + 0.08 * k, 0.08)
+    tap(s(5, 6.05), 46); sfx.add(chime(midi(84)), s(5, 6.12), 0.12); page(s(5, 6.6), 47)
+    # 07 connected: the toast lands with the step change
+    mus.add(stab([57, 64, 69, 72]), ST[6], 0.3); sfx.add(kick(0.3), ST[6], 0.32)
+    sfx.add(chime(), s(6, 0.22), 0.13); sfx.add(sub_boom(62, 40, 1.0, 1.2), s(6, 0.22), 0.22); sfx.add(pop(1200, 0.08), s(6, 0.25), 0.14)
+    sfx.add(zip_up(0.3, 48), s(6, 1.1), 0.08)
+    for k in range(7): sfx.add(click(3400 + 120 * k, 0.006, 50 + k), s(6, 1.12) + 0.03 * k, 0.05)
+    # 4 end card (zoom)
+    sfx.add(riser(1.0, 60), T_END - 1.0, 0.22); sfx.add(whoosh(0.4, 400, 5000, 61, (0.6, 0.4)), T_END - 0.2, 0.18)
+    sfx.add(sub_boom(55, 34, 2.2, 1.4), T_END, 0.5); sfx.add(kick(0.35), T_END, 0.45)
+    mus.add(stab([57, 64, 69, 72, 76], 1.0), T_END, 0.42); pads(mus, 112, 128, [[57, 64, 69, 72, 76]], 0.34, 2200)
+    drums(mus, 113, 127, 0.32, 0.07, 0.0, half=True); arp(mus, 113, 127.5, [[57, 64, 69, 72]], 0.045)
+    sfx.add(bell(midi(88), 1.6, 2.0), T_END + 0.05, 0.07); sfx.add(pop(1100, 0.08), T_END + 0.55, 0.15)
+    sfx.add(click(2400, 0.02, 62), T_END + 1.02, 0.28); sfx.add(chime(), T_END + 1.1, 0.07)
+    for k in range(3): sfx.add(pop(950 + 80 * k, 0.07), T_END + 1.3 + 0.08 * k, 0.1)
+    sfx.add(pop(900, 0.1), T_END + 2.15, 0.26); sfx.add(pop(1250, 0.07), T_END + 2.55, 0.13); sfx.add(ting(3000, 1.0), T_END + 2.95, 0.04)
+    return sfx, mus, VO60V2
+
 if __name__ == '__main__':
     which, out = sys.argv[1], sys.argv[2]
-    sfx, mus, vo = {'ad15': design_ad15, 'exp60': design_exp60}[which]()
+    sfx, mus, vo = {'ad15': design_ad15, 'exp60': design_exp60, 'ad15v2': design_ad15v2, 'exp60v2': design_exp60v2}[which]()
     g, w = duck_env(vo, -5.0)
     M = mus.st(); vband = np.stack([bp(M[:, 0], 900, 3200), bp(M[:, 1], 900, 3200)], 1)
     M = (M - 0.45 * vband * w[:len(M), None]) * g[:len(M), None]
