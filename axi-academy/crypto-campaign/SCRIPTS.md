@@ -204,6 +204,8 @@ The presenter speaks to camera inside the glass window. Questions and answers ap
 
   Alternatively, use the MATTE as a track matte on the presenter clip.
 
+  For the fade-out (36.6–37.0 s), the green fades with the window. The MATTE's grey level and the CSV's `opacity` column carry the exact fade, so use either of them to fade the presenter.
+
   Answer stickers slightly overlap the window frame on purpose, so they sit on top of the presenter.
 
 ---
