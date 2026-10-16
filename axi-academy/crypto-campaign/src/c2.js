@@ -146,7 +146,7 @@
       CC.coin(ctx, CW / 2 - 140, 300, 90, { ticker: 'BTC', a: Math.sin(t * 1.5) * 0.5 }); CC.coin(ctx, CW / 2 + 140, 300, 90, { ticker: 'ETH', a: Math.sin(t * 1.5 + 1) * 0.5 });
       ctx.restore();
     }
-    CC.endCard(ctx, t, T_END + 0.25, { cy: 900, cta: 'افتح محفظة آكسي', tb: b(27), sub: 'اشترِ، بِع، واحفظ عملاتك في مكان واحد', tagColor: 'rgba(255,255,255,0.9)' });
+    CC.endCard(ctx, t, T_END + 0.25, { cy: 900, cta: 'افتح محفظة آكسي', tb: b(27), sub: 'اشترِ، بِع، واحفظ عملاتك في مكان واحد', tagColor: '#242528' });
     ctx.restore();
   } };
 

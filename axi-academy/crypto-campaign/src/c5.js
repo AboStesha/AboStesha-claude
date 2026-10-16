@@ -105,7 +105,7 @@
   const SB = { t0: T_END, t1: 40.01, render(ctx, t) {
     CC.steelStage(ctx, t, { dx: -t * 12 });
     ctx.save(); camera(ctx, t, T_END, 40, { s0: 1.03, s1: 1.0, drift: 3 });
-    CC.endCard(ctx, t, T_END + 0.15, { cy: 820, cta: 'اكتب سؤالك الآن', tb: b(63), subParts: [{ t: 'Buy Crypto', lat: true }, { t: '· شراء العملات الرقمية في آكسي' }], tagColor: 'rgba(255,255,255,0.9)' });
+    CC.endCard(ctx, t, T_END + 0.15, { cy: 820, cta: 'اكتب سؤالك الآن', tb: b(63), subParts: [{ t: 'Buy Crypto', lat: true }, { t: '· شراء العملات الرقمية في آكسي' }], tagColor: '#242528' });
     ctx.restore();
   } };
 
