@@ -1,6 +1,6 @@
 {
  "file": "AxiIraq_BuyCrypto_02_Wallet_20s.mp4",
- "size_mb": 14.01,
+ "size_mb": 14.0,
  "duration": 20.0,
  "video": {
   "codec_name": "h264",
@@ -29,7 +29,7 @@
  "frames_decoded": 1200,
  "identical_runs": [
   [
-   1192,
+   1191,
    1195
   ]
  ]

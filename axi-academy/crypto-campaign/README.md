@@ -59,7 +59,36 @@ For compositing video 5, there are also:
 
 ## QA
 
-See the QA section at the end of this file, added after the final renders.
+Every delivered file was checked after its final render.
+
+- **Streams:** 1080×1920 at a constant 60 fps; H.264 High, yuv420p, BT.709 (TV range); AAC stereo at 48 kHz, about 320 kb/s. The matte has no audio.
+- **Every frame:** each film was viewed frame by frame on per-second contact sheets (`qa/<file>_s<N>.jpg`, 60 frames each), with the last frame at full size (`qa/<file>_last.png`); streams and loudness are in `qa/<file>_qa.json`.
+- **Pops:** a frame-difference scan looked for one-frame jumps. The jumps left are intended: film 1's impact flash, its beat cut and the 199→200 count; film 3's keypad presses; and the CTA pill's pump on the beat.
+- **Loudness:** measured, not listened to.
+
+| Video | Length | Frames | Size | Loudness | True peak |
+|---|---|---|---|---|---|
+| 1 | 15 s | 900 | 11.8 MB | −17.1 LUFS | −1.7 dBTP |
+| 2 | 20 s | 1200 | 14.0 MB | −17.1 LUFS | −1.6 dBTP |
+| 3 | 30 s | 1800 | 18.8 MB | −17.1 LUFS | −1.5 dBTP |
+| 4 | 45 s | 2700 | 27.8 MB | −17.1 LUFS | −1.6 dBTP |
+| 5 | 40 s | 2400 | 17.0 MB | −17.0 LUFS | −1.6 dBTP |
+| 5 GREEN | 40 s | 2400 | 14.4 MB | −17.0 LUFS | −1.6 dBTP |
+| 5 MATTE | 40 s | 2400 | 0.3 MB | no audio | – |
+
+Fixed during QA, before delivery:
+
+- **The frost cut** swapped frames at its midpoint, which made a visible jump into the end card. It now dissolves through the frost. This affected films 2, 4 and 5.
+- **Film 3's screen transitions** let the phone's black glass show through, and three of them popped. Every push is now an opaque slide-over. The return to the home screen got its own back transition and whoosh.
+- **The «تداول بميزتك» tagline** on the light end cards of films 2 and 5 measured about 2:1 contrast. It is now carbon, about 7:1.
+- **The CTA pill's pulse** ran on the shared kit's 128 BPM, so it drifted off the music on every end card. It now pumps every two beats of each film's own tempo.
+
+**Video 5's compositing files** were checked against `AxiIraq_BuyCrypto_05_QA_window_track.csv` on 13 sample frames, including frames mid-move and in the fade-out:
+
+- **MATTE:** the white window matches the CSV rectangle to within 1 px. During the fade (36.6–37.0 s), its grey level follows the CSV `opacity`.
+- **GREEN:** the key inside the window reads RGB 0/175/63, which is #00B140 after video encoding (within 2 levels), whenever the window is fully visible.
+- **Length:** both files are 2400 frames, frame for frame with the preview film.
+- **Review:** GREEN was viewed on 2-second contact sheets (every other frame). MATTE was checked numerically: solid white inside the window on every frame until the fade, then black.
 
 ## Files
 
@@ -69,7 +98,9 @@ See the QA section at the end of this file, added after the final renders.
 | `src/c1.js` … `src/c5.js` | The five films, `draw(ctx, t)`, each on its own beat grid |
 | `src/kit.js`, `src/glass.js` | Shared kit and glass engine (from `../axi-claude-mcp/`): type, logo, frosted panels, stages, cuts |
 | `src/index.html` | Renders a film: `?film=c1` … `c5`, `?mode=green|matte` for film 5, `?t=` for one frame, `?play` to preview |
-| `tools/render.mjs` | Renders and encodes: `node tools/render.mjs --film c3 --frames 1800 --audio audio/bed_c3.wav --out out.mp4 --crf 16 [--query mode=green]` |
+| `tools/render.mjs` | Renders and encodes: `node tools/render.mjs --film c3 --frames 1800 --audio audio/bed_c3.wav --out out.mp4 --crf 16 [--query mode=green] [--only 3]`. `--only` re-renders just the listed worker segments and reuses the rest from `--work`. |
+| `qa/` | Per-second contact sheets, last frames and stream and loudness records for each delivered film |
+| `stills/preview.jpg` | Key frames of all five films |
 | `tools/still.mjs`, `tools/sheet.py`, `tools/qa.py`, `tools/track.mjs` | Stills, contact sheets, QA (streams, loudness, every frame on per-second sheets), the film 5 window track |
 | `audio/score.py`, `audio/synthkit.py` | Music and sound design: `python score.py c1…c5 out.wav` |
 | `SCRIPTS.md` | Campaign plan, research and sources, scripts, captions, presenter brief |
