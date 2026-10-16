@@ -2,13 +2,13 @@
 
 These are three versions of one 4-second logo ident for **Axi Iraq**. Each one opens and closes a video.
 
-All three are vertical, 1080×1920 at 60 fps (240 frames), with motion graphics and sound effects and no voice. Each builds the official **axi / العراق** logo and holds the finished logo for about the last second.
+All three are vertical, 1080×1920 at 60 fps (240 frames), with motion graphics and sound effects and no voice. Each builds the official **axi / العراق** logo by about 2.5–2.8 s and keeps it on screen to the end. A finishes with a slow push-in that lands exactly on the final placement.
 
 | File | Style | Idea | Final frame |
 |---|---|---|---|
 | `AxiIraq_Ident_A_Ascend.mp4` | **Ascend** — kinetic, market | A live price line rides up a dark trading screen with the camera on its head and a ticking price tag. It irons out into one straight rising line, the exact axis of the x, and inflates into the x's long stroke. The leading tick leaps up and becomes the dot of the i. The i rises under it like a candle, then the arm of the x and the a snap in. The market rises into the brand gradient and «العراق» writes in right to left. | White logo on the primary gradient (the brand's video-open spec) |
 | `AxiIraq_Ident_B_Blueprint.mp4` | **Blueprint** — precise, premium | Construction guides shoot across a black drafting grid: the baseline, the x-height, the a's circle and the 51.7° axis of the x. Plotter heads trace every outline, then each letter floods solid white and the guides retract. «العراق» is traced and filled right to left while the camera pulls back from the a to the full mark. | White logo on the tertiary dark gradient |
-| `AxiIraq_Ident_C_Drop.mp4` | **Drop** — tactile, 3D | Seen from above, the letters are thick matte slabs. They drop out of the camera onto a light tabletop in true perspective, one after another, each landing with a bounce, a sliding shadow and a nudge of the camera. «العراق» follows right to left. The slabs then press flat into the table like a stamp, and the logo is printed in ink. | Ink logo on the light gradient |
+| `AxiIraq_Ident_C_Drop.mp4` | **Drop** — tactile, 3D | Seen from above, the letters are thick matte slabs. They drop out of the camera onto a light tabletop in true perspective, one after another, each landing with a bounce, a sliding shadow and a nudge of the camera. «العراق» taps in right to left; the camera sits to the right while the pieces land, so a falling piece never hides one already down, then it dollies back to centre. The slabs then press flat into the table like a stamp, and the logo is printed in ink. | Ink logo on the light gradient |
 
 `stills/preview.jpg` shows key moments of all three.
 
@@ -45,7 +45,19 @@ Every sound is synthesised in `audio/ident.py` and synced to each film's events,
 
 ## QA
 
-QA results are added together with the rendered files.
+QA was run on each delivered file. The checks:
+- **Streams** with `ffprobe`. Video is H.264 High, 1080×1920, yuv420p, BT.709, CFR. Audio is AAC 48 kHz stereo at 320 kb/s.
+- **Loudness** with `ffmpeg ebur128`.
+- **Every frame** on per-second sheets in `qa/*_sheet_s0…s3.jpg`; all were viewed.
+- **Last frame vs the official logo.** The logo in the last frame is compared with the official file placed at the final position. The IoU of the logo shapes is in the table, and the full results are in `qa/*_qa.json`.
+
+| File | Size | Frames · fps | Loudness | Logo IoU vs official | Final hold from |
+|---|---|---|---|---|---|
+| A · Ascend | 4.2 MB | 240 · 60/1 | -14.3 LUFS, -1.4 dBTP | 0.990 | 3.92 s |
+| B · Blueprint | 3.1 MB | 240 · 60/1 | -14.1 LUFS, -1.4 dBTP | 0.991 | 3.32 s |
+| C · Drop | 2.9 MB | 240 · 60/1 | -14.1 LUFS, -1.1 dBTP | 0.991 | 3.47 s |
+
+The audio was measured, not listened to.
 
 ## Files
 

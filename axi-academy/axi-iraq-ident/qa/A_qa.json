@@ -1,0 +1,42 @@
+{
+ "file": "AxiIraq_Ident_a.mp4",
+ "size_mb": 4.23,
+ "duration": 4.0,
+ "video": {
+  "codec_name": "h264",
+  "profile": "High",
+  "width": 1080,
+  "height": 1920,
+  "pix_fmt": "yuv420p",
+  "r_frame_rate": "60/1",
+  "avg_frame_rate": "60/1",
+  "nb_read_frames": "240",
+  "color_space": "bt709",
+  "color_primaries": "bt709",
+  "color_transfer": "bt709",
+  "color_range": "tv"
+ },
+ "audio": {
+  "codec_name": "aac",
+  "sample_rate": "48000",
+  "channels": 2,
+  "bit_rate": "304078",
+  "duration": "4.000000",
+  "lufs_i": -14.3,
+  "true_peak_dbtp": -1.4,
+  "lra": 0.1
+ },
+ "frames_decoded": 240,
+ "identical_runs": [
+  [
+   235,
+   239
+  ]
+ ],
+ "logo_vs_official": {
+  "iou": 0.9903,
+  "mean_abs_coverage_diff": 0.0074,
+  "bg_level": 0.553,
+  "logo_level": 1.0
+ }
+}

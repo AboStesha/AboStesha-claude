@@ -10,7 +10,7 @@
   // drop schedule: release time, fall duration, start height (× F)
   const DROP = {
     x_body: [-0.06, 0.34, 0.6], a: [0.16, 0.34, 0.6], i_stem: [0.34, 0.32, 0.58], x_arm: [0.5, 0.3, 0.56], i_dot: [0.68, 0.27, 0.5],
-    ar_alef1: [1.0, 0.24, 0.36], ar_lam_ain_ra: [1.08, 0.25, 0.36], ar_alef2: [1.16, 0.24, 0.36], ar_qaf: [1.24, 0.25, 0.36],
+    ar_alef1: [1.0, 0.16, 0.1], ar_lam_ain_ra: [1.08, 0.16, 0.1], ar_alef2: [1.16, 0.16, 0.1], ar_qaf: [1.24, 0.16, 0.1],
   };
   const LAND = Object.fromEntries(Object.entries(DROP).map(([k, v]) => [k, v[0] + v[1]]));
   const T_PRESS = 2.12, T_STAMP = 2.46;
@@ -24,7 +24,9 @@
   const lift = (t) => 18 * Math.sin(Math.PI * clamp((t - T_PRESS) / (T_STAMP - T_PRESS))) * (t < T_STAMP ? 1 : 0);
 
   // vanishing point = the camera's position over the table; it drifts, so the sides move in true perspective
-  const vp = (t) => [lerp(470, W / 2, cio(t, 0.0, 2.4)), lerp(1180, 910, cio(t, 0.0, 2.4))];
+  // it sits to the right while the pieces land (right to left), so a falling piece always grows away from the ones
+  // already down, then dollies back to centre before the press
+  const vp = (t) => [lerp(960, W / 2, cio(t, 1.45, 0.95)), lerp(1200, 910, cio(t, 0.0, 2.4))];
   const kz = (h) => F / Math.max(1, F - h);
 
   function partShade(k, V) {

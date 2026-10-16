@@ -87,7 +87,7 @@ def cue_c():
         sfx.add(whoosh(0.26, 500, 2600, 90 + i, (0.85, 0.15)), tl - 0.26, 0.16 * w, -0.3 + 0.15 * i)
         sfx.add(thock(110, 56, 0.5, 900, 1.0 + 0.6 * w, 100 + i), tl, 0.5 * w, -0.3 + 0.15 * i)
         sfx.add(click(3000, 0.01, 110 + i), tl + 0.06, 0.08 * w); mus.add(mallet(midi(m), 1.5, 0.9), tl, 0.13)
-    for i, (tl, m) in enumerate([(1.24, 76), (1.33, 78), (1.4, 81), (1.49, 83)]):    # «العراق» right to left
+    for i, (tl, m) in enumerate([(1.16, 76), (1.24, 78), (1.32, 81), (1.4, 83)]):    # «العراق» right to left
         sfx.add(whoosh(0.18, 700, 3200, 120 + i, (0.85, 0.15)), tl - 0.18, 0.08, 0.35 - i * 0.23)
         sfx.add(thock(170, 90, 0.3, 1400, 0.9, 130 + i), tl, 0.26, 0.35 - i * 0.23); mus.add(mallet(midi(m), 1.2, 0.7), tl, 0.09, 0.35 - i * 0.23)
     sfx.add(reverse_swell(0.34, 140, 900), 2.12, 0.22)                                 # the press, then the stamp
