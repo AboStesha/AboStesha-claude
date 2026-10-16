@@ -1,8 +1,8 @@
 """Music + SFX for the Axi × Claude launch videos (128 bpm grid), synthesised and frame-synced to the films.
 
 The client records the voice-over from VO_SCRIPT.md. The music is pre-ducked (-5 dB with a 1-3 kHz dip) inside
-those voice windows, so the voice sits on top without further mixing. Each bed is mastered to -17 LUFS
-(true peak <= -1 dBTP) to leave room for the voice.
+those voice windows, so the voice sits on top without further mixing. Each bed is band-limited to 17 kHz and
+mastered to -17 LUFS (true peak <= -1.3 dBTP) to leave room for the voice and the AAC encode.
 
   ad15  — 15 s: a quiet arp under the hook, an impact as Axi and Claude connect, a bright groove through the three
           asks, a held breath and a "ding" when the trade is approved, a big chord on the CTA.
@@ -172,6 +172,8 @@ if __name__ == '__main__':
     M = mus.st(); vband = np.stack([bp(M[:, 0], 900, 3200), bp(M[:, 1], 900, 3200)], 1)
     M = (M - 0.45 * vband * w[:len(M), None]) * g[:len(M), None]
     S = reverb(sfx.st(), reverb_ir(1.4, 7), 0.14); M = reverb(M, reverb_ir(1.8, 8), 0.22)
-    mix = sk.master(S + M * 0.85, target=-17.0, tp=-1.3)   # headroom for the AAC encode
+    # band-limit below the AAC encoder's cutoff before the limiter, so the encode does not overshoot the true peak
+    X = S + M * 0.85; X = np.stack([lp(X[:, 0], 17000, 4), lp(X[:, 1], 17000, 4)], 1)
+    mix = sk.master(X, target=-17.0, tp=-1.3)
     sf.write(out, mix.astype(np.float32), SR, subtype='FLOAT')
     print(f'{which}: {out}  {len(mix) / SR:.2f}s  {lufs(mix):.2f} LUFS  TP {true_peak(mix):.2f} dBTP')

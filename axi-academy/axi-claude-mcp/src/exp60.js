@@ -175,8 +175,8 @@
     // paste cue and the URL called out large under the window
     const pc = eo(t, ST(3) + 0.8, 0.2) * (1 - ei(t, ST(3) + 1.5, 0.2));
     if (pc > 0) { ctx.save(); ctx.globalAlpha *= pc; rr(ctx, URLF[0] + 40, URLF[1] + 50, 150, 54, 12); ctx.fillStyle = '#2B2D31'; ctx.fill(); lat(ctx, 'Ctrl + V', URLF[0] + 115, URLF[1] + 86, { w: 600, size: 26, color: '#ECEDEF' }); ctx.restore(); }
-    const cu = sp(t, ST(3) + 1.2, 2.6, 0.6) * (1 - ei(t, ST(4) + 0.4, 0.25));
-    if (cu > 0) { ctx.save(); ctx.globalAlpha *= clamp((t - ST(3) - 1.2) / 0.1); ctx.translate(W / 2, 1600); ctx.scale(lerp(0.85, 1, cu), lerp(0.85, 1, cu)); rr(ctx, -430, -48, 860, 96, 48); ctx.fillStyle = C.off; ctx.fill(); lat(ctx, URL, 0, 15, { w: 700, size: 44, color: C.ink }); ctx.restore(); }
+    const cu = sp(t, ST(3) + 1.2, 2.6, 0.6), cx = 1 - ei(t, ST(4) + 0.4, 0.25);
+    if (cu > 0 && cx > 0) { ctx.save(); ctx.globalAlpha *= clamp((t - ST(3) - 1.2) / 0.1) * cx; ctx.translate(W / 2, 1600 + (1 - cx) * 20); ctx.scale(lerp(0.85, 1, cu), lerp(0.85, 1, cu)); rr(ctx, -430, -48, 860, 96, 48); ctx.fillStyle = C.off; ctx.fill(); lat(ctx, URL, 0, 15, { w: 700, size: 44, color: C.ink }); ctx.restore(); }
     UI.done(ctx, 'تم الربط بنجاح', W / 2 + 150, 1600, t, ST(5) + 3.2, { size: 44 });
     ctx.restore();
   }
