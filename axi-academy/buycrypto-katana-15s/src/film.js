@@ -333,7 +333,7 @@
     if (sweepX > 0) { ctx.save(); ctx.beginPath(); ctx.rect(-60, 0, sweepX + 60, H); ctx.clip(); T(ctx, WAL, 540, 960, { font: fA(700, 150), base: 'middle' }); ctx.restore(); }
     const gu = cio(t, tg, 0.36), su = cio(t, tsp, 0.3), dv = expoIn(inv(tdv, T_COL, t)), kz = 1 + 16 * dv;
     const passes = [[RED, true], ['#E9EDEF', false]];
-    ctx.save(); ctx.globalCompositeOperation = dv > 0 ? 'source-over' : 'lighter';   // additive glow for the dust and galaxy, plain streaks for the dive
+    ctx.save(); ctx.lineCap = 'square';   // a streak of zero length is still the particle's square, so the dive starts seamlessly
     for (const [col, wantRed] of passes) {
       ctx.fillStyle = col; ctx.strokeStyle = col;
       for (const p of PS) {
@@ -350,7 +350,7 @@
         const s = p.sz * (1 + 0.5 * gu + 0.35 * su);
         if (dv > 0) {
           const px = 540 + (x - 540) * kz, py = 960 + (y - 960) * kz, qx = 540 + (x - 540) * (1 + 16 * Math.max(0, dv - 0.08)), qy = 960 + (y - 960) * (1 + 16 * Math.max(0, dv - 0.08));
-          ctx.globalAlpha = 0.5 * (1 - 0.5 * dv); ctx.lineWidth = Math.min(3.2, s * (0.5 + dv * 0.5)); ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke(); ctx.globalAlpha = 1; continue;
+          const k2 = smooth(clamp(dv * 4)); ctx.globalAlpha = lerp(1, 0.5, k2) * (1 - 0.4 * dv); ctx.lineWidth = lerp(s, Math.min(3.2, s * 0.6), k2); ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke(); ctx.globalAlpha = 1; continue;
         }
         ctx.fillRect(x - s / 2, y - s / 2, s, s);
       }
@@ -432,7 +432,9 @@
     const cw = 820, ch = 470, x = 540 - cw / 2, y = 900 - ch / 2, cham = 44;
     ctx.beginPath(); ctx.moveTo(x + 26, y); ctx.lineTo(x + cw - cham, y); ctx.lineTo(x + cw, y + cham); ctx.lineTo(x + cw, y + ch - 26); ctx.quadraticCurveTo(x + cw, y + ch, x + cw - 26, y + ch);
     ctx.lineTo(x + 26, y + ch); ctx.quadraticCurveTo(x, y + ch, x, y + ch - 26); ctx.lineTo(x, y + 26); ctx.quadraticCurveTo(x, y, x + 26, y); ctx.closePath();
-    ctx.fillStyle = 'rgba(32,35,40,0.96)'; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(255,255,255,0.24)'; ctx.stroke();
+    ctx.fillStyle = 'rgba(32,35,40,0.96)'; ctx.fill();
+    const gh = ctx.createLinearGradient(0, y, 0, y + ch * 0.7); gh.addColorStop(0, 'rgba(255,255,255,0.12)'); gh.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = gh; ctx.fill();
+    ctx.lineWidth = 2.5; ctx.strokeStyle = 'rgba(255,255,255,0.42)'; ctx.stroke();
     ctx.save(); ctx.clip(); const sw = lerp(-300, cw + 300, ((t - T_WAL) / 0.9) % 1), g = ctx.createLinearGradient(x + sw - 160, 0, x + sw + 160, 0);
     g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(0.5, 'rgba(255,255,255,0.08)'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = g; ctx.fillRect(x, y, cw, ch); ctx.restore();
     T(ctx, 'Axi Wallet', x + cw - 56, y + 78, { font: fL(700, 42), dir: 'ltr', align: 'right' });
@@ -513,6 +515,7 @@
     flash(ctx, t >= T_DROP ? 1 - (t - T_DROP) / 0.1 : 0);
     flash(ctx, t >= T_GRID ? 0.5 * (1 - (t - T_GRID) / 0.06) : 0);
     flash(ctx, t >= T_COL ? 1 - (t - T_COL) / 0.12 : 0);
+    flash(ctx, t >= T_WAL ? 0.45 * (1 - (t - T_WAL) / 0.08) : 0);
     flash(ctx, t >= T_END ? 0.85 * (1 - (t - T_END) / 0.08) : 0);
     chrome(ctx, t, light);
     const wmA = t < T_END - 0.05 ? 0.6 : 0;
