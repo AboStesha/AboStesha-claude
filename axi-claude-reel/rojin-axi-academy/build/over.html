@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fontsv.css"><link rel="stylesheet" href="../../fonts/local.css">
+<style>
+:root{--red:#E4002B}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:transparent;overflow:hidden}
+body{font-family:'AlexV',sans-serif;color:#fff;position:relative}
+.abs{position:absolute}
+.sup{left:90px;right:90px;text-align:center;direction:rtl;text-shadow:0 2px 6px rgba(0,0,0,.75),0 0 30px rgba(0,0,0,.45)}
+.sup .l{display:block;font-weight:200;font-size:58px;line-height:1.25;color:#eee}
+.sup .b{display:block;font-weight:800;font-size:76px;line-height:1.2}
+#mod{left:0;right:0;top:1160px;text-align:center}
+#mod .n{font-family:'Inter';font-weight:600;font-size:30px;letter-spacing:12px;color:rgba(255,255,255,.75);text-shadow:0 2px 10px rgba(0,0,0,.7)}
+#mod .t{direction:rtl;font-weight:800;font-size:64px;margin-top:6px;text-shadow:0 3px 18px rgba(0,0,0,.75)}
+#mod .r{margin:16px auto 0;height:4px;width:0;background:var(--red)}
+#end{inset:0;background:#000}
+#logo{left:0;right:0;top:430px;display:flex;justify-content:center}#logo img{height:420px}
+#offer{left:0;right:0;top:960px;text-align:center;direction:rtl}
+#offer .b{display:block;font-weight:800;font-size:76px}#offer .l{display:block;font-weight:200;font-size:50px;color:#ddd;margin-top:4px}
+#cta{left:0;right:0;top:1160px;display:flex;justify-content:center}
+#cta .p{direction:rtl;background:var(--red);border-radius:70px;padding:20px 70px;font-weight:700;font-size:48px;box-shadow:0 10px 40px rgba(228,0,43,.4)}
+#url{left:0;right:0;top:1290px;text-align:center;font-family:'Inter';font-weight:600;font-size:38px;color:#fff;letter-spacing:1px}
+#tc{left:0;right:0;top:1352px;text-align:center;direction:rtl;font-weight:400;font-size:26px;color:rgba(255,255,255,.6)}
+#disc{left:110px;right:110px;top:1500px;text-align:center;direction:rtl;font-weight:400;font-size:24px;line-height:1.6;color:rgba(255,255,255,.52)}
+</style></head><body>
+<div id="s1" class="abs sup" style="top:1150px"><span class="b">تعبت تدوّر…</span><span class="l">من وين تبدي؟</span></div>
+<div id="s2" class="abs sup" style="top:1350px"><span class="l">فيديوهات… نصايح…</span><span class="b">ضجيج.</span></div>
+<div id="s3" class="abs sup" style="top:880px"><span class="l">كل رحلة…</span><span class="b">تبدي بخطوة.</span></div>
+<div id="s4" class="abs sup" style="top:1150px"><span class="b">أكاديمية Axi</span><span class="l">خطتك الكاملة لتعلّم التداول</span></div>
+<div id="mod" class="abs"><div class="n"></div><div class="t"></div><div class="r"></div></div>
+<div id="s5" class="abs sup" style="top:1150px"><span class="l">من الصفر…</span><span class="b">إلى الاحتراف.</span></div>
+<div id="end" class="abs">
+  <div id="logo" class="abs"><img src="academy_logo_white.png"></div>
+  <div id="offer" class="abs"><span class="b">بونص إيداع ‎$50‎</span><span class="l">لأول 10 خريجين</span></div>
+  <div id="cta" class="abs"><div class="p">سجّل الآن</div></div>
+  <div id="url" class="abs">axi.com/ar</div>
+  <div id="tc" class="abs">تُطبق الشروط والأحكام</div>
+  <div id="disc" class="abs">تنطوي عقود الفروقات والمنتجات المشتقة خارج البورصة على مخاطر عالية قد تؤدي إلى خسارة رأس المال. المحتوى التعليمي والتحليلي لا يُعد نصيحة استثمارية. قد لا يكون هذا المحتوى متاحاً في منطقتك. يُرجى الرجوع إلى شروط الخدمة.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));const P=(t,a,b)=>cl((t-a)/(b-a));const eo=x=>1-Math.pow(1-x,3);
+const inR=(t,a,b)=>t>=a&&t<b;
+function sup(id,t,a,b){const on=inR(t,a,b);const el=$(id);el.style.display=on?'':'none';if(!on)return;
+  const pi=eo(P(t,a,a+.5)),po=1-P(t,b-.3,b);el.style.opacity=Math.min(pi,po);el.style.filter=`blur(${(1-pi)*6}px)`;el.style.transform=`translateY(${(1-pi)*14}px)`;}
+const MODS=[[10.0,11.3,'01','الأساسيات'],[11.3,12.6,'02','الرسوم البيانية'],[12.6,13.9,'03','التحليل الفني والأساسي'],[13.9,15.2,'04','استراتيجية التداول'],[15.2,16.5,'05','قبل أول إيداع'],[16.5,17.8,'06','سلسلة الذهب']];
+const CLEAN=new URLSearchParams(location.search).get('clean')==='1';
+window.render=function(t){
+  if(!CLEAN){ sup('s1',t,0.7,2.55); sup('s2',t,2.75,4.15); sup('s4',t,8.1,9.95); sup('s5',t,18.8,21.7); }
+  else ['s1','s2','s4','s5'].forEach(i=>$(i).style.display='none');
+  sup('s3',t,4.35,5.35);
+  let m=null; for(const x of MODS) if(inR(t,x[0]+.08,x[1]-.02)) m=x; const md=$('mod'); md.style.display=(m&&!CLEAN)?'':'none';
+  if(m&&!CLEAN){const a=m[0]+.08,b=m[1]-.02; const pi=eo(P(t,a,a+.3)),po=1-P(t,b-.18,b); md.style.opacity=Math.min(pi,po);
+    md.querySelector('.n').textContent=m[2]; const tt=md.querySelector('.t'); tt.textContent=m[3]; tt.style.transform=`translateY(${(1-pi)*16}px)`; tt.style.filter=`blur(${(1-pi)*6}px)`;
+    md.querySelector('.r').style.width=(eo(P(t,a+.1,a+.7))*220)+'px';}
+  const E=t>=24.8; $('end').style.display=E?'':'none';
+  if(E){const l=eo(P(t,25.0,25.65)); $('logo').style.opacity=l; $('logo').style.transform=`scale(${1.05-.05*l})`; $('logo').style.filter=`blur(${(1-l)*8}px)`;
+    const o=eo(P(t,25.6,26.1)); $('offer').style.opacity=o; $('offer').style.transform=`translateY(${(1-o)*18}px)`;
+    const c=eo(P(t,26.0,26.45)); const pulse=1+.02*Math.sin(Math.max(0,t-26.6)*5); $('cta').style.opacity=c; $('cta').style.transform=`scale(${(.88+.12*c)*pulse})`;
+    $('url').style.opacity=eo(P(t,26.25,26.7)); $('tc').style.opacity=eo(P(t,26.4,26.85)); $('disc').style.opacity=eo(P(t,26.6,27.1));}
+};
+</script></body></html>
