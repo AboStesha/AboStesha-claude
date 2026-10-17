@@ -333,7 +333,7 @@
     if (sweepX > 0) { ctx.save(); ctx.beginPath(); ctx.rect(-60, 0, sweepX + 60, H); ctx.clip(); T(ctx, WAL, 540, 960, { font: fA(700, 150), base: 'middle' }); ctx.restore(); }
     const gu = cio(t, tg, 0.36), su = cio(t, tsp, 0.3), dv = expoIn(inv(tdv, T_COL, t)), kz = 1 + 16 * dv;
     const passes = [[RED, true], ['#E9EDEF', false]];
-    ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    ctx.save(); ctx.globalCompositeOperation = dv > 0 ? 'source-over' : 'lighter';   // additive glow for the dust and galaxy, plain streaks for the dive
     for (const [col, wantRed] of passes) {
       ctx.fillStyle = col; ctx.strokeStyle = col;
       for (const p of PS) {
@@ -350,7 +350,7 @@
         const s = p.sz * (1 + 0.5 * gu + 0.35 * su);
         if (dv > 0) {
           const px = 540 + (x - 540) * kz, py = 960 + (y - 960) * kz, qx = 540 + (x - 540) * (1 + 16 * Math.max(0, dv - 0.08)), qy = 960 + (y - 960) * (1 + 16 * Math.max(0, dv - 0.08));
-          ctx.globalAlpha = 0.6; ctx.lineWidth = s * (0.7 + dv * 0.9); ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke(); ctx.globalAlpha = 1; continue;
+          ctx.globalAlpha = 0.5 * (1 - 0.5 * dv); ctx.lineWidth = Math.min(3.2, s * (0.5 + dv * 0.5)); ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke(); ctx.globalAlpha = 1; continue;
         }
         ctx.fillRect(x - s / 2, y - s / 2, s, s);
       }
