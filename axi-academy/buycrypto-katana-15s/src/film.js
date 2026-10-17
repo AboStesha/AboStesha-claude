@@ -350,7 +350,7 @@
         const s = p.sz * (1 + 0.5 * gu + 0.35 * su);
         if (dv > 0) {
           const px = 540 + (x - 540) * kz, py = 960 + (y - 960) * kz, qx = 540 + (x - 540) * (1 + 16 * Math.max(0, dv - 0.08)), qy = 960 + (y - 960) * (1 + 16 * Math.max(0, dv - 0.08));
-          const k2 = smooth(clamp(dv * 4)); ctx.globalAlpha = lerp(1, 0.5, k2) * (1 - 0.4 * dv); ctx.lineWidth = lerp(s, Math.min(3.2, s * 0.6), k2); ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke(); ctx.globalAlpha = 1; continue;
+          const k2 = smooth(inv(tdv, tdv + 0.1, t)); ctx.globalAlpha = lerp(1, 0.5, k2) * (1 - 0.4 * dv); ctx.lineWidth = lerp(s, Math.min(3.2, s * 0.6), k2); ctx.beginPath(); ctx.moveTo(qx, qy); ctx.lineTo(px, py); ctx.stroke(); ctx.globalAlpha = 1; continue;
         }
         ctx.fillRect(x - s / 2, y - s / 2, s, s);
       }
