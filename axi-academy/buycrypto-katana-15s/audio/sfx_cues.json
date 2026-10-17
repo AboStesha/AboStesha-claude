@@ -1,0 +1,287 @@
+[
+ {
+  "t": 0.4286,
+  "cat": "hit",
+  "gain_db": -6,
+  "note": "coin bounces on the price line",
+  "file": "hit/kimp__impactMetal_light_000.ogg"
+ },
+ {
+  "t": 0.8571,
+  "cat": "hit",
+  "gain_db": -6,
+  "note": "second bounce",
+  "file": "hit/kimp__impactMetal_light_003.ogg"
+ },
+ {
+  "t": 1.02,
+  "cat": "whoosh",
+  "gain_db": -1,
+  "note": "coin launches at the camera (lands in the pre-drop gap)",
+  "file": "whoosh/swish__swosh-13.ogg"
+ },
+ {
+  "t": 1.2857,
+  "cat": "boom",
+  "gain_db": 0,
+  "note": "THE DROP: coin hits the lens, red slam «امتلكها»",
+  "file": "boom/kdig__lowDown.ogg"
+ },
+ {
+  "t": 1.2857,
+  "cat": "flash",
+  "gain_db": -3,
+  "note": "white flash at the drop",
+  "file": "flash/kimp__impactGlass_light_000.ogg"
+ },
+ {
+  "t": 2.1429,
+  "cat": "hit",
+  "gain_db": -4,
+  "note": "cut to «فعلاً» in the selection box",
+  "file": "hit/kimp__impactPlate_heavy_001.ogg"
+ },
+ {
+  "t": 2.1729,
+  "cat": "dataswish",
+  "gain_db": -4,
+  "note": "weight morphs thin to heavy",
+  "file": "dataswish/kdig__phaserUp7.ogg"
+ },
+ {
+  "t": 2.5714,
+  "cat": "ui_blip",
+  "gain_db": -2,
+  "note": "cut to 1:1",
+  "file": "ui_blip/kui__switch1.ogg"
+ },
+ {
+  "t": 3.0,
+  "cat": "hit",
+  "gain_db": -3,
+  "note": "beat flips the weight 800 to 300",
+  "file": "hit/kimp__impactMetal_heavy_000.ogg"
+ },
+ {
+  "t": 3.1,
+  "cat": "longwhoosh",
+  "gain_db": -2,
+  "note": "dive through the colon dot",
+  "file": "longwhoosh/swish__swosh-38.ogg"
+ },
+ {
+  "t": 3.4286,
+  "cat": "dataswish",
+  "gain_db": -2,
+  "note": "\"Buy Crypto\" decodes from glyphs",
+  "file": "dataswish/kdig__phaseJump2.ogg"
+ },
+ {
+  "t": 3.4786,
+  "cat": "type",
+  "gain_db": 0,
+  "note": "decode ticks"
+ },
+ {
+  "t": 3.8571,
+  "cat": "glitch",
+  "gain_db": 0,
+  "note": "RGB glitch",
+  "file": "glitch/sf60__sfx_02c.ogg"
+ },
+ {
+  "t": 4.0657,
+  "cat": "powerdown",
+  "gain_db": -2,
+  "note": "CRT power-off",
+  "file": "powerdown/kint__minimize_002.ogg"
+ },
+ {
+  "t": 4.2857,
+  "cat": "poweron",
+  "gain_db": -3,
+  "note": "dot matrix powers on",
+  "file": "poweron/rs50__power_up_02.ogg"
+ },
+ {
+  "t": 4.7143,
+  "cat": "hit",
+  "gain_db": -3,
+  "note": "red ripple through the field",
+  "file": "hit/kimp__impactBell_heavy_004.ogg"
+ },
+ {
+  "t": 5.1429,
+  "cat": "ui_blip",
+  "gain_db": 0,
+  "note": "hero coin hop 1",
+  "file": "ui_blip/kui__click1.ogg"
+ },
+ {
+  "t": 5.5714,
+  "cat": "boom",
+  "gain_db": -4,
+  "note": "\"200+\" lands",
+  "file": "boom/kimp__impactPunch_heavy_000.ogg"
+ },
+ {
+  "t": 5.5714,
+  "cat": "ui_blip",
+  "gain_db": 0,
+  "note": "hero coin hop 2",
+  "file": "ui_blip/kui__click2.ogg"
+ },
+ {
+  "t": 6.0,
+  "cat": "ui_blip",
+  "gain_db": 0,
+  "note": "hero coin hop 3",
+  "file": "ui_blip/kui__click4.ogg"
+ },
+ {
+  "t": 6.1886,
+  "cat": "whoosh",
+  "gain_db": 0,
+  "note": "whip into the marquee",
+  "file": "whoosh/swish__swosh-06.ogg"
+ },
+ {
+  "t": 6.4286,
+  "cat": "hit",
+  "gain_db": -3,
+  "note": "marquee wall slams in",
+  "file": "hit/kimp__impactPlate_heavy_003.ogg"
+ },
+ {
+  "t": 6.8571,
+  "cat": "dataswish",
+  "gain_db": -5,
+  "note": "wall flips to italic",
+  "file": "dataswish/kdig__phaserDown2.ogg"
+ },
+ {
+  "t": 7.2857,
+  "cat": "dataswish",
+  "gain_db": -5,
+  "note": "wall flips style",
+  "file": "dataswish/kdig__phaserUp4.ogg"
+ },
+ {
+  "t": 7.7143,
+  "cat": "dataswish",
+  "gain_db": -5,
+  "note": "wall flips style",
+  "file": "dataswish/kdig__phaserDown1.ogg"
+ },
+ {
+  "t": 7.8429,
+  "cat": "whoosh",
+  "gain_db": -1,
+  "note": "rows fly out, «محفظة آكسي» stays",
+  "file": "whoosh/swish__swosh-03.ogg"
+ },
+ {
+  "t": 8.3429,
+  "cat": "corrupt",
+  "gain_db": -2,
+  "note": "the phrase crumbles into particles",
+  "file": "corrupt/kdig__spaceTrash2.ogg"
+ },
+ {
+  "t": 8.9229,
+  "cat": "riser",
+  "gain_db": -2,
+  "note": "dust gathers into a coin, galaxy, dive",
+  "file": "riser/sf50__teleport_02.ogg"
+ },
+ {
+  "t": 9.8571,
+  "cat": "boom",
+  "gain_db": -2,
+  "note": "white flash into the collage",
+  "file": "boom/kimp__impactPunch_heavy_002.ogg"
+ },
+ {
+  "t": 9.8771,
+  "cat": "flash",
+  "gain_db": -4,
+  "note": "collage panels pop in",
+  "file": "flash/kimp__impactGlass_light_002.ogg"
+ },
+ {
+  "t": 10.2857,
+  "cat": "glitch",
+  "gain_db": -2,
+  "note": "panels reshuffle 1",
+  "file": "glitch/sf60__sfx_02a.ogg"
+ },
+ {
+  "t": 10.7143,
+  "cat": "glitch",
+  "gain_db": -2,
+  "note": "panels reshuffle 2",
+  "file": "glitch/sf60__sfx_07a.ogg"
+ },
+ {
+  "t": 11.1429,
+  "cat": "glitch",
+  "gain_db": -2,
+  "note": "panels reshuffle 3",
+  "file": "glitch/sf60__sfx_02b.ogg"
+ },
+ {
+  "t": 11.3429,
+  "cat": "whoosh",
+  "gain_db": -3,
+  "note": "wallet panel expands to full frame",
+  "file": "whoosh/swish__swosh-05.ogg"
+ },
+ {
+  "t": 12.0,
+  "cat": "hit",
+  "gain_db": -2,
+  "note": "coin drops into the Axi Wallet",
+  "file": "hit/kimp__impactMetal_light_000.ogg"
+ },
+ {
+  "t": 12.06,
+  "cat": "ui_blip",
+  "gain_db": 0,
+  "note": "lock closes",
+  "file": "ui_blip/kui__switch5.ogg"
+ },
+ {
+  "t": 12.4286,
+  "cat": "flash",
+  "gain_db": -2,
+  "note": "end-card flash, logo builds",
+  "file": "flash/kint__glass_004.ogg"
+ },
+ {
+  "t": 12.8571,
+  "cat": "whoosh",
+  "gain_db": -6,
+  "note": "CTA pill springs in",
+  "file": "whoosh/swish__swosh-01.ogg"
+ },
+ {
+  "t": 13.2857,
+  "cat": "boom",
+  "gain_db": -6,
+  "note": "coin lands in the CTA button",
+  "file": "boom/kimp__impactSoft_heavy_000.ogg"
+ },
+ {
+  "t": 13.2857,
+  "cat": "hit",
+  "gain_db": -4,
+  "note": "coin lands in the CTA button",
+  "file": "hit/kimp__impactMetal_heavy_002.ogg"
+ },
+ {
+  "t": 13.5857,
+  "cat": "scan",
+  "gain_db": 0,
+  "note": "shimmer across the pill"
+ }
+]

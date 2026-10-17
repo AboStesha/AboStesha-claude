@@ -1,0 +1,46 @@
+// Frame-accurate local render of src/index.html through its hfPage contract: N headless Chromium workers draw
+// frame f at t = f / fps (lossless PNG), pipe them into ffmpeg segments, then concat and mux the soundtrack.
+// Usage: node render.mjs --out out.mp4 [--audio mix.m4a --workers 4 --frames 900 --work dir --crf 14 --preset slow --only 0,2]
+// --only re-renders just those worker segments and reuses the others already in --work (same --frames and --workers).
+import { chromium } from '/opt/node-tools/node_modules/playwright-core/index.mjs';
+import { spawn, execFileSync } from 'child_process';
+import path from 'path'; import fs from 'fs';
+const args = Object.fromEntries(process.argv.slice(2).reduce((a, v, i, arr) => (v.startsWith('--') ? a.concat([[v.slice(2), arr[i + 1]]]) : a), []));
+const fps = 60, workers = +(args.workers || 4), frames = +(args.frames || 900), crf = String(args.crf || 14), preset = args.preset || 'slow';
+const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const work = args.work || path.join(root, 'build'); fs.mkdirSync(work, { recursive: true });
+console.log(`render: ${frames} frames @${fps}fps with ${workers} workers`);
+async function worker(k, a, b) {
+  const seg = path.join(work, `seg_${k}.mp4`);
+  const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'png', '-i', '-',
+    '-vf', 'scale=out_color_matrix=bt709:out_range=tv,format=yuv420p', '-c:v', 'libx264', '-preset', preset, '-crf', crf, '-tune', 'film',
+    '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv', '-g', String(fps), '-r', String(fps), seg], { stdio: ['pipe', 'inherit', 'inherit'] });
+  const done = new Promise((res, rej) => ff.on('close', (c) => (c === 0 ? res(seg) : rej(new Error('ffmpeg ' + c)))));
+  const br = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--allow-file-access-from-files'] });
+  const p = await br.newPage({ viewport: { width: 1080, height: 1920 } });
+  p.on('pageerror', (e) => console.error('pageerror', k, String(e)));
+  await p.goto('file://' + root + '/src/index.html'); await p.evaluate(() => window.hfPage.ready);
+  const t0 = Date.now();
+  for (let i = a; i < b; i++) {
+    const url = await p.evaluate((f) => { window.hfPage.render(f / 60, f); return document.getElementById('c').toDataURL('image/png'); }, i);
+    const buf = Buffer.from(url.slice(url.indexOf(',') + 1), 'base64');
+    if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once('drain', r));
+    if ((i - a) % 50 === 0) console.log(`w${k}: ${i - a}/${b - a} frames, ${((Date.now() - t0) / Math.max(1, i - a)).toFixed(0)} ms/frame`);
+  }
+  ff.stdin.end(); await br.close(); return done;
+}
+const per = Math.ceil(frames / workers); const jobs = [];
+const only = args.only ? new Set(String(args.only).split(',').map(Number)) : null;
+for (let k = 0; k < workers; k++) {
+  const a = k * per, b = Math.min(frames, a + per); if (a >= b) continue;
+  const seg = path.join(work, `seg_${k}.mp4`);
+  if (only && !only.has(k)) { if (!fs.existsSync(seg)) throw new Error('missing ' + seg); jobs.push(Promise.resolve(seg)); } else jobs.push(worker(k, a, b));
+}
+const segs = await Promise.all(jobs);
+const list = path.join(work, 'segments.txt'); fs.writeFileSync(list, segs.map((s) => `file '${s}'`).join('\n'));
+const out = args.out || path.join(work, 'final.mp4');
+const ffArgs = ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', list];
+if (args.audio) ffArgs.push('-i', args.audio, '-map', '0:v', '-map', '1:a', '-c:a', 'aac', '-b:a', '320k', '-ar', '48000', '-t', String(frames / fps));
+ffArgs.push('-c:v', 'copy', '-movflags', '+faststart', out);
+execFileSync('ffmpeg', ffArgs, { stdio: 'inherit' });
+console.log('wrote', out);
