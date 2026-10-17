@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fontsv.css"><link rel="stylesheet" href="../../fonts/serif_local.css"><link rel="stylesheet" href="../../fonts/local.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+body{color:#fff;font-family:'AlexV',sans-serif;position:relative}
+.abs{position:absolute}
+#tag{left:0;right:0;top:500px;text-align:center;direction:rtl;font-size:62px;letter-spacing:.5px;color:#ececec}
+#tag .l{font-weight:200}#tag .b{font-weight:700}
+#logo{left:0;right:0;top:330px;display:flex;justify-content:center}
+#logo img{height:210px}
+#with{left:0;right:0;top:600px;display:flex;justify-content:center;align-items:center;gap:16px;direction:ltr}
+#with .x{font-family:'Inter';font-weight:600;font-size:30px;color:rgba(255,255,255,.45)}
+#with img{width:44px;height:44px}
+#with .c{font-family:'Source Serif 4',serif;font-weight:600;font-size:46px;color:#f2f2f2}
+#cta{left:0;right:0;top:720px;display:flex;justify-content:center}
+#cta .p{direction:rtl;border:1.5px solid rgba(255,255,255,.75);border-radius:60px;padding:14px 44px;font-weight:500;font-size:34px;color:#fff;letter-spacing:.3px}
+#disc{left:220px;right:220px;bottom:40px;text-align:center;direction:rtl;font-weight:400;font-size:20px;line-height:1.55;color:rgba(255,255,255,.5)}
+</style></head><body>
+<div id="tag" class="abs"><span class="l">الذكاء الخارق… </span><span class="b">صار بإيدك.</span></div>
+<div id="logo" class="abs"><img src="axi_logo_red.png"></div>
+<div id="with" class="abs"><span class="x">×</span><img src="claude_orange.png"><span class="c">Claude</span></div>
+<div id="cta" class="abs"><div class="p">سجّل هسه</div></div>
+<div id="disc" class="abs">تحذير المخاطر: تداول عقود الفروقات (CFDs) بالرافعة المالية ينطوي على مخاطر عالية وقد تخسر أموالك. Claude أداة مساعدة للتحليل ولا يقدّم نصائح مالية.</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>cl((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+// t = seconds from end-card start. Phases: tagline 0.25-2.15, lockup from 2.0
+window.T={tagIn:.25,tagOut:2.0,logo:2.35};
+window.render=function(t){
+  const T=window.T;
+  const a=eo(P(t,T.tagIn,T.tagIn+.7))*(1-P(t,T.tagOut,T.tagOut+.35));
+  $('tag').style.opacity=a; $('tag').style.filter=`blur(${(1-eo(P(t,T.tagIn,T.tagIn+.7)))*6}px)`;
+  const l=eo(P(t,T.logo,T.logo+.55)); $('logo').style.opacity=l; $('logo').style.transform=`scale(${1.04-.04*l})`; $('logo').style.filter=`blur(${(1-l)*8}px)`;
+  const w=eo(P(t,T.logo+.45,T.logo+.95)); $('with').style.opacity=w*.95;
+  const c=eo(P(t,T.logo+.8,T.logo+1.25)); $('cta').style.opacity=c; $('cta').style.transform=`translateY(${(1-c)*10}px)`;
+  $('disc').style.opacity=eo(P(t,T.logo+.9,T.logo+1.4));
+};
+</script></body></html>
