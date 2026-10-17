@@ -57,7 +57,8 @@ The delivered file was checked against the plan:
 
 - **Streams:** 900 frames at a constant 60 fps, 1080×1920; H.264 High, yuv420p, BT.709 (TV range); AAC-LC stereo at 48 kHz, 15.000 s.
 - **Every frame:** all 900 frames were viewed on per-second sheets. Two drafts were reviewed the same way before that.
-- **Energy against the reference:** cuts per second 3.0× the reference, flashes 1.3×, motion energy 1.8×. The pass mark is 0.6×.
+- **Energy against the reference:** cuts per second 3.1× the reference, flashes 1.5×, motion energy 1.9×. The pass mark is 0.6×.
+- **Delivered file:** v3, 48.1 MB, on Higgsfield: https://d2ol7oe51mr4n9.cloudfront.net/user_31whQkWWK9m41YEVOr0IugdLlfs/61672fd5-f681-48c8-8626-6322ab728773.mp4
 
 Fixed in review:
 
@@ -66,7 +67,7 @@ Fixed in review:
 - a late marquee entrance
 - the falling coin crossing the opening line
 - a slow CRT effect
-- a blown-out galaxy dive and a brightness jump where it starts
+- a blown-out galaxy dive, a brightness jump where it starts, and a white flare mid-dive
 - a dark wallet entrance
 
 ## Files
