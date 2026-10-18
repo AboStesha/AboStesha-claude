@@ -98,7 +98,7 @@ function box(b) {
   return '<div class="box ' + b.kind + '"><div class="bt">' + (ICON[b.kind] || '') + '<span>' + inline(b.title || '') + '</span></div><div class="bb">' + body + '</div></div>';
 }
 // top-level blocks for the paginator: {h, keep, table}
-function blocks(doc) {
+function blocks(doc, logo) {
   const out = [];
   const secs = [];
   let n = 0;
@@ -115,7 +115,7 @@ function blocks(doc) {
     else if (b.t === 'table') out.push({ h: table(b), table: 1 });
     else if (b.t === 'box') out.push({ h: box(b) });
   });
-  out.push({ h: '<div class="end"><div class="lg"><img src="' + url(logoFile) + '"></div><div class="et"><div class="motto">تعلّم ثم تعلّم ثم تدرّب ثم تداول.</div><div class="risk"><b>تحذير المخاطر</b> ' + esc(RISK) + '</div></div></div>' });
+  out.push({ h: '<div class="end"><div class="lg"><img src="' + logo + '"></div><div class="et"><div class="motto">تعلّم ثم تعلّم ثم تدرّب ثم تداول.</div><div class="risk"><b>تحذير المخاطر</b> ' + esc(RISK) + '</div></div></div>' });
   return { out, secs };
 }
 
@@ -302,7 +302,7 @@ window.__info = { pages: all.length, fill: end ? Math.round(100 * (end.offsetTop
 function html(doc, logo) {
   const course = COURSES.find((c) => c.ids.includes(doc.id));
   const no = parseInt(doc.id.slice(1), 10);
-  const { out, secs } = blocks(doc);
+  const { out, secs } = blocks(doc, logo);
   const data = {
     logo, title: inline(doc.title), lead: inline(doc.lead), course: esc(course.label + ' · ' + course.name), lesson: 'الدرس ' + no,
     label: esc('الدرس ' + no + ' · ' + doc.title), foot: esc('أكاديمية آكسي · الدليل المرافق · ' + course.name),
@@ -313,11 +313,14 @@ function html(doc, logo) {
 }
 
 fs.mkdirSync(outDir, { recursive: true });
+// the logo is shown at most 33 mm wide, so a 700 px copy is plenty and keeps each PDF small
+const smallLogo = path.join(outDir, '_logo.png');
+execFileSync('python3', ['-c', 'import sys; from PIL import Image; im = Image.open(sys.argv[1]); im.resize((700, round(700 * im.height / im.width)), Image.LANCZOS).save(sys.argv[2], optimize=True)', logoFile, smallLogo]);
 const br = await chromium.launch({ args: ['--allow-file-access-from-files'] });
 let bad = false;
 for (const src of srcFiles) {
   const doc = parse(fs.readFileSync(src, 'utf8'));
-  const { course, no, page } = html(doc, url(logoFile));
+  const { course, no, page } = html(doc, url(smallLogo));
   const out = path.join(outDir, `AxiAcademy_Guide_${doc.id}.pdf`);
   const tmp = path.join(outDir, `_${doc.id}.html`);
   fs.writeFileSync(tmp, page);
@@ -341,4 +344,5 @@ for (const src of srcFiles) {
   bad ||= issues.length > 0 || info.pages < 6 || info.pages > 10;
 }
 await br.close();
+fs.unlinkSync(smallLogo);
 if (bad) process.exitCode = 1;
