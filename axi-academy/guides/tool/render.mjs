@@ -20,6 +20,7 @@ const COURSES = [
   { label: 'الكورس الثالث', name: 'كيف تصبح متداولاً محترفاً', ids: ['L14', 'L15', 'L16', 'L17', 'L18'] },
   { label: 'كورس للمحترفين', name: 'احترف تداول الذهب', ids: ['G1', 'G2', 'G3', 'G4'] },
 ];
+const MOTTO = 'تعلّم ثم تعلّم ثم تدرّب ثم تداول.';
 const RISK = 'تنطوي عقود الفروقات والمنتجات المشتقة خارج البورصة على مخاطر عالية قد تؤدي إلى خسارة رأس المال. المحتوى التعليمي والتحليلي لا يُعدّ نصيحة استثمارية. قد لا يكون هذا المحتوى متاحاً في منطقتك. يُرجى الرجوع إلى شروط الخدمة.';
 
 // ---- source -> blocks
@@ -115,8 +116,11 @@ function blocks(doc, logo) {
     else if (b.t === 'table') out.push({ h: table(b), table: 1 });
     else if (b.t === 'box') out.push({ h: box(b) });
   });
-  out.push({ h: '<div class="end"><div class="lg"><img src="' + logo + '"></div><div class="et"><div class="motto">تعلّم ثم تعلّم ثم تدرّب ثم تداول.</div><div class="risk"><b>تحذير المخاطر</b> ' + esc(RISK) + '</div></div></div>' });
-  return { out, secs };
+  // closing: a card after the glossary, or a branded back page when the card does not fit on the last page
+  const end = '<div class="end"><div class="lg"><img src="' + logo + '"></div><div class="et"><div class="motto">' + MOTTO + '</div><div class="risk"><b>تحذير المخاطر</b> ' + esc(RISK) + '</div></div></div>';
+  const back = '<div class="mid"><div class="lg"><img src="' + logo + '"></div><div class="line">' + MOTTO + '</div></div>' +
+    '<div class="risk"><b>تحذير المخاطر</b>' + esc(RISK) + '</div><i class="tri r"></i><i class="tri l"></i>';
+  return { out, secs, end, back };
 }
 
 const face = (family, file, w, range = '') => `@font-face { font-family: ${family}; src: url(${url(path.join(fontsDir, `${file}-${w}.ttf`))}); font-weight: ${w}; ${range} }`;
@@ -157,6 +161,13 @@ strong { font-weight: 700; }
 .cover .toc a .t { flex: 1; }
 .cover .toc a .p { font-family: NUM; font-weight: 600; min-width: 7mm; text-align: left; }
 .cover .date { position: absolute; bottom: 12mm; left: 0; right: 0; text-align: center; color: #fff; font-size: 9.5pt; }
+
+/* back page, used when the closing card does not fit on the last page */
+.close .mid { position: absolute; top: 78mm; left: 0; right: 0; text-align: center; }
+.close .mid .lg { height: 32mm; }
+.close .line { margin-top: 12mm; font-size: 17pt; font-weight: 600; }
+.close .risk { position: absolute; left: 18mm; right: 18mm; bottom: 26mm; background: rgba(255,255,255,.92); border-radius: 3mm; padding: 5mm 6mm; font-size: 9pt; line-height: 1.8; color: var(--ink); }
+.close .risk b { display: block; margin-bottom: 1mm; font-size: 9.5pt; }
 
 /* running pages */
 .run .hd { position: absolute; top: 0; left: 17mm; right: 17mm; height: 20mm; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
@@ -287,14 +298,19 @@ for (let i = 0; i < B.length; i++) {
   while (group[group.length - 1].dataset.keep && i + 1 < B.length) group.push(B[++i]);
   place(group);
 }
+const endCard = node(D.end);
+ct.appendChild(endCard);
+if (over()) { endCard.remove(); page('close grad', D.back); }
 
 const all = [...root.children];
 all.forEach((p, i) => { const pn = p.querySelector('.pn'); if (pn) pn.textContent = i + 1; });
 const at = (id) => all.indexOf(document.getElementById(id).closest('.page')) + 1;
 document.querySelectorAll('[data-ref]').forEach((s) => { s.textContent = at(s.dataset.ref); });
-const lastCt = all[all.length - 1].querySelector('.ct');
-const end = lastCt && lastCt.lastElementChild;
-window.__info = { pages: all.length, fill: end ? Math.round(100 * (end.offsetTop + end.offsetHeight) / lastCt.clientHeight) : 0, problems,
+// how full each running page is (bottom of its last block); a low figure before the last page means a big gap
+const fillOf = (ct) => { const e = ct && ct.lastElementChild; return e ? Math.round(100 * (e.offsetTop + e.offsetHeight) / ct.clientHeight) : 0; };
+const fills = all.map((p) => fillOf(p.querySelector('.ct')));
+const gaps = fills.map((f, i) => [i + 1, f]).filter(([n, f]) => n > 1 && n < all.length && f < 75).map(([n, f]) => 'p' + n + ' ' + f + '%');
+window.__info = { pages: all.length, fill: fills[fills.length - 1], gaps, problems,
   marks: [{ t: 'الغلاف والمحتويات', p: 1 }].concat(D.secs.map((s) => ({ t: (s.no ? s.no + ' · ' : '') + s.text.replace(/<[^>]+>/g, ''), p: at(s.id) }))) };
 })();
 `;
@@ -302,11 +318,11 @@ window.__info = { pages: all.length, fill: end ? Math.round(100 * (end.offsetTop
 function html(doc, logo) {
   const course = COURSES.find((c) => c.ids.includes(doc.id));
   const no = parseInt(doc.id.slice(1), 10);
-  const { out, secs } = blocks(doc, logo);
+  const { out, secs, end, back } = blocks(doc, logo);
   const data = {
     logo, title: inline(doc.title), lead: inline(doc.lead), course: esc(course.label + ' · ' + course.name), lesson: 'الدرس ' + no,
     label: esc('الدرس ' + no + ' · ' + doc.title), foot: esc('أكاديمية آكسي · الدليل المرافق · ' + course.name),
-    secs: secs.map((s) => ({ ...s, text: inline(s.text) })), blocks: out,
+    secs: secs.map((s) => ({ ...s, text: inline(s.text) })), blocks: out, end, back,
   };
   return { course, no, page: `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${esc(doc.title)}</title><style>${CSS}</style></head><body><div id="root"></div>` +
     `<script type="application/json" id="data">${JSON.stringify(data).replace(/</g, '\\u003c')}</script><script>${SCRIPT}</script></body></html>` };
@@ -322,7 +338,7 @@ for (const src of srcFiles) {
   const doc = parse(fs.readFileSync(src, 'utf8'));
   const { course, no, page } = html(doc, url(smallLogo));
   const out = path.join(outDir, `AxiAcademy_Guide_${doc.id}.pdf`);
-  const tmp = path.join(outDir, `_${doc.id}.html`);
+  const tmp = path.resolve(outDir, `_${doc.id}.html`);
   fs.writeFileSync(tmp, page);
   const pg = await br.newPage();
   const errs = [];
@@ -340,7 +356,7 @@ for (const src of srcFiles) {
   execFileSync('python3', [path.join(HERE, 'bookmarks.py'), out, mf], { stdio: 'inherit' });
   fs.unlinkSync(mf);
   const issues = info.problems.concat(errs);
-  console.log(`${doc.id}\t${info.pages} pages\tlast page ${info.fill}% full\t${path.basename(out)}` + (issues.length ? '\n  ' + issues.join('\n  ') : ''));
+  console.log(`${doc.id}\t${info.pages} pages\tlast page ${info.fill}% full\t${path.basename(out)}` + (info.gaps.length ? '\tgaps: ' + info.gaps.join(', ') : '') + (issues.length ? '\n  ' + issues.join('\n  ') : ''));
   bad ||= issues.length > 0 || info.pages < 6 || info.pages > 10;
 }
 await br.close();

@@ -38,7 +38,7 @@ The video column says what the student already knows. Do not repeat it.
 
 **Guide:**
 - **Where the figure comes from.**
-  - The BIS Triennial Survey: $7.5tn a day in April 2022, and $9.6tn a day in April 2025.
+  - The BIS Triennial Survey: $7.5tn a day in April 2022, and $9.6tn a day in April 2025 (preliminary; the final June 2026 figure is about $9.5tn).
   - The 2022 split by instrument: spot about $2.1tn, outright forwards about $1.2tn, FX swaps about $3.8tn, currency swaps and options about $0.4tn.
   - Currency shares out of 200%: USD about 88%, EUR about 31%, JPY about 17%, GBP about 13%, CNY about 7%.
   - Trading centres in 2022: UK about 38%, US about 19%, Singapore about 9%, Hong Kong about 7%.
