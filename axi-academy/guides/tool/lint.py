@@ -62,8 +62,9 @@ def lint(path):
             elif len(cells) != table_cols:
                 errors.append(f'line {n}: table row has {len(cells)} cells, header has {table_cols}')
             table_rows += 1
-            if table_rows == 15:
-                warns.append(f'line {n}: table has more than 14 rows (split it by category)')
+            limit = 15 if sections and sections[-1] == GLOSSARY else 14
+            if table_rows == limit + 1:
+                warns.append(f'line {n}: table has more than {limit} rows (split it by category)')
         else:
             table_cols = None
         if line.count('**') % 2:
