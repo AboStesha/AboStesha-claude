@@ -80,7 +80,7 @@ def lint(path):
         if re.search(r'(^|[^\w])' + w + r'($|[^\w])', text):
             errors.append(f'story character «{w}» (use generic examples)')
     for w in DIALECT:
-        if w in text:
+        if re.search(r'(^|[^\w])' + w.strip() + r'($|[^\w])', text):
             warns.append(f'possible Iraqi dialect «{w.strip()}» (use MSA)')
     if re.search('[٠-٩]', text + head.get('title', '') + head.get('lead', '')):
         errors.append('Eastern Arabic digits (use 0-9)')
