@@ -1,0 +1,620 @@
+[
+ {
+  "id": "L01_A",
+  "idx": 11,
+  "bg": "art/p101.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "ما هو",
+   "{الفوركس}؟"
+  ],
+  "lesson": 1,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L01_B",
+  "idx": 12,
+  "bg": "art/p102.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "ما هو",
+   "{الفوركس}؟"
+  ],
+  "lesson": 1,
+  "course": "الفوركس من الصفر",
+  "shift": 110
+ },
+ {
+  "id": "L02_A",
+  "idx": 21,
+  "bg": "art/i21.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "{لماذا} تتداول",
+   "الفوركس؟"
+  ],
+  "lesson": 2,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L02_B",
+  "idx": 22,
+  "bg": "art/i22.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "{لماذا} تتداول",
+   "الفوركس؟"
+  ],
+  "lesson": 2,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L03_A",
+  "idx": 31,
+  "bg": "art/i31.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "{كيف} تتداول",
+   "الفوركس؟"
+  ],
+  "lesson": 3,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L03_B",
+  "idx": 32,
+  "bg": "art/i32.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "{كيف} تتداول",
+   "الفوركس؟"
+  ],
+  "lesson": 3,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L04_A",
+  "idx": 41,
+  "bg": "art/i41.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "{مصطلحات}",
+   "الفوركس"
+  ],
+  "lesson": 4,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L04_B",
+  "idx": 42,
+  "bg": "art/i42.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "{مصطلحات}",
+   "الفوركس"
+  ],
+  "lesson": 4,
+  "course": "الفوركس من الصفر",
+  "maxW": 600
+ },
+ {
+  "id": "L05_A",
+  "idx": 51,
+  "bg": "art/i51.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "ما هي أنواع",
+   "{الرسوم}",
+   "{البيانية}؟"
+  ],
+  "lesson": 5,
+  "course": "الفوركس من الصفر"
+ },
+ {
+  "id": "L05_B",
+  "idx": 52,
+  "bg": "art/i52.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "ما هي أنواع",
+   "{الرسوم}",
+   "{البيانية}؟"
+  ],
+  "lesson": 5,
+  "course": "الفوركس من الصفر",
+  "maxW": 620
+ },
+ {
+  "id": "L06_A",
+  "idx": 61,
+  "bg": "art/i61.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "ما هي",
+   "{ميتا تريدر}؟"
+  ],
+  "lesson": 6,
+  "course": "أساسيات التداول",
+  "term": "(MetaTrader)"
+ },
+ {
+  "id": "L06_B",
+  "idx": 62,
+  "bg": "art/i62.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "ما هي",
+   "{ميتا تريدر}؟"
+  ],
+  "lesson": 6,
+  "course": "أساسيات التداول",
+  "term": "(MetaTrader)",
+  "shift": 60,
+  "maxW": 620
+ },
+ {
+  "id": "L07_A",
+  "idx": 71,
+  "bg": "art/i71.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "{الرافعة}",
+   "المالية"
+  ],
+  "lesson": 7,
+  "course": "أساسيات التداول",
+  "term": "(Leverage)"
+ },
+ {
+  "id": "L07_B",
+  "idx": 72,
+  "bg": "art/i72.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "{الرافعة}",
+   "المالية"
+  ],
+  "lesson": 7,
+  "course": "أساسيات التداول",
+  "term": "(Leverage)"
+ },
+ {
+  "id": "L08_A",
+  "idx": 81,
+  "bg": "art/i81.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "{الهامش}"
+  ],
+  "lesson": 8,
+  "course": "أساسيات التداول",
+  "term": "(Margin)"
+ },
+ {
+  "id": "L08_B",
+  "idx": 82,
+  "bg": "art/i82.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "{الهامش}"
+  ],
+  "lesson": 8,
+  "course": "أساسيات التداول",
+  "term": "(Margin)"
+ },
+ {
+  "id": "L09_A",
+  "idx": 91,
+  "bg": "art/i91.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "جني",
+   "[الأرباح]"
+  ],
+  "lesson": 9,
+  "course": "أساسيات التداول",
+  "term": "(Take Profit)"
+ },
+ {
+  "id": "L09_B",
+  "idx": 92,
+  "bg": "art/i92.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "جني",
+   "[الأرباح]"
+  ],
+  "lesson": 9,
+  "course": "أساسيات التداول",
+  "term": "(Take Profit)"
+ },
+ {
+  "id": "L10_A",
+  "idx": 101,
+  "bg": "art/i101.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "وقف",
+   "{الخسارة}"
+  ],
+  "lesson": 10,
+  "course": "أساسيات التداول",
+  "term": "(Stop Loss)"
+ },
+ {
+  "id": "L10_B",
+  "idx": 102,
+  "bg": "art/i102.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "وقف",
+   "{الخسارة}"
+  ],
+  "lesson": 10,
+  "course": "أساسيات التداول",
+  "term": "(Stop Loss)"
+ },
+ {
+  "id": "L11_A",
+  "idx": 111,
+  "bg": "art/i111.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "سعر",
+   "{الشراء}",
+   "{والبيع}؟"
+  ],
+  "lesson": 11,
+  "course": "أساسيات التداول"
+ },
+ {
+  "id": "L11_B",
+  "idx": 112,
+  "bg": "art/i112.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "سعر",
+   "{الشراء}",
+   "{والبيع}؟"
+  ],
+  "lesson": 11,
+  "course": "أساسيات التداول",
+  "mint": [
+   [
+    950,
+    250,
+    1220,
+    560
+   ]
+  ]
+ },
+ {
+  "id": "L12_A",
+  "idx": 121,
+  "bg": "art/i121.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "رسوم",
+   "{التبييت}"
+  ],
+  "lesson": 12,
+  "course": "أساسيات التداول",
+  "term": "(Swap)"
+ },
+ {
+  "id": "L12_B",
+  "idx": 122,
+  "bg": "art/i1220.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "رسوم",
+   "{التبييت}"
+  ],
+  "lesson": 12,
+  "course": "أساسيات التداول",
+  "term": "(Swap)"
+ },
+ {
+  "id": "L13_A",
+  "idx": 131,
+  "bg": "art/i131.png",
+  "design": "A",
+  "theme": "light",
+  "title": [
+   "ما هي",
+   "{الوحدة}؟"
+  ],
+  "lesson": 13,
+  "course": "أساسيات التداول"
+ },
+ {
+  "id": "L13_B",
+  "idx": 132,
+  "bg": "art/i132.png",
+  "design": "B",
+  "theme": "light",
+  "title": [
+   "ما هي",
+   "{الوحدة}؟"
+  ],
+  "lesson": 13,
+  "course": "أساسيات التداول"
+ },
+ {
+  "id": "L14_A",
+  "idx": 141,
+  "bg": "art/i141.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "{سيكولوجية}",
+   "التداول"
+  ],
+  "lesson": 14,
+  "course": "كيف تصبح متداولاً محترفاً"
+ },
+ {
+  "id": "L14_B",
+  "idx": 142,
+  "bg": "art/i142.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "{سيكولوجية}",
+   "التداول"
+  ],
+  "lesson": 14,
+  "course": "كيف تصبح متداولاً محترفاً",
+  "maxW": 520
+ },
+ {
+  "id": "L15_A",
+  "idx": 151,
+  "bg": "art/i151.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "إدارة",
+   "{المخاطر}"
+  ],
+  "lesson": 15,
+  "course": "كيف تصبح متداولاً محترفاً"
+ },
+ {
+  "id": "L15_B",
+  "idx": 152,
+  "bg": "art/i152.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "إدارة",
+   "{المخاطر}"
+  ],
+  "lesson": 15,
+  "course": "كيف تصبح متداولاً محترفاً",
+  "maxW": 600
+ },
+ {
+  "id": "L16_A",
+  "idx": 161,
+  "bg": "art/i161.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "التحليل الأساسي",
+   "التحليل الفني"
+  ],
+  "lesson": 16,
+  "course": "كيف تصبح متداولاً محترفاً",
+  "vs": true,
+  "maxW": 690
+ },
+ {
+  "id": "L16_B",
+  "idx": 162,
+  "bg": "art/i162.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "التحليل الأساسي",
+   "التحليل الفني"
+  ],
+  "lesson": 16,
+  "course": "كيف تصبح متداولاً محترفاً",
+  "vs": true,
+  "maxW": 620,
+  "shift": 50
+ },
+ {
+  "id": "L17_A",
+  "idx": 171,
+  "bg": "art/i171.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "{استراتيجيات}",
+   "التداول"
+  ],
+  "lesson": 17,
+  "course": "كيف تصبح متداولاً محترفاً"
+ },
+ {
+  "id": "L17_B",
+  "idx": 172,
+  "bg": "art/i172.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "{استراتيجيات}",
+   "التداول"
+  ],
+  "lesson": 17,
+  "course": "كيف تصبح متداولاً محترفاً",
+  "maxW": 620
+ },
+ {
+  "id": "L18_A",
+  "idx": 181,
+  "bg": "art/i181.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "نصائح قبل",
+   "{أول إيداع}"
+  ],
+  "lesson": 18,
+  "course": "كيف تصبح متداولاً محترفاً"
+ },
+ {
+  "id": "L18_B",
+  "idx": 182,
+  "bg": "art/i182.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "نصائح قبل",
+   "{أول إيداع}"
+  ],
+  "lesson": 18,
+  "course": "كيف تصبح متداولاً محترفاً",
+  "maxW": 620
+ },
+ {
+  "id": "G01_A",
+  "idx": 911,
+  "bg": "art/p901.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "شلون",
+   "تتداول",
+   "{الذهب}؟"
+  ],
+  "lesson": 1,
+  "course": "احترف تداول الذهب"
+ },
+ {
+  "id": "G01_B",
+  "idx": 912,
+  "bg": "art/i912.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "شلون",
+   "تتداول",
+   "{الذهب}؟"
+  ],
+  "lesson": 1,
+  "course": "احترف تداول الذهب"
+ },
+ {
+  "id": "G02_A",
+  "idx": 921,
+  "bg": "art/i921.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "شنو {يحرّك}",
+   "سعر الذهب؟"
+  ],
+  "lesson": 2,
+  "course": "احترف تداول الذهب"
+ },
+ {
+  "id": "G02_B",
+  "idx": 922,
+  "bg": "art/i922.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "شنو {يحرّك}",
+   "سعر الذهب؟"
+  ],
+  "lesson": 2,
+  "course": "احترف تداول الذهب",
+  "mint": [
+   [
+    840,
+    220,
+    1080,
+    520
+   ]
+  ]
+ },
+ {
+  "id": "G03_A",
+  "idx": 931,
+  "bg": "art/i931.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "الذهب",
+   "{بالأرقام}"
+  ],
+  "lesson": 3,
+  "course": "احترف تداول الذهب"
+ },
+ {
+  "id": "G03_B",
+  "idx": 932,
+  "bg": "art/i932.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "الذهب",
+   "{بالأرقام}"
+  ],
+  "lesson": 3,
+  "course": "احترف تداول الذهب"
+ },
+ {
+  "id": "G04_A",
+  "idx": 941,
+  "bg": "art/i941.png",
+  "design": "A",
+  "theme": "dark",
+  "title": [
+   "{أوقات} تداول",
+   "الذهب"
+  ],
+  "lesson": 4,
+  "course": "احترف تداول الذهب"
+ },
+ {
+  "id": "G04_B",
+  "idx": 942,
+  "bg": "art/i942.png",
+  "design": "B",
+  "theme": "dark",
+  "title": [
+   "{أوقات} تداول",
+   "الذهب"
+  ],
+  "lesson": 4,
+  "course": "احترف تداول الذهب"
+ }
+]

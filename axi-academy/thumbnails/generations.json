@@ -1,0 +1,241 @@
+{
+ "pilot": [
+  {
+   "index": 701,
+   "job_id": "466e280e-dd6e-411b-8db0-e23023063bfc"
+  },
+  {
+   "index": 702,
+   "job_id": "02e549b6-69dd-4a9d-b29a-72e4a0f5685f"
+  },
+  {
+   "index": 101,
+   "job_id": "8073c96b-65b1-4033-a7b5-3138ac0e5774"
+  },
+  {
+   "index": 102,
+   "job_id": "3da846a3-39aa-4ec7-8c35-d4b9c5292de8"
+  },
+  {
+   "index": 901,
+   "job_id": "3b75ccab-698e-4acc-9946-ed20f780237d"
+  },
+  {
+   "index": 902,
+   "job_id": "033c84b0-cacd-4fd9-9a20-31098b76cefa"
+  }
+ ],
+ "batch1": [
+  {
+   "index": 21,
+   "job_id": "649c0d88-0c35-4364-ba6c-15a9fd405cbd"
+  },
+  {
+   "index": 22,
+   "job_id": "2e09219e-5366-4b26-a8da-f4a44588aff1"
+  },
+  {
+   "index": 31,
+   "job_id": "5cba2777-3b82-4db4-a88c-175a13bf1931"
+  },
+  {
+   "index": 41,
+   "job_id": "ba779319-d104-46a3-8cb3-01b102ff759e"
+  },
+  {
+   "index": 51,
+   "job_id": "aa3d8ced-fe24-47b2-bfc9-20a6e3a02398"
+  },
+  {
+   "index": 52,
+   "job_id": "bfa6c21d-cc8b-4133-95f2-38521f2fa3b0"
+  },
+  {
+   "index": 61,
+   "job_id": "6666b937-0aa9-4e07-a53f-e0379c6f53cc"
+  },
+  {
+   "index": 62,
+   "job_id": "0fdcb92f-db54-4f32-8b40-cd512ae8aeee"
+  }
+ ],
+ "batch2": [
+  {
+   "index": 32,
+   "job_id": "e2f5b00f-fa70-4325-8fd5-5470d5e59dad",
+   "file": "hf_20261018_050636_e2f5b00f-fa70-4325-8fd5-5470d5e59dad"
+  },
+  {
+   "index": 42,
+   "job_id": "da02fd2a-2755-4493-bbe8-594c58b9d53f",
+   "file": "hf_20261018_050636_da02fd2a-2755-4493-bbe8-594c58b9d53f"
+  },
+  {
+   "index": 71,
+   "job_id": "5c9247a1-df86-4668-b713-a4b8d21b18dc",
+   "file": "hf_20261018_050636_5c9247a1-df86-4668-b713-a4b8d21b18dc"
+  },
+  {
+   "index": 72,
+   "job_id": "3229a8f2-1b2c-42ac-accf-5b9894b65bdc",
+   "file": "hf_20261018_050635_3229a8f2-1b2c-42ac-accf-5b9894b65bdc"
+  },
+  {
+   "index": 81,
+   "job_id": "069bc75e-9f36-4649-807c-3730b522488f",
+   "file": "hf_20261018_050637_069bc75e-9f36-4649-807c-3730b522488f"
+  },
+  {
+   "index": 82,
+   "job_id": "5221c267-f39c-4075-9004-a8850bb7edd5",
+   "file": "hf_20261018_050636_5221c267-f39c-4075-9004-a8850bb7edd5"
+  },
+  {
+   "index": 91,
+   "job_id": "aca24968-1d9a-44f5-98e7-4753e470bacf",
+   "file": "hf_20261018_050635_aca24968-1d9a-44f5-98e7-4753e470bacf"
+  },
+  {
+   "index": 92,
+   "job_id": "c96b381a-d894-4374-abe0-7c3e73b60dd3",
+   "file": "hf_20261018_050637_c96b381a-d894-4374-abe0-7c3e73b60dd3"
+  }
+ ],
+ "batch3": [
+  {
+   "index": 101,
+   "job_id": "2de28a8e-9588-47a5-8743-7412090576e7",
+   "file": "hf_20261018_051041_2de28a8e-9588-47a5-8743-7412090576e7"
+  },
+  {
+   "index": 102,
+   "job_id": "a137ec14-ee1f-4cb1-ae6a-bdd40e0ade00",
+   "file": "hf_20261018_051042_a137ec14-ee1f-4cb1-ae6a-bdd40e0ade00"
+  },
+  {
+   "index": 111,
+   "job_id": "544de123-d2ac-4b72-b73a-154215874e17",
+   "file": "hf_20261018_051040_544de123-d2ac-4b72-b73a-154215874e17"
+  },
+  {
+   "index": 112,
+   "job_id": "73433b9b-88fb-4a87-a84c-c863c3796625",
+   "file": "hf_20261018_051040_73433b9b-88fb-4a87-a84c-c863c3796625"
+  },
+  {
+   "index": 121,
+   "job_id": "802f6c84-b7c8-46c4-981d-e527e7ff67b8",
+   "file": "hf_20261018_051041_802f6c84-b7c8-46c4-981d-e527e7ff67b8"
+  },
+  {
+   "index": 122,
+   "job_id": "8ddbaf4c-b178-4e7b-9336-6637eff05fb5",
+   "file": "hf_20261018_051041_8ddbaf4c-b178-4e7b-9336-6637eff05fb5"
+  },
+  {
+   "index": 131,
+   "job_id": "35cd602e-c90a-426b-8d3b-04ef44b2a7a3",
+   "file": "hf_20261018_051042_35cd602e-c90a-426b-8d3b-04ef44b2a7a3"
+  },
+  {
+   "index": 132,
+   "job_id": "962d11ef-43c5-4a29-8238-14392595ce40",
+   "file": "hf_20261018_051040_962d11ef-43c5-4a29-8238-14392595ce40"
+  }
+ ],
+ "batch4": [
+  {
+   "index": 141,
+   "job_id": "41ca487a-0090-48d9-876e-a52515970c7b",
+   "file": "hf_20261018_051320_41ca487a-0090-48d9-876e-a52515970c7b"
+  },
+  {
+   "index": 142,
+   "job_id": "f0778fbc-d877-4d12-9233-cd1ca5713eb7",
+   "file": "hf_20261018_051321_f0778fbc-d877-4d12-9233-cd1ca5713eb7"
+  },
+  {
+   "index": 151,
+   "job_id": "64ecd0fc-f136-41eb-9194-523f831655e8",
+   "file": "hf_20261018_051322_64ecd0fc-f136-41eb-9194-523f831655e8"
+  },
+  {
+   "index": 152,
+   "job_id": "d4e2f14a-5a52-4430-a073-8dd877d020ec",
+   "file": "hf_20261018_051321_d4e2f14a-5a52-4430-a073-8dd877d020ec"
+  },
+  {
+   "index": 161,
+   "job_id": "a894fd60-787e-497c-bd2e-5f9fbe2c0b3c",
+   "file": "hf_20261018_051321_a894fd60-787e-497c-bd2e-5f9fbe2c0b3c"
+  },
+  {
+   "index": 162,
+   "job_id": "95f68fea-b3c7-4899-a647-8788eb3a2bff",
+   "file": "hf_20261018_051322_95f68fea-b3c7-4899-a647-8788eb3a2bff"
+  },
+  {
+   "index": 171,
+   "job_id": "6a26857f-9574-4221-9704-508073667fe5",
+   "file": "hf_20261018_051321_6a26857f-9574-4221-9704-508073667fe5"
+  },
+  {
+   "index": 172,
+   "job_id": "080a5cf2-3d5c-472c-9114-7e562201315e",
+   "file": "hf_20261018_051320_080a5cf2-3d5c-472c-9114-7e562201315e"
+  }
+ ],
+ "batch5": [
+  {
+   "index": 181,
+   "job_id": "5738e400-fc04-4065-b5ed-72afafa984e2",
+   "file": "hf_20261018_051616_5738e400-fc04-4065-b5ed-72afafa984e2"
+  },
+  {
+   "index": 182,
+   "job_id": "4f111b92-3312-4d29-b167-3f05af41091a",
+   "file": "hf_20261018_051617_4f111b92-3312-4d29-b167-3f05af41091a"
+  },
+  {
+   "index": 912,
+   "job_id": "c7774520-61a6-4c4f-867b-743bb99a9236",
+   "file": "hf_20261018_051618_c7774520-61a6-4c4f-867b-743bb99a9236"
+  },
+  {
+   "index": 921,
+   "job_id": "1ec41dba-24ba-4b78-9b1f-d4e56797d0a4",
+   "file": "hf_20261018_051617_1ec41dba-24ba-4b78-9b1f-d4e56797d0a4"
+  },
+  {
+   "index": 922,
+   "job_id": "7fc3cd2d-7a3b-4606-8091-51a7b8c2e1f6",
+   "file": "hf_20261018_051617_7fc3cd2d-7a3b-4606-8091-51a7b8c2e1f6"
+  },
+  {
+   "index": 931,
+   "job_id": "68f67813-5379-4d1f-b791-e69d0acb8bc3",
+   "file": "hf_20261018_051616_68f67813-5379-4d1f-b791-e69d0acb8bc3"
+  },
+  {
+   "index": 932,
+   "job_id": "cacb3a3b-b539-493c-83b0-af9e9c9ad686",
+   "file": "hf_20261018_051617_cacb3a3b-b539-493c-83b0-af9e9c9ad686"
+  },
+  {
+   "index": 941,
+   "job_id": "caba9a3b-b890-41fa-bfaf-7e039f49aba9",
+   "file": "hf_20261018_051617_caba9a3b-b890-41fa-bfaf-7e039f49aba9"
+  }
+ ],
+ "batch6": [
+  {
+   "index": 942,
+   "job_id": "e9d9b064-3b3f-42cf-96e3-6c69eb52aeae"
+  },
+  {
+   "index": 1220,
+   "job_id": "5660b44c-9c43-4524-989b-9175a9b060e6"
+  }
+ ],
+ "note": "GPT Image 2.5 Sunburst, quality xhigh, 2k, 16:9 (4.5 credits each). index = lesson*10 + design (1 = A, 2 = B); gold = 900 + lesson*10 + design; p* = pilot; 1220 = L12_B full-moon redo (replaces 122)."
+}
