@@ -22,7 +22,7 @@ def lint(path):
             errors.append(f'header: missing {k}')
     body = lines[cut + 1:]
     text = '\n'.join(body)
-    stack, sections, examples, tables, keys, table_cols = [], [], 0, 0, 0, None
+    stack, sections, examples, tables, keys, table_cols, table_rows = [], [], 0, 0, 0, None, 0
     for n, raw in enumerate(body, cut + 2):
         line = raw.strip()
         if line.startswith(':::'):
@@ -53,12 +53,17 @@ def lint(path):
             cells = [c for c in line.strip('|').split('|')]
             if table_cols is None:
                 tables += 1
-                table_cols = len(cells)
+                table_cols, table_rows = len(cells), -2
+                if table_cols > 5:
+                    warns.append(f'line {n}: table has {table_cols} columns (keep to 5 or fewer)')
                 nxt = body[n - cut - 1].strip() if n - cut - 1 < len(body) else ''
                 if not re.match(r'^\|?\s*:?-{2,}', nxt):
                     errors.append(f'line {n}: table header must be followed by a |---| line')
             elif len(cells) != table_cols:
                 errors.append(f'line {n}: table row has {len(cells)} cells, header has {table_cols}')
+            table_rows += 1
+            if table_rows == 15:
+                warns.append(f'line {n}: table has more than 14 rows (split it by category)')
         else:
             table_cols = None
         if line.count('**') % 2:
