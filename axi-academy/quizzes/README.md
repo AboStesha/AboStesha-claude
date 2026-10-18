@@ -49,8 +49,9 @@ There are 380 multiple-choice questions for the four Axi Academy courses, in sim
   - Lesson 2: "more liquidity means more volatility" and "forex is more volatile than stocks". Both are doubtful.
   - Lesson 7: "leverage up to 1:1000 at Axi", and lesson 12: "the best swap rates in the world". These are promotional claims, and they depend on the entity and the regulator.
   - Lesson 9: "every trade has two possible outcomes". This contradicts the three exits taught in lesson 17.
-- **Lesson 1 at the client's request.**
-  - The questions are about forex in general and don't mention the story's character.
+- **Lessons 1–3 at the client's request.**
+  - No question names the videos' story character; the questions are about forex in general.
+  - Lesson 3 has a worked problem on reading a pair quote (GBP/USD) in place of the story question.
   - The video's currency-exchange story is replaced by four worked conversion problems: AUD→USD, EUR round trip, AUD round trip with profit, and GBP round trip with loss.
   - Their wrong options are the usual slips: dividing instead of multiplying, reversing the rate, and subtracting the rates.
 - **Terms.** Ask/Bid follow the lessons: «سعر العرض (Ask)» is the buy price and «سعر الطلب (Bid)» is the sell price. The English term is added in brackets so the two can't be confused.
