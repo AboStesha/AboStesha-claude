@@ -122,7 +122,7 @@
  {
   "id": "L05_B",
   "idx": 52,
-  "bg": "art/i52.png",
+  "bg": "art/v2_521.png",
   "design": "B",
   "theme": "light",
   "title": [
@@ -327,9 +327,9 @@
  {
   "id": "L12_B",
   "idx": 122,
-  "bg": "art/i1220.png",
+  "bg": "art/v2_1221.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "رسوم",
    "{التبييت}"
@@ -380,9 +380,9 @@
  {
   "id": "L14_B",
   "idx": 142,
-  "bg": "art/i142.png",
+  "bg": "art/v2_1421.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "{سيكولوجية}",
    "التداول"
@@ -407,9 +407,9 @@
  {
   "id": "L15_B",
   "idx": 152,
-  "bg": "art/i152.png",
+  "bg": "art/v2_1521.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "إدارة",
    "{المخاطر}"
@@ -436,9 +436,9 @@
  {
   "id": "L16_B",
   "idx": 162,
-  "bg": "art/i162.png",
+  "bg": "art/v2_1621.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "التحليل الأساسي",
    "التحليل الفني"
@@ -465,9 +465,9 @@
  {
   "id": "L17_B",
   "idx": 172,
-  "bg": "art/i172.png",
+  "bg": "art/v2_1721.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "{استراتيجيات}",
    "التداول"
@@ -492,9 +492,9 @@
  {
   "id": "L18_B",
   "idx": 182,
-  "bg": "art/i182.png",
+  "bg": "art/v2_1821.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "نصائح قبل",
    "{أول إيداع}"
@@ -520,9 +520,9 @@
  {
   "id": "G01_B",
   "idx": 912,
-  "bg": "art/i912.png",
+  "bg": "art/v2_9121.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "شلون",
    "تتداول",
@@ -547,9 +547,9 @@
  {
   "id": "G02_B",
   "idx": 922,
-  "bg": "art/i922.png",
+  "bg": "art/v2_9221.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "شنو {يحرّك}",
    "سعر الذهب؟"
@@ -561,7 +561,7 @@
     840,
     220,
     1080,
-    520
+    570
    ]
   ]
  },
@@ -581,9 +581,9 @@
  {
   "id": "G03_B",
   "idx": 932,
-  "bg": "art/i932.png",
+  "bg": "art/v2_9321.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "الذهب",
    "{بالأرقام}"
@@ -607,9 +607,9 @@
  {
   "id": "G04_B",
   "idx": 942,
-  "bg": "art/i942.png",
+  "bg": "art/v2_9421.png",
   "design": "B",
-  "theme": "dark",
+  "theme": "light",
   "title": [
    "{أوقات} تداول",
    "الذهب"

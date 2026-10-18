@@ -237,5 +237,73 @@
    "job_id": "5660b44c-9c43-4524-989b-9175a9b060e6"
   }
  ],
- "note": "GPT Image 2.5 Sunburst, quality xhigh, 2k, 16:9 (4.5 credits each). index = lesson*10 + design (1 = A, 2 = B); gold = 900 + lesson*10 + design; p* = pilot; 1220 = L12_B full-moon redo (replaces 122)."
+ "v2_grey": [
+  {
+   "index": 1421,
+   "job_id": "2d3a71ee-f1a5-4fef-a127-7b7b3ebef9d2",
+   "edit_of": "f0778fbc-d877-4d12-9233-cd1ca5713eb7",
+   "file": "hf_20261018_135548_2d3a71ee-f1a5-4fef-a127-7b7b3ebef9d2"
+  },
+  {
+   "index": 1521,
+   "job_id": "ed560d39-486b-4e27-bee6-7a60e273259e",
+   "edit_of": "d4e2f14a-5a52-4430-a073-8dd877d020ec",
+   "file": "hf_20261018_135548_ed560d39-486b-4e27-bee6-7a60e273259e"
+  },
+  {
+   "index": 1621,
+   "job_id": "ecbe64ec-581d-4711-bd98-acc0bf5e7f41",
+   "edit_of": "95f68fea-b3c7-4899-a647-8788eb3a2bff",
+   "file": "hf_20261018_135548_ecbe64ec-581d-4711-bd98-acc0bf5e7f41"
+  },
+  {
+   "index": 1721,
+   "job_id": "28c7efdb-2c7f-479a-8bff-a40f0def2e8f",
+   "edit_of": "080a5cf2-3d5c-472c-9114-7e562201315e",
+   "file": "hf_20261018_135549_28c7efdb-2c7f-479a-8bff-a40f0def2e8f"
+  },
+  {
+   "index": 1821,
+   "job_id": "b2779bf1-863c-4042-bcc0-0436a2720f6e",
+   "edit_of": "4f111b92-3312-4d29-b167-3f05af41091a",
+   "file": "hf_20261018_135549_b2779bf1-863c-4042-bcc0-0436a2720f6e"
+  },
+  {
+   "index": 9121,
+   "job_id": "bb6f3bff-2db1-4556-bb1c-da50c630d6db",
+   "edit_of": "c7774520-61a6-4c4f-867b-743bb99a9236",
+   "file": "hf_20261018_135547_bb6f3bff-2db1-4556-bb1c-da50c630d6db"
+  },
+  {
+   "index": 9221,
+   "job_id": "b851655f-acf1-426e-befa-df64ad9b2b17",
+   "edit_of": "7fc3cd2d-7a3b-4606-8091-51a7b8c2e1f6",
+   "file": "hf_20261018_135549_b851655f-acf1-426e-befa-df64ad9b2b17"
+  },
+  {
+   "index": 9321,
+   "job_id": "92f809bb-a2b1-488c-b029-e65ecfd995a3",
+   "edit_of": "cacb3a3b-b539-493c-83b0-af9e9c9ad686",
+   "file": "hf_20261018_135548_92f809bb-a2b1-488c-b029-e65ecfd995a3"
+  },
+  {
+   "index": 9421,
+   "job_id": "d6ee07bc-9173-4afb-870b-048832a4b401",
+   "edit_of": "e9d9b064-3b3f-42cf-96e3-6c69eb52aeae",
+   "file": "hf_20261018_135704_d6ee07bc-9173-4afb-870b-048832a4b401"
+  },
+  {
+   "index": 1221,
+   "job_id": "d12092be-80ef-4976-abaf-76dc6b559e8c",
+   "edit_of": "5660b44c-9c43-4524-989b-9175a9b060e6",
+   "file": "hf_20261018_135704_d12092be-80ef-4976-abaf-76dc6b559e8c"
+  },
+  {
+   "index": 521,
+   "job_id": "aeae2e9b-94be-477b-b344-7dfd053f13c3",
+   "edit_of": "bfa6c21d-cc8b-4133-95f2-38521f2fa3b0",
+   "file": "hf_20261018_135703_aeae2e9b-94be-477b-b344-7dfd053f13c3"
+  }
+ ],
+ "note": "GPT Image 2.5 Sunburst, quality xhigh, 2k, 16:9 (4.5 credits each). index = lesson*10 + design (1 = A, 2 = B); gold = 900 + lesson*10 + design; p* = pilot; 1220 = L12_B full-moon redo (replaces 122). v2_grey = edits of the design B images (edit_of = the job edited, with the presenter close-up as a second reference): the dark backdrops replaced by the Axi grey gradient #EEF0F1 → #607880, index = old index*10 + 1; 521 also adds three white background charts (line, candlestick, bars) to L05_B."
 }
