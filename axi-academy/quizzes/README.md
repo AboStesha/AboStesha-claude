@@ -10,7 +10,7 @@ There are 380 multiple-choice questions for the four Axi Academy courses, in sim
 
 | File | What it is |
 |---|---|
-| `AxiAcademy_QuestionBank.pdf` | The bank in Axi Iraq branding (A4, 111 pages). The correct answer is shaded mint with a check mark, and every lesson and exam ends with an answer key. |
+| `AxiAcademy_QuestionBank.pdf` | The bank in Axi Iraq branding (A4, 111 pages). The correct answer is shaded mint with a check mark, and every lesson and exam ends with an answer key. It has bookmarks for every course and lesson, and the contents page is clickable. |
 | `AxiAcademy_QuestionBank.xlsx` | The same questions, one row per question, for loading into the quiz system. The correct option's cell is shaded. A second sheet has counts per lesson. |
 | `questions.json` | Machine-readable bank. `answer` is the 0-based index of the correct option. |
 | `bank/c1.md` to `bank/c4.md` | The source the files above are built from, one file per course. |
@@ -62,11 +62,21 @@ There are 380 multiple-choice questions for the four Axi Academy courses, in sim
   - 4 options each, exactly one correct, and no repeated options or questions.
   - No banned phrases and no Eastern Arabic digits.
 - **Balanced answers.** The script spreads the correct answer evenly over أ/ب/ج/د within each set. Questions whose options are numbers keep them in ascending order.
-- **Independent review (in progress).** A second review is checking every question against the transcripts and recomputing every calculation:
+- **Independent review.** A second review checked every question against the transcripts and recomputed every calculation:
   - pips, lots and margin
   - percentages
   - ounce, gram and mithqal conversions
-  - Baghdad time conversions
+  - Baghdad time conversions, against the time-zone database
+- **What the review found.** No answer key was wrong. It found 24 smaller issues, and all of them are fixed:
+  - **One date.** Iraq last used summer time in 2007, so the question now asks after which year it stopped.
+  - **Five arguable options.** Each was either replaced or given «حسب الدرس».
+    - Example: 5 PM New York is midnight in Baghdad during US summer time, so «midnight Baghdad» could not stay as a wrong option.
+  - **Two compliance wordings.**
+    - A stop loss limits a loss but does not guarantee the closing price.
+    - Protection against negative balances depends on the regulator.
+  - **Fourteen giveaways.** In each, one question's wording revealed the answer to another question in the same set. Because students draw replacement questions from the same set, both can appear in one quiz.
+  - **Two wording slips.**
+  - The layout check found one more giveaway in the course 1 exam, which is also fixed.
 - **Layout.** The PDF was checked page by page:
   - Every lesson and exam starts on a new page.
   - No question is split across pages.
@@ -80,6 +90,8 @@ python3 tool/export_xlsx.py questions.json AxiAcademy_QuestionBank.xlsx
 python3 tool/fonts.py <fonts_dir>                       # once: static Readex Pro / Inter from the variable fonts (needs fontTools)
 PW_MODULE=<path>/playwright/index.mjs node tool/render.mjs questions.json <fonts_dir> ../brand/AxiIraq_Logo_Stacked_Ink.png AxiAcademy_QuestionBank.pdf
 ```
+
+`render.mjs` runs `tool/bookmarks.py` (pypdf) at the end. It writes the bookmarks itself because Chromium stores right-to-left bookmark titles with the words in reverse order.
 
 `<fonts_dir>` holds `ReadexPro.ttf` and `Inter.ttf`. Readex Pro stands in for Rabar, which we don't have, the same as on the thumbnails. The logo is the official Axi Iraq stacked logo in ink.
 

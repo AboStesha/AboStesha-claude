@@ -6,6 +6,7 @@
 // a new page, and the contents page gets its page numbers once everything is placed.
 import fs from 'fs';
 import path from 'path';
+import { execFileSync } from 'child_process';
 
 const PW = process.env.PW_MODULE || 'playwright';
 const { chromium } = await import(PW);
@@ -86,7 +87,7 @@ h2.sec { font-size: 20pt; font-weight: 700; line-height: 1.3; }
 .toc { margin-top: 5mm; }
 .toc .tc { display: flex; align-items: baseline; gap: 3mm; border-bottom: 2px solid var(--ink); padding-bottom: 1.4mm; }
 .toc .tc b { font-size: 12pt; }
-.toc .tr { display: flex; align-items: baseline; gap: 3mm; padding: 1.25mm 0; border-bottom: 1px solid var(--line); font-size: 10pt; }
+.toc .tr { color: inherit; text-decoration: none; display: flex; align-items: baseline; gap: 3mm; padding: 1.25mm 0; border-bottom: 1px solid var(--line); font-size: 10pt; }
 .toc .tr .n { font-family: NUM; font-weight: 600; min-width: 8mm; color: var(--red); }
 .toc .tr .t { flex: 1; }
 .toc .tr .c { font-size: 9pt; color: var(--slate); }
@@ -144,7 +145,7 @@ const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 const rich = (s) => esc(s).replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>');
 const logo = (cls = '') => '<div class="lg ' + cls + '"><img src="' + LOGO + '"></div>';
 const node = (h) => { const t = document.createElement('template'); t.innerHTML = h.trim(); return t.content.firstChild; };
-const page = (cls, inner) => { const p = node('<div class="page ' + cls + '">' + inner + '</div>'); root.appendChild(p); return p; };
+const page = (cls, inner, id = '') => { const p = node('<div class="page ' + cls + '"' + (id ? ' id="' + id + '"' : '') + '>' + inner + '</div>'); root.appendChild(p); return p; };
 const count = (n, one, few, many) => n + ' ' + (n === 1 ? one : n <= 10 ? few : many);
 
 // one running page, returns its content box
@@ -198,22 +199,22 @@ const how = [
   'الأسئلة مبنية على محتوى الفيديوهات نفسها، فلا تحتاج إلى أي معلومة من خارج الكورس.',
 ];
 flow('طريقة الاستخدام', [
-  node('<h2 class="sec">طريقة الاستخدام</h2>'),
+  node('<h2 class="sec" id="howto">طريقة الاستخدام</h2>'),
   node('<div class="howto">' + how.map((t, i) => '<div class="it"><b class="n">' + (i + 1) + '</b><div>' + t + '</div></div>').join('') + '</div>'),
   node('<p class="note">الأسعار والأرقام في الأسئلة أمثلة افتراضية للتعليم فقط. ' + esc(${JSON.stringify(RISK)}) + '</p>'),
 ]);
 
 // contents (page numbers are filled in at the end)
-flow('المحتويات', [node('<h2 class="sec">المحتويات</h2>')].concat(C.map((c) => node('<div class="toc">' +
+flow('المحتويات', [node('<h2 class="sec" id="contents">المحتويات</h2>')].concat(C.map((c) => node('<div class="toc">' +
   '<div class="tc"><b>' + esc(c.label) + ' · ' + esc(c.name) + '</b></div>' +
-  c.lessons.map((l) => '<div class="tr"><span class="n">' + l.no + '</span><span class="t">' + esc(l.title) + '</span><span class="c">10 أسئلة</span><span class="p" data-ref="' + l.id + '"></span></div>').join('') +
-  '<div class="tr ex"><span class="n"></span><span class="t">اختبار نهاية الكورس</span><span class="c">40 سؤالاً</span><span class="p" data-ref="' + c.exam.id + '"></span></div></div>'))));
+  c.lessons.map((l) => '<a class="tr" href="#' + l.id + '"><span class="n">' + l.no + '</span><span class="t">' + esc(l.title) + '</span><span class="c">10 أسئلة</span><span class="p" data-ref="' + l.id + '"></span></a>').join('') +
+  '<a class="tr ex" href="#' + c.exam.id + '"><span class="n"></span><span class="t">اختبار نهاية الكورس</span><span class="c">40 سؤالاً</span><span class="p" data-ref="' + c.exam.id + '"></span></a></div>'))));
 
 // courses
 C.forEach((c, ci) => {
   page('div', logo() + '<div class="no">' + String(ci + 1).padStart(2, '0') + '</div><div class="head"><span class="pill red">' + esc(c.label) + '</span><h1>' + esc(c.name) + '</h1></div>' +
     '<div class="list">' + c.lessons.map((l) => '<div class="row"><span class="n">' + l.no + '</span><span>' + esc(l.title) + '</span><span class="c">10 أسئلة</span></div>').join('') +
-    '<div class="row ex"><span class="n"></span><span>اختبار نهاية الكورس</span><span class="c">40 سؤالاً</span></div></div>');
+    '<div class="row ex"><span class="n"></span><span>اختبار نهاية الكورس</span><span class="c">40 سؤالاً</span></div></div>', c.id);
   const label = c.label + ' · ' + c.name;
   const blocks = [];
   c.lessons.forEach((l) => {
@@ -221,7 +222,7 @@ C.forEach((c, ci) => {
     h.dataset.keep = 1;
     blocks.push({ start: true, els: [h, ...l.questions.map(question), key(l.questions)] });
   });
-  const eh = node('<div class="eh" id="' + c.exam.id + '"><div class="tags"><span class="pill red">اختبار نهاية الكورس</span><span class="pill">' + esc(c.label) + '</span></div><h2>' + esc(c.name) + '</h2><div class="meta">' + c.exam.questions.length + ' سؤالاً جديداً تغطي دروس الكورس كلها</div></div>');
+  const eh = node('<div class="eh" id="' + c.exam.id + '"><div class="tags"><span class="pill red">' + esc(c.label) + '</span></div><h2>اختبار نهاية الكورس</h2><div class="meta">' + c.exam.questions.length + ' سؤالاً جديداً تغطي دروس «' + esc(c.name) + '» كلها</div></div>');
   eh.dataset.keep = 1;
   blocks.push({ start: true, els: [eh, ...c.exam.questions.map(question), key(c.exam.questions)] });
   blocks.forEach((b) => flow(label, b.els));   // every lesson and the exam start on a new page
@@ -235,6 +236,11 @@ page('close grad', '<div class="mid">' + logo() + '<div class="line">تعلّم 
 const all = [...root.children];
 all.forEach((p, i) => { const pn = p.querySelector('.pn'); if (pn) pn.textContent = i + 1; });
 document.querySelectorAll('[data-ref]').forEach((s) => { s.textContent = all.indexOf(document.getElementById(s.dataset.ref).closest('.page')) + 1; });
+// bookmarks (added by tool/bookmarks.py, because Chromium writes RTL bookmark titles in visual order)
+const at = (id) => all.indexOf(document.getElementById(id).closest('.page')) + 1;
+window.__marks = [{ t: 'طريقة الاستخدام', p: at('howto'), lvl: 0 }, { t: 'المحتويات', p: at('contents'), lvl: 0 }].concat(...C.map((c) =>
+  [{ t: c.label + ' · ' + c.name, p: at(c.id), lvl: 0 }].concat(c.lessons.map((l) => ({ t: 'الدرس ' + l.no + ' · ' + l.title, p: at(l.id), lvl: 1 })),
+    [{ t: 'اختبار نهاية الكورس', p: at(c.exam.id), lvl: 1 }])));
 window.__pages = all.length;
 })();
 </script></body></html>`;
@@ -248,8 +254,13 @@ pg.on('pageerror', (e) => problems.push('pageerror ' + String(e)));
 pg.on('console', (m) => m.type() === 'error' && problems.push(m.text()));
 await pg.goto('file://' + tmp, { waitUntil: 'load' });
 const pages = await (await pg.waitForFunction(() => window.__pages, null, { timeout: 120000 })).jsonValue();
-await pg.pdf({ path: outFile, width: '210mm', height: '297mm', printBackground: true, preferCSSPageSize: true, outline: true, tagged: !!process.env.TAGGED });
+await pg.pdf({ path: outFile, width: '210mm', height: '297mm', printBackground: true, preferCSSPageSize: true });
+const marks = await pg.evaluate(() => window.__marks);
 await br.close();
 if (!process.env.KEEP_HTML) fs.unlinkSync(tmp);
+const mf = outFile + '.marks.json';
+fs.writeFileSync(mf, JSON.stringify(marks));
+execFileSync('python3', [path.join(path.dirname(new URL(import.meta.url).pathname), 'bookmarks.py'), outFile, mf], { stdio: 'inherit' });
+fs.unlinkSync(mf);
 console.log('wrote', outFile, pages, 'pages');
 if (problems.length) { console.error(problems.join('\n')); process.exitCode = 1; }
