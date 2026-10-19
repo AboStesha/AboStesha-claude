@@ -134,6 +134,11 @@ const sorted = (txs) => [...txs].sort((a, b) => (b.date === a.date ? b.createdAt
 
 /* ---------- Rendering ---------- */
 
+function setBalance(el, n) {
+  el.textContent = fmtUSD(n);
+  el.classList.toggle('neg', round2(n) < 0);
+}
+
 function txHTML(t, showMeta) {
   const inc = t.sign > 0;
   const w = walletById(t.walletId);
@@ -162,17 +167,20 @@ function renderBanner() {
 
 function renderHome() {
   const all = state.txs;
-  $('#totalBalance').textContent = fmtUSD(net(all));
+  setBalance($('#totalBalance'), net(all));
   const ym = today().slice(0, 7);
   const month = all.filter((t) => t.date.startsWith(ym));
   $('#monthIn').textContent = fmtUSD(sumIn(month));
   $('#monthOut').textContent = fmtUSD(sumOut(month));
   $('#monthLabel').textContent = new Date().toLocaleDateString('en-US', { month: 'long' });
 
-  $('#walletList').innerHTML = state.wallets.map((w) => `<li><button class="row" data-wallet="${w.id}">
+  $('#walletList').innerHTML = state.wallets.map((w) => {
+    const b = net(walletTxs(w.id));
+    return `<li><button class="row" data-wallet="${w.id}">
       <span class="row-main"><span class="row-title">${esc(w.name)}</span></span>
-      <span class="row-value">${fmtUSD(net(walletTxs(w.id)))}</span>${CHEV}
-    </button></li>`).join('') +
+      <span class="row-value ${b < 0 ? 'neg' : ''}">${fmtUSD(b)}</span>${CHEV}
+    </button></li>`;
+  }).join('') +
     '<li><button class="row" id="addWallet"><span class="row-title link">New Wallet</span></button></li>';
 
   const recent = sorted(all).slice(0, 20);
@@ -188,7 +196,7 @@ function renderWallet() {
   $('#walletTitle').textContent = w.name;
   $('#walletNavTitle').textContent = w.name;
   const txs = walletTxs(w.id);
-  $('#walletBalance').textContent = fmtUSD(net(txs));
+  setBalance($('#walletBalance'), net(txs));
   $('#walletIn').textContent = fmtUSD(sumIn(txs));
   $('#walletOut').textContent = fmtUSD(sumOut(txs));
 

@@ -1,5 +1,5 @@
 // Offline cache. Bump CACHE when shipping changes; the app updates on the next launch.
-const CACHE = 'pocket-v2';
+const CACHE = 'pocket-v3';
 const ASSETS = [
   './',
   './index.html',
