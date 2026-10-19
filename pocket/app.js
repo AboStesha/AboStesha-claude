@@ -139,12 +139,17 @@ function setBalance(el, n) {
   el.classList.toggle('neg', round2(n) < 0);
 }
 
+// Hidden behind each swipeable row; revealed by swiping left.
+const SWIPE_ACTIONS = `<div class="swipe-actions" aria-hidden="true">
+    <button class="swipe-del" tabindex="-1"><span class="pill"><svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg></span><span class="pill-label">Delete</span></button>
+  </div>`;
+
 function txHTML(t, showMeta) {
   const inc = t.sign > 0;
   const w = walletById(t.walletId);
   const sub = showMeta ? [state.wallets.length > 1 && w ? w.name : null, dayLabel(t.date)].filter(Boolean).join(' · ') : '';
   const orig = t.currency !== 'USD' ? `<span class="row-sub">${fmtCur(t.amount, t.currency)}</span>` : '';
-  return `<li><button class="row" data-tx="${t.id}">
+  return `<li class="swipe" data-swipe-tx="${t.id}">${SWIPE_ACTIONS}<button class="row" data-tx="${t.id}">
     <span class="row-main"><span class="row-title">${esc(t.note || (inc ? 'Income' : 'Expense'))}</span>${sub ? `<span class="row-sub">${esc(sub)}</span>` : ''}</span>
     <span class="row-end"><span class="amt ${inc ? 'in' : ''}">${fmtUSD(t.sign * t.usd, true)}</span>${orig}</span>
   </button></li>`;
@@ -174,9 +179,11 @@ function renderHome() {
   $('#monthOut').textContent = fmtUSD(sumOut(month));
   $('#monthLabel').textContent = new Date().toLocaleDateString('en-US', { month: 'long' });
 
+  const canDeleteWallet = state.wallets.length > 1;
   $('#walletList').innerHTML = state.wallets.map((w) => {
     const b = net(walletTxs(w.id));
-    return `<li><button class="row" data-wallet="${w.id}">
+    const li = canDeleteWallet ? `<li class="swipe" data-swipe-wallet="${w.id}">${SWIPE_ACTIONS}` : '<li>';
+    return `${li}<button class="row" data-wallet="${w.id}">
       <span class="row-main"><span class="row-title">${esc(w.name)}</span></span>
       <span class="row-value ${b < 0 ? 'neg' : ''}">${fmtUSD(b)}</span>${CHEV}
     </button></li>`;
@@ -213,6 +220,7 @@ function renderWallet() {
 }
 
 function render() {
+  openSwipe = null;
   if (currentWalletId) renderWallet();
   else renderHome();
   updateNavbar();
@@ -536,13 +544,17 @@ txSheet.addEventListener('submit', (e) => {
   toast(existing ? 'Changes saved' : `${form.sign > 0 ? 'Income' : 'Expense'} added · ${fmtUSD(data.usd)}`, snap);
 });
 
-$('#deleteTx').addEventListener('click', () => {
+function deleteTx(id) {
   const snap = snapshot();
-  state.txs = state.txs.filter((t) => t.id !== form.editingId);
+  state.txs = state.txs.filter((t) => t.id !== id);
   save();
-  closeSheet();
   render();
   toast('Payment deleted', snap);
+}
+
+$('#deleteTx').addEventListener('click', () => {
+  closeSheet();
+  deleteTx(form.editingId);
 });
 
 /* ---------- Settings: rates & backup ---------- */
@@ -656,24 +668,148 @@ walletSheet.addEventListener('submit', (e) => {
   render();
 });
 
-$('#deleteWallet').addEventListener('click', () => {
-  const w = walletById(editingWalletId);
+function deleteWallet(id) {
+  const w = walletById(id);
   if (!w || state.wallets.length < 2) return;
   const snap = snapshot();
   state.wallets = state.wallets.filter((x) => x.id !== w.id);
   state.txs = state.txs.filter((t) => t.walletId !== w.id);
   save();
-  closeSheet();
   if (currentWalletId === w.id) goHome();
   else render();
   toast(`“${w.name}” deleted`, snap);
+}
+
+$('#deleteWallet').addEventListener('click', () => {
+  closeSheet();
+  deleteWallet(editingWalletId);
 });
 
 $('#walletEdit').addEventListener('click', () => openWalletSheet(currentWalletId));
 $('#backHome').addEventListener('click', goHome);
 $('#addBtn').addEventListener('click', () => openTx(null));
 
+/* ---------- Swipe left to delete ---------- */
+// The row tracks the finger 1:1 from where it was grabbed; on release, flick velocity
+// decides between open and closed; a long swipe past 55% of the row deletes it outright.
+
+const ACTION_W = 88;
+let openSwipe = null; // row currently showing its Delete button
+let swipe = null;     // gesture in progress
+let suppressClick = false;
+
+const swipeRow = (li) => li.querySelector('.row');
+const liveX = (li) => new DOMMatrixReadOnly(getComputedStyle(swipeRow(li)).transform).m41;
+const rubberband = (o, d, c = 0.55) => (o * d * c) / (d + c * Math.abs(o));
+
+function setSwipeX(li, x) {
+  li._x = x;
+  swipeRow(li).style.transform = x ? `translateX(${x}px)` : '';
+  const reveal = Math.max(0, -x);
+  li.querySelector('.swipe-actions').style.width = `${Math.max(ACTION_W, reveal)}px`;
+  li.style.setProperty('--p', Math.min(1, reveal / ACTION_W).toFixed(3));
+  if (x < 0) li.classList.add('shifted');
+}
+
+function snapSwipe(li, x) {
+  li.classList.remove('dragging', 'armed');
+  setSwipeX(li, x);
+  if (x < 0) { openSwipe = li; return; }
+  if (openSwipe === li) openSwipe = null;
+  setTimeout(() => { if (!li._x) li.classList.remove('shifted'); }, 400);
+}
+
+function swipeDelete(li) {
+  openSwipe = null;
+  li.classList.add('armed', 'removing');
+  setSwipeX(li, -li.offsetWidth);
+  li.style.height = `${li.offsetHeight}px`;
+  void li.offsetHeight;
+  li.style.height = '0px';
+  setTimeout(() => {
+    if (li.dataset.swipeTx) deleteTx(li.dataset.swipeTx);
+    else deleteWallet(li.dataset.swipeWallet);
+  }, 280);
+}
+
+document.addEventListener('pointerdown', (e) => {
+  suppressClick = false;
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  const onDelete = e.target.closest('.swipe-del');
+  const li = e.target.closest('.swipe');
+  // Touching anywhere else while a row is open just closes it, like iOS.
+  if (openSwipe && !onDelete && li !== openSwipe) {
+    snapSwipe(openSwipe, 0);
+    suppressClick = true;
+  }
+  if (!li || onDelete) return;
+  const x = liveX(li);
+  swipe = { li, id: e.pointerId, x0: e.clientX, y0: e.clientY, base: x, x, mode: null, hist: [[e.timeStamp, e.clientX]] };
+});
+
+document.addEventListener('pointermove', (e) => {
+  const s = swipe;
+  if (!s || e.pointerId !== s.id) return;
+  if (!s.mode) {
+    const dx = e.clientX - s.x0;
+    const dy = e.clientY - s.y0;
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      s.mode = 'h';
+      s.x0 = e.clientX;
+      s.base = liveX(s.li);
+      s.li.classList.add('dragging');
+      try { s.li.setPointerCapture(e.pointerId); } catch { /* not supported */ }
+      if (openSwipe && openSwipe !== s.li) snapSwipe(openSwipe, 0);
+    } else if (Math.abs(dy) > 10) {
+      swipe = null;
+      return;
+    } else {
+      return;
+    }
+  }
+  e.preventDefault();
+  const w = s.li.offsetWidth;
+  let x = s.base + (e.clientX - s.x0);
+  if (x > 0) x = rubberband(x, w);
+  s.x = x;
+  s.hist.push([e.timeStamp, e.clientX]);
+  if (s.hist.length > 5) s.hist.shift();
+  setSwipeX(s.li, x);
+  s.li.classList.toggle('armed', -x > w * 0.55);
+});
+
+function endSwipe(e) {
+  const s = swipe;
+  if (!s || e.pointerId !== s.id) return;
+  swipe = null;
+  if (!s.mode) {
+    // A tap on an open row closes it instead of opening the payment.
+    if (s.base < 0) { snapSwipe(s.li, 0); suppressClick = true; }
+    return;
+  }
+  suppressClick = true;
+  if (e.type === 'pointerup' && s.li.classList.contains('armed')) return swipeDelete(s.li);
+  const [t0, x0] = s.hist[0];
+  const [t1, x1] = s.hist[s.hist.length - 1];
+  const v = t1 > t0 ? (x1 - x0) / (t1 - t0) : 0; // px per ms
+  const projected = s.x + v * 99; // where the flick would coast to
+  snapSwipe(s.li, projected < -ACTION_W / 2 ? -ACTION_W : 0);
+}
+document.addEventListener('pointerup', endSwipe);
+document.addEventListener('pointercancel', endSwipe);
+window.addEventListener('scroll', () => { if (openSwipe && !swipe) snapSwipe(openSwipe, 0); }, { passive: true });
+
+// Swallow the click that ends a swipe (or the tap that only closed an open row).
+document.addEventListener('click', (e) => {
+  if (!suppressClick) return;
+  suppressClick = false;
+  e.preventDefault();
+  e.stopPropagation();
+}, true);
+
 $('#app').addEventListener('click', (e) => {
+  const del = e.target.closest('.swipe-del');
+  if (del) return swipeDelete(del.closest('.swipe'));
   const wb = e.target.closest('[data-wallet]');
   if (wb) return showWallet(wb.dataset.wallet);
   if (e.target.closest('#addWallet')) return openWalletSheet(null);
@@ -686,10 +822,22 @@ $('#app').addEventListener('click', (e) => {
 history.replaceState({}, '');
 render();
 
+// A new version finished installing: reload into it now, or once the open sheet is done.
+let updateReady = false;
+
 // Refresh "x days ago" and the month when the app comes back from the background.
-document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && updateReady) location.reload();
+  else if (!document.hidden) render();
+});
 
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || updateReady) return; // first install, not an update
+    updateReady = true;
+    if (!openSheetEl) location.reload();
+  });
+  navigator.serviceWorker.register('sw.js').then((reg) => reg.update()).catch(() => {});
 }

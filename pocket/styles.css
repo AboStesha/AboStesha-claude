@@ -114,6 +114,28 @@ li + li .row::before, li + li.empty::before {
 .group-foot.error { color: var(--red); }
 .group-foot:empty { display: none; }
 
+/* Swipe left to delete (iOS 26 style pill) */
+.swipe { position: relative; background: var(--bg); touch-action: pan-y; -webkit-user-select: none; user-select: none; }
+.swipe .row { z-index: 1; background: var(--group); transition: transform 420ms var(--ease), border-radius 200ms; }
+.swipe.dragging .row { transition: none; }
+.swipe.shifted .row { border-radius: 0 24px 24px 0; }
+.swipe.shifted .row:active { background: var(--group); }
+.swipe-actions { position: absolute; top: 0; right: 0; bottom: 0; width: 88px; display: flex; align-items: center; justify-content: center; }
+.swipe-del {
+  width: 100%; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  color: var(--secondary); font-size: 11px; line-height: 13px;
+  opacity: var(--p, 0); transform: scale(calc(0.6 + 0.4 * var(--p, 0)));
+}
+.swipe-del .pill {
+  width: 62px; height: 34px; border-radius: 17px; display: grid; place-items: center;
+  background: var(--red); color: #fff; transition: width 220ms var(--ease);
+}
+.swipe-del .pill svg { width: 20px; height: 20px; stroke-width: 2; }
+.swipe-del:active .pill { filter: brightness(0.85); }
+.swipe.armed .swipe-del .pill { width: calc(100% - 24px); }
+.swipe.removing { overflow: hidden; transition: height 260ms var(--ease); }
+.swipe.removing .row { transition: transform 240ms var(--ease); }
+
 /* Floating add button — the one glass control on the page */
 .fab {
   position: fixed; z-index: 10;
@@ -247,6 +269,7 @@ li + li .row::before, li + li.empty::before {
   .sheet { transition: opacity 200ms; transform: none; opacity: 0; }
   .sheet.show { opacity: 1; }
   .seg-thumb { transition: none; }
+  .swipe .row, .swipe.removing { transition: none; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .navbar.scrolled, .fab, .sheet, .toast { -webkit-backdrop-filter: none; backdrop-filter: none; }
