@@ -274,6 +274,14 @@
     }
     ctx.restore();
   }
+  // the trade card out of focus: blurred once per blur level into a small cached sprite (a live canvas blur is far too slow)
+  const BLUR = {};
+  function cardBlur(px) {
+    if (BLUR[px]) return BLUR[px];
+    const a = document.createElement('canvas'); a.width = 450; a.height = 250; const ca = a.getContext('2d'); L8.DK = 0; tradeCard(ca, 60, 60, 15, 1, { n: 0 });
+    const b = document.createElement('canvas'); b.width = 450; b.height = 250; const cb = b.getContext('2d'); cb.filter = `blur(${px}px)`; cb.drawImage(a, 0, 0);
+    return (BLUR[px] = b);
+  }
   // a ghost tank of the 100-tank wall
   function ghostTank(ctx, x, yb, p, lit) {
     const w2 = TK.w / 2, hh = TK.h, rb = 34;
@@ -334,9 +342,8 @@
     if (cp > 0) {
       const slide = -(1 - eo(t, T.fath - 0.25, 0.7)) * 320; const close = clamp((t - T.taghliq) / 0.6);
       const dof = 7 * env(t, T.p3 - 0.4, T.p5 + 0.45, 0.7, 0.4); // out of focus while the camera is at the house
-      if (dof > 0.3) ctx.filter = `blur(${dof.toFixed(1)}px)`;
-      tradeCard(ctx, CARD.x + slide, CARD.y, t, cp, { close, n: 0 });
-      ctx.filter = 'none';
+      if (dof > 0.5) ctx.drawImage(cardBlur(Math.round(dof)), CARD.x + slide - 60, CARD.y - 60);
+      else tradeCard(ctx, CARD.x + slide, CARD.y, t, cp, { close, n: 0 });
       tether(ctx, CARD.x + 330 + slide, CARD.y + 100, g.x0 + 8, (yb + g.yb) / 2, clamp((t - T.safqa - 0.1) * 1.8) * (1 - clamp((t - T.taghliq) * 2.5)), t, { sag: 70 });
       K.burst(ctx, CARD.x + 30, CARD.y + 30, t, T.taghliq - 0.08, C.red, 6, 46, 0.45);
     }
