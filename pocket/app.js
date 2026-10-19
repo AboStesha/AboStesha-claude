@@ -11,6 +11,7 @@ const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString
 const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const today = () => ymd(new Date());
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const CHEV = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
 
 /* ---------- State ---------- */
 
@@ -133,61 +134,51 @@ const sorted = (txs) => [...txs].sort((a, b) => (b.date === a.date ? b.createdAt
 
 /* ---------- Rendering ---------- */
 
-function setAmount(el, n) {
-  el.textContent = fmtUSD(n);
-  el.classList.toggle('neg', round2(n) < 0);
-}
-
 function txHTML(t, showMeta) {
   const inc = t.sign > 0;
   const w = walletById(t.walletId);
   const sub = showMeta ? [state.wallets.length > 1 && w ? w.name : null, dayLabel(t.date)].filter(Boolean).join(' · ') : '';
-  const orig = t.currency !== 'USD' ? `<span class="tx-orig">${fmtCur(t.amount, t.currency)}</span>` : '';
-  return `<li><button class="tx" data-tx="${t.id}">
-    <span class="tx-dot ${inc ? 'in' : 'out'}" aria-hidden="true">${inc ? '+' : '−'}</span>
-    <span class="tx-main"><span class="tx-note">${esc(t.note || (inc ? 'Income' : 'Expense'))}</span>${sub ? `<span class="tx-sub">${esc(sub)}</span>` : ''}</span>
-    <span class="tx-amt"><span class="tx-usd ${inc ? 'in' : ''}">${fmtUSD(t.sign * t.usd, true)}</span>${orig}</span>
+  const orig = t.currency !== 'USD' ? `<span class="row-sub">${fmtCur(t.amount, t.currency)}</span>` : '';
+  return `<li><button class="row" data-tx="${t.id}">
+    <span class="row-main"><span class="row-title">${esc(t.note || (inc ? 'Income' : 'Expense'))}</span>${sub ? `<span class="row-sub">${esc(sub)}</span>` : ''}</span>
+    <span class="row-end"><span class="amt ${inc ? 'in' : ''}">${fmtUSD(t.sign * t.usd, true)}</span>${orig}</span>
   </button></li>`;
 }
 
 function renderBanner() {
-  const b = $('#rateBanner');
   const r = state.rates;
+  const b = $('#rateBanner');
   if (!r.IQD && !r.TRY) {
-    b.textContent = 'Set your IQD and TRY exchange rates →';
+    $('#rateBannerTitle').textContent = 'Set Exchange Rates';
+    $('#rateBannerSub').textContent = 'Needed for IQD and TRY payments';
     b.hidden = false;
     return;
   }
   const days = Math.floor((Date.now() - r.updatedAt) / 864e5);
   b.hidden = days < STALE_DAYS;
-  b.textContent = `Rates last updated ${days} days ago. Tap to update →`;
+  $('#rateBannerTitle').textContent = 'Update Exchange Rates';
+  $('#rateBannerSub').textContent = `Last updated ${days} days ago`;
 }
 
 function renderHome() {
   const all = state.txs;
-  setAmount($('#totalBalance'), net(all));
+  $('#totalBalance').textContent = fmtUSD(net(all));
   const ym = today().slice(0, 7);
   const month = all.filter((t) => t.date.startsWith(ym));
   $('#monthIn').textContent = fmtUSD(sumIn(month));
   $('#monthOut').textContent = fmtUSD(sumOut(month));
-  $('#monthLabel').textContent = `in ${new Date().toLocaleDateString('en-US', { month: 'long' })}`;
+  $('#monthLabel').textContent = new Date().toLocaleDateString('en-US', { month: 'long' });
 
-  $('#walletRow').innerHTML = state.wallets.map((w) => {
-    const b = net(walletTxs(w.id));
-    return `<button class="wallet-card glass" data-wallet="${w.id}">
-      <span class="w-name">${esc(w.name)}</span>
-      <span class="w-bal ${round2(b) < 0 ? 'neg' : ''}">${fmtUSD(b)}</span>
-    </button>`;
-  }).join('') + `<button class="wallet-card glass add" id="addWallet">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span class="small">New wallet</span>
-    </button>`;
+  $('#walletList').innerHTML = state.wallets.map((w) => `<li><button class="row" data-wallet="${w.id}">
+      <span class="row-main"><span class="row-title">${esc(w.name)}</span></span>
+      <span class="row-value">${fmtUSD(net(walletTxs(w.id)))}</span>${CHEV}
+    </button></li>`).join('') +
+    '<li><button class="row" id="addWallet"><span class="row-title link">New Wallet</span></button></li>';
 
   const recent = sorted(all).slice(0, 20);
-  const list = $('#recentList');
-  list.classList.toggle('glass', recent.length > 0);
-  list.innerHTML = recent.length
+  $('#recentList').innerHTML = recent.length
     ? recent.map((t) => txHTML(t, true)).join('')
-    : '<li class="empty glass">No payments yet.<br>Tap + to add your first one.</li>';
+    : '<li class="empty">No payments yet. Tap + to add one.</li>';
   renderBanner();
 }
 
@@ -195,8 +186,9 @@ function renderWallet() {
   const w = walletById(currentWalletId);
   if (!w) return goHome();
   $('#walletTitle').textContent = w.name;
+  $('#walletNavTitle').textContent = w.name;
   const txs = walletTxs(w.id);
-  setAmount($('#walletBalance'), net(txs));
+  $('#walletBalance').textContent = fmtUSD(net(txs));
   $('#walletIn').textContent = fmtUSD(sumIn(txs));
   $('#walletOut').textContent = fmtUSD(sumOut(txs));
 
@@ -207,14 +199,15 @@ function renderWallet() {
   }
   $('#walletTx').innerHTML = groups.size
     ? [...groups].map(([date, list]) => `
-      <div class="day-head"><span>${dayLabel(date)}</span><span>${fmtUSD(net(list), true)}</span></div>
-      <ul class="tx-list glass">${list.map((t) => txHTML(t, false)).join('')}</ul>`).join('')
-    : '<p class="empty glass">No payments in this wallet yet.</p>';
+      <h3 class="group-head split"><span>${dayLabel(date)}</span><span>${fmtUSD(net(list), true)}</span></h3>
+      <ul class="group list">${list.map((t) => txHTML(t, false)).join('')}</ul>`).join('')
+    : '<h3 class="group-head">Payments</h3><ul class="group list"><li class="empty">No payments in this wallet yet.</li></ul>';
 }
 
 function render() {
   if (currentWalletId) renderWallet();
   else renderHome();
+  updateNavbar();
 }
 
 /* ---------- Views ---------- */
@@ -225,6 +218,12 @@ function animateView(el, cls) {
   el.classList.add(cls);
 }
 
+function updateNavbar() {
+  const view = currentWalletId ? $('#wallet') : $('#home');
+  view.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 36);
+}
+window.addEventListener('scroll', updateNavbar, { passive: true });
+
 function showWallet(id, push = true) {
   if (!walletById(id)) return;
   currentWalletId = id;
@@ -232,8 +231,8 @@ function showWallet(id, push = true) {
   const v = $('#wallet');
   v.hidden = false;
   animateView(v, 'enter');
-  renderWallet();
   window.scrollTo(0, 0);
+  render();
   if (push) history.pushState({ wallet: id }, '');
 }
 
@@ -243,7 +242,7 @@ function showHome() {
   const v = $('#home');
   v.hidden = false;
   animateView(v, 'enter-back');
-  renderHome();
+  render();
 }
 
 function goHome() {
@@ -286,17 +285,18 @@ function closeSheet(immediate) {
     if (!openSheetEl) scrim.hidden = true;
   };
   if (immediate) done();
-  else setTimeout(done, 380);
+  else setTimeout(done, 420);
 }
 
 scrim.addEventListener('click', () => closeSheet());
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
+document.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => closeSheet()));
 
 // Pull a sheet down to dismiss. Tracks the finger 1:1, then decides by distance or flick velocity.
 function enableDrag(sheet) {
   let startY = 0, lastY = 0, lastT = 0, dy = 0, v = 0, armed = false, dragging = false;
   sheet.addEventListener('touchstart', (e) => {
-    armed = e.touches.length === 1 && sheet.scrollTop <= 0 && !e.target.closest('input');
+    armed = e.touches.length === 1 && sheet.scrollTop <= 0 && !e.target.closest('input, select');
     dragging = false;
     dy = 0; v = 0;
     startY = lastY = e.touches[0].clientY;
@@ -344,6 +344,11 @@ if (window.visualViewport) {
   vv.addEventListener('scroll', fit);
 }
 
+function setSegment(el, index) {
+  el.style.setProperty('--i', index);
+  el.querySelectorAll('.seg').forEach((b, i) => b.setAttribute('aria-checked', String(i === index)));
+}
+
 /* ---------- Toast with undo ---------- */
 
 let toastTimer = null;
@@ -363,6 +368,7 @@ function toast(text, snap) {
 
 function hideToast() {
   const t = $('#toast');
+  if (t.hidden) return;
   t.classList.remove('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => { t.hidden = true; }, 250);
@@ -383,13 +389,16 @@ const snapshot = () => JSON.stringify(state);
 /* ---------- Add / edit payment ---------- */
 
 const txSheet = $('#txSheet');
+const signSeg = $('#signSeg');
+const curSeg = $('#curSeg');
 const amountInput = $('#amountInput');
 const noteInput = $('#noteInput');
 const dateInput = $('#dateInput');
+const walletSelect = $('#walletSelect');
 const form = { editingId: null, sign: -1, currency: 'USD', walletId: null };
 
-$('#currencyChips').innerHTML = CURRENCIES
-  .map((c) => `<button type="button" class="chip" role="radio" data-cur="${c}">${c}</button>`).join('');
+curSeg.innerHTML = '<i class="seg-thumb" aria-hidden="true"></i>' +
+  CURRENCIES.map((c) => `<button type="button" class="seg" role="radio" data-cur="${c}">${c}</button>`).join('');
 
 function rateFor(cur) {
   if (cur === 'USD') return 1;
@@ -400,15 +409,14 @@ function rateFor(cur) {
 
 function setSign(s) {
   form.sign = s;
-  txSheet.querySelectorAll('.seg').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.sign) === s)));
-  txSheet.querySelector('.segmented').classList.toggle('income', s > 0);
+  setSegment(signSeg, s > 0 ? 1 : 0);
   $('#amountSign').textContent = s > 0 ? '+' : '−';
   renderNoteChips();
 }
 
 function setCurrency(c) {
   form.currency = c;
-  txSheet.querySelectorAll('[data-cur]').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.cur === c)));
+  setSegment(curSeg, CURRENCIES.indexOf(c));
   amountInput.value = formatTyping(amountInput.value, DECIMALS[c]);
   updateConvert();
 }
@@ -424,22 +432,21 @@ function updateConvert() {
   fitAmount();
   const el = $('#convertHint');
   const cur = form.currency;
-  el.classList.remove('warn');
-  if (cur === 'USD') { el.innerHTML = '&nbsp;'; return; }
-  const rate = rateFor(cur);
-  if (!rate) {
-    el.textContent = `Set the ${cur} rate in settings first`;
-    el.classList.add('warn');
-    return;
-  }
   const amt = parseNum(amountInput.value);
-  el.textContent = `≈ ${fmtUSD(amt > 0 ? amt / rate : 0)}  ·  1 USD = ${fmtNum(rate)} ${cur}`;
+  const rate = rateFor(cur);
+  $('#saveTx').disabled = !(amt > 0 && rate);
+  el.classList.toggle('warn', !rate);
+  if (cur === 'USD') el.innerHTML = '&nbsp;';
+  else if (!rate) el.textContent = `Set the ${cur} rate in Settings first`;
+  else el.textContent = `≈ ${fmtUSD(amt > 0 ? amt / rate : 0)}  ·  1 USD = ${fmtNum(rate)} ${cur}`;
 }
 
-function renderWalletChips() {
-  $('#walletField').hidden = state.wallets.length < 2;
-  $('#walletChips').innerHTML = state.wallets.map((w) =>
-    `<button type="button" class="chip" role="radio" aria-checked="${w.id === form.walletId}" data-pick-wallet="${w.id}">${esc(w.name)}</button>`).join('');
+function renderWalletPicker() {
+  $('#walletRow').hidden = state.wallets.length < 2;
+  walletSelect.innerHTML = state.wallets.map((w) => `<option value="${w.id}">${esc(w.name)}</option>`).join('');
+  walletSelect.value = form.walletId;
+  const w = walletById(form.walletId);
+  $('#walletValue').textContent = w ? w.name : '';
 }
 
 // Quick picks from what you've written before, most used first.
@@ -466,37 +473,37 @@ function openTx(id) {
   const fallbackWallet = walletById(state.lastWalletId) ? state.lastWalletId : state.wallets[0].id;
   form.walletId = t ? t.walletId : (currentWalletId || fallbackWallet);
   dateInput.value = t ? t.date : today();
-  $('#deleteTx').hidden = !t;
-  $('#saveTx').textContent = t ? 'Save changes' : 'Save';
-  $('#txError').textContent = '';
+  $('#txTitle').textContent = t ? 'Edit Payment' : 'New Payment';
+  $('#saveTx').textContent = t ? 'Save' : 'Add';
+  $('#deleteTxGroup').hidden = !t;
   setSign(t ? t.sign : -1);
   setCurrency(t ? t.currency : (state.lastCurrency || 'USD'));
-  renderWalletChips();
+  renderWalletPicker();
   openSheet(txSheet);
   if (!t) amountInput.focus();
 }
 
-attachNumeric(amountInput, () => DECIMALS[form.currency], () => { $('#txError').textContent = ''; updateConvert(); });
+attachNumeric(amountInput, () => DECIMALS[form.currency], updateConvert);
 noteInput.addEventListener('input', renderNoteChips);
+walletSelect.addEventListener('change', () => {
+  form.walletId = walletSelect.value;
+  renderWalletPicker();
+});
 
 txSheet.addEventListener('click', (e) => {
-  const seg = e.target.closest('.seg');
+  const seg = e.target.closest('[data-sign]');
   if (seg) return setSign(Number(seg.dataset.sign));
   const cur = e.target.closest('[data-cur]');
   if (cur) return setCurrency(cur.dataset.cur);
-  const wb = e.target.closest('[data-pick-wallet]');
-  if (wb) { form.walletId = wb.dataset.pickWallet; return renderWalletChips(); }
   const note = e.target.closest('[data-note]');
   if (note) { noteInput.value = note.dataset.note; renderNoteChips(); }
 });
 
 txSheet.addEventListener('submit', (e) => {
   e.preventDefault();
-  const err = (m) => { $('#txError').textContent = m; };
   const amount = parseNum(amountInput.value);
-  if (!(amount > 0)) return err('Enter an amount.');
   const rate = rateFor(form.currency);
-  if (!rate) return err(`Set the ${form.currency} rate in settings first.`);
+  if (!(amount > 0) || !rate) return;
   if (!walletById(form.walletId)) form.walletId = state.wallets[0].id;
 
   const snap = snapshot();
@@ -543,12 +550,13 @@ function openSettings() {
   rateIQD.value = r.IQD ? formatTyping(String(r.IQD), 2) : '';
   rateTRY.value = r.TRY ? formatTyping(String(r.TRY), 4) : '';
   $('#rateError').textContent = '';
+  const note = 'New payments use these rates. Saved payments keep the rate they were added with.';
   if (r.updatedAt) {
     const days = Math.floor((Date.now() - r.updatedAt) / 864e5);
     const when = new Date(r.updatedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-    $('#ratesUpdated').textContent = `Last updated ${when}${days ? ` · ${days} day${days > 1 ? 's' : ''} ago` : ' · today'}`;
+    $('#ratesUpdated').textContent = `Updated ${when}${days ? ` (${days} day${days > 1 ? 's' : ''} ago)` : ' (today)'}. ${note}`;
   } else {
-    $('#ratesUpdated').textContent = 'Not set yet. Enter this week\'s market rates.';
+    $('#ratesUpdated').textContent = `Enter this week's market rates. ${note}`;
   }
   openSheet(settingsSheet);
 }
@@ -561,14 +569,13 @@ settingsSheet.addEventListener('submit', (e) => {
   const err = (m) => { $('#rateError').textContent = m; };
   const iqd = rateIQD.value.trim() ? parseNum(rateIQD.value) : null;
   const tr = rateTRY.value.trim() ? parseNum(rateTRY.value) : null;
-  if (iqd === null && tr === null) return err('Enter at least one rate.');
+  const r = state.rates;
+  if (iqd === r.IQD && tr === r.TRY) { closeSheet(); return; }
   if ((iqd !== null && !(iqd > 0)) || (tr !== null && !(tr > 0))) return err('Rates must be more than 0.');
   if (iqd !== null && iqd > 10000) return err('That looks like the rate for 100 USD. Enter the rate for 1 USD (e.g. 1,420).');
 
-  const r = state.rates;
-  if (iqd === r.IQD && tr === r.TRY) { closeSheet(); return; }
   const snap = snapshot();
-  state.rates = { IQD: iqd, TRY: tr, updatedAt: Date.now() };
+  state.rates = { IQD: iqd, TRY: tr, updatedAt: iqd === null && tr === null ? null : Date.now() };
   state.rateHistory = [...(state.rateHistory || []), { date: today(), IQD: iqd, TRY: tr }].slice(-104);
   save();
   closeSheet();
@@ -619,10 +626,12 @@ let editingWalletId = null;
 function openWalletSheet(id) {
   editingWalletId = id;
   const w = id ? walletById(id) : null;
-  $('#walletSheetTitle').textContent = w ? 'Edit wallet' : 'New wallet';
+  const canDelete = !!w && state.wallets.length > 1;
+  $('#walletSheetTitle').textContent = w ? 'Edit Wallet' : 'New Wallet';
   $('#walletName').value = w ? w.name : '';
   $('#walletError').textContent = '';
-  $('#deleteWallet').hidden = !w || state.wallets.length < 2;
+  $('#deleteWalletGroup').hidden = !canDelete;
+  $('#deleteWalletNote').hidden = !canDelete;
   openSheet(walletSheet);
   if (!w) $('#walletName').focus();
 }
@@ -652,13 +661,13 @@ $('#deleteWallet').addEventListener('click', () => {
   toast(`“${w.name}” deleted`, snap);
 });
 
-$('#walletMenu').addEventListener('click', () => openWalletSheet(currentWalletId));
+$('#walletEdit').addEventListener('click', () => openWalletSheet(currentWalletId));
 $('#backHome').addEventListener('click', goHome);
 $('#addBtn').addEventListener('click', () => openTx(null));
 
-document.querySelector('#app').addEventListener('click', (e) => {
-  const wc = e.target.closest('[data-wallet]');
-  if (wc) return showWallet(wc.dataset.wallet);
+$('#app').addEventListener('click', (e) => {
+  const wb = e.target.closest('[data-wallet]');
+  if (wb) return showWallet(wb.dataset.wallet);
   if (e.target.closest('#addWallet')) return openWalletSheet(null);
   const tx = e.target.closest('[data-tx]');
   if (tx) openTx(tx.dataset.tx);
@@ -667,7 +676,7 @@ document.querySelector('#app').addEventListener('click', (e) => {
 /* ---------- Boot ---------- */
 
 history.replaceState({}, '');
-renderHome();
+render();
 
 // Refresh "x days ago" and the month when the app comes back from the background.
 document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });

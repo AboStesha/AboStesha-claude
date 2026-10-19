@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07090f">
+  <meta name="theme-color" content="#000000">
   <meta name="color-scheme" content="dark">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -17,57 +17,66 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="bg" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
-
   <main id="app">
     <!-- Home -->
     <section id="home" class="view">
-      <header class="topbar">
-        <span class="brand">Pocket</span>
-        <button class="icon-btn" id="openSettings" aria-label="Settings">
+      <header class="navbar">
+        <span></span>
+        <span class="nav-title">Pocket</span>
+        <button class="nav-btn icon" id="openSettings" aria-label="Settings">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
         </button>
       </header>
+      <h1 class="large-title">Pocket</h1>
 
-      <button class="rate-banner glass" id="rateBanner" hidden></button>
-
-      <div class="hero">
-        <p class="label">Total balance</p>
-        <p class="big-amount" id="totalBalance">$0.00</p>
-        <div class="month-stats">
-          <span class="pill in"><b>+</b><span id="monthIn">$0</span></span>
-          <span class="pill out"><b>−</b><span id="monthOut">$0</span></span>
-          <span class="muted small" id="monthLabel"></span>
-        </div>
+      <div class="balance-block">
+        <p class="caption">Total Balance</p>
+        <p class="balance" id="totalBalance">$0.00</p>
       </div>
 
-      <div class="section-head"><h2>Wallets</h2></div>
-      <div class="wallet-row" id="walletRow"></div>
+      <button class="group row rate-banner" id="rateBanner" hidden>
+        <span class="row-main">
+          <span class="row-title link" id="rateBannerTitle"></span>
+          <span class="row-sub" id="rateBannerSub"></span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
 
-      <div class="section-head"><h2>Recent</h2></div>
-      <ul class="tx-list" id="recentList"></ul>
+      <h2 class="section-title" id="monthLabel">This Month</h2>
+      <div class="group stats">
+        <div class="stat"><span class="caption">Income</span><span class="stat-val in" id="monthIn">$0.00</span></div>
+        <div class="stat"><span class="caption">Spent</span><span class="stat-val" id="monthOut">$0.00</span></div>
+      </div>
+
+      <h2 class="section-title">Wallets</h2>
+      <ul class="group list" id="walletList"></ul>
+
+      <h2 class="section-title">Recent</h2>
+      <ul class="group list" id="recentList"></ul>
     </section>
 
     <!-- Wallet detail -->
     <section id="wallet" class="view" hidden>
-      <header class="topbar">
-        <button class="icon-btn" id="backHome" aria-label="Back">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <header class="navbar">
+        <button class="nav-btn back" id="backHome">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Pocket
         </button>
-        <span class="brand" id="walletTitle">Wallet</span>
-        <button class="icon-btn" id="walletMenu" aria-label="Wallet options">
-          <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg>
-        </button>
+        <span class="nav-title" id="walletNavTitle"></span>
+        <button class="nav-btn" id="walletEdit">Edit</button>
       </header>
-      <div class="hero">
-        <p class="label">Balance</p>
-        <p class="big-amount" id="walletBalance">$0.00</p>
-        <div class="month-stats">
-          <span class="pill in"><b>+</b><span id="walletIn">$0</span></span>
-          <span class="pill out"><b>−</b><span id="walletOut">$0</span></span>
-          <span class="muted small">all time</span>
-        </div>
+      <h1 class="large-title" id="walletTitle"></h1>
+
+      <div class="balance-block">
+        <p class="caption">Balance</p>
+        <p class="balance" id="walletBalance">$0.00</p>
       </div>
+
+      <h2 class="section-title">All Time</h2>
+      <div class="group stats">
+        <div class="stat"><span class="caption">Income</span><span class="stat-val in" id="walletIn">$0.00</span></div>
+        <div class="stat"><span class="caption">Spent</span><span class="stat-val" id="walletOut">$0.00</span></div>
+      </div>
+
       <div id="walletTx"></div>
     </section>
   </main>
@@ -76,86 +85,98 @@
     <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
   </button>
 
-  <!-- Sheets -->
   <div class="scrim" id="scrim" hidden></div>
 
-  <form class="sheet glass" id="txSheet" hidden autocomplete="off">
+  <!-- Add / edit payment -->
+  <form class="sheet" id="txSheet" hidden autocomplete="off" novalidate>
     <div class="grabber" aria-hidden="true"></div>
-    <div class="segmented" role="radiogroup" aria-label="Type">
-      <button type="button" class="seg" data-sign="-1" role="radio">− Expense</button>
-      <button type="button" class="seg" data-sign="1" role="radio">+ Income</button>
+    <header class="sheet-bar">
+      <button type="button" class="nav-btn" data-close>Cancel</button>
+      <span class="sheet-title" id="txTitle">New Payment</span>
+      <button type="submit" class="nav-btn strong" id="saveTx">Add</button>
+    </header>
+
+    <div class="segmented" id="signSeg" role="radiogroup" aria-label="Type" style="--n:2">
       <i class="seg-thumb" aria-hidden="true"></i>
+      <button type="button" class="seg" role="radio" data-sign="-1">Expense</button>
+      <button type="button" class="seg" role="radio" data-sign="1">Income</button>
     </div>
 
     <label class="amount-wrap">
       <span class="sr-only">Amount</span>
-      <span class="amount-sign" id="amountSign">−</span>
-      <input id="amountInput" class="amount-input" inputmode="decimal" placeholder="0" required>
+      <span class="amount-sign" id="amountSign" aria-hidden="true">−</span>
+      <input id="amountInput" class="amount-input" inputmode="decimal" placeholder="0">
     </label>
-    <div class="chips center" id="currencyChips" role="radiogroup" aria-label="Currency"></div>
+    <div class="segmented small" id="curSeg" role="radiogroup" aria-label="Currency" style="--n:3"></div>
     <p class="convert" id="convertHint">&nbsp;</p>
 
-    <label class="field">
-      <span>For what?</span>
-      <input id="noteInput" type="text" placeholder="Groceries, salary, taxi…" maxlength="80" enterkeyhint="done">
-    </label>
+    <div class="group form">
+      <input id="noteInput" class="row-input" type="text" placeholder="For what?" aria-label="For what?" maxlength="80" enterkeyhint="done">
+    </div>
     <div class="chips" id="noteChips"></div>
 
-    <div class="field" id="walletField">
-      <span>Wallet</span>
-      <div class="chips" id="walletChips" role="radiogroup" aria-label="Wallet"></div>
+    <div class="group form">
+      <label class="form-row" id="walletRow">
+        <span>Wallet</span>
+        <span class="picker"><span id="walletValue"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg></span>
+        <select id="walletSelect" aria-label="Wallet"></select>
+      </label>
+      <label class="form-row">
+        <span>Date</span>
+        <input id="dateInput" type="date">
+      </label>
     </div>
 
-    <label class="field inline">
-      <span>Date</span>
-      <input id="dateInput" type="date" required>
-    </label>
-
-    <p class="error" id="txError" role="alert"></p>
-    <button type="submit" class="primary" id="saveTx">Save</button>
-    <button type="button" class="danger ghost" id="deleteTx" hidden>Delete payment</button>
-  </form>
-
-  <form class="sheet glass" id="settingsSheet" hidden autocomplete="off">
-    <div class="grabber" aria-hidden="true"></div>
-    <h3>Exchange rates</h3>
-    <p class="muted small" id="ratesUpdated"></p>
-    <label class="field rate">
-      <span>1 USD =</span>
-      <input id="rateIQD" inputmode="decimal" placeholder="e.g. 1,420">
-      <em>IQD</em>
-    </label>
-    <label class="field rate">
-      <span>1 USD =</span>
-      <input id="rateTRY" inputmode="decimal" placeholder="e.g. 41.50">
-      <em>TRY</em>
-    </label>
-    <p class="error" id="rateError" role="alert"></p>
-    <button type="submit" class="primary">Save rates</button>
-    <p class="muted small note">New payments use the current rate. Old payments keep the rate they were saved with.</p>
-
-    <h3>Backup</h3>
-    <div class="row-btns">
-      <button type="button" class="secondary" id="exportBtn">Export</button>
-      <button type="button" class="secondary" id="importBtn">Import</button>
-      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    <div class="group form" id="deleteTxGroup" hidden>
+      <button type="button" class="row-btn danger" id="deleteTx">Delete Payment</button>
     </div>
-    <p class="muted small note">Data lives only on this iPhone. Export a backup now and then.</p>
   </form>
 
-  <form class="sheet glass" id="walletSheet" hidden autocomplete="off">
+  <!-- Settings -->
+  <form class="sheet" id="settingsSheet" hidden autocomplete="off" novalidate>
     <div class="grabber" aria-hidden="true"></div>
-    <h3 id="walletSheetTitle">New wallet</h3>
-    <label class="field">
-      <span>Name</span>
-      <input id="walletName" type="text" placeholder="Cash, Bank, Savings…" maxlength="30" required enterkeyhint="done">
-    </label>
-    <p class="error" id="walletError" role="alert"></p>
-    <button type="submit" class="primary">Save</button>
-    <button type="button" class="danger ghost" id="deleteWallet" hidden>Delete wallet</button>
+    <header class="sheet-bar">
+      <button type="button" class="nav-btn" data-close>Cancel</button>
+      <span class="sheet-title">Settings</span>
+      <button type="submit" class="nav-btn strong">Done</button>
+    </header>
+
+    <h3 class="group-head">Exchange Rates</h3>
+    <div class="group form">
+      <label class="form-row"><span>1 USD in IQD</span><input id="rateIQD" class="row-value" inputmode="decimal" placeholder="1,420"></label>
+      <label class="form-row"><span>1 USD in TRY</span><input id="rateTRY" class="row-value" inputmode="decimal" placeholder="41.50"></label>
+    </div>
+    <p class="group-foot error" id="rateError" role="alert"></p>
+    <p class="group-foot" id="ratesUpdated"></p>
+
+    <h3 class="group-head">Backup</h3>
+    <div class="group form">
+      <button type="button" class="row-btn" id="exportBtn">Export Backup</button>
+      <button type="button" class="row-btn" id="importBtn">Import Backup</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+    <p class="group-foot">Your data is stored only on this iPhone. Export a backup from time to time.</p>
   </form>
 
-  <div class="toast glass" id="toast" role="status" aria-live="polite" hidden>
+  <!-- New / edit wallet -->
+  <form class="sheet" id="walletSheet" hidden autocomplete="off" novalidate>
+    <div class="grabber" aria-hidden="true"></div>
+    <header class="sheet-bar">
+      <button type="button" class="nav-btn" data-close>Cancel</button>
+      <span class="sheet-title" id="walletSheetTitle">New Wallet</span>
+      <button type="submit" class="nav-btn strong">Save</button>
+    </header>
+    <div class="group form">
+      <input id="walletName" class="row-input" type="text" placeholder="Name" aria-label="Wallet name" maxlength="30" enterkeyhint="done">
+    </div>
+    <p class="group-foot error" id="walletError" role="alert"></p>
+    <div class="group form" id="deleteWalletGroup" hidden>
+      <button type="button" class="row-btn danger" id="deleteWallet">Delete Wallet</button>
+    </div>
+    <p class="group-foot" id="deleteWalletNote" hidden>Deletes this wallet and all of its payments.</p>
+  </form>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
     <span id="toastText"></span>
     <button type="button" id="toastUndo">Undo</button>
   </div>
