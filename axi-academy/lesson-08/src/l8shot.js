@@ -119,7 +119,7 @@
   cam(T.k1000 + 0.2, 3.4, 990, 610, 1.06);           // push to the $1,000
   cam(T.p22 + 2.3, 1.6, 960, 700, 0.84);             // pull back for the slider
   cam(T.k1000b - 0.3, 1.6, 960, 520, 0.84);          // tilt up to the multiplication
-  cam(T.k100k + 0.65, 3.2, GCX, GCY, 0.167);         // the big pull-back: 100 tanks
+  cam(T.k100k + 0.65, 3.2, GCX, GCY + 200, 0.152);   // the big pull-back: 100 tanks (clear of the HUD band)
   cam(T.p25 + 2.15, 2.0, 900, 610, 0.96);            // dive back into our tank
   cam(T.p26 + 1.8, 1.6, 600, 580, 0.98);             // the order ticket on the left
   cam(T.k10k - 0.4, 2.0, 560, 560, 1.0);
@@ -248,7 +248,7 @@
       lat(ctx, o.lots || '0.10', x + cw - 128, y + 97, { size: 26, w: 600, color: L8.sub(), align: 'right' });
       // sparkline + status dot
       ctx.save(); ctx.strokeStyle = L8.sub(); ctx.lineWidth = 2.4; ctx.lineJoin = 'round'; ctx.beginPath();
-      for (let i = 0; i <= 24; i++) { const u = i / 24; const yy = y + 66 + 18 * Math.sin(u * 7 + (o.n || 0) * 2 + t * 0.8) * (0.5 + 0.5 * u) - (o.trend || 0) * 26 * u; i ? ctx.lineTo(x + 26 + u * 150, yy) : ctx.moveTo(x + 26, yy); }
+      for (let i = 0; i <= 24; i++) { const u = i / 24; const yy = y + 66 + 18 * Math.sin(u * 7 + (o.n || 0) * 2 + t * 0.8) * (0.5 + 0.5 * u) - (o.trend || 0) * 26 * u; i ? ctx.lineTo(x + 26 + u * 108, yy) : ctx.moveTo(x + 26, yy); }
       ctx.stroke(); ctx.restore();
       const live = 0.55 + 0.45 * Math.sin(t * 5 + (o.n || 0));
       ctx.save(); ctx.fillStyle = o.ok ? C.mint : C.red; ctx.globalAlpha *= o.ok ? 1 : live; ctx.beginPath(); ctx.arc(x + 30, y + 30, 7, 0, 6.283); ctx.fill(); ctx.restore();
@@ -290,8 +290,8 @@
     ctx.fillStyle = 'rgba(255,255,255,0.12)'; ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 4;
     roundRect(ctx, -60, -80, 120, 150, 14); ctx.fill(); ctx.stroke();
     const lvl = lerp(0.8, 0.15, clamp((pf - 0.4) / 0.6)); ctx.fillStyle = '#7F959B'; ctx.fillRect(-56, 66 - 142 * lvl, 112, 142 * lvl);
-    txt(ctx, '+ إيداع', 0, -100, { size: 30, w: 'B', color: C.white, align: 'center' });
     ctx.restore();
+    txt(ctx, '+ إيداع', x + 20, y - 120, { size: 30, w: 'B', color: C.white, align: 'center', alpha: clamp(p * 2) });
     // the stream from the lip to the surface
     const flow = clamp((pf - 0.35) / 0.2) * (pf > 0.97 ? 1 : 1); if (flow <= 0 || p < 0.5) return;
     const lipX = x - 70, lipY = y - 40; const yEnd = lerp(lipY, yTo, clamp((pf - 0.35) / 0.25));
@@ -582,7 +582,9 @@
       ctx.lineWidth = 90; ctx.strokeStyle = 'rgba(251,251,251,0.94)'; ctx.strokeText('$100,000', 0, -60);
       ctx.fillStyle = C.ink; ctx.fillText('$100,000', 0, -60);
       ctx.restore();
-      txt(ctx, '= 100 حساب مثل حسابك', GCX, GCY + 560, { size: 190, w: 'B', color: L8.ink(), align: 'center', alpha: clamp((t - T.k100k - 0.4) * 2) });
+      const sa = clamp((t - T.k100k - 0.4) * 2);
+      if (sa > 0) { ctx.save(); ctx.globalAlpha *= sa; ctx.font = A.font(190, 'B'); ctx.direction = 'rtl'; ctx.textAlign = 'center'; ctx.lineJoin = 'round';
+        ctx.lineWidth = 56; ctx.strokeStyle = 'rgba(251,251,251,0.94)'; ctx.strokeText('= 100 حساب مثل حسابك', GCX, GCY + 560); ctx.fillStyle = C.ink; ctx.fillText('= 100 حساب مثل حسابك', GCX, GCY + 560); ctx.restore(); }
     }
     ctx.restore();
   }
@@ -718,7 +720,7 @@
   function rewindFx(ctx, t) {
     const a = env(t, RK.rew - 0.05, RK.rew + RK.rewD + 0.15, 0.1, 0.25); if (a <= 0) return;
     ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = 'rgba(255,255,255,0.05)'; for (let y = (t * 900) % 9; y < 1080; y += 9) ctx.fillRect(0, y, 1920, 2);
-    ctx.fillStyle = C.white; for (let k = 0; k < 2; k++) { const x = 960 - 6 + k * 46 - 23; ctx.beginPath(); ctx.moveTo(x + 22, 92); ctx.lineTo(x - 18, 120); ctx.lineTo(x + 22, 148); ctx.closePath(); ctx.fill(); }
+    ctx.fillStyle = C.white; for (let k = 0; k < 2; k++) { const x = 960 - 6 + k * 40 - 20; ctx.beginPath(); ctx.moveTo(x + 18, 44); ctx.lineTo(x - 16, 66); ctx.lineTo(x + 18, 88); ctx.closePath(); ctx.fill(); }
     ctx.restore();
   }
 
