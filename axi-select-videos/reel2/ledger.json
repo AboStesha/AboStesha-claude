@@ -1,0 +1,115 @@
+{
+ "cap_credits": 750,
+ "price_per_clip": 35,
+ "model": "seedance_2_5 720p 9:16 5s no-audio",
+ "media": {
+  "man_phone": "06aaecb9-04c4-4ba2-8163-917ecedd7758",
+  "woman_laptop": "9d2adfcc-d215-46bf-95f4-5b50b72535bb",
+  "duo": "693e1bcd-a6f7-4c13-b5a7-3e4ab32cdaab",
+  "xag": "6585461a-a763-412a-8192-47e11b208fb8",
+  "coin": "100312f9-de05-43d3-ab26-d5f293b9f27a",
+  "desert": "47e95df1-a9ec-4e00-8f92-cec73b937435",
+  "billboard": "e51d3995-4e66-4fad-a666-b9a51a282ac3",
+  "rocks": "a0b35380-999d-4638-be9c-61b4fcc9d1c0"
+ },
+ "jobs": [
+  {
+   "clip": "c01_man_phone",
+   "job_id": "039554f7-6d3c-49b8-87c0-6a8cdbe343e6",
+   "credits": 35
+  },
+  {
+   "clip": "c03_duo",
+   "index": 3,
+   "job_id": "c3d2f286-b133-4b48-98d6-ff81c4c22511",
+   "credits": 35
+  },
+  {
+   "clip": "c05_coin",
+   "index": 5,
+   "job_id": "3402ba82-5123-4db4-ba36-ee6d3e86c809",
+   "credits": 35
+  },
+  {
+   "clip": "c06_desert",
+   "index": 6,
+   "job_id": "765fbc00-7c92-495d-adaf-6faed8208407",
+   "credits": 35
+  },
+  {
+   "clip": "c07_billboard",
+   "index": 7,
+   "job_id": "7e47200e-8fa8-44db-96f6-5b7d35baac55",
+   "credits": 35
+  },
+  {
+   "clip": "c08_canyon",
+   "index": 8,
+   "job_id": "7f44a422-778a-468a-bdec-058a4faffa26",
+   "credits": 35
+  },
+  {
+   "clip": "c09_chart_macro",
+   "index": 9,
+   "job_id": "6b59161c-0e46-43f7-8a29-91f9581fbbe1",
+   "credits": 35
+  },
+  {
+   "clip": "c10_phone_hand",
+   "index": 10,
+   "job_id": "69d7ee04-03f5-4051-a7af-375c6eb6d83a",
+   "credits": 35
+  },
+  {
+   "clip": "c11_city",
+   "index": 11,
+   "job_id": "e013ecf8-4561-4674-aa81-8b4bc227fee3",
+   "credits": 35
+  },
+  {
+   "clip": "c12_staircase",
+   "index": 12,
+   "job_id": "eeb57e63-5ded-4ae6-8525-2794c8cc0536",
+   "credits": 35
+  },
+  {
+   "clip": "c13_desk_night",
+   "index": 13,
+   "job_id": "0b4f7aef-04af-4e01-b2fb-b422d3171dc2",
+   "credits": 35
+  },
+  {
+   "clip": "c02_woman_laptop",
+   "index": 2,
+   "job_id": "5fdfebbe-2680-4be9-8c3d-48a20959810c",
+   "credits": 35
+  },
+  {
+   "clip": "c04_gold_bars",
+   "index": 4,
+   "job_id": "9c48946c-a9df-4e64-bb76-a6b5b64bacd8",
+   "credits": 35
+  },
+  {
+   "clip": "c14_eyes",
+   "index": 14,
+   "job_id": "5b6834e0-9170-4c7a-8be7-635817a28863",
+   "credits": 35
+  },
+  {
+   "clip": "c15_keyboard",
+   "index": 15,
+   "job_id": "fd0fa7af-04ce-4527-9745-fab4f1d9a581",
+   "credits": 35
+  },
+  {
+   "clip": "c16_walk",
+   "index": 16,
+   "job_id": "12280559-57de-4789-a9ef-9b15effc9242",
+   "credits": 35
+  }
+ ],
+ "spent_committed": 560,
+ "completed": 16,
+ "spent": 560
+}

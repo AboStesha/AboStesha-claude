@@ -1,0 +1,1 @@
+window.CLIPS = {"c01_man_phone": 151, "c02_woman_laptop": 151, "c03_duo": 151, "c04_gold_bars": 151, "c05_coin": 151, "c06_desert": 151, "c07_billboard": 151, "c08_canyon": 151, "c09_chart_macro": 151, "c10_phone_hand": 151, "c11_city": 151, "c12_staircase": 151, "c13_desk_night": 151, "c14_eyes": 151, "c15_keyboard": 151, "c16_walk": 151};
