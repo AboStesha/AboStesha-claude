@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!-- Axi Select · explainer «خط الصعود» — onetake composition (motion.js → window.OM). 1920×1080 · 30 fps.
+     One continuous world along a red climb line, an operated camera, holds dead still while the narrator talks.
+     Contract: __seek(t) (pure, awaitable) · __ready · __meta · __track · __motion · __events. ?t=12.4&hud pins a frame, ?play loops. -->
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<title>Axi Select — explainer</title>
+<style>
+@font-face{font-family:'Alex';src:url('../assets/fonts/alexandria-arabic-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Alex';src:url('../assets/fonts/alexandria-latin-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Plex';src:url('../assets/fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2') format('woff2');font-weight:400;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Plex';src:url('../assets/fonts/ibm-plex-sans-arabic-arabic-500-normal.woff2') format('woff2');font-weight:500;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Plex';src:url('../assets/fonts/ibm-plex-sans-arabic-arabic-700-normal.woff2') format('woff2');font-weight:700;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Geist';src:url('../assets/fonts/Geist.ttf') format('truetype');font-weight:100 900}
+:root{--red:#E4002E;--grey:#8D8F93;--card:#111111;--hair:rgba(255,255,255,.085)}
+*{box-sizing:border-box}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#060607}
+body{color:#fff;font-family:'Plex','Geist',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;background:#060607}
+canvas.full{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.layer{position:absolute;left:0;top:0;width:1px;height:1px;transform-origin:0 0}
+.st{position:absolute;width:1920px;height:1080px}
+.abs{position:absolute}
+.ar{direction:rtl;text-align:right}
+.disp{font-family:'Alex','Geist',sans-serif;font-weight:700;line-height:1.25}
+.txt{font-family:'Plex','Geist',sans-serif;font-weight:500;line-height:1.45}
+.num{font-family:'Geist',sans-serif;font-weight:300;letter-spacing:-.045em;line-height:1;direction:ltr;font-variant-numeric:tabular-nums}
+.L{font-family:'Geist',sans-serif}
+.w{display:inline-block;white-space:pre;transform-origin:50% 80%}
+.red{color:var(--red)} .grey{color:var(--grey)} .white{color:#fff}
+.caps{font-family:'Geist',sans-serif;font-weight:500;font-size:19px;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);direction:ltr;white-space:nowrap}
+.ch{--c:24px;clip-path:polygon(calc(var(--c)*.8) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)*.8) 100%,0 100%,0 var(--c))}
+.card{position:absolute;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06))}
+.card>.fill{position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;background:linear-gradient(180deg,#18181b 0%,#0d0d0f 70%,#0b0b0c 100%)}
+.card>.fill:after{content:"";position:absolute;left:0;right:0;top:0;height:140px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0))}
+.chip{position:relative;display:inline-flex;align-items:center;height:68px;padding:0 30px;background:rgba(255,255,255,.12)}
+.chip>.fill{position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;background:#101012}
+.chip>span.t{position:relative}
+.pill{position:absolute;display:flex;align-items:center;gap:18px;height:76px;border-radius:999px;padding:0 34px 0 14px;background:var(--red);color:#fff;
+  font-family:'Plex','Geist';font-weight:700;font-size:31px;direction:rtl;white-space:nowrap;box-shadow:0 18px 50px -18px rgba(228,0,46,.7)}
+.pill .arr{width:50px;height:50px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.box{position:absolute;width:46px;height:46px}
+.glow{position:absolute;pointer-events:none}
+#hud{position:absolute;left:0;top:0;width:1920px;height:1080px}
+.idx{position:absolute;right:72px;top:50px;direction:rtl;white-space:nowrap;font-family:'Plex','Geist';font-weight:500;font-size:23px;color:#fff;display:flex;align-items:center;gap:14px}
+.idx .n{font-family:'Geist';font-weight:500;font-size:21px;color:var(--red);letter-spacing:.04em}
+.idx .d{display:inline-block;width:34px;height:1.5px;background:rgba(255,255,255,.35)}
+#logo img{position:absolute;top:0;height:384px}
+#hudt{position:absolute;right:14px;bottom:10px;font:14px Geist,monospace;color:#ff0;display:none}
+/* S06 blocks */
+.blk{position:absolute;width:520px;height:470px;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 76%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(180deg,#000 0%,#000 76%,rgba(0,0,0,0) 100%)}
+.blk .card{left:0;top:0;width:520px;height:470px}
+/* odometer */
+.dg{display:inline-block;height:1em;overflow:hidden;vertical-align:top}
+.dg>.col{display:block}
+.col>span{display:block;height:1em;line-height:1em}
+.sc{display:inline-block}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="bg" class="full"></canvas>
+  <div id="far" class="layer"></div>
+  <canvas id="ln" class="full"></canvas>
+  <div id="world" class="layer"></div>
+  <div id="hud"><div id="logo" class="layer"></div></div>
+  <canvas id="grain" class="full"></canvas>
+  <div id="hudt"></div>
+</div>
+<script src="motion.js"></script>
+<script>
+'use strict';
+const _CW=new WeakMap();
+function css(el,k,v){ let m=_CW.get(el); if(!m){ m={}; _CW.set(el,m); } if(m[k]!==v){ m[k]=v; el.style[k]=v; } }   // touch the DOM only when a value changes: holds stay byte-identical
+function attr(el,k,v){ let m=_CW.get(el); if(!m){ m={}; _CW.set(el,m); } const kk='@'+k; if(m[kk]!==v){ m[kk]=v; el.setAttribute(k,v); } }
+// ══════════════════════════════════════════════════════════════════════════════════════════════
+// TIMELINE — pasted from timeline.json (scene t0/t1 + estimated VO word times, 2.1 w/s, VO 0.7 s into each scene).
+// Re-paste after tools/timeline.py runs again. Every reveal below is keyed to the word that names it via cue().
+// ══════════════════════════════════════════════════════════════════════════════════════════════
+const TL=/*TL*/{"dur":277.83,"scenes":[
+{"id":"S01","title_ar":"المقدمة","t0":0.0,"t1":19.57,"w":[["هلا",0.7],["بيكم.",1.18],["خلّي",1.65],["أسألك",2.13],["سؤال:",2.6],["إذا",3.08],["عندك",3.56],["مهارة",4.03],["بالتداول،",4.51],["ليش",4.99],["تبقى",5.46],["تتداول",5.94],["بس",6.41],["بفلوسك؟",6.89],["اليوم",7.37],["راح",7.84],["أشرحلك",8.32],["برنامج",8.8],["Axi",9.27],["Select",9.75],["من",10.22],["الألف",10.7],["للياء…",11.18],["برنامج",11.65],["تتداول",12.13],["بيه",12.6],["بحسابك",13.08],["الحقيقي،",13.56],["وشركة",14.03],["Axi",14.51],["تخصّصلك",14.99],["تمويل",15.46],["لحد",15.94],["مليون",16.41],["دولار.",16.89]]},
+{"id":"S02","title_ar":"شنو هو Axi Select؟","t0":19.57,"t1":46.21,"w":[["Axi",20.27],["Select",20.75],["هو",21.22],["برنامج",21.7],["تمويل",22.17],["المتداولين",22.65],["مال",23.13],["شركة",23.6],["Axi.",24.08],["الفكرة",24.56],["بسيطة:",25.03],["انت",25.51],["تفتح",25.98],["حسابك",26.46],["الحقيقي",26.94],["وتتداول",27.41],["بيه",27.89],["عادي،",28.37],["وبنفس",28.84],["الوقت",29.32],["Axi",29.79],["تراقب",30.27],["أداءك.",30.75],["وكل",31.22],["ما",31.7],["تثبت",32.17],["إنك",32.65],["متداول",33.13],["شاطر،",33.6],["وتعرف",34.08],["تدير",34.56],["مخاطرك،",35.03],["يكبر",35.51],["التمويل",35.98],["اللي",36.46],["تخصّصه",36.94],["إلك.",37.41],["والأهم؟",37.89],["ماكو",38.37],["تحدي،",38.84],["وماكو",39.32],["رسوم",39.79],["تسجيل",40.27],["ولا",40.75],["اشتراك…",41.22],["الانضمام",41.7],["مجاني.",42.17],["بس",42.65],["تكاليف",43.13],["التداول",43.6],["العادية",44.08],["تبقى",44.56],["عليك.",45.03]]},
+{"id":"S03","title_ar":"شلون يشتغل التمويل؟","t0":46.21,"t1":71.42,"w":[["خلّي",46.91],["أوضّحلك",47.39],["شلون",47.86],["يشتغل",48.34],["التمويل.",48.81],["Axi",49.29],["تفتحلك",49.77],["حساب",50.24],["ثاني،",50.72],["اسمه",51.2],["حساب",51.67],["التخصيص.",52.15],["حجم",52.62],["هذا",53.1],["الحساب",53.58],["يساوي",54.05],["رصيدك،",54.53],["مضروب",55.01],["بمضاعف",55.48],["المرحلة",55.96],["اللي",56.43],["انت",56.91],["بيها.",57.39],["يعني",57.86],["مثلاً:",58.34],["إذا",58.81],["رصيدك",59.29],["خمسمية",59.77],["دولار،",60.24],["والمضاعف",60.72],["عشرة،",61.2],["يصير",61.67],["حساب",62.15],["التخصيص",62.62],["مالتك",63.1],["خمسة",63.58],["آلاف",64.05],["دولار.",64.53],["وكل",65.01],["صفقة",65.48],["تفتحها",65.96],["بحسابك،",66.43],["تنعكس",66.91],["تلقائياً",67.39],["على",67.86],["حساب",68.34],["التخصيص،",68.81],["مضروبة",69.29],["بنفس",69.77],["المضاعف.",70.24]]},
+{"id":"S04","title_ar":"درجة Edge","t0":71.42,"t1":96.63,"w":[["هسه",72.12],["نجي",72.6],["لقلب",73.07],["البرنامج:",73.55],["درجة",74.02],["Edge.",74.5],["هاي",74.98],["الدرجة",75.45],["تقيس",75.93],["أسلوب",76.41],["تداولك",76.88],["من",77.36],["ثلاث",77.83],["نواحي:",78.31],["المهارة،",78.79],["يعني",79.26],["قراراتك:",79.74],["وين",80.22],["تدخل",80.69],["ووين",81.17],["تطلع.",81.64],["والمخاطرة،",82.12],["يعني",82.6],["شلون",83.07],["تحمي",83.55],["حسابك.",84.02],["والثبات،",84.5],["يعني",84.98],["أداءك",85.45],["مستمر،",85.93],["مو",86.41],["ضربة",86.88],["حظ.",87.36],["وبعدين،",87.83],["كل",88.31],["هذا",88.79],["ينضرب",89.26],["بعامل",89.74],["خبرتك.",90.22],["وتتابع",90.69],["درجتك",91.17],["أول",91.64],["بأول،",92.12],["من",92.6],["أداة",93.07],["Edge",93.55],["Score",94.02],["Explainer",94.5],["ببوابة",94.98],["العملاء.",95.45]]},
+{"id":"S05","title_ar":"شلون تبدي؟","t0":96.63,"t1":114.22,"w":[["شلون",97.33],["تبدي؟",97.81],["بالبداية،",98.28],["تفتح",98.76],["حساب",99.23],["Axi",99.71],["Select",100.19],["على",100.66],["إم",101.14],["تي",101.62],["فور",102.09],["أو",102.57],["إم",103.04],["تي",103.52],["فايف،",104.0],["وتبدي",104.47],["تتداول.",104.95],["وأول",105.43],["ما",105.9],["توصل",106.38],["درجة",106.85],["Edge",107.33],["مالتك",107.81],["لخمسين،",108.28],["ويكون",108.76],["رصيدك",109.23],["خمسمية",109.71],["دولار",110.19],["أو",110.66],["أكثر،",111.14],["تنفتحلك",111.62],["أول",112.09],["مرحلة:",112.57],["التأسيس.",113.04]]},
+{"id":"S06","title_ar":"المراحل الست","t0":114.22,"t1":158.29,"w":[["البرنامج",114.92],["بيه",115.46],["ست",116.0],["مراحل،",116.54],["وكل",117.08],["مرحلة",117.63],["تمويلها",118.17],["أكبر،",118.71],["وحصتك",119.25],["من",119.79],["الأرباح",120.33],["أعلى.",120.87],["الأولى:",121.41],["التأسيس،",121.96],["تمويل",122.5],["لحد",123.04],["خمسة",123.58],["آلاف",124.12],["دولار.",124.66],["هاي",125.2],["مرحلة",125.74],["إثبات،",126.28],["ما",126.83],["بيها",127.37],["حصة",127.91],["أرباح،",128.45],["بس",128.99],["هي",129.53],["بوابتك",130.07],["لكلشي",130.61],["بعدها.",131.16],["بعدها",131.7],["الحضانة:",132.24],["لحد",132.78],["عشرين",133.32],["ألف",133.86],["دولار،",134.4],["وحصتك",134.94],["أربعين",135.48],["بالمية",136.03],["من",136.57],["الأرباح.",137.11],["التسارع:",137.65],["لحد",138.19],["مية",138.73],["ألف",139.27],["دولار،",139.81],["وخمسين",140.35],["بالمية.",140.9],["برو:",141.44],["لحد",141.98],["ميتين",142.52],["ألف",143.06],["دولار،",143.6],["وستين",144.14],["بالمية.",144.68],["برو",145.23],["خمسمية:",145.77],["لحد",146.31],["نص",146.85],["مليون",147.39],["دولار،",147.93],["وسبعين",148.47],["بالمية.",149.01],["وآخر",149.55],["شي،",150.1],["برو",150.64],["مليون:",151.18],["تمويل",151.72],["لحد",152.26],["مليون",152.8],["دولار،",153.34],["وحصتك",153.88],["توصل",154.43],["لحد",154.97],["ثمانين",155.51],["بالمية.",156.05]]},
+{"id":"S07","title_ar":"شلون تصعد مرحلة؟","t0":158.29,"t1":183.98,"w":[["طيب،",158.99],["شلون",159.47],["تصعد",159.94],["من",160.42],["مرحلة",160.89],["لمرحلة؟",161.37],["لازم",161.85],["تحقق",162.32],["أربع",162.8],["شغلات.",163.28],["أولاً:",163.75],["ربح",164.23],["سبعة",164.7],["بالمية",165.18],["على",165.66],["حساب",166.13],["التخصيص.",166.61],["ثانياً:",167.09],["تكمّل",167.56],["الحد",168.04],["الأدنى",168.51],["من",168.99],["الأيام",169.47],["والصفقات.",169.94],["بالتأسيس،",170.42],["ثلاثين",170.89],["يوم",171.37],["وعشرين",171.85],["صفقة،",172.32],["وبالمراحل",172.8],["اللي",173.28],["بعدها،",173.75],["ستين",174.23],["يوم.",174.7],["ثالثاً:",175.18],["توصل",175.66],["لدرجة",176.13],["Edge",176.61],["والرصيد",177.09],["المطلوب",177.56],["للمرحلة",178.04],["الجاية.",178.51],["ورابعاً:",178.99],["تسدّ",179.47],["كل",179.94],["صفقاتك",180.42],["المفتوحة.",180.89],["وبعدها،",181.37],["تنتقل",181.85],["للمرحلة",182.32],["التالية.",182.8]]},
+{"id":"S08","title_ar":"حدود الخسارة","t0":183.98,"t1":208.71,"w":[["وهنا",184.68],["ركّز",185.16],["زين:",185.63],["أقصى",186.11],["خسارة",186.58],["مسموحة",187.06],["سبعة",187.54],["بالمية،",188.01],["وبمرحلة",188.49],["برو",188.97],["مليون",189.44],["عشرة",189.92],["بالمية.",190.39],["بالتأسيس،",190.87],["تعيد",191.35],["المرحلة",191.82],["ببلاش،",192.3],["وبأي",192.78],["وقت",193.25],["تريد.",193.73],["بالحضانة",194.2],["والتسارع،",194.68],["إذا",195.16],["عبرت",195.63],["الحد",196.11],["تدخل",196.58],["حجر",197.06],["سبعة",197.54],["أيام،",198.01],["وإذا",198.49],["صار",198.97],["ثالث",199.44],["حجر،",199.92],["ترجع",200.39],["للتأسيس.",200.87],["أما",201.35],["بمراحل",201.82],["برو،",202.3],["إذا",202.78],["عبرت",203.25],["الحد،",203.73],["ترجع",204.2],["تبدي",204.68],["من",205.16],["التأسيس.",205.63],["يعني",206.11],["الانضباط",206.58],["هو",207.06],["كلشي.",207.54]]},
+{"id":"S09","title_ar":"الأرباح","t0":208.71,"t1":223.44,"w":[["حصتك",209.41],["من",209.89],["أرباح",210.36],["حساب",210.84],["التخصيص",211.31],["تنزلك",211.79],["تلقائياً،",212.27],["بأول",212.74],["يوم",213.22],["من",213.7],["كل",214.17],["شهر.",214.65],["بشرط",215.12],["تكون",215.6],["كل",216.08],["صفقاتك",216.55],["مسدودة،",217.03],["والحساب",217.51],["أعلى",217.98],["من",218.46],["رصيد",218.93],["البداية.",219.41],["وحسابك",219.89],["الشخصي؟",220.36],["ربحه",220.84],["إلك،",221.31],["وخسارته",221.79],["عليك.",222.27]]},
+{"id":"S10","title_ar":"الممنوعات","t0":223.44,"t1":245.79,"w":[["وحتى",224.14],["تبقى",224.62],["بالبرنامج،",225.09],["ابتعد",225.57],["عن",226.04],["هاي",226.52],["الشغلات:",227.0],["السكالبينغ،",227.47],["يعني",227.95],["تفتح",228.43],["وتسدّ",228.9],["صفقات",229.38],["بثواني،",229.85],["حتى",230.33],["تصيد",230.81],["حركات",231.28],["صغيرة.",231.76],["ونسخ",232.24],["الصفقات.",232.71],["والروبوتات",233.19],["الجاهزة",233.66],["من",234.14],["طرف",234.62],["ثالث",235.09],["للتنفيذ",235.57],["التلقائي.",236.04],["والتداول",236.52],["عالي",237.0],["التردد",237.47],["اللي",237.95],["يستغل",238.43],["تأخير",238.9],["الأسعار.",239.38],["والتحوّط",239.85],["بس",240.33],["حتى",240.81],["تلعب",241.28],["بالأرقام.",241.76],["Axi",242.24],["تريد",242.71],["متداول",243.19],["حقيقي،",243.66],["بستراتيجية",244.14],["حقيقية.",244.62]]},
+{"id":"S11","title_ar":"الأدوات والتعليم","t0":245.79,"t1":254.81,"w":[["وطول",246.49],["الطريق،",246.97],["تحصل",247.44],["أدوات",247.92],["تداول،",248.39],["ومصادر",248.87],["تدريب،",249.35],["وتعليم",249.82],["بالتداول،",250.3],["وكوتشينغ",250.78],["من",251.25],["خبراء،",251.73],["حتى",252.2],["تطوّر",252.68],["نفسك",253.16],["باستمرار.",253.63]]},
+{"id":"S12","title_ar":"الخلاصة","t0":254.81,"t1":277.83,"w":[["الخلاصة:",255.51],["افتح",255.99],["حساب،",256.46],["تداول",256.94],["بانضباط،",257.41],["ارفع",257.89],["درجة",258.37],["Edge",258.84],["مالتك،",259.32],["واصعد",259.8],["المراحل",260.27],["لحد",260.75],["تمويل",261.22],["مليون",261.7],["دولار.",262.18],["Axi",262.65],["Select…",263.13],["Trade",263.61],["Your",264.08],["Edge.",264.56],["سجّل",265.03],["مجاناً",265.51],["من",265.99],["Axi",266.46],["دوت",266.94],["كوم.",267.41],["وتذكّر:",267.89],["التداول",268.37],["بيه",268.84],["مخاطر",269.32],["عالية،",269.8],["وممكن",270.27],["تخسر",270.75],["رأس",271.22],["مالك.",271.7],["فتداول",272.18],["بوعي.",272.65]]}]}/*/TL*/;
+const W=1920, H=1080, FPS=30, DUR=TL.dur;
+const SC={}; TL.scenes.forEach(s=>SC[s.id]=s);
+const HARAKA=/[ً-ْـ‎‏]/g;
+const norm=w=>w.replace(HARAKA,'').replace(/[،.:؟…!,"«»]/g,'');
+function cue(id,word,n=0){ const s=SC[id]; let c=0; const k=norm(word); for(const [w,t] of s.w){ if(norm(w)===k){ if(c===n) return t; c++; } } throw new Error('cue missing '+id+' '+word+' #'+n); }
+const T0=id=>SC[id].t0, T1=id=>SC[id].t1;
+
+// ────────────────────────────────────────── moves (OM) with exact settles, so holds are byte-identical ──────────────────────────────────────────
+const {clamp,lerp,seg,sstep,ssstep,ease}=OM;
+const SET=1.4;
+function rise(t,t0,o={}){ const d=o.dist??24; if(t<t0) return {k:0,op:0,y:d,s:o.s0??0.94}; if(t-t0>SET) return {k:1,op:1,y:0,s:1}; return OM.wordRise(t,t0,{dist:d,zeta:o.zeta??0.62,omega:o.omega??20,s0:o.s0??0.94,ds:1-(o.s0??0.94)}); }
+function pop(t,t0,o={}){ if(t<t0) return {k:0,op:0,s:o.s0??0.94,dy:o.rise??36}; if(t-t0>SET) return {k:1,op:1,s:1,dy:0}; return OM.popIn(t,t0,{zeta:o.zeta??0.66,omega:o.omega??17,rise:o.rise??36,s0:o.s0??0.94,ds:1-(o.s0??0.94)}); }
+function lift(t,t1,o={}){ const d=o.dur??0.32, dist=o.dist??50, dir=o.dir??-1; if(t<=t1) return {k:0,op:1,dy:0,s:1}; if(t>=t1+d) return {k:1,op:0,dy:dir*dist,s:1+(o.grow??0.02)}; return OM.liftOut(t,t1,{dur:d,dist,dir,blur:0,grow:o.grow??0.02}); }
+function imp(t,th,o={}){ if(t<th||t-th>SET) return {r:0,sx:1,sy:1}; return OM.impact(t,th,{decay:o.decay??8,omega:o.omega??24,sqx:o.sqx??0.10,sqy:o.sqy??0.12}); }
+function tk(t,tl){ if(t<tl) return {on:false,s:1}; if(t-tl>SET) return {on:true,s:1}; return OM.tick(t,tl); }
+function tw(t,t0,t1,c=ease.expoOut){ return c(seg(t,t0,t1)); }
+const f2=v=>(Math.abs(v)<0.005?0:v).toFixed(2), f4=v=>v.toFixed(4);
+function put(el,x,y,s=1,op=1,ex=''){ css(el,'opacity',op<0.002?'0':op>0.998?'1':op.toFixed(3)); css(el,'transform',`translate(${f2(x)}px,${f2(y)}px) scale(${f4(s)})${ex}`); }
+function putR(el,r){ put(el,0,r.dy??r.y??0,r.s??1,r.op); }
+
+// ────────────────────────────────────────── text: words as inline-blocks (never letters), Latin runs isolated LTR ──────────────────────────────────────────
+const STRIP=s=>s.replace(HARAKA,'');
+function words(str,o={}){
+  const toks=[]; STRIP(str).split(' ').filter(Boolean).forEach(tok=>{ let cls='w';
+    if(tok[0]==='!'){cls+=' red';tok=tok.slice(1);} else if(tok[0]==='~'){cls+=' grey';tok=tok.slice(1);}
+    const m=/^([A-Za-z0-9$%+.,\-/]+)([؟،:.]*)$/.exec(tok); const latin=/[A-Za-z0-9$%]/.test(tok)&&!/[؀-ۿ]/.test(tok.replace(/[؟،]/g,''));
+    if(latin&&m){ toks.push({cls,txt:m[1],L:true}); if(m[2]) toks.push({cls,txt:m[2],L:false,glue:true}); } else toks.push({cls,txt:tok,L:false}); });
+  const out=[]; for(let i=0;i<toks.length;i++){ const k=toks[i];
+    if(k.L&&!o.ltr){ let txt=k.txt; while(i+1<toks.length&&toks[i+1].L&&toks[i+1].cls===k.cls){ txt+=' '+toks[++i].txt; } out.push(`<span class="${k.cls} L" dir="ltr">${txt}</span>`); }
+    else if(k.glue){ out[out.length-1]+=`<span class="${k.cls}">${k.txt}</span>`; }
+    else out.push(k.L?`<span class="${k.cls} L" dir="ltr">${k.txt}</span>`:`<span class="${k.cls}">${k.txt}</span>`); }
+  return out.join(' ');
+}
+const WC=new Map();
+function spans(el){ let s=WC.get(el); if(!s){ s=[...el.querySelectorAll('.w')]; WC.set(el,s); } return s; }
+// words land on their own times (array) or on a stagger from t0 — right→left: the first word is the rightmost in RTL
+function animW(el,times,t,o={}){
+  const S=spans(el); const dx=o.dx??0.5;
+  S.forEach((s,i)=>{ const ti=Array.isArray(times)?times[Math.min(i,times.length-1)]:times+i*(o.dt??0.06);
+    const r=rise(t,ti,o); css(s,'opacity',r.op<0.002?'0':r.op>0.998?'1':r.op.toFixed(3));
+    css(s,'transform',r.k>=1?'none':`translate(${f2(r.y*dx*(o.ltr?-1:1))}px,${f2(r.y)}px) scale(${f4(r.s)})`); });
+}
+const cues=(id,list)=>list.map(x=>Array.isArray(x)?cue(id,x[0],x[1]):typeof x==='number'?x:cue(id,x));
+
+// ────────────────────────────────────────── shared graphics ──────────────────────────────────────────
+const IMG='../assets/img/';
+function chevs(w=30,h=18,gap=10,n=3){ let s=''; for(let i=0;i<n;i++){ const y=i*(h+gap); s+=`<polygon points="0,${y+h} ${w/2},${y} ${w},${y+h} ${w/2},${y+h*0.56}" fill="#E4002E"/>`; }
+  const HH=n*h+(n-1)*gap; return `<svg width="${w}" height="${HH}" viewBox="0 0 ${w} ${HH}" style="overflow:visible">${s}</svg>`; }
+function brackets(w,h,s=14){ return `<polygon points="0,0 ${s},0 0,${s}"/><polygon points="${w},0 ${w-s},0 ${w},${s}"/><polygon points="0,${h} ${s},${h} 0,${h-s}"/><polygon points="${w},${h} ${w-s},${h} ${w},${h-s}"/>`; }
+const CHECK='<svg viewBox="0 0 46 46" width="46" height="46"><path d="M12 24 L20 32 L35 15" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function tickBox(id){ return `<div id="${id}" class="box"><div class="card ch" style="--c:12px;left:0;top:0;width:46px;height:46px"><div class="fill ch"></div></div><div class="on ch" style="--c:12px;position:absolute;inset:0;background:var(--red);opacity:0"></div><div class="mk" style="position:absolute;inset:0;opacity:0">${CHECK}</div></div>`; }
+function setTick(el,t,tl){ const k=tk(t,tl); el._on=el._on||el.querySelector('.on'); el._mk=el._mk||el.querySelector('.mk'); css(el._on,'opacity',k.on?'1':'0'); css(el._mk,'opacity',k.on?'1':'0'); css(el,'transform',`scale(${f4(k.s)})`); }
+function odo(str){ return [...str].map(ch=>/\d/.test(ch)?`<span class="dg"><span class="col"><span>${Array.from({length:40},(_,i)=>i%10).join('</span><span>')}</span></span></span>`:`<span class="sc">${ch}</span>`).join(''); }
+const CANDLE_DATA=[[0.30,0.55,0.62,0.16],[0.47,0.63,0.80,0.36],[0.66,0.84,0.95,0.55],[0.82,0.60,0.88,0.42],[0.62,0.71,0.90,0.50],[0.70,0.47,0.80,0.30],[0.49,0.58,0.67,0.40],
+  [0.56,0.24,0.60,0.06],[0.28,0.37,0.56,0.22],[0.38,0.52,0.72,0.30],[0.52,0.71,0.83,0.45],[0.68,0.88,0.98,0.60],[0.87,0.77,0.95,0.68]];
+function candleSVG(n,w,h,seed,opt={}){ const D=opt.data||CANDLE_DATA; n=D.length; let out=''; const bw=opt.bw??10, gap=w/n;
+  for(let i=0;i<n;i++){ const [o,c,hi,lo]=D[i];
+    const red=c<o; const col=red?'#E4002E':(i%3===1?'#D9D9DC':'#8D8F93');
+    const x=gap*(i+0.5), Y=u=>h-u*h;
+    out+=`<g class="cd" data-i="${i}"><line x1="${x}" x2="${x}" y1="${Y(hi)}" y2="${Y(lo)}" stroke="${col}" stroke-width="1.6" opacity=".9"/><rect x="${x-bw/2}" y="${Y(Math.max(o,c))}" width="${bw}" height="${Math.max(3,Math.abs(c-o)*h)}" fill="${col}"/></g>`; }
+  return out; }
+
+// ════════════════════════════════════════════ STATIONS ════════════════════════════════════════════
+// Each station is a 1920×1080 designed frame in world space; ent/ext are where the climb line enters and leaves it (local).
+// The world is chained left→right, climbing: every station starts GAPX right of the last one's exit and RISE above it.
+const GAPX=760, RISE=360;
+const ST=[];
+function station(o){ ST.push(o); return o; }
+
+// ── S01 · Hook ──
+station({id:'S01', ent:[-180,1090], ext:[2020,770],
+  html:()=>`
+  <div id="q1" class="abs ar disp" style="left:0;top:388px;width:1920px;text-align:center;font-size:90px">${words('~ليش ~تتداول بس بفلوسك؟')}</div>
+  <div id="fund" class="abs ar txt grey" style="left:0;top:440px;width:1920px;text-align:center;font-size:40px">${words('تمويل لحد')}</div>
+  <div id="ctrRow" class="abs" style="left:0;top:512px;width:1920px;height:210px;display:flex;justify-content:center;align-items:center;direction:ltr">
+    <div id="chev1" style="margin-right:44px;margin-top:22px">${chevs(40,24,15)}</div>
+    <div id="ctr" class="num" style="font-size:200px;height:200px;display:flex;align-items:flex-start">${odo('$1,000,000')}</div>
+  </div>`,
+  line(P,Z,M){ Z(-180,1090,1560,832,11,26,52); M('rest'); P(1700,806); P(1860,790); P(2020,770); },
+  init(){ this.q=$('q1'); this.fund=$('fund'); this.ctr=$('ctr'); this.cols=[...this.ctr.querySelectorAll('.dg>.col')]; this.cv=[...$('chev1').querySelectorAll('polygon')]; this.row=$('ctrRow'); },
+  draw(t){ const id='S01';
+    animW(this.q,cues(id,['ليش','تتداول','بس','بفلوسك']),t,{dist:30});
+    const lq=lift(t,8.45,{dur:0.34,dist:46}); put(this.q,0,lq.dy,lq.s,lq.op);
+    animW(this.fund,cues(id,['تمويل','لحد']),t);
+    const tc=cue(id,'مليون'); const r=rise(t,tc-0.08,{dist:30}); put(this.row,0,r.y,1,r.op);
+    const finals=[1,0,0,0,0,0,0]; const n=finals.length;
+    this.cols.forEach((c,j)=>{ const turns=1+Math.floor((n-1-j)/3); const p=(10*turns+finals[j])*tw(t,tc+0.03*j,tc+1.55+0.05*j,ease.quintOut);
+      css(c,'transform',`translateY(${f2(-p*200)}px)`); });
+    this.cv.forEach((p,i)=>{ const k=rise(t,tc+0.55+(2-i)*0.09,{dist:14}); css(p,'opacity',k.op.toFixed(3)); css(p,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+  },
+  track(){ return {ctr:this.row}; }});
+
+// ── S02 · What it is ──
+station({id:'S02', ent:[-100,990], ext:[2020,945],
+  html:()=>`
+  <div class="glow" style="left:-80px;top:180px;width:1240px;height:1000px;background:radial-gradient(closest-side,rgba(228,0,46,.16),rgba(228,0,46,0))"></div>
+  <img id="man" class="abs" src="${IMG}man_phone.webp" style="left:30px;top:92px;width:1046px;height:1030px">
+  <div id="h2" class="abs ar disp" style="right:120px;top:178px;font-size:66px">${words('~برنامج تمويل المتداولين')}</div>
+  <div id="acct" class="card ch" style="--c:22px;right:120px;top:318px;width:660px;height:204px"><div class="fill ch"></div>
+    <div id="acL" class="abs ar disp" style="right:38px;top:34px;font-size:42px">${words('حسابك الحقيقي')}</div>
+    <div class="abs caps" style="right:38px;top:112px;display:flex;align-items:center;gap:12px"><span>MT4 / MT5 · LIVE</span><i style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block"></i></div>
+    <svg id="spark" class="abs" style="left:34px;top:36px;overflow:visible" width="230" height="132" viewBox="0 0 270 132" preserveAspectRatio="none">
+      <defs><linearGradient id="scg" x1="0" x2="1"><stop offset="0" stop-color="#E4002E" stop-opacity="0"/><stop offset="1" stop-color="#E4002E" stop-opacity=".35"/></linearGradient></defs>
+      <polyline id="spl" points="${sparkPts()}" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect id="scan" x="0" y="0" width="70" height="132" fill="url(#scg)"/><rect id="scanb" x="68" y="0" width="2" height="132" fill="#E4002E"/>
+      <g id="brk" fill="#E4002E">${brackets(270,132,13)}</g>
+    </svg>
+  </div>
+  <div id="watch" class="abs ar txt" style="right:120px;top:538px;font-size:34px">${words('Axi تراقب أداءك')}</div>
+  <div id="chips" class="abs ar" style="right:120px;top:640px;display:flex;gap:20px">
+    <div id="chip1" class="chip ch disp" style="--c:16px;font-size:34px;font-weight:600"><div class="fill ch"></div><span class="t">${words('ماكو تحدي')}</span><span id="st1" class="L red t" style="font-weight:700;margin-right:22px;letter-spacing:-.04em">///</span></div>
+    <div id="chip2" class="chip ch disp" style="--c:16px;font-size:34px;font-weight:600"><div class="fill ch"></div><span class="t">${words('ماكو رسوم')}</span><span id="st2" class="L red t" style="font-weight:700;margin-right:22px;letter-spacing:-.04em">///</span></div>
+  </div>
+  <div id="join" class="pill" style="right:120px;top:752px"><span id="joinT">${words('الانضمام مجاني')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 12 H5 M11 6 L5 12 L11 18" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  <div id="foot" class="abs ar txt grey" style="right:124px;top:862px;font-size:24px;font-weight:400">${words('تكاليف التداول العادية تنطبق')}</div>`,
+  line(P,Z,M){ Z(-100,990,1800,960,21,16,50); M('rest'); P(2020,945); },
+  init(){ for(const k of ['h2','acct','acL','watch','chip1','chip2','st1','st2','join','joinT','foot','spl','scan','scanb','brk','man']) this[k]=$(k);
+    this.splP=sparkPts().split(' ').map(q=>q.split(',').map(Number)); this.brkP=[...this.brk.children]; },
+  draw(t){ const id='S02';
+    animW(this.h2,cues(id,['برنامج','تمويل','المتداولين']),t);
+    const ta=cue(id,'حسابك'); putR(this.acct,pop(t,ta-0.1)); animW(this.acL,[ta,ta+0.35],t);
+    { const k=tw(t,ta+0.25,ta+1.3,ease.cubicOut), P=this.splP, f=k*(P.length-1), n=Math.floor(f), u=f-n; const pts=P.slice(0,n+1).map(q=>q.join(','));
+      if(n<P.length-1&&u>0) pts.push(`${f2(lerp(P[n][0],P[n+1][0],u))},${f2(lerp(P[n][1],P[n+1][1],u))}`); attr(this.spl,'points',k<=0?'0,0':pts.join(' ')); css(this.spl,'opacity',k<=0?'0':'1'); }
+    const tr=cue(id,'تراقب'); animW(this.watch,cues(id,[['Axi',2],'تراقب','أداءك']),t);
+    this.brkP.forEach((p,i)=>{ const k=pop(t,tr+i*0.05,{s0:1.6,rise:0}); css(p,'opacity',k.op.toFixed(3)); css(p,'transformOrigin',['0 0','270px 0','0 132px','270px 132px'][i]); css(p,'transform',k.k>=1?'none':`scale(${f4(k.s)})`); });
+    const sk=seg(t,tr+0.15,tr+1.35), sx=lerp(-70,270,ease.sineInOut(sk)), son=sk>0&&sk<1;
+    attr(this.scan,'x',f2(sx)); attr(this.scanb,'x',f2(sx+68)); css(this.scan,'opacity',son?'1':'0'); css(this.scanb,'opacity',son?'1':'0');
+    const c1=cue(id,'ماكو'), c2=cue(id,'وماكو');
+    putR(this.chip1,pop(t,c1-0.05)); putR(this.chip2,pop(t,c2-0.05));
+    for(const [el,tc] of [[this.st1,c1+0.38],[this.st2,c2+0.38]]){ const k=pop(t,tc,{s0:1.7,rise:0,zeta:0.5,omega:22}); put(el,0,0,k.s,k.op); }
+    const tj=cue(id,'الانضمام'); const pj=pop(t,tj-0.08,{rise:28}); const ij=imp(t,tj+0.18); put(this.join,0,pj.dy,pj.s*ij.sx,pj.op); animW(this.joinT,cues(id,['الانضمام','مجاني']),t,{dist:14});
+    animW(this.foot,cue(id,'تكاليف'),t,{dt:0.07,dist:12});
+  },
+  track(){ return {man:this.man,acct:this.acct}; }});
+function sparkPts(){ const r=OM.rng(7); let s=[], y=104; for(let i=0;i<=22;i++){ y=clamp(y-(r()-0.32)*16,14,118); s.push(`${(i*270/22).toFixed(1)},${y.toFixed(1)}`); } return s.join(' '); }
+
+// ── S03 · How funding works ──
+const B0={x:820,y:560,w:420,h:290}, B1={x:820,y:352,w:930,h:612};
+const CANDLES=[ // destination (inside the grown allocation card) and source (inside «حسابك»): bottom-centre, body h, colour
+  {dx:900,db:900,dh:150,sx:216,sb:818,col:'#8D8F93'},{dx:1010,db:860,dh:210,sx:243.5,sb:814,col:'#E4002E'},{dx:1120,db:815,dh:270,sx:271,sb:809.5,col:'#EDEDEF'}];
+station({id:'S03', ent:[-100,880], ext:[2020,600],
+  html:()=>`
+  <div id="eq" class="abs" style="left:0;top:132px;width:1920px;display:flex;justify-content:center;align-items:flex-start;gap:38px;direction:ltr">
+    <div id="eq0" style="display:flex;flex-direction:column;align-items:center"><div class="num" style="font-size:104px">$500</div><div class="txt grey ar" style="font-size:25px;margin-top:12px">رصيدك</div></div>
+    <div id="eq1" class="num grey" style="font-size:104px">×</div>
+    <div id="eq2" style="display:flex;flex-direction:column;align-items:center"><div class="num red" style="font-size:104px">10</div><div class="txt grey ar" style="font-size:25px;margin-top:12px">المضاعف</div></div>
+    <div id="eq3" class="num grey" style="font-size:104px">=</div>
+    <div id="eq4" style="display:flex;flex-direction:column;align-items:center"><div class="num" style="font-size:104px">$5,000</div><div class="txt grey ar" style="font-size:25px;margin-top:12px">حساب التخصيص</div></div>
+  </div>
+  <div id="cA" class="card ch" style="--c:22px;left:170px;top:560px;width:420px;height:290px"><div class="fill ch"></div>
+    <div id="cAl" class="abs ar disp" style="right:32px;top:28px;font-size:38px">${words('حسابك')}</div>
+    <div class="abs num" style="right:32px;top:88px;font-size:96px">$500</div>
+    <div id="cAlot" class="abs caps" style="left:32px;top:40px;font-size:16px">0.01 lot</div>
+  </div>
+  <svg id="cAc" class="abs" style="left:0;top:0;overflow:visible" width="1" height="1">${CANDLES.map((c,i)=>`<g class="sc${i}"><line x1="${c.sx}" x2="${c.sx}" y1="${c.sb-c.dh/10-7}" y2="${c.sb+4}" stroke="${c.col}" stroke-width="1.6"/><rect x="${c.sx-6.5}" y="${c.sb-c.dh/10}" width="13" height="${c.dh/10}" fill="${c.col}"/></g>`).join('')}</svg>
+  <svg id="arrow" class="abs" style="left:796px;top:689px" width="32" height="32" viewBox="0 0 32 32"><path d="M8 4 L24 16 L8 28" fill="none" stroke="#E4002E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div id="x10" class="abs num red" style="left:640px;top:626px;width:130px;text-align:center;font-size:40px;font-weight:400">×10</div>
+  <div id="cB" class="card ch" style="--c:28px"><div class="fill ch"></div>
+    <div id="cBl" class="abs ar disp" style="right:36px;top:30px;font-size:38px;white-space:nowrap">${words('حساب التخصيص')}</div>
+    <div id="cBq" class="abs num grey" style="right:36px;top:92px;font-size:96px">—</div>
+    <div id="cBa" class="abs num" style="right:40px;top:100px;font-size:136px">$5,000</div>
+    <div id="cBcap" class="abs ar txt" style="right:38px;bottom:34px;font-size:31px;white-space:nowrap">${words('كل صفقة تنعكس تلقائياً')}</div>
+    <div id="cBlot" class="abs caps" style="left:44px;top:44px;font-size:16px">0.1 lot</div>
+  </div>
+  <div id="cands" class="abs" style="left:0;top:0">${CANDLES.map((c,i)=>`<div class="cdl" id="cd${i}" style="position:absolute;left:${c.dx-26}px;top:${c.db-c.dh-46}px;width:52px;height:${c.dh+76}px;transform-origin:26px ${c.dh+46}px">
+     <div style="position:absolute;left:24.5px;top:0;width:3px;height:${c.dh+76}px;background:${c.col};opacity:.9"></div><div style="position:absolute;left:0;top:46px;width:52px;height:${c.dh}px;background:${c.col}"></div></div>`).join('')}</div>`,
+  line(P,Z,M){ Z(-100,880,170,772,31,14,48); P(380,736); P(590,705); M('rest'); P(700,705); P(796,705); M('arrow'); P(1000,700); Z(1000,700,1750,640,32,12,50); P(2020,600); },
+  init(){ for(const k of ['eq','eq0','eq1','eq2','eq3','eq4','cA','cAl','cAlot','arrow','x10','cB','cBl','cBq','cBa','cBcap','cBlot','cAc']) this[k]=$(k);
+    this.cds=CANDLES.map((c,i)=>$('cd'+i)); this.scs=CANDLES.map((c,i)=>this.cAc.querySelector('.sc'+i)); },
+  draw(t){ const id='S03';
+    const tA=T0(id)+0.55; putR(this.cA,pop(t,tA)); animW(this.cAl,cue(id,'شلون'),t);
+    const tAr=cue(id,'ثاني'); const ar=pop(t,tAr+0.55,{s0:0.6,rise:0}); put(this.arrow,(1-ar.k)*-18,0,1,ar.op);
+    const tB=cue(id,'التخصيص'); const tG=cue(id,'خمسة');
+    const pb=pop(t,tB-0.1); const m=OM.morphRect(t,tG,tG+0.95,B0,B1,{curve:ease.expoOut});
+    const R=t<tG?B0:m; css(this.cB,'left',f2(R.x)+'px'); css(this.cB,'top',f2(R.y)+'px'); css(this.cB,'width',f2(R.w)+'px'); css(this.cB,'height',f2(R.h)+'px');
+    put(this.cB,0,pb.dy,pb.s,pb.op); animW(this.cBl,tB+0.05,t);
+    const gq=1-sstep(tG,tG+0.25,t); css(this.cBq,'opacity',(pb.op*gq).toFixed(3));
+    const ra=rise(t,tG+0.3,{dist:40}); put(this.cBa,0,ra.y,ra.s,ra.op);
+    // equation builds term by term
+    const te=cues(id,['خمسمية','والمضاعف','عشرة','يصير','خمسة']); te[4]+=0.12;
+    [this.eq0,this.eq1,this.eq2,this.eq3,this.eq4].forEach((e,i)=>{ const r=rise(t,te[i],{dist:34}); put(e,0,r.y,r.s,r.op); });
+    const tx=cue(id,'عشرة'); const px=pop(t,tx+0.05,{s0:0.7,rise:10}); const ix=imp(t,cue(id,'مضروبة')+0.1,{sqx:0.22,sqy:0.22}); put(this.x10,0,px.dy,px.s*ix.sx,px.op);
+    // trades: three candles appear in «حسابك», then are mirrored into the allocation account at 10× height
+    const tc=cue(id,'صفقة'), tm=cue(id,'تنعكس');
+    this.scs.forEach((g,i)=>{ const k=rise(t,tc+i*0.13,{dist:8}); css(g,'opacity',k.op.toFixed(3)); css(g,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+    css(this.cAlot,'opacity',sstep(tc,tc+0.3,t).toFixed(3));
+    this.cds.forEach((el,i)=>{ const c=CANDLES[i], t0=tm+i*0.14, k=ease.expoInOut(seg(t,t0,t0+0.78));
+      if(t<t0){ css(el,'opacity','0'); return; }
+      const h=OM.hop(t,t0,t0+0.78,{x:c.sx,y:c.sb},{x:c.dx,y:c.db},{height:170,curve:ease.expoInOut});
+      const sx=Math.exp(lerp(Math.log(0.25),0,k)), sy=Math.exp(lerp(Math.log(0.1),0,k)); const ii=imp(t,t0+0.78,{sqx:0.08,sqy:0.1});
+      css(el,'opacity','1'); css(el,'transform',k>=1&&ii.r===0?'none':`translate(${f2(h.x-c.dx)}px,${f2(h.y-c.db)}px) scale(${f4(sx*ii.sx)},${f4(sy*ii.sy)})`); });
+    animW(this.cBcap,cues(id,['وكل','صفقة','تنعكس','تلقائياً']).map((v,i)=>Math.max(v,tm-0.1+i*0.12)),t,{dist:14});
+    css(this.cBlot,'opacity',sstep(tm+0.6,tm+0.9,t).toFixed(3));
+  },
+  track(){ return {cA:this.cA,cB:this.cB}; }});
+
+// ── S04 · Edge Score ──
+const RING={cx:640,cy:580,r:250};
+station({id:'S04', ent:[-100,900], ext:[2020,820],
+  html:()=>`
+  <div id="ringIn" class="abs" style="left:${RING.cx-260}px;top:${RING.cy-260}px;width:520px;height:520px">
+    <div id="rD" class="abs ar txt grey" style="left:0;width:520px;top:150px;text-align:center;font-size:34px">${words('درجة')}</div>
+    <div id="rE" class="abs num" style="left:0;width:520px;top:196px;text-align:center;font-size:128px">Edge</div>
+    <div id="rX" class="abs ar disp" style="left:0;width:520px;top:338px;text-align:center;font-size:42px;font-weight:600"><span class="w L red" dir="ltr" style="font-family:Geist;font-weight:300;font-size:50px">×</span> <span class="w">الخبرة</span></div>
+  </div>
+  <svg id="outer" class="abs" style="left:${RING.cx-310}px;top:${RING.cy-310}px;overflow:visible" width="620" height="620" viewBox="-310 -310 620 620">
+    <circle r="292" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+    ${Array.from({length:96},(_,i)=>{const a=i/96*Math.PI*2, r0=i%8===0?298:295, r1=304; return `<line x1="${(Math.cos(a)*r0).toFixed(1)}" y1="${(Math.sin(a)*r0).toFixed(1)}" x2="${(Math.cos(a)*r1).toFixed(1)}" y2="${(Math.sin(a)*r1).toFixed(1)}" stroke="${i%8===0?'#E4002E':'rgba(255,255,255,.4)'}" stroke-width="${i%8===0?2.5:1.2}"/>`;}).join('')}
+  </svg>
+  <div id="lb1" class="abs ar" style="left:950px;top:706px;width:420px;text-align:left"><div class="disp" style="font-size:40px">${words('المهارة')}</div><div class="txt grey" style="font-size:24px;font-weight:400">${words('وين تدخل ووين تطلع')}</div></div>
+  <div id="lb2" class="abs ar" style="left:${RING.cx-260}px;top:150px;width:520px;text-align:center"><div class="disp" style="font-size:40px">${words('المخاطرة')}</div><div class="txt grey" style="font-size:24px;font-weight:400">${words('شلون تحمي حسابك')}</div></div>
+  <div id="lb3" class="abs ar" style="left:-120px;top:706px;width:420px;text-align:right"><div class="disp" style="font-size:40px">${words('الثبات')}</div><div class="txt grey" style="font-size:24px;font-weight:400">${words('مو ضربة حظ')}</div></div>
+  <div id="sub4" class="abs ar disp" style="right:120px;top:300px;width:600px;font-size:54px;font-weight:600;line-height:1.3">${words('تقيس ~أسلوب ~تداولك من !ثلاث !نواحي')}</div>
+  <div id="xc" class="card ch" style="--c:26px;left:1236px;top:236px;width:574px;height:570px"><div class="fill ch"></div>
+    <img src="${IMG}logo_white.png" class="abs" style="left:36px;top:36px;height:30px">
+    <div id="xcT" class="abs" style="left:36px;top:100px;font-family:Geist;font-weight:400;font-size:46px;line-height:1.08;letter-spacing:-.025em;direction:ltr"><span class="w">Edge</span> <span class="w">Score</span><br><span class="w">Explainer</span></div>
+    <svg id="xcC" class="abs" style="left:36px;top:240px;overflow:visible" width="502" height="200" viewBox="0 0 502 200">
+      <line x1="0" x2="502" y1="104" y2="104" stroke="rgba(255,255,255,.35)" stroke-dasharray="2 5"/>
+      <line x1="0" x2="0" y1="0" y2="200" stroke="rgba(255,255,255,.18)" stroke-dasharray="2 5"/><line x1="502" x2="502" y1="0" y2="200" stroke="rgba(255,255,255,.18)" stroke-dasharray="2 5"/>
+      <g transform="translate(14,14)">${candleSVG(13,474,172,44,{bw:16,redEvery:3})}</g>
+      <g id="xcB" fill="#E4002E">${brackets(502,200,15)}</g>
+    </svg>
+    <div id="xcF" class="abs ar txt grey" style="right:36px;top:478px;font-size:26px">${words('ببوابة العملاء')}</div>
+    <div id="xcV" class="abs" style="left:36px;top:470px">${chevs(22,13,8)}</div>
+  </div>`,
+  line(P,Z,M){ Z(-100,900,400,832,41,14,48); P(RING.cx,RING.cy+RING.r); M('ring0'); M('rest');
+    const N=150; for(let i=1;i<=N;i++){ const th=Math.PI/2-Math.PI*2*i/N; P(RING.cx+RING.r*Math.cos(th),RING.cy+RING.r*Math.sin(th),14); if(i===N/3) M('r1'); if(i===2*N/3) M('r2'); } M('r3');
+    P(RING.cx+90,RING.cy+RING.r+3); P(1000,846); P(1236,852); M('card'); Z(1236,852,1820,852,42,8,52); P(2020,820); },
+  init(){ for(const k of ['rD','rE','rX','outer','lb1','lb2','lb3','sub4','xc','xcT','xcC','xcB','xcF','xcV','ringIn']) this[k]=$(k);
+    this.cdl=[...this.xcC.querySelectorAll('.cd')]; this.xb=[...this.xcB.children]; this.xv=[...this.xcV.querySelectorAll('polygon')]; },
+  draw(t){ const id='S04';
+    const tE=cue(id,'درجة'); animW(this.rD,tE,t); const re=rise(t,cue(id,'Edge')-0.05,{dist:30}); put(this.rE,0,re.y,re.s,re.op);
+    animW(this.sub4,cues(id,['تقيس','أسلوب','تداولك','من','ثلاث','نواحي']),t);
+    const l4=lift(t,cue(id,'أداة')-0.55,{dist:40}); css(this.sub4,'opacity',l4.op<1?l4.op.toFixed(3):''); if(l4.k>0) css(this.sub4,'transform',`translateY(${f2(l4.dy)}px)`); else css(this.sub4,'transform','none');
+    const L=[[this.lb1,'المهارة','يعني',0],[this.lb2,'والمخاطرة','يعني',1],[this.lb3,'والثبات','يعني',2]];
+    for(const [el,w1,w2,n] of L){ const tl=cue(id,w1)+0.35; const ws=spans(el); const td=cue(id,w2,n)+0.25;
+      ws.forEach((s,i)=>{ const r=rise(t,i===0?tl:td+(i-1)*0.06,{dist:i===0?22:14}); css(s,'opacity',r.op.toFixed(3)); css(s,'transform',r.k>=1?'none':`translate(${f2(r.y*0.5)}px,${f2(r.y)}px) scale(${f4(r.s)})`); }); }
+    const tx=cue(id,'ينضرب'), tb=cue(id,'خبرتك');
+    animW(this.rX,[tx+0.1,tx+0.3],t,{dist:20});
+    const ok=OM.spring(clamp(t-tb,0,SET),0.55,14), ov=t<tb?0:t-tb>SET?1:ok, oa=pop(t,T0(id)+0.6,{rise:0,s0:0.97});
+    css(this.outer,'opacity',(oa.op*(0.28+0.72*clamp((t-tb)*5,0,1))).toFixed(3));
+    const io=imp(t,tb,{sqx:0.09,sqy:0.09,omega:16,decay:6}); css(this.outer,'transform',io.r===0&&oa.k>=1?'none':`scale(${f4(oa.s*io.sx)})`); css(this.outer,'transformOrigin','310px 310px');
+    const ii=imp(t,tb+0.08,{sqx:0.07,sqy:0.07}); css(this.ringIn,'transform',ii.r===0?'none':`scale(${f4(ii.sx)})`);
+    const tc=cue(id,'Edge',1); const pc=pop(t,tc-0.2,{rise:40}); put(this.xc,0,pc.dy,pc.s,pc.op);
+    animW(this.xcT,tc,t,{dt:0.1,dist:18,ltr:true});
+    this.cdl.forEach((g,i)=>{ const k=rise(t,tc+0.25+i*0.045,{dist:16}); css(g,'opacity',k.op.toFixed(3)); css(g,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+    this.xb.forEach((p,i)=>{ const k=pop(t,tc+0.85+i*0.05,{s0:1.6,rise:0}); css(p,'opacity',k.op.toFixed(3)); });
+    animW(this.xcF,cue(id,'ببوابة'),t,{dist:12});
+    this.xv.forEach((p,i)=>{ const k=rise(t,tc+1.1+(2-i)*0.08,{dist:10}); css(p,'opacity',k.op.toFixed(3)); css(p,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+  },
+  decor(c,Mv,z,t){ // the gauge track the climb line fills (screen-space canvas, under the line)
+    const S=this, o=[S.ox+RING.cx,S.oy+RING.cy]; const [x,y]=OM.project(Mv,o[0],o[1]); c.lineCap='butt'; c.lineJoin='miter';
+    c.lineWidth=17*z; c.strokeStyle='rgba(255,255,255,.065)'; c.beginPath(); c.arc(x,y,RING.r*z,0,Math.PI*2); c.stroke();
+    c.strokeStyle='rgba(255,255,255,.2)'; c.lineWidth=1.4*z; c.beginPath();
+    for(let i=0;i<120;i++){ const a=i/120*Math.PI*2, r0=(RING.r-26)*z, r1=(RING.r-(i%10===0?38:31))*z; c.moveTo(x+Math.cos(a)*r0,y+Math.sin(a)*r0); c.lineTo(x+Math.cos(a)*r1,y+Math.sin(a)*r1); } c.stroke(); },
+  decorTop(c,Mv,z,t){ const S=this, [x,y]=OM.project(Mv,S.ox+RING.cx,S.oy+RING.cy); c.lineCap='butt';
+    c.strokeStyle='#060607'; c.lineWidth=6*z; c.beginPath();
+    for(const a of [-Math.PI/6,-5*Math.PI/6]){ c.moveTo(x+Math.cos(a)*(RING.r-12)*z,y+Math.sin(a)*(RING.r-12)*z); c.lineTo(x+Math.cos(a)*(RING.r+12)*z,y+Math.sin(a)*(RING.r+12)*z); } c.stroke(); },
+  track(){ return {ring:this.ringIn,xc:this.xc}; }});
+
+// ── S05 · Getting started ──
+const LOCK=`<svg id="lock" class="abs" style="left:350px;top:500px;overflow:visible" width="200" height="270" viewBox="0 0 200 270">
+  <path id="lkS" d="M52 158 V82 A48 48 0 0 1 148 82 V158" fill="none" stroke="#D9D9DC" stroke-width="15"/>
+  <polygon id="lkB" points="33,124 180,124 180,246 167,262 20,262 20,140" fill="#141416" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+  <circle cx="100" cy="183" r="11" fill="#060607"/><rect x="95" y="186" width="10" height="34" fill="#060607"/></svg>`;
+station({id:'S05', ent:[-100,860], ext:[2020,640],
+  html:()=>`
+  <div class="glow" style="left:150px;top:380px;width:600px;height:600px;background:radial-gradient(closest-side,rgba(228,0,46,.12),rgba(228,0,46,0))"></div>
+  ${LOCK}
+  <div id="seed5" class="abs ar disp" style="left:720px;top:612px;width:280px;text-align:center;font-size:46px">${words('التأسيس')}</div>
+  <div id="rows5" class="abs" style="right:120px;top:150px;width:800px">
+    <div id="r51" class="abs" style="right:0;top:0;width:800px;height:152px;border-bottom:1px solid var(--hair)">
+      ${tickBox('k51').replace('class="box"','class="box" style="right:0;top:52px"')}
+      <div id="t51" class="abs ar disp" style="right:78px;top:42px;font-size:46px;font-weight:600;white-space:nowrap">${words('افتح حساب Axi Select')}</div>
+      <div class="abs" style="left:14px;top:46px;display:flex;gap:12px;direction:ltr">
+        <div id="mt4" class="chip ch caps" style="--c:12px;height:58px;padding:0 20px;font-size:21px;color:#fff;letter-spacing:.12em"><div class="fill ch"></div><span class="t">MT4</span></div>
+        <div id="mt5" class="chip ch caps" style="--c:12px;height:58px;padding:0 20px;font-size:21px;color:#fff;letter-spacing:.12em"><div class="fill ch"></div><span class="t">MT5</span></div></div>
+    </div>
+    <div id="r52" class="abs" style="right:0;top:170px;width:800px;height:152px;border-bottom:1px solid var(--hair)">
+      ${tickBox('k52').replace('class="box"','class="box" style="right:0;top:52px"')}
+      <div id="t52" class="abs ar disp" style="right:78px;top:42px;font-size:46px;font-weight:600;white-space:nowrap">${words('درجة Edge 50+')}</div>
+      <svg id="gauge" class="abs" style="left:10px;top:28px;overflow:visible" width="150" height="96" viewBox="-75 -80 150 96">
+        <path d="M-64 0 A64 64 0 0 1 64 0" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="9"/>
+        <path id="gArc" d="" fill="none" stroke="#E4002E" stroke-width="9"/>
+        <line id="gN" x1="0" y1="0" x2="0" y2="-54" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><circle r="7" fill="#fff"/>
+        <text x="-64" y="16" fill="#8D8F93" font-family="Geist" font-size="13" text-anchor="middle">0</text><text x="64" y="16" fill="#8D8F93" font-family="Geist" font-size="13" text-anchor="middle">100</text></svg>
+    </div>
+    <div id="r53" class="abs" style="right:0;top:340px;width:800px;height:152px">
+      ${tickBox('k53').replace('class="box"','class="box" style="right:0;top:52px"')}
+      <div id="t53" class="abs ar disp" style="right:78px;top:42px;font-size:46px;font-weight:600;white-space:nowrap">${words('رصيد $500+')}</div>
+      <svg id="wal" class="abs" style="left:28px;top:40px" width="112" height="80" viewBox="0 0 112 80"><rect x="3" y="12" width="96" height="62" rx="8" fill="none" stroke="#fff" stroke-width="3"/><path d="M14 12 L74 2 L80 12" fill="none" stroke="#8D8F93" stroke-width="3"/><rect x="66" y="32" width="40" height="22" rx="5" fill="#E4002E"/><circle cx="78" cy="43" r="4" fill="#fff"/></svg>
+    </div>
+  </div>`,
+  line(P,Z,M){ Z(-100,860,330,822,51,14,48); P(560,820); M('rest'); P(720,820); P(720,700); P(1000,700); M('step'); P(1300,700); Z(1300,700,1850,680,52,8,52); P(2020,640); },
+  init(){ for(const k of ['lock','lkS','lkB','seed5','r51','r52','r53','t51','t52','t53','mt4','mt5','gauge','gArc','gN','wal','k51','k52','k53']) this[k]=$(k);
+  },
+  draw(t){ const id='S05';
+    const pl=pop(t,cue(id,'شلون'));
+    const t1=cue(id,'تفتح'); animW(this.t51,cues(id,['تفتح','حساب','Axi']),t); putR(this.mt4,pop(t,cue(id,'إم',0),{rise:16})); putR(this.mt5,pop(t,cue(id,'إم',1),{rise:16}));
+    animW(this.t52,cues(id,['درجة','Edge','لخمسين']),t); const tg=cue(id,'درجة'); putR(this.gauge,pop(t,tg,{rise:16}));
+    const tn=cue(id,'لخمسين'); const kn=t<tn?0:t-tn>SET?1:OM.spring(t-tn,0.45,13); const ang=lerp(-90,0,kn);
+    attr(this.gN,'transform',`rotate(${f2(ang)})`);
+    { const a=Math.PI*(1-0.5*clamp(kn,0,1.2)), ex=64*Math.cos(a), ey=-64*Math.sin(a); attr(this.gArc,'d',kn<=0.002?'':`M-64 0 A64 64 0 0 1 ${f2(ex)} ${f2(ey)}`); }
+    animW(this.t53,cues(id,['رصيدك','خمسمية']),t); putR(this.wal,pop(t,cue(id,'رصيدك'),{rise:16}));
+    for(const [el,r,i] of [[this.r51,t1-0.05,0],[this.r52,tg-0.05,1],[this.r53,cue(id,'رصيدك')-0.05,2]]){ const a=pop(t,T0(id)+0.6+i*0.08,{rise:18}); css(el,'opacity',(a.op*(0.32+0.68*sstep(r-0.4,r,t))).toFixed(3)); css(el,'transform',a.k>=1?'none':`translateY(${f2(a.dy)}px)`); }
+    setTick(this.k51,t,cue(id,'وتبدي')); setTick(this.k52,t,tn+0.55); setTick(this.k53,t,cue(id,'دولار')+0.1);
+    const tu=cue(id,'تنفتحلك'); const ku=t<tu?0:t-tu>SET?1:OM.spring(t-tu,0.5,15);
+    attr(this.lkS,'transform',`translate(0 ${f2(-26*clamp(ku,0,1.3))}) rotate(${f2(-18*clamp(ku,0,1.25))} 52 158)`);
+    attr(this.lkB,'fill',t>=tu+0.05?'#E4002E':'#141416'); attr(this.lkB,'stroke',t>=tu+0.05?'#E4002E':'rgba(255,255,255,.22)');
+    const il=imp(t,tu+0.05); css(this.lock,'transformOrigin','100px 262px'); css(this.lock,'opacity',pl.op>=1?'1':pl.op.toFixed(3));
+    css(this.lock,'transform',pl.k>=1&&il.r===0?'none':`translate(0px,${f2(pl.dy)}px) scale(${f4(pl.s*il.sx)},${f4(pl.s*il.sy)})`);
+    const ts=cue(id,'التأسيس'); animW(this.seed5,ts-0.25,t,{dist:30});
+  },
+  track(){ return {lock:this.lock,rows:this.r51}; }});
+
+// ── S06 · The six stages ──
+const STG=[ // name, funding, share, cue word for name [word,n], funding cue, share cue
+  {n:'التأسيس',f:'$5K',s:'0%',cn:['التأسيس',0],cf:['خمسة',0],cs:['حصة',0]},
+  {n:'الحضانة',f:'$20K',s:'40%',cn:['الحضانة',0],cf:['عشرين',0],cs:['أربعين',0]},
+  {n:'التسارع',f:'$100K',s:'50%',cn:['التسارع',0],cf:['مية',0],cs:['وخمسين',0]},
+  {n:'برو',f:'$200K',s:'60%',cn:['برو',0],cf:['ميتين',0],cs:['وستين',0]},
+  {n:'برو 500',f:'$500K',s:'70%',cn:['برو',1],cf:['نص',0],cs:['وسبعين',0]},
+  {n:'برو مليون',f:'$1M',s:'80%',cn:['برو',2],cf:['مليون',2],cs:['ثمانين',0]}];
+const SX0=200, SY0=1000, SW=520, SH=140;
+station({id:'S06', ent:[-100,996], ext:[3620,270], wide:true, bw:3700, bh:1500,
+  html:()=>`
+  <div id="h6" class="abs ar" style="right:${3700-1600}px;top:150px;width:1300px">
+    <div class="disp" style="font-size:156px;font-weight:800;line-height:1.1">${words('6 مراحل')}</div>
+    <div class="txt grey" style="font-size:56px;margin-top:8px">${words('تمويل أكبر · حصة أعلى')}</div></div>
+  <div id="crown" class="abs" style="left:${SX0+5*SW+SW/2-26}px;top:96px">${chevs(52,30,18)}</div>
+  ${STG.map((g,k)=>`<div id="blk${k}" class="blk" style="left:${SX0+SW*k}px;top:${SY0-SH*k}px">
+     <div class="card ch" style="--c:28px"><div class="fill ch"></div></div>
+     <div class="abs caps" style="left:30px;top:40px;font-size:17px">STAGE 0${k+1}</div>
+     <div id="sn${k}" class="abs ar disp" style="right:34px;top:26px;font-size:48px;white-space:nowrap">${words(g.n)}</div>
+     <div id="sf${k}" class="abs num" style="right:34px;top:98px;font-size:118px">${g.f}</div>
+     <div id="ss${k}" class="abs ar" style="right:34px;top:236px;display:flex;align-items:baseline;gap:16px;white-space:nowrap"><span class="txt grey" style="font-size:28px">حصة الأرباح</span><span class="num red" style="font-size:62px;font-weight:400">${g.s}</span></div>
+     ${k===0?`<div id="proof" class="chip ch" style="--c:10px;position:absolute;right:34px;top:328px;height:44px;padding:0 16px;font-size:23px;color:var(--red)"><div class="fill ch"></div><span class="t txt" style="font-weight:500">مرحلة إثبات</span></div>`:''}
+   </div>`).join('')}`,
+  line(P,Z,M){ P(-100,996); P(SX0,996); M('rest');
+    for(let k=0;k<6;k++){ const y=SY0-SH*k-4, x=SX0+SW*(k+1); P(x,y); M('k'+k); if(k<5) P(x,y-SH); }
+    P(3500,290); P(3620,270); },
+  init(){ this.blk=STG.map((g,k)=>$('blk'+k)); this.sn=STG.map((g,k)=>$('sn'+k)); this.sf=STG.map((g,k)=>$('sf'+k)); this.ss=STG.map((g,k)=>$('ss'+k)); this.proof=$('proof'); this.h6=$('h6');
+    this.crown=[...$('crown').querySelectorAll('polygon')]; },
+  draw(t){ const id='S06';
+    animW(this.h6.children[0],cues(id,['ست','مراحل']),t,{dist:40}); animW(this.h6.children[1],cues(id,['تمويلها','أكبر',['أكبر',0],'وحصتك','أعلى']),t);
+    STG.forEach((g,k)=>{ const tn=cue(id,...g.cn), tf=cue(id,...g.cf), ts=cue(id,...g.cs);
+      const on=sstep(tn-0.5,tn+0.1,t); css(this.blk[k],'opacity',(0.5+0.5*on).toFixed(3));
+      animW(this.sn[k],tn,t,{dist:26,dt:0.12}); const rf=rise(t,tf,{dist:40}); put(this.sf[k],0,rf.y,rf.s,rf.op); const rs=rise(t,ts,{dist:22}); put(this.ss[k],0,rs.y,rs.s,rs.op); });
+    putR(this.proof,pop(t,cue(id,'إثبات')-0.2,{rise:12}));
+    const tcw=cue(id,'ثمانين')+0.45; this.crown.forEach((p,i)=>{ const k=rise(t,tcw+(2-i)*0.1,{dist:26}); css(p,'opacity',k.op.toFixed(3)); css(p,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+  },
+  track(){ const o={}; this.blk.forEach((b,k)=>o['blk'+k]=b); return o; }});
+
+// ── S07 · Moving up ──
+const ROWS7=[['+7% على حساب التخصيص','أولاً'],['30 يوم · 20 صفقة (التأسيس) · 60 يوم بعدها','ثانياً'],['درجة Edge + الرصيد للمرحلة الجاية','ثالثاً'],['سد كل الصفقات','ورابعاً']];
+station({id:'S07', ent:[-100,1010], ext:[2020,872],
+  html:()=>`
+  <div id="c7" class="abs" style="left:110px;top:300px;width:480px;text-align:center">
+    <div class="num" style="font-size:230px;display:flex;justify-content:center"><span class="dg"><span class="col" id="c7d"><span>${[0,1,2,3,4].join('</span><span>')}</span></span></span><span class="grey">/4</span></div>
+    <div id="c7l" class="txt grey ar" style="font-size:30px;text-align:center;margin-top:18px">${words('لازم تحقق 4 شغلات')}</div></div>
+  <div id="card7" class="card ch" style="--c:30px;left:660px;top:176px;width:1140px;height:676px"><div class="fill ch"></div>
+    ${ROWS7.map((r,i)=>`<div id="row7${i}" class="abs" style="left:0;top:${18+i*160}px;width:1140px;height:160px;${i<3?'border-bottom:1px solid var(--hair)':''}">
+       ${tickBox('k7'+i).replace('class="box"','class="box" style="right:46px;top:57px"')}
+       <div id="rt7${i}" class="abs ar disp" style="right:122px;top:48px;font-size:${i===1?38:42}px;font-weight:600;white-space:nowrap">${words(r[0])}</div>
+       <div class="abs num" style="left:48px;top:62px;font-size:26px;font-weight:500;color:var(--red);letter-spacing:.02em">0${i+1}</div></div>`).join('')}
+  </div>
+  <div id="next" class="pill" style="left:1376px;top:888px"><span id="nextT">${words('المرحلة التالية')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 19 V5 M6 11 L12 5 L18 11" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>`,
+  line(P,Z,M){ Z(-100,1010,300,1000,71,12,50); P(1300,1000); M('rest'); P(1860,1000); P(1860,872); M('step'); P(2020,872); },
+  init(){ this.c7=$('c7'); this.c7d=$('c7d'); this.c7l=$('c7l'); this.card=$('card7'); this.rows=ROWS7.map((r,i)=>$('row7'+i)); this.rt=ROWS7.map((r,i)=>$('rt7'+i)); this.kb=ROWS7.map((r,i)=>$('k7'+i)); this.next=$('next'); this.nextT=$('nextT'); css(this.next,'left',(1800-this.next.offsetWidth)+'px'); },
+  draw(t){ const id='S07';
+    const t4=cue(id,'أربع'); const rc=rise(t,t4-0.1,{dist:40}); put(this.c7,0,rc.y,1,rc.op); animW(this.c7l,cue(id,'شغلات'),t,{dt:0.06});
+    const tic=ROWS7.map(r=>cue(id,r[1])+0.35); let p=0; tic.forEach(ti=>{ p+=ease.expoOut(seg(t,ti,ti+0.6)); }); css(this.c7d,'transform',`translateY(${f2(-p*230)}px)`);
+
+    const tl=cue(id,'لازم');
+    ROWS7.forEach((r,i)=>{ const to=cue(id,r[1]); css(this.rows[i],'opacity',(0.28+0.72*sstep(to-0.15,to+0.25,t)).toFixed(3));
+      animW(this.rt[i],T0(id)+0.95+i*0.1,t,{dist:16,dt:0.04}); setTick(this.kb[i],t,tic[i]); });
+    const tn=cue(id,'وبعدها'); const pn=pop(t,tn-0.05,{rise:26}); const tp=cue(id,'تنتقل')+0.1; const pr=t<tp||t-tp>SET?{s:1,active:false}:OM.press(t,tp,{depth:0.12});
+    put(this.next,0,pn.dy,pn.s*pr.s,pn.op); css(this.next,'background',pr.active?'#ff2c55':''); animW(this.nextT,tn+0.1,t,{dist:12});
+  },
+  track(){ return {card7:this.card,c7:this.c7}; }});
+
+// ── S08 · Loss limits ──
+const CARDS8=[['التأسيس','إعادة مجانية بأي وقت','بالتأسيس','reset'],['الحضانة والتسارع','حجر 7 أيام · ثالث حجر رجوع للتأسيس','بالحضانة','lock'],['مراحل برو','رجوع للتأسيس','بمراحل','back']];
+const ICON={reset:'<path d="M34 12 A16 16 0 1 0 38 26" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round"/><path d="M28 6 L36 12 L28 18" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>',
+  lock:'<rect x="10" y="20" width="26" height="20" rx="3" fill="none" stroke="#E4002E" stroke-width="3.2"/><path d="M15 20 V14 A8 8 0 0 1 31 14 V20" fill="none" stroke="#E4002E" stroke-width="3.2"/><text x="23" y="35" fill="#E4002E" font-family="Geist" font-weight="600" font-size="12" text-anchor="middle">7</text>',
+  back:'<path d="M14 18 H30 A9 9 0 0 1 30 36 H18" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round"/><path d="M20 11 L13 18 L20 25" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>'};
+station({id:'S08', ent:[-100,360], ext:[2020,180],
+  html:()=>`
+  <svg id="fl7" class="abs" style="left:140px;top:468px" width="1640" height="6"><line x1="0" x2="1640" y1="3" y2="3" stroke="#E4002E" stroke-width="2.5" stroke-dasharray="16 11"/></svg>
+  <div id="lab7" class="abs ar" style="right:140px;top:370px;display:flex;align-items:baseline;gap:18px;white-space:nowrap"><span class="txt grey" style="font-size:28px">أقصى خسارة</span><span class="num red" style="font-size:80px;font-weight:400">-7%</span></div>
+  <svg id="fl10" class="abs" style="left:140px;top:540px" width="1640" height="6"><line x1="0" x2="1640" y1="3" y2="3" stroke="#E4002E" stroke-opacity=".45" stroke-width="2" stroke-dasharray="6 10"/></svg>
+  <div id="lab10" class="abs ar" style="right:140px;top:552px;display:flex;align-items:baseline;gap:14px;white-space:nowrap"><span class="txt grey" style="font-size:22px">برو مليون</span><span class="num" style="font-size:40px;font-weight:400;color:rgba(228,0,46,.75)">-10%</span></div>
+  ${CARDS8.map((c,i)=>`<div id="cd8${i}" class="card ch" style="--c:22px;left:${1245-i*535}px;top:640px;width:500px;height:262px"><div class="fill ch"></div>
+     <svg class="abs" style="right:30px;top:28px" width="48" height="48" viewBox="0 0 48 48">${ICON[c[3]]}</svg>
+     <div class="abs ar disp" style="right:32px;top:92px;font-size:36px;white-space:nowrap">${words(c[0])}</div>
+     <div id="cb8${i}" class="abs ar txt" style="right:32px;top:146px;width:440px;font-size:28px;line-height:1.42;color:#C9CACD">${words(c[1])}</div></div>`).join('')}
+  <div id="disc" class="abs ar disp" style="left:0;top:680px;width:1920px;text-align:center;font-size:96px;font-weight:800">${words('!الانضباط ~هو ~كلشي')}</div>`,
+  line(P,Z,M){ Z(-100,360,600,320,81,14,46); M('rest'); P(690,334); P(780,384); P(870,440); P(960,436); M('dip'); P(1080,380); P(1250,328); P(1450,268); P(1650,222); P(1800,200); M('reb'); P(2020,180); },
+  init(){ for(const k of ['fl7','lab7','fl10','lab10','disc']) this[k]=$(k); this.cds=CARDS8.map((c,i)=>$('cd8'+i)); this.cbs=CARDS8.map((c,i)=>$('cb8'+i)); },
+  draw(t){ const id='S08';
+    const t7=cue(id,'أقصى'); const w7=tw(t,t7,t7+0.9,ease.expoOut); css(this.fl7,'clipPath',`inset(0 0 0 ${f2((1-w7)*100)}%)`); css(this.fl7,'opacity',t<t7?'0':'1');
+    const r7=rise(t,cue(id,'سبعة')-0.1,{dist:24}); put(this.lab7,0,r7.y,r7.s,r7.op);
+    const t10=cue(id,'وبمرحلة'); const w10=tw(t,t10,t10+0.9,ease.expoOut); css(this.fl10,'clipPath',`inset(0 0 0 ${f2((1-w10)*100)}%)`); css(this.fl10,'opacity',t<t10?'0':'1');
+    const r10=rise(t,cue(id,'عشرة')-0.1,{dist:18}); put(this.lab10,0,r10.y,r10.s,r10.op);
+    const tout=cue(id,'يعني')-0.2;
+    const tin=cue(id,'وهنا');
+    CARDS8.forEach((c,i)=>{ const ti=cue(id,c[2]); const p=pop(t,tin+0.1+i*0.08,{rise:24}); const on=sstep(ti-0.2,ti+0.2,t); const l=lift(t,tout+i*0.06,{dist:40,dur:0.36});
+      put(this.cds[i],0,p.dy+l.dy,p.s*l.s,p.op*l.op*(0.38+0.62*on));
+      if(i===1){ animW(this.cbs[i],[cue(id,'حجر'),cue(id,'حجر')+0.08,cue(id,'حجر')+0.16,cue(id,'ثالث')-0.1,cue(id,'ثالث'),cue(id,'ثالث')+0.12,cue(id,'ترجع')],t,{dist:12}); }
+      else animW(this.cbs[i],i===0?cue(id,'تعيد'):cue(id,'ترجع',1),t,{dist:12,dt:0.08}); });
+    animW(this.disc,cues(id,['الانضباط','هو','كلشي']),t,{dist:36});
+  },
+  track(){ return {floor:this.fl7,cards:this.cds[0],cards2:this.cds[2]}; }});
+
+// ── S09 · Payouts ──
+station({id:'S09', ent:[-100,420], ext:[2020,400],
+  html:()=>`
+  <div id="card9" class="card ch" style="--c:24px;left:180px;top:226px;width:590px;height:290px"><div class="fill ch"></div>
+    <div id="c9g" class="abs ch" style="--c:24px;inset:0;background:linear-gradient(180deg,rgba(228,0,46,.28),rgba(228,0,46,0) 70%);opacity:0"></div>
+    <div id="c9l" class="abs ar disp" style="right:40px;top:40px;font-size:54px">${words('حصتك')}</div>
+    <div id="c9s" class="abs ar txt grey" style="right:40px;top:124px;font-size:26px;width:300px">${words('من أرباح حساب التخصيص')}</div>
+    <div class="abs" style="left:60px;top:70px;width:150px;height:150px;border-radius:50%;border:2px dashed rgba(255,255,255,.18)"></div></div>
+  <img id="coin" class="abs" src="${IMG}coin_silver.webp" style="left:0;top:0;width:150px;height:152px;transform-origin:75px 76px">
+  <div id="tile" class="card ch" style="--c:26px;left:1330px;top:150px;width:410px;height:420px"><div class="fill ch"></div>
+    <div class="abs" style="left:0;right:0;top:0;height:74px;background:var(--red)"></div>
+    <div class="abs ar txt" style="right:34px;top:14px;font-size:28px;font-weight:700">${words('كل شهر')}</div>
+    <div class="abs caps" style="left:34px;top:28px;color:rgba(255,255,255,.75);font-size:16px">PAYOUT</div>
+    <div id="flip" class="abs" style="left:0;top:98px;width:410px;height:300px;perspective:900px">
+      ${['old','new'].map(n=>['top','bot'].map(h=>`<div id="f_${n}_${h}" class="abs num" style="left:0;top:0;width:410px;height:300px;text-align:center;font-size:250px;line-height:300px;clip-path:inset(${h==='top'?'0 0 50% 0':'50% 0 0 0'});transform-origin:205px 150px;backface-visibility:hidden">${n==='old'?'30':'01'}</div>`).join('')).join('')}
+      <div class="abs" style="left:28px;right:28px;top:149px;height:2px;background:#060607"></div></div></div>
+  <div id="h9" class="abs ar disp" style="left:0;top:632px;width:1920px;text-align:center;font-size:66px">${words('تلقائياً ~· أول كل شهر')}</div>
+  <div id="ch9" class="abs ar" style="left:0;top:772px;width:1920px;display:flex;justify-content:center;gap:22px">
+    <div id="ch91" class="chip ch txt" style="--c:14px;font-size:29px;gap:14px"><div class="fill ch"></div><span class="t" style="color:var(--red);font-family:Geist">✓</span><span class="t">${words('الصفقات مسدودة')}</span></div>
+    <div id="ch92" class="chip ch txt" style="--c:14px;font-size:29px;gap:14px"><div class="fill ch"></div><span class="t" style="color:var(--red);font-family:Geist">✓</span><span class="t">${words('الحساب أعلى من رصيد البداية')}</span></div></div>
+  <div id="p9" class="abs ar txt" style="left:0;top:888px;width:1920px;text-align:center;font-size:34px">${words('~حسابك ~الشخصي: ربحه إلك ~· خسارته عليك')}</div>`,
+  line(P,Z,M){ P(-100,420); P(180,456); P(770,470); P(1050,452); P(1316,440); M('rest'); P(1740,420); P(2020,400); },
+  init(){ for(const k of ['card9','c9g','c9l','c9s','coin','tile','h9','ch91','ch92','p9']) this[k]=$(k);
+    this.fo={top:$('f_old_top'),bot:$('f_old_bot')}; this.fn={top:$('f_new_top'),bot:$('f_new_bot')}; },
+  draw(t){ const id='S09';
+    animW(this.c9l,cue(id,'حصتك'),t); animW(this.c9s,cue(id,'من'),t,{dt:0.08,dist:14});
+    const tf=cue(id,'بأول')-0.3, k1=ease.expoIn(seg(t,tf,tf+0.22)), k2=t<tf+0.22?0:t-tf-0.22>SET?1:OM.spring(t-tf-0.22,0.45,22);
+    css(this.fo.top,'transform',k1>=1?'rotateX(-90deg)':`rotateX(${f2(-90*k1)}deg)`); css(this.fo.top,'opacity',k1>=1?'0':'1');
+    css(this.fo.bot,'opacity',k2>0.02?'0':'1'); css(this.fn.top,'opacity',k1>0?'1':'0');
+    css(this.fn.bot,'opacity',t>=tf+0.22?'1':'0'); css(this.fn.bot,'transform',k2>=1?'none':`rotateX(${f2(90*(1-k2))}deg)`);
+    if(t<tf){ css(this.fn.top,'opacity','0'); }
+    const it=imp(t,tf+0.3,{sqx:0.03,sqy:0.03}); css(this.tile,'transform',it.r===0?'none':`scale(${f4(it.sx)})`);
+    // the coin leaves the calendar and slides along the line into the trader's card
+    const tc=cue(id,'بأول')+0.05, tl=tc+0.85; const A={x:1316-75,y:440-76}, B={x:240,y:295};
+    if(t<tc-0.2){ css(this.coin,'opacity','0'); }
+    else { const ap=pop(t,tc-0.2,{s0:0.5,rise:0}); const h=OM.hop(t,tc,tl,A,B,{height:60,curve:ease.expoInOut}); const il=imp(t,tl,{sqx:0.1,sqy:0.12});
+      const rot=lerp(0,-360,ease.expoInOut(seg(t,tc,tl)));
+      css(this.coin,'opacity',ap.op.toFixed(3)); css(this.coin,'transform',`translate(${f2(h.x)}px,${f2(h.y)}px) rotate(${f2(rot===-360?0:rot)}deg) scale(${f4(ap.s*0.92*il.sx)},${f4(ap.s*0.92*il.sy)})`); }
+    css(this.c9g,'opacity',(t<tl?0:Math.exp(-(t-tl)*2.4)*(t-tl<2.5?1:0)).toFixed(3));
+    animW(this.h9,cues(id,['تلقائياً',['بأول',0],['بأول',0],'كل','شهر']).map((v,i)=>i===1?v+0.15:i===2?v+0.25:v),t,{dist:28});
+    const t91=cue(id,'بشرط'); putR(this.ch91,pop(t,cue(id,'مسدودة')-0.25,{rise:18})); putR(this.ch92,pop(t,cue(id,'والحساب')-0.1,{rise:18}));
+    animW(this.p9,cues(id,['وحسابك','الشخصي','ربحه','إلك','إلك','وخسارته','عليك']).map((v,i)=>i===4?v+0.25:v),t,{dist:16});
+  },
+  track(){ return {tile:this.tile,card9:this.card9,coin:this.coin}; }});
+
+// ── S10 · Not allowed ──
+const NO=[['السكالبينغ','السكالبينغ','watch'],['نسخ الصفقات','ونسخ','copy'],['روبوتات طرف ثالث','والروبوتات','bot'],['تداول عالي التردد','والتداول','bolt'],['تحوط للتلاعب','والتحوط','scale']];
+const NICON={watch:'<circle cx="40" cy="44" r="24" fill="none" stroke="#fff" stroke-width="3"/><path d="M40 44 L40 30 M40 44 L50 50" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M34 12 H46 M40 12 V20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>',
+  copy:'<rect x="14" y="20" width="36" height="42" rx="5" fill="none" stroke="#fff" stroke-width="3"/><rect x="28" y="10" width="36" height="42" rx="5" fill="#111" stroke="#fff" stroke-width="3"/>',
+  bot:'<rect x="14" y="24" width="52" height="38" rx="8" fill="none" stroke="#fff" stroke-width="3"/><circle cx="30" cy="42" r="5" fill="#fff"/><circle cx="50" cy="42" r="5" fill="#fff"/><path d="M40 24 V12" stroke="#fff" stroke-width="3"/><circle cx="40" cy="10" r="4" fill="#fff"/>',
+  bolt:'<path d="M46 8 L20 44 H38 L32 72 L60 34 H42 Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>',
+  scale:'<path d="M40 12 V66 M24 66 H56 M14 24 H66" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M14 24 L6 46 H22 Z M66 24 L58 46 H74 Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>'};
+station({id:'S10', ent:[-100,990], ext:[2020,940],
+  html:()=>`
+  <div id="h10" class="abs ar disp" style="left:0;top:178px;width:1920px;text-align:center;font-size:68px">${words('~ابتعد ~عن ~هاي الشغلات')}</div>
+  ${NO.map((n,i)=>`<div id="no${i}" class="abs" style="left:${1474-i*331}px;top:340px;width:300px;height:330px">
+     <div class="card ch" style="--c:22px;left:0;top:0;width:300px;height:330px"><div class="fill ch"></div></div>
+     <div class="cnt abs" style="left:0;top:0;width:300px;height:330px"><svg class="abs" style="left:110px;top:56px" width="80" height="80" viewBox="0 0 80 80">${NICON[n[2]]}</svg>
+     </div><div class="lbl abs ar disp" style="left:20px;top:188px;width:260px;text-align:center;font-size:34px;font-weight:600;line-height:1.3">${words(n[0])}</div>
+     <svg class="xx abs" style="left:0;top:0;overflow:visible" width="300" height="330"><line x1="92" y1="38" x2="208" y2="154" stroke="#E4002E" stroke-width="7" stroke-linecap="round"/><line x1="208" y1="38" x2="92" y2="154" stroke="#E4002E" stroke-width="7" stroke-linecap="round"/></svg>
+     <div class="rb abs" style="left:0;top:0;width:300px;height:330px;opacity:0"><div class="ch" style="--c:22px;position:absolute;inset:0;background:linear-gradient(180deg,rgba(228,0,46,.16),rgba(228,0,46,0) 60%)"></div></div></div>`).join('')}
+  <div id="real" class="abs ar disp" style="left:0;top:752px;width:1920px;text-align:center;font-size:76px;font-weight:800">${words('متداول !حقيقي ~· ستراتيجية !حقيقية')}</div>`,
+  line(P,Z,M){ Z(-100,990,1800,962,101,14,50); M('rest'); P(2020,940); },
+  init(){ this.h10=$('h10'); this.real=$('real'); this.no=NO.map((n,i)=>{ const el=$('no'+i); const ls=[...el.querySelectorAll('.xx line')]; const L=Math.hypot(116,116); return {el,cnt:el.querySelector('.cnt'),lbl:el.querySelector('.lbl'),rb:el.querySelector('.rb'),ls,L}; }); },
+  draw(t){ const id='S10';
+    animW(this.h10,cues(id,['ابتعد','عن','هاي','الشغلات']),t);
+    const t0=cue(id,'ابتعد'); const td=cue(id,'Axi')-0.1;
+    this.no.forEach((o,i)=>{ const p=pop(t,T0(id)+0.55+i*0.07); const tx=cue(id,NO[i][1])+0.12; const dim=sstep(tx+0.2,tx+0.5,t);
+      put(o.el,0,p.dy+lerp(0,8,dim),p.s,p.op*(1-0.42*sstep(td,td+0.5,t)));
+      css(o.cnt,'opacity',(1-0.55*dim).toFixed(3)); css(o.lbl,'color',dim>0?`rgb(${Math.round(lerp(255,190,dim))},${Math.round(lerp(255,191,dim))},${Math.round(lerp(255,195,dim))})`:''); css(o.rb,'opacity',dim.toFixed(3));
+      o.ls.forEach((l,j)=>{ const k=tw(t,tx+j*0.16,tx+j*0.16+0.24,ease.cubicOut), A=j?[208,38]:[92,38], B=j?[92,154]:[208,154];
+        attr(l,'x2',f2(lerp(A[0],B[0],k))); attr(l,'y2',f2(lerp(A[1],B[1],k))); css(l,'opacity',k<=0?'0':'1'); }); });
+    animW(this.real,cues(id,['متداول','حقيقي',['بستراتيجية',0],'بستراتيجية','حقيقية']).map((v,i)=>i===2?v-0.1:v),t,{dist:30});
+  },
+  track(){ return {no0:this.no[0].el,no4:this.no[4].el}; }});
+
+// ── S11 · Tools ──
+station({id:'S11', ent:[-100,990], ext:[2020,930],
+  html:()=>`
+  <div id="card11" class="card ch" style="--c:36px;left:160px;top:140px;width:1600px;height:790px"><div class="fill ch"></div>
+    <img src="${IMG}chart_e.webp" class="abs" style="left:520px;top:390px;width:1100px;opacity:.28">
+    <div class="abs ch" style="--c:24px;left:40px;top:40px;width:700px;height:710px;overflow:hidden;background:#cfd0d2"><img src="${IMG}duo_laptops_b.webp" style="position:absolute;left:-300px;top:0;height:710px;width:1058px"></div>
+    <div id="t11" class="abs ar disp" style="right:84px;top:118px;width:740px;font-size:58px;font-weight:600;line-height:1.32">
+      <span class="w" style="display:inline-block;position:relative;width:16px;height:26px;margin-left:16px;vertical-align:14px"><i style="position:absolute;inset:0;background:var(--red);clip-path:polygon(0 0,100% 0,100% 100%,55% 38%,0 38%)"></i></span>${words('!أدوات تداول، مصادر تدريب، !تعليم بالتداول، وكوتشينغ من خبراء حتى !تطور نفسك باستمرار.')}</div>
+    <div id="caps11" class="abs caps" style="right:84px;top:600px;font-size:17px">TRADE YOUR EDGE.&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;&nbsp;LEARN MORE ON <span class="red">AXI.COM</span></div>
+    <img id="lg11" src="${IMG}logo_white.png" class="abs" style="left:800px;top:676px;height:44px"></div>`,
+  line(P,Z,M){ Z(-100,990,160,975,111,10,50); P(1760,966); M('rest'); P(2020,930); },
+  init(){ this.t11=$('t11'); this.caps=$('caps11'); this.lg=$('lg11'); this.card=$('card11'); },
+  draw(t){ const id='S11';
+    const tt=cues(id,['أدوات','أدوات','تداول','ومصادر','تدريب','وتعليم','بالتداول','وكوتشينغ','من','خبراء','حتى','تطور','نفسك','باستمرار']); tt[0]-=0.2;
+    animW(this.t11,tt,t,{dist:22});
+    const tc=T0(id)+0.7; const rc=rise(t,tc,{dist:12}); put(this.caps,0,rc.y,1,rc.op); const rl=rise(t,tc+0.15,{dist:12}); put(this.lg,0,rl.y,1,rl.op);
+  },
+  track(){ return {card11:this.card}; }});
+
+// ── S12 · Recap (verbs) ──
+station({id:'S12V', scene:'S12', ent:[-100,760], ext:[2020,560],
+  html:()=>`<div id="verbs" class="abs ar disp" style="left:0;top:452px;width:1920px;text-align:center;font-size:124px;font-weight:800">${words('افتح !· تداول !· ارفع !· اصعد')}</div>`,
+  line(P,Z,M){ Z(-100,760,260,690,121,14,50); P(1660,682); M('rest'); P(1900,612); P(2020,560); },
+  init(){ this.v=$('verbs'); },
+  draw(t){ const id='S12'; const c=cues(id,['افتح','تداول','ارفع','واصعد']); animW(this.v,[c[0],c[1]-0.1,c[1],c[2]-0.1,c[2],c[3]-0.1,c[3]],t,{dist:40}); },
+  track(){ return {verbs:this.v}; }});
+
+// ── S12 · End card ──
+const LG={x:600,y:352,h:160}; LG.s=LG.h/384;
+station({id:'S12E', scene:'S12', farOp:0.17, ent:[-100,720], ext:[2020,500],
+  html:()=>`
+  <div id="tye" class="abs" style="left:0;top:596px;width:1920px;text-align:center;font-family:Geist;font-weight:400;font-size:52px;letter-spacing:-.02em;direction:ltr">${words('Trade Your !Edge',{ltr:true})}</div>
+  <div id="cta" class="pill" style="left:0;top:700px"><span id="ctaT">${words('سجل مجاناً من axi.com')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 12 H5 M11 6 L5 12 L11 18" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  <div id="risk" class="abs ar txt grey" style="left:0;top:974px;width:1920px;text-align:center;font-size:23px;font-weight:400">${words('التداول ينطوي على مخاطر عالية وقد تخسر رأس مالك.')}</div>`,
+  line(P,Z,M){ const s=LG.s, P1=[LG.x+1627*s,LG.y+373*s], P2=[LG.x+1723*s,LG.y+257*s], d=[96,-116], dl=Math.hypot(...d), n=[-d[1]/dl,d[0]/dl], g=34;
+    const A=[P1[0]+n[0]*g,P1[1]+n[1]*g], B=[P2[0]+n[0]*g,P2[1]+n[1]*g];
+    Z(-100,720,420,A[1]+2,131,12,50); P(560,A[1]); P(A[0],A[1]); M('under'); P(B[0],B[1]); M('end'); },
+  init(){ this.tye=$('tye'); this.cta=$('cta'); this.ctaT=$('ctaT'); this.risk=$('risk'); css(this.cta,'left',(960-this.cta.offsetWidth/2)+'px'); },
+  draw(t){ const id='S12';
+    animW(this.tye,cues(id,['Trade','Your',['Edge',1]]),t,{dist:20,ltr:true});
+    const tc=cue(id,'سجّل'); const pc=pop(t,tc-0.1,{rise:24}); put(this.cta,0,pc.dy,pc.s,pc.op); animW(this.ctaT,cues(id,['سجّل','مجاناً','من',['Axi',1]]),t,{dist:12});
+    animW(this.risk,cue(id,'وتذكّر'),t,{dt:0.05,dist:10});
+  },
+  track(){ return {tye:this.tye,cta:this.cta}; }});
+
+// ════════════════════════════════════════════ WORLD: chain the stations, build the climb line ════════════════════════════════════════════
+const $=id=>document.getElementById(id);
+const WORLD=$('world'), FAR=$('far'), LOGO=$('logo'), HUD=$('hud');
+{ let px=0, py=0;
+  ST.forEach((S,i)=>{ if(i>0){ const A=ST[i-1]; px=A.ox+A.ext[0]+GAPX-S.ent[0]; py=A.oy+A.ext[1]-RISE-S.ent[1]; } S.ox=px; S.oy=py; S.scene=S.scene||S.id;
+    S.bw=S.bw||1920; S.bh=S.bh||1080; }); }
+// the line: world points with per-point width, arc length, named marks
+const PX=[],PY=[],PW=[],MK={};
+function zigPts(x0,y0,x1,y1,seed,amp,step){ // a price path: Brownian bridge (returns to the line at both ends) + a little tick-to-tick chop
+  const r=OM.rng(seed), n=Math.max(2,Math.round(Math.hypot(x1-x0,y1-y0)/step)), Wk=[0], out=[];
+  for(let i=1;i<=n;i++) Wk.push(Wk[i-1]+(r()+r()-1)*1.7);
+  let mx=1e-6; for(let i=0;i<=n;i++){ Wk[i]-=i/n*Wk[n]; mx=Math.max(mx,Math.abs(Wk[i])); }
+  for(let i=1;i<=n;i++){ const u=i/n, env=Math.pow(Math.sin(Math.PI*u),0.5), chop=(i%2?1:-1)*(0.25+0.5*r())*amp*0.45*env;
+    out.push([lerp(x0,x1,u)+(r()-0.5)*step*0.3*env, lerp(y0,y1,u)+Wk[i]/mx*amp*1.25+chop]); }
+  return out; }
+function addP(x,y,w=3){ const n=PX.length; if(n&&Math.abs(PX[n-1]-x)<0.01&&Math.abs(PY[n-1]-y)<0.01) return; PX.push(x); PY.push(y); PW.push(w); }
+ST.forEach((S,i)=>{
+  if(i>0){ const n=PX.length; const x0=PX[n-1], y0=PY[n-1], x1=S.ox+S.ent[0], y1=S.oy+S.ent[1]; for(const [x,y] of zigPts(x0,y0,x1,y1,900+i,30,56)) addP(x,y); }
+  const P=(x,y,w=3)=>addP(S.ox+x,S.oy+y,w), Z=(x0,y0,x1,y1,seed,amp,step)=>{ if(!PX.length||i===0&&PX.length===0) P(x0,y0); for(const [x,y] of zigPts(x0,y0,x1,y1,seed,amp,step)) P(x,y); }, M=nm=>{ MK[S.id+'.'+nm]=PX.length-1; };
+  if(i===0) P(S.ent[0],S.ent[1]);
+  S.line(P,Z,M); });
+const PL=new Float64Array(PX.length); for(let i=1;i<PX.length;i++) PL[i]=PL[i-1]+Math.hypot(PX[i]-PX[i-1],PY[i]-PY[i-1]);
+const MS=name=>{ if(!(name in MK)) throw new Error('mark '+name); return PL[MK[name]]; };
+const SS={}; ST.forEach(S=>SS[S.id]=S);
+
+// ════════════════════════════════════════════ CAMERA + HEAD — keyed, operated ════════════════════════════════════════════
+const C=(id,dx=0,dy=0,zoom=1)=>{ const S=SS[id]; return {x:S.ox+960+dx,y:S.oy+540+dy,zoom}; };
+const KEYS=[], MOVES=[], HITS=[], HK=[{t:0,s:0}], EV=[];
+let HS=0;
+function key(t,c,curve){ KEYS.push({t,x:c.x,y:c.y,zoom:c.zoom,rot:c.rot||0,curve}); }
+function hold(t0,t1,c,curve){ key(t0,c,curve); key(t1,c); }
+function hto(t0,t1,mark,curve=ease.quintInOut){ HK.push({t:t0,s:HS}); HS=MS(mark); HK.push({t:t1,s:HS,curve}); }
+function travel(T,toCam,toMark,o={}){ const ta=T-0.55, tb=T+0.75; key(tb,toCam,o.curve||ease.quintInOut); MOVES.push({ta,tb,dip:o.dip??0.2,lean:o.lean??0.011}); HITS.push([tb,o.hit??4]);
+  hto(T-0.66,T+0.48,toMark,ease.quintInOut); EV.push({t:ta,type:'whoosh',dur:1.3},{t:tb,type:'land'}); }
+const S6K=k=>C('S06',SX0+SW*k+SW/2-960,SY0-SH*k+170-540,1.22), S6W=C('S06',1760-960,700-540,0.555);
+(function build(){
+  // S01 · the line draws itself up from bottom-left; the camera rides it and settles
+  key(0,{...C('S01',-640,330,1.85),rot:-0.035}); hold(3.6,T1('S01')-0.55,C('S01'),ease.cubicInOut); hto(0,3.25,'S01.rest',ease.cubicInOut);
+  const go=(id,i,o={})=>{ travel(T0(id),C(id),id+'.rest',{lean:i%2?-0.011:0.011,curve:i%2?ease.expoInOut:ease.quintInOut,...o}); key(T1(id)-0.55,C(id)); };
+  go('S02',0);
+  go('S03',1); { const t=cue('S03','ثاني'); hto(t,t+0.8,'S03.arrow',ease.expoOut); }
+  // S04 · the line fills the gauge a third per word, then runs on into the Explainer card
+  go('S04',0); ['المهارة','والمخاطرة','والثبات'].forEach((w,i)=>{ const t=cue('S04',w); hto(t-0.05,t+0.85,'S04.r'+(i+1),ease.expoOut); });
+  { const tc=cue('S04','Edge',1)-0.6; hto(tc,tc+0.9,'S04.card',ease.expoOut); }
+  go('S05',1); { const t=cue('S05','تنفتحلك'); hto(t+0.05,t+0.7,'S05.step',ease.expoOut); }
+  // S06 · six steps: wide → climb one per stage → pull back to all six
+  { const T=T0('S06'); key(T+0.8,S6W,ease.expoInOut); MOVES.push({ta:T-0.55,tb:T+0.8,dip:0.08,lean:-0.008}); HITS.push([T+0.8,3]); hto(T-0.66,T+0.5,'S06.rest'); EV.push({t:T-0.55,type:'whoosh',dur:1.35},{t:T+0.8,type:'land'});
+    const t0n=cue('S06','التأسيس'); key(t0n-1.25,S6W); key(t0n-0.05,S6K(0),ease.quintInOut); EV.push({t:t0n-1.25,type:'whoosh',dur:1.2});
+    hto(t0n-0.05,t0n+0.7,'S06.k0',ease.expoOut);
+    for(let k=1;k<6;k++){ const tn=cue('S06',...STG[k].cn); key(tn-0.45,S6K(k-1)); key(tn+0.35,S6K(k),ease.expoInOut); MOVES.push({ta:tn-0.45,tb:tn+0.35,dip:0.05,lean:0.006}); HITS.push([tn+0.35,3]);
+      hto(tn-0.5,tn+0.3,'S06.k'+k,ease.expoInOut); EV.push({t:tn-0.45,type:'step',dur:0.8},{t:tn+0.35,type:'land'}); }
+    const tp=cue('S06','توصل')-0.2; key(tp,S6K(5)); key(tp+1.5,S6W,ease.quintInOut); EV.push({t:tp,type:'pullback',dur:1.5}); key(T1('S06')-0.55,S6W); }
+  go('S07',0,{dip:0.08}); { const t=cue('S07','تنتقل')+0.15; hto(t,t+0.75,'S07.step',ease.expoOut); }
+  go('S08',1); { const t=cue('S08','أقصى'); hto(t,t+1.0,'S08.dip',ease.cubicInOut); const tr=cue('S08','يعني')-0.1; hto(tr,tr+1.0,'S08.reb',ease.expoOut); }
+  go('S09',0); go('S10',1); go('S11',0);
+  // S12 · verbs, then the final climb into the end card (the lockup), dead still for the last seconds
+  { const T=T0('S12'); travel(T,C('S12V'),'S12V.rest',{lean:0.011}); const tc=cue('S12','Axi')-0.45; key(tc,C('S12V')); key(tc+1.3,C('S12E'),ease.quintInOut);
+    MOVES.push({ta:tc,tb:tc+1.3,dip:0.16,lean:-0.01}); HITS.push([tc+1.3,3]); EV.push({t:tc,type:'whoosh',dur:1.3},{t:tc+1.3,type:'land'});
+    hto(tc-0.1,tc+1.15,'S12E.under',ease.quintInOut); hto(tc+1.25,tc+1.75,'S12E.end',ease.expoOut); key(DUR,C('S12E')); }
+  KEYS.sort((a,b)=>a.t-b.t);
+  for(let i=1;i<HK.length;i++) if(HK[i].t<HK[i-1].t-1e-9) throw new Error('head keys out of order at '+HK[i].t);
+  for(let i=1;i<KEYS.length;i++) if(KEYS[i].t===KEYS[i-1].t&&(KEYS[i].x!==KEYS[i-1].x||KEYS[i].zoom!==KEYS[i-1].zoom)) throw new Error('camera keys clash at '+KEYS[i].t);
+})();
+// cue events for the sound layer
+function addEv(){ const E=(t,type,o={})=>EV.push({t,type,...o});
+  E(cue('S01','مليون'),'roll',{dur:1.6}); E(cue('S01','Axi'),'impact');
+  for(const w of ['المهارة','والمخاطرة','والثبات']) E(cue('S04',w),'fill'); E(cue('S04','خبرتك'),'impact');
+  E(cue('S05','وتبدي'),'tick'); E(cue('S05','لخمسين')+0.55,'tick'); E(cue('S05','دولار')+0.1,'tick'); E(cue('S05','تنفتحلك'),'unlock');
+  for(const r of ROWS7) E(cue('S07',r[1])+0.35,'tick'); E(cue('S07','تنتقل')+0.1,'press');
+  E(cue('S09','بأول')-0.3,'flip'); E(cue('S09','بأول')+0.9,'coin');
+  for(const n of NO) E(cue('S10',n[1])+0.12,'x');
+  E(cue('S03','تنعكس'),'mirror'); EV.sort((a,b)=>a.t-b.t); }
+addEv();
+
+function keyed(t,K){ if(t<=K[0].t) return K[0].s; const L=K.length; if(t>=K[L-1].t) return K[L-1].s; let i=0; while(K[i+1].t<t) i++; const A=K[i],B=K[i+1]; if(B.t<=A.t) return B.s; return lerp(A.s,B.s,(B.curve||ease.linear)(seg(t,A.t,B.t))); }
+const headS=t=>keyed(t,HK);
+function camAt(t){
+  const c=OM.camera(t,KEYS); let {x,y,zoom,rot}=c;
+  for(const m of MOVES){ if(t>m.ta&&t<m.tb){ const u=seg(t,m.ta,m.tb), b=Math.sin(Math.PI*ease.sineInOut(u)); zoom*=1-m.dip*b; rot+=m.lean*b; } }
+  for(const [th,amp] of HITS){ const tau=t-th; if(tau>0&&tau<0.6){ const s=OM.shake(t,th,{amp,decay:9,freq:15,seed:Math.round(th*100)}), env=1-sstep(0.3,0.6,tau); x+=s.x*env/zoom; y+=s.y*env/zoom; rot+=s.rot*env; } }
+  return {x,y,zoom,rot};
+}
+
+// ════════════════════════════════════════════ HUD: the lockup (assembles in S01, rides the corner, lands on the end card) + chapter index ════════════════════════════════════════════
+const LGP=[['a',0],['x',312],['i',640],['tag',770]];
+LOGO.innerHTML=LGP.map(([n,x])=>`<img id="lg_${n}" src="${IMG}logo_${n}.png" style="left:${x}px">`).join('');
+const LG_EL=LGP.map(([n])=>$('lg_'+n));
+const LR={c:{x:960-1728*0.39/2,y:470-384*0.39/2,s:0.39}, u:{x:960-1728*0.31/2,y:262-384*0.31/2,s:0.31}, k:{x:72,y:48,s:30/384}, e:{x:LG.x,y:LG.y,s:LG.s}};
+function logoRect(t){ const ta=cue('S01','Axi'), tu=cue('S01','تمويل')-0.45, T=T1('S01'), te=cue('S12','Axi')-0.45;
+  const mix=(A,B,k)=>({x:lerp(A.x,B.x,k),y:lerp(A.y,B.y,k),s:Math.exp(lerp(Math.log(A.s),Math.log(B.s),k))});
+  let r=LR.c; if(t>=tu) r=mix(LR.c,LR.u,ssstep(tu,tu+0.75,t)); if(t>=T-0.55) r=mix(LR.u,LR.k,ease.quintInOut(seg(t,T-0.55,T+0.75))); if(t>=te) r=mix(LR.k,LR.e,ease.quintInOut(seg(t,te,te+1.3)));
+  return {...r,op:t<ta-0.05?0:1}; }
+function drawLogo(t){ const r=logoRect(t); css(LOGO,'display',r.op>0?'':'none'); if(!r.op) return r;
+  css(LOGO,'transform',`translate(${f2(r.x)}px,${f2(r.y)}px) scale(${r.s.toFixed(5)})`);
+  const ta=cue('S01','Axi'), tg=cue('S01','Select');
+  for(let i=0;i<3;i++){ const d=t-ta-i*0.07>SET?{op:1,y:0,sx:1,sy:1}:OM.letterDrop(t,ta,i,{stagger:0.07,dist:150}); const el=LG_EL[i];
+    css(el,'opacity',d.op>=0.999?'1':d.op.toFixed(3)); css(el,'transform',d.y===0&&d.sx===1?'none':`translate(0,${f2(d.y)}px) scale(${f4(d.sx)},${f4(d.sy)})`); css(el,'transformOrigin','50% 100%'); }
+  const kg=tw(t,tg,tg+0.55,ease.expoOut), ig=imp(t,tg+0.5,{sqx:0.05,sqy:0.07}); const el=LG_EL[3];
+  css(el,'opacity',t<tg?'0':Math.min(1,kg*2).toFixed(3)); css(el,'transform',kg>=1&&ig.r===0?'none':`translate(${f2((1-kg)*300)}px,0) scale(${f4(ig.sx)},${f4(ig.sy)})`); css(el,'transformOrigin','0% 70%');
+  return r; }
+const IDX=ST.filter(S=>S.id!=='S01'&&S.id!=='S12E').map(S=>{ const sc=SC[S.scene]; const n=String(TL.scenes.indexOf(sc)+1).padStart(2,'0');
+  const d=document.createElement('div'); d.className='idx'; d.innerHTML=`<span class="n w">${n}</span><span class="d w"></span><span class="tt">${words(sc.title_ar)}</span>`; HUD.appendChild(d);
+  return {el:d,t0:sc.t0+0.45,t1:S.id==='S12V'?cue('S12','Axi')-0.6:sc.t1-0.62}; });
+function drawIdx(t){ for(const o of IDX){ const vis=t>=o.t0-0.01&&t<o.t1+0.4; css(o.el,'display',vis?'':'none'); if(!vis) continue;
+  const l=lift(t,o.t1,{dist:14,dur:0.3}); css(o.el,'opacity',l.op>=1?'1':l.op.toFixed(3)); css(o.el,'transform',l.k>0?`translateY(${f2(l.dy)}px)`:'none');
+  animW(o.el,o.t0,t,{dt:0.05,dist:14}); } }
+
+// ════════════════════════════════════════════ GROUND: charcoal top light, the deck's red tick grid far back, blurred candles in depth ════════════════════════════════════════════
+const bgC=$('bg'), lnC=$('ln'), grC=$('grain'); let DPR=1, BG, LN;
+const FARS=[]; const CHARTS=['chart_c','chart_b','chart_d','chart_e','chart_wide_blur'];
+function buildFar(){ const f=1/1.6; ST.forEach((S,i)=>{ const cx=S.ox+960+(S.wide?800:0), cy=S.oy+540+(S.wide?160:0); const fx=960+(cx-960)*f, fy=540+(cy-540)*f;
+    const im=document.createElement('img'); im.src=IMG+CHARTS[i%CHARTS.length]+'.webp'; const w=S.wide?2600:1750; im.className='abs'; css(im,'width',w+'px');
+    const x=fx-w/2+(i%2?260:-140), y=fy-330+(i%3)*60; css(im,'left',x+'px'); css(im,'top',y+'px'); css(im,'opacity',(S.farOp??(i===0?0.5:0.3)).toFixed(2)); FAR.appendChild(im); FARS.push({im,x,y,w,h:w*0.51}); }); }
+let GRD=null;
+function drawGround(cam){ const c=BG; c.setTransform(DPR,0,0,DPR,0,0); c.fillStyle='#060607'; c.fillRect(0,0,W,H);
+  if(!GRD){ GRD=c.createRadialGradient(960,-260,80,960,-260,1500); GRD.addColorStop(0,'rgba(58,59,62,.62)'); GRD.addColorStop(0.45,'rgba(30,31,33,.32)'); GRD.addColorStop(1,'rgba(6,6,7,0)'); }
+  c.fillStyle=GRD; c.fillRect(0,0,W,H);
+  const G=OM.lattice(cam,{depth:1.2,spacing:66,px:1.4}); const M=G.matrix; c.fillStyle='rgba(228,0,46,.26)'; c.beginPath();
+  for(let x=G.x0;x<=G.x1;x+=G.spacing) for(let y=G.y0;y<=G.y1;y+=G.spacing){ const [sx,sy]=OM.project(M,x,y); if(sx<-8||sx>W+8||sy<-8||sy>H+12) continue;
+    c.moveTo(sx,sy); c.lineTo(sx+2.6,sy-7); c.lineTo(sx+5.4,sy-7); c.lineTo(sx+2.8,sy); c.closePath(); }
+  c.fill(); }
+function drawGrain(){ const c=grC.getContext('2d',{willReadFrequently:true}); const w=256, d=c.createImageData(w,w), r=OM.rng(77); for(let i=0;i<w*w;i++){ const v=r()<0.5?0:255; d.data[i*4]=v; d.data[i*4+1]=v; d.data[i*4+2]=v; d.data[i*4+3]=Math.floor(r()*7); }
+  const tile=document.createElement('canvas'); tile.width=tile.height=w; tile.getContext('2d').putImageData(d,0,0); const pat=c.createPattern(tile,'repeat'); c.fillStyle=pat; c.fillRect(0,0,grC.width,grC.height); }
+
+// ════════════════════════════════════════════ THE LINE (screen-space canvas through the camera) ════════════════════════════════════════════
+let HEAD=[0,0], HEADV=false;
+function drawLine(t,Mv,z){ const c=LN; c.setTransform(DPR,0,0,DPR,0,0); c.clearRect(0,0,W,H);
+  for(const S of ST) if(S.vis&&S.decor) S.decor(c,Mv,z,t);
+  const s=headS(t); HEADV=false; if(s<=0.5) return;
+  let n=1; while(n<PL.length-1&&PL[n]<s) n++; const u=clamp((s-PL[n-1])/Math.max(1e-6,PL[n]-PL[n-1]));
+  const hx=lerp(PX[n-1],PX[n],u), hy=lerp(PY[n-1],PY[n],u);
+  const sp=[]; for(let i=0;i<n;i++) sp.push(OM.project(Mv,PX[i],PY[i])); const hp=OM.project(Mv,hx,hy); sp.push(hp);
+  const wAt=i=>i<n?PW[i]:PW[n];
+  for(const pass of [0,1]){ let i=1; while(i<sp.length){ const w=wAt(i); let j=i; while(j+1<sp.length&&wAt(j+1)===w) j++;
+      c.beginPath(); c.moveTo(sp[i-1][0],sp[i-1][1]); for(let k=i;k<=j;k++) c.lineTo(sp[k][0],sp[k][1]);
+      c.lineCap=w>5?'butt':'round'; c.lineJoin='round';
+      if(pass===0){ c.strokeStyle='rgba(228,0,46,.16)'; c.lineWidth=(w+(w>5?6:8))*z; } else { c.strokeStyle='#E4002E'; c.lineWidth=w*z; }
+      c.stroke(); i=j+1; } }
+  for(const S of ST) if(S.vis&&S.decorTop) S.decorTop(c,Mv,z,t);
+  // the live price: a hot dot at the head (gone once the line has ended in the chamfer)
+  const end=MS('S12E.end'), dop=s>=end-0.5?1-sstep(0,0.45,t-(HK[HK.length-1].t)):1;
+  if(dop>0.002){ const g=c.createRadialGradient(hp[0],hp[1],0,hp[0],hp[1],22*z); g.addColorStop(0,`rgba(255,40,80,${0.55*dop})`); g.addColorStop(1,'rgba(228,0,46,0)');
+    c.fillStyle=g; c.beginPath(); c.arc(hp[0],hp[1],22*z,0,Math.PI*2); c.fill(); c.fillStyle=`rgba(255,255,255,${dop})`; c.beginPath(); c.arc(hp[0],hp[1],4.6*z,0,Math.PI*2); c.fill(); }
+  HEAD=hp; HEADV=true; }
+
+// ════════════════════════════════════════════ SEEK ════════════════════════════════════════════
+let CAM=null, VIEW=null; const pendingFar=[];
+function visBox(Mv,S){ const b=OM.projectBox(Mv,{x:S.ox-160,y:S.oy-200,w:S.bw+320,h:S.bh+360}); return b.x<W&&b.y<H&&b.x+b.w>0&&b.y+b.h>0; }
+function seek(t){
+  t=clamp(t,0,DUR); CAM=camAt(t); const Mv=OM.view(CAM); VIEW=Mv; const z=CAM.zoom;
+  css(WORLD,'transform',`matrix(${Mv.map((v,i)=>i<4?v.toFixed(6):v.toFixed(3)).join(',')})`);
+  const Mf=OM.view(CAM,{depth:0.6}); css(FAR,'transform',`matrix(${Mf.map((v,i)=>i<4?v.toFixed(6):v.toFixed(3)).join(',')})`);
+  for(const F of FARS){ const b=OM.projectBox(Mf,{x:F.x,y:F.y,w:F.w,h:F.h}), v=b.x<W&&b.y<H&&b.x+b.w>0&&b.y+b.h>0; css(F.im,'display',v?'':'none'); if(v) pendingFar.push(F.im.decode().catch(()=>{})); }
+  drawGround(CAM);
+  const pending=pendingFar.splice(0);
+  for(const S of ST){ const v=visBox(Mv,S); S.vis=v; css(S.el,'display',v?'':'none'); if(v){ S.draw(t); for(const im of S.imgs) pending.push(im.decode().catch(()=>{})); } }
+  drawLine(t,Mv,z);
+  if(drawLogo(t).op) for(const im of LG_EL) pending.push(im.decode().catch(()=>{})); drawIdx(t);
+  $('hudt').textContent='t='+t.toFixed(2)+'  '+TL.scenes.filter(s=>t>=s.t0&&t<s.t1).map(s=>s.id).join('');
+  return Promise.all(pending);
+}
+
+// ════════════════════════════════════════════ CONTRACT ════════════════════════════════════════════
+ST.forEach(S=>{ const d=document.createElement('div'); d.className='st'; d.id='st_'+S.id; css(d,'left',S.ox+'px'); css(d,'top',S.oy+'px'); css(d,'width',S.bw+'px'); css(d,'height',S.bh+'px');
+  d.innerHTML=S.html(); WORLD.appendChild(d); S.el=d; S.imgs=[...d.querySelectorAll('img')]; });
+buildFar();
+window.__meta={dur:DUR,fps:FPS,w:W,h:H,cuts:[],inFrame:{logo:[20.4,DUR],head:[0.2,3.2]}};
+window.__events=()=>EV.map(e=>({...e}));
+function trackAt(t){ const o={}; const box=el=>{ const r=el.getBoundingClientRect(); return {x:r.left,y:r.top,w:r.width,h:r.height,op:1}; };
+  if(HEADV) o.head={x:HEAD[0]-6,y:HEAD[1]-6,w:12,h:12,op:1};
+  const r=logoRect(t); if(r.op) o.logo={x:r.x,y:r.y,w:1728*r.s,h:384*r.s,op:1};
+  for(const S of ST) if(S.vis&&S.track){ const tr=S.track(); for(const k in tr){ const el=tr[k]; const op=parseFloat(getComputedStyle(el).opacity); if(op>0.05) o[k]={...box(el),op}; } }
+  return o; }
+window.__track=t=>trackAt(t);
+window.__motion=(t0,t1)=>{ const c0=camAt(t0), c1=camAt(t1), cm=camAt((t0+t1)/2); let d=OM.screenTravel(c0,c1,cm);
+  const l0=logoRect(t0), l1=logoRect(t1); d=Math.max(d,Math.hypot(l1.x-l0.x,l1.y-l0.y)+Math.abs(l1.s-l0.s)*1728);
+  const h0=headS(t0), h1=headS(t1); d=Math.max(d,Math.abs(h1-h0)*cm.zoom);
+  for(const e of CUEALL){ if(e>t0-1.0&&e<t1+0.05){ d=Math.max(d,36); break; } }
+  return d; };
+const CUEALL=[]; TL.scenes.forEach(s=>s.w.forEach(([w,t])=>CUEALL.push(t)));
+window.__seek=async t=>{ await seek(t); return true; };
+window.__ready=(async()=>{
+  DPR=window.devicePixelRatio||1; for(const c of [bgC,lnC,grC]){ c.width=Math.round(W*DPR); c.height=Math.round(H*DPR); } BG=bgC.getContext('2d',{willReadFrequently:true}); LN=lnC.getContext('2d',{willReadFrequently:true});
+  await Promise.all(['700 40px Alex','800 40px Alex','600 40px Alex','400 40px Plex','500 40px Plex','700 40px Plex','300 40px Geist','400 40px Geist','500 40px Geist'].map(f=>document.fonts.load(f,'ابجد abc 0123')));
+  await document.fonts.ready;
+  ST.forEach(S=>S.init&&S.init());
+  const ims=[...document.querySelectorAll('img')]; await Promise.all(ims.map(im=>im.decode().catch(()=>{})));
+  drawGrain(); await seek(0); return true; })();
+const q=new URLSearchParams(location.search);
+if(q.has('t')) __ready.then(()=>seek(parseFloat(q.get('t'))));
+if(q.has('hud')) $('hudt').style.display='block';
+if(q.has('play')) __ready.then(()=>{ const t0=performance.now(), off=parseFloat(q.get('from')||'0'); (function loop(){ seek((off+(performance.now()-t0)/1000)%DUR); requestAnimationFrame(loop); })(); });
+</script>
+</body>
+</html>

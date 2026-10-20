@@ -73,6 +73,9 @@ canvas.full{position:absolute;left:0;top:0;width:1920px;height:1080px}
 <script src="motion.js"></script>
 <script>
 'use strict';
+const _CW=new WeakMap();
+function css(el,k,v){ let m=_CW.get(el); if(!m){ m={}; _CW.set(el,m); } if(m[k]!==v){ m[k]=v; el.style[k]=v; } }   // touch the DOM only when a value changes: holds stay byte-identical
+function attr(el,k,v){ let m=_CW.get(el); if(!m){ m={}; _CW.set(el,m); } const kk='@'+k; if(m[kk]!==v){ m[kk]=v; el.setAttribute(k,v); } }
 // ══════════════════════════════════════════════════════════════════════════════════════════════
 // TIMELINE — pasted from timeline.json (scene t0/t1 + estimated VO word times, 2.1 w/s, VO 0.7 s into each scene).
 // Re-paste after tools/timeline.py runs again. Every reveal below is keyed to the word that names it via cue().
@@ -107,7 +110,7 @@ function imp(t,th,o={}){ if(t<th||t-th>SET) return {r:0,sx:1,sy:1}; return OM.im
 function tk(t,tl){ if(t<tl) return {on:false,s:1}; if(t-tl>SET) return {on:true,s:1}; return OM.tick(t,tl); }
 function tw(t,t0,t1,c=ease.expoOut){ return c(seg(t,t0,t1)); }
 const f2=v=>(Math.abs(v)<0.005?0:v).toFixed(2), f4=v=>v.toFixed(4);
-function put(el,x,y,s=1,op=1,ex=''){ el.style.opacity=op<0.002?'0':op>0.998?'1':op.toFixed(3); el.style.transform=`translate(${f2(x)}px,${f2(y)}px) scale(${f4(s)})${ex}`; }
+function put(el,x,y,s=1,op=1,ex=''){ css(el,'opacity',op<0.002?'0':op>0.998?'1':op.toFixed(3)); css(el,'transform',`translate(${f2(x)}px,${f2(y)}px) scale(${f4(s)})${ex}`); }
 function putR(el,r){ put(el,0,r.dy??r.y??0,r.s??1,r.op); }
 
 // ────────────────────────────────────────── text: words as inline-blocks (never letters), Latin runs isolated LTR ──────────────────────────────────────────
@@ -129,8 +132,8 @@ function spans(el){ let s=WC.get(el); if(!s){ s=[...el.querySelectorAll('.w')]; 
 function animW(el,times,t,o={}){
   const S=spans(el); const dx=o.dx??0.5;
   S.forEach((s,i)=>{ const ti=Array.isArray(times)?times[Math.min(i,times.length-1)]:times+i*(o.dt??0.06);
-    const r=rise(t,ti,o); s.style.opacity=r.op<0.002?'0':r.op>0.998?'1':r.op.toFixed(3);
-    s.style.transform=r.k>=1?'none':`translate(${f2(r.y*dx*(o.ltr?-1:1))}px,${f2(r.y)}px) scale(${f4(r.s)})`; });
+    const r=rise(t,ti,o); css(s,'opacity',r.op<0.002?'0':r.op>0.998?'1':r.op.toFixed(3));
+    css(s,'transform',r.k>=1?'none':`translate(${f2(r.y*dx*(o.ltr?-1:1))}px,${f2(r.y)}px) scale(${f4(r.s)})`); });
 }
 const cues=(id,list)=>list.map(x=>Array.isArray(x)?cue(id,x[0],x[1]):typeof x==='number'?x:cue(id,x));
 
@@ -141,7 +144,7 @@ function chevs(w=30,h=18,gap=10,n=3){ let s=''; for(let i=0;i<n;i++){ const y=i*
 function brackets(w,h,s=14){ return `<polygon points="0,0 ${s},0 0,${s}"/><polygon points="${w},0 ${w-s},0 ${w},${s}"/><polygon points="0,${h} ${s},${h} 0,${h-s}"/><polygon points="${w},${h} ${w-s},${h} ${w},${h-s}"/>`; }
 const CHECK='<svg viewBox="0 0 46 46" width="46" height="46"><path d="M12 24 L20 32 L35 15" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function tickBox(id){ return `<div id="${id}" class="box"><div class="card ch" style="--c:12px;left:0;top:0;width:46px;height:46px"><div class="fill ch"></div></div><div class="on ch" style="--c:12px;position:absolute;inset:0;background:var(--red);opacity:0"></div><div class="mk" style="position:absolute;inset:0;opacity:0">${CHECK}</div></div>`; }
-function setTick(el,t,tl){ const k=tk(t,tl); el.querySelector('.on').style.opacity=k.on?'1':'0'; el.querySelector('.mk').style.opacity=k.on?'1':'0'; el.style.transform=`scale(${f4(k.s)})`; }
+function setTick(el,t,tl){ const k=tk(t,tl); el._on=el._on||el.querySelector('.on'); el._mk=el._mk||el.querySelector('.mk'); css(el._on,'opacity',k.on?'1':'0'); css(el._mk,'opacity',k.on?'1':'0'); css(el,'transform',`scale(${f4(k.s)})`); }
 function odo(str){ return [...str].map(ch=>/\d/.test(ch)?`<span class="dg"><span class="col"><span>${Array.from({length:40},(_,i)=>i%10).join('</span><span>')}</span></span></span>`:`<span class="sc">${ch}</span>`).join(''); }
 const CANDLE_DATA=[[0.30,0.55,0.62,0.16],[0.47,0.63,0.80,0.36],[0.66,0.84,0.95,0.55],[0.82,0.60,0.88,0.42],[0.62,0.71,0.90,0.50],[0.70,0.47,0.80,0.30],[0.49,0.58,0.67,0.40],
   [0.56,0.24,0.60,0.06],[0.28,0.37,0.56,0.22],[0.38,0.52,0.72,0.30],[0.52,0.71,0.83,0.45],[0.68,0.88,0.98,0.60],[0.87,0.77,0.95,0.68]];
@@ -177,8 +180,8 @@ station({id:'S01', ent:[-180,1090], ext:[2020,770],
     const tc=cue(id,'مليون'); const r=rise(t,tc-0.08,{dist:30}); put(this.row,0,r.y,1,r.op);
     const finals=[1,0,0,0,0,0,0]; const n=finals.length;
     this.cols.forEach((c,j)=>{ const turns=1+Math.floor((n-1-j)/3); const p=(10*turns+finals[j])*tw(t,tc+0.03*j,tc+1.55+0.05*j,ease.quintOut);
-      c.style.transform=`translateY(${f2(-p*200)}px)`; });
-    this.cv.forEach((p,i)=>{ const k=rise(t,tc+0.55+(2-i)*0.09,{dist:14}); p.style.opacity=k.op.toFixed(3); p.style.transform=k.k>=1?'none':`translateY(${f2(k.y)}px)`; });
+      css(c,'transform',`translateY(${f2(-p*200)}px)`); });
+    this.cv.forEach((p,i)=>{ const k=rise(t,tc+0.55+(2-i)*0.09,{dist:14}); css(p,'opacity',k.op.toFixed(3)); css(p,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
   },
   track(){ return {ctr:this.row}; }});
 
@@ -212,11 +215,11 @@ station({id:'S02', ent:[-100,990], ext:[2020,945],
     animW(this.h2,cues(id,['برنامج','تمويل','المتداولين']),t);
     const ta=cue(id,'حسابك'); putR(this.acct,pop(t,ta-0.1)); animW(this.acL,[ta,ta+0.35],t);
     { const k=tw(t,ta+0.25,ta+1.3,ease.cubicOut), P=this.splP, f=k*(P.length-1), n=Math.floor(f), u=f-n; const pts=P.slice(0,n+1).map(q=>q.join(','));
-      if(n<P.length-1&&u>0) pts.push(`${f2(lerp(P[n][0],P[n+1][0],u))},${f2(lerp(P[n][1],P[n+1][1],u))}`); this.spl.setAttribute('points',k<=0?'0,0':pts.join(' ')); this.spl.style.opacity=k<=0?'0':'1'; }
+      if(n<P.length-1&&u>0) pts.push(`${f2(lerp(P[n][0],P[n+1][0],u))},${f2(lerp(P[n][1],P[n+1][1],u))}`); attr(this.spl,'points',k<=0?'0,0':pts.join(' ')); css(this.spl,'opacity',k<=0?'0':'1'); }
     const tr=cue(id,'تراقب'); animW(this.watch,cues(id,[['Axi',2],'تراقب','أداءك']),t);
-    this.brkP.forEach((p,i)=>{ const k=pop(t,tr+i*0.05,{s0:1.6,rise:0}); p.style.opacity=k.op.toFixed(3); p.style.transformOrigin=['0 0','270px 0','0 132px','270px 132px'][i]; p.style.transform=k.k>=1?'none':`scale(${f4(k.s)})`; });
+    this.brkP.forEach((p,i)=>{ const k=pop(t,tr+i*0.05,{s0:1.6,rise:0}); css(p,'opacity',k.op.toFixed(3)); css(p,'transformOrigin',['0 0','270px 0','0 132px','270px 132px'][i]); css(p,'transform',k.k>=1?'none':`scale(${f4(k.s)})`); });
     const sk=seg(t,tr+0.15,tr+1.35), sx=lerp(-70,270,ease.sineInOut(sk)), son=sk>0&&sk<1;
-    this.scan.setAttribute('x',f2(sx)); this.scanb.setAttribute('x',f2(sx+68)); this.scan.style.opacity=son?'1':'0'; this.scanb.style.opacity=son?'1':'0';
+    attr(this.scan,'x',f2(sx)); attr(this.scanb,'x',f2(sx+68)); css(this.scan,'opacity',son?'1':'0'); css(this.scanb,'opacity',son?'1':'0');
     const c1=cue(id,'ماكو'), c2=cue(id,'وماكو');
     putR(this.chip1,pop(t,c1-0.05)); putR(this.chip2,pop(t,c2-0.05));
     for(const [el,tc] of [[this.st1,c1+0.38],[this.st2,c2+0.38]]){ const k=pop(t,tc,{s0:1.7,rise:0,zeta:0.5,omega:22}); put(el,0,0,k.s,k.op); }
@@ -264,9 +267,9 @@ station({id:'S03', ent:[-100,880], ext:[2020,600],
     const tAr=cue(id,'ثاني'); const ar=pop(t,tAr+0.55,{s0:0.6,rise:0}); put(this.arrow,(1-ar.k)*-18,0,1,ar.op);
     const tB=cue(id,'التخصيص'); const tG=cue(id,'خمسة');
     const pb=pop(t,tB-0.1); const m=OM.morphRect(t,tG,tG+0.95,B0,B1,{curve:ease.expoOut});
-    const R=t<tG?B0:m; Object.assign(this.cB.style,{left:f2(R.x)+'px',top:f2(R.y)+'px',width:f2(R.w)+'px',height:f2(R.h)+'px'});
+    const R=t<tG?B0:m; css(this.cB,'left',f2(R.x)+'px'); css(this.cB,'top',f2(R.y)+'px'); css(this.cB,'width',f2(R.w)+'px'); css(this.cB,'height',f2(R.h)+'px');
     put(this.cB,0,pb.dy,pb.s,pb.op); animW(this.cBl,tB+0.05,t);
-    const gq=1-sstep(tG,tG+0.25,t); this.cBq.style.opacity=(pb.op*gq).toFixed(3);
+    const gq=1-sstep(tG,tG+0.25,t); css(this.cBq,'opacity',(pb.op*gq).toFixed(3));
     const ra=rise(t,tG+0.3,{dist:40}); put(this.cBa,0,ra.y,ra.s,ra.op);
     // equation builds term by term
     const te=cues(id,['خمسمية','والمضاعف','عشرة','يصير','خمسة']); te[4]+=0.12;
@@ -274,15 +277,15 @@ station({id:'S03', ent:[-100,880], ext:[2020,600],
     const tx=cue(id,'عشرة'); const px=pop(t,tx+0.05,{s0:0.7,rise:10}); const ix=imp(t,cue(id,'مضروبة')+0.1,{sqx:0.22,sqy:0.22}); put(this.x10,0,px.dy,px.s*ix.sx,px.op);
     // trades: three candles appear in «حسابك», then are mirrored into the allocation account at 10× height
     const tc=cue(id,'صفقة'), tm=cue(id,'تنعكس');
-    this.scs.forEach((g,i)=>{ const k=rise(t,tc+i*0.13,{dist:8}); g.style.opacity=k.op.toFixed(3); g.style.transform=k.k>=1?'none':`translateY(${f2(k.y)}px)`; });
-    this.cAlot.style.opacity=sstep(tc,tc+0.3,t).toFixed(3);
+    this.scs.forEach((g,i)=>{ const k=rise(t,tc+i*0.13,{dist:8}); css(g,'opacity',k.op.toFixed(3)); css(g,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+    css(this.cAlot,'opacity',sstep(tc,tc+0.3,t).toFixed(3));
     this.cds.forEach((el,i)=>{ const c=CANDLES[i], t0=tm+i*0.14, k=ease.expoInOut(seg(t,t0,t0+0.78));
-      if(t<t0){ el.style.opacity='0'; return; }
+      if(t<t0){ css(el,'opacity','0'); return; }
       const h=OM.hop(t,t0,t0+0.78,{x:c.sx,y:c.sb},{x:c.dx,y:c.db},{height:170,curve:ease.expoInOut});
       const sx=Math.exp(lerp(Math.log(0.25),0,k)), sy=Math.exp(lerp(Math.log(0.1),0,k)); const ii=imp(t,t0+0.78,{sqx:0.08,sqy:0.1});
-      el.style.opacity='1'; el.style.transform=k>=1&&ii.r===0?'none':`translate(${f2(h.x-c.dx)}px,${f2(h.y-c.db)}px) scale(${f4(sx*ii.sx)},${f4(sy*ii.sy)})`; });
+      css(el,'opacity','1'); css(el,'transform',k>=1&&ii.r===0?'none':`translate(${f2(h.x-c.dx)}px,${f2(h.y-c.db)}px) scale(${f4(sx*ii.sx)},${f4(sy*ii.sy)})`); });
     animW(this.cBcap,cues(id,['وكل','صفقة','تنعكس','تلقائياً']).map((v,i)=>Math.max(v,tm-0.1+i*0.12)),t,{dist:14});
-    this.cBlot.style.opacity=sstep(tm+0.6,tm+0.9,t).toFixed(3);
+    css(this.cBlot,'opacity',sstep(tm+0.6,tm+0.9,t).toFixed(3));
   },
   track(){ return {cA:this.cA,cB:this.cB}; }});
 
@@ -323,28 +326,29 @@ station({id:'S04', ent:[-100,900], ext:[2020,820],
   draw(t){ const id='S04';
     const tE=cue(id,'درجة'); animW(this.rD,tE,t); const re=rise(t,cue(id,'Edge')-0.05,{dist:30}); put(this.rE,0,re.y,re.s,re.op);
     animW(this.sub4,cues(id,['تقيس','أسلوب','تداولك','من','ثلاث','نواحي']),t);
-    const l4=lift(t,cue(id,'أداة')-0.55,{dist:40}); this.sub4.style.opacity=l4.op<1?l4.op.toFixed(3):''; if(l4.k>0) this.sub4.style.transform=`translateY(${f2(l4.dy)}px)`; else this.sub4.style.transform='none';
+    const l4=lift(t,cue(id,'أداة')-0.55,{dist:40}); css(this.sub4,'opacity',l4.op<1?l4.op.toFixed(3):''); if(l4.k>0) css(this.sub4,'transform',`translateY(${f2(l4.dy)}px)`); else css(this.sub4,'transform','none');
     const L=[[this.lb1,'المهارة','يعني',0],[this.lb2,'والمخاطرة','يعني',1],[this.lb3,'والثبات','يعني',2]];
     for(const [el,w1,w2,n] of L){ const tl=cue(id,w1)+0.35; const ws=spans(el); const td=cue(id,w2,n)+0.25;
-      ws.forEach((s,i)=>{ const r=rise(t,i===0?tl:td+(i-1)*0.06,{dist:i===0?22:14}); s.style.opacity=r.op.toFixed(3); s.style.transform=r.k>=1?'none':`translate(${f2(r.y*0.5)}px,${f2(r.y)}px) scale(${f4(r.s)})`; }); }
+      ws.forEach((s,i)=>{ const r=rise(t,i===0?tl:td+(i-1)*0.06,{dist:i===0?22:14}); css(s,'opacity',r.op.toFixed(3)); css(s,'transform',r.k>=1?'none':`translate(${f2(r.y*0.5)}px,${f2(r.y)}px) scale(${f4(r.s)})`); }); }
     const tx=cue(id,'ينضرب'), tb=cue(id,'خبرتك');
     animW(this.rX,[tx+0.1,tx+0.3],t,{dist:20});
-    const ok=OM.spring(clamp(t-tb,0,SET),0.55,14), ov=t<tb?0:t-tb>SET?1:ok; this.outer.style.opacity=(t<tb?0:clamp((t-tb)*5,0,1)).toFixed(3);
-    this.outer.style.transform=ov>=1?'none':`scale(${f4(lerp(0.86,1,ov))})`; this.outer.style.transformOrigin='310px 310px';
-    const ii=imp(t,tb+0.08,{sqx:0.07,sqy:0.07}); this.ringIn.style.transform=ii.r===0?'none':`scale(${f4(ii.sx)})`;
+    const ok=OM.spring(clamp(t-tb,0,SET),0.55,14), ov=t<tb?0:t-tb>SET?1:ok, oa=pop(t,T0(id)+0.6,{rise:0,s0:0.97});
+    css(this.outer,'opacity',(oa.op*(0.28+0.72*clamp((t-tb)*5,0,1))).toFixed(3));
+    const io=imp(t,tb,{sqx:0.09,sqy:0.09,omega:16,decay:6}); css(this.outer,'transform',io.r===0&&oa.k>=1?'none':`scale(${f4(oa.s*io.sx)})`); css(this.outer,'transformOrigin','310px 310px');
+    const ii=imp(t,tb+0.08,{sqx:0.07,sqy:0.07}); css(this.ringIn,'transform',ii.r===0?'none':`scale(${f4(ii.sx)})`);
     const tc=cue(id,'Edge',1); const pc=pop(t,tc-0.2,{rise:40}); put(this.xc,0,pc.dy,pc.s,pc.op);
     animW(this.xcT,tc,t,{dt:0.1,dist:18,ltr:true});
-    this.cdl.forEach((g,i)=>{ const k=rise(t,tc+0.25+i*0.045,{dist:16}); g.style.opacity=k.op.toFixed(3); g.style.transform=k.k>=1?'none':`translateY(${f2(k.y)}px)`; });
-    this.xb.forEach((p,i)=>{ const k=pop(t,tc+0.85+i*0.05,{s0:1.6,rise:0}); p.style.opacity=k.op.toFixed(3); });
+    this.cdl.forEach((g,i)=>{ const k=rise(t,tc+0.25+i*0.045,{dist:16}); css(g,'opacity',k.op.toFixed(3)); css(g,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
+    this.xb.forEach((p,i)=>{ const k=pop(t,tc+0.85+i*0.05,{s0:1.6,rise:0}); css(p,'opacity',k.op.toFixed(3)); });
     animW(this.xcF,cue(id,'ببوابة'),t,{dist:12});
-    this.xv.forEach((p,i)=>{ const k=rise(t,tc+1.1+(2-i)*0.08,{dist:10}); p.style.opacity=k.op.toFixed(3); p.style.transform=k.k>=1?'none':`translateY(${f2(k.y)}px)`; });
+    this.xv.forEach((p,i)=>{ const k=rise(t,tc+1.1+(2-i)*0.08,{dist:10}); css(p,'opacity',k.op.toFixed(3)); css(p,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
   },
   decor(c,Mv,z,t){ // the gauge track the climb line fills (screen-space canvas, under the line)
-    const S=this, o=[S.ox+RING.cx,S.oy+RING.cy]; const [x,y]=OM.project(Mv,o[0],o[1]);
+    const S=this, o=[S.ox+RING.cx,S.oy+RING.cy]; const [x,y]=OM.project(Mv,o[0],o[1]); c.lineCap='butt'; c.lineJoin='miter';
     c.lineWidth=17*z; c.strokeStyle='rgba(255,255,255,.065)'; c.beginPath(); c.arc(x,y,RING.r*z,0,Math.PI*2); c.stroke();
     c.strokeStyle='rgba(255,255,255,.2)'; c.lineWidth=1.4*z; c.beginPath();
     for(let i=0;i<120;i++){ const a=i/120*Math.PI*2, r0=(RING.r-26)*z, r1=(RING.r-(i%10===0?38:31))*z; c.moveTo(x+Math.cos(a)*r0,y+Math.sin(a)*r0); c.lineTo(x+Math.cos(a)*r1,y+Math.sin(a)*r1); } c.stroke(); },
-  decorTop(c,Mv,z,t){ const S=this, [x,y]=OM.project(Mv,S.ox+RING.cx,S.oy+RING.cy);
+  decorTop(c,Mv,z,t){ const S=this, [x,y]=OM.project(Mv,S.ox+RING.cx,S.oy+RING.cy); c.lineCap='butt';
     c.strokeStyle='#060607'; c.lineWidth=6*z; c.beginPath();
     for(const a of [-Math.PI/6,-5*Math.PI/6]){ c.moveTo(x+Math.cos(a)*(RING.r-12)*z,y+Math.sin(a)*(RING.r-12)*z); c.lineTo(x+Math.cos(a)*(RING.r+12)*z,y+Math.sin(a)*(RING.r+12)*z); } c.stroke(); },
   track(){ return {ring:this.ringIn,xc:this.xc}; }});
@@ -390,16 +394,16 @@ station({id:'S05', ent:[-100,860], ext:[2020,640],
     const t1=cue(id,'تفتح'); animW(this.t51,cues(id,['تفتح','حساب','Axi']),t); putR(this.mt4,pop(t,cue(id,'إم',0),{rise:16})); putR(this.mt5,pop(t,cue(id,'إم',1),{rise:16}));
     animW(this.t52,cues(id,['درجة','Edge','لخمسين']),t); const tg=cue(id,'درجة'); putR(this.gauge,pop(t,tg,{rise:16}));
     const tn=cue(id,'لخمسين'); const kn=t<tn?0:t-tn>SET?1:OM.spring(t-tn,0.45,13); const ang=lerp(-90,0,kn);
-    this.gN.setAttribute('transform',`rotate(${f2(ang)})`);
-    { const a=Math.PI*(1-0.5*clamp(kn,0,1.2)), ex=64*Math.cos(a), ey=-64*Math.sin(a); this.gArc.setAttribute('d',kn<=0.002?'':`M-64 0 A64 64 0 0 1 ${f2(ex)} ${f2(ey)}`); }
+    attr(this.gN,'transform',`rotate(${f2(ang)})`);
+    { const a=Math.PI*(1-0.5*clamp(kn,0,1.2)), ex=64*Math.cos(a), ey=-64*Math.sin(a); attr(this.gArc,'d',kn<=0.002?'':`M-64 0 A64 64 0 0 1 ${f2(ex)} ${f2(ey)}`); }
     animW(this.t53,cues(id,['رصيدك','خمسمية']),t); putR(this.wal,pop(t,cue(id,'رصيدك'),{rise:16}));
-    for(const [el,r,i] of [[this.r51,t1-0.05,0],[this.r52,tg-0.05,1],[this.r53,cue(id,'رصيدك')-0.05,2]]){ const a=pop(t,T0(id)+0.6+i*0.08,{rise:18}); el.style.opacity=(a.op*(0.32+0.68*sstep(r-0.4,r,t))).toFixed(3); el.style.transform=a.k>=1?'none':`translateY(${f2(a.dy)}px)`; }
+    for(const [el,r,i] of [[this.r51,t1-0.05,0],[this.r52,tg-0.05,1],[this.r53,cue(id,'رصيدك')-0.05,2]]){ const a=pop(t,T0(id)+0.6+i*0.08,{rise:18}); css(el,'opacity',(a.op*(0.32+0.68*sstep(r-0.4,r,t))).toFixed(3)); css(el,'transform',a.k>=1?'none':`translateY(${f2(a.dy)}px)`); }
     setTick(this.k51,t,cue(id,'وتبدي')); setTick(this.k52,t,tn+0.55); setTick(this.k53,t,cue(id,'دولار')+0.1);
     const tu=cue(id,'تنفتحلك'); const ku=t<tu?0:t-tu>SET?1:OM.spring(t-tu,0.5,15);
-    this.lkS.setAttribute('transform',`translate(0 ${f2(-26*clamp(ku,0,1.3))}) rotate(${f2(-18*clamp(ku,0,1.25))} 52 158)`);
-    this.lkB.setAttribute('fill',t>=tu+0.05?'#E4002E':'#141416'); this.lkB.setAttribute('stroke',t>=tu+0.05?'#E4002E':'rgba(255,255,255,.22)');
-    const il=imp(t,tu+0.05); this.lock.style.transformOrigin='100px 262px'; this.lock.style.opacity=pl.op>=1?'1':pl.op.toFixed(3);
-    this.lock.style.transform=pl.k>=1&&il.r===0?'none':`translate(0px,${f2(pl.dy)}px) scale(${f4(pl.s*il.sx)},${f4(pl.s*il.sy)})`;
+    attr(this.lkS,'transform',`translate(0 ${f2(-26*clamp(ku,0,1.3))}) rotate(${f2(-18*clamp(ku,0,1.25))} 52 158)`);
+    attr(this.lkB,'fill',t>=tu+0.05?'#E4002E':'#141416'); attr(this.lkB,'stroke',t>=tu+0.05?'#E4002E':'rgba(255,255,255,.22)');
+    const il=imp(t,tu+0.05); css(this.lock,'transformOrigin','100px 262px'); css(this.lock,'opacity',pl.op>=1?'1':pl.op.toFixed(3));
+    css(this.lock,'transform',pl.k>=1&&il.r===0?'none':`translate(0px,${f2(pl.dy)}px) scale(${f4(pl.s*il.sx)},${f4(pl.s*il.sy)})`);
     const ts=cue(id,'التأسيس'); animW(this.seed5,ts-0.25,t,{dist:30});
   },
   track(){ return {lock:this.lock,rows:this.r51}; }});
@@ -435,10 +439,10 @@ station({id:'S06', ent:[-100,996], ext:[3620,270], wide:true, bw:3700, bh:1500,
   draw(t){ const id='S06';
     animW(this.h6.children[0],cues(id,['ست','مراحل']),t,{dist:40}); animW(this.h6.children[1],cues(id,['تمويلها','أكبر',['أكبر',0],'وحصتك','أعلى']),t);
     STG.forEach((g,k)=>{ const tn=cue(id,...g.cn), tf=cue(id,...g.cf), ts=cue(id,...g.cs);
-      const on=sstep(tn-0.5,tn+0.1,t); this.blk[k].style.opacity=(0.5+0.5*on).toFixed(3);
+      const on=sstep(tn-0.5,tn+0.1,t); css(this.blk[k],'opacity',(0.5+0.5*on).toFixed(3));
       animW(this.sn[k],tn,t,{dist:26,dt:0.12}); const rf=rise(t,tf,{dist:40}); put(this.sf[k],0,rf.y,rf.s,rf.op); const rs=rise(t,ts,{dist:22}); put(this.ss[k],0,rs.y,rs.s,rs.op); });
     putR(this.proof,pop(t,cue(id,'إثبات')-0.2,{rise:12}));
-    const tcw=cue(id,'ثمانين')+0.45; this.crown.forEach((p,i)=>{ const k=rise(t,tcw+(2-i)*0.1,{dist:26}); p.style.opacity=k.op.toFixed(3); p.style.transform=k.k>=1?'none':`translateY(${f2(k.y)}px)`; });
+    const tcw=cue(id,'ثمانين')+0.45; this.crown.forEach((p,i)=>{ const k=rise(t,tcw+(2-i)*0.1,{dist:26}); css(p,'opacity',k.op.toFixed(3)); css(p,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
   },
   track(){ const o={}; this.blk.forEach((b,k)=>o['blk'+k]=b); return o; }});
 
@@ -457,16 +461,16 @@ station({id:'S07', ent:[-100,1010], ext:[2020,872],
   </div>
   <div id="next" class="pill" style="left:1376px;top:888px"><span id="nextT">${words('المرحلة التالية')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 19 V5 M6 11 L12 5 L18 11" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>`,
   line(P,Z,M){ Z(-100,1010,300,1000,71,12,50); P(1300,1000); M('rest'); P(1860,1000); P(1860,872); M('step'); P(2020,872); },
-  init(){ this.c7=$('c7'); this.c7d=$('c7d'); this.c7l=$('c7l'); this.card=$('card7'); this.rows=ROWS7.map((r,i)=>$('row7'+i)); this.rt=ROWS7.map((r,i)=>$('rt7'+i)); this.kb=ROWS7.map((r,i)=>$('k7'+i)); this.next=$('next'); this.nextT=$('nextT'); this.next.style.left=(1800-this.next.offsetWidth)+'px'; },
+  init(){ this.c7=$('c7'); this.c7d=$('c7d'); this.c7l=$('c7l'); this.card=$('card7'); this.rows=ROWS7.map((r,i)=>$('row7'+i)); this.rt=ROWS7.map((r,i)=>$('rt7'+i)); this.kb=ROWS7.map((r,i)=>$('k7'+i)); this.next=$('next'); this.nextT=$('nextT'); css(this.next,'left',(1800-this.next.offsetWidth)+'px'); },
   draw(t){ const id='S07';
     const t4=cue(id,'أربع'); const rc=rise(t,t4-0.1,{dist:40}); put(this.c7,0,rc.y,1,rc.op); animW(this.c7l,cue(id,'شغلات'),t,{dt:0.06});
-    const tic=ROWS7.map(r=>cue(id,r[1])+0.35); let p=0; tic.forEach(ti=>{ p+=ease.expoOut(seg(t,ti,ti+0.6)); }); this.c7d.style.transform=`translateY(${f2(-p*230)}px)`;
+    const tic=ROWS7.map(r=>cue(id,r[1])+0.35); let p=0; tic.forEach(ti=>{ p+=ease.expoOut(seg(t,ti,ti+0.6)); }); css(this.c7d,'transform',`translateY(${f2(-p*230)}px)`);
 
     const tl=cue(id,'لازم');
-    ROWS7.forEach((r,i)=>{ const to=cue(id,r[1]); this.rows[i].style.opacity=(0.28+0.72*sstep(to-0.15,to+0.25,t)).toFixed(3);
+    ROWS7.forEach((r,i)=>{ const to=cue(id,r[1]); css(this.rows[i],'opacity',(0.28+0.72*sstep(to-0.15,to+0.25,t)).toFixed(3));
       animW(this.rt[i],T0(id)+0.95+i*0.1,t,{dist:16,dt:0.04}); setTick(this.kb[i],t,tic[i]); });
     const tn=cue(id,'وبعدها'); const pn=pop(t,tn-0.05,{rise:26}); const tp=cue(id,'تنتقل')+0.1; const pr=t<tp||t-tp>SET?{s:1,active:false}:OM.press(t,tp,{depth:0.12});
-    put(this.next,0,pn.dy,pn.s*pr.s,pn.op); this.next.style.background=pr.active?'#ff2c55':''; animW(this.nextT,tn+0.1,t,{dist:12});
+    put(this.next,0,pn.dy,pn.s*pr.s,pn.op); css(this.next,'background',pr.active?'#ff2c55':''); animW(this.nextT,tn+0.1,t,{dist:12});
   },
   track(){ return {card7:this.card,c7:this.c7}; }});
 
@@ -489,9 +493,9 @@ station({id:'S08', ent:[-100,360], ext:[2020,180],
   line(P,Z,M){ Z(-100,360,600,320,81,14,46); M('rest'); P(690,334); P(780,384); P(870,440); P(960,436); M('dip'); P(1080,380); P(1250,328); P(1450,268); P(1650,222); P(1800,200); M('reb'); P(2020,180); },
   init(){ for(const k of ['fl7','lab7','fl10','lab10','disc']) this[k]=$(k); this.cds=CARDS8.map((c,i)=>$('cd8'+i)); this.cbs=CARDS8.map((c,i)=>$('cb8'+i)); },
   draw(t){ const id='S08';
-    const t7=cue(id,'أقصى'); const w7=tw(t,t7,t7+0.9,ease.expoOut); this.fl7.style.clipPath=`inset(0 0 0 ${f2((1-w7)*100)}%)`; this.fl7.style.opacity=t<t7?'0':'1';
+    const t7=cue(id,'أقصى'); const w7=tw(t,t7,t7+0.9,ease.expoOut); css(this.fl7,'clipPath',`inset(0 0 0 ${f2((1-w7)*100)}%)`); css(this.fl7,'opacity',t<t7?'0':'1');
     const r7=rise(t,cue(id,'سبعة')-0.1,{dist:24}); put(this.lab7,0,r7.y,r7.s,r7.op);
-    const t10=cue(id,'وبمرحلة'); const w10=tw(t,t10,t10+0.9,ease.expoOut); this.fl10.style.clipPath=`inset(0 0 0 ${f2((1-w10)*100)}%)`; this.fl10.style.opacity=t<t10?'0':'1';
+    const t10=cue(id,'وبمرحلة'); const w10=tw(t,t10,t10+0.9,ease.expoOut); css(this.fl10,'clipPath',`inset(0 0 0 ${f2((1-w10)*100)}%)`); css(this.fl10,'opacity',t<t10?'0':'1');
     const r10=rise(t,cue(id,'عشرة')-0.1,{dist:18}); put(this.lab10,0,r10.y,r10.s,r10.op);
     const tout=cue(id,'يعني')-0.2;
     const tin=cue(id,'وهنا');
@@ -530,18 +534,18 @@ station({id:'S09', ent:[-100,420], ext:[2020,400],
   draw(t){ const id='S09';
     animW(this.c9l,cue(id,'حصتك'),t); animW(this.c9s,cue(id,'من'),t,{dt:0.08,dist:14});
     const tf=cue(id,'بأول')-0.3, k1=ease.expoIn(seg(t,tf,tf+0.22)), k2=t<tf+0.22?0:t-tf-0.22>SET?1:OM.spring(t-tf-0.22,0.45,22);
-    this.fo.top.style.transform=k1>=1?'rotateX(-90deg)':`rotateX(${f2(-90*k1)}deg)`; this.fo.top.style.opacity=k1>=1?'0':'1';
-    this.fo.bot.style.opacity=k2>0.02?'0':'1'; this.fn.top.style.opacity=k1>0?'1':'0';
-    this.fn.bot.style.opacity=t>=tf+0.22?'1':'0'; this.fn.bot.style.transform=k2>=1?'none':`rotateX(${f2(90*(1-k2))}deg)`;
-    if(t<tf){ this.fn.top.style.opacity='0'; }
-    const it=imp(t,tf+0.3,{sqx:0.03,sqy:0.03}); this.tile.style.transform=it.r===0?'none':`scale(${f4(it.sx)})`;
+    css(this.fo.top,'transform',k1>=1?'rotateX(-90deg)':`rotateX(${f2(-90*k1)}deg)`); css(this.fo.top,'opacity',k1>=1?'0':'1');
+    css(this.fo.bot,'opacity',k2>0.02?'0':'1'); css(this.fn.top,'opacity',k1>0?'1':'0');
+    css(this.fn.bot,'opacity',t>=tf+0.22?'1':'0'); css(this.fn.bot,'transform',k2>=1?'none':`rotateX(${f2(90*(1-k2))}deg)`);
+    if(t<tf){ css(this.fn.top,'opacity','0'); }
+    const it=imp(t,tf+0.3,{sqx:0.03,sqy:0.03}); css(this.tile,'transform',it.r===0?'none':`scale(${f4(it.sx)})`);
     // the coin leaves the calendar and slides along the line into the trader's card
     const tc=cue(id,'بأول')+0.05, tl=tc+0.85; const A={x:1316-75,y:440-76}, B={x:240,y:295};
-    if(t<tc-0.2){ this.coin.style.opacity='0'; }
+    if(t<tc-0.2){ css(this.coin,'opacity','0'); }
     else { const ap=pop(t,tc-0.2,{s0:0.5,rise:0}); const h=OM.hop(t,tc,tl,A,B,{height:60,curve:ease.expoInOut}); const il=imp(t,tl,{sqx:0.1,sqy:0.12});
       const rot=lerp(0,-360,ease.expoInOut(seg(t,tc,tl)));
-      this.coin.style.opacity=ap.op.toFixed(3); this.coin.style.transform=`translate(${f2(h.x)}px,${f2(h.y)}px) rotate(${f2(rot===-360?0:rot)}deg) scale(${f4(ap.s*0.92*il.sx)},${f4(ap.s*0.92*il.sy)})`; }
-    this.c9g.style.opacity=(t<tl?0:Math.exp(-(t-tl)*2.4)*(t-tl<2.5?1:0)).toFixed(3);
+      css(this.coin,'opacity',ap.op.toFixed(3)); css(this.coin,'transform',`translate(${f2(h.x)}px,${f2(h.y)}px) rotate(${f2(rot===-360?0:rot)}deg) scale(${f4(ap.s*0.92*il.sx)},${f4(ap.s*0.92*il.sy)})`); }
+    css(this.c9g,'opacity',(t<tl?0:Math.exp(-(t-tl)*2.4)*(t-tl<2.5?1:0)).toFixed(3));
     animW(this.h9,cues(id,['تلقائياً',['بأول',0],['بأول',0],'كل','شهر']).map((v,i)=>i===1?v+0.15:i===2?v+0.25:v),t,{dist:28});
     const t91=cue(id,'بشرط'); putR(this.ch91,pop(t,cue(id,'مسدودة')-0.25,{rise:18})); putR(this.ch92,pop(t,cue(id,'والحساب')-0.1,{rise:18}));
     animW(this.p9,cues(id,['وحسابك','الشخصي','ربحه','إلك','إلك','وخسارته','عليك']).map((v,i)=>i===4?v+0.25:v),t,{dist:16});
@@ -572,9 +576,9 @@ station({id:'S10', ent:[-100,990], ext:[2020,940],
     const t0=cue(id,'ابتعد'); const td=cue(id,'Axi')-0.1;
     this.no.forEach((o,i)=>{ const p=pop(t,T0(id)+0.55+i*0.07); const tx=cue(id,NO[i][1])+0.12; const dim=sstep(tx+0.2,tx+0.5,t);
       put(o.el,0,p.dy+lerp(0,8,dim),p.s,p.op*(1-0.42*sstep(td,td+0.5,t)));
-      o.cnt.style.opacity=(1-0.55*dim).toFixed(3); o.lbl.style.color=dim>0?`rgb(${Math.round(lerp(255,190,dim))},${Math.round(lerp(255,191,dim))},${Math.round(lerp(255,195,dim))})`:''; o.rb.style.opacity=dim.toFixed(3);
+      css(o.cnt,'opacity',(1-0.55*dim).toFixed(3)); css(o.lbl,'color',dim>0?`rgb(${Math.round(lerp(255,190,dim))},${Math.round(lerp(255,191,dim))},${Math.round(lerp(255,195,dim))})`:''); css(o.rb,'opacity',dim.toFixed(3));
       o.ls.forEach((l,j)=>{ const k=tw(t,tx+j*0.16,tx+j*0.16+0.24,ease.cubicOut), A=j?[208,38]:[92,38], B=j?[92,154]:[208,154];
-        l.setAttribute('x2',f2(lerp(A[0],B[0],k))); l.setAttribute('y2',f2(lerp(A[1],B[1],k))); l.style.opacity=k<=0?'0':'1'; }); });
+        attr(l,'x2',f2(lerp(A[0],B[0],k))); attr(l,'y2',f2(lerp(A[1],B[1],k))); css(l,'opacity',k<=0?'0':'1'); }); });
     animW(this.real,cues(id,['متداول','حقيقي',['بستراتيجية',0],'بستراتيجية','حقيقية']).map((v,i)=>i===2?v-0.1:v),t,{dist:30});
   },
   track(){ return {no0:this.no[0].el,no4:this.no[4].el}; }});
@@ -616,7 +620,7 @@ station({id:'S12E', scene:'S12', farOp:0.17, ent:[-100,720], ext:[2020,500],
   line(P,Z,M){ const s=LG.s, P1=[LG.x+1627*s,LG.y+373*s], P2=[LG.x+1723*s,LG.y+257*s], d=[96,-116], dl=Math.hypot(...d), n=[-d[1]/dl,d[0]/dl], g=34;
     const A=[P1[0]+n[0]*g,P1[1]+n[1]*g], B=[P2[0]+n[0]*g,P2[1]+n[1]*g];
     Z(-100,720,420,A[1]+2,131,12,50); P(560,A[1]); P(A[0],A[1]); M('under'); P(B[0],B[1]); M('end'); },
-  init(){ this.tye=$('tye'); this.cta=$('cta'); this.ctaT=$('ctaT'); this.risk=$('risk'); this.cta.style.left=(960-this.cta.offsetWidth/2)+'px'; },
+  init(){ this.tye=$('tye'); this.cta=$('cta'); this.ctaT=$('ctaT'); this.risk=$('risk'); css(this.cta,'left',(960-this.cta.offsetWidth/2)+'px'); },
   draw(t){ const id='S12';
     animW(this.tye,cues(id,['Trade','Your',['Edge',1]]),t,{dist:20,ltr:true});
     const tc=cue(id,'سجّل'); const pc=pop(t,tc-0.1,{rise:24}); put(this.cta,0,pc.dy,pc.s,pc.op); animW(this.ctaT,cues(id,['سجّل','مجاناً','من',['Axi',1]]),t,{dist:12});
@@ -716,27 +720,27 @@ function logoRect(t){ const ta=cue('S01','Axi'), tu=cue('S01','تمويل')-0.45
   const mix=(A,B,k)=>({x:lerp(A.x,B.x,k),y:lerp(A.y,B.y,k),s:Math.exp(lerp(Math.log(A.s),Math.log(B.s),k))});
   let r=LR.c; if(t>=tu) r=mix(LR.c,LR.u,ssstep(tu,tu+0.75,t)); if(t>=T-0.55) r=mix(LR.u,LR.k,ease.quintInOut(seg(t,T-0.55,T+0.75))); if(t>=te) r=mix(LR.k,LR.e,ease.quintInOut(seg(t,te,te+1.3)));
   return {...r,op:t<ta-0.05?0:1}; }
-function drawLogo(t){ const r=logoRect(t); LOGO.style.display=r.op>0?'':'none'; if(!r.op) return r;
-  LOGO.style.transform=`translate(${f2(r.x)}px,${f2(r.y)}px) scale(${r.s.toFixed(5)})`;
+function drawLogo(t){ const r=logoRect(t); css(LOGO,'display',r.op>0?'':'none'); if(!r.op) return r;
+  css(LOGO,'transform',`translate(${f2(r.x)}px,${f2(r.y)}px) scale(${r.s.toFixed(5)})`);
   const ta=cue('S01','Axi'), tg=cue('S01','Select');
   for(let i=0;i<3;i++){ const d=t-ta-i*0.07>SET?{op:1,y:0,sx:1,sy:1}:OM.letterDrop(t,ta,i,{stagger:0.07,dist:150}); const el=LG_EL[i];
-    el.style.opacity=d.op>=0.999?'1':d.op.toFixed(3); el.style.transform=d.y===0&&d.sx===1?'none':`translate(0,${f2(d.y)}px) scale(${f4(d.sx)},${f4(d.sy)})`; el.style.transformOrigin='50% 100%'; }
+    css(el,'opacity',d.op>=0.999?'1':d.op.toFixed(3)); css(el,'transform',d.y===0&&d.sx===1?'none':`translate(0,${f2(d.y)}px) scale(${f4(d.sx)},${f4(d.sy)})`); css(el,'transformOrigin','50% 100%'); }
   const kg=tw(t,tg,tg+0.55,ease.expoOut), ig=imp(t,tg+0.5,{sqx:0.05,sqy:0.07}); const el=LG_EL[3];
-  el.style.opacity=t<tg?'0':Math.min(1,kg*2).toFixed(3); el.style.transform=kg>=1&&ig.r===0?'none':`translate(${f2((1-kg)*300)}px,0) scale(${f4(ig.sx)},${f4(ig.sy)})`; el.style.transformOrigin='0% 70%';
+  css(el,'opacity',t<tg?'0':Math.min(1,kg*2).toFixed(3)); css(el,'transform',kg>=1&&ig.r===0?'none':`translate(${f2((1-kg)*300)}px,0) scale(${f4(ig.sx)},${f4(ig.sy)})`); css(el,'transformOrigin','0% 70%');
   return r; }
 const IDX=ST.filter(S=>S.id!=='S01'&&S.id!=='S12E').map(S=>{ const sc=SC[S.scene]; const n=String(TL.scenes.indexOf(sc)+1).padStart(2,'0');
   const d=document.createElement('div'); d.className='idx'; d.innerHTML=`<span class="n w">${n}</span><span class="d w"></span><span class="tt">${words(sc.title_ar)}</span>`; HUD.appendChild(d);
   return {el:d,t0:sc.t0+0.45,t1:S.id==='S12V'?cue('S12','Axi')-0.6:sc.t1-0.62}; });
-function drawIdx(t){ for(const o of IDX){ const vis=t>=o.t0-0.01&&t<o.t1+0.4; o.el.style.display=vis?'':'none'; if(!vis) continue;
-  const l=lift(t,o.t1,{dist:14,dur:0.3}); o.el.style.opacity=l.op>=1?'1':l.op.toFixed(3); o.el.style.transform=l.k>0?`translateY(${f2(l.dy)}px)`:'none';
+function drawIdx(t){ for(const o of IDX){ const vis=t>=o.t0-0.01&&t<o.t1+0.4; css(o.el,'display',vis?'':'none'); if(!vis) continue;
+  const l=lift(t,o.t1,{dist:14,dur:0.3}); css(o.el,'opacity',l.op>=1?'1':l.op.toFixed(3)); css(o.el,'transform',l.k>0?`translateY(${f2(l.dy)}px)`:'none');
   animW(o.el,o.t0,t,{dt:0.05,dist:14}); } }
 
 // ════════════════════════════════════════════ GROUND: charcoal top light, the deck's red tick grid far back, blurred candles in depth ════════════════════════════════════════════
 const bgC=$('bg'), lnC=$('ln'), grC=$('grain'); let DPR=1, BG, LN;
 const FARS=[]; const CHARTS=['chart_c','chart_b','chart_d','chart_e','chart_wide_blur'];
 function buildFar(){ const f=1/1.6; ST.forEach((S,i)=>{ const cx=S.ox+960+(S.wide?800:0), cy=S.oy+540+(S.wide?160:0); const fx=960+(cx-960)*f, fy=540+(cy-540)*f;
-    const im=document.createElement('img'); im.src=IMG+CHARTS[i%CHARTS.length]+'.webp'; const w=S.wide?2600:1750; im.className='abs'; im.style.width=w+'px';
-    const x=fx-w/2+(i%2?260:-140), y=fy-330+(i%3)*60; im.style.left=x+'px'; im.style.top=y+'px'; im.style.opacity=(S.farOp??(i===0?0.5:0.3)).toFixed(2); FAR.appendChild(im); FARS.push({im,x,y,w,h:w*0.51}); }); }
+    const im=document.createElement('img'); im.src=IMG+CHARTS[i%CHARTS.length]+'.webp'; const w=S.wide?2600:1750; im.className='abs'; css(im,'width',w+'px');
+    const x=fx-w/2+(i%2?260:-140), y=fy-330+(i%3)*60; css(im,'left',x+'px'); css(im,'top',y+'px'); css(im,'opacity',(S.farOp??(i===0?0.5:0.3)).toFixed(2)); FAR.appendChild(im); FARS.push({im,x,y,w,h:w*0.51}); }); }
 let GRD=null;
 function drawGround(cam){ const c=BG; c.setTransform(DPR,0,0,DPR,0,0); c.fillStyle='#060607'; c.fillRect(0,0,W,H);
   if(!GRD){ GRD=c.createRadialGradient(960,-260,80,960,-260,1500); GRD.addColorStop(0,'rgba(58,59,62,.62)'); GRD.addColorStop(0.45,'rgba(30,31,33,.32)'); GRD.addColorStop(1,'rgba(6,6,7,0)'); }
@@ -774,12 +778,12 @@ let CAM=null, VIEW=null; const pendingFar=[];
 function visBox(Mv,S){ const b=OM.projectBox(Mv,{x:S.ox-160,y:S.oy-200,w:S.bw+320,h:S.bh+360}); return b.x<W&&b.y<H&&b.x+b.w>0&&b.y+b.h>0; }
 function seek(t){
   t=clamp(t,0,DUR); CAM=camAt(t); const Mv=OM.view(CAM); VIEW=Mv; const z=CAM.zoom;
-  WORLD.style.transform=`matrix(${Mv.map((v,i)=>i<4?v.toFixed(6):v.toFixed(3)).join(',')})`;
-  const Mf=OM.view(CAM,{depth:0.6}); FAR.style.transform=`matrix(${Mf.map((v,i)=>i<4?v.toFixed(6):v.toFixed(3)).join(',')})`;
-  for(const F of FARS){ const b=OM.projectBox(Mf,{x:F.x,y:F.y,w:F.w,h:F.h}), v=b.x<W&&b.y<H&&b.x+b.w>0&&b.y+b.h>0; F.im.style.display=v?'':'none'; if(v) pendingFar.push(F.im.decode().catch(()=>{})); }
+  css(WORLD,'transform',`matrix(${Mv.map((v,i)=>i<4?v.toFixed(6):v.toFixed(3)).join(',')})`);
+  const Mf=OM.view(CAM,{depth:0.6}); css(FAR,'transform',`matrix(${Mf.map((v,i)=>i<4?v.toFixed(6):v.toFixed(3)).join(',')})`);
+  for(const F of FARS){ const b=OM.projectBox(Mf,{x:F.x,y:F.y,w:F.w,h:F.h}), v=b.x<W&&b.y<H&&b.x+b.w>0&&b.y+b.h>0; css(F.im,'display',v?'':'none'); if(v) pendingFar.push(F.im.decode().catch(()=>{})); }
   drawGround(CAM);
   const pending=pendingFar.splice(0);
-  for(const S of ST){ const v=visBox(Mv,S); S.vis=v; S.el.style.display=v?'':'none'; if(v){ S.draw(t); for(const im of S.imgs) pending.push(im.decode().catch(()=>{})); } }
+  for(const S of ST){ const v=visBox(Mv,S); S.vis=v; css(S.el,'display',v?'':'none'); if(v){ S.draw(t); for(const im of S.imgs) pending.push(im.decode().catch(()=>{})); } }
   drawLine(t,Mv,z);
   if(drawLogo(t).op) for(const im of LG_EL) pending.push(im.decode().catch(()=>{})); drawIdx(t);
   $('hudt').textContent='t='+t.toFixed(2)+'  '+TL.scenes.filter(s=>t>=s.t0&&t<s.t1).map(s=>s.id).join('');
@@ -787,7 +791,7 @@ function seek(t){
 }
 
 // ════════════════════════════════════════════ CONTRACT ════════════════════════════════════════════
-ST.forEach(S=>{ const d=document.createElement('div'); d.className='st'; d.id='st_'+S.id; d.style.left=S.ox+'px'; d.style.top=S.oy+'px'; d.style.width=S.bw+'px'; d.style.height=S.bh+'px';
+ST.forEach(S=>{ const d=document.createElement('div'); d.className='st'; d.id='st_'+S.id; css(d,'left',S.ox+'px'); css(d,'top',S.oy+'px'); css(d,'width',S.bw+'px'); css(d,'height',S.bh+'px');
   d.innerHTML=S.html(); WORLD.appendChild(d); S.el=d; S.imgs=[...d.querySelectorAll('img')]; });
 buildFar();
 window.__meta={dur:DUR,fps:FPS,w:W,h:H,cuts:[],inFrame:{logo:[20.4,DUR],head:[0.2,3.2]}};

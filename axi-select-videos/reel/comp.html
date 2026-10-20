@@ -127,7 +127,7 @@ const T = {
   free: [3.75, 4.21875, 4.6875, 4.92], edgeOn: 5.15625,
   own: 5.625, ownW: [5.86, 5.93, 6.09, 6.16], phonePush: 6.5625, card: 7.5,
   edgeHdr: 7.6, gaugeEnd: 8.6, labels: [7.96875, 8.4375, 8.90625],
-  ladder: [9.375, 9.84375, 10.3125, 11.016, 11.484, 12.1875], rest: 13.125, restLine: 13.30, horizon: 14.53125,
+  ladder: [9.375, 9.84375, 10.3125, 11.016, 11.484, 12.1875], rest: 13.125, restLine: 13.359375, horizon: 14.53125,
   dropB: 15.0, w80: [15.23, 15.47], monthly: 16.875, monthW: [17.11, 17.34375], tileSlide: 18.28125,
   tools: [18.75, 19.21875, 19.6875, 20.15625], collapse: 20.40, steps: [20.625, 21.5625, 22.5], tye: 23.4375,
   gold: 24.375, goldMorph: 25.3125, stac: [26.25, 26.71875, 27.1875, 27.65625], end: 28.125,
@@ -140,7 +140,7 @@ window.__meta = { dur: DUR, fps: FPS, w: W, h: H,
 
 const { clamp, lerp, seg, sstep, ssstep, ease } = OM;
 const $ = id => document.getElementById(id);
-const RED = [228, 0, 46], CARD = [17, 17, 17], WHITE = [255, 255, 255], GOLD = [201, 168, 96];
+const RED = [228, 0, 46], CARD = [17, 17, 17], WHITE = [255, 255, 255], GOLD = [201, 168, 96], PHONE = [150, 32, 40];
 const pushIn = OM.bezier(0.55, 0, 0.92, 0.45);     // accelerate into a cut (a dive)
 const easeIO = OM.bezier(0.7, 0, 0.2, 1);          // a hard in-out for morphs that land on the beat
 const cubicIn = OM.bezier(0.32, 0, 0.67, 0);
@@ -206,7 +206,9 @@ const KC = 6;
 function shapePts(s) {
   const hw = s.w / 2, hh = s.h / 2, lim = Math.max(0, Math.min(hw, hh)), q = s.q ?? 0, out = [];
   const C = [[-hw, -hh, 0, 1, 1, 0], [hw, -hh, -1, 0, 0, 1], [hw, hh, 0, -1, -1, 0], [-hw, hh, 1, 0, 0, -1]];
-  const cr = Math.cos(s.rot || 0), sr = Math.sin(s.rot || 0);
+  const cr = Math.cos(s.rot || 0), sr = Math.sin(s.rot || 0), fl = s.flag || 0;
+  // flag (the "1"): the top-left corner grows a chamfered flag down-left — [left edge, tip low, tip high, top-left] in local px
+  const FL = fl > 0 ? [[-hw, -hh + s.ft], [-hw - s.fw, -hh + s.fw * s.fm + s.ft], [-hw - s.fw, -hh + s.fw * s.fm], [-hw, -hh], [-hw, -hh], [-hw, -hh]] : null;
   for (let c = 0; c < 4; c++) {
     const [cx, cy, ux, uy, vx, vy] = C[c], d = Math.min(s.d[c] || 0, lim);
     const ox = cx + d * (ux + vx), oy = cy + d * (uy + vy);
@@ -214,14 +216,16 @@ function shapePts(s) {
       const u = i / (KC - 1), ax = cx + d * ux, ay = cy + d * uy, bx = cx + d * vx, by = cy + d * vy;
       const chx = lerp(ax, bx, u), chy = lerp(ay, by, u), a = u * Math.PI / 2;
       const arx = ox - d * (Math.cos(a) * vx + Math.sin(a) * ux), ary = oy - d * (Math.cos(a) * vy + Math.sin(a) * uy);
-      const px = lerp(chx, arx, q), py = lerp(chy, ary, q);
+      let px = lerp(chx, arx, q), py = lerp(chy, ary, q);
+      if (FL && c === 0) { px = lerp(px, FL[i][0], fl); py = lerp(py, FL[i][1], fl); }
       out.push([s.x + px * cr - py * sr, s.y + px * sr + py * cr]);
     }
   }
   return out;
 }
 const lerpShape = (A, B, k) => ({ x: lerp(A.x, B.x, k), y: lerp(A.y, B.y, k), w: lerp(A.w, B.w, k), h: lerp(A.h, B.h, k), rot: lerp(A.rot || 0, B.rot || 0, k),
-  d: [0, 1, 2, 3].map(i => lerp(A.d[i] || 0, B.d[i] || 0, k)), q: lerp(A.q || 0, B.q || 0, k) });
+  d: [0, 1, 2, 3].map(i => lerp(A.d[i] || 0, B.d[i] || 0, k)), q: lerp(A.q || 0, B.q || 0, k),
+  flag: lerp(A.flag || 0, B.flag || 0, k), fw: lerp(A.fw ?? B.fw ?? 0, B.fw ?? A.fw ?? 0, k), fm: B.fm ?? A.fm ?? 0, ft: lerp(A.ft ?? B.ft ?? 0, B.ft ?? A.ft ?? 0, k) });
 const projPts = (M, pts) => pts.map(p => P(M, p[0], p[1]));
 const lerpPts = (A, B, k) => A.map((p, i) => [lerp(p[0], B[i][0], k), lerp(p[1], B[i][1], k)]);
 const pathOf = (pts, close = true) => 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + (close ? 'Z' : '');
@@ -267,14 +271,15 @@ function build() {
   // the number: $ [1] , 0 0 0 , 0 0 0 — the "1" is the hero chamfer
   const num = $('num'); D.odo = [];
   const glyph = ch => el('span', 'g', num, null, ch);
-  D.dollar = glyph('$'); D.slot = el('span', 'g', num, 'width:.36em'); glyph(',');
+  D.dollar = glyph('$'); D.slot = el('span', 'g', num, 'width:.5em'); glyph(',');
   for (let i = 0; i < 6; i++) { const o = el('span', 'odo', num); const st = el('span', 'strip', o); for (let k = 0; k <= 10; k++) el('b', null, st, null, String(k % 10)); D.odo.push({ o, st }); if (i === 2) glyph(','); }
+  D.numOthers = [...num.children].filter(e => e !== D.odo[5].o);       // everything but the last 0: fades as the camera dives into it
   D.fund = line(g1, { y: 652, size: 58, weight: 700, words: [['Axi', 'la'], ['تمولك'], ['لحد']] });
   D.upto = el('div', 'caps abs', g1, 'font-size:24px;width:1080px;text-align:center;top:0', 'Up to <span style="color:#fff">$1M</span> funding');
   D.chev = [0, 1, 2].map(i => el('div', 'chev', $('chevs')));
   // G2 — phrases + wipe + own account
   D.ph1 = line(g2, { y: 1080, size: 104, words: [['بدون'], ['تحدي.']] });
-  D.ph2 = line(g2, { y: 1080, size: 104, words: [['بدون'], ['رسوم.']] });
+  D.ph2 = line(g2, { y: 1080, size: 104, words: [['بدون'], ['رسوم'], ['اشتراك.']] });   // verified: no sign-up / membership fee (trading costs still apply)
   D.ph3a = line(g2, { y: 1030, size: 92, words: [['الانضمام']] });
   D.ph3b = line(g2, { y: 1158, size: 150, weight: 800, words: [['مجاني', 'red']] });
   D.slashes = [0, 1, 2].map(i => el('div', 'abs', $('wipe'), `width:16px;height:300px;background:var(--red);transform-origin:0 0`));
@@ -327,9 +332,9 @@ function build() {
   D.tileCaps = el('div', 'caps', D.tile, 'position:absolute;left:0;width:380px;top:368px;text-align:center;font-size:18px;letter-spacing:.32em', 'Payout');
   D.month1 = line(g5, { y: 1030, size: 84, words: [['تنزل'], ['أرباحك']] });
   D.month2 = line(g5, { y: 1145, size: 84, words: [['أول', 'red'], ['كل'], ['شهر']] });
-  D.tools1 = line(g5t, { y: 370, size: 112, words: [['أدوات', 'red'], ['تدريب']] });
-  D.tools2 = line(g5t, { y: 515, size: 112, words: [['تعليم', 'red'], ['كوتشينغ']] });
-  D.toolsCaps = el('div', 'caps abs', g5t, 'left:0;width:1080px;top:612px;text-align:center;font-size:20px;letter-spacing:.32em', 'Trade your edge. &nbsp;<span style="color:var(--red)">///</span>&nbsp; Learn more on axi.com');
+  D.tools1 = line(g5t, { y: 400, size: 100, words: [['أدوات', 'red'], ['تدريب']] });
+  D.tools2 = line(g5t, { y: 528, size: 100, words: [['تعليم', 'red'], ['كوتشينغ']] });
+  D.toolsCaps = el('div', 'caps abs', g5t, 'left:0;width:1080px;top:600px;text-align:center;font-size:20px;letter-spacing:.32em', 'Trade your edge. &nbsp;<span style="color:var(--red)">///</span>&nbsp; Learn more on axi.com');
   // G6 — billboard: our panel mapped onto the face in perspective (homography), steps + Trade Your Edge on it
   D.panel = el('div', 'abs', g6, 'width:1500px;height:945px;transform-origin:0 0;overflow:hidden;background:linear-gradient(180deg,#2c2d30 0%,#151517 42%,#0a0a0b 100%);box-shadow:inset 0 0 0 3px rgba(255,255,255,.07)');
   D.panelGrid = el('canvas', null, D.panel, 'position:absolute;left:0;top:0;width:1500px;height:945px'); D.panelGrid.width = 1500; D.panelGrid.height = 945;
@@ -358,28 +363,32 @@ function measure() {
   document.querySelectorAll('.grp').forEach(g => { g.style.transform = 'none'; g.style.display = ''; });
   // the number: fit $1,000,000 to 900 px, centre it at (540, 800)
   const num = $('num'); let fs = 172; num.style.fontSize = fs + 'px'; num.style.letterSpacing = '-0.035em';
-  let w = num.getBoundingClientRect().width; fs = Math.min(190, fs * 880 / w); num.style.fontSize = fs + 'px';
-  w = num.getBoundingClientRect().width; const hgt = fs;
-  G.num = { fs, x: 540 - w / 2, y: 800 - hgt / 2, w, h: hgt, cx: 540, cy: 800 }; num.style.left = G.num.x + 'px'; num.style.top = G.num.y + 'px';
+  let w = num.getBoundingClientRect().width; fs = Math.min(190, fs * 800 / w); num.style.fontSize = fs + 'px';
+  w = num.getBoundingClientRect().width; const hgt = fs, CHEV = 50;       // chevron stack 28 px + 22 px gap, the group centred
+  G.num = { fs, x: 540 - (w + CHEV) / 2 + CHEV, y: 800 - hgt / 2, w, h: hgt, cx: 540, cy: 800 }; num.style.left = G.num.x + 'px'; num.style.top = G.num.y + 'px';
   // glyph metrics of Geist 300 (ink box of a digit relative to its line box, line-height 1em)
   const cv = document.createElement('canvas').getContext('2d'); cv.font = `300 ${fs}px Geist`;
   const m0 = cv.measureText('0'), fa = m0.fontBoundingBoxAscent, fd = m0.fontBoundingBoxDescent;
   const base = (fs - (fa + fd)) / 2 + fa;                                       // baseline inside the 1em box
   G.capH = m0.actualBoundingBoxAscent; G.base = base;
   const s0 = r(D.slot), last = r(D.odo[5].o);
-  G.stem = { x: s0.cx, y: G.num.y + base - G.capH / 2, w: fs * 0.12, h: G.capH };
+  G.stem = { x: s0.x + fs * 0.33, y: G.num.y + base - G.capH / 2, w: fs * 0.12, h: G.capH };
   G.zero = { x: last.x + m0.actualBoundingBoxLeft * -1 + (m0.actualBoundingBoxLeft + m0.actualBoundingBoxRight) / 2, y: G.num.y + base - m0.actualBoundingBoxAscent / 2,
     w: m0.actualBoundingBoxLeft + m0.actualBoundingBoxRight, h: m0.actualBoundingBoxAscent };
   G.zero.x = last.x + (last.w) / 2;                                              // advance-centred (tabular digits)
   const dol = r(D.dollar);
-  D.chev.forEach((c, i) => { c.style.left = (dol.x - 40) + 'px'; c.style.top = (G.num.y + base - 20 - i * 27) + 'px'; });
+  D.chev.forEach((c, i) => { c.style.left = (G.num.x - CHEV) + 'px'; c.style.top = (G.num.y + base - 20 - i * 27) + 'px'; });
   D.upto.style.top = (G.num.y + base + 58) + 'px';
   // coin: upright (major axis vertical), centroid at (540, 640), major extent 560 px
   const cs = 0.521; G.coin = { s: cs, cx: 540, cy: 640, ox: 619.3 * cs, oy: 659.1 * cs, aspect: 455 / 537, H: 1074 * cs };
   $('coin').style.left = (540 - G.coin.ox) + 'px'; $('coin').style.top = (640 - G.coin.oy) + 'px'; $('coin').style.transformOrigin = `${G.coin.ox}px ${G.coin.oy}px`;
   G.zeroAspect = G.zero.w / G.zero.h;
   // phone in the man image (image px → world): approx rounded rect centre (683, 990), 190×138, rot 3°
-  const ms = 1560 / 1815; G.phone = { x: -285 + 680 * ms, y: 1260 + 993 * ms, w: 152 * ms, h: 136 * ms, rot: 0 };
+  const ms = 1560 / 1815, IQ = [[581, 927], [731, 929], [779, 1059], [621, 1062]];      // the phone's back in man_phone.webp px (TL TR BR BL)
+  G.phoneQuad = IQ.map(([x, y]) => [-285 + x * ms, 1260 + y * ms]);
+  G.phoneH = homography([[0, 0], [1, 0], [1, 1], [0, 1]], G.phoneQuad);
+  G.phonePts = shapePts({ x: 0.5, y: 0.5, w: 1, h: 1, rot: 0, d: [0.075, 0.075, 0.075, 0.075], q: 1 }).map(([u, v]) => hmap(G.phoneH, u, v));
+  { const b = boxOf(G.phoneQuad); G.phone = { x: b.x + b.w / 2, y: b.y + b.h / 2, w: b.w, h: b.h, rot: 0 }; }
   // Edge card + gauge
   G.card = cham(540, 770, 860, 960, 40); G.gauge = { cx: 540, cy: 712, R: 250, a0: Math.PI * 150 / 180, sweep: Math.PI * 240 / 180, val: 0.9, sw: 24 };
   // ladder rail
@@ -390,11 +399,11 @@ function measure() {
   // 80%: fit, centre at (540, 760)
   const e80 = D.e80; const fs2 = 340; const pw = r(D.pct).w;
   const stemW = fs2 * 0.062;
-  [D.ring1, D.ring2].forEach((rg, i) => { Object.assign(rg.style, { width: (fs2 * 0.2) + 'px', height: (fs2 * 0.26) + 'px', borderWidth: stemW + 'px' }); });
+  [D.ring1, D.ring2].forEach((rg, i) => { Object.assign(rg.style, { width: (fs2 * 0.235) + 'px', height: (fs2 * 0.30) + 'px', borderWidth: stemW + 'px' }); });
   const m80 = (() => { cv.font = `300 ${fs2}px Geist`; const m = cv.measureText('0'); return { fa: m.fontBoundingBoxAscent, fd: m.fontBoundingBoxDescent, cap: m.actualBoundingBoxAscent }; })();
   const base80 = (fs2 - (m80.fa + m80.fd)) / 2 + m80.fa, cap80 = m80.cap;
-  D.ring1.style.left = (fs2 * 0.02) + 'px'; D.ring1.style.top = (base80 - cap80) + 'px';
-  D.ring2.style.left = (pw - fs2 * 0.22) + 'px'; D.ring2.style.top = (base80 - fs2 * 0.26) + 'px';
+  D.ring1.style.left = (fs2 * 0.0) + 'px'; D.ring1.style.top = (base80 - cap80) + 'px';
+  D.ring2.style.left = (pw - fs2 * 0.255) + 'px'; D.ring2.style.top = (base80 - fs2 * 0.30) + 'px';
   const w80 = r(e80).w; G.e80 = { x: 540 - w80 / 2 + fs2 * 0.02, y: 760 - fs2 / 2, w: w80, h: fs2, base: base80, cap: cap80, fs: fs2, stemW };
   e80.style.left = G.e80.x + 'px'; e80.style.top = G.e80.y + 'px';
   const pr = r(D.pct), z8 = r(D.e0);
@@ -419,10 +428,10 @@ function measure() {
   G.H6 = homography([[0, 0], [1500, 0], [1500, 945], [0, 945]], G.quad);
   D.panel.style.transform = `matrix3d(${[G.H6[0], G.H6[3], 0, G.H6[6], G.H6[1], G.H6[4], 0, G.H6[7], 0, 0, 1, 0, G.H6[2], G.H6[5], 0, 1].map(v => v.toFixed(9)).join(',')})`;
   { const g = D.panelGrid.getContext('2d'); g.strokeStyle = 'rgba(228,0,46,.30)'; g.lineWidth = 2.4; for (let y = 36; y < 945; y += 64) for (let x = 36; x < 1500; x += 64) { g.beginPath(); g.moveTo(x - 4, y + 4); g.lineTo(x + 4, y - 4); g.stroke(); } }
-  const rowV = [370, 515, 660], right = 905;
+  const rowV = [370, 515, 660], right = 820;      // pill edge lands at x≈970 on screen (safe zone ends at 990)
   G.steps = D.steps.map((st, i) => { const w = st.p.offsetWidth; st.p.style.left = (right - w) + 'px'; st.p.style.top = (rowV[i] - 58) + 'px'; return { x: right - w, y: rowV[i] - 58, w, h: 116, right, cy: rowV[i] }; });
   G.dot0 = { u: right - 10 - 1.5 - 47, v: rowV[0], r: 47 };
-  const tw = D.tye.offsetWidth; G.tye = { u: 560 - tw / 2, v: 780, w: tw, h: 80 }; D.tye.style.left = G.tye.u + 'px'; D.tye.style.top = G.tye.v + 'px';
+  const tw = D.tye.offsetWidth; G.tye = { u: right - tw, v: 780, w: tw, h: 80 };   // right-aligned with the steps D.tye.style.left = G.tye.u + 'px'; D.tye.style.top = G.tye.v + 'px';
   Object.assign(D.tyeLine.style, { left: G.tye.u + 'px', top: (G.tye.v + 92) + 'px', width: tw + 'px' });
   // xag bars at scale .5: gold bar minAreaRect centre (1276, 741) 1116×457 at −55.9° → world
   const xs2 = 0.5; G.xag = { s: xs2, x: 540 - 1276 * xs2, y: 700 - 741 * xs2 }; Object.assign($('xag').style, { left: G.xag.x + 'px', top: G.xag.y + 'px', transformOrigin: `${1276 * xs2}px ${741 * xs2}px` });
@@ -486,7 +495,7 @@ function candle(t) {
 // the number slam (G1): scale about (540, 800)
 const numScale = t => t < T.drop ? 1 : 1 + 0.2 * (1 - spr(t - T.drop, 0.55, 26));
 function numPt(t, x, y) { const s = numScale(t), im = imp(t, T.drop, { decay: 8, omega: 24, sqx: 0.05, sqy: 0.07 }); return [540 + (x - 540) * s * im.sx, 800 + (y - 800) * s * im.sy]; }
-function stemShape(t) { const st = G.stem, [x, y] = numPt(t, st.x, st.y), s = numScale(t); return cham(x, y, st.w * s, st.h * s, st.w * s * 0.95, { br: 0 }); }
+function stemShape(t) { const st = G.stem, [x, y] = numPt(t, st.x, st.y), s = numScale(t); return { ...cham(x, y, st.w * s, st.h * s, st.w * s * 0.95, { br: 0 }), flag: 1, fw: st.w * s * 1.75, fm: 0.62, ft: st.w * s * 1.12 }; }
 function candleShape(t) { const c = candle(t); return cham(c.x, c.y, c.w, c.h, 16); }
 // coin flip angle (G2): lands face-on from the zero's aspect, flips on the beats
 function coinPhi(t) {
@@ -516,15 +525,16 @@ function heroP1(t) {
   if (t < 3.78) {
     const k = ease.quartOut(seg(t, T.drop, T.drop + 0.2));
     const sh = k < 1 ? lerpShape(candleShape(T.drop), stemShape(t), k) : stemShape(t);
-    return { pts: projPts(S(0, t), shapePts(sh)), fill: RED, a: 1, id: 'hero' };
+    return { pts: projPts(S(0, t), shapePts(sh)), fill: RED, a: 1 - sstep(3.50, 3.69, t), id: 'hero' };
   }
   // phone → Edge card plate
   if (t >= 7.02 && t < 9.62) {
     if (t < T.card) {
-      const A = projPts(S(1, t), shapePts({ ...G.phone, d: [15, 15, 15, 15], q: 1 }));
+      const A = projPts(S(1, t), G.phonePts);
       const k = easeIO(seg(t, 7.22, T.card));
       const Bp = projPts(S(2, t), shapePts(G.card));
-      return { pts: lerpPts(A, Bp, k), fill: mixc(RED, CARD, ease.cubicInOut(seg(t, 7.3, T.card))), a: sstep(7.1, 7.2, t), stroke: [255, 255, 255, 0.09 * k], id: 'card' };
+      const fill = t < 7.3 ? mixc(PHONE, RED, sstep(7.08, 7.28, t)) : mixc(RED, CARD, ease.cubicInOut(seg(t, 7.3, T.card)));
+      return { pts: lerpPts(A, Bp, k), fill, a: sstep(7.04, 7.16, t), stroke: [255, 255, 255, 0.09 * k], id: 'card' };
     }
     const st = D.stages[0];
     const k = easeIO(seg(t, T.ladder[0], T.ladder[0] + 0.24));
@@ -538,7 +548,7 @@ function heroP1(t) {
     const sl = G.slash, k = easeIO(seg(t, T.monthly, T.monthly + 0.22));
     const tb = tileBox(t), band = cham(tb.x, tb.y - tb.h / 2 + 37 * tb.s, tb.w, 74 * tb.s, 34 * tb.s, { br: 0 });
     const sh = lerpShape({ x: sl.x, y: sl.y, w: sl.w, h: sl.h, rot: sl.rot, d: [sl.w * 0.55, 0, sl.w * 0.55, 0] }, band, k);
-    return { pts: projPts(M, shapePts(sh)), fill: RED, a: 1 - sstep(18.42, 18.72, t), id: 'tile' };
+    return { pts: projPts(M, shapePts(sh)), fill: RED, a: 1 - sstep(18.64, 18.76, t), id: 'tile' };
   }
   // tools headline → pill → step 1's red dot
   if (t >= T.collapse && t < 21.1) {
@@ -560,7 +570,7 @@ function heroP1(t) {
       const xr = xagTurn(t), gs = G.goldShape;
       const A = { ...gs, rot: gs.rot + xr.rot, w: gs.w * xr.s, h: gs.h * xr.s };
       const k = ease.quintInOut(seg(t, T.goldMorph + 0.06, T.stac[0] - 0.02));
-      return { pts: projPts(M, shapePts(lerpShape(A, G.plate, k))), fill: mixc(GOLD, RED, sstep(T.goldMorph + 0.05, T.goldMorph + 0.4, t)), a: sstep(T.goldMorph, T.goldMorph + 0.1, t), id: 'plate' };
+      return { pts: projPts(M, shapePts(lerpShape(A, G.plate, k))), fill: mixc(GOLD, RED, sstep(T.goldMorph + 0.02, T.goldMorph + 0.1, t)), a: sstep(T.goldMorph, T.goldMorph + 0.05, t), id: 'plate' };
     }
     const st = stacState(t);
     if (t < T.end) return { pts: projPts(M, shapePts(st.shape)), fill: RED, a: 1, id: 'plate' };
@@ -594,12 +604,14 @@ function heroTrack(t) { if (t < T.card || t > T.ladder[0] + 0.12) return null; c
 // 80% slam (G5)
 const eightyScale = t => 1 + 0.3 * (1 - spr(t - T.dropB, 0.55, 22));
 function eightyPt(t, x, y) { const s = eightyScale(t), im = imp(t, T.dropB, { decay: 8, omega: 24, sqx: 0.05, sqy: 0.07 }); return [540 + (x - 540) * s * im.sx, 760 + (y - 760) * s * im.sy]; }
-// tile (G5): pops at 16.875, sinks into the laptop 18.28 → 18.75 (as she rises)
+// tile (G5): pops at 16.875; on 18.28 it drops out of frame into her laptop, which is still below the frame, and comes
+// back up riding the laptop as she rises onto the 18.75 hit — so the tile never crosses her face
+const womanDy = t => 1300 * (1 - easeIO(seg(t, 18.37, T.tools[0])));
 function tileBox(t) {
   const p = pop(t, T.monthly + 0.02, { zeta: 0.6, omega: 20, s0: 0.82, rise: 40 });
-  const k = easeIO(seg(t, T.tileSlide, T.tools[0]));
-  const L = G.laptop, sTile = lerp(p.s, 1, 0);
-  return { x: lerp(G.tile.x, L.x, k), y: lerp(G.tile.y + p.dy, L.y, k), w: lerp(G.tile.w * p.s, L.w, k), h: lerp(G.tile.h * p.s, L.h, k), s: lerp(p.s, L.h / G.tile.h, k), op: p.op, k };
+  const k = cubicIn(seg(t, T.tileSlide, 18.50));
+  const L = G.laptop, ly = L.y + womanDy(t);
+  return { x: lerp(G.tile.x, L.x, k), y: lerp(G.tile.y + p.dy, ly, k), w: lerp(G.tile.w * p.s, L.w, k), h: lerp(G.tile.h * p.s, L.h, k), s: lerp(p.s, L.h / G.tile.h, k), op: p.op * (1 - sstep(18.64, 18.76, t)), k };
 }
 // xag turn (G7)
 function xagTurn(t) { const k = ease.expoOut(seg(t, T.gold, T.gold + 0.9)); return { rot: lerp(0.32, 0, k), s: lerp(0.86, 1, k) }; }
@@ -650,14 +662,16 @@ function seek(t) {
         let p = P0 * (1 - k); const bounce = t > tl && t < tl + 0.3 ? OM.ring(t - tl, 16, 30) * 0.06 : 0;
         const idx = (p % 10 + 10) % 10; setT(o.st, `translateY(${n2(-(idx + bounce) * fs)}px)`);
       });
-      // the last zero fades as the coin takes its place
+      // the last zero fades as the coin takes its place; everything else falls away as the camera dives into it
       setO(D.odo[5].o, 1 - sstep(3.70, 3.78, t));
+      const fo = 1 - sstep(3.50, 3.69, t); D.numOthers.forEach(e => setO(e, fo));
       TK.number = box(0, { x: G.num.x, y: G.num.y, w: G.num.w, h: G.num.h }, 1);
       if (t >= T.push0) TK.ring = box(0, { x: G.zero.x - G.zero.w / 2, y: G.zero.y - G.zero.h / 2, w: G.zero.w, h: G.zero.h }, 1 - sstep(3.70, 3.78, t));
     }
-    if (show(D.fund, t >= T.fund - 0.01)) animWords(D.fund, t, [T.fund, T.fund + 0.07, T.fund + 0.14], { dist: 28, dx: 20 });
-    { const on = show(D.upto, t >= T.upto); if (on) { const r = rise(t, T.upto, { dist: 18, dx: 0, zeta: 0.75, omega: 24 }); setO(D.upto, r.op); setT(D.upto, tr(0, r.y)); } }
-    D.chev.forEach((c, i) => { const tc = T.chev + i * 0.05; if (show(c, t >= tc)) { const p = pop(t, tc, { zeta: 0.6, omega: 30, s0: 0.3, rise: 14 }); setO(c, p.op); setT(c, tr(0, p.dy, p.s)); } });
+    const dive = 1 - sstep(3.44, 3.62, t);
+    if (show(D.fund, t >= T.fund - 0.01)) { animWords(D.fund, t, [T.fund, T.fund + 0.07, T.fund + 0.14], { dist: 28, dx: 20 }); setO(D.fund, dive); }
+    { const on = show(D.upto, t >= T.upto); if (on) { const r = rise(t, T.upto, { dist: 18, dx: 0, zeta: 0.75, omega: 24 }); setO(D.upto, r.op * dive); setT(D.upto, tr(0, r.y)); } }
+    D.chev.forEach((c, i) => { const tc = T.chev + i * 0.05; if (show(c, t >= tc)) { const p = pop(t, tc, { zeta: 0.6, omega: 30, s0: 0.3, rise: 14 }); setO(c, p.op * dive); setT(c, tr(0, p.dy, p.s)); } });
     if (t >= T.drop && t > T.fund) TK.fund = box(0, G.lines.fund, 1);
   }
 
@@ -703,9 +717,9 @@ function seek(t) {
     if (show($('wipe'), wf !== null)) D.slashes.forEach((s, i) => setT(s, `translate(${n2(wf + i * 30 - 30)}px,${975}px) skewX(-22deg)`));
     // man + his lines
     if (show($('man'), t >= 5.62)) { const k = spr(t - 5.66, 0.82, 10); setT($('man'), `translateY(${n2((1 - k) * 420)}px)`); setO($('man'), (1 - sstep(7.3, 7.5, t))); TK.man = box(1, { x: -285 + 451 * 0.8595, y: 1260 + (1 - k) * 420 + 35 * 0.8595, w: 1017 * 0.8595, h: 1750 * 0.8595 }, 1 - sstep(7.3, 7.5, t)); }
-    if (show(D.own1, t >= T.ownW[0] - 0.01 && t < 7.0)) { animWords(D.own1, t, T.ownW.slice(0, 2), { dist: 34, dx: 26 }); setO(D.own1, 1 - sstep(6.72, 6.92, t)); }
-    if (show(D.own2, t >= T.ownW[2] - 0.01 && t < 7.0)) { animWords(D.own2, t, T.ownW.slice(2), { dist: 34, dx: 26 }); setO(D.own2, 1 - sstep(6.76, 6.96, t)); }
-    if (t >= T.ownW[0] && t < 6.9) { TK.own1 = box(1, G.lines.own1); if (t >= T.ownW[2]) TK.own2 = box(1, G.lines.own2); }
+    if (show(D.own1, t >= T.ownW[0] - 0.01 && t < 6.78)) { animWords(D.own1, t, T.ownW.slice(0, 2), { dist: 34, dx: 26 }); setO(D.own1, 1 - sstep(6.60, 6.76, t)); }
+    if (show(D.own2, t >= T.ownW[2] - 0.01 && t < 6.80)) { animWords(D.own2, t, T.ownW.slice(2), { dist: 34, dx: 26 }); setO(D.own2, 1 - sstep(6.62, 6.78, t)); }
+    if (t >= T.ownW[0] && t < 6.76) { TK.own1 = box(1, G.lines.own1); if (t >= T.ownW[2]) TK.own2 = box(1, G.lines.own2); }
     if (vis(t, 6.56, 7.12)) TK.phone = box(1, { x: G.phone.x - G.phone.w / 2, y: G.phone.y - G.phone.h / 2, w: G.phone.w, h: G.phone.h }, 1);
   }
 
@@ -786,9 +800,9 @@ function seek(t) {
     if (show(D.month2, vis(t, T.monthW[1], T.tileSlide + 0.3))) { animWords(D.month2, t, [T.monthW[1], T.monthW[1] + 0.06, T.monthW[1] + 0.12], { dist: 30, dx: 22 }); setO(D.month2, 1 - sstep(T.tileSlide, T.tileSlide + 0.2, t)); }
     if (t >= T.monthW[0] && t < T.tileSlide) { TK.month1 = box(4, G.lines.month1); if (t >= T.monthW[1]) TK.month2 = box(4, G.lines.month2); }
     // woman rises as the tile sinks
-    if (show($('woman'), vis(t, T.tileSlide, 20.7))) {
-      const k = 1 - Math.pow(1 - easeIO(seg(t, T.tileSlide, T.tools[0])), 1), dy = (1 - k) * 760, out = ease.expoIn(seg(t, T.collapse - 0.05, T.steps[0]));
-      setT($('woman'), `translate(0px,${n2(dy + out * 900)}px)`); setO($('woman'), sstep(T.tileSlide, T.tileSlide + 0.1, t) * (1 - out));
+    if (show($('woman'), vis(t, 18.37, 20.7))) {
+      const dy = womanDy(t), out = ease.expoIn(seg(t, T.collapse - 0.05, T.steps[0]));
+      setT($('woman'), `translate(0px,${n2(dy + out * 900)}px)`); setO($('woman'), 1 - out);
       TK.woman = box(4, { x: G.woman.x + 523 * G.woman.s, y: G.woman.y + dy + out * 900 + 130 * G.woman.s, w: 990 * G.woman.s, h: 1917 * G.woman.s }, 1 - out);
       if (t >= T.tools[0] + 0.02 && t < 19.6) { const L = G.laptop; TK.tile = box(4, { x: L.x - L.w / 2, y: L.y - L.h / 2 + dy, w: L.w, h: L.h }, 1); }
     }
