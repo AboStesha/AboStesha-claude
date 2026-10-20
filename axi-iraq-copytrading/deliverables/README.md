@@ -18,4 +18,4 @@
 3. Confirm the **Copy Trading app is available in Iraq** (the CTA depends on it).
 4. **Brand manager:** lockup laid over the hook instead of a separate 1.5 s ident; store names as text instead of badges; the 2023 award still cleared for 2026.
 
-Made with the onetake skill (`../reel/comp.html`, `../reel/edit.js`), rendered with shutter motion blur, QA'd by a six-lens review (brand, Arabic copy, legibility/safe zones, edit, compliance, creative).
+Made with the onetake skill (`../reel/comp.html`, `../reel/edit.js`), rendered with shutter motion blur, QA'd in two rounds by a six-lens review (brand, Arabic copy, legibility/safe zones, edit, compliance, creative), each finding re-checked on the frames; all blockers and majors fixed.
