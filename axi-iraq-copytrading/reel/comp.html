@@ -26,17 +26,20 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
 .shadow{text-shadow:0 3px 24px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.4)}
 /* glass, per G-IQ p.43 */
 .gD{background:rgba(20,22,26,.72);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1.5px solid rgba(255,255,255,.25);border-radius:18px;color:#fff}
-.gL{background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,.18));-webkit-backdrop-filter:blur(22px) saturate(1.08);backdrop-filter:blur(22px) saturate(1.08);
-  border:2px solid rgba(255,255,255,.55);color:var(--ink);clip-path:polygon(0 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%)}
+.gL{background:linear-gradient(135deg,rgba(255,255,255,.30),rgba(255,255,255,.18));-webkit-backdrop-filter:blur(22px) saturate(1.08);backdrop-filter:blur(22px) saturate(1.08);
+  border:2px solid rgba(255,255,255,.55);border-radius:10px;color:var(--ink);clip-path:polygon(0 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%)}
+.gL::after{content:'';position:absolute;top:0;right:0;width:62px;height:2px;background:rgba(255,255,255,.55);transform-origin:100% 0;transform:translate(-13px,22px) rotate(45deg)}
+.gL.pill{clip-path:none}.gL.pill::after{display:none}
+.gL.op{background:linear-gradient(135deg,rgba(255,255,255,.80),rgba(255,255,255,.64))}
 .pad{padding:22px 46px 30px}
 .pill{border-radius:999px;padding:10px 44px 16px}
 .redpill{background:var(--red);color:#fff;border-radius:999px;padding:12px 52px 18px;font-weight:600}
 .chip{display:inline-block;border-radius:999px;padding:6px 22px 9px;font-size:30px;margin:0 6px}
 .chipL{background:rgba(255,255,255,.55);color:var(--ink);border:1.5px solid rgba(255,255,255,.8)}
 .chipD{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
-.tag{font-family:'Inter','NSA',sans-serif;font-weight:400;font-size:24px;opacity:.75;direction:rtl}
-.ul::before{content:'';position:absolute;right:0;bottom:-.02em;height:6px;width:100%;background:var(--red);transform-origin:100% 50%;transform:scaleX(var(--u,0))}
-.cur::after{content:'';position:absolute;left:-12px;top:18%;bottom:12%;width:4px;background:var(--red)}
+.tag{font-family:'Inter','NSA',sans-serif;font-weight:500;font-size:34px;line-height:1.2;opacity:.92;direction:rtl}
+.ul::before{content:'';position:absolute;z-index:-1;right:0;bottom:-.02em;height:6px;width:100%;background:var(--red);transform-origin:100% 50%;transform:scaleX(var(--u,0))}
+.cur::after{content:'';position:absolute;left:var(--cx,-12px);top:18%;bottom:12%;width:4px;background:var(--red)}
 .bar{height:14px;border-radius:7px;background:rgba(36,37,40,.16)}
 .risk{background:rgba(255,255,255,.92);color:var(--ink);font-family:'Inter','NSA',sans-serif;font-weight:400;font-size:39px;line-height:1.38;direction:rtl;text-align:right;
   padding:16px 30px 20px;border-radius:6px;white-space:normal}
@@ -67,10 +70,11 @@ window.__meta = { dur: DUR, fps: FPS, w: 1080, h: 1920, cuts: EDL.map(s => s[0])
 const cv = document.getElementById('cv'), g = cv.getContext('2d');
 g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
 const IMG = new Map();
+const SRC_FPS = 24;
 function frameImg(clip, i) {
   if (!CLIPS[clip]) clip = 'k16_glass';
   const n = CLIPS[clip]; i = clamp(Math.round(i), 0, n - 1);
-  const src = `frames/${clip}/${String(i + 1).padStart(4, '0')}.jpg`;
+  const src = `frames24/${clip}/${String(i + 1).padStart(4, '0')}.jpg`;
   let im = IMG.get(src);
   if (!im) { im = new Image(); im.src = src; im.__p = im.decode().catch(() => {}); IMG.set(src, im); if (IMG.size > 500) { const k = IMG.keys().next().value; IMG.delete(k); } }
   return im;
@@ -96,19 +100,20 @@ function cam(sh, t) {
   const ax = fx.ax ?? 540, ay = fx.ay ?? 960;
   if (fx.zout) { const k = clamp((t - (t1 - fx.zout[0])) / fx.zout[0]); z *= 1 + fx.zout[1] * k * k * k; }             // zoom-through exit
   if (fx.zin) { const k = clamp((t - t0) / fx.zin[0]); z *= 1 + fx.zin[1] * Math.pow(1 - k, 3); }                      // land from a bigger frame
-  if (fx.whipOut) { const k = clamp((t - (t1 - fx.whipOut[0])) / fx.whipOut[0]); dx += fx.whipOut[1] * 1400 * k * k; smear = Math.max(smear, k); }
-  if (fx.whipIn) { const k = clamp((t - t0) / fx.whipIn[0]); const r = 1 - k; dx -= fx.whipIn[1] * 1400 * r * r; smear = Math.max(smear, r); }
+  if (fx.whipOut) { const k = clamp((t - (t1 - fx.whipOut[0])) / fx.whipOut[0]); dx += fx.whipOut[1] * 540 * k * k; smear = Math.max(smear, k); }
+  if (fx.whipIn) { const k = clamp((t - t0) / fx.whipIn[0]); const r = 1 - k; dx -= fx.whipIn[1] * 540 * r * r; smear = Math.max(smear, r); }
   if (fx.tilt) rot += fx.tilt * (1 - e);
   return [z, dx, dy, rot, ax, ay, smear];
 }
-function blit(im, sh, t, clipRect, oy = 0, zMul = 1, ox0 = 0) {
+function blit(im, sh, t, clipRect, oy = 0, zMul = 1, ox0 = 0) {      // im = [frameA, frameB, frac]
   const [z, dx, dy, rot, ax, ay, smear] = cam(sh, t), sk = shake(t), fx = sh[11] || {};
   g.save();
   if (clipRect) { g.beginPath(); g.rect(...clipRect); g.clip(); }
   const bright = 1 + (fx.pulse ? fx.pulse.reduce((s, p) => s + (t >= p && t < p + 0.4 ? 0.35 * Math.exp(-(t - p) * 9) : 0), 0) : 0);
   g.filter = `${fx.filter || 'contrast(1.05) saturate(0.97)'} brightness(${bright.toFixed(3)})${fx.blur ? ` blur(${fx.blur(t - sh[0]).toFixed(1)}px)` : ''}`;
-  const draw = (ox, a) => { g.save(); g.globalAlpha = a; g.translate(ax + sk.x + dx + ox + ox0, ay + sk.y + dy + oy); g.rotate(sk.r + rot); g.scale(z * zMul, z * zMul); g.drawImage(im, -ax, -ay, 1080, 1920); g.restore(); };
-  if (smear > 0.05) { const dir = Math.sign((fx.whipOut || fx.whipIn)[1]); for (let i = 0; i < 6; i++) draw(-dir * i * 70 * smear, i ? 0.22 : 1); }
+  const draw = (ox, a) => { g.save(); g.globalAlpha = a; g.translate(ax + sk.x + dx + ox + ox0, ay + sk.y + dy + oy); g.rotate(sk.r + rot); g.scale(z * zMul * (fx.flip ? -1 : 1), z * zMul);
+    g.drawImage(im[0], -ax, -ay, 1080, 1920); if (im[2] > 0.02 && im[1] !== im[0]) { g.globalAlpha = a * im[2]; g.drawImage(im[1], -ax, -ay, 1080, 1920); } g.restore(); };
+  if (smear > 0.05) { const dir = Math.sign((fx.whipOut || fx.whipIn)[1]); for (let i = 0; i < 6; i++) draw(-dir * i * 40 * smear, i ? 0.22 : 1); }
   else draw(0, 1);
   g.restore(); g.filter = 'none';
   if (fx.dim && !clipRect) { g.fillStyle = `rgba(4,6,10,${fx.dim(t - sh[0]).toFixed(3)})`; g.fillRect(0, 0, 1080, 1920); }
@@ -144,11 +149,12 @@ function wordAnim(d, s, t, tw) {
   if (dt < 0) { s.style.opacity = 0; s.style.transform = 'none'; s.style.filter = 'none'; s.style.clipPath = 'none'; return; }
   let op = 1, tr = '', fl = 'none', cp = 'none';
   if (st === 'rise') { const k = OM.spring(dt, 0.62, 24); op = clamp(dt / 0.08); tr = `translateY(${((1 - k) * 40).toFixed(1)}px)`; if (dt < 0.2) fl = `blur(${(12 * (1 - dt / 0.2)).toFixed(1)}px)`; }
-  else if (st === 'slam') { const k = OM.spring(dt, 0.5, 34); op = clamp(dt / 0.04); tr = `scale(${(1 + 0.42 * (1 - k)).toFixed(4)})`; if (dt < 0.07) fl = `blur(${(6 * (1 - dt / 0.07)).toFixed(1)}px)`; }
+  else if (st === 'slam') { const k = OM.spring(dt, 0.5, 34); op = clamp(dt / 0.04); tr = `scale(${(1 + (d.slamAmp ?? 0.42) * (1 - k)).toFixed(4)})`; if (dt < 0.07) fl = `blur(${(6 * (1 - dt / 0.07)).toFixed(1)}px)`; }
   else if (st === 'pop') { const k = OM.spring(dt, 0.55, 26); op = clamp(dt / 0.06); tr = `translateY(${((1 - k) * 46).toFixed(1)}px) scale(${(0.82 + 0.18 * k).toFixed(4)})`; if (dt < 0.08) fl = `blur(${(8 * (1 - dt / 0.08)).toFixed(1)}px)`; }
-  else if (st === 'wipe') { const r = clamp(dt / 0.133); const k = OM.spring(dt, 0.5, 22); cp = `inset(-20% -5% -20% ${((1 - r) * 105).toFixed(1)}%)`; tr = `scale(${(1 + 0.12 * (1 - k)).toFixed(4)})`; if (dt < 0.07) fl = 'blur(2px)'; }
+  else if (st === 'wipe') { const r = clamp(dt / 0.133); const k = OM.spring(dt, 0.5, 22); cp = r >= 1 ? 'none' : `inset(-20% -5% -20% ${((1 - r) * 105).toFixed(1)}%)`; tr = `scale(${(1 + 0.12 * (1 - k)).toFixed(4)})`; if (dt < 0.07) fl = 'blur(2px)'; }
   else if (st === 'fade') { const r = clamp(dt / 0.42); op = r; if (r < 1) fl = `blur(${(8 * (1 - r)).toFixed(1)}px)`; }
-  else if (st === 'mask') { const r = 1 - Math.pow(1 - clamp(dt / 0.2), 3); cp = `inset(-20% -5% -20% ${((1 - r) * 105).toFixed(1)}%)`; tr = `translateX(${((1 - r) * -14).toFixed(1)}px)`; }
+  else if (st === 'mask') { const r = 1 - Math.pow(1 - clamp(dt / 0.2), 3); cp = r >= 0.999 ? 'none' : `inset(-20% -5% -20% ${((1 - r) * 105).toFixed(1)}%)`; tr = `translateX(${((1 - r) * -14).toFixed(1)}px)`;
+    s.style.setProperty('--cx', r < 0.999 ? `calc(${((1 - r) * 105).toFixed(1)}% + 2px)` : '-12px'); }
   else if (st === 'xrot') { const k = OM.spring(dt, 0.6, 22); op = clamp(dt / 0.08); tr = `perspective(700px) translateY(${((1 - k) * -50).toFixed(1)}px) rotateX(${(-30 * (1 - k)).toFixed(2)}deg)`; if (dt < 0.1) fl = `blur(${(6 * (1 - dt / 0.1)).toFixed(1)}px)`; }
   s.style.opacity = op; s.style.transform = tr; s.style.filter = fl; s.style.clipPath = cp;
   if (s.classList.contains('ul')) s.style.setProperty('--u', (1 - Math.pow(1 - clamp((dt - 0.12) / 0.3), 3)).toFixed(3));
@@ -178,7 +184,7 @@ function drawItems(t) {
 async function drawInsets(t) {           // video inside DOM cards: <canvas class="ins" data-clip data-src data-rate data-t0>
   const ps = [];
   for (const d of IT) { if (!(t >= d.t0 && t < d.t1) || !d.ins) continue;
-    for (const c of d.el.querySelectorAll('canvas.ins')) { const s = d.ins; const im = frameImg(s.clip, (s.src + (t - d.t0) * s.rate) * FPS);
+    for (const c of d.el.querySelectorAll('canvas.ins')) { const s = d.ins; const im = frameImg(s.clip, (s.src + (t - d.t0) * s.rate) * SRC_FPS);
       ps.push(im.__p.then(() => { const x = c.getContext('2d'); x.filter = 'contrast(1.05) saturate(0.97)'; const W = c.width, H = c.height, z = s.z || 1;
         const sw = 720 / z, sh = sw * H / W; x.drawImage(im, 360 - sw / 2 + (s.ox || 0), (s.oy ?? 640) - sh / 2, sw, sh, 0, 0, W, H); })); } }
   await Promise.all(ps);
@@ -186,9 +192,14 @@ async function drawInsets(t) {           // video inside DOM cards: <canvas clas
 
 async function seek(t) {
   const sh = shotAt(t), fx = sh ? sh[11] || {} : {};
-  let ims = [];
-  if (sh) { ims.push(frameImg(sh[2], srcT(sh, t) * FPS)); if (fx.split) { const s = fx.split; ims.push(frameImg(s.clip, (s.src + (t - sh[0]) * s.rate) * FPS)); } await Promise.all(ims.map(i => i.__p)); }
-  g.fillStyle = '#0b0d0f'; g.fillRect(0, 0, 1080, 1920);
+  const pair = async (clip, st) => { const f = Math.max(0, st * SRC_FPS), a = frameImg(clip, Math.floor(f)), b = frameImg(clip, Math.floor(f) + 1); await Promise.all([a.__p, b.__p]); return [a, b, f - Math.floor(f)]; };
+  let ims = [], nb = null;
+  if (sh) { ims.push(await pair(sh[2], srcT(sh, t))); if (fx.split) { const s = fx.split; ims.push(await pair(s.clip, s.src + (t - sh[0]) * s.rate)); }
+    const i = EDL.indexOf(sh);
+    if (fx.whipOut && t > sh[1] - fx.whipOut[0] && EDL[i + 1]) nb = [await pair(EDL[i + 1][2], EDL[i + 1][3]), -Math.sign(fx.whipOut[1]) * 1080];
+    if (fx.whipIn && t < sh[0] + fx.whipIn[0] && EDL[i - 1]) nb = [await pair(EDL[i - 1][2], srcT(EDL[i - 1], EDL[i - 1][1] - 1e-3)), Math.sign(fx.whipIn[1]) * 1080]; }
+  g.fillStyle = sh && sh[2] === 'k09_laptop_close' ? '#06080b' : '#C4C8CC'; g.fillRect(0, 0, 1080, 1920);
+  if (nb) blit(nb[0], sh, t, null, 0, 1, nb[1]);
   if (sh) {
     if (fx.split) { const s = fx.split, sh2 = [sh[0], sh[1], s.clip, s.src, s.rate, s.zz0, s.zz1, 0, 0, 0, 0, { pulse: s.pulse2, ax: s.ax2, ay: s.ay2 }];
       if (s.h) {                                   // side by side: primary in the right half (RTL: the source), secondary in the left
@@ -197,7 +208,7 @@ async function seek(t) {
       } else {
         blit(ims[0], sh, t, [0, 0, 1080, 958], s.oy1 || 0, s.z1 || 1); blit(ims[1], sh2, t, [0, 962, 1080, 958], s.oy2 || 0, 1);
         g.fillStyle = 'rgba(255,255,255,.85)'; g.fillRect(0, 958, 1080, 4); }
-    } else blit(ims[0], sh, t);
+    } else blit(ims[0], sh, t, null);
   }
   g.drawImage(VIG, 0, 0);
   g.globalAlpha = 0.035; g.globalCompositeOperation = 'overlay'; const gt = GR[Math.round(t * FPS) % 4];
@@ -209,11 +220,12 @@ async function seek(t) {
   document.getElementById('hud').textContent = t.toFixed(3);
   return true;
 }
-window.__seek = async t => { await seek(t); return true; };
-window.__ready = document.fonts.ready.then(() => { measure(); return seek(0); });
-window.__motion = (t0, t1) => {
+const LEAD = 1 / 60;
+window.__seek = async t => { await seek(t + LEAD); return true; };
+window.__ready = document.fonts.ready.then(() => { measure(); return seek(LEAD); });
+window.__motion = (t0, t1) => { t0 += LEAD; t1 += LEAD;
   const a = shotAt(t0), b = shotAt(t1); if (a !== b) return 120;
-  let ui = 0; for (const d of IT) { const te = d.te ?? d.t0; if ((t1 >= te && t0 < te + 0.4) || (d.move && t1 >= d.t0 && t0 < d.t1 && d.fast)) ui = 45; }
+  let ui = 0; for (const d of IT) { const te = d.te ?? d.t0; if (t1 >= te && t0 < te + 0.4) ui = Math.max(ui, d.enter === 'up' ? 260 : d.enter === 'drop' ? 140 : 90); if (d.move && d.fast && t1 >= d.t0 && t0 < d.t1) ui = Math.max(ui, 300); }
   if (!a) return 24 + ui;
   const m = t => { const c = cam(a, t), sk = shake(t); return [c[1] + sk.x, c[2] + sk.y, c[0], c[6]]; };
   const p = m(t0), q = m(t1); return Math.max(ui, Math.hypot(p[0] - q[0], p[1] - q[1]) + Math.abs(p[2] - q[2]) * 1100 + Math.max(p[3], q[3]) * 300) + 24;

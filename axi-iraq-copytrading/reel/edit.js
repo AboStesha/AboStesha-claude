@@ -14,28 +14,28 @@ window.EDL = [
   S(b(2), b(4), 'k01_hook', 0.968, 1.0, 1.18, 1.21, [0, -30, 0, -40], { ay: 760, rot: -0.026, zout: [0.24, 0.14] }),
   // ── 03 DROP A: the tablet into the lens, red frames, match cut into the glass space ──
   S(b(4), b(5), 'k02_push', 3.0, 3.3, 1.0, 1.22, [0, 0, 0, 40], { ease: 'in', ay: 700 }),
-  S(b(5), b(8), 'k16_glass', 0.2, 1.0, 1.0, 1.12, [0, 0, 0, 0], { zin: [0.3, 0.5], zout: [0.16, 0.7], filter: 'contrast(1.04) saturate(0.12) brightness(1.03)' }),
+  S(b(5), b(8), 'k16_glass', 0.2, 1.0, 1.0, 1.12, [0, 0, 0, 0], { zin: [0.3, 0.5], zout: [0.16, 0.7], filter: 'contrast(1.04) grayscale(1) brightness(1.03)' }),
   // ── 04 traders from around the world ──
-  S(b(8), b(12), 'k16_glass', 1.8, 0.9, 1.15, 1.02, [0, 0, -20, 0], { zin: [0.25, 0.35], whipOut: [0.13, -1], filter: 'contrast(1.04) saturate(0.12) brightness(1.03)' }),
+  S(b(8), b(12), 'k16_glass', 1.8, 0.9, 1.15, 1.02, [0, 0, -20, 0], { zin: [0.25, 0.35], whipOut: [0.13, -1], filter: 'contrast(1.04) grayscale(1) brightness(1.03)' }),
   // ── 05 step 01: choose ──
   S(b(12), b(14), 'k04_noor_tablet', 0.3, 1.0, 1.04, 1.1, [0, 0, 0, 0], { whipIn: [0.13, -1], ay: 640 }),
   S(b(14), b(16), 'k04_noor_tablet', 2.4, 1.0, 1.28, 1.34, [0, 70, 0, 60], { ay: 640 }),
   // ── 06 step 02: size + risk ──
-  S(b(16), b(18), 'k05_coin', 0.15, 1.15, 1.12, 1.0, [0, 120, 0, 120], { ease: 'snap' }),
+  S(b(16), b(18), 'k05_coin', 0.15, 1.15, 1.30, 1.15, [0, 120, 0, 120], { ease: 'snap' }),
   S(b(18), b(20), 'k05_coin', 2.1, 1.0, 1.18, 1.26, [0, 40, 0, 30]),
   // ── 07 step 03: split screen, the trade travels ──
-  S(b(20), b(24), 'k06_saeed_tap', 2.0, 0.9, 1.0, 1.06, [0, 0, 0, 0], { ax: 600, ay: 1150, split: { h: true, clip: 'k07_noor_glow', src: 1.3, rate: 0.9, zz0: 1.0, zz1: 1.05, ox1: 210, ox2: -150, ax2: 540, ay2: 760, pulse2: [10.645] }, pulse: [10.16] }),
+  S(b(20), b(24), 'k06_saeed_tap', 1.5, 0.5, 1.0, 1.06, [0, 0, 0, 0], { ax: 600, ay: 1150, split: { h: true, clip: 'k07_noor_glow', src: 1.3, rate: 0.9, zz0: 1.0, zz1: 1.05, ox1: 210, ox2: -150, ax2: 540, ay2: 760, pulse2: [10.645] }, pulse: [10.16] }),
   // ── 08 no skills, no minimum ──
   S(b(24), b(26), 'k08_step', 0.2, 1.0, 1.02, 1.08, [0, 0, 0, 0], { ay: 700 }),
   S(b(26), STOP, 'k08_step', 2.5, 1.0, 1.32, 1.4, [0, 120, 0, 110], { ay: 700 }),
   // ── 09 BREAK: the lid shuts on the stop hit, tape-stop ramp, dark, dawn line ──
-  S(STOP, DROPB, 'k09_laptop_close', 1.05, 1.0, 1.08, 1.2, [0, 0, 0, 0], { ramp: ramp(1.4, 0.2, 0.286), dim: u => 0.12 + 0.76 * sstep(1.25, 1.42, u) }),
+  S(STOP, DROPB, 'k09_laptop_close', 0.45, 1.0, 1.08, 1.25, [0, 0, 0, 0], { ramp: ramp(12, 0.2, 0.2), dim: u => 0.12 + 0.76 * sstep(1.25, 1.42, u) }),
   // ── 10 DROP B: holiday / family ──
   S(DROPB, b(33), 'k15_tigris', 1.2, 1.0, 1.0, 1.06, [0, 0, 0, 0], { zin: [0.22, 0.3] }),
   S(b(33), b(34), 'k10_marsh', 1.4, 1.0, 1.04, 1.1),
-  S(b(34), b(36), 'k11_family', 2.55, 1.0, 1.0, 1.06, [0, 0, 0, 0], { zout: [0.3, 2.8], ax: 523, ay: 990 }),
+  S(b(34), b(36), 'k11_family', 2.55, 1.0, 1.0, 1.06, [0, 0, 0, 0], { zout: [0.3, 2.8], ax: 546, ay: 1040 }),
   // ── 11 inside the phone ──
-  S(b(36), b(40), 'k16_glass', 2.6, 0.9, 1.0, 1.1, [0, 0, 0, 0], { zin: [0.3, 0.9], filter: 'contrast(1.04) saturate(0.12) brightness(1.03)' }),
+  S(b(36), b(40), 'k16_glass', 3.6, 0.7, 1.0, 1.1, [0, 0, 0, 0], { zin: [0.3, 0.9], flip: true, filter: 'contrast(1.04) grayscale(1) brightness(1.03)' }),
   // ── 12 control ──
   S(b(40), b(42), 'k12_noor_turn', 0.6, 1.0, 1.0, 1.05, [0, 0, 0, 0], { zin: [0.3, 0.35], ay: 640 }),
   S(b(42), b(44), 'k12_noor_turn', 2.7, 1.0, 1.26, 1.32, [0, 80, 0, 70], { ay: 640 }),
@@ -43,11 +43,11 @@ window.EDL = [
   S(b(44), b(46), 'k13_stack', 0.3, 1.0, 1.0, 1.08),
   S(b(46), b(48), 'k13_stack', 2.6, 1.0, 1.25, 1.32, [0, 40, 0, 40]),
   // ── 14 one app ──
-  S(b(48), b(50), 'k14_phone3d', 0.4, 1.0, 1.12, 1.0, [0, 60, 0, 60], { ease: 'snap' }),
-  S(b(50), b(52), 'k14_phone3d', 2.6, 1.0, 1.0, 1.06, [0, 90, 0, 100]),
+  S(b(48), b(50), 'k14_phone3d', 0.4, 1.0, 1.16, 1.09, [0, 60, 0, 60], { ease: 'snap' }),
+  S(b(50), b(52), 'k14_phone3d', 3.6, 1.0, 1.17, 1.2, [0, 150, 0, 160]),
   // ── 15 CTA ──
   S(b(52), b(54), 'k04_noor_tablet', 3.0, 1.0, 1.05, 1.1, [0, 0, 0, 0], { ay: 640 }),
-  S(b(54), FINAL, 'k07_noor_glow', 3.3, 1.0, 1.2, 1.26, [0, 150, 0, 140], { ay: 640 }),
+  S(b(54), FINAL, 'k07_noor_glow', 3.3, 1.0, 1.2, 1.26, [0, 120, 0, 115], { ay: 640 }),
   // ── 16 red end card (DOM), then the hook frame played backwards so the reel loops into frame 0 ──
   S(FINAL, CTA, 'k01_hook', 1.9, 0, 1.0, 1.0),
   S(CTA, 30.01, 'k01_hook', 1.9, -1.0, 1.0, 1.0, [0, 0, 0, 0], { ay: 760 }),
@@ -82,9 +82,9 @@ U(0, 30.01, 81, 1615, '<img src="img/wm.png" style="width:54px;display:block;opa
 
 // ═══ 01–02 hook ═══
 const suck = t => { const k = clamp((t - (b(4) - E8)) / E8); return { sc: 1 - 0.22 * k * k, op: 1 - k * k }; };
-T(0, b(4), 540, 1390, 120, [[W('لا'), W('وقت؟')]], [-0.22, -0.15], { cls: 'ar gD pill', style: 'wipe', enter: 'pop', te: -0.12, dimAt: [b(2), 0.45],
+T(0, b(4), 540, 1390, 120, [[W('لا'), W('وقت؟')]], [-0.08, -0.02], { cls: 'ar gD pill', style: 'wipe', enter: 'pop', te: -0.05, dimAt: [b(2), 0.45],
   move: join(t => ({ dy: -128 * OM.spring(Math.max(0, t - b(2)), 0.7, 24) * (t >= b(2)) }), suck) });
-T(b(2), b(4), 540, 1530, 120, [[W('لا'), W('خبرة؟', 'b')]], [b(2), b(2) + 0.06], { cls: 'ar gD pill', style: 'slam', enter: 'pop', move: suck });
+T(b(2), b(4), 540, 1550, 120, [[W('لا'), W('خبرة؟', 'b')]], [b(2), b(2) + 0.06], { cls: 'ar gD pill', style: 'slam', slamAmp: 0.2, enter: 'pop', move: suck });
 
 // ═══ 03 drop A ═══
 T(b(4), b(8), 540, 1170, 104, [words('انسخ صفقات').map((w, i) => i ? w : W(w[0], 'b ul')), words('أصحاب الخبرة')], steps(b(4) + 0.02, 4, 0.06),
@@ -93,58 +93,60 @@ T(b(5), b(8), 540, 1415, 52, [words('Axi Copy Trading')], steps(b(5), 3, 0.05), 
 
 // ═══ 04 the best traders, from around the world ═══
 const W4 = whip(b(12));
-[['img/forex_coin_EUR_rosegold.png', 905, 520, 210, 5, 18, -6], ['img/commodities_silver_bar_macro.png', 150, 930, 260, 8, -14, 4],
- ['img/red_chrome_plate_AVAX.png', 900, 1470, 190, 6, 10, -8]].forEach(([src, x, y, w, bl, vx, r], i) =>
+[['img/forex_coin_EUR_rosegold.png', 985, 720, 180, 5, 12, -6], ['img/commodities_silver_bar_macro.png', 900, 1040, 240, 8, -8, 4],
+ ['img/red_chrome_plate_AVAX.png', 815, 1360, 180, 6, 6, -8]].forEach(([src, x, y, w, bl, vx, r], i) =>
   U(b(8), b(12), x, y, `<img src="${src}" style="width:${w}px;display:block;filter:blur(${bl}px)">`, { enter: 'pop', te: b(8) + 0.05 * i, move: join(drift(b(8), vx, -8, r), W4) }));
 T(b(8), b(12), 540, 330, 98, [[W('أفضل'), W('المتداولين', 'b')], words('من حول العالم')], [b(8) + 0.03, b(8) + 0.09, b(9), b(9) + 0.06, b(9) + 0.12],
   { cls: 'ar ink', style: 'rise', enter: 'none', te: b(8), move: W4 });
-const spark = (pts, w = 250, h = 74) => { const xs = pts.map((v, i) => [w - i * w / (pts.length - 1), h - v * h]); const d = 'M' + xs.map(p => p.map(n => n.toFixed(1)).join(' ')).join(' L');
+// sparkline: time runs left → right, as in trading apps
+const spark = (pts, w = 250, h = 74) => { const xs = pts.map((v, i) => [i * w / (pts.length - 1), h - v * h]); const d = 'M' + xs.map(p => p.map(n => n.toFixed(1)).join(' ')).join(' L');
   return `<svg width="${w}" height="${h + 6}" style="display:block;overflow:visible"><path d="${d}" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" data-len="700" stroke-dasharray="700" stroke-dashoffset="700"/></svg>`; };
 const card = (av, tok, pts, extra = '') => `<div style="direction:rtl;display:flex;align-items:center;gap:26px;padding:26px 30px 34px;height:100%;box-sizing:border-box">
   ${av}<div style="flex:1"><div style="display:flex;gap:8px;margin-bottom:14px">${tok.map(s => `<span class="chip chipD lat" style="font-size:26px;margin:0">${s}</span>`).join('')}</div>${spark(pts)}</div></div>${extra}${TAG}`;
 const mono = s => `<div style="width:120px;height:120px;border-radius:50%;flex:none;background:linear-gradient(135deg,#8f9ba3,#4c565d);display:flex;align-items:center;justify-content:center;
   font:500 44px Inter;color:#fff;filter:blur(2.5px)">${s}</div>`;
 const CARDS = [
-  [640, 760, card('<canvas class="ins" width="240" height="240" style="width:120px;height:120px;border-radius:50%;flex:none;display:block"></canvas>', ['XAU/USD', 'EUR/USD'],
-    [.25, .4, .32, .55, .46, .7, .58, .78, .66, .88], '<div class="redpill ar" style="position:absolute;left:24px;top:22px;font-size:26px;padding:4px 22px 8px">انسخ</div>'),
-    { clip: 'k03_saeed_turn', src: 0.6, rate: 1, z: 2.3, oy: 300 }],
-  [540, 1040, card(mono('MR'), ['US500'], [.3, .22, .45, .38, .6, .5, .44, .66, .58, .72])],
-  [440, 1320, card(mono('LK'), ['EUR/USD'], [.4, .5, .36, .52, .47, .64, .55, .5, .7, .76])],
+  [640, 760, card('<canvas class="ins" width="240" height="240" style="width:120px;height:120px;border-radius:50%;flex:none;display:block"></canvas>', ['XAU/USD'],
+    [.5, .62, .4, .58, .35, .66, .45, .6, .42, .52], '<div class="redpill ar" style="position:absolute;left:24px;top:22px;font-size:26px;padding:4px 22px 8px">انسخ</div>'),
+    { clip: 'k03_saeed_turn', src: 0.6, rate: 1, z: 1.8, oy: 330 }],
+  [540, 1040, card(mono('MR'), ['US500'], [.55, .4, .6, .35, .5, .42, .58, .38, .5, .45])],
+  [440, 1320, card(mono('LK'), ['EUR/USD'], [.6, .5, .66, .45, .55, .4, .5, .35, .45, .4])],
 ];
 CARDS.forEach(([x, y, html, ins], i) => { const te = b(8) + 0.12 + i * E8;
   U(b(8), b(12), x, y, html, { cls: 'gD', w: 600, h: 230, enter: 'rise', te, ins, fast: true,
     move: join(drift(b(8), -10 - 8 * i, -6), W4), upd: (t, el) => stroke(el, 'path', (t - te - 0.15) / 0.55) }); });
-T(b(9), b(12), 540, 1560, 32, [[W('الأداء السابق لا يضمن النتائج المستقبلية', 'm')]], [b(9) + 0.1], { cls: 'ar ink', style: 'fade', enter: 'none', move: W4 });
+T(b(8) + 0.25, b(12), 540, 1560, 36, [[W('الأداء السابق لا يضمن النتائج المستقبلية', 'm')]], [b(8) + 0.25], { cls: 'ar gD pill', style: 'rise', enter: 'none', te: b(8) + 0.25, move: W4 });
 
 // ═══ 05 step 01: choose your trader ═══
 const glassWipe = tc => U(tc - 0.15, tc + 0.15, 540, 960, '', { layer: 'top', cls: 'gL', w: 1300, h: 2100, enter: 'none', te: tc - 0.15, still: true, fast: true,
   move: t => ({ dx: lerp(1350, -1350, OM.ease.cubicInOut(clamp((t - tc + 0.15) / 0.3))) }) });
-NUM(b(12), b(16), 880, 905, '01');
-T(b(12), b(16), 540, 1080, 100, [[W('اختر'), W('متداولك', 'b')], words('راجع أداءه السابق ورسومه', 'm', 'mask')], [b(12) + 0.08, b(12) + 0.14, ...steps(b(13), 4)],
+NUM(b(12), b(16), 880, 835, '01');
+T(b(12), b(16), 540, 1010, 100, [[W('اختر'), W('متداولك', 'b')], words('راجع أداءه السابق ورسومه', 'm', 'mask')], [b(12) + 0.08, b(12) + 0.14, ...steps(b(13), 4, BT / 4)],
   { cls: 'ar gD pad', lsize: [100, 50], enter: 'fold', omega: 30, zeta: 0.75, style: 'rise', caret: b(16) });
-const chipsHTML = ['الربحية', 'نوع الأصل', 'مستوى المخاطر'].map((s, i) => `<span class="chip chipL" data-i="${i}" style="font-size:28px">${s}</span>`).join('');
-const rowsHTML = ['سجل العوائد', 'الأسواق', 'رسوم الأداء'].map((s, i) => `<div style="display:flex;align-items:center;gap:22px;margin-top:16px"><div style="width:190px;font-size:30px">${s}</div>
+const chipsHTML = ['الربحية', 'نوع الأصل', 'مستوى المخاطر'].map((s, i) => `<span class="chip chipD" data-i="${i}" style="font-size:28px">${s}</span>`).join('');
+const rowsHTML = ['سجل العوائد', 'الأسواق', 'رسوم الأداء'].map((s, i) => `<div style="display:flex;align-items:center;gap:22px;margin-top:10px"><div style="width:190px;font-size:30px">${s}</div>
   <div class="bar" data-i="${i}" style="flex:1;transform-origin:100% 50%"></div></div>`).join('');
-U(b(12), b(16), 520, 1425, `<div dir="rtl" style="padding:22px 36px;font-size:34px;font-weight:500">اكتشف المتداولين<div style="margin:14px -6px 4px">${chipsHTML}</div>${rowsHTML}</div>${TAG}`,
-  { cls: 'gL', w: 800, h: 330, enter: 'up', te: b(12) + 0.18, upd: (t, el) => {
-    el.querySelectorAll('.chip').forEach(c => { const on = t >= b(13) + c.dataset.i * BT * 0.5; c.style.background = on ? '#242528' : ''; c.style.color = on ? '#fff' : ''; });
+U(b(12), b(16), 520, 1420, `<div dir="rtl" style="padding:20px 36px 24px;font-size:34px;font-weight:500;line-height:1.25">اكتشف المتداولين<div style="margin:10px -6px 2px">${chipsHTML}</div>${rowsHTML}
+  <div style="margin-top:14px;font-size:34px;font-weight:400;opacity:.92">الأداء السابق لا يضمن النتائج المستقبلية</div></div><div class="tag" style="position:absolute;left:28px;top:20px">للتوضيح فقط</div>`,
+  { cls: 'gD', w: 800, enter: 'up', te: b(12) + 0.18, upd: (t, el) => {
+    el.querySelectorAll('.chip').forEach(c => { const on = t >= b(13) + c.dataset.i * BT * 0.5; c.style.background = on ? '#fff' : ''; c.style.color = on ? '#242528' : ''; });
     el.querySelectorAll('.bar').forEach(r => { r.style.transform = `scaleX(${(1 - Math.pow(1 - clamp((t - b(12) - 0.4 - r.dataset.i * 0.12) / 0.4), 3)) * [0.9, 0.62, 0.4][r.dataset.i]})`; }); } });
 glassWipe(b(16));
 
 // ═══ 06 step 02: trade size + risk ═══
 NUM(b(16), b(20), 880, 265, '02');
-T(b(16), b(20), 540, 515, 92, [words('حدد حجم التداول'), [W('والمخاطرة', 'b')]], steps(b(16), 4), { cls: 'ar gD pad', style: 'pop', enter: 'rise' });
-const ring = (r, pct, col = '#242528') => `<svg width="${2 * r + 16}" height="${2 * r + 16}" style="display:block"><circle cx="${r + 8}" cy="${r + 8}" r="${r}" fill="none" stroke="rgba(36,37,40,.14)" stroke-width="12"/>
+T(b(16), b(20), 540, 525, 96, [words('حدد حجم التداول'), [W('والمخاطرة', 'b')]], steps(b(16), 4), { cls: 'ar gD pad', style: 'pop', enter: 'rise' });
+const ring = (r, pct, col = '#242528', track = 'rgba(36,37,40,.14)') => `<svg width="${2 * r + 16}" height="${2 * r + 16}" style="display:block"><circle cx="${r + 8}" cy="${r + 8}" r="${r}" fill="none" stroke="${track}" stroke-width="12"/>
   <circle class="rg" cx="${r + 8}" cy="${r + 8}" r="${r}" fill="none" stroke="${col}" stroke-width="12" stroke-linecap="round" transform="rotate(-90 ${r + 8} ${r + 8})"
   stroke-dasharray="${(2 * Math.PI * r).toFixed(1)}" stroke-dashoffset="${(2 * Math.PI * r).toFixed(1)}" data-c="${(2 * Math.PI * r).toFixed(1)}" data-p="${pct}"/></svg>`;
 const setRing = (el, k) => el.querySelectorAll('.rg').forEach(c => { c.setAttribute('stroke-dashoffset', (c.dataset.c * (1 - c.dataset.p * clamp(k))).toFixed(1)); });
-U(b(16), b(20), 520, 1420, `<div dir="rtl" style="display:flex;align-items:center;gap:36px;padding:30px 40px 40px;height:100%;box-sizing:border-box">
+U(b(16), b(20), 520, 1435, `<div dir="rtl" style="display:flex;align-items:center;gap:36px;padding:26px 40px 64px;height:100%;box-sizing:border-box">
    <div style="flex:1"><div style="font-size:34px;font-weight:500;margin-bottom:34px">حجم التداول</div>
      <div style="position:relative;height:12px;border-radius:6px;background:rgba(36,37,40,.16)"><div class="fill" style="position:absolute;right:0;top:0;bottom:0;border-radius:6px;background:#242528"></div>
      <div class="knob" style="position:absolute;top:-20px;width:52px;height:52px;border-radius:50%;background:#E4002E;box-shadow:0 4px 14px rgba(0,0,0,.25)"></div></div>
-     <div style="display:flex;justify-content:space-between;margin-top:30px;font-size:24px;opacity:.6"><span>منخفض</span><span>مرتفع</span></div></div>
+     <div style="display:flex;justify-content:space-between;margin-top:30px;font-size:28px;opacity:.8"><span>منخفض</span><span>مرتفع</span></div></div>
    <div style="text-align:center">${ring(62, 0.32)}<div class="lat" style="font-size:30px;font-weight:500;margin-top:6px">Max Drawdown</div></div></div>${TAG}`,
-  { cls: 'gL', w: 800, h: 300, enter: 'up', te: b(16) + 0.2, upd: (t, el) => {
+  { cls: 'gL', w: 800, h: 335, enter: 'up', te: b(16) + 0.2, upd: (t, el) => {
     const k = OM.spring(Math.max(0, t - b(17)), 0.7, 14), pos = lerp(0.7, 0.24, k);              // knob settles low as «والمخاطرة» lands (8.468)
     el.querySelector('.knob').style.right = `calc(${(pos * 100).toFixed(2)}% - 26px)`; el.querySelector('.fill').style.width = (pos * 100).toFixed(2) + '%';
     setRing(el, (t - b(17.5)) / 0.5); } });
@@ -152,22 +154,22 @@ U(b(16), b(20), 520, 1420, `<div dir="rtl" style="display:flex;align-items:cente
 // ═══ 07 step 03: your account copies automatically (split) ═══
 const DEP = b(21), ARR = b(22);
 const along = (a, c) => t => a + (c - a) * OM.ease.cubicInOut(clamp((t - DEP) / (ARR - DEP)));
-NUM(b(20), b(24), 880, 265, '03');
-T(b(20), b(24), 540, 470, 84, [[...words('حسابك ينسخ صفقاته'), W('تلقائيا', 'b')]], steps(b(20) + 0.03, 4, 0.06), { cls: 'ar gD pill', style: 'rise', enter: 'rise' });
-U(b(20), b(24), 720, 1330, `<div dir="rtl" style="display:flex;align-items:center;gap:16px;padding:14px 28px 18px;font-size:36px;font-weight:500">
+NUM(b(20), b(24), 880, 1160, '03');
+T(b(20), b(24), 540, 915, 96, [words('حسابك ينسخ'), [W('صفقاته'), W('تلقائيا', 'b')]], steps(b(20) + 0.03, 4, 0.06), { cls: 'ar gD pad', style: 'rise', enter: 'rise' });
+U(b(20), b(24), 680, 1330, `<div dir="rtl" style="display:flex;align-items:center;gap:16px;padding:14px 28px 18px;font-size:36px;font-weight:500">
   <span style="width:18px;height:18px;border-radius:50%;background:#E4002E;display:inline-block"></span>صفقة جديدة<span class="chip chipL lat" style="margin:0;font-size:28px">XAU/USD</span></div>`,
-  { cls: 'gL pill', enter: 'pop', te: DEP - 0.12, fast: true, move: t => ({ dx: along(0, -430)(t), dy: -40 * Math.sin(Math.PI * clamp((t - DEP) / (ARR - DEP))), sc: 1 - 0.08 * clamp((t - ARR) / 0.3) }) });
+  { cls: 'gL op pill', enter: 'pop', te: DEP - 0.12, fast: true, move: t => ({ dx: along(0, -360)(t), dy: -40 * Math.sin(Math.PI * clamp((t - DEP) / (ARR - DEP))), sc: 1 - 0.08 * clamp((t - ARR) / 0.3) }) });
 
 // ═══ 08 no advanced skills, no minimum deposit ═══
 const check = `<svg width="64" height="64" viewBox="0 0 64 64" style="vertical-align:middle;margin-left:20px"><circle cx="32" cy="32" r="30" fill="#E4002E"/>
   <path d="M18 33 L28 43 L47 22" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" data-len="48" stroke-dasharray="48" stroke-dashoffset="48"/></svg>`;
 const chk = te => (t, el) => stroke(el, 'path', (t - te - 0.1) / 0.25);
-T(b(24), STOP, 520, 1150, 62, [[W(check, 'ic', 'pop'), ...words('بلا خبرة متقدمة')]], [b(24), b(24) + 0.06, b(24) + 0.12, b(24) + 0.18], { cls: 'ar gL pad', enter: 'slideL', te: b(24), upd: chk(b(24)), w: 800 });
-T(b(25), STOP, 520, 1335, 62, [[W(check, 'ic', 'pop'), ...words('بلا حد أدنى للإيداع')], [W('تحتاج رصيدا يكفي لإدارة المخاطر', 'm', 'fade')]],
-  [b(25), b(25) + 0.06, b(25) + 0.12, b(25) + 0.18, b(25) + 0.24, b(25) + 0.3], { cls: 'ar gL pad', lsize: [62, 34], enter: 'slideL', te: b(25), upd: chk(b(25)), w: 800 });
+T(b(24), STOP, 520, 1150, 56, [[W(check, 'ic', 'pop'), ...words('بلا خبرة متقدمة')]], [b(24), b(24) + 0.06, b(24) + 0.12, b(24) + 0.18], { cls: 'ar gD pad ra', enter: 'slideL', te: b(24), upd: chk(b(24)), w: 800 });
+T(b(25), STOP, 520, 1345, 56, [[W(check, 'ic', 'pop'), ...words('بلا حد أدنى للإيداع')], [W('تحتاج رصيدا يكفي لإدارة المخاطر', 'm', 'rise')]],
+  [b(25), b(25) + 0.06, b(25) + 0.12, b(25) + 0.18, b(25) + 0.24, b(25) + 0.06], { cls: 'ar gD pad ra', lsize: [56, 40], enter: 'slideL', te: b(25), upd: chk(b(25)), w: 800 });
 
 // ═══ 09 break ═══
-T(13.834, DROPB, 540, 1240, 92, [words('ودع السهر'), words('على الشاشات')], steps(13.834, 4, 0.12), { cls: 'ar shadow', style: 'fade', enter: 'none', te: 13.834 });
+T(13.834, DROPB, 540, 1240, 96, [words('ودع السهر'), words('على الشاشات')], steps(13.834, 4, 0.12), { cls: 'ar shadow', style: 'fade', enter: 'none', te: 13.834 });
 
 // ═══ 10 holiday / family ═══
 T(DROPB, b(34), 540, 560, 100, [[W('في'), W('إجازة؟', 'b')]], [DROPB, DROPB + 0.05], { cls: 'ar gD pill', style: 'pop', enter: 'pop', zeta: 0.45, omega: 26 });
@@ -178,70 +180,95 @@ T(b(36), b(40), 540, 470, 96, [words('دع التطبيق'), [W('يتولى'), W
 const NOTE = [['EUR/USD', b(36.5)], ['XAU/USD', b(37.5)], ['US500', b(38.5)]];
 NOTE.forEach(([tok, te], i) => U(te, b(40), 520, 880, `<div dir="rtl" style="display:flex;align-items:center;gap:24px;padding:20px 28px;height:100%;box-sizing:border-box">
   <div style="width:84px;height:84px;border-radius:20px;background:#E4002E;flex:none;display:flex;align-items:center;justify-content:center"><img src="img/axi_white.png" style="width:58px"></div>
-  <div style="flex:1"><div style="font-size:38px;font-weight:500">تم نسخ صفقة جديدة</div><div style="margin-top:8px;font-size:26px;opacity:.65"><span class="lat">${tok}</span> · الآن</div></div></div>`,
+  <div style="flex:1"><div style="font-size:38px;font-weight:500">تم نسخ صفقة جديدة</div><div style="margin-top:8px;font-size:28px;opacity:.75"><span class="lat">${tok}</span> · الآن</div></div></div>
+  <div class="tag" style="position:absolute;left:28px;top:50%;transform:translateY(-50%)">للتوضيح فقط</div>`,
   { cls: 'gD', w: 800, h: 136, enter: 'drop', te, zeta: 0.55, omega: 24, fast: true,
     move: t => ({ dy: NOTE.slice(i + 1).reduce((s, [, t2]) => s + 158 * OM.spring(Math.max(0, t - t2), 0.62, 22) * (t >= t2), 0) }) }));
 
 // ═══ 12 control stays with you ═══
-T(b(40), b(44), 540, 1050, 100, [[W('التحكم'), W('بيدك', 'b')], words('أوقف النسخ متى شئت', 'm', 'mask')], [b(40), b(40) + 0.06, ...steps(b(41), 4)],
+T(b(40), b(44), 540, 1050, 100, [[W('التحكم'), W('بيدك', 'b')], words('أوقف النسخ متى شئت', 'm', 'mask')], [b(40), b(40) + 0.06, ...steps(b(41), 4, BT / 4)],
   { cls: 'ar gD pad', lsize: [100, 54], style: 'slam', enter: 'rise', caret: b(44) });
 U(b(40), b(44), 520, 1390, `<div dir="rtl" style="display:flex;align-items:center;gap:30px;padding:28px 40px;height:100%;box-sizing:border-box">
   <div class="sw" style="position:relative;width:132px;height:72px;border-radius:36px;flex:none"><div class="kn" style="position:absolute;top:8px;width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.25)"></div></div>
   <div style="flex:1;position:relative;height:60px;font-size:42px;font-weight:500"><span class="on" style="position:absolute;right:0;top:0">النسخ مفعل</span><span class="off" style="position:absolute;right:0;top:0">النسخ متوقف</span></div>
-  <div style="text-align:center">${ring(46, 0.35)}<div class="lat" style="font-size:20px;margin-top:4px">Max Drawdown</div></div></div>`,
-  { cls: 'gL', w: 800, h: 210, enter: 'pop', te: b(40), zeta: 0.5, omega: 26, upd: (t, el) => {
+  <div style="text-align:center">${ring(46, 0.35, '#fff', 'rgba(255,255,255,.2)')}<div class="lat" style="font-size:28px;margin-top:4px">Max Drawdown</div></div></div>`,
+  { cls: 'gD', w: 800, h: 220, enter: 'pop', te: b(40), zeta: 0.5, omega: 26, upd: (t, el) => {
     const tf = b(42), k = OM.spring(Math.max(0, t - tf), 0.6, 30) * (t >= tf);
-    el.querySelector('.sw').style.background = t >= tf ? 'rgba(36,37,40,.28)' : '#E4002E';
+    el.querySelector('.sw').style.background = t >= tf ? 'rgba(255,255,255,.28)' : '#E4002E';
     el.querySelector('.kn').style.left = (8 + 60 * k).toFixed(1) + 'px';                     // RTL: on = knob left, off = knob right
     el.querySelector('.on').style.opacity = 1 - clamp((t - tf) / 0.1); el.querySelector('.on').style.transform = `translateY(${(-30 * clamp((t - tf) / 0.15)).toFixed(1)}px)`;
     el.querySelector('.off').style.opacity = clamp((t - tf) / 0.12); el.querySelector('.off').style.transform = `translateY(${(30 * (1 - clamp((t - tf) / 0.15))).toFixed(1)}px)`;
     setRing(el, (t - b(40) - 0.2) / 0.5); } });
+T(b(40) + 0.2, b(44), 520, 1545, 34, [[W('للتوضيح فقط', 'm')]], [b(40) + 0.2], { cls: 'ar shadow', style: 'rise', enter: 'none', te: b(40) + 0.2 });
 
 // ═══ 13 proof ═══
-T(b(44), b(48), 540, 1420, 78, [words('أفضل منصة لنسخ', '', 'mask').concat([W('الصفقات*', 'b', 'mask')]), [W('Global Forex Awards · MENA 2023', '', 'fade')], [W('*مجموعة شركات آكسي', 'm', 'none')]],
-  [...steps(b(44) + 0.15, 4, 0.09), b(45), b(44)], { cls: 'ar gD pad', lsize: [78, 38, 28], lcls: ['', 'lat', ''], enter: 'rise', style: 'mask',
+T(b(44), b(48), 497, 1390, 96, [words('أفضل منصة', '', 'mask'), [W('لنسخ', '', 'mask'), W('الصفقات*', 'b', 'mask')], [W('Global Forex Awards · MENA 2023', '', 'fade')], [W('*مجموعة شركات آكسي', 'm', 'none')]],
+  [...steps(b(44) + 0.15, 4, 0.09), b(45), b(44)], { cls: 'ar gD pad', lsize: [96, 96, 38, 34], lcls: ['', '', 'lat', ''], enter: 'rise', style: 'mask',
     after: '<div class="sheen" style="position:absolute;top:-20%;bottom:-20%;width:180px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);pointer-events:none"></div>',
     upd: (t, el) => { const s = el.querySelector('.sheen'); const k = clamp((t - b(44) - 0.12) / 0.6), k2 = clamp((t - b(46)) / 0.6);
       s.style.right = (k2 > 0 ? lerp(-200, el.offsetWidth + 40, k2) : lerp(-200, el.offsetWidth + 40, k)).toFixed(0) + 'px'; } });
-const sheenCls = document.createElement('style'); sheenCls.textContent = '.gD{overflow:hidden}'; document.head.appendChild(sheenCls);
+const sheenCls = document.createElement('style'); sheenCls.textContent = '.gD{overflow:hidden}.ra{text-align:right}'; document.head.appendChild(sheenCls);
 
 // ═══ 14 all in one app ═══
-T(b(48), b(52), 540, 330, 100, [words('كل هذا'), [W('في'), W('تطبيق'), W('واحد', 'b')]], steps(b(48), 5, 0.08), { cls: 'ar ink', style: 'xrot', enter: 'none', te: b(48) });
-T(b(49), b(52), 540, 1440, 58, [words('Axi Copy Trading'), [W('App Store · Google Play', 'm', 'fade')]], [...steps(b(49), 3, 0.06), b(49) + 0.24],
-  { cls: 'lat gL pad', lsize: [58, 32], style: 'rise', enter: 'up', te: b(49) - 0.05 });
-
+// the 3D phone's blank screen carries the app: a flat UI tracked to the bezel measured in the clip (source px, 720×1280)
+const PH = [[3.6, 203, 521, 262, 1010], [3.8, 193, 530, 254, 1021], [4.0, 184, 538, 245, 1031], [4.2, 177, 544, 234, 1039], [4.4, 171, 549, 228, 1046], [4.6, 168, 551, 224, 1050], [4.8, 166, 552, 222, 1052], [4.95, 165, 552, 221, 1053]];
+const phoneRect = st => { let i = 0; while (i < PH.length - 2 && PH[i + 1][0] < st) i++; const a = PH[i], c = PH[i + 1], k = clamp((st - a[0]) / (c[0] - a[0]));
+  return [1, 2, 3, 4].map(j => lerp(a[j], c[j], k)); };
+const appRow = (tok, i) => `<div class="row" data-i="${i}" style="display:flex;align-items:center;gap:.4em;background:#fff;border-radius:.5em;padding:.38em .45em;margin-top:.3em;box-shadow:0 .08em .3em rgba(0,0,0,.08)">
+  <div style="width:1.25em;height:1.25em;border-radius:.3em;background:#E4002E;flex:none;display:flex;align-items:center;justify-content:center"><img src="img/axi_white.png" style="width:.9em"></div>
+  <div style="flex:1"><div style="font-size:.5em;font-weight:600">تم نسخ صفقة جديدة</div><div style="font-size:.4em;opacity:.65"><span class="lat">${tok}</span> · الآن</div></div></div>`;
+U(b(50), b(52), 540, 960, `<div dir="rtl" style="position:absolute;inset:0;background:#EEF0F1;border-radius:1.1em;padding:2.4em .55em 0;box-sizing:border-box;color:#242528;overflow:hidden">
+  <div class="lat" style="font-size:.46em;font-weight:600;text-align:center;margin-bottom:.5em">Axi Copy Trading</div>${['EUR/USD', 'XAU/USD', 'US500'].map(appRow).join('')}
+  <div class="tag" style="font-size:.62em;text-align:center;margin-top:.6em">للتوضيح فقط</div></div>`,
+  { layer: 'ui', enter: 'none', te: b(50), still: true, w: 100, h: 100, upd: (t, el) => {
+    const sh = shotAt(t); if (!sh || sh[2] !== 'k14_phone3d') { el.style.display = 'none'; return; }
+    const [x0, x1, y0, y1] = phoneRect(srcT(sh, t)), c = cam(sh, t), sk = shake(t);
+    const X = xs => c[4] + sk.x + c[1] + (xs * 1.5 - c[4]) * c[0], Y = ys => c[5] + sk.y + c[2] + (ys * 1.5 - c[5]) * c[0];
+    const L = X(x0 + 13), Rr = X(x1 - 17), Tp = Y(y0 + 13), Bt = Y(y1 - 13), w = Rr - L;
+    Object.assign(el.style, { left: L.toFixed(1) + 'px', top: Tp.toFixed(1) + 'px', width: w.toFixed(1) + 'px', height: (Bt - Tp).toFixed(1) + 'px', fontSize: (w / 9.5).toFixed(2) + 'px',
+      transform: 'none', opacity: clamp((t - b(50)) / 0.06).toFixed(3) });
+    el.querySelectorAll('.row').forEach(r => { const te = b(50.5) + r.dataset.i * BT / 2, k = OM.spring(Math.max(0, t - te), 0.55, 24) * (t >= te);
+      r.style.opacity = clamp((t - te) / 0.06); r.style.transform = `translateY(${((1 - k) * -1.2).toFixed(3)}em) scale(${(0.9 + 0.1 * k).toFixed(3)})`; }); } });
+T(b(48), b(52), 540, 1455, 100, [words('كل هذا'), [W('في'), W('تطبيق'), W('واحد', 'b')]], steps(b(48), 5, 0.08), { cls: 'ar gD pad', style: 'xrot', enter: 'rise', te: b(48) });
+T(b(49), b(52), 540, 300, 56, [words('Axi Copy Trading'), [W('App Store · Google Play', 'm', 'fade')]], [...steps(b(49), 3, 0.06), b(49) + 0.24],
+  { cls: 'lat gL pad', lsize: [56, 34], style: 'rise', enter: 'drop', te: b(49) - 0.05 });
 // ═══ 15 CTA ═══
 T(b(52), FINAL, 540, 1060, 112, [[W('حمل'), W('التطبيق'), W('الآن', 'b')]], [b(52), b(52) + 0.05, b(52) + 0.1], { cls: 'ar gD pad', style: 'slam', enter: 'pop', pulse: 0.04 });
 T(b(52) + 0.12, FINAL, 540, 1240, 54, [words('الرابط في البايو')], steps(b(52) + 0.12, 3, 0.05), { cls: 'ar redpill', style: 'pop', enter: 'pop',
   move: t => ({ sc: 1 + [b(53), b(54)].reduce((s, p) => s + (t >= p ? 0.09 * Math.exp(-(t - p) * 9) : 0), 0) }) });
-U(b(53), FINAL, 190, 1665, `<svg width="80" height="80" viewBox="0 0 80 80"><path d="M58 22 L22 58 M22 30 L22 58 L50 58" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+U(b(53), b(55), 190, 1590, `<svg width="80" height="80" viewBox="0 0 80 80"><path d="M58 22 L22 58 M22 30 L22 58 L50 58" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   { enter: 'pop', move: t => { const k = Math.sin((t - b(53)) * Math.PI * 2 / BT) * 10; return { dx: -k * 0.7, dy: k * 0.7 }; } });
 
 // ═══ risk strip (beat 55 to the last frame), red end card, CTA screen ═══
-U(FINAL, CTA, 540, 960, '', { layer: 'top', w: 1080, h: 1920, enter: 'none', te: FINAL, still: true, upd: (t, el) => { el.style.background = '#E4002E'; } });
-U(FINAL, CTA, 540, 900, '<img src="img/axi_white.png" style="width:600px;display:block">', { layer: 'top', enter: 'pop', te: FINAL, zeta: 0.55, omega: 24, still: true });
-U(b(55), 30.01, 497, 1465, 'ينطوي التداول على مخاطر. قد تخسر أكثر مما تستثمر. الأداء السابق لا يضمن النتائج المستقبلية. تروج بواسطة شركة <span class="lat">AxiTrader LLC</span>.',
+U(FINAL, CTA, 540, 960, '', { layer: 'top', w: 1080, h: 1920, enter: 'none', te: FINAL - 0.05, still: true, upd: (t, el) => { el.style.background = '#E4002E'; } });
+U(FINAL, CTA, 540, 900, '<img src="img/axi_white.png" style="width:600px;display:block">', { layer: 'top', enter: 'pop', te: FINAL - 0.05, zeta: 0.55, omega: 24, still: true });
+U(b(55), 30.01, 497, 1465, 'ينطوي التداول على مخاطر. قد تخسر أكثر مما تستثمر. الأداء السابق لا يضمن النتائج المستقبلية.<br>تروج بواسطة شركة <span class="lat">AxiTrader LLC</span>.',
   { layer: 'top', cls: 'risk', w: 886, enter: 'up', te: b(55), zeta: 0.8, omega: 22, still: true });
-T(CTA, 29.85, 540, 300, 58, [words('Axi Copy Trading')], steps(CTA, 3, 0.05), { cls: 'lat shadow', style: 'rise', enter: 'none', te: CTA, out: 0.25 });
-T(CTA + 0.1, 29.85, 540, 420, 58, [words('حمل التطبيق')], [CTA + 0.1, CTA + 0.16], { cls: 'ar redpill', style: 'pop', enter: 'up', te: CTA + 0.1, out: 0.25 });
-T(CTA + 0.3, 29.85, 540, 540, 40, [words('الرابط في البايو', 'm')], steps(CTA + 0.3, 3, 0.05), { cls: 'ar shadow', style: 'rise', enter: 'none', te: CTA + 0.3, out: 0.25 });
-[[0, 0], [1, 1]].forEach(([i]) => U(CTA, 30.01, i ? 1000 : 80, 1840, `<img src="img/tri.png" style="width:150px;display:block;transform:scaleX(${i ? 1 : -1})">`, { enter: i ? 'slideL' : 'slideR', te: CTA + 0.05 * i, still: true }));
+T(CTA, 29.85, 540, 240, 56, [words('Axi Copy Trading')], steps(CTA, 3, 0.05), { cls: 'lat shadow', style: 'rise', enter: 'none', te: CTA, out: 0.25 });
+T(CTA + 0.1, 29.85, 540, 350, 58, [words('حمل التطبيق')], [CTA + 0.1, CTA + 0.16], { cls: 'ar redpill', style: 'pop', enter: 'up', te: CTA + 0.1, out: 0.25 });
+T(CTA + 0.3, 29.85, 540, 462, 46, [words('الرابط في البايو', 'm')], steps(CTA + 0.3, 3, 0.05), { cls: 'ar gD pill', style: 'rise', enter: 'none', te: CTA + 0.3, out: 0.25 });
+[0, 1].forEach(i => U(CTA, 29.85, i ? 926 : 68, 1548, `<img src="img/tri.png" style="width:26px;display:block;transform:scaleX(${i ? 1 : -1})">`, { layer: 'top', enter: 'pop', te: CTA + 0.05 * i, out: 0.25, still: true }));
 
 window.ITEMS = I;
 window.KICKS = [...Array.from({ length: 24 }, (_, i) => b(4 + i)), ...Array.from({ length: 24 }, (_, i) => b(32 + i))];
 window.HITS = [[b(4), 14, 7], [DROPB, 16, 7], [b(48), 9, 8]];
-window.FLASH = [[b(4), '#fff', 0.85, 0.07], [b(5), '#fff', 0.55, 0.1], [b(8), '#fff', 0.3], [b(20), '#fff', 0.3], [b(24), '#fff', 0.22], [DROPB, '#fff', 0.75, 0.15],
+window.FLASH = [[1.93, '#fff', 0.9, 0.14], [b(5), '#fff', 0.55, 0.1], [b(8), '#fff', 0.3], [b(20), '#fff', 0.3], [b(24), '#fff', 0.22], [DROPB, '#fff', 0.75, 0.15],
   [b(36), '#fff', 0.65, 0.12], [b(40), '#fff', 0.25], [b(44), '#fff', 0.25], [b(48), '#fff', 0.6], [b(52), '#fff', 0.3]];
 // canvas overlays: globe meridians (04), the trade's light streak (07), the dawn line (09)
 window.OVL = [
   { t0: b(8), t1: b(12), draw: (g, t) => { const a = sstep(b(8), b(8) + 0.3, t) * (1 - sstep(b(12) - 0.15, b(12), t)); g.save(); g.translate(540, 330); g.strokeStyle = `rgba(255,255,255,${0.35 * a})`; g.lineWidth = 2;
       const R = 300, ph = (t - b(8)) * 0.6; for (let i = 0; i < 9; i++) { const rx = Math.abs(Math.cos(ph + i * Math.PI / 9)) * R; g.beginPath(); g.ellipse(0, 0, rx, R, 0, 0, Math.PI * 2); g.stroke(); }
       for (const f of [-0.6, -0.3, 0, 0.3, 0.6]) { g.beginPath(); g.ellipse(0, f * R, R * Math.sqrt(1 - f * f), 18, 0, 0, Math.PI * 2); g.stroke(); } g.restore(); } },
-  { t0: DEP - 0.05, t1: ARR + 0.35, draw: (g, t) => { const x = along(720, 290)(t), a = 1 - clamp((t - ARR) / 0.35);
-      const gr = g.createLinearGradient(730, 0, x, 0); gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(1, `rgba(255,255,255,${0.9 * a})`);
-      g.fillStyle = gr; g.fillRect(x, 1327, Math.max(0, 730 - x), 6); g.globalCompositeOperation = 'lighter'; g.fillStyle = `rgba(255,255,255,${0.12 * a})`; g.fillRect(x, 1290, Math.max(0, 730 - x), 80); g.globalCompositeOperation = 'source-over'; } },
-  { t0: 15.014, t1: DROPB, draw: (g, t) => { const k = sstep(15.014, DROPB, t), y = lerp(1920, 1560, k); const gr = g.createLinearGradient(0, y - 160, 0, y + 30);
-      gr.addColorStop(0, 'rgba(190,214,228,0)'); gr.addColorStop(0.85, `rgba(200,222,234,${0.55 * k})`); gr.addColorStop(1, `rgba(235,244,250,${0.95 * k})`); g.fillStyle = gr; g.fillRect(0, y - 160, 1080, 190); } },
+  { t0: DEP - 0.05, t1: ARR + 0.35, draw: (g, t) => { const x = along(680, 320)(t), a = 1 - clamp((t - ARR) / 0.35);
+      const gr = g.createLinearGradient(690, 0, x, 0); gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(1, `rgba(255,255,255,${0.9 * a})`);
+      g.fillStyle = gr; g.fillRect(x, 1327, Math.max(0, 690 - x), 6); const vg = g.createLinearGradient(0, 1290, 0, 1370); vg.addColorStop(0, 'rgba(255,255,255,0)'); vg.addColorStop(0.5, `rgba(255,255,255,${0.14 * a})`); vg.addColorStop(1, 'rgba(255,255,255,0)');
+      g.globalCompositeOperation = 'lighter'; g.fillStyle = vg; g.fillRect(x, 1290, Math.max(0, 690 - x), 80); g.globalCompositeOperation = 'source-over'; } },
+  { t0: STOP, t1: DROPB, draw: g => {                     // the monitor reads as faint grey candles, not a saturated blue chart
+      g.save(); g.globalCompositeOperation = 'saturation'; const sg = g.createLinearGradient(0, 760, 0, 900); sg.addColorStop(0, 'rgba(128,128,128,.9)'); sg.addColorStop(1, 'rgba(128,128,128,0)');
+      g.fillStyle = sg; g.fillRect(0, 0, 1080, 900); g.globalCompositeOperation = 'source-over'; const dg = g.createLinearGradient(0, 0, 0, 860); dg.addColorStop(0, 'rgba(4,6,10,.45)'); dg.addColorStop(0.85, 'rgba(4,6,10,.35)'); dg.addColorStop(1, 'rgba(4,6,10,0)');
+      g.fillStyle = dg; g.fillRect(0, 0, 1080, 860); g.restore(); } },
+  { t0: 15.014, t1: DROPB, draw: (g, t) => { const k = sstep(15.014, DROPB, t), y = lerp(1920, 1560, k); const gr = g.createLinearGradient(0, y - 160, 0, 1920);
+      gr.addColorStop(0, 'rgba(190,214,228,0)'); gr.addColorStop(0.12, `rgba(235,244,250,${0.6 * k})`); gr.addColorStop(1, `rgba(200,222,234,${0.45 * k})`); g.fillStyle = gr; g.fillRect(0, y - 160, 1080, 2080 - y); } },
 ];
 
 // ── SFX events ──
