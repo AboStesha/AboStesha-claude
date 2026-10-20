@@ -1,0 +1,5 @@
+audio/*.wav
+audio/*.png
+**/review/frames*/
+**/_frames/
+*.render.json
