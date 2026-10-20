@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<!-- Axi Select · reel 30 s · 1080×1920 · built on onetake (lib/motion.js → window.OM) -->
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<title>Axi Select — The Cut Corner (reel)</title>
+<style>
+@font-face{font-family:'Alexandria';src:url('../assets/fonts/alexandria-arabic-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Alexandria';src:url('../assets/fonts/alexandria-latin-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'PlexAr';src:url('../assets/fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2') format('woff2');font-weight:400;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFC,U+200C-200E}
+@font-face{font-family:'PlexAr';src:url('../assets/fonts/ibm-plex-sans-arabic-arabic-500-normal.woff2') format('woff2');font-weight:500;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFC,U+200C-200E}
+@font-face{font-family:'PlexAr';src:url('../assets/fonts/ibm-plex-sans-arabic-arabic-700-normal.woff2') format('woff2');font-weight:700;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFC,U+200C-200E}
+@font-face{font-family:'Geist';src:url('../assets/fonts/Geist.ttf') format('truetype');font-weight:100 900}
+:root{--red:#E4002E;--black:#000;--card:#111111;--white:#fff;--grey:#8D8F93;--grey2:#A6A8AC;--line:rgba(255,255,255,.07)}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;background:#000;color:#fff;
+  font-family:'Alexandria','Geist',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+canvas.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.grp{position:absolute;left:0;top:0;width:0;height:0;transform-origin:0 0}
+.abs{position:absolute;left:0;top:0}
+img.abs{display:block;user-select:none}
+/* text lines: one flex row, RTL, one span per word */
+.ln{position:absolute;display:flex;flex-direction:row;align-items:center;white-space:nowrap;letter-spacing:0}
+.ln .w{display:inline-block;transform-origin:50% 60%}
+.ar{font-family:'Alexandria','Geist',sans-serif}
+.px{font-family:'PlexAr','Alexandria','Geist',sans-serif}
+.la{font-family:'Geist',sans-serif;direction:ltr;unicode-bidi:isolate}
+.red{color:var(--red)} .grey{color:var(--grey)} .wht{color:#fff}
+.caps{font-family:'Geist',sans-serif;font-weight:500;letter-spacing:.28em;color:var(--grey2);text-transform:uppercase;white-space:nowrap}
+/* numbers */
+.num{position:absolute;display:flex;flex-direction:row;align-items:flex-start;font-family:'Geist',sans-serif;font-weight:300;direction:ltr;white-space:nowrap;transform-origin:50% 50%}
+.num .g{display:block;height:1em;line-height:1em}
+.num .odo{display:block;height:1em;overflow:hidden;position:relative}
+.num .strip{display:block}
+.num .strip b{display:block;height:1em;line-height:1em;font-weight:300}
+.chev{position:absolute;width:28px;height:18px;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%)}
+/* card / pills */
+.pill{position:absolute;height:116px;border-radius:58px;background:#121213;border:1.5px solid rgba(255,255,255,.10);display:flex;align-items:center;flex-direction:row;direction:rtl;padding:0 10px 0 44px;box-sizing:border-box;white-space:nowrap}
+.pill .dot{width:94px;height:94px;border-radius:47px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Geist';font-weight:600;font-size:48px;color:#fff;flex:none;margin-left:24px}
+.pill .tx{font-family:'Alexandria','Geist';font-weight:600;font-size:60px;color:#fff;display:flex;gap:12px;align-items:center}
+.stage{position:absolute;box-sizing:border-box}
+#hero{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible}
+#hud{position:absolute;right:16px;bottom:12px;font:20px 'Geist',monospace;color:#ff0;display:none;z-index:99}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="ground" class="full" width="540" height="960"></canvas>
+  <canvas id="grid" class="full" width="1080" height="1920"></canvas>
+
+  <!-- G1 · hook + $1,000,000 -->
+  <div class="grp" id="g1far"><img class="abs" id="chartFar" src="../assets/img/chart_wide_blur.webp" style="left:-760px;top:860px;width:2500px"></div>
+  <div class="grp" id="g1near"><img class="abs" id="chartNear" src="../assets/img/chart_c.webp" style="left:-380px;top:1150px;width:1900px"></div>
+  <div class="grp" id="g1">
+    <div class="abs" id="wick" style="width:2px;background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.75) 18%,rgba(255,255,255,.75) 82%,rgba(255,255,255,0))"></div>
+    <div id="num" class="num"></div>
+    <div id="chevs"></div>
+  </div>
+  <!-- G2 · coin → own account → phone -->
+  <div class="grp" id="g2">
+    <img class="abs" id="man" src="../assets/img/man_phone.webp" style="left:-285px;top:1260px;width:1560px">
+    <img class="abs" id="coin" src="../assets/img/coin_silver.webp" style="width:670px">
+    <div class="abs" id="silver" style="height:3px;background:linear-gradient(90deg,rgba(220,222,226,0),rgba(236,238,242,.95) 30%,#fff 50%,rgba(236,238,242,.95) 70%,rgba(220,222,226,0))"></div>
+    <div class="abs" id="wipe"></div>
+  </div>
+  <!-- G3 · Edge card → ladder -->
+  <div class="grp" id="g3"></div>
+  <!-- G4 · rest -->
+  <div class="grp" id="g4"><img class="abs" id="dunes" src="../assets/img/desert_dunes.webp" style="width:3770px"></div>
+  <!-- G5 · 80% → 01 → tools -->
+  <div class="grp" id="g5"><img class="abs" id="woman" src="../assets/img/woman_red_laptop.webp" style="width:1352px"></div>
+  <!-- G6 · billboard + steps -->
+  <div class="grp" id="g6"><img class="abs" id="board" src="img/billboard_env.webp"></div>
+  <!-- G7 · gold → tag → staccato → end -->
+  <div class="grp" id="g7"><img class="abs" id="xag" src="../assets/img/xag_bars.webp" style="width:1255px"></div>
+
+  <!-- the hero: one red chamfer that survives the cuts (+ the arc that becomes the rail, + the horizon that becomes the underline) -->
+  <svg id="hero" viewBox="0 0 1080 1920">
+    <path id="hP2"/>
+    <path id="hP1"/>
+    <path id="hTrack" fill="none" stroke-linecap="butt"/>
+    <path id="hL" fill="none" stroke-linecap="butt"/>
+  </svg>
+
+  <!-- layers that sit above the hero -->
+  <div class="grp" id="g3top"></div>
+  <div class="grp" id="g5top"></div>
+  <div class="grp" id="g6top"></div>
+  <div class="grp" id="g7top"></div>
+  <canvas id="grain" class="full" width="540" height="960" style="opacity:1;pointer-events:none"></canvas>
+  <div id="hud"></div>
+</div>
+<script src="motion.js"></script>
+<script>
+'use strict';
+// ════════════════════════════════════════════════════════════════════════════════════════════════════════════
+// BEAT TABLE — locked to ../audio/reel_music.wav (128 BPM · beat .46875 · bar 1.875 · see ../audio/reel_beats.json)
+//
+//  t        beat                 picture                                                     carry → next
+//  0.000    HOOK (riser)         red chamfer candle rises; words land R→L; charts drift      the candle
+//  1.758    gap (silence)        everything but the candle cuts to black                     the candle
+//  1.875    DROP · match cut 1   candle morphs into the "1"; $1,000,000 slams, zeros roll     the last 0
+//  2.810    hold                 dead still until 3.281                                      —
+//  3.281    push                 camera dives into the last 0; its ring becomes the coin     the coin
+//  3.750    FREE                 coin flips on beats; /// slash wipes R→L between phrases    the coin
+//  5.156    edge-on              coin turns into a thin silver line                          the line
+//  5.625    OWN ACCOUNT          tilt down: line exits top, man rises; push into his phone   the phone
+//  7.500    EDGE SCORE           phone becomes the chamfered card; red arc sweeps to 90      the red arc
+//  9.375    LADDER (burst)       arc straightens into the rail; camera whips stage to stage  — bare cut
+// 13.125    REST                 dunes, one quiet line, dead still; 14.531 push to horizon   the horizon
+// 15.000    DROP B · 80%         horizon becomes the underline of 80%; red % slash           the 0 / slash
+// 16.875    MONTHLY              0 drops into a chamfered tile; flips to 01                  the tile
+// 18.281    tile → laptop        tile sinks into her laptop screen as she rises              the laptop
+// 18.750    TOOLS                one word per beat                                           the headline
+// 20.625    THREE STEPS          headline collapses to a pill; pull out to the billboard     the underline
+// 24.375    GOLD → TAG           whip to the bars; the gold bar's silhouette becomes the tag  the tag plate
+// 26.250    STACCATO             four stabs, plate / black alternating                       the plate
+// 28.125    END                  plate shrinks into the lockup's SELECT tag; CTA; risk line  — (still from 29.1)
+// ════════════════════════════════════════════════════════════════════════════════════════════════════════════
+const W = 1080, H = 1920, FPS = 30, DUR = 30;
+const BEAT = 0.46875, BAR = 1.875;
+const T = {
+  // «عندك مهارة» is already landed on frame 0 (the first frame people see)
+  hook: [-0.6, -0.5, 0.3515625, 0.9375, 1.171875, 1.40625], candleTicks: [0.46875, 0.9375, 1.40625], gap: 1.7578, drop: 1.875,
+  fund: 2.03, upto: 2.34375, chev: 2.109, odoEnd: 2.70, hold0: 2.8125, push0: 3.28125, coin: 3.75,
+  free: [3.75, 4.21875, 4.6875, 4.92], edgeOn: 5.15625,
+  own: 5.625, ownW: [5.86, 5.93, 6.09, 6.16], phonePush: 6.5625, card: 7.5,
+  edgeHdr: 7.6, gaugeEnd: 8.6, labels: [7.96875, 8.4375, 8.90625],
+  ladder: [9.375, 9.84375, 10.3125, 11.016, 11.484, 12.1875], rest: 13.125, restLine: 13.359375, horizon: 14.53125,
+  dropB: 15.0, w80: [15.23, 15.47], monthly: 16.875, monthW: [17.11, 17.34375], tileSlide: 18.28125,
+  tools: [18.75, 19.21875, 19.6875, 20.15625], toolsCaps: 19.453125, collapse: 20.390625, steps: [20.625, 21.5625, 22.5], step1Open: 20.859375, step1Land: 21.09375, tye: 23.4375,
+  gold: 24.375, goldMorph: 25.3125, stac: [26.25, 26.71875, 27.1875, 27.65625], end: 28.125,
+  tye2: 28.59375, cta: 28.828125, risk: 29.0, still: 29.1,
+};
+window.__meta = { dur: DUR, fps: FPS, w: W, h: H,
+  cuts: [13.125, 26.25, 26.71875, 27.1875, 27.65625],     // the one bare cut into the rest + the staccato stabs
+  inFrame: { hero: [0.3, 3.2], coin: [3.85, 5.15], card: [7.6, 9.3], rider: [9.6, 13.1], eighty: [15.1, 16.85], tile: [17.0, 18.2],
+             step2: [22.95, 24.3], plate: [26.0, 28.1], logo: [28.5, 30, 'whole'], cta: [29.1, 30, 'whole'] } };
+
+const { clamp, lerp, seg, sstep, ssstep, ease } = OM;
+const $ = id => document.getElementById(id);
+const RED = [228, 0, 46], CARD = [17, 17, 17], WHITE = [255, 255, 255], GOLD = [201, 168, 96], PHONE = [150, 32, 40];
+const SAFE_HALF = 424, FIT_W = 860;                // Instagram safe zone x 90–990: half-width from centre minus the shake; widest world line
+const PUNCH1 = 1.025, NUM_IMP = { decay: 8, omega: 24, sqx: 0.035, sqy: 0.07 }, PUNCH80 = 1.04, E80_IMP = { decay: 8, omega: 24, sqx: 0.035, sqy: 0.07 };
+const LINE_KEYS = ['hook1a', 'hook1b', 'hook2a', 'hook2b', 'fund', 'ph1', 'ph2a', 'ph2b', 'ph3a', 'ph3b', 'own1', 'own2', 'edgeHdr', 'restLn', 'lahad', 'minal', 'month1', 'month2', 'tools1', 'tools2'];
+const pushIn = OM.bezier(0.55, 0, 0.92, 0.45);     // accelerate into a cut (a dive)
+const easeIO = OM.bezier(0.7, 0, 0.2, 1);          // a hard in-out for morphs that land on the beat
+const cubicIn = OM.bezier(0.32, 0, 0.67, 0);
+
+// ───────────────────────────── small helpers ─────────────────────────────
+function el(tag, cls, parent, css, html) { const e = document.createElement(tag); if (cls) e.className = cls; if (css) e.style.cssText = css; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; }
+function show(e, on) { if (e.__d0 === undefined) e.__d0 = e.style.display === 'none' ? '' : e.style.display; const v = on ? e.__d0 : 'none'; if (e.__d !== v) { e.style.display = v; e.__d = v; } return on; }
+// an identity transform is written as 'none': Chrome keeps the raster of a word last drawn mid-animation under an identity
+// matrix, so the same t rendered after a different seek history came out with different anti-aliasing (seek must be pure)
+const ID_T = /^(?:\s*(?:translate\(-?0(?:\.0+)?px,\s*-?0(?:\.0+)?px\)|translate[XY]\(-?0(?:\.0+)?px\)|scale\(1(?:\.0+)?(?:,\s*1(?:\.0+)?)?\)|scale[XY]\(1(?:\.0+)?\)|rotate\(-?0(?:\.0+)?deg\)|matrix\(1(?:\.0+)?,-?0(?:\.0+)?,-?0(?:\.0+)?,1(?:\.0+)?,-?0(?:\.0+)?,-?0(?:\.0+)?\)))+\s*$/;
+function setT(e, s) { if (ID_T.test(s)) s = 'none'; if (e.__t !== s) { e.style.transform = s; e.__t = s; } }
+function setO(e, o) { const s = clamp(o, 0, 1).toFixed(3); if (e.__o !== s) { e.style.opacity = s; e.__o = s; } }
+const n2 = v => (Math.abs(v) < 0.005 ? 0 : v).toFixed(2), n4 = v => v.toFixed(4);
+const tr = (x, y, s = 1, extra = '') => `translate(${n2(x)}px,${n2(y)}px) scale(${n4(s)})${extra}`;
+const SET = new Map();
+function spr(tau, z = 0.6, w = 20) {               // OM.spring that snaps to exactly 1 once settled (holds stay byte-identical)
+  if (tau <= 0) return 0; const key = z + ':' + w; if (!SET.has(key)) SET.set(key, OM.settle(z, w, 0.0004));
+  return tau >= SET.get(key) ? 1 : OM.spring(tau, z, w);
+}
+function rise(t, t0, o = {}) {                     // OM.wordRise + a right→left drift, snapped when settled
+  const tau = t - t0, dist = o.dist ?? 30, dx = o.dx ?? 22, s0 = o.s0 ?? 0.94;
+  if (tau <= 0) return { op: 0, x: dx, y: dist, s: s0, k: 0 };
+  const z = o.zeta ?? 0.6, om = o.omega ?? 20, span = Math.max(dist, dx, 40);
+  if (tau > 0.2 && Math.abs(1 - OM.spring(tau, z, om)) * span < 0.02 && Math.abs(OM.springVel(tau, z, om)) * span / 30 < 0.02) return { op: 1, x: 0, y: 0, s: 1, k: 1 };
+  const w = OM.wordRise(t, t0, { zeta: z, omega: om, dist, s0, ds: 1 - s0 });
+  return { op: w.op, x: (1 - w.k) * dx, y: w.y, s: w.s, k: w.k };
+}
+function pop(t, t0, o = {}) { const k = spr(t - t0, o.zeta ?? 0.62, o.omega ?? 18); return { k, op: clamp(k * 1.6, 0, 1), s: (o.s0 ?? 0.9) + (1 - (o.s0 ?? 0.9)) * k, dy: (1 - k) * (o.rise ?? 30) }; }
+const imp = (t, th, o) => (t - th > 0.8 || t < th) ? { r: 0, sx: 1, sy: 1 } : OM.impact(t, th, o);
+const mixc = (a, b, k) => a.map((v, i) => Math.round(lerp(v, b[i], k)));
+const rgba = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a.toFixed(3)})`;
+
+// matrices [a b c d e f]: x' = a x + c y + e, y' = b x + d y + f
+const mul = (A, B) => [A[0] * B[0] + A[2] * B[1], A[1] * B[0] + A[3] * B[1], A[0] * B[2] + A[2] * B[3], A[1] * B[2] + A[3] * B[3], A[0] * B[4] + A[2] * B[5] + A[4], A[1] * B[4] + A[3] * B[5] + A[5]];
+const inv = A => { const d = A[0] * A[3] - A[1] * A[2]; return [A[3] / d, -A[1] / d, -A[2] / d, A[0] / d, (A[2] * A[5] - A[3] * A[4]) / d, (A[1] * A[4] - A[0] * A[5]) / d]; };
+const P = (M, x, y) => [M[0] * x + M[2] * y + M[4], M[1] * x + M[3] * y + M[5]];
+const mstr = M => `matrix(${M[0].toFixed(6)},${M[1].toFixed(6)},${M[2].toFixed(6)},${M[3].toFixed(6)},${M[4].toFixed(2)},${M[5].toFixed(2)})`;
+const mscale = M => Math.hypot(M[0], M[1]);
+// 2D projective map from 4 src points to 4 dst points → [h0..h7] with x' = (h0 x + h1 y + h2)/(h6 x + h7 y + 1)
+function homography(src, dst) {
+  const A = [], b = [];
+  for (let i = 0; i < 4; i++) { const [x, y] = src[i], [X, Y] = dst[i]; A.push([x, y, 1, 0, 0, 0, -X * x, -X * y]); b.push(X); A.push([0, 0, 0, x, y, 1, -Y * x, -Y * y]); b.push(Y); }
+  for (let c = 0; c < 8; c++) { let p = c; for (let r = c + 1; r < 8; r++) if (Math.abs(A[r][c]) > Math.abs(A[p][c])) p = r; [A[c], A[p]] = [A[p], A[c]]; [b[c], b[p]] = [b[p], b[c]];
+    for (let r = 0; r < 8; r++) if (r !== c) { const f = A[r][c] / A[c][c]; for (let k = c; k < 8; k++) A[r][k] -= f * A[c][k]; b[r] -= f * b[c]; } }
+  return b.map((v, i) => v / A[i][i]);
+}
+const hmap = (Hm, u, v) => { const w = Hm[6] * u + Hm[7] * v + 1; return [(Hm[0] * u + Hm[1] * v + Hm[2]) / w, (Hm[3] * u + Hm[4] * v + Hm[5]) / w]; };
+const panelPts = pts => pts.map(([u, v]) => hmap(G.H6, u, v));
+
+// text line: a flex row (RTL), one span per word. words: [[text, cls], …] in reading order (first = rightmost)
+function line(parent, o) {
+  const size = o.size, lh = size * (o.lh ?? 1.45);
+  const d = el('div', 'ln ' + (o.font || 'ar'), parent);
+  d.dir = o.dir || 'rtl';
+  Object.assign(d.style, { left: (o.x ?? 0) + 'px', width: (o.w ?? W) + 'px', top: (o.y - lh / 2) + 'px', height: lh + 'px', fontSize: size + 'px',
+    fontWeight: o.weight ?? 800, justifyContent: o.align === 'start' ? 'flex-start' : o.align === 'end' ? 'flex-end' : 'center', columnGap: (size * (o.gap ?? 0.27)) + 'px', color: o.color || '#fff' });
+  d.words = o.words.map(([tx, cls]) => { const s = el('span', 'w ' + (cls || ''), d); s.textContent = tx; if (/\bla\b/.test(cls || '')) s.dir = 'ltr'; return s; });
+  d.cy = o.y; return d;
+}
+function animWords(d, t, times, o = {}) { d.words.forEach((s, i) => { const r = rise(t, times[Math.min(i, times.length - 1)] + (i >= times.length ? (i - times.length + 1) * 0.06 : 0), o); setO(s, r.op); setT(s, tr(r.x, r.y, r.s)); }); }
+function wordsAt(d, op) { d.words.forEach(s => { setO(s, op); setT(s, 'none'); }); }
+
+// ───────────────────────────── the shape (one chamfer grammar for every hero) ─────────────────────────────
+// {x, y (centre), w, h, rot, d: [tl, tr, br, bl] cut length per corner, q: 0 chamfer … 1 round}
+const KC = 6;
+function shapePts(s) {
+  const hw = s.w / 2, hh = s.h / 2, lim = Math.max(0, Math.min(hw, hh)), q = s.q ?? 0, out = [];
+  const C = [[-hw, -hh, 0, 1, 1, 0], [hw, -hh, -1, 0, 0, 1], [hw, hh, 0, -1, -1, 0], [-hw, hh, 1, 0, 0, -1]];
+  const cr = Math.cos(s.rot || 0), sr = Math.sin(s.rot || 0), fl = s.flag || 0;
+  // flag (the "1"): the top-left corner grows a chamfered flag down-left — [left edge, tip low, tip high, top-left] in local px
+  const FL = fl > 0 ? [[-hw, -hh + s.ft], [-hw - s.fw, -hh + s.fw * s.fm + s.ft], [-hw - s.fw, -hh + s.fw * s.fm], [-hw, -hh], [-hw, -hh], [-hw, -hh]] : null;
+  for (let c = 0; c < 4; c++) {
+    const [cx, cy, ux, uy, vx, vy] = C[c], d = Math.min(s.d[c] || 0, lim);
+    const ox = cx + d * (ux + vx), oy = cy + d * (uy + vy);
+    for (let i = 0; i < KC; i++) {
+      const u = i / (KC - 1), ax = cx + d * ux, ay = cy + d * uy, bx = cx + d * vx, by = cy + d * vy;
+      const chx = lerp(ax, bx, u), chy = lerp(ay, by, u), a = u * Math.PI / 2;
+      const arx = ox - d * (Math.cos(a) * vx + Math.sin(a) * ux), ary = oy - d * (Math.cos(a) * vy + Math.sin(a) * uy);
+      let px = lerp(chx, arx, q), py = lerp(chy, ary, q);
+      if (FL && c === 0) { px = lerp(px, FL[i][0], fl); py = lerp(py, FL[i][1], fl); }
+      out.push([s.x + px * cr - py * sr, s.y + px * sr + py * cr]);
+    }
+  }
+  return out;
+}
+const lerpShape = (A, B, k) => ({ x: lerp(A.x, B.x, k), y: lerp(A.y, B.y, k), w: lerp(A.w, B.w, k), h: lerp(A.h, B.h, k), rot: lerp(A.rot || 0, B.rot || 0, k),
+  d: [0, 1, 2, 3].map(i => lerp(A.d[i] || 0, B.d[i] || 0, k)), q: lerp(A.q || 0, B.q || 0, k),
+  flag: lerp(A.flag || 0, B.flag || 0, k), fw: lerp(A.fw ?? B.fw ?? 0, B.fw ?? A.fw ?? 0, k), fm: B.fm ?? A.fm ?? 0, ft: lerp(A.ft ?? B.ft ?? 0, B.ft ?? A.ft ?? 0, k) });
+const projPts = (M, pts) => pts.map(p => P(M, p[0], p[1]));
+const lerpPts = (A, B, k) => A.map((p, i) => [lerp(p[0], B[i][0], k), lerp(p[1], B[i][1], k)]);
+const pathOf = (pts, close = true) => 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + (close ? 'Z' : '');
+const boxOf = pts => { let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; for (const [x, y] of pts) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); } return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 }; };
+const cham = (x, y, w, h, c, o = {}) => ({ x, y, w, h, rot: o.rot || 0, d: [c, o.tr || 0, o.br ?? c, o.bl || 0], q: o.q || 0 });
+
+// ───────────────────────────── groups, cameras, the operator ─────────────────────────────
+// Each group is a world with its own keyed camera. Neighbouring groups are glued at their link time, so a camera
+// move that crosses a link (the dive into the 0, the push into the phone, the whip to the bars) is one continuous move.
+const GROUPS = [{ id: 'g1', t0: -1, t1: 3.75 }, { id: 'g2', t0: 3.75, t1: 7.5 }, { id: 'g3', t0: 7.5, t1: 13.125 }, { id: 'g4', t0: 13.125, t1: 15.0 },
+  { id: 'g5', t0: 15.0, t1: 20.625 }, { id: 'g6', t0: 20.625, t1: 24.375 }, { id: 'g7', t0: 24.375, t1: 99 }];
+let KEYS = [];                                                // built in setup() from measured geometry
+const camOf = (k, t) => OM.camera(t, KEYS[k], { W, H });
+const V = (k, t, depth = 0) => OM.view(camOf(k, t), { W, H, depth });
+function Mg(k, t) {
+  const g = GROUPS[k];
+  if (t < g.t0 && k > 0) return mul(Mg(k - 1, t), mul(inv(V(k - 1, g.t0)), V(k, g.t0)));
+  if (t > g.t1 && k < GROUPS.length - 1) return mul(Mg(k + 1, t), mul(inv(V(k + 1, g.t1)), V(k, g.t1)));
+  return V(k, t);
+}
+const activeGroup = t => { for (let k = 0; k < GROUPS.length; k++) if (t < GROUPS[k].t1) return k; return GROUPS.length - 1; };
+// the operator: a slow two-sine hand (off in the holds) + decaying shakes on the landings
+const HITS = [[1.875, 16, 8], [3.75, 7, 10], [7.5, 9, 9], [9.375, 10, 9], [9.84375, 5, 11], [10.3125, 5, 11], [11.016, 5, 11], [11.484, 5, 11], [12.1875, 13, 8],
+  [15.0, 16, 8], [16.875, 6, 10], [18.75, 11, 9], [22.5, 7, 10], [26.25, 15, 9], [26.71875, 9, 11], [27.1875, 9, 11], [27.65625, 9, 11], [28.125, 12, 8]];
+const handEnv = t => (1 - sstep(2.70, 2.81, t) * (1 - sstep(3.28, 3.45, t))) * (1 - sstep(13.2, 13.32, t) * (1 - sstep(14.53, 14.75, t))) * (1 - sstep(28.95, 29.1, t)) * sstep(0, 0.2, t);
+function operator(t) {
+  const e = handEnv(t) * 5.5;
+  let x = e * (Math.sin(1.7 * t) + 0.6 * Math.sin(2.9 * t + 1)), y = e * (Math.sin(1.3 * t + 2) + 0.5 * Math.sin(3.3 * t)), rot = e * 0.00018 * Math.sin(0.9 * t + 0.4);
+  for (const [th, amp, decay] of HITS) { if (t < th || t > th + 0.85) continue; const s = OM.shake(t, th, { amp, decay, seed: Math.round(th * 100) }); const fade = 1 - sstep(th + 0.6, th + 0.85, t); x += s.x * fade; y += s.y * fade; rot += s.rot * fade; }
+  const c = Math.cos(rot), s = Math.sin(rot);
+  return [c, s, -s, c, W / 2 - (c * W / 2 - s * H / 2) + x, H / 2 - (s * W / 2 + c * H / 2) + y];
+}
+let OP = [1, 0, 0, 1, 0, 0];
+const S = (k, t) => mul(OP, Mg(k, t));                       // world of group k → screen at t (call after OP is set)
+
+// ───────────────────────────── DOM built in setup() ─────────────────────────────
+const D = {}, G = {};   // elements, measured geometry
+function build() {
+  const g1 = $('g1'), g2 = $('g2'), g3 = $('g3'), g3t = $('g3top'), g4 = $('g4'), g5 = $('g5'), g5t = $('g5top'), g6 = $('g6'), g6t = $('g6top'), g7 = $('g7'), g7t = $('g7top');
+  // G1 — hook words
+  D.hook1a = line(g1, { y: 402, size: 106, words: [['عندك'], ['مهارة', 'red']] });
+  D.hook1b = line(g1, { y: 540, size: 106, words: [['بالتداول؟']] });
+  D.hook2a = line(g1, { y: 714, size: 106, words: [['ليش', 'grey'], ['بس', 'grey']] });
+  D.hook2b = line(g1, { y: 852, size: 106, words: [['بفلوسك؟']] });
+  // the number: $ [1] , 0 0 0 , 0 0 0 — the "1" is the hero chamfer
+  const num = $('num'); D.odo = [];
+  const glyph = ch => el('span', 'g', num, null, ch);
+  D.dollar = glyph('$'); D.slot = el('span', 'g', num, 'width:.5em'); glyph(',');
+  for (let i = 0; i < 6; i++) { const o = el('span', 'odo', num); const st = el('span', 'strip', o); for (let k = 0; k <= 10; k++) el('b', null, st, null, String(k % 10)); D.odo.push({ o, st }); if (i === 2) glyph(','); }
+  D.numOthers = [...num.children].filter(e => e !== D.odo[5].o);       // everything but the last 0: fades as the camera dives into it
+  D.fund = line(g1, { y: 652, size: 58, weight: 700, words: [['Axi', 'la'], ['تمولك'], ['لحد']] });
+  D.upto = el('div', 'caps abs', g1, 'font-size:26px;width:1080px;text-align:center;top:0', 'Up to <span style="color:#fff">$1M</span> funding');
+  D.chev = [0, 1, 2].map(i => el('div', 'chev', $('chevs')));
+  // G2 — phrases + wipe + own account
+  D.ph1 = line(g2, { y: 1080, size: 104, words: [['بدون'], ['تحدي.']] });
+  D.ph2a = line(g2, { y: 1022, size: 104, words: [['بدون'], ['رسوم']] });   // verified: no sign-up / membership fee (trading costs still apply)
+  D.ph2b = line(g2, { y: 1150, size: 104, words: [['اشتراك.']] });
+  D.ph3a = line(g2, { y: 1006, size: 92, words: [['الانضمام']] });
+  D.ph3b = line(g2, { y: 1128, size: 150, weight: 800, words: [['مجاني', 'red']] });
+  D.slashes = [0, 1, 2].map(i => el('div', 'abs', $('wipe'), `width:16px;height:300px;background:var(--red);transform-origin:0 0`));
+  D.own1 = line(g2, { y: 1085, size: 100, words: [['تتداول'], ['من']] });
+  D.own2 = line(g2, { y: 1215, size: 100, words: [['حسابك'], ['الحقيقي', 'red']] });
+  // G3 — the Edge card content (above the hero card plate)
+  D.edgeHdr = line(g3t, { x: 150, w: 780, y: 372, size: 50, weight: 700, align: 'start', words: [['درجة'], ['Edge', 'la']] });
+  D.edgeTick = el('div', 'abs', g3t, 'left:946px;top:350px;width:18px;height:22px;background:var(--red);clip-path:polygon(0 0,100% 0,0 100%)');
+  D.edgeCaps = el('div', 'caps abs', g3t, 'left:150px;top:356px;font-size:26px;letter-spacing:.22em', 'Edge Score');
+  D.brk = el('div', 'abs', g3t, 'left:0;top:0');
+  D.brk.innerHTML = [[220, 410, 1, 1], [860, 410, -1, 1], [220, 1030, 1, -1], [860, 1030, -1, -1]].map(([x, y, sx, sy]) =>
+    `<div style="position:absolute;left:${x - (sx < 0 ? 46 : 0)}px;top:${y - (sy < 0 ? 46 : 0)}px;width:46px;height:46px;border-${sy > 0 ? 'top' : 'bottom'}:3px solid var(--red);border-${sx > 0 ? 'left' : 'right'}:3px solid var(--red)"></div>`).join('');
+  D.counter = el('div', 'abs', g3t, 'left:340px;width:400px;top:610px;height:200px;text-align:center;font-family:Geist;font-weight:300;font-size:184px;line-height:200px;letter-spacing:-.04em;color:#fff');
+  D.per100 = el('div', 'caps abs', g3t, 'left:340px;width:400px;top:808px;text-align:center;font-size:28px;letter-spacing:.16em', '/ 100');
+  D.labels = [['المهارة', 790, 0.82], ['المخاطرة', 540, 0.68], ['الثبات', 290, 0.91]].map(([tx, x, f]) => {
+    const wrap = el('div', 'abs', g3t, `left:${x - 120}px;top:1088px;width:240px;height:110px`);
+    const l = el('div', 'px', wrap, 'position:absolute;left:0;width:240px;top:0;text-align:center;font-weight:500;font-size:36px;line-height:50px;color:#fff', tx); l.dir = 'rtl';
+    const tk = el('div', null, wrap, 'position:absolute;left:30px;width:180px;top:72px;height:6px;background:rgba(255,255,255,.09)');
+    const fl = el('div', null, tk, `position:absolute;right:0;top:0;height:6px;width:${(f * 100).toFixed(0)}%;background:var(--red);transform-origin:100% 50%`);
+    return { wrap, fl };
+  });
+  // G3 — ladder (stage cards in g3, their type above in g3top)
+  D.stages = [['التأسيس', '$5K', '0%'], ['الحضانة', '$20K', '40%'], ['التسارع', '$100K', '50%'], ['برو', '$200K', '60%'], ['برو 500', '$500K', '70%'], ['برو مليون', '$1M', '80%']].map(([nm, fund, share], i) => {
+    const last = i === 5, w = last ? 780 : 740, h = last ? 340 : 262, cx = last ? 510 : 490, cy = 800 - i * 330 - (last ? 40 : 0);
+    const bg = el('div', 'stage', g3, `left:${cx - w / 2}px;top:${cy - h / 2}px;width:${w}px;height:${h}px`);
+    bg.innerHTML = `<svg width="${w}" height="${h}" style="position:absolute;left:0;top:0;overflow:visible"><path d="M${24} 0 L${w} 0 L${w} ${h - 24} L${w - 24} ${h} L0 ${h} L0 24 Z" fill="${last ? '#160a0d' : '#101011'}" stroke="${last ? 'rgba(228,0,46,.85)' : 'rgba(255,255,255,.09)'}" stroke-width="${last ? 2.5 : 1.5}"/></svg>`;
+    const ty = el('div', 'abs', g3t, `left:${cx - w / 2}px;top:${cy - h / 2}px;width:${w}px;height:${h}px`);
+    // hierarchy: name (Alexandria 700) + stage number right · funding (Geist 300) + share (red) left · secondary ≥ 32 px, light grey
+    const L = last, nmHtml = nm.replace(/(\d+)/g, '<bdi style="font-family:Geist;font-weight:600">$1</bdi>');
+    ty.innerHTML = `<div class="ar" dir="rtl" style="position:absolute;right:44px;top:${L ? 50 : 34}px;font-weight:700;font-size:${L ? 80 : 64}px;line-height:1.25;color:#fff;white-space:nowrap">${nmHtml}</div>
+      <div class="px" dir="rtl" style="position:absolute;right:46px;top:${L ? 188 : 146}px;font-weight:500;font-size:${L ? 36 : 32}px;line-height:1.3;color:var(--grey2);white-space:nowrap">المرحلة <bdi style="font-family:Geist;font-weight:500">${i + 1}</bdi></div>
+      <div style="position:absolute;left:40px;top:${L ? 40 : 26}px;font-family:Geist;font-weight:300;font-size:${L ? 136 : 104}px;line-height:1.1;letter-spacing:-.04em;color:#fff">${fund}</div>
+      <div style="position:absolute;left:44px;top:${L ? 210 : 152}px;display:flex;align-items:baseline;gap:14px;white-space:nowrap"><span style="font-family:Geist;font-weight:500;font-size:${L ? 60 : 48}px;color:var(--red);letter-spacing:-.02em">${share}</span><span class="px" dir="rtl" style="font-weight:500;font-size:${L ? 36 : 32}px;color:var(--grey2)">من الأرباح</span></div>`;
+    return { bg, ty, cx, cy, w, h, last };
+  });
+  D.nodes = D.stages.map((s, i) => el('div', 'abs', g3t, `left:${950 - 12}px;top:${s.cy - 12}px;width:24px;height:24px;box-sizing:border-box;border:2.5px solid rgba(255,255,255,.35);background:#000;clip-path:polygon(30% 0,100% 0,100% 70%,70% 100%,0 100%,0 30%)`));
+  D.rider = el('div', 'abs', g3t, 'left:0;top:0;width:56px;height:48px;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%);transform-origin:50% 100%');
+  // G4 — the rest
+  D.restLn = line(g4, { y: 820, size: 56, weight: 500, font: 'px', words: [['كل'], ['مرحلة…'], ['تمويل'], ['أكبر.']] });
+  // G5 — 80% (the 0 is its own span: it drops into the tile)
+  D.e80 = el('div', 'num', g5, 'font-size:340px;letter-spacing:-.04em'); D.e80.id = 'e80';
+  D.e8 = el('span', 'g', D.e80, null, '8'); D.e0 = el('span', 'g', D.e80, null, '0');
+  D.pct = el('span', 'g', D.e80, 'width:.66em;position:relative');
+  D.ring1 = el('div', null, D.pct, 'position:absolute;border:solid #fff;border-radius:50%;box-sizing:border-box');
+  D.ring2 = el('div', null, D.pct, 'position:absolute;border:solid #fff;border-radius:50%;box-sizing:border-box');
+  D.lahad = line(g5, { y: 520, size: 84, words: [['لحد']] });
+  D.minal = line(g5, { y: 1010, size: 76, words: [['من'], ['الأرباح'], ['إلك', 'red']] });
+  D.tile = el('div', 'abs', g5, 'left:350px;top:470px;width:380px;height:420px;transform-origin:50% 50%');
+  D.tile.innerHTML = `<svg width="380" height="420" style="position:absolute;left:0;top:0"><path d="M34 0 L380 0 L380 386 L346 420 L0 420 L0 34 Z" fill="#111" stroke="rgba(255,255,255,.10)" stroke-width="1.5"/></svg>`;
+  D.tileNum = el('div', null, D.tile, 'position:absolute;left:0;width:380px;top:110px;height:260px;text-align:center;font-family:Geist;font-weight:300;font-size:220px;line-height:260px;letter-spacing:-.05em;color:#fff;transform-origin:50% 50%');
+  D.tileCaps = el('div', 'caps', D.tile, 'position:absolute;left:0;width:380px;top:362px;text-align:center;font-size:26px;letter-spacing:.3em', 'Payout');
+  D.month1 = line(g5, { y: 1030, size: 84, words: [['تنزل'], ['أرباحك']] });
+  D.month2 = line(g5, { y: 1145, size: 84, words: [['أول', 'red'], ['كل'], ['شهر']] });
+  D.tools1 = line(g5t, { y: 388, size: 100, words: [['أدوات', 'red'], ['تدريب']] });
+  D.tools2 = line(g5t, { y: 516, size: 100, words: [['تعليم', 'red'], ['كوتشينغ']] });
+  D.toolsCaps = el('div', 'caps abs', g5t, 'left:0;width:1080px;top:612px;text-align:center;font-size:24px;letter-spacing:.18em', 'Trade your edge. &nbsp;<span style="color:var(--red)">///</span>&nbsp; Learn more on axi.com');
+  // G6 — billboard: our panel mapped onto the face in perspective (homography), steps + Trade Your Edge on it
+  D.panel = el('div', 'abs', g6, 'width:1500px;height:945px;transform-origin:0 0;overflow:hidden;background:linear-gradient(180deg,#2c2d30 0%,#151517 42%,#0a0a0b 100%);box-shadow:inset 0 0 0 3px rgba(255,255,255,.07)');
+  D.panelGrid = el('canvas', null, D.panel, 'position:absolute;left:0;top:0;width:1500px;height:945px'); D.panelGrid.width = 1500; D.panelGrid.height = 945;
+  D.panelLogo = el('img', null, D.panel, 'position:absolute;left:150px;top:84px;width:330px'); D.panelLogo.src = '../assets/img/logo_white.png';
+  D.steps = [['1', [['افتح'], ['حساب']]], ['2', [['ارفع'], ['درجة'], ['Edge', 'la']]], ['3', [['اصعد'], ['المراحل']]]].map(([n, ws]) => {
+    const p = el('div', 'pill', D.panel); const dot = el('div', 'dot', p, null, n); const tx = el('div', 'tx', p); tx.dir = 'rtl';
+    ws.forEach(([w, c]) => { const sp = el('span', c === 'la' ? 'la' : '', tx, c === 'la' ? 'font-family:Geist;font-weight:500' : '', w); if (c === 'la') sp.dir = 'ltr'; });
+    return { p, dot };
+  });
+  D.tye = el('div', null, D.panel, 'position:absolute;left:0;top:0;font-family:Geist;font-weight:500;font-size:64px;letter-spacing:-.01em;color:#fff;white-space:nowrap', 'Trade Your Edge');
+  D.tyeLine = el('div', null, D.panel, 'position:absolute;left:0;top:0;height:7px;background:var(--red);transform-origin:100% 50%');
+  // G7 — staccato words + lockup + CTA
+  D.stac = ['افتح.', 'تداول.', 'اطلع.', 'تمول.'].map(w => line(g7t, { y: 760, size: 172, weight: 900, words: [[w]] }));
+  D.logo = ['a', 'x', 'i'].map(n => el('img', 'abs', g7t)); D.logo.forEach((im, i) => im.src = `../assets/img/logo_${['a', 'x', 'i'][i]}.png`);
+  D.tag = el('img', 'abs', g7t); D.tag.src = '../assets/img/logo_tag.png';
+  D.tye2 = el('div', 'abs', g7t, 'left:0;width:1080px;text-align:center;top:0;font-family:Geist;font-weight:400;font-size:44px;letter-spacing:-.005em;color:#fff', 'Trade Your Edge');
+  D.cta = el('div', 'abs', g7t, 'left:0;top:0;height:100px;border-radius:50px;background:var(--red);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 54px;white-space:nowrap;transform-origin:50% 50%');
+  D.cta.dir = 'rtl';
+  D.cta.innerHTML = `<span class="ar" style="display:block;font-weight:700;font-size:42px;line-height:100px;color:#fff;margin-top:-4px">سجل مجانا</span><span style="display:block;flex:none;width:9px;height:9px;border-radius:5px;background:rgba(255,255,255,.75);margin:0 22px"></span><span style="display:block;font-family:Geist;font-weight:500;font-size:40px;line-height:100px;color:#fff" dir="ltr">axi.com</span>`;
+  D.risk = el('div', 'px abs', g7t, 'left:90px;width:900px;top:1160px;text-align:center;font-weight:400;font-size:31px;line-height:46px;color:#A6A8AC', 'التداول ينطوي على مخاطر عالية وقد تخسر رأس مالك.'); D.risk.dir = 'rtl';
+}
+
+// ───────────────────────────── measure + derive geometry (after fonts) ─────────────────────────────
+function measure() {
+  const r = e => { const b = e.getBoundingClientRect(); return { x: b.left, y: b.top, w: b.width, h: b.height, cx: b.left + b.width / 2, cy: b.top + b.height / 2 }; };
+  document.querySelectorAll('.grp').forEach(g => { g.style.transform = 'none'; g.style.display = ''; });
+  // every word line must fit the Instagram safe width: shrink a line (font + gaps) if its words span more than FIT_W
+  for (const k of LINE_KEYS) { const d = D[k], b = d.words.map(s => s.getBoundingClientRect()), x0 = Math.min(...b.map(r => r.left)), x1 = Math.max(...b.map(r => r.right));
+    if (x1 - x0 > FIT_W) { const f = FIT_W / (x1 - x0); d.style.fontSize = (parseFloat(d.style.fontSize) * f).toFixed(2) + 'px'; d.style.columnGap = (parseFloat(d.style.columnGap) * f).toFixed(2) + 'px'; d.fit = f; } }
+  // the number: fit $1,000,000 to 900 px, centre it at (540, 800)
+  const num = $('num'); let fs = 172; num.style.fontSize = fs + 'px'; num.style.letterSpacing = '-0.035em';
+  const CHEV = 50;                                                        // chevron stack 28 px + 22 px gap, the group centred
+  let peak = 1; for (let tt = T.drop; tt < T.drop + 0.8; tt += 1 / 240) peak = Math.max(peak, numScale(tt) * imp(tt, T.drop, NUM_IMP).sx);
+  G.numPeak = peak * PUNCH1;                                              // the right edge sits (w + CHEV)/2 from the scale origin (540)
+  let w = num.getBoundingClientRect().width; fs = Math.min(190, fs * (2 * SAFE_HALF / G.numPeak - CHEV) / w); num.style.fontSize = fs + 'px';
+  w = num.getBoundingClientRect().width; const hgt = fs;
+  G.num = { fs, x: 540 - (w + CHEV) / 2 + CHEV, y: 800 - hgt / 2, w, h: hgt, cx: 540, cy: 800 }; num.style.left = G.num.x + 'px'; num.style.top = G.num.y + 'px';
+  // glyph metrics of Geist 300 (ink box of a digit relative to its line box, line-height 1em)
+  const cv = document.createElement('canvas').getContext('2d'); cv.font = `300 ${fs}px Geist`;
+  const m0 = cv.measureText('0'), fa = m0.fontBoundingBoxAscent, fd = m0.fontBoundingBoxDescent;
+  const base = (fs - (fa + fd)) / 2 + fa;                                       // baseline inside the 1em box
+  G.capH = m0.actualBoundingBoxAscent; G.base = base;
+  const s0 = r(D.slot), last = r(D.odo[5].o);
+  G.stem = { x: s0.x + fs * 0.33, y: G.num.y + base - G.capH / 2, w: fs * 0.12, h: G.capH };
+  G.zero = { x: last.x + m0.actualBoundingBoxLeft * -1 + (m0.actualBoundingBoxLeft + m0.actualBoundingBoxRight) / 2, y: G.num.y + base - m0.actualBoundingBoxAscent / 2,
+    w: m0.actualBoundingBoxLeft + m0.actualBoundingBoxRight, h: m0.actualBoundingBoxAscent };
+  G.zero.x = last.x + (last.w) / 2;                                              // advance-centred (tabular digits)
+  const dol = r(D.dollar);
+  D.chev.forEach((c, i) => { c.style.left = (G.num.x - CHEV) + 'px'; c.style.top = (G.num.y + base - 20 - i * 27) + 'px'; });
+  D.upto.style.top = (G.num.y + base + 58) + 'px';
+  // coin: upright (major axis vertical), centroid at (540, 640), major extent 560 px
+  const cs = 0.521; G.coin = { s: cs, cx: 540, cy: 640, ox: 619.3 * cs, oy: 659.1 * cs, aspect: 455 / 537, H: 1074 * cs };
+  $('coin').style.left = (540 - G.coin.ox) + 'px'; $('coin').style.top = (640 - G.coin.oy) + 'px'; $('coin').style.transformOrigin = `${G.coin.ox}px ${G.coin.oy}px`;
+  G.zeroAspect = G.zero.w / G.zero.h;
+  // phone in the man image (image px → world): approx rounded rect centre (683, 990), 190×138, rot 3°
+  const ms = 1560 / 1815, IQ = [[581, 927], [731, 929], [779, 1059], [621, 1062]];      // the phone's back in man_phone.webp px (TL TR BR BL)
+  G.phoneQuad = IQ.map(([x, y]) => [-285 + x * ms, 1260 + y * ms]);
+  G.phoneH = homography([[0, 0], [1, 0], [1, 1], [0, 1]], G.phoneQuad);
+  G.phonePts = shapePts({ x: 0.5, y: 0.5, w: 1, h: 1, rot: 0, d: [0.075, 0.075, 0.075, 0.075], q: 1 }).map(([u, v]) => hmap(G.phoneH, u, v));
+  { const b = boxOf(G.phoneQuad); G.phone = { x: b.x + b.w / 2, y: b.y + b.h / 2, w: b.w, h: b.h, rot: 0 }; }
+  // Edge card + gauge
+  G.card = cham(540, 770, 860, 960, 40); G.gauge = { cx: 540, cy: 712, R: 250, a0: Math.PI * 150 / 180, sweep: Math.PI * 240 / 180, val: 0.9, sw: 24 };
+  // ladder rail
+  G.railX = 950; G.railBot = D.stages[0].cy + 131; G.railTop = D.stages[5].cy - 170;
+  // dunes: figure at (540, 1120)
+  const ds = 3770 / 2600; G.dune = { s: ds, x: 540 - 1282 * ds, y: 1120 - 790 * ds }; $('dunes').style.left = G.dune.x + 'px'; $('dunes').style.top = G.dune.y + 'px';
+  G.horizonY = G.dune.y + 798 * ds;
+  // 80%: fit, centre at (540, 760)
+  const e80 = D.e80; let fs2 = 340;
+  { let pk = 1; for (let tt = T.dropB; tt < T.dropB + 0.8; tt += 1 / 240) pk = Math.max(pk, eightyScale(tt) * imp(tt, T.dropB, E80_IMP).sx); G.e80Peak = pk * PUNCH80;
+    const w0 = r(e80).w + 0.66 * fs2 - r(D.pct).w;                          // the % span is sized below; count it at its final .66em
+    fs2 = Math.min(340, fs2 * 2 * (SAFE_HALF / G.e80Peak - fs2 * 0.02) / w0); e80.style.fontSize = fs2.toFixed(2) + 'px'; }
+  const pw = r(D.pct).w;
+  const stemW = fs2 * 0.062;
+  [D.ring1, D.ring2].forEach((rg, i) => { Object.assign(rg.style, { width: (fs2 * 0.235) + 'px', height: (fs2 * 0.30) + 'px', borderWidth: stemW + 'px' }); });
+  const m80 = (() => { cv.font = `300 ${fs2}px Geist`; const m = cv.measureText('0'); return { fa: m.fontBoundingBoxAscent, fd: m.fontBoundingBoxDescent, cap: m.actualBoundingBoxAscent }; })();
+  const base80 = (fs2 - (m80.fa + m80.fd)) / 2 + m80.fa, cap80 = m80.cap;
+  D.ring1.style.left = (fs2 * 0.0) + 'px'; D.ring1.style.top = (base80 - cap80) + 'px';
+  D.ring2.style.left = (pw - fs2 * 0.255) + 'px'; D.ring2.style.top = (base80 - fs2 * 0.30) + 'px';
+  const w80 = r(e80).w; G.e80 = { x: 540 - w80 / 2 + fs2 * 0.02, y: 760 - fs2 / 2, w: w80, h: fs2, base: base80, cap: cap80, fs: fs2, stemW };
+  e80.style.left = G.e80.x + 'px'; e80.style.top = G.e80.y + 'px';
+  const pr = r(D.pct), z8 = r(D.e0);
+  G.slash = { x: pr.x + pr.w / 2, y: G.e80.y + base80 - cap80 / 2, w: stemW * 1.25, h: cap80 * 1.08, rot: 0.42 };
+  G.e0 = { x: z8.cx, y: G.e80.y + base80 - cap80 / 2, w: z8.w, h: cap80 };
+  G.under = { x: 540, y: G.e80.y + base80 + 44, w: w80 + 40, h: 4 };
+  // tile (centre 540, 680) → laptop screen (woman: scale .66, laptop screen centre in image (1022, 1224), 688×432)
+  G.tile = { x: 540, y: 680, w: 380, h: 420 }; D.tile.style.left = (540 - 190) + 'px'; D.tile.style.top = (680 - 210) + 'px';
+  const wsc = 1352 / 2048; G.woman = { s: wsc, x: 540 - 1022 * wsc, y: 1400 - 1224 * wsc }; $('woman').style.left = G.woman.x + 'px'; $('woman').style.top = G.woman.y + 'px';
+  G.laptop = { x: 540, y: 1400, w: 688 * wsc, h: 432 * wsc };
+  G.band = { x: 540, y: 680 - 210 + 37, w: 380, h: 74 };
+  // tools block box (for the collapse)
+  const t1 = r(D.tools1), t2 = r(D.tools2);
+  const wa = Math.max(...D.tools1.words.concat(D.tools2.words).map(s => r(s).w));
+  const xs = D.tools1.words.concat(D.tools2.words).map(s => r(s)); const bx0 = Math.min(...xs.map(b => b.x)), bx1 = Math.max(...xs.map(b => b.x + b.w));
+  G.toolsBox = { x: (bx0 + bx1) / 2, y: (t1.cy + t2.cy) / 2, w: bx1 - bx0 + 60, h: t2.cy - t1.cy + 150 };
+  G.pill0 = { x: 540, y: 440, w: 560, h: 116 };
+  // billboard: the face is a trapezoid in the photo; our 1500×945 panel is mapped onto it by a homography
+  const bs = 0.94; G.board = { s: bs, x: -280, y: 164 };
+  Object.assign($('board').style, { left: G.board.x + 'px', top: G.board.y + 'px', width: (2158 * bs) + 'px' });
+  G.quad = [[357, 145], [1842, 385], [1850, 1015], [350, 1090]].map(([x, y]) => [G.board.x + x * bs, G.board.y + y * bs]);
+  G.H6 = homography([[0, 0], [1500, 0], [1500, 945], [0, 945]], G.quad);
+  D.panel.style.transform = `matrix3d(${[G.H6[0], G.H6[3], 0, G.H6[6], G.H6[1], G.H6[4], 0, G.H6[7], 0, 0, 1, 0, G.H6[2], G.H6[5], 0, 1].map(v => v.toFixed(9)).join(',')})`;
+  { const g = D.panelGrid.getContext('2d'); g.strokeStyle = 'rgba(228,0,46,.30)'; g.lineWidth = 2.4; for (let y = 36; y < 945; y += 64) for (let x = 36; x < 1500; x += 64) { g.beginPath(); g.moveTo(x - 4, y + 4); g.lineTo(x + 4, y - 4); g.stroke(); } }
+  const rowV = [370, 515, 660], right = 820;      // pill edge lands at x≈970 on screen (safe zone ends at 990)
+  G.steps = D.steps.map((st, i) => { const w = st.p.offsetWidth; st.p.style.left = (right - w) + 'px'; st.p.style.top = (rowV[i] - 58) + 'px'; return { x: right - w, y: rowV[i] - 58, w, h: 116, right, cy: rowV[i] }; });
+  G.dot0 = { u: right - 10 - 1.5 - 47, v: rowV[0], r: 47 };
+  const tw = D.tye.offsetWidth; G.tye = { u: right - tw, v: 780, w: tw, h: 80 };   // right-aligned with the steps
+  D.tye.style.left = G.tye.u + 'px'; D.tye.style.top = G.tye.v + 'px';
+  Object.assign(D.tyeLine.style, { left: G.tye.u + 'px', top: (G.tye.v + 92) + 'px', width: tw + 'px' });
+  // xag bars at scale .5: gold bar minAreaRect centre (1276, 741) 1116×457 at −55.9° → world
+  const xs2 = 0.5; G.xag = { s: xs2, x: 540 - 1276 * xs2, y: 700 - 741 * xs2 }; Object.assign($('xag').style, { left: G.xag.x + 'px', top: G.xag.y + 'px', transformOrigin: `${1276 * xs2}px ${741 * xs2}px` });
+  G.goldShape = { x: 540, y: 700, w: 1116 * xs2 * 0.97, h: 457 * xs2 * 0.92, rot: -55.9 * Math.PI / 180, d: [14, 14, 14, 14], q: 0 };
+  G.plate = cham(540, 760, 900, 300, 46);
+  // lockup: 760 px wide centred at (540, 760)
+  const ls = 760 / 1728, lx = 540 - 380, ly = 760 - 384 * ls / 2; G.logo = { s: ls, x: lx, y: ly, w: 760, h: 384 * ls };
+  [[0, 312], [312, 328], [640, 130]].forEach(([ox, wd], i) => Object.assign(D.logo[i].style, { left: (lx + ox * ls) + 'px', top: ly + 'px', width: (wd * ls) + 'px', transformOrigin: '50% 100%' }));
+  Object.assign(D.tag.style, { left: (lx + 770 * ls) + 'px', top: ly + 'px', width: (958 * ls) + 'px' });
+  G.tagPlate = cham(lx + (770 + 502) * ls, ly + 237 * ls, 902 * ls, 272 * ls, 44 * ls);
+  D.tye2.style.top = (ly + 384 * ls + 36) + 'px';
+  const cb = r(D.cta); G.cta = { x: 540 - cb.w / 2, y: 1040 - 50, w: cb.w, h: 100 }; D.cta.style.left = G.cta.x + 'px'; D.cta.style.top = G.cta.y + 'px';
+  // measured line boxes (world) for __track
+  const lb = d => { const ws = d.words.map(r); const x0 = Math.min(...ws.map(b => b.x)), x1 = Math.max(...ws.map(b => b.x + b.w)), y0 = Math.min(...ws.map(b => b.y)), y1 = Math.max(...ws.map(b => b.y + b.h)); return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 }; };
+  G.lines = {}; for (const k of LINE_KEYS) G.lines[k] = lb(D[k]);
+  const ub = (a, b) => { const x = Math.min(a.x, b.x), y = Math.min(a.y, b.y); return { x, y, w: Math.max(a.x + a.w, b.x + b.w) - x, h: Math.max(a.y + a.h, b.y + b.h) - y }; };
+  G.lines.hook1 = ub(G.lines.hook1a, G.lines.hook1b); G.lines.hook2 = ub(G.lines.hook2a, G.lines.hook2b); G.lines.ph2 = ub(G.lines.ph2a, G.lines.ph2b);
+  G.stac = D.stac.map(lb);
+  G.stacBox = G.stac;
+}
+
+// ───────────────────────────── cameras (world keys per group) ─────────────────────────────
+function cameras() {
+  const z = G.zero, S1 = (G.coin.H * 0.8) / z.h;                // the 0's ring grows to the coin's rim
+  const coinScreenY = 960 + (G.coin.cy - 960) * 0.8;            // where G2 shows the coin at the link (zoom .8)
+  const ladder = T.ladder;
+  const camLadder = [];
+  for (let i = 1; i < 6; i++) {
+    const last = i === 5, zoom = last ? 1.06 : 1.0, cy = D.stages[i].cy, y = cy + (960 - 800) / zoom;
+    camLadder.push({ t: ladder[i] - 0.25, x: 540, y: 960 - (i - 1) * 330 + 0, zoom: 1.0 });
+    camLadder.push({ t: ladder[i] - 0.02, x: last ? 528 : 540, y: last ? D.stages[5].cy + 120 / zoom : y, zoom, curve: ease.expoInOut });
+  }
+  const pz = 4.3;
+  KEYS = [
+    [{ t: 0, x: 540, y: 985, zoom: 1.03 }, { t: 1.7578, x: 540, y: 952, zoom: 1.0, curve: ease.sineInOut }, { t: 1.875, x: 540, y: 952, zoom: 1.0 },
+     { t: 1.8751, x: 540, y: 955, zoom: PUNCH1 }, { t: 2.75, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 3.28125, x: 540, y: 960, zoom: 1.0 },
+     { t: 3.75, x: z.x, y: z.y - (coinScreenY - 960) / S1, zoom: S1, curve: pushIn }],
+    [{ t: 3.75, x: 540, y: 960, zoom: 0.8 }, { t: 4.25, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 5.625, x: 540, y: 960, zoom: 1.0 },
+     { t: 6.05, x: 540, y: 1660, zoom: 1.0, curve: ease.expoInOut }, { t: 6.5625, x: 540, y: 1660, zoom: 1.0 },
+     { t: 7.28, x: G.phone.x, y: G.phone.y + (960 - 800) / 3.3, zoom: 3.3, curve: OM.bezier(0.62, 0, 0.3, 1) },
+     { t: 7.5, x: G.phone.x, y: G.phone.y + (960 - 800) / pz, zoom: pz, curve: OM.bezier(0.3, 0, 0.9, 0.6) }],
+    [{ t: 7.5, x: 540, y: 960, zoom: 1.0 }, { t: 9.30, x: 540, y: 960, zoom: 1.035, curve: ease.sineInOut }, { t: 9.70, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut },
+     ...camLadder, { t: 13.125, x: 528, y: D.stages[5].cy + 120 / 1.09, zoom: 1.09, curve: ease.sineInOut }],
+    [{ t: 13.125, x: 540, y: 960, zoom: 1.0 }, { t: T.horizon, x: 540, y: 960, zoom: 1.0 }, { t: 15.0, x: 540, y: G.horizonY + (960 - G.under.y) / 1.9, zoom: 1.9, curve: OM.bezier(0.5, 0, 0.85, 0.55) }],
+    [{ t: 15.0, x: 540, y: 960, zoom: PUNCH80 }, { t: 15.6, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 16.875, x: 540, y: 960, zoom: 1.0 },
+     { t: 17.5, x: 540, y: 940, zoom: 1.03, curve: ease.sineInOut }, { t: 18.25, x: 540, y: 940, zoom: 1.03 }, { t: 18.75, x: 540, y: 980, zoom: 1.0, curve: ease.expoOut },
+     { t: 20.40, x: 540, y: 970, zoom: 1.025, curve: ease.sineInOut }, { t: 20.625, x: 540, y: 900, zoom: 1.08, curve: ease.expoIn }],
+    [{ t: 20.625, x: hmap(G.H6, 700, 470)[0], y: hmap(G.H6, 700, 470)[1], zoom: 2.9 }, { t: 21.45, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 24.10, x: 540, y: 950, zoom: 1.045, curve: ease.sineInOut },
+     { t: 24.375, x: 540 + 640, y: 950, zoom: 1.045, curve: ease.expoIn }],
+    [{ t: 24.375, x: 540 - 640, y: 980, zoom: 1.0 }, { t: 24.7, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 25.3125, x: 540, y: 960, zoom: 1.03, curve: ease.sineInOut },
+     { t: 26.25, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 28.125, x: 540, y: 960, zoom: 1.0 }],
+  ];
+}
+
+// ───────────────────────────── per-element functions of time ─────────────────────────────
+// candle (G1): rises from below centre, its body ticks up on the beats
+function candle(t) {
+  let h = 236; for (const tk of T.candleTicks) h += 16 * spr(t - tk, 0.5, 30);
+  const dy = 640 * (1 - spr(t + 0.08, 0.8, 7.2));
+  const bot = 1262 + dy;
+  return { x: 540, y: bot - h / 2, w: 58, h, bot, top: bot - h };
+}
+// the number slam (G1): scale about (540, 800)
+const numScale = t => t < T.drop ? 1 : 1 + 0.1 * (1 - spr(t - T.drop, 0.55, 26));   // the slam: punch + overshoot + squash, sized to stay in the safe zone
+function numPt(t, x, y) { const s = numScale(t), im = imp(t, T.drop, NUM_IMP); return [540 + (x - 540) * s * im.sx, 800 + (y - 800) * s * im.sy]; }
+function stemShape(t) { const st = G.stem, [x, y] = numPt(t, st.x, st.y), s = numScale(t); return { ...cham(x, y, st.w * s, st.h * s, st.w * s * 0.95, { br: 0 }), flag: 1, fw: st.w * s * 1.75, fm: 0.62, ft: st.w * s * 1.12 }; }
+function candleShape(t) { const c = candle(t); return cham(c.x, c.y, c.w, c.h, 16); }
+// coin flip angle (G2): lands face-on from the zero's aspect, flips on the beats
+function coinPhi(t) {
+  const phi0 = Math.acos(clamp(G.zeroAspect / G.coin.aspect, 0.2, 0.98));
+  let phi = phi0 * (1 - ease.expoOut(seg(t, T.coin, 4.15)));
+  for (const tf of [T.free[1], T.free[2]]) phi += Math.PI * ease.expoOut(seg(t, tf, tf + 0.3));
+  return phi;
+}
+// at the edge-on turn the type is sucked into the coin's line (G2, y 640)
+function collapse(t, cy) { const k = cubicIn(seg(t, T.edgeOn, T.edgeOn + 0.24)); return { k, dy: (640 - cy) * k, sy: Math.max(0.01, 1 - k), op: 1 - sstep(0.75, 1, k) }; }
+// gauge progress (G3)
+const gaugeK = t => ease.quartOut(seg(t, T.card + 0.05, T.gaugeEnd));
+function arcPts(k, N = 40) { const g = G.gauge, out = []; for (let i = 0; i < N; i++) { const a = g.a0 + g.sweep * g.val * k * i / (N - 1); out.push([g.cx + g.R * Math.cos(a), g.cy + g.R * Math.sin(a)]); } return out; }
+function railPts(N = 40) { const out = []; for (let i = 0; i < N; i++) out.push([G.railX, lerp(G.railBot, G.railTop, i / (N - 1))]); return out; }
+// ladder: which stage the rider is on, and its position (G3)
+function riderPos(t) {
+  const L = T.ladder; let i = 0; for (let j = 1; j < 6; j++) if (t >= L[j] - 0.21) i = j;
+  if (i === 0) return { x: G.railX, y: D.stages[0].cy, i: 0, land: L[0] + 0.22 };
+  const h = OM.hop(t, L[i] - 0.21, L[i], { x: G.railX, y: D.stages[i - 1].cy }, { x: G.railX, y: D.stages[i].cy }, { height: 70, curve: ease.smoother });
+  return { x: h.x, y: h.y, i, land: L[i] };
+}
+
+// ───────────────────────────── the heroes as functions of time (screen-space polygons) ─────────────────────────────
+function heroP1(t) {
+  // candle → "1"
+  if (t < T.drop) { const c = candle(t); return { pts: projPts(S(0, t), shapePts(candleShape(t))), fill: RED, a: 1, id: 'hero' }; }
+  if (t < 3.78) {
+    const k = ease.quartOut(seg(t, T.drop, T.drop + 0.2));
+    const sh = k < 1 ? lerpShape(candleShape(T.drop), stemShape(t), k) : stemShape(t);
+    return { pts: projPts(S(0, t), shapePts(sh)), fill: RED, a: 1 - sstep(3.50, 3.69, t), id: 'hero' };
+  }
+  // phone → Edge card plate
+  if (t >= 7.02 && t < 9.62) {
+    if (t < T.card) {
+      const A = projPts(S(1, t), G.phonePts);
+      const k = easeIO(seg(t, 7.22, T.card));
+      const Bp = projPts(S(2, t), shapePts(G.card));
+      const fill = t < 7.3 ? mixc(PHONE, RED, sstep(7.08, 7.28, t)) : mixc(RED, CARD, ease.cubicInOut(seg(t, 7.3, T.card)));
+      return { pts: lerpPts(A, Bp, k), fill, a: sstep(7.04, 7.16, t), stroke: [255, 255, 255, 0.09 * k], id: 'card' };
+    }
+    const st = D.stages[0];
+    const k = easeIO(seg(t, T.ladder[0], T.ladder[0] + 0.24));
+    const sh = lerpShape(G.card, cham(st.cx, st.cy, st.w, st.h, 24), k);
+    return { pts: projPts(S(2, t), shapePts(sh)), fill: CARD, a: 1, stroke: [255, 255, 255, 0.09], id: 'card' };
+  }
+  // % slash → tile band
+  if (t >= T.dropB && t < 18.76) {
+    const M = S(4, t);
+    if (t < T.monthly) { const s = eightyScale(t), sl = G.slash; const [x, y] = eightyPt(t, sl.x, sl.y); return { pts: projPts(M, shapePts({ x, y, w: sl.w * s, h: sl.h * s, rot: sl.rot, d: [sl.w * s * 0.55, 0, sl.w * s * 0.55, 0], q: 0 })), fill: RED, a: 1, id: 'slash' }; }
+    const sl = G.slash, k = easeIO(seg(t, T.monthly, T.monthly + 0.22));
+    const tb = tileBox(t), band = cham(tb.x, tb.y - tb.h / 2 + 37 * tb.s, tb.w, 74 * tb.s, 34 * tb.s, { br: 0 });
+    const sh = lerpShape({ x: sl.x, y: sl.y, w: sl.w, h: sl.h, rot: sl.rot, d: [sl.w * 0.55, 0, sl.w * 0.55, 0] }, band, k);
+    return { pts: projPts(M, shapePts(sh)), fill: RED, a: 1 - sstep(18.64, 18.76, t), id: 'tile' };
+  }
+  // tools headline → pill → step 1's red dot
+  if (t >= T.collapse && t < 21.1) {
+    if (t < T.steps[0]) {
+      const k = easeIO(seg(t, T.collapse, T.steps[0]));
+      const A = { x: G.pill0.x, y: G.pill0.y, w: 24, h: 24, rot: 0, d: [12, 12, 12, 12], q: 1 }, B = { x: G.pill0.x, y: G.pill0.y, w: G.pill0.w, h: G.pill0.h, rot: 0, d: [58, 58, 58, 58], q: 1 };
+      const kk = ease.expoOut(seg(t, T.collapse + 0.07, T.steps[0]));
+      return { pts: projPts(S(4, t), shapePts(lerpShape(A, B, kk))), fill: RED, a: sstep(T.collapse + 0.05, T.collapse + 0.1, t), id: 'pill' };
+    }
+    const A = projPts(S(4, t), shapePts({ x: G.pill0.x, y: G.pill0.y, w: G.pill0.w, h: G.pill0.h, rot: 0, d: [58, 58, 58, 58], q: 1 }));
+    const d0 = G.dot0, B = projPts(S(5, t), panelPts(shapePts({ x: d0.u, y: d0.v, w: 94, h: 94, rot: 0, d: [47, 47, 47, 47], q: 1 })));
+    const k = easeIO(seg(t, T.steps[0], T.step1Land));
+    return { pts: lerpPts(A, B, k), fill: RED, a: 1, id: 'pill' };
+  }
+  // gold bar silhouette → SELECT plate → staccato plate states → the lockup's tag
+  if (t >= T.goldMorph && t < 28.66) {
+    const M = S(6, t);
+    if (t < T.stac[0]) {
+      const xr = xagTurn(t), gs = G.goldShape;
+      const A = { ...gs, rot: gs.rot + xr.rot, w: gs.w * xr.s, h: gs.h * xr.s };
+      const k = ease.quintInOut(seg(t, T.goldMorph + 0.06, T.stac[0] - 0.02));
+      return { pts: projPts(M, shapePts(lerpShape(A, G.plate, k))), fill: mixc(GOLD, RED, sstep(T.goldMorph + 0.02, T.goldMorph + 0.1, t)), a: sstep(T.goldMorph, T.goldMorph + 0.05, t), id: 'plate' };
+    }
+    const st = stacState(t);
+    if (t < T.end) return { pts: projPts(M, shapePts(st.shape)), fill: RED, a: 1, id: 'plate' };
+    const k = ease.expoOut(seg(t, T.end, T.end + 0.3));
+    return { pts: projPts(M, shapePts(lerpShape(stacState(T.end - 0.001).shape, G.tagPlate, k))), fill: RED, a: 1 - sstep(28.5, 28.64, t), id: 'plate' };
+  }
+  return null;
+}
+function heroP2(t) {          // the horizon that becomes the underline of 80%
+  if (t >= T.horizon && t < T.dropB) { const M = S(3, t); return { pts: projPts(M, shapePts(cham(540, G.horizonY, 2600, 2.6 / mscale(Mg(3, t)) * 1.6, 0))), fill: WHITE, a: 0.85 * sstep(T.horizon, T.horizon + 0.2, t), id: 'line' }; }
+  if (t >= T.dropB && t < 17.0) {
+    const k = easeIO(seg(t, T.dropB, T.dropB + 0.2)), u = G.under;
+    const B = projPts(S(4, t), shapePts(cham(u.x, u.y, u.w * eightyScale(t), u.h, 0)));
+    const A = projPts(S(3, t), shapePts(cham(540, G.horizonY, 2600, 4 / mscale(Mg(3, t)), 0)));
+    const out = 1 - sstep(T.monthly, T.monthly + 0.12, t);
+    return { pts: k < 1 ? lerpPts(A, B, k) : B, fill: WHITE, a: 0.9 * out, id: 'line' };
+  }
+  return null;
+}
+function heroL(t) {           // the gauge arc that straightens into the ladder rail
+  if (t < T.card || t >= T.rest) return null;
+  const M = S(2, t), sc = mscale(M);
+  if (t < T.ladder[0]) return { pts: projPts(M, arcPts(gaugeK(t))), w: G.gauge.sw * sc, a: 1 };
+  const k = easeIO(seg(t, T.ladder[0], T.ladder[0] + 0.26));
+  const A = arcPts(1), R = railPts();
+  const pts = A.map((p, i) => { const kk = clamp(k * 1.25 - (i / A.length) * 0.25, 0, 1); return [lerp(p[0], R[i][0], kk), lerp(p[1], R[i][1], kk)]; });
+  return { pts: projPts(M, pts), w: lerp(G.gauge.sw, 5, k) * sc, a: 1 };
+}
+function heroTrack(t) { if (t < T.card || t > T.ladder[0] + 0.12) return null; const M = S(2, t), g = G.gauge, pts = []; for (let i = 0; i < 48; i++) { const a = g.a0 + g.sweep * i / 47; pts.push([g.cx + g.R * Math.cos(a), g.cy + g.R * Math.sin(a)]); } return { pts: projPts(M, pts), w: g.sw * mscale(M), a: (1 - sstep(T.ladder[0], T.ladder[0] + 0.12, t)) * sstep(T.card, T.card + 0.15, t) }; }
+
+// 80% slam (G5)
+const eightyScale = t => 1 + 0.18 * (1 - spr(t - T.dropB, 0.55, 22));
+function eightyPt(t, x, y) { const s = eightyScale(t), im = imp(t, T.dropB, E80_IMP); return [540 + (x - 540) * s * im.sx, 760 + (y - 760) * s * im.sy]; }
+// tile (G5): pops at 16.875; on 18.28 it drops out of frame into her laptop, which is still below the frame, and comes
+// back up riding the laptop as she rises onto the 18.75 hit — so the tile never crosses her face
+const womanDy = t => 1300 * (1 - easeIO(seg(t, 18.37, T.tools[0])));
+function tileBox(t) {
+  const p = pop(t, T.monthly + 0.02, { zeta: 0.6, omega: 20, s0: 0.82, rise: 40 });
+  const k = cubicIn(seg(t, T.tileSlide, 18.50));
+  const L = G.laptop, ly = L.y + womanDy(t);
+  return { x: lerp(G.tile.x, L.x, k), y: lerp(G.tile.y + p.dy, ly, k), w: lerp(G.tile.w * p.s, L.w, k), h: lerp(G.tile.h * p.s, L.h, k), s: lerp(p.s, L.h / G.tile.h, k), op: p.op * (1 - sstep(18.64, 18.76, t)), k };
+}
+// xag turn (G7)
+function xagTurn(t) { const k = ease.expoOut(seg(t, T.gold, T.gold + 0.9)); return { rot: lerp(0.32, 0, k), s: lerp(0.86, 1, k) }; }
+// staccato plate states (G7)
+function stacState(t) {
+  const i = Math.max(0, OM.staccato(t, T.stac.map((x, j) => [x, j])).i);
+  const punch = 1 + 0.07 * (1 - spr(t - T.stac[i], 0.5, 30));
+  const P0 = G.plate;
+  const shapes = [cham(540, 760, 900 * punch, 300 * punch, 46 * punch), cham(540, 900, 300 * punch, 18, 8),
+    cham(540, 742, 900 * punch, 300 * punch, 46 * punch, { rot: -0.035 }), cham(540, 900, 220 * punch, 18, 8)];
+  return { i, shape: shapes[i], plate: i % 2 === 0, punch };
+}
+
+// ───────────────────────────── seek ─────────────────────────────
+let TRACK = {};
+const vis = (t, a, b) => t >= a && t < b;
+function grp(id, k, t, on) { const e = $(id); if (show(e, on)) setT(e, mstr(S(k, t))); return on; }
+function seek(t) {
+  OP = operator(t);
+  const TK = {}; TRACK = TK;
+  const box = (k, b, op = 1) => { const q = OM.projectBox(S(k, t), b); q.op = op; return q; };
+
+  // ── ground + grid ──
+  const gOp = vis(t, 0, 1.7578) ? 0.9 : vis(t, 1.875, 3.9) ? 0.65 : vis(t, 7.5, 13.125) ? 0.7 : vis(t, 15, 18.3) ? 0.6 : vis(t, 28.125, 31) ? 0.75 : 0.35;
+  setO($('ground'), gOp);
+  drawGrid(t);
+
+  // ── G1 ──
+  const g1on = grp('g1', 0, t, t < 3.78);
+  if (show($('g1far'), t < T.gap)) { const c = camOf(0, t); setT($('g1far'), mstr(mul(OP, OM.view(c, { W, H, depth: 1.3 })))); setT($('chartFar'), `translateX(${n2(-60 * t / 1.875)}px)`); setO($('chartFar'), 0.42 * sstep(0, 0.35, t)); }
+  if (show($('g1near'), t < T.gap)) { const c = camOf(0, t); setT($('g1near'), mstr(mul(OP, OM.view(c, { W, H, depth: 0.35 })))); setT($('chartNear'), `translateX(${n2(-90 * t / 1.875)}px)`); setO($('chartNear'), 0.75 * sstep(0.05, 0.5, t)); }
+  if (g1on) {
+    const c = candle(t), wickOn = show($('wick'), t < T.drop + 0.06);
+    if (wickOn) { const wk = $('wick'); wk.style.left = '539px'; wk.style.top = n2(c.top - 44) + 'px'; wk.style.height = n2(c.h + 44 + 50) + 'px'; setO(wk, 1 - sstep(T.drop, T.drop + 0.06, t)); }
+    const hookOn = t < T.gap;
+    const HK = { dist: 40, dx: 28, omega: 19 };
+    if (show(D.hook1a, hookOn)) animWords(D.hook1a, t, T.hook.slice(0, 2), HK);
+    if (show(D.hook1b, hookOn)) animWords(D.hook1b, t, T.hook.slice(2, 3), HK);
+    if (show(D.hook2a, hookOn)) animWords(D.hook2a, t, T.hook.slice(3, 5), HK);
+    if (show(D.hook2b, hookOn)) animWords(D.hook2b, t, T.hook.slice(5), HK);
+    if (hookOn) { TK.hook1 = box(0, t > T.hook[2] ? G.lines.hook1 : G.lines.hook1a, 1); if (t > 0.94) TK.hook2 = box(0, t > 1.41 ? G.lines.hook2 : G.lines.hook2a, 1); }
+    // number
+    const numOn = show($('num'), t >= T.drop);
+    if (numOn) {
+      const s = numScale(t), im = imp(t, T.drop, NUM_IMP);
+      setT($('num'), `scale(${n4(s * im.sx)},${n4(s * im.sy)})`);
+      $('num').style.transformOrigin = `${n2(540 - G.num.x)}px ${n2(800 - G.num.y)}px`;
+      const fs = G.num.fs;
+      D.odo.forEach((o, j) => {
+        const tl = 2.12 + j * 0.076, P0 = 20 + 3 * j, k = ease.quartOut(seg(t, T.drop, tl));
+        let p = P0 * (1 - k); const bounce = t > tl && t < tl + 0.3 ? OM.ring(t - tl, 16, 30) * 0.06 : 0;
+        const idx = (p % 10 + 10) % 10; setT(o.st, `translateY(${n2(-(idx + bounce) * fs)}px)`);
+      });
+      // the last zero fades as the coin takes its place; everything else falls away as the camera dives into it
+      setO(D.odo[5].o, 1 - sstep(3.70, 3.78, t));
+      const fo = 1 - sstep(3.50, 3.69, t); D.numOthers.forEach(e => setO(e, fo));
+      TK.number = box(0, { x: G.num.x, y: G.num.y, w: G.num.w, h: G.num.h }, 1);
+      if (t >= T.push0) TK.ring = box(0, { x: G.zero.x - G.zero.w / 2, y: G.zero.y - G.zero.h / 2, w: G.zero.w, h: G.zero.h }, 1 - sstep(3.70, 3.78, t));
+    }
+    const dive = 1 - sstep(3.44, 3.62, t);
+    if (show(D.fund, t >= T.fund - 0.01)) { animWords(D.fund, t, [T.fund, T.fund + 0.07, T.fund + 0.14], { dist: 28, dx: 20 }); setO(D.fund, dive); }
+    { const on = show(D.upto, t >= T.upto); if (on) { const r = rise(t, T.upto, { dist: 18, dx: 0, zeta: 0.75, omega: 24 }); setO(D.upto, r.op * dive); setT(D.upto, tr(0, r.y)); } }
+    D.chev.forEach((c, i) => { const tc = T.chev + i * 0.05; if (show(c, t >= tc)) { const p = pop(t, tc, { zeta: 0.6, omega: 30, s0: 0.3, rise: 14 }); setO(c, p.op * dive); setT(c, tr(0, p.dy, p.s)); } });
+    if (t >= T.drop && t > T.fund) TK.fund = box(0, G.lines.fund, 1);
+  }
+
+  // ── G2 ──
+  const g2on = grp('g2', 1, t, vis(t, 3.6, T.card + 0.02));
+  if (g2on) {
+    // coin
+    const coinOn = show($('coin'), vis(t, 3.62, 5.42));
+    if (coinOn) {
+      const phi = coinPhi(t), fx = Math.cos(phi), edge = ease.cubicInOut(seg(t, T.edgeOn, T.edgeOn + 0.24));
+      const fy = lerp(1, 0.006, edge), bright = 0.55 + 0.45 * Math.abs(fx);
+      setT($('coin'), `scale(${n4(Math.abs(fx) < 0.02 ? 0.02 * Math.sign(fx || 1) : fx)},${n4(fy)}) rotate(-23.7deg)`);
+      $('coin').style.filter = `brightness(${(bright + edge * 0.6).toFixed(3)})`;
+      setO($('coin'), sstep(3.62, 3.74, t));
+      TK.coin = box(1, { x: 540 - G.coin.H * G.coin.aspect / 2 * Math.abs(fx), y: 640 - G.coin.H / 2 * fy, w: Math.max(4, G.coin.H * G.coin.aspect * Math.abs(fx)), h: Math.max(3, G.coin.H * fy) }, sstep(3.62, 3.74, t));
+      if (t >= 3.70 && t < 4.3) TK.ring = TK.coin;
+    }
+    // silver line: the coin, edge-on, stretches out and becomes the top edge of the frame
+    if (show($('silver'), vis(t, T.edgeOn + 0.2, 6.1))) {
+      const k = ease.expoOut(seg(t, T.edgeOn + 0.2, 5.75)), wv = lerp(G.coin.H * G.coin.aspect, 1500, k);
+      const sv = $('silver'); sv.style.left = n2(540 - wv / 2) + 'px'; sv.style.width = n2(wv) + 'px'; sv.style.top = (640 - 1.5) + 'px'; setO(sv, 1);
+      TK.coin = box(1, { x: 540 - wv / 2, y: 638, w: wv, h: 4 }, 1);
+    }
+    // phrases with the /// wipe (fronts sweep right → left)
+    const wipes = [T.free[0], T.free[1], T.free[2]], wd = 0.2;
+    const front = (tw) => lerp(1180, -100, ease.cubicInOut(seg(t, tw, tw + wd)));
+    const phr = [[D.ph1, 0], [D.ph2a, 1], [D.ph2b, 1], [D.ph3a, 2]];
+    phr.forEach(([d, i]) => {
+      const tin = wipes[i], tout = i < 2 ? wipes[i + 1] : 99;
+      const on = show(d, t >= tin && t < Math.min(tout + wd, T.edgeOn + 0.26));
+      if (!on) return;
+      const fIn = front(tin), fOut = t >= tout ? front(tout) : 1180;
+      const L = Math.max(0, fIn), R = Math.min(1080, fOut);       // visible band: right of the in-front, left of the out-front
+      d.style.clipPath = `inset(-60px ${n2(1080 - R)}px -60px ${n2(L)}px)`;
+      wordsAt(d, 1); const r = rise(t, tin, { dist: 0, dx: 46, omega: 26, zeta: 0.75, s0: 1 }), cl = collapse(t, d.cy);
+      setT(d, `translate(${n2(r.x)}px,${n2(cl.dy)}px) scale(1,${n4(cl.sy)})`); d.style.transformOrigin = '50% 50%'; if (cl.k > 0) setO(d, cl.op); else setO(d, 1);
+      TK['ph' + i] = box(1, G.lines[['ph1', 'ph2', 'ph3a'][i]], 1);
+    });
+    if (show(D.ph3b, t >= T.free[3] && t < T.edgeOn + 0.26)) { const r = rise(t, T.free[3], { dist: 60, dx: 30, omega: 22, zeta: 0.5, s0: 0.7 }); const im = imp(t, T.free[3] + 0.05, { decay: 9, omega: 26, sqx: 0.08, sqy: 0.1 }); D.ph3b.words.forEach(s => { setO(s, r.op); setT(s, tr(r.x, r.y, r.s, ` scale(${n4(im.sx)},${n4(im.sy)})`)); });
+      const cl = collapse(t, D.ph3b.cy); D.ph3b.style.transformOrigin = '50% 50%'; setT(D.ph3b, `translateY(${n2(cl.dy)}px) scale(1,${n4(cl.sy)})`); setO(D.ph3b, cl.op); TK.ph3b = box(1, G.lines.ph3b, cl.op); }
+    // the slashes
+    let wf = null; for (const tw of wipes) if (vis(t, tw - 0.01, tw + wd)) wf = front(tw);
+    if (show($('wipe'), wf !== null)) D.slashes.forEach((s, i) => setT(s, `translate(${n2(wf + i * 30 - 30)}px,${975}px) skewX(-22deg)`));
+    // man + his lines
+    if (show($('man'), t >= 5.62)) { const k = spr(t - 5.66, 0.82, 10); setT($('man'), `translateY(${n2((1 - k) * 420)}px)`); setO($('man'), (1 - sstep(7.3, 7.5, t))); TK.man = box(1, { x: -285 + 451 * 0.8595, y: 1260 + (1 - k) * 420 + 35 * 0.8595, w: 1017 * 0.8595, h: 1750 * 0.8595 }, 1 - sstep(7.3, 7.5, t)); }
+    if (show(D.own1, t >= T.ownW[0] - 0.01 && t < 6.78)) { animWords(D.own1, t, T.ownW.slice(0, 2), { dist: 34, dx: 26 }); setO(D.own1, 1 - sstep(6.60, 6.76, t)); }
+    if (show(D.own2, t >= T.ownW[2] - 0.01 && t < 6.80)) { animWords(D.own2, t, T.ownW.slice(2), { dist: 34, dx: 26 }); setO(D.own2, 1 - sstep(6.62, 6.78, t)); }
+    if (t >= T.ownW[0] && t < 6.76) { TK.own1 = box(1, G.lines.own1); if (t >= T.ownW[2]) TK.own2 = box(1, G.lines.own2); }
+    if (vis(t, 6.56, 7.12)) TK.phone = box(1, { x: G.phone.x - G.phone.w / 2, y: G.phone.y - G.phone.h / 2, w: G.phone.w, h: G.phone.h }, 1);
+  }
+
+  // ── G3 ──
+  const g3on = grp('g3', 2, t, vis(t, T.ladder[0], T.rest));
+  const g3ton = grp('g3top', 2, t, vis(t, T.card, T.rest));
+  if (g3ton) {
+    const cardOut = 1 - sstep(T.ladder[0] - 0.04, T.ladder[0] + 0.1, t), cardOn = t < T.ladder[0] + 0.12;
+    if (show(D.edgeHdr, cardOn)) { animWords(D.edgeHdr, t, [T.edgeHdr, T.edgeHdr + 0.06], { dist: 22, dx: 18 }); setO(D.edgeHdr, cardOut); }
+    [D.edgeTick, D.edgeCaps, D.brk, D.counter, D.per100].forEach(e => { if (show(e, cardOn)) setO(e, cardOut * sstep(T.card + 0.04, T.card + 0.18, t)); });
+    if (cardOn) {
+      const bk = spr(t - T.card - 0.02, 0.6, 18); setT(D.brk, `translate(540px,720px) scale(${n4(lerp(1.12, 1, bk))}) translate(-540px,-720px)`);
+      D.counter.textContent = String(Math.round(90 * gaugeK(t)));
+      D.labels.forEach((l, i) => { const p = pop(t, T.labels[i], { zeta: 0.55, omega: 22, rise: 26 }); show(l.wrap, t >= T.labels[i]); setO(l.wrap, p.op * cardOut); setT(l.wrap, tr(0, p.dy, p.s)); setT(l.fl, `scaleX(${n4(ease.expoOut(seg(t, T.labels[i] + 0.05, T.labels[i] + 0.6)))})`); });
+      TK.gauge = box(2, { x: 290, y: 462, w: 500, h: 500 }, cardOut);
+    } else D.labels.forEach(l => show(l.wrap, false));
+    // stage cards + type
+    D.stages.forEach((s, i) => {
+      const on = t >= T.ladder[0] + (i === 0 ? 0.22 : 0.0);
+      const lit = riderPos(t).i >= i;
+      const tin = i === 0 ? T.ladder[0] + 0.14 : T.ladder[0] + 0.08 + i * 0.05;
+      const p = pop(t, tin, { zeta: 0.7, omega: 18, s0: 0.92, rise: 30 });
+      const op = i === 0 ? sstep(T.ladder[0] + 0.12, T.ladder[0] + 0.26, t) : p.op * (lit ? 1 : 0.42);
+      if (show(s.bg, on || (i > 0 && t >= tin))) { setO(s.bg, i === 0 ? (t >= T.ladder[0] + 0.24 ? 1 : 0) : p.op * (lit ? 1 : 0.55)); setT(s.bg, i === 0 ? 'none' : `translate(0px,${n2(p.dy)}px) scale(${n4(p.s)})`); }
+      if (show(s.ty, t >= tin)) { setO(s.ty, op); setT(s.ty, i === 0 ? 'none' : `translate(0px,${n2(p.dy)}px) scale(${n4(p.s)})`); }
+      if (t >= tin) TK['stage' + i] = box(2, { x: s.cx - s.w / 2, y: s.cy - s.h / 2, w: s.w, h: s.h }, op);
+    });
+    D.nodes.forEach((n, i) => { if (show(n, t >= T.ladder[0] + 0.2)) { const lit = riderPos(t).i >= i && t >= T.ladder[i]; n.style.background = lit ? '#E4002E' : '#000'; n.style.borderColor = lit ? '#E4002E' : 'rgba(255,255,255,.35)'; setO(n, sstep(T.ladder[0] + 0.2, T.ladder[0] + 0.32, t)); } });
+    if (show(D.rider, t >= T.ladder[0] + 0.16)) {
+      const rp = riderPos(t), land = rp.i === 0 ? T.ladder[0] + 0.24 : T.ladder[rp.i];
+      const im = imp(t, land, { decay: 9, omega: 28, sqx: 0.3, sqy: 0.36 }), p = pop(t, T.ladder[0] + 0.16, { zeta: 0.5, omega: 24, s0: 0.2, rise: 0 });
+      setT(D.rider, `translate(${n2(rp.x - 28)}px,${n2(rp.y - 36)}px) scale(${n4(p.s * im.sx)},${n4(p.s * im.sy)})`);
+      setO(D.rider, p.op);
+      TK.rider = box(2, { x: rp.x - 28, y: rp.y - 36, w: 56, h: 48 }, 1);
+    }
+  }
+
+  // ── G4 ──
+  if (grp('g4', 3, t, vis(t, T.rest, T.dropB + 0.2))) {
+    setO($('dunes'), 1 - sstep(T.dropB, T.dropB + 0.15, t));
+    if (show(D.restLn, t < T.dropB)) { animWords(D.restLn, t, [T.restLine, T.restLine + 0.05, T.restLine + 0.1, T.restLine + 0.15], { dist: 16, dx: 10, zeta: 1, omega: 30 }); }
+    TK.dunes = box(3, { x: G.dune.x, y: G.dune.y + 718 * G.dune.s, w: 3770, h: 745 * G.dune.s }, 1 - sstep(T.dropB, T.dropB + 0.15, t));
+    if (t >= T.restLine && t < T.dropB) TK.restLn = box(3, G.lines.restLn, 1);
+  }
+
+  // ── G5 ──
+  const g5on = grp('g5', 4, t, vis(t, T.dropB - 0.01, 20.75));
+  const g5ton = grp('g5top', 4, t, vis(t, T.tools[0] - 0.01, 20.75));
+  if (g5on) {
+    const eOn = show(D.e80, t >= T.dropB && t < T.monthly + 0.35);
+    if (eOn) {
+      const s = eightyScale(t), im = imp(t, T.dropB, E80_IMP), out = OM.liftOut(t, T.monthly, { dur: 0.24, dist: 50, blur: 0 });
+      D.e80.style.transformOrigin = `${n2(540 - G.e80.x)}px ${n2(760 - G.e80.y)}px`;
+      setT(D.e80, `translateY(${n2(out.dy)}px) scale(${n4(s * im.sx)},${n4(s * im.sy)})`);
+      // the 8 and the % part sideways and are gone before the tile has popped, so the tile never half-covers them
+      const part = ease.expoOut(seg(t, T.monthly, T.monthly + 0.22)), pop8 = 1 - sstep(T.monthly, T.monthly + 0.11, t);
+      setO(D.e8, pop8); setO(D.pct, pop8); setT(D.e8, `translateX(${n2(-110 * part)}px)`); setT(D.pct, `translateX(${n2(110 * part)}px)`);
+      // the 0 drops into the tile
+      const kd = ease.expoIn(seg(t, T.monthly, T.monthly + 0.2)), tb = tileBox(t);
+      const z = G.e0, dyz = lerp(0, (tb.y + 20) - z.y, kd) - out.dy, sz = lerp(1, 0.62, kd);
+      setT(D.e0, `translate(0px,${n2(dyz)}px) scale(${n4(sz)})`); setO(D.e0, 1 - sstep(T.monthly + 0.16, T.monthly + 0.2, t));
+      TK.eighty = box(4, { x: G.e80.x, y: G.e80.y + G.e80.base - G.e80.cap, w: G.e80.w, h: G.e80.cap }, out.op);
+    }
+    if (show(D.lahad, t >= T.w80[0] && t < T.monthly + 0.3)) { animWords(D.lahad, t, [T.w80[0]], { dist: 30, dx: 22 }); setO(D.lahad, 1 - sstep(T.monthly, T.monthly + 0.18, t)); setT(D.lahad, `translateY(${n2(-120 * ssstep(T.monthly, T.monthly + 0.24, t))}px)`); }
+    if (show(D.minal, t >= T.w80[1] && t < T.monthly + 0.3)) { animWords(D.minal, t, [T.w80[1], T.w80[1] + 0.07, T.w80[1] + 0.14], { dist: 30, dx: 22 }); setO(D.minal, 1 - sstep(T.monthly, T.monthly + 0.18, t)); setT(D.minal, `translateY(${n2(120 * ssstep(T.monthly, T.monthly + 0.24, t))}px)`); }
+    if (t >= T.w80[0] && t < T.monthly) { TK.lahad = box(4, G.lines.lahad); if (t >= T.w80[1]) TK.minal = box(4, G.lines.minal); }
+    // tile
+    if (show(D.tile, vis(t, T.monthly + 0.02, T.tools[0] + 0.02))) {
+      const tb = tileBox(t);
+      setT(D.tile, `translate(${n2(tb.x - G.tile.x)}px,${n2(tb.y - G.tile.y)}px) scale(${n4(tb.w / G.tile.w)},${n4(tb.h / G.tile.h)})`);
+      setO(D.tile, tb.op);
+      // the dropped 0 lands, the tile flips once and reads 01
+      const fl = seg(t, T.monthly + 0.24, T.monthly + 0.46), flip = Math.abs(Math.cos(fl * Math.PI));
+      D.tileNum.textContent = fl < 0.5 ? '0' : '01';
+      setT(D.tileNum, `scaleY(${n4(Math.max(0.02, flip))})`); setO(D.tileNum, (t >= T.monthly + 0.19 ? 1 : 0) * (1 - sstep(T.tileSlide, T.tileSlide + 0.2, t)));
+      setO(D.tileCaps, sstep(T.monthly + 0.4, T.monthly + 0.55, t) * (1 - sstep(T.tileSlide, T.tileSlide + 0.15, t)));
+      TK.tile = box(4, { x: tb.x - tb.w / 2, y: tb.y - tb.h / 2, w: tb.w, h: tb.h }, tb.op);
+    }
+    const mOut = 1 - sstep(T.tileSlide - 0.02, T.tileSlide + 0.07, t), mDy = 40 * ssstep(T.tileSlide - 0.02, T.tileSlide + 0.1, t);   // gone before the tile passes
+    if (show(D.month1, vis(t, T.monthW[0], T.tileSlide + 0.1))) { animWords(D.month1, t, [T.monthW[0], T.monthW[0] + 0.07], { dist: 30, dx: 22 }); setO(D.month1, mOut); setT(D.month1, tr(0, mDy)); }
+    if (show(D.month2, vis(t, T.monthW[1], T.tileSlide + 0.1))) { animWords(D.month2, t, [T.monthW[1], T.monthW[1] + 0.06, T.monthW[1] + 0.12], { dist: 30, dx: 22 }); setO(D.month2, mOut); setT(D.month2, tr(0, mDy)); }
+    if (t >= T.monthW[0] && t < T.tileSlide) { TK.month1 = box(4, G.lines.month1); if (t >= T.monthW[1]) TK.month2 = box(4, G.lines.month2); }
+    // woman rises as the tile sinks
+    if (show($('woman'), vis(t, 18.37, 20.7))) {
+      const dy = womanDy(t), out = ease.expoIn(seg(t, T.collapse - 0.05, T.steps[0]));
+      setT($('woman'), `translate(0px,${n2(dy + out * 900)}px)`); setO($('woman'), 1 - out);
+      TK.woman = box(4, { x: G.woman.x + 523 * G.woman.s, y: G.woman.y + dy + out * 900 + 130 * G.woman.s, w: 990 * G.woman.s, h: 1917 * G.woman.s }, 1 - out);
+      if (t >= 18.5 && t < 19.6) { const L = G.laptop; TK.tile = box(4, { x: L.x - L.w / 2, y: L.y - L.h / 2 + dy, w: L.w, h: L.h }, 1); }
+    }
+  }
+  if (g5ton) {
+    const col = ease.expoIn(seg(t, T.collapse - 0.04, T.collapse + 0.14));
+    [D.tools1, D.tools2].forEach((d, j) => {
+      animWords(d, t, j === 0 ? T.tools.slice(0, 2) : T.tools.slice(2), { dist: 40, dx: 30, omega: 21, zeta: 0.55 });
+      if (col > 0) { const b = G.lines[j ? 'tools2' : 'tools1']; setT(d, `translate(${n2((G.pill0.x - (b.x + b.w / 2)) * col)}px,${n2((G.pill0.y - (b.y + b.h / 2)) * col)}px) scale(${n4(1 - 0.9 * col)})`); d.style.transformOrigin = `${n2(b.x + b.w / 2)}px ${n2(b.y + b.h / 2 - parseFloat(d.style.top))}px`; }
+      else setT(d, 'none');
+      setO(d, 1 - sstep(T.collapse + 0.06, T.collapse + 0.15, t));
+    });
+    if (show(D.toolsCaps, t >= T.toolsCaps)) { const r = rise(t, T.toolsCaps, { dist: 14, dx: 0 }); setO(D.toolsCaps, r.op * (1 - sstep(T.collapse, T.collapse + 0.1, t))); setT(D.toolsCaps, tr(0, r.y)); }
+    if (t < T.collapse + 0.1) { TK.tools1 = box(4, G.lines.tools1); if (t >= T.tools[2]) TK.tools2 = box(4, G.lines.tools2); }
+    if (t >= 19.7 && t < T.collapse + 0.06) { const b = G.toolsBox, c = 1 - 0.9 * col; TK.pill = box(4, { x: lerp(b.x, G.pill0.x, col) - b.w * c / 2, y: lerp(b.y, G.pill0.y, col) - b.h * c / 2, w: b.w * c, h: b.h * c }, 1); }
+  }
+
+  // ── G6 ──
+  const g6on = grp('g6', 5, t, vis(t, T.steps[0] - 0.05, 24.75));
+  show($('g6top'), false);
+  if (g6on) {
+    const M6 = S(5, t), pbox = (u, v, w, h, op = 1) => { const b = boxOf(panelPts([[u, v], [u + w, v], [u, v + h], [u + w, v + h]]).map(p => P(M6, p[0], p[1]))); b.op = op; return b; };
+    setO(D.panel, sstep(T.steps[0] - 0.06, T.steps[0] + 0.1, t));
+    TK.board = pbox(0, 0, 1500, 945);
+    G.steps.forEach((g, i) => {
+      const st = D.steps[i], t0 = i === 0 ? T.step1Open : T.steps[i];
+      if (!show(st.p, t >= t0 - 0.01)) return;
+      const k = ease.expoOut(seg(t, t0, t0 + 0.42)), L = g.w * (1 - k);
+      st.p.style.clipPath = `inset(-4px -4px -4px ${n2(L)}px round 58px)`;
+      setT(st.p, `translateX(${n2((1 - k) * -40)}px)`);
+      setO(st.dot, i === 0 ? (t >= T.step1Land ? 1 : 0) : 1);
+      const dp = pop(t, t0 - 0.02, { zeta: 0.5, omega: 26, s0: 0.4, rise: 0 }); if (i > 0) setT(st.dot, `scale(${n4(dp.s)})`);
+      TK['step' + i] = pbox(g.right - g.w + L, g.y, g.w - L, g.h);
+      if (i === 0 && t >= T.step1Land && t < 21.6) TK.pill = pbox(G.dot0.u - 47, G.dot0.v - 47, 94, 94);
+    });
+    if (show(D.tye, t >= T.tye)) { const r = rise(t, T.tye, { dist: 30, dx: 0, omega: 22 }); setO(D.tye, r.op); setT(D.tye, tr(0, r.y)); TK.tye = pbox(G.tye.u, G.tye.v, G.tye.w, G.tye.h); }
+    if (show(D.tyeLine, t >= T.tye + 0.05)) setT(D.tyeLine, `scaleX(${n4(ease.expoOut(seg(t, T.tye + 0.05, T.tye + 0.55)))})`);
+  }
+
+  // ── G7 ──
+  const g7on = grp('g7', 6, t, vis(t, 24.2, 26.3));
+  const g7ton = grp('g7top', 6, t, t >= T.stac[0]);
+  if (g7on) {
+    const xr = xagTurn(t), fade = 1 - sstep(T.goldMorph + 0.12, T.goldMorph + 0.55, t);
+    setT($('xag'), `rotate(${(xr.rot * 180 / Math.PI).toFixed(3)}deg) scale(${n4(xr.s)})`); setO($('xag'), fade);
+    TK.xag = box(6, { x: 540 - 280 * xr.s, y: 700 - 300 * xr.s, w: 560 * xr.s, h: 700 * xr.s }, fade);
+    if (t < T.goldMorph + 0.05) { const gs = G.goldShape; TK.plate = boxOf(projPts(S(6, t), shapePts({ ...gs, rot: gs.rot + xr.rot, w: gs.w * xr.s, h: gs.h * xr.s }))); TK.plate.op = fade; }
+  }
+  if (g7ton) {
+    const st = stacState(t), si = t < T.end ? st.i : -1;
+    D.stac.forEach((d, i) => {
+      if (!show(d, si === i)) return;
+      const r = 1 + 0.06 * (1 - spr(t - T.stac[i], 0.5, 30));
+      d.style.color = st.plate ? '#000' : '#fff'; wordsAt(d, 1);
+      const yoff = i === 2 ? -18 : 0; setT(d, `translate(0px,${yoff}px) scale(${n4(r)})`); d.style.transformOrigin = '540px 50%';
+      TK.stac = box(6, G.stac[i], 1);
+    });
+    const endOn = t >= T.end;
+    D.logo.forEach((im, i) => { if (show(im, endOn)) { const d = OM.letterDrop(t, T.end + 0.03, i, { stagger: 0.055, dist: 60 }); const settled = t > T.end + 1.2; setO(im, settled ? 1 : d.op); setT(im, settled ? 'none' : `translateY(${n2(d.y)}px) scale(${n4(d.sx)},${n4(d.sy)})`); } });
+    if (show(D.tag, t >= 28.34)) setO(D.tag, sstep(28.34, 28.42, t));
+    if (show(D.tye2, t >= T.tye2)) { const r = rise(t, T.tye2, { dist: 20, dx: 0, omega: 24, zeta: 0.8 }); setO(D.tye2, t >= T.still ? 1 : r.op); setT(D.tye2, t >= T.still ? 'none' : tr(0, r.y)); }
+    if (show(D.cta, t >= T.cta)) { const p = pop(t, T.cta, { zeta: 0.75, omega: 26, s0: 0.86, rise: 20 }); const fin = t >= T.still; setO(D.cta, fin ? 1 : p.op); setT(D.cta, fin ? 'none' : tr(0, p.dy, p.s)); }
+    if (show(D.risk, t >= T.risk)) setO(D.risk, sstep(T.risk, T.risk + 0.1, t));
+    if (endOn) { TK.logo = box(6, G.logo, 1); if (t >= T.cta) TK.cta = box(6, G.cta, 1); }
+  }
+
+  // ── heroes ──
+  const h1 = heroP1(t), h2 = heroP2(t), hl = heroL(t), ht = heroTrack(t);
+  drawPoly($('hP1'), h1); drawPoly($('hP2'), h2); drawLine($('hL'), hl, RED); drawLine($('hTrack'), ht, [255, 255, 255], 0.13);
+  if (h1) { const b = boxOf(h1.pts); b.op = h1.a; TK.hero = b; if (h1.id !== 'hero' && !(h1.id in TK && TK[h1.id].op >= 0.15)) TK[h1.id] = b; if (h1.id === 'card' && t >= 7.12 && t < 7.62) TK.phone = { ...b, op: 1 }; }
+  if (h2) { const b = boxOf(h2.pts); b.op = h2.a; TK.line = b; }
+  if (hl) { const b = boxOf(hl.pts); b.op = hl.a; TK.arc = b; }
+  if (q('hud')) $('hud').textContent = 't=' + t.toFixed(3);
+  return Promise.resolve();
+}
+function attr(e, k, v) { e.__a = e.__a || {}; if (e.__a[k] !== v) { if (v == null) e.removeAttribute(k); else e.setAttribute(k, v); e.__a[k] = v; } }
+function drawPoly(e, h) { if (!show(e, !!h && h.a > 0.002)) return; attr(e, 'd', pathOf(h.pts)); attr(e, 'fill', rgba(h.fill, h.a)); attr(e, 'stroke', h.stroke ? rgba(h.stroke.slice(0, 3), h.stroke[3] * h.a) : null); attr(e, 'stroke-width', h.stroke ? '1.5' : null); }
+function drawLine(e, h, c, a = 1) { if (!show(e, !!h && h.a > 0.002)) return; attr(e, 'd', pathOf(h.pts, false)); attr(e, 'stroke', rgba(c, a * h.a)); attr(e, 'stroke-width', h.w.toFixed(2)); }
+
+// ───────────────────────────── ground, grid, grain ─────────────────────────────
+function drawGround() {
+  const g = $('ground').getContext('2d'), w = 540, h = 960;
+  const rg = g.createRadialGradient(w / 2, -60, 20, w / 2, -60, 900); rg.addColorStop(0, '#3a3b3e'); rg.addColorStop(0.35, '#1b1c1e'); rg.addColorStop(1, '#000');
+  g.fillStyle = rg; g.fillRect(0, 0, w, h);
+  const gr = $('grain').getContext('2d'), id = gr.createImageData(540, 960), r = OM.rng(7);
+  for (let i = 0; i < id.data.length; i += 4) { const v = r() < 0.5 ? 0 : 255; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = Math.floor(r() * 7); }
+  gr.putImageData(id, 0, 0);
+}
+let gridKey = '';
+function drawGrid(t) {
+  const op = vis(t, 0, 1.7578) ? 0.55 * sstep(0, 0.4, t) : vis(t, 1.875, 3.86) ? 0.45 : vis(t, 3.75, 5.62) ? 0.32 : vis(t, 7.5, 13.125) ? 0.4 : vis(t, 15.0, 18.4) ? 0.32 : vis(t, 26.25, 31) ? 0.4 : 0;
+  const cv = $('grid'), g = cv.getContext('2d');
+  if (op <= 0) { if (gridKey !== 'off') { g.clearRect(0, 0, W, H); gridKey = 'off'; } return; }
+  const k = activeGroup(t), M = Mg(k, t), zoom = mscale(M), rot = Math.atan2(M[1], M[0]);
+  const c = OM.unproject(M, W / 2, H / 2), cam = { x: c[0], y: c[1], zoom, rot };
+  const L = OM.lattice(cam, { depth: 1.3, spacing: 72, W, H }), MM = mul(OP, L.matrix);
+  const key = MM.map(v => v.toFixed(3)).join(',') + op.toFixed(3);
+  if (key === gridKey) return; gridKey = key;
+  g.clearRect(0, 0, W, H); g.strokeStyle = `rgba(228,0,46,${(0.42 * op).toFixed(3)})`; g.lineWidth = 2; g.beginPath();
+  for (let y = L.y0; y <= L.y1 + 72; y += 72) for (let x = L.x0; x <= L.x1 + 72; x += 72) { const [sx, sy] = P(MM, x, y); if (sx < -10 || sy < -10 || sx > W + 10 || sy > H + 10) continue; g.moveTo(sx - 4, sy + 4); g.lineTo(sx + 4, sy - 4); }
+  g.stroke();
+}
+
+// ───────────────────────────── events for the SFX layer ─────────────────────────────
+window.__events = () => {
+  const ev = [];
+  const add = (t, kind, pan = 0, v = 1) => ev.push({ t: +t.toFixed(4), kind, pan, v });
+  add(0.0, 'whoosh', 0, 0.5);
+  T.hook.forEach((t, i) => { if (t >= 0) add(t, 'tick', (i % 3 - 1) * -0.3, 0.35); });
+  T.candleTicks.forEach(t => add(t, 'tick', 0, 0.25));
+  add(T.drop, 'impact', 0, 1); add(T.drop, 'roll', -0.1, 0.8); add(T.fund, 'tick', 0.2, 0.4);
+  add(T.push0, 'whoosh', 0.2, 0.9); add(T.coin, 'impact', 0, 0.6);
+  T.free.slice(0, 3).forEach((t, i) => add(t, 'glitch', 0, 0.7)); add(T.free[3], 'impact', 0, 0.7);
+  add(T.edgeOn, 'whoosh', 0, 0.5); add(T.own, 'whoosh', 0, 0.8); add(T.phonePush, 'whoosh', -0.3, 0.9);
+  add(T.card, 'impact', 0, 0.8); add(T.card + 0.05, 'roll', 0, 0.6); T.labels.forEach((t, i) => add(t, 'tick', [0.4, 0, -0.4][i], 0.5));
+  add(T.ladder[0], 'impact', 0, 0.9); T.ladder.slice(1).forEach((t, i) => { add(t - 0.24, 'whoosh', 0.3, 0.6); add(t, 'impact', 0.3, i === 4 ? 1 : 0.55); });
+  add(T.rest, 'impact', 0, 0.4); add(T.horizon, 'whoosh', 0, 0.7);
+  add(T.dropB, 'impact', 0, 1); add(T.monthly, 'impact', 0, 0.6); add(T.monthly + 0.3, 'tick', 0, 0.5); add(T.tileSlide, 'whoosh', 0, 0.6);
+  T.tools.forEach((t, i) => add(t, i === 0 ? 'impact' : 'tick', (i % 2 ? -0.3 : 0.3), i === 0 ? 0.8 : 0.5));
+  add(T.collapse, 'whoosh', 0, 0.7); T.steps.forEach((t, i) => add(i === 0 ? T.step1Open : t, i === 2 ? 'impact' : 'whoosh', 0.4, 0.6)); add(T.tye, 'tick', 0, 0.5);
+  add(24.2, 'whoosh', -0.5, 1); add(T.goldMorph, 'whoosh', 0, 0.6);
+  T.stac.forEach((t, i) => add(t, 'impact', (i % 2 ? -0.25 : 0.25), 0.9));
+  add(T.end, 'impact', 0, 1); add(T.cta, 'tick', 0, 0.5);
+  return { T: DUR, events: ev.sort((a, b) => a.t - b.t) };
+};
+
+// ───────────────────────────── contract ─────────────────────────────
+const QS = new URLSearchParams(location.search); const q = k => QS.has(k);
+window.__seek = async t => { await seek(Math.max(0, Math.min(DUR - 1e-6, t))); return true; };
+window.__track = t => TRACK;
+window.__motion = (t0, t1) => {
+  const tm = (t0 + t1) / 2, snap = tt => { seek(tt); return { M: S(activeGroup(tt), tt), tk: TRACK }; };
+  const a = snap(t0), b = snap(t1), m = snap(tm);
+  let d = 0;
+  for (const [x, y] of [[0, 0], [W, 0], [0, H], [W, H]]) { const wpt = OM.unproject(m.M, x, y), p = P(a.M, wpt[0], wpt[1]), r2 = P(b.M, wpt[0], wpt[1]); if (activeGroup(t0) === activeGroup(t1)) d = Math.max(d, Math.hypot(p[0] - r2[0], p[1] - r2[1])); }
+  for (const id in a.tk) { const A = a.tk[id], B = b.tk[id]; if (!B || !A.w) continue; d = Math.max(d, Math.abs(A.x - B.x), Math.abs(A.y - B.y), Math.abs(A.x + A.w - B.x - B.w), Math.abs(A.y + A.h - B.y - B.h)); }
+  return Math.min(d, 2000);
+};
+window.__ready = (async () => {
+  build();
+  const faces = ['800 96px Alexandria', '700 58px Alexandria', '900 120px Alexandria', '600 42px Alexandria', '300 120px Geist', '400 40px Geist', '500 40px Geist', '400 30px PlexAr', '500 30px PlexAr'];
+  await Promise.all(faces.map(f => document.fonts.load(f, 'عندك مهارة Axi $0123456789%')));
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(im => im.decode().catch(() => {})));
+  measure(); cameras(); drawGround();
+  await seek(0);
+  return true;
+})();
+if (q('t')) __ready.then(() => seek(parseFloat(QS.get('t'))));
+if (q('hud')) $('hud').style.display = 'block';
+if (q('play')) __ready.then(() => { const t0 = performance.now(); (function loop() { seek(((performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); })(); });
+</script>
+</body>
+</html>

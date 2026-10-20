@@ -257,7 +257,10 @@ const activeGroup = t => { for (let k = 0; k < GROUPS.length; k++) if (t < GROUP
 // the operator: a slow two-sine hand (off in the holds) + decaying shakes on the landings
 const HITS = [[1.875, 16, 8], [3.75, 7, 10], [7.5, 9, 9], [9.375, 10, 9], [9.84375, 5, 11], [10.3125, 5, 11], [11.016, 5, 11], [11.484, 5, 11], [12.1875, 13, 8],
   [15.0, 16, 8], [16.875, 6, 10], [18.75, 11, 9], [22.5, 7, 10], [26.25, 15, 9], [26.71875, 9, 11], [27.1875, 9, 11], [27.65625, 9, 11], [28.125, 12, 8]];
-const handEnv = t => (1 - sstep(2.70, 2.81, t) * (1 - sstep(3.28, 3.45, t))) * (1 - sstep(13.2, 13.32, t) * (1 - sstep(14.53, 14.75, t))) * (1 - sstep(28.95, 29.1, t)) * sstep(0, 0.2, t);
+// extra dead-still holds (verify's rest leg: >= 25 % of frames still) — the float eases out into each settled beat
+const HOLDS = [[5.42, 5.6], [9.0, 9.33], [12.62, 13.1], [21.3, 21.54], [15.75, 16.8], [17.55, 18.2], [23.75, 24.3]];
+const holdEnv = t => HOLDS.reduce((k, [a, b]) => k * (1 - sstep(a - 0.12, a, t) * (1 - sstep(b, b + 0.12, t))), 1);
+const handEnv = t => (1 - sstep(2.70, 2.81, t) * (1 - sstep(3.28, 3.45, t))) * (1 - sstep(13.2, 13.32, t) * (1 - sstep(14.53, 14.75, t))) * (1 - sstep(28.95, 29.1, t)) * sstep(0, 0.2, t) * holdEnv(t);
 function operator(t) {
   const e = handEnv(t) * 5.5;
   let x = e * (Math.sin(1.7 * t) + 0.6 * Math.sin(2.9 * t + 1)), y = e * (Math.sin(1.3 * t + 2) + 0.5 * Math.sin(3.3 * t)), rot = e * 0.00018 * Math.sin(0.9 * t + 0.4);
@@ -496,7 +499,7 @@ function cameras() {
      { t: 7.28, x: G.phone.x, y: G.phone.y + (960 - 800) / 3.3, zoom: 3.3, curve: OM.bezier(0.62, 0, 0.3, 1) },
      { t: 7.5, x: G.phone.x, y: G.phone.y + (960 - 800) / pz, zoom: pz, curve: OM.bezier(0.3, 0, 0.9, 0.6) }],
     [{ t: 7.5, x: 540, y: 960, zoom: 1.0 }, { t: 9.30, x: 540, y: 960, zoom: 1.035, curve: ease.sineInOut }, { t: 9.70, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut },
-     ...camLadder, { t: 13.125, x: 528, y: D.stages[5].cy + 120 / 1.09, zoom: 1.09, curve: ease.sineInOut }],
+     ...camLadder, { t: 12.62, x: 528, y: D.stages[5].cy + 120 / 1.09, zoom: 1.09, curve: ease.expoOut }, { t: 13.125, x: 528, y: D.stages[5].cy + 120 / 1.09, zoom: 1.09 }],   // settle onto Pro M, then hold dead still into the cut
     [{ t: 13.125, x: 540, y: 960, zoom: 1.0 }, { t: T.horizon, x: 540, y: 960, zoom: 1.0 }, { t: 15.0, x: 540, y: G.horizonY + (960 - G.under.y) / 1.9, zoom: 1.9, curve: OM.bezier(0.5, 0, 0.85, 0.55) }],
     [{ t: 15.0, x: 540, y: 960, zoom: PUNCH80 }, { t: 15.6, x: 540, y: 960, zoom: 1.0, curve: ease.expoOut }, { t: 16.875, x: 540, y: 960, zoom: 1.0 },
      { t: 17.5, x: 540, y: 940, zoom: 1.03, curve: ease.sineInOut }, { t: 18.25, x: 540, y: 940, zoom: 1.03 }, { t: 18.75, x: 540, y: 980, zoom: 1.0, curve: ease.expoOut },
