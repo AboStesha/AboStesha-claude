@@ -31,7 +31,7 @@ canvas.full{position:absolute;left:0;top:0;width:1920px;height:1080px}
 .L{font-family:'Geist',sans-serif}
 .w{display:inline-block;white-space:pre;transform-origin:50% 80%}
 .red{color:var(--red)} .grey{color:var(--grey)} .white{color:#fff}
-.caps{font-family:'Geist',sans-serif;font-weight:500;font-size:19px;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);direction:ltr;white-space:nowrap}
+.caps{font-family:'Geist',sans-serif;font-weight:500;font-size:21px;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);direction:ltr;white-space:nowrap}
 .ch{--c:24px;clip-path:polygon(calc(var(--c)*.8) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)*.8) 100%,0 100%,0 var(--c))}
 .card{position:absolute;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06))}
 .card>.fill{position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;background:linear-gradient(180deg,#18181b 0%,#0d0d0f 70%,#0b0b0c 100%)}
@@ -39,20 +39,20 @@ canvas.full{position:absolute;left:0;top:0;width:1920px;height:1080px}
 .chip{position:relative;display:inline-flex;align-items:center;height:68px;padding:0 30px;background:rgba(255,255,255,.12)}
 .chip>.fill{position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;background:#101012}
 .chip>span.t{position:relative}
-.pill{position:absolute;display:flex;align-items:center;gap:18px;height:76px;border-radius:999px;padding:0 34px 0 14px;background:var(--red);color:#fff;
-  font-family:'Plex','Geist';font-weight:700;font-size:31px;direction:rtl;white-space:nowrap;box-shadow:0 18px 50px -18px rgba(228,0,46,.7)}
-.pill .arr{width:50px;height:50px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.pill{position:absolute;display:flex;align-items:center;gap:18px;height:82px;border-radius:999px;padding:0 34px 0 14px;background:var(--red);color:#fff;
+  font-family:'Plex','Geist';font-weight:700;font-size:34px;direction:rtl;white-space:nowrap;box-shadow:0 18px 50px -18px rgba(228,0,46,.7)}
+.pill .arr{width:54px;height:54px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none}
 .box{position:absolute;width:46px;height:46px}
 .glow{position:absolute;pointer-events:none}
 #hud{position:absolute;left:0;top:0;width:1920px;height:1080px}
-.idx{position:absolute;right:72px;top:50px;direction:rtl;white-space:nowrap;font-family:'Plex','Geist';font-weight:500;font-size:23px;color:#fff;display:flex;align-items:center;gap:14px}
-.idx .n{font-family:'Geist';font-weight:500;font-size:21px;color:var(--red);letter-spacing:.04em}
-.idx .d{display:inline-block;width:34px;height:1.5px;background:rgba(255,255,255,.35)}
+.idx{position:absolute;right:72px;top:46px;direction:rtl;white-space:nowrap;font-family:'Plex','Geist';font-weight:500;font-size:27px;color:#fff;display:flex;align-items:center;gap:14px}
+.idx .n{font-family:'Geist';font-weight:500;font-size:25px;color:var(--red);letter-spacing:.04em}
+.idx .d{display:inline-block;width:40px;height:1.5px;background:rgba(255,255,255,.35)}
 #logo img{position:absolute;top:0;height:384px}
 #hudt{position:absolute;right:14px;bottom:10px;font:14px Geist,monospace;color:#ff0;display:none}
 /* S06 blocks */
-.blk{position:absolute;width:520px;height:470px;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 76%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(180deg,#000 0%,#000 76%,rgba(0,0,0,0) 100%)}
-.blk .card{left:0;top:0;width:520px;height:470px}
+.blk{position:absolute;width:440px;height:560px;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 78%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(180deg,#000 0%,#000 78%,rgba(0,0,0,0) 100%)}
+.blk .card{left:0;top:0;width:440px;height:560px}
 /* odometer */
 .dg{display:inline-block;height:1em;overflow:hidden;vertical-align:top}
 .dg>.col{display:block}
@@ -102,12 +102,15 @@ const T0=id=>SC[id].t0, T1=id=>SC[id].t1;
 
 // ────────────────────────────────────────── moves (OM) with exact settles, so holds are byte-identical ──────────────────────────────────────────
 const {clamp,lerp,seg,sstep,ssstep,ease}=OM;
-const SET=1.4;
-function rise(t,t0,o={}){ const d=o.dist??24; if(t<t0) return {k:0,op:0,y:d,s:o.s0??0.94}; if(t-t0>SET) return {k:1,op:1,y:0,s:1}; return OM.wordRise(t,t0,{dist:d,zeta:o.zeta??0.62,omega:o.omega??20,s0:o.s0??0.94,ds:1-(o.s0??0.94)}); }
-function pop(t,t0,o={}){ if(t<t0) return {k:0,op:0,s:o.s0??0.94,dy:o.rise??36}; if(t-t0>SET) return {k:1,op:1,s:1,dy:0}; return OM.popIn(t,t0,{zeta:o.zeta??0.66,omega:o.omega??17,rise:o.rise??36,s0:o.s0??0.94,ds:1-(o.s0??0.94)}); }
+const SET=1.4;      // a bound only; every move below snaps to rest as soon as its envelope can no longer move an edge by EPS
+const EPS=0.004;   // px — the snap is invisible, and the frame after it is byte-identical to the rest of the hold
+const stl=(zo,amp)=>Math.max(0.2,Math.log(1.3*Math.max(amp,1)/EPS)/zo);   // zo = ζ·ω of a spring, or a ring's decay
+function rise(t,t0,o={}){ const d=o.dist??24, z=o.zeta??0.62, w=o.omega??20, s0=o.s0??0.94; if(t<t0) return {k:0,op:0,y:d,s:s0}; if(t-t0>stl(z*w,Math.max(d,Math.abs(1-s0)*300))) return {k:1,op:1,y:0,s:1}; return OM.wordRise(t,t0,{dist:d,zeta:z,omega:w,s0,ds:1-s0}); }
+function pop(t,t0,o={}){ const r=o.rise??36, z=o.zeta??0.66, w=o.omega??17, s0=o.s0??0.94; if(t<t0) return {k:0,op:0,s:s0,dy:r}; if(t-t0>stl(z*w,Math.max(r,Math.abs(1-s0)*450))) return {k:1,op:1,s:1,dy:0}; return OM.popIn(t,t0,{zeta:z,omega:w,rise:r,s0,ds:1-s0}); }
 function lift(t,t1,o={}){ const d=o.dur??0.32, dist=o.dist??50, dir=o.dir??-1; if(t<=t1) return {k:0,op:1,dy:0,s:1}; if(t>=t1+d) return {k:1,op:0,dy:dir*dist,s:1+(o.grow??0.02)}; return OM.liftOut(t,t1,{dur:d,dist,dir,blur:0,grow:o.grow??0.02}); }
-function imp(t,th,o={}){ if(t<th||t-th>SET) return {r:0,sx:1,sy:1}; return OM.impact(t,th,{decay:o.decay??8,omega:o.omega??24,sqx:o.sqx??0.10,sqy:o.sqy??0.12}); }
-function tk(t,tl){ if(t<tl) return {on:false,s:1}; if(t-tl>SET) return {on:true,s:1}; return OM.tick(t,tl); }
+function imp(t,th,o={}){ const dc=o.decay??8, sx=o.sqx??0.10, sy=o.sqy??0.12; if(t<th||t-th>stl(dc,Math.max(sx,sy)*400)) return {r:0,sx:1,sy:1}; return OM.impact(t,th,{decay:dc,omega:o.omega??24,sqx:sx,sqy:sy}); }
+function tk(t,tl){ if(t<tl) return {on:false,s:1}; if(t-tl>stl(14,14)) return {on:true,s:1}; return OM.tick(t,tl); }
+const spr=(t,t0,z,w,amp)=>t<t0?0:t-t0>stl(z*w,amp)?1:OM.spring(t-t0,z,w);   // a bare spring 0→1 with the same exact settle
 function tw(t,t0,t1,c=ease.expoOut){ return c(seg(t,t0,t1)); }
 const f2=v=>(Math.abs(v)<0.005?0:v).toFixed(2), f4=v=>v.toFixed(4);
 function put(el,x,y,s=1,op=1,ex=''){ css(el,'opacity',op<0.002?'0':op>0.998?'1':op.toFixed(3)); css(el,'transform',`translate(${f2(x)}px,${f2(y)}px) scale(${f4(s)})${ex}`); }
@@ -166,7 +169,7 @@ function station(o){ ST.push(o); return o; }
 station({id:'S01', ent:[-180,1090], ext:[2020,770],
   html:()=>`
   <div id="q1" class="abs ar disp" style="left:0;top:388px;width:1920px;text-align:center;font-size:90px">${words('~ليش ~تتداول بس بفلوسك؟')}</div>
-  <div id="fund" class="abs ar txt grey" style="left:0;top:440px;width:1920px;text-align:center;font-size:40px">${words('تمويل لحد')}</div>
+  <div id="fund" class="abs ar txt grey" style="left:0;top:432px;width:1920px;text-align:center;font-size:46px">${words('تمويل لحد')}</div>
   <div id="ctrRow" class="abs" style="left:0;top:512px;width:1920px;height:210px;display:flex;justify-content:center;align-items:center;direction:ltr">
     <div id="chev1" style="margin-right:44px;margin-top:22px">${chevs(40,24,15)}</div>
     <div id="ctr" class="num" style="font-size:200px;height:200px;display:flex;align-items:flex-start">${odo('$1,000,000')}</div>
@@ -186,28 +189,30 @@ station({id:'S01', ent:[-180,1090], ext:[2020,770],
   track(){ return {ctr:this.row}; }});
 
 // ── S02 · What it is ──
+// The man holds the left half; the right half is one column on a 780 px measure, vertically centred on the frame:
+// headline · the «حسابك الحقيقي» card (Axi's scan lives inside it) · two struck chips · the pill · the cost line.
 station({id:'S02', ent:[-100,990], ext:[2020,945],
   html:()=>`
-  <div class="glow" style="left:-80px;top:180px;width:1240px;height:1000px;background:radial-gradient(closest-side,rgba(228,0,46,.16),rgba(228,0,46,0))"></div>
-  <img id="man" class="abs" src="${IMG}man_phone.webp" style="left:30px;top:92px;width:1046px;height:1030px">
-  <div id="h2" class="abs ar disp" style="right:120px;top:178px;font-size:66px">${words('~برنامج تمويل المتداولين')}</div>
-  <div id="acct" class="card ch" style="--c:22px;right:120px;top:318px;width:660px;height:204px"><div class="fill ch"></div>
-    <div id="acL" class="abs ar disp" style="right:38px;top:34px;font-size:42px">${words('حسابك الحقيقي')}</div>
-    <div class="abs caps" style="right:38px;top:112px;display:flex;align-items:center;gap:12px"><span>MT4 / MT5 · LIVE</span><i style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block"></i></div>
-    <svg id="spark" class="abs" style="left:34px;top:36px;overflow:visible" width="230" height="132" viewBox="0 0 270 132" preserveAspectRatio="none">
+  <div class="glow" style="left:-60px;top:160px;width:1240px;height:1000px;background:radial-gradient(closest-side,rgba(228,0,46,.16),rgba(228,0,46,0))"></div>
+  <img id="man" class="abs" src="${IMG}man_phone.webp" style="left:40px;top:92px;width:1046px;height:1030px">
+  <div id="h2" class="abs ar disp" style="right:120px;top:176px;font-size:74px;white-space:nowrap">${words('~برنامج تمويل المتداولين')}</div>
+  <div id="acct" class="card ch" style="--c:24px;right:120px;top:318px;width:780px;height:262px"><div class="fill ch"></div>
+    <div id="acL" class="abs ar disp" style="right:40px;top:30px;font-size:48px;white-space:nowrap">${words('حسابك الحقيقي')}</div>
+    <div class="abs caps" style="right:40px;top:110px;display:flex;align-items:center;gap:12px"><span>MT4 / MT5 · LIVE</span><i style="width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block"></i></div>
+    <div id="watch" class="abs ar txt" style="right:40px;top:170px;font-size:36px;white-space:nowrap">${words('Axi تراقب أداءك')}</div>
+    <svg id="spark" class="abs" style="left:38px;top:60px;overflow:visible" width="290" height="142" viewBox="0 0 270 132" preserveAspectRatio="none">
       <defs><linearGradient id="scg" x1="0" x2="1"><stop offset="0" stop-color="#E4002E" stop-opacity="0"/><stop offset="1" stop-color="#E4002E" stop-opacity=".35"/></linearGradient></defs>
-      <polyline id="spl" points="${sparkPts()}" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <polyline id="spl" points="${sparkPts()}" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
       <rect id="scan" x="0" y="0" width="70" height="132" fill="url(#scg)"/><rect id="scanb" x="68" y="0" width="2" height="132" fill="#E4002E"/>
-      <g id="brk" fill="#E4002E">${brackets(270,132,13)}</g>
+      <g id="brk" fill="#E4002E">${brackets(270,132,12)}</g>
     </svg>
   </div>
-  <div id="watch" class="abs ar txt" style="right:120px;top:538px;font-size:34px">${words('Axi تراقب أداءك')}</div>
-  <div id="chips" class="abs ar" style="right:120px;top:640px;display:flex;gap:20px">
-    <div id="chip1" class="chip ch disp" style="--c:16px;font-size:34px;font-weight:600"><div class="fill ch"></div><span class="t">${words('ماكو تحدي')}</span><span id="st1" class="L red t" style="font-weight:700;margin-right:22px;letter-spacing:-.04em">///</span></div>
-    <div id="chip2" class="chip ch disp" style="--c:16px;font-size:34px;font-weight:600"><div class="fill ch"></div><span class="t">${words('ماكو رسوم')}</span><span id="st2" class="L red t" style="font-weight:700;margin-right:22px;letter-spacing:-.04em">///</span></div>
+  <div id="chips" class="abs ar" style="right:120px;top:616px;display:flex;gap:20px">
+    <div id="chip1" class="chip ch disp" style="--c:16px;height:74px;font-size:36px;font-weight:600"><div class="fill ch"></div><span class="t">${words('ماكو تحدي')}</span><span id="st1" class="L red t" style="font-weight:700;margin-right:22px;letter-spacing:-.04em">///</span></div>
+    <div id="chip2" class="chip ch disp" style="--c:16px;height:74px;font-size:36px;font-weight:600"><div class="fill ch"></div><span class="t">${words('ماكو رسوم')}</span><span id="st2" class="L red t" style="font-weight:700;margin-right:22px;letter-spacing:-.04em">///</span></div>
   </div>
-  <div id="join" class="pill" style="right:120px;top:752px"><span id="joinT">${words('الانضمام مجاني')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 12 H5 M11 6 L5 12 L11 18" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-  <div id="foot" class="abs ar txt grey" style="right:124px;top:862px;font-size:24px;font-weight:400">${words('تكاليف التداول العادية تنطبق')}</div>`,
+  <div id="join" class="pill" style="right:120px;top:730px"><span id="joinT">${words('الانضمام مجاني')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 12 H5 M11 6 L5 12 L11 18" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  <div id="foot" class="abs ar txt grey" style="right:124px;top:846px;font-size:29px;font-weight:400;white-space:nowrap">${words('تكاليف التداول العادية تنطبق')}</div>`,
   line(P,Z,M){ Z(-100,990,1800,960,21,16,50); M('rest'); P(2020,945); },
   init(){ for(const k of ['h2','acct','acL','watch','chip1','chip2','st1','st2','join','joinT','foot','spl','scan','scanb','brk','man']) this[k]=$(k);
     this.splP=sparkPts().split(' ').map(q=>q.split(',').map(Number)); this.brkP=[...this.brk.children]; },
@@ -230,22 +235,22 @@ station({id:'S02', ent:[-100,990], ext:[2020,945],
 function sparkPts(){ const r=OM.rng(7); let s=[], y=104; for(let i=0;i<=22;i++){ y=clamp(y-(r()-0.32)*16,14,118); s.push(`${(i*270/22).toFixed(1)},${y.toFixed(1)}`); } return s.join(' '); }
 
 // ── S03 · How funding works ──
-const B0={x:820,y:560,w:420,h:290}, B1={x:820,y:352,w:930,h:612};
+const B0={x:1100,y:560,w:420,h:290}, B1={x:820,y:352,w:930,h:612};   // B starts balanced against «حسابك», grows left and up into the funded size
 const CANDLES=[ // destination (inside the grown allocation card) and source (inside «حسابك»): bottom-centre, body h, colour
   {dx:900,db:900,dh:150,sx:216,sb:818,col:'#8D8F93'},{dx:1010,db:860,dh:210,sx:243.5,sb:814,col:'#E4002E'},{dx:1120,db:815,dh:270,sx:271,sb:809.5,col:'#EDEDEF'}];
 station({id:'S03', ent:[-100,880], ext:[2020,600],
   html:()=>`
   <div id="eq" class="abs" style="left:0;top:132px;width:1920px;display:flex;justify-content:center;align-items:flex-start;gap:38px;direction:ltr">
-    <div id="eq0" style="display:flex;flex-direction:column;align-items:center"><div class="num" style="font-size:104px">$500</div><div class="txt grey ar" style="font-size:25px;margin-top:12px">رصيدك</div></div>
+    <div id="eq0" style="display:flex;flex-direction:column;align-items:center"><div class="num" style="font-size:104px">$500</div><div class="txt grey ar" style="font-size:30px;margin-top:10px">رصيدك</div></div>
     <div id="eq1" class="num grey" style="font-size:104px">×</div>
-    <div id="eq2" style="display:flex;flex-direction:column;align-items:center"><div class="num red" style="font-size:104px">10</div><div class="txt grey ar" style="font-size:25px;margin-top:12px">المضاعف</div></div>
+    <div id="eq2" style="display:flex;flex-direction:column;align-items:center"><div class="num red" style="font-size:104px">10</div><div class="txt grey ar" style="font-size:30px;margin-top:10px">المضاعف</div></div>
     <div id="eq3" class="num grey" style="font-size:104px">=</div>
-    <div id="eq4" style="display:flex;flex-direction:column;align-items:center"><div class="num" style="font-size:104px">$5,000</div><div class="txt grey ar" style="font-size:25px;margin-top:12px">حساب التخصيص</div></div>
+    <div id="eq4" style="display:flex;flex-direction:column;align-items:center"><div class="num" style="font-size:104px">$5,000</div><div class="txt grey ar" style="font-size:30px;margin-top:10px">حساب التخصيص</div></div>
   </div>
   <div id="cA" class="card ch" style="--c:22px;left:170px;top:560px;width:420px;height:290px"><div class="fill ch"></div>
     <div id="cAl" class="abs ar disp" style="right:32px;top:28px;font-size:38px">${words('حسابك')}</div>
     <div class="abs num" style="right:32px;top:88px;font-size:96px">$500</div>
-    <div id="cAlot" class="abs caps" style="left:32px;top:40px;font-size:16px">0.01 lot</div>
+    <div id="cAlot" class="abs caps" style="left:32px;top:40px;font-size:22px">0.01 lot</div>
   </div>
   <svg id="cAc" class="abs" style="left:0;top:0;overflow:visible" width="1" height="1">${CANDLES.map((c,i)=>`<g class="sc${i}"><line x1="${c.sx}" x2="${c.sx}" y1="${c.sb-c.dh/10-7}" y2="${c.sb+4}" stroke="${c.col}" stroke-width="1.6"/><rect x="${c.sx-6.5}" y="${c.sb-c.dh/10}" width="13" height="${c.dh/10}" fill="${c.col}"/></g>`).join('')}</svg>
   <svg id="arrow" class="abs" style="left:796px;top:689px" width="32" height="32" viewBox="0 0 32 32"><path d="M8 4 L24 16 L8 28" fill="none" stroke="#E4002E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -254,27 +259,28 @@ station({id:'S03', ent:[-100,880], ext:[2020,600],
     <div id="cBl" class="abs ar disp" style="right:36px;top:30px;font-size:38px;white-space:nowrap">${words('حساب التخصيص')}</div>
     <div id="cBq" class="abs num grey" style="right:36px;top:92px;font-size:96px">—</div>
     <div id="cBa" class="abs num" style="right:40px;top:100px;font-size:136px">$5,000</div>
-    <div id="cBcap" class="abs ar txt" style="right:38px;bottom:34px;font-size:31px;white-space:nowrap">${words('كل صفقة تنعكس تلقائياً')}</div>
-    <div id="cBlot" class="abs caps" style="left:44px;top:44px;font-size:16px">0.1 lot</div>
+    <div id="cBcap" class="abs ar txt" style="right:38px;bottom:34px;font-size:36px;white-space:nowrap">${words('كل صفقة تنعكس تلقائياً')}</div>
+    <div id="cBlot" class="abs caps" style="left:44px;top:44px;font-size:22px">0.1 lot</div>
   </div>
   <div id="cands" class="abs" style="left:0;top:0">${CANDLES.map((c,i)=>`<div class="cdl" id="cd${i}" style="position:absolute;left:${c.dx-26}px;top:${c.db-c.dh-46}px;width:52px;height:${c.dh+76}px;transform-origin:26px ${c.dh+46}px">
      <div style="position:absolute;left:24.5px;top:0;width:3px;height:${c.dh+76}px;background:${c.col};opacity:.9"></div><div style="position:absolute;left:0;top:46px;width:52px;height:${c.dh}px;background:${c.col}"></div></div>`).join('')}</div>`,
-  line(P,Z,M){ Z(-100,880,170,772,31,14,48); P(380,736); P(590,705); M('rest'); P(700,705); P(796,705); M('arrow'); P(1000,700); Z(1000,700,1750,640,32,12,50); P(2020,600); },
+  line(P,Z,M){ Z(-100,880,170,772,31,14,48); P(380,736); P(590,705); M('rest'); P(700,705); P(B0.x-24,705); M('arrow'); P(1250,702); Z(1250,702,1750,640,32,12,50); P(2020,600); },
   init(){ for(const k of ['eq','eq0','eq1','eq2','eq3','eq4','cA','cAl','cAlot','arrow','x10','cB','cBl','cBq','cBa','cBcap','cBlot','cAc']) this[k]=$(k);
     this.cds=CANDLES.map((c,i)=>$('cd'+i)); this.scs=CANDLES.map((c,i)=>this.cAc.querySelector('.sc'+i)); },
   draw(t){ const id='S03';
     const tA=T0(id)+0.55; putR(this.cA,pop(t,tA)); animW(this.cAl,cue(id,'شلون'),t);
-    const tAr=cue(id,'ثاني'); const ar=pop(t,tAr+0.55,{s0:0.6,rise:0}); put(this.arrow,(1-ar.k)*-18,0,1,ar.op);
     const tB=cue(id,'التخصيص'); const tG=cue(id,'خمسة');
     const pb=pop(t,tB-0.1); const m=OM.morphRect(t,tG,tG+0.95,B0,B1,{curve:ease.expoOut});
-    const R=t<tG?B0:m; css(this.cB,'left',f2(R.x)+'px'); css(this.cB,'top',f2(R.y)+'px'); css(this.cB,'width',f2(R.w)+'px'); css(this.cB,'height',f2(R.h)+'px');
+    const R=t<tG?B0:m;
+    const tAr=cue(id,'ثاني'); const ar=pop(t,tAr+0.55,{s0:0.6,rise:0}); put(this.arrow,(1-ar.k)*-18+(R.x-B1.x),0,1,ar.op);   // the arrowhead rides B's left edge
+    css(this.cB,'left',f2(R.x)+'px'); css(this.cB,'top',f2(R.y)+'px'); css(this.cB,'width',f2(R.w)+'px'); css(this.cB,'height',f2(R.h)+'px');
     put(this.cB,0,pb.dy,pb.s,pb.op); animW(this.cBl,tB+0.05,t);
     const gq=1-sstep(tG,tG+0.25,t); css(this.cBq,'opacity',(pb.op*gq).toFixed(3));
     const ra=rise(t,tG+0.3,{dist:40}); put(this.cBa,0,ra.y,ra.s,ra.op);
     // equation builds term by term
     const te=cues(id,['خمسمية','والمضاعف','عشرة','يصير','خمسة']); te[4]+=0.12;
     [this.eq0,this.eq1,this.eq2,this.eq3,this.eq4].forEach((e,i)=>{ const r=rise(t,te[i],{dist:34}); put(e,0,r.y,r.s,r.op); });
-    const tx=cue(id,'عشرة'); const px=pop(t,tx+0.05,{s0:0.7,rise:10}); const ix=imp(t,cue(id,'مضروبة')+0.1,{sqx:0.22,sqy:0.22}); put(this.x10,0,px.dy,px.s*ix.sx,px.op);
+    const tx=cue(id,'عشرة'); const px=pop(t,tx+0.05,{s0:0.7,rise:10}); const ix=imp(t,cue(id,'مضروبة')+0.1,{sqx:0.22,sqy:0.22}); put(this.x10,(R.x-B1.x)/2,px.dy,px.s*ix.sx,px.op);
     // trades: three candles appear in «حسابك», then are mirrored into the allocation account at 10× height
     const tc=cue(id,'صفقة'), tm=cue(id,'تنعكس');
     this.scs.forEach((g,i)=>{ const k=rise(t,tc+i*0.13,{dist:8}); css(g,'opacity',k.op.toFixed(3)); css(g,'transform',k.k>=1?'none':`translateY(${f2(k.y)}px)`); });
@@ -302,10 +308,10 @@ station({id:'S04', ent:[-100,900], ext:[2020,820],
     <circle r="292" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
     ${Array.from({length:96},(_,i)=>{const a=i/96*Math.PI*2, r0=i%8===0?298:295, r1=304; return `<line x1="${(Math.cos(a)*r0).toFixed(1)}" y1="${(Math.sin(a)*r0).toFixed(1)}" x2="${(Math.cos(a)*r1).toFixed(1)}" y2="${(Math.sin(a)*r1).toFixed(1)}" stroke="${i%8===0?'#E4002E':'rgba(255,255,255,.4)'}" stroke-width="${i%8===0?2.5:1.2}"/>`;}).join('')}
   </svg>
-  <div id="lb1" class="abs ar" style="left:950px;top:706px;width:420px;text-align:left"><div class="disp" style="font-size:40px">${words('المهارة')}</div><div class="txt grey" style="font-size:24px;font-weight:400">${words('وين تدخل ووين تطلع')}</div></div>
-  <div id="lb2" class="abs ar" style="left:${RING.cx-260}px;top:150px;width:520px;text-align:center"><div class="disp" style="font-size:40px">${words('المخاطرة')}</div><div class="txt grey" style="font-size:24px;font-weight:400">${words('شلون تحمي حسابك')}</div></div>
-  <div id="lb3" class="abs ar" style="left:-120px;top:706px;width:420px;text-align:right"><div class="disp" style="font-size:40px">${words('الثبات')}</div><div class="txt grey" style="font-size:24px;font-weight:400">${words('مو ضربة حظ')}</div></div>
-  <div id="sub4" class="abs ar disp" style="right:120px;top:300px;width:600px;font-size:54px;font-weight:600;line-height:1.3">${words('تقيس ~أسلوب ~تداولك من !ثلاث !نواحي')}</div>
+  <div id="lb1" class="abs ar" style="left:946px;top:700px;width:420px;text-align:left"><div class="disp" style="font-size:46px">${words('المهارة')}</div><div class="txt grey" style="font-size:30px;font-weight:400;margin-top:2px">${words('وين تدخل ووين تطلع')}</div></div>
+  <div id="lb2" class="abs ar" style="left:${RING.cx-260}px;top:146px;width:520px;text-align:center"><div class="disp" style="font-size:46px">${words('المخاطرة')}</div><div class="txt grey" style="font-size:30px;font-weight:400;margin-top:2px">${words('شلون تحمي حسابك')}</div></div>
+  <div id="lb3" class="abs ar" style="left:-116px;top:700px;width:420px;text-align:right"><div class="disp" style="font-size:46px">${words('الثبات')}</div><div class="txt grey" style="font-size:30px;font-weight:400;margin-top:2px">${words('مو ضربة حظ')}</div></div>
+  <div id="sub4" class="abs ar disp" style="right:120px;top:428px;width:640px;font-size:60px;font-weight:600;line-height:1.3">${words('تقيس ~أسلوب ~تداولك من !ثلاث !نواحي')}</div>
   <div id="xc" class="card ch" style="--c:26px;left:1236px;top:236px;width:574px;height:570px"><div class="fill ch"></div>
     <img src="${IMG}logo_white.png" class="abs" style="left:36px;top:36px;height:30px">
     <div id="xcT" class="abs" style="left:36px;top:100px;font-family:Geist;font-weight:400;font-size:46px;line-height:1.08;letter-spacing:-.025em;direction:ltr"><span class="w">Edge</span> <span class="w">Score</span><br><span class="w">Explainer</span></div>
@@ -315,7 +321,7 @@ station({id:'S04', ent:[-100,900], ext:[2020,820],
       <g transform="translate(14,14)">${candleSVG(13,474,172,44,{bw:16,redEvery:3})}</g>
       <g id="xcB" fill="#E4002E">${brackets(502,200,15)}</g>
     </svg>
-    <div id="xcF" class="abs ar txt grey" style="right:36px;top:478px;font-size:26px">${words('ببوابة العملاء')}</div>
+    <div id="xcF" class="abs ar txt grey" style="right:36px;top:472px;font-size:30px">${words('ببوابة العملاء')}</div>
     <div id="xcV" class="abs" style="left:36px;top:470px">${chevs(22,13,8)}</div>
   </div>`,
   line(P,Z,M){ Z(-100,900,400,832,41,14,48); P(RING.cx,RING.cy+RING.r); M('ring0'); M('rest');
@@ -332,7 +338,7 @@ station({id:'S04', ent:[-100,900], ext:[2020,820],
       ws.forEach((s,i)=>{ const r=rise(t,i===0?tl:td+(i-1)*0.06,{dist:i===0?22:14}); css(s,'opacity',r.op.toFixed(3)); css(s,'transform',r.k>=1?'none':`translate(${f2(r.y*0.5)}px,${f2(r.y)}px) scale(${f4(r.s)})`); }); }
     const tx=cue(id,'ينضرب'), tb=cue(id,'خبرتك');
     animW(this.rX,[tx+0.1,tx+0.3],t,{dist:20});
-    const ok=OM.spring(clamp(t-tb,0,SET),0.55,14), ov=t<tb?0:t-tb>SET?1:ok, oa=pop(t,T0(id)+0.6,{rise:0,s0:0.97});
+    const oa=pop(t,T0(id)+0.6,{rise:0,s0:0.97});
     css(this.outer,'opacity',(oa.op*(0.28+0.72*clamp((t-tb)*5,0,1))).toFixed(3));
     const io=imp(t,tb,{sqx:0.09,sqy:0.09,omega:16,decay:6}); css(this.outer,'transform',io.r===0&&oa.k>=1?'none':`scale(${f4(oa.s*io.sx)})`); css(this.outer,'transformOrigin','310px 310px');
     const ii=imp(t,tb+0.08,{sqx:0.07,sqy:0.07}); css(this.ringIn,'transform',ii.r===0?'none':`scale(${f4(ii.sx)})`);
@@ -354,59 +360,57 @@ station({id:'S04', ent:[-100,900], ext:[2020,820],
   track(){ return {ring:this.ringIn,xc:this.xc}; }});
 
 // ── S05 · Getting started ──
-const LOCK=`<svg id="lock" class="abs" style="left:350px;top:500px;overflow:visible" width="200" height="270" viewBox="0 0 200 270">
+// Two halves on one axis: the lock (big element) over the first step of the staircase on the left, the three conditions in a
+// chamfered card on the right. The line rests under the lock and climbs the step when it opens.
+const LK={x:470,y:250,s:1.25};
+const LOCK=`<svg id="lock" class="abs" style="left:${LK.x-100*LK.s}px;top:${LK.y}px;overflow:visible" width="${200*LK.s}" height="${270*LK.s}" viewBox="0 0 200 270">
   <path id="lkS" d="M52 158 V82 A48 48 0 0 1 148 82 V158" fill="none" stroke="#D9D9DC" stroke-width="15"/>
   <polygon id="lkB" points="33,124 180,124 180,246 167,262 20,262 20,140" fill="#141416" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
   <circle cx="100" cy="183" r="11" fill="#060607"/><rect x="95" y="186" width="10" height="34" fill="#060607"/></svg>`;
-station({id:'S05', ent:[-100,860], ext:[2020,640],
+const ROW5=(id,top,inner,last)=>`<div id="${id}" class="abs" style="right:0;top:${top}px;width:900px;height:170px;${last?'':'border-bottom:1px solid var(--hair)'}">${inner}</div>`;
+station({id:'S05', ent:[-100,900], ext:[2020,790],
   html:()=>`
-  <div class="glow" style="left:150px;top:380px;width:600px;height:600px;background:radial-gradient(closest-side,rgba(228,0,46,.12),rgba(228,0,46,0))"></div>
+  <div class="glow" style="left:${LK.x-320}px;top:110px;width:640px;height:640px;background:radial-gradient(closest-side,rgba(228,0,46,.13),rgba(228,0,46,0))"></div>
   ${LOCK}
-  <div id="seed5" class="abs ar disp" style="left:720px;top:612px;width:280px;text-align:center;font-size:46px">${words('التأسيس')}</div>
-  <div id="rows5" class="abs" style="right:120px;top:150px;width:800px">
-    <div id="r51" class="abs" style="right:0;top:0;width:800px;height:152px;border-bottom:1px solid var(--hair)">
-      ${tickBox('k51').replace('class="box"','class="box" style="right:0;top:52px"')}
-      <div id="t51" class="abs ar disp" style="right:78px;top:42px;font-size:46px;font-weight:600;white-space:nowrap">${words('افتح حساب Axi Select')}</div>
-      <div class="abs" style="left:14px;top:46px;display:flex;gap:12px;direction:ltr">
-        <div id="mt4" class="chip ch caps" style="--c:12px;height:58px;padding:0 20px;font-size:21px;color:#fff;letter-spacing:.12em"><div class="fill ch"></div><span class="t">MT4</span></div>
-        <div id="mt5" class="chip ch caps" style="--c:12px;height:58px;padding:0 20px;font-size:21px;color:#fff;letter-spacing:.12em"><div class="fill ch"></div><span class="t">MT5</span></div></div>
-    </div>
-    <div id="r52" class="abs" style="right:0;top:170px;width:800px;height:152px;border-bottom:1px solid var(--hair)">
-      ${tickBox('k52').replace('class="box"','class="box" style="right:0;top:52px"')}
-      <div id="t52" class="abs ar disp" style="right:78px;top:42px;font-size:46px;font-weight:600;white-space:nowrap">${words('درجة Edge 50+')}</div>
-      <svg id="gauge" class="abs" style="left:10px;top:28px;overflow:visible" width="150" height="96" viewBox="-75 -80 150 96">
+  <div id="seed5" class="abs ar disp" style="left:${LK.x-220}px;top:676px;width:440px;text-align:center;font-size:58px;white-space:nowrap">${words('التأسيس')}</div>
+  <div id="card5" class="card ch" style="--c:28px;left:900px;top:196px;width:900px;height:560px"><div class="fill ch"></div>
+    ${ROW5('r51',25,`${tickBox('k51').replace('class="box"','class="box" style="right:46px;top:62px"')}
+      <div id="t51" class="abs ar disp" style="right:120px;top:50px;font-size:46px;font-weight:600;white-space:nowrap">${words('افتح حساب Axi Select')}</div>
+      <div class="abs" style="left:46px;top:51px;display:flex;gap:12px;direction:ltr">
+        <div id="mt4" class="chip ch caps" style="--c:12px;height:66px;padding:0 22px;font-size:24px;color:#fff;letter-spacing:.12em"><div class="fill ch"></div><span class="t">MT4</span></div>
+        <div id="mt5" class="chip ch caps" style="--c:12px;height:66px;padding:0 22px;font-size:24px;color:#fff;letter-spacing:.12em"><div class="fill ch"></div><span class="t">MT5</span></div></div>`)}
+    ${ROW5('r52',195,`${tickBox('k52').replace('class="box"','class="box" style="right:46px;top:62px"')}
+      <div id="t52" class="abs ar disp" style="right:120px;top:50px;font-size:46px;font-weight:600;white-space:nowrap">${words('درجة Edge 50+')}</div>
+      <svg id="gauge" class="abs" style="left:50px;top:30px;overflow:visible" width="150" height="110" viewBox="-75 -80 150 110">
         <path d="M-64 0 A64 64 0 0 1 64 0" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="9"/>
         <path id="gArc" d="" fill="none" stroke="#E4002E" stroke-width="9"/>
         <line id="gN" x1="0" y1="0" x2="0" y2="-54" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><circle r="7" fill="#fff"/>
-        <text x="-64" y="16" fill="#8D8F93" font-family="Geist" font-size="13" text-anchor="middle">0</text><text x="64" y="16" fill="#8D8F93" font-family="Geist" font-size="13" text-anchor="middle">100</text></svg>
-    </div>
-    <div id="r53" class="abs" style="right:0;top:340px;width:800px;height:152px">
-      ${tickBox('k53').replace('class="box"','class="box" style="right:0;top:52px"')}
-      <div id="t53" class="abs ar disp" style="right:78px;top:42px;font-size:46px;font-weight:600;white-space:nowrap">${words('رصيد $500+')}</div>
-      <svg id="wal" class="abs" style="left:28px;top:40px" width="112" height="80" viewBox="0 0 112 80"><rect x="3" y="12" width="96" height="62" rx="8" fill="none" stroke="#fff" stroke-width="3"/><path d="M14 12 L74 2 L80 12" fill="none" stroke="#8D8F93" stroke-width="3"/><rect x="66" y="32" width="40" height="22" rx="5" fill="#E4002E"/><circle cx="78" cy="43" r="4" fill="#fff"/></svg>
-    </div>
+        <text x="-64" y="26" fill="#8D8F93" font-family="Geist" font-size="20" text-anchor="middle">0</text><text x="64" y="26" fill="#8D8F93" font-family="Geist" font-size="20" text-anchor="middle">100</text></svg>`)}
+    ${ROW5('r53',365,`${tickBox('k53').replace('class="box"','class="box" style="right:46px;top:62px"')}
+      <div id="t53" class="abs ar disp" style="right:120px;top:50px;font-size:46px;font-weight:600;white-space:nowrap">${words('رصيد $500+')}</div>
+      <svg id="wal" class="abs" style="left:66px;top:45px" width="112" height="80" viewBox="0 0 112 80"><rect x="3" y="12" width="96" height="62" rx="8" fill="none" stroke="#fff" stroke-width="3"/><path d="M14 12 L74 2 L80 12" fill="none" stroke="#8D8F93" stroke-width="3"/><rect x="66" y="32" width="40" height="22" rx="5" fill="#E4002E"/><circle cx="78" cy="43" r="4" fill="#fff"/></svg>`,true)}
   </div>`,
-  line(P,Z,M){ Z(-100,860,330,822,51,14,48); P(560,820); M('rest'); P(720,820); P(720,700); P(1000,700); M('step'); P(1300,700); Z(1300,700,1850,680,52,8,52); P(2020,640); },
-  init(){ for(const k of ['lock','lkS','lkB','seed5','r51','r52','r53','t51','t52','t53','mt4','mt5','gauge','gArc','gN','wal','k51','k52','k53']) this[k]=$(k);
+  line(P,Z,M){ Z(-100,900,220,880,51,14,48); M('rest'); P(LK.x-150,880); P(LK.x-150,790); P(LK.x+150,790); M('step'); P(860,790); Z(860,790,1850,806,52,8,52); P(2020,790); },
+  init(){ for(const k of ['lock','lkS','lkB','seed5','card5','r51','r52','r53','t51','t52','t53','mt4','mt5','gauge','gArc','gN','wal','k51','k52','k53']) this[k]=$(k);
   },
   draw(t){ const id='S05';
-    const pl=pop(t,cue(id,'شلون'));
+    const pl=pop(t,cue(id,'شلون')); putR(this.card5,pop(t,cue(id,'تفتح')-0.35,{rise:24}));
     const t1=cue(id,'تفتح'); animW(this.t51,cues(id,['تفتح','حساب','Axi']),t); putR(this.mt4,pop(t,cue(id,'إم',0),{rise:16})); putR(this.mt5,pop(t,cue(id,'إم',1),{rise:16}));
     animW(this.t52,cues(id,['درجة','Edge','لخمسين']),t); const tg=cue(id,'درجة'); putR(this.gauge,pop(t,tg,{rise:16}));
-    const tn=cue(id,'لخمسين'); const kn=t<tn?0:t-tn>SET?1:OM.spring(t-tn,0.45,13); const ang=lerp(-90,0,kn);
+    const tn=cue(id,'لخمسين'); const kn=spr(t,tn,0.45,13,90); const ang=lerp(-90,0,kn);
     attr(this.gN,'transform',`rotate(${f2(ang)})`);
     { const a=Math.PI*(1-0.5*clamp(kn,0,1.2)), ex=64*Math.cos(a), ey=-64*Math.sin(a); attr(this.gArc,'d',kn<=0.002?'':`M-64 0 A64 64 0 0 1 ${f2(ex)} ${f2(ey)}`); }
     animW(this.t53,cues(id,['رصيدك','خمسمية']),t); putR(this.wal,pop(t,cue(id,'رصيدك'),{rise:16}));
     for(const [el,r,i] of [[this.r51,t1-0.05,0],[this.r52,tg-0.05,1],[this.r53,cue(id,'رصيدك')-0.05,2]]){ const a=pop(t,T0(id)+0.6+i*0.08,{rise:18}); css(el,'opacity',(a.op*(0.32+0.68*sstep(r-0.4,r,t))).toFixed(3)); css(el,'transform',a.k>=1?'none':`translateY(${f2(a.dy)}px)`); }
     setTick(this.k51,t,cue(id,'وتبدي')); setTick(this.k52,t,tn+0.55); setTick(this.k53,t,cue(id,'دولار')+0.1);
-    const tu=cue(id,'تنفتحلك'); const ku=t<tu?0:t-tu>SET?1:OM.spring(t-tu,0.5,15);
+    const tu=cue(id,'تنفتحلك'); const ku=spr(t,tu,0.5,15,40);
     attr(this.lkS,'transform',`translate(0 ${f2(-26*clamp(ku,0,1.3))}) rotate(${f2(-18*clamp(ku,0,1.25))} 52 158)`);
     attr(this.lkB,'fill',t>=tu+0.05?'#E4002E':'#141416'); attr(this.lkB,'stroke',t>=tu+0.05?'#E4002E':'rgba(255,255,255,.22)');
-    const il=imp(t,tu+0.05); css(this.lock,'transformOrigin','100px 262px'); css(this.lock,'opacity',pl.op>=1?'1':pl.op.toFixed(3));
+    const il=imp(t,tu+0.05); css(this.lock,'transformOrigin',`${100*LK.s}px ${262*LK.s}px`); css(this.lock,'opacity',pl.op>=1?'1':pl.op.toFixed(3));
     css(this.lock,'transform',pl.k>=1&&il.r===0?'none':`translate(0px,${f2(pl.dy)}px) scale(${f4(pl.s*il.sx)},${f4(pl.s*il.sy)})`);
     const ts=cue(id,'التأسيس'); animW(this.seed5,ts-0.25,t,{dist:30});
   },
-  track(){ return {lock:this.lock,rows:this.r51}; }});
+  track(){ return {lock:this.lock,card5:this.card5}; }});
 
 // ── S06 · The six stages ──
 const STG=[ // name, funding, share, cue word for name [word,n], funding cue, share cue
@@ -416,28 +420,30 @@ const STG=[ // name, funding, share, cue word for name [word,n], funding cue, sh
   {n:'برو',f:'$200K',s:'60%',cn:['برو',0],cf:['ميتين',0],cs:['وستين',0]},
   {n:'برو 500',f:'$500K',s:'70%',cn:['برو',1],cf:['نص',0],cs:['وسبعين',0]},
   {n:'برو مليون',f:'$1M',s:'80%',cn:['برو',2],cf:['مليون',2],cs:['ثمانين',0]}];
-const SX0=200, SY0=1000, SW=520, SH=140;
-station({id:'S06', ent:[-100,996], ext:[3620,270], wide:true, bw:3700, bh:1500,
+const SX0=200, SY0=1000, SW=440, SH=124;   // sized so the pull-back to all six (zoom .65) keeps names ≥ 34 px and labels ≥ 26 px on screen
+station({id:'S06', ent:[-100,996], ext:[3100,340], wide:true, bw:3200, bh:1500,
   html:()=>`
-  <div id="h6" class="abs ar" style="right:${3700-1600}px;top:150px;width:1300px">
+  <div id="h6" class="abs ar" style="right:${3200-1500}px;top:330px;width:1300px">
     <div class="disp" style="font-size:156px;font-weight:800;line-height:1.1">${words('6 مراحل')}</div>
     <div class="txt grey" style="font-size:56px;margin-top:8px">${words('تمويل أكبر · حصة أعلى')}</div></div>
-  <div id="crown" class="abs" style="left:${SX0+5*SW+SW/2-26}px;top:96px">${chevs(52,30,18)}</div>
+  <div id="crown" class="abs" style="left:${SX0+5*SW+SW/2-26}px;top:${SY0-5*SH-200}px">${chevs(52,30,18)}</div>
   ${STG.map((g,k)=>`<div id="blk${k}" class="blk" style="left:${SX0+SW*k}px;top:${SY0-SH*k}px">
      <div class="card ch" style="--c:28px"><div class="fill ch"></div></div>
-     <div class="abs caps" style="left:30px;top:40px;font-size:17px">STAGE 0${k+1}</div>
-     <div id="sn${k}" class="abs ar disp" style="right:34px;top:26px;font-size:48px;white-space:nowrap">${words(g.n)}</div>
-     <div id="sf${k}" class="abs num" style="right:34px;top:98px;font-size:118px">${g.f}</div>
-     <div id="ss${k}" class="abs ar" style="right:34px;top:236px;display:flex;align-items:baseline;gap:16px;white-space:nowrap"><span class="txt grey" style="font-size:28px">حصة الأرباح</span><span class="num red" style="font-size:62px;font-weight:400">${g.s}</span></div>
-     ${k===0?`<div id="proof" class="chip ch" style="--c:10px;position:absolute;right:34px;top:328px;height:44px;padding:0 16px;font-size:23px;color:var(--red)"><div class="fill ch"></div><span class="t txt" style="font-weight:500">مرحلة إثبات</span></div>`:''}
+     <div class="abs caps stc" style="right:30px;top:30px;font-size:24px;letter-spacing:.18em">STAGE 0${k+1}</div>
+     <div id="sn${k}" class="abs ar disp" style="right:30px;top:62px;font-size:56px;white-space:nowrap">${words(g.n)}</div>
+     <div id="sf${k}" class="abs num" style="right:30px;top:142px;font-size:120px">${g.f}</div>
+     <div id="ss${k}" class="abs ar" style="right:30px;top:274px;display:flex;align-items:baseline;gap:16px;white-space:nowrap"><span class="txt grey" style="font-size:42px">حصة الأرباح</span><span class="num red" style="font-size:66px;font-weight:400">${g.s}</span></div>
+     ${k===0?`<div id="proof" class="chip ch" style="--c:12px;position:absolute;right:30px;top:364px;height:60px;padding:0 20px;font-size:40px;color:var(--red)"><div class="fill ch"></div><span class="t txt" style="font-weight:500">مرحلة إثبات</span></div>`:''}
    </div>`).join('')}`,
   line(P,Z,M){ P(-100,996); P(SX0,996); M('rest');
     for(let k=0;k<6;k++){ const y=SY0-SH*k-4, x=SX0+SW*(k+1); P(x,y); M('k'+k); if(k<5) P(x,y-SH); }
-    P(3500,290); P(3620,270); },
+    P(SX0+6*SW+140,SY0-5*SH-24); P(3100,340); },
   init(){ this.blk=STG.map((g,k)=>$('blk'+k)); this.sn=STG.map((g,k)=>$('sn'+k)); this.sf=STG.map((g,k)=>$('sf'+k)); this.ss=STG.map((g,k)=>$('ss'+k)); this.proof=$('proof'); this.h6=$('h6');
-    this.crown=[...$('crown').querySelectorAll('polygon')]; },
+    this.crown=[...$('crown').querySelectorAll('polygon')]; this.stc=[...this.el.querySelectorAll('.stc')]; },
   draw(t){ const id='S06';
-    animW(this.h6.children[0],cues(id,['ست','مراحل']),t,{dist:40}); animW(this.h6.children[1],cues(id,['تمويلها','أكبر',['أكبر',0],'وحصتك','أعلى']),t);
+    animW(this.h6.children[0],cues(id,['ست','مراحل']),t,{dist:40}); { const zh=1-sstep(0.8,0.98,CAM.zoom); css(this.h6,'opacity',zh<0.002?'0':zh>0.998?'1':zh.toFixed(3)); }   /* the title belongs to the wide view only */ animW(this.h6.children[1],cues(id,['تمويلها','أكبر',['أكبر',0],'وحصتك','أعلى']),t);
+    // the STAGE caps are a close-up detail: they fade out as the camera pulls back (they would read under 20 px)
+    const zc=sstep(0.82,0.98,CAM.zoom); this.stc.forEach((e,k)=>{ const v=zc*sstep(cue(id,...STG[k].cn)-0.5,cue(id,...STG[k].cn)+0.1,t); css(e,'opacity',v<0.002?'0':v>0.998?'1':v.toFixed(3)); });
     STG.forEach((g,k)=>{ const tn=cue(id,...g.cn), tf=cue(id,...g.cf), ts=cue(id,...g.cs);
       const on=sstep(tn-0.5,tn+0.1,t); css(this.blk[k],'opacity',(0.5+0.5*on).toFixed(3));
       animW(this.sn[k],tn,t,{dist:26,dt:0.12}); const rf=rise(t,tf,{dist:40}); put(this.sf[k],0,rf.y,rf.s,rf.op); const rs=rise(t,ts,{dist:22}); put(this.ss[k],0,rs.y,rs.s,rs.op); });
@@ -469,7 +475,7 @@ station({id:'S07', ent:[-100,1010], ext:[2020,872],
     const tl=cue(id,'لازم');
     ROWS7.forEach((r,i)=>{ const to=cue(id,r[1]); css(this.rows[i],'opacity',(0.28+0.72*sstep(to-0.15,to+0.25,t)).toFixed(3));
       animW(this.rt[i],T0(id)+0.95+i*0.1,t,{dist:16,dt:0.04}); setTick(this.kb[i],t,tic[i]); });
-    const tn=cue(id,'وبعدها'); const pn=pop(t,tn-0.05,{rise:26}); const tp=cue(id,'تنتقل')+0.1; const pr=t<tp||t-tp>SET?{s:1,active:false}:OM.press(t,tp,{depth:0.12});
+    const tn=cue(id,'وبعدها'); const pn=pop(t,tn-0.05,{rise:26}); const tp=cue(id,'تنتقل')+0.1; const pr=t<tp||t-tp>stl(10,24)?{s:1,active:false}:OM.press(t,tp,{depth:0.12});
     put(this.next,0,pn.dy,pn.s*pr.s,pn.op); css(this.next,'background',pr.active?'#ff2c55':''); animW(this.nextT,tn+0.1,t,{dist:12});
   },
   track(){ return {card7:this.card,c7:this.c7}; }});
@@ -477,20 +483,20 @@ station({id:'S07', ent:[-100,1010], ext:[2020,872],
 // ── S08 · Loss limits ──
 const CARDS8=[['التأسيس','إعادة مجانية بأي وقت','بالتأسيس','reset'],['الحضانة والتسارع','حجر 7 أيام · ثالث حجر رجوع للتأسيس','بالحضانة','lock'],['مراحل برو','رجوع للتأسيس','بمراحل','back']];
 const ICON={reset:'<path d="M34 12 A16 16 0 1 0 38 26" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round"/><path d="M28 6 L36 12 L28 18" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>',
-  lock:'<rect x="10" y="20" width="26" height="20" rx="3" fill="none" stroke="#E4002E" stroke-width="3.2"/><path d="M15 20 V14 A8 8 0 0 1 31 14 V20" fill="none" stroke="#E4002E" stroke-width="3.2"/><text x="23" y="35" fill="#E4002E" font-family="Geist" font-weight="600" font-size="12" text-anchor="middle">7</text>',
+  lock:'<rect x="10" y="20" width="26" height="20" rx="3" fill="none" stroke="#E4002E" stroke-width="3.2"/><path d="M15 20 V14 A8 8 0 0 1 31 14 V20" fill="none" stroke="#E4002E" stroke-width="3.2"/>',
   back:'<path d="M14 18 H30 A9 9 0 0 1 30 36 H18" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round"/><path d="M20 11 L13 18 L20 25" fill="none" stroke="#E4002E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>'};
-station({id:'S08', ent:[-100,360], ext:[2020,180],
+station({id:'S08', ent:[-100,330], ext:[2020,150],
   html:()=>`
-  <svg id="fl7" class="abs" style="left:140px;top:468px" width="1640" height="6"><line x1="0" x2="1640" y1="3" y2="3" stroke="#E4002E" stroke-width="2.5" stroke-dasharray="16 11"/></svg>
-  <div id="lab7" class="abs ar" style="right:140px;top:370px;display:flex;align-items:baseline;gap:18px;white-space:nowrap"><span class="txt grey" style="font-size:28px">أقصى خسارة</span><span class="num red" style="font-size:80px;font-weight:400">-7%</span></div>
-  <svg id="fl10" class="abs" style="left:140px;top:540px" width="1640" height="6"><line x1="0" x2="1640" y1="3" y2="3" stroke="#E4002E" stroke-opacity=".45" stroke-width="2" stroke-dasharray="6 10"/></svg>
-  <div id="lab10" class="abs ar" style="right:140px;top:552px;display:flex;align-items:baseline;gap:14px;white-space:nowrap"><span class="txt grey" style="font-size:22px">برو مليون</span><span class="num" style="font-size:40px;font-weight:400;color:rgba(228,0,46,.75)">-10%</span></div>
-  ${CARDS8.map((c,i)=>`<div id="cd8${i}" class="card ch" style="--c:22px;left:${1245-i*535}px;top:640px;width:500px;height:262px"><div class="fill ch"></div>
-     <svg class="abs" style="right:30px;top:28px" width="48" height="48" viewBox="0 0 48 48">${ICON[c[3]]}</svg>
-     <div class="abs ar disp" style="right:32px;top:92px;font-size:36px;white-space:nowrap">${words(c[0])}</div>
-     <div id="cb8${i}" class="abs ar txt" style="right:32px;top:146px;width:440px;font-size:28px;line-height:1.42;color:#C9CACD">${words(c[1])}</div></div>`).join('')}
-  <div id="disc" class="abs ar disp" style="left:0;top:680px;width:1920px;text-align:center;font-size:96px;font-weight:800">${words('!الانضباط ~هو ~كلشي')}</div>`,
-  line(P,Z,M){ Z(-100,360,600,320,81,14,46); M('rest'); P(690,334); P(780,384); P(870,440); P(960,436); M('dip'); P(1080,380); P(1250,328); P(1450,268); P(1650,222); P(1800,200); M('reb'); P(2020,180); },
+  <svg id="fl7" class="abs" style="left:140px;top:438px" width="1640" height="6"><line x1="0" x2="1640" y1="3" y2="3" stroke="#E4002E" stroke-width="2.5" stroke-dasharray="16 11"/></svg>
+  <div id="lab7" class="abs ar" style="right:140px;top:334px;display:flex;align-items:baseline;gap:20px;white-space:nowrap"><span class="txt grey" style="font-size:36px">أقصى خسارة</span><span class="num red" style="font-size:86px;font-weight:400">7%</span></div>
+  <svg id="fl10" class="abs" style="left:140px;top:510px" width="1640" height="6"><line x1="0" x2="1640" y1="3" y2="3" stroke="#E4002E" stroke-opacity=".45" stroke-width="2" stroke-dasharray="6 10"/></svg>
+  <div id="lab10" class="abs ar" style="right:140px;top:522px;display:flex;align-items:baseline;gap:16px;white-space:nowrap"><span class="txt grey" style="font-size:30px">برو مليون</span><span class="num" style="font-size:50px;font-weight:400;color:rgba(228,0,46,.8)">10%</span></div>
+  ${CARDS8.map((c,i)=>`<div id="cd8${i}" class="card ch" style="--c:24px;left:${1240-i*540}px;top:592px;width:520px;height:300px"><div class="fill ch"></div>
+     <svg class="abs" style="right:32px;top:30px" width="52" height="52" viewBox="0 0 48 48">${ICON[c[3]]}</svg>
+     <div class="abs ar disp" style="right:34px;top:96px;font-size:42px;white-space:nowrap">${words(c[0])}</div>
+     <div id="cb8${i}" class="abs ar txt" style="right:34px;top:158px;width:456px;font-size:34px;line-height:1.4;color:#D2D3D6">${words(c[1])}</div></div>`).join('')}
+  <div id="disc" class="abs ar disp" style="left:0;top:640px;width:1920px;text-align:center;font-size:96px;font-weight:800">${words('!الانضباط ~هو ~كلشي')}</div>`,
+  line(P,Z,M){ Z(-100,330,600,290,81,14,46); M('rest'); P(690,304); P(780,354); P(870,410); P(960,406); M('dip'); P(1080,350); P(1250,298); P(1450,238); P(1650,192); P(1800,170); M('reb'); P(2020,150); },
   init(){ for(const k of ['fl7','lab7','fl10','lab10','disc']) this[k]=$(k); this.cds=CARDS8.map((c,i)=>$('cd8'+i)); this.cbs=CARDS8.map((c,i)=>$('cb8'+i)); },
   draw(t){ const id='S08';
     const t7=cue(id,'أقصى'); const w7=tw(t,t7,t7+0.9,ease.expoOut); css(this.fl7,'clipPath',`inset(0 0 0 ${f2((1-w7)*100)}%)`); css(this.fl7,'opacity',t<t7?'0':'1');
@@ -510,37 +516,37 @@ station({id:'S08', ent:[-100,360], ext:[2020,180],
 // ── S09 · Payouts ──
 station({id:'S09', ent:[-100,420], ext:[2020,400],
   html:()=>`
-  <div id="card9" class="card ch" style="--c:24px;left:180px;top:226px;width:590px;height:290px"><div class="fill ch"></div>
+  <div id="card9" class="card ch" style="--c:24px;left:180px;top:205px;width:600px;height:310px"><div class="fill ch"></div>
     <div id="c9g" class="abs ch" style="--c:24px;inset:0;background:linear-gradient(180deg,rgba(228,0,46,.28),rgba(228,0,46,0) 70%);opacity:0"></div>
-    <div id="c9l" class="abs ar disp" style="right:40px;top:40px;font-size:54px">${words('حصتك')}</div>
-    <div id="c9s" class="abs ar txt grey" style="right:40px;top:124px;font-size:26px;width:300px">${words('من أرباح حساب التخصيص')}</div>
-    <div class="abs" style="left:60px;top:70px;width:150px;height:150px;border-radius:50%;border:2px dashed rgba(255,255,255,.18)"></div></div>
+    <div id="c9l" class="abs ar disp" style="right:40px;top:44px;font-size:58px">${words('حصتك')}</div>
+    <div id="c9s" class="abs ar txt grey" style="right:40px;top:134px;font-size:30px;width:330px">${words('من أرباح حساب التخصيص')}</div>
+    <div class="abs" style="left:60px;top:80px;width:150px;height:150px;border-radius:50%;border:2px dashed rgba(255,255,255,.18)"></div></div>
   <img id="coin" class="abs" src="${IMG}coin_silver.webp" style="left:0;top:0;width:150px;height:152px;transform-origin:75px 76px">
   <div id="tile" class="card ch" style="--c:26px;left:1330px;top:150px;width:410px;height:420px"><div class="fill ch"></div>
     <div class="abs" style="left:0;right:0;top:0;height:74px;background:var(--red)"></div>
-    <div class="abs ar txt" style="right:34px;top:14px;font-size:28px;font-weight:700">${words('كل شهر')}</div>
-    <div class="abs caps" style="left:34px;top:28px;color:rgba(255,255,255,.75);font-size:16px">PAYOUT</div>
+    <div class="abs ar txt" style="right:30px;top:12px;font-size:32px;font-weight:700">${words('كل شهر')}</div>
+    <div class="abs caps" style="left:30px;top:24px;color:rgba(255,255,255,.8);font-size:21px">PAYOUT</div>
     <div id="flip" class="abs" style="left:0;top:98px;width:410px;height:300px;perspective:900px">
       ${['old','new'].map(n=>['top','bot'].map(h=>`<div id="f_${n}_${h}" class="abs num" style="left:0;top:0;width:410px;height:300px;text-align:center;font-size:250px;line-height:300px;clip-path:inset(${h==='top'?'0 0 50% 0':'50% 0 0 0'});transform-origin:205px 150px;backface-visibility:hidden">${n==='old'?'30':'01'}</div>`).join('')).join('')}
       <div class="abs" style="left:28px;right:28px;top:149px;height:2px;background:#060607"></div></div></div>
   <div id="h9" class="abs ar disp" style="left:0;top:632px;width:1920px;text-align:center;font-size:66px">${words('تلقائياً ~· أول كل شهر')}</div>
   <div id="ch9" class="abs ar" style="left:0;top:772px;width:1920px;display:flex;justify-content:center;gap:22px">
-    <div id="ch91" class="chip ch txt" style="--c:14px;font-size:29px;gap:14px"><div class="fill ch"></div><span class="t" style="color:var(--red);font-family:Geist">✓</span><span class="t">${words('الصفقات مسدودة')}</span></div>
-    <div id="ch92" class="chip ch txt" style="--c:14px;font-size:29px;gap:14px"><div class="fill ch"></div><span class="t" style="color:var(--red);font-family:Geist">✓</span><span class="t">${words('الحساب أعلى من رصيد البداية')}</span></div></div>
-  <div id="p9" class="abs ar txt" style="left:0;top:888px;width:1920px;text-align:center;font-size:34px">${words('~حسابك ~الشخصي: ربحه إلك ~· خسارته عليك')}</div>`,
+    <div id="ch91" class="chip ch txt" style="--c:14px;height:72px;font-size:34px;gap:14px"><div class="fill ch"></div><svg class="t" width="26" height="26" viewBox="0 0 26 26" style="flex:none;position:relative"><path d="M5 13.5 L10.5 19 L21 7.5" fill="none" stroke="#E4002E" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="t">${words('الصفقات مسدودة')}</span></div>
+    <div id="ch92" class="chip ch txt" style="--c:14px;height:72px;font-size:34px;gap:14px"><div class="fill ch"></div><svg class="t" width="26" height="26" viewBox="0 0 26 26" style="flex:none;position:relative"><path d="M5 13.5 L10.5 19 L21 7.5" fill="none" stroke="#E4002E" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="t">${words('الحساب أعلى من رصيد البداية')}</span></div></div>
+  <div id="p9" class="abs ar txt" style="left:0;top:880px;width:1920px;text-align:center;font-size:36px">${words('~حسابك ~الشخصي: ربحه إلك ~· خسارته عليك')}</div>`,
   line(P,Z,M){ P(-100,420); P(180,456); P(770,470); P(1050,452); P(1316,440); M('rest'); P(1740,420); P(2020,400); },
   init(){ for(const k of ['card9','c9g','c9l','c9s','coin','tile','h9','ch91','ch92','p9']) this[k]=$(k);
     this.fo={top:$('f_old_top'),bot:$('f_old_bot')}; this.fn={top:$('f_new_top'),bot:$('f_new_bot')}; },
   draw(t){ const id='S09';
     animW(this.c9l,cue(id,'حصتك'),t); animW(this.c9s,cue(id,'من'),t,{dt:0.08,dist:14});
-    const tf=cue(id,'بأول')-0.3, k1=ease.expoIn(seg(t,tf,tf+0.22)), k2=t<tf+0.22?0:t-tf-0.22>SET?1:OM.spring(t-tf-0.22,0.45,22);
+    const tf=cue(id,'بأول')-0.3, k1=ease.expoIn(seg(t,tf,tf+0.22)), k2=spr(t,tf+0.22,0.45,22,150);
     css(this.fo.top,'transform',k1>=1?'rotateX(-90deg)':`rotateX(${f2(-90*k1)}deg)`); css(this.fo.top,'opacity',k1>=1?'0':'1');
     css(this.fo.bot,'opacity',k2>0.02?'0':'1'); css(this.fn.top,'opacity',k1>0?'1':'0');
     css(this.fn.bot,'opacity',t>=tf+0.22?'1':'0'); css(this.fn.bot,'transform',k2>=1?'none':`rotateX(${f2(90*(1-k2))}deg)`);
     if(t<tf){ css(this.fn.top,'opacity','0'); }
     const it=imp(t,tf+0.3,{sqx:0.03,sqy:0.03}); css(this.tile,'transform',it.r===0?'none':`scale(${f4(it.sx)})`);
     // the coin leaves the calendar and slides along the line into the trader's card
-    const tc=cue(id,'بأول')+0.05, tl=tc+0.85; const A={x:1316-75,y:440-76}, B={x:240,y:295};
+    const tc=cue(id,'بأول')+0.05, tl=tc+0.85; const A={x:1316-75,y:440-76}, B={x:240,y:284};
     if(t<tc-0.2){ css(this.coin,'opacity','0'); }
     else { const ap=pop(t,tc-0.2,{s0:0.5,rise:0}); const h=OM.hop(t,tc,tl,A,B,{height:60,curve:ease.expoInOut}); const il=imp(t,tl,{sqx:0.1,sqy:0.12});
       const rot=lerp(0,-360,ease.expoInOut(seg(t,tc,tl)));
@@ -591,7 +597,7 @@ station({id:'S11', ent:[-100,990], ext:[2020,930],
     <div class="abs ch" style="--c:24px;left:40px;top:40px;width:700px;height:710px;overflow:hidden;background:#cfd0d2"><img src="${IMG}duo_laptops_b.webp" style="position:absolute;left:-300px;top:0;height:710px;width:1058px"></div>
     <div id="t11" class="abs ar disp" style="right:84px;top:118px;width:740px;font-size:58px;font-weight:600;line-height:1.32">
       <span class="w" style="display:inline-block;position:relative;width:16px;height:26px;margin-left:16px;vertical-align:14px"><i style="position:absolute;inset:0;background:var(--red);clip-path:polygon(0 0,100% 0,100% 100%,55% 38%,0 38%)"></i></span>${words('!أدوات تداول، مصادر تدريب، !تعليم بالتداول، وكوتشينغ من خبراء حتى !تطور نفسك باستمرار.')}</div>
-    <div id="caps11" class="abs caps" style="right:84px;top:600px;font-size:17px">TRADE YOUR EDGE.&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;&nbsp;LEARN MORE ON <span class="red">AXI.COM</span></div>
+    <div id="caps11" class="abs caps" style="right:84px;top:596px;font-size:21px">TRADE YOUR EDGE.&nbsp;&nbsp;&nbsp;&nbsp;///&nbsp;&nbsp;&nbsp;&nbsp;LEARN MORE ON <span class="red">AXI.COM</span></div>
     <img id="lg11" src="${IMG}logo_white.png" class="abs" style="left:800px;top:676px;height:44px"></div>`,
   line(P,Z,M){ Z(-100,990,160,975,111,10,50); P(1760,966); M('rest'); P(2020,930); },
   init(){ this.t11=$('t11'); this.caps=$('caps11'); this.lg=$('lg11'); this.card=$('card11'); },
@@ -616,7 +622,7 @@ station({id:'S12E', scene:'S12', farOp:0.17, ent:[-100,720], ext:[2020,500],
   html:()=>`
   <div id="tye" class="abs" style="left:0;top:596px;width:1920px;text-align:center;font-family:Geist;font-weight:400;font-size:52px;letter-spacing:-.02em;direction:ltr">${words('Trade Your !Edge',{ltr:true})}</div>
   <div id="cta" class="pill" style="left:0;top:700px"><span id="ctaT">${words('سجل مجاناً من axi.com')}</span><span class="arr"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19 12 H5 M11 6 L5 12 L11 18" fill="none" stroke="#E4002E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-  <div id="risk" class="abs ar txt grey" style="left:0;top:974px;width:1920px;text-align:center;font-size:23px;font-weight:400">${words('التداول ينطوي على مخاطر عالية وقد تخسر رأس مالك.')}</div>`,
+  <div id="risk" class="abs ar txt grey" style="left:0;top:960px;width:1920px;text-align:center;font-size:28px;font-weight:400">${words('التداول ينطوي على مخاطر عالية وقد تخسر رأس مالك.')}</div>`,
   line(P,Z,M){ const s=LG.s, P1=[LG.x+1627*s,LG.y+373*s], P2=[LG.x+1723*s,LG.y+257*s], d=[96,-116], dl=Math.hypot(...d), n=[-d[1]/dl,d[0]/dl], g=34;
     const A=[P1[0]+n[0]*g,P1[1]+n[1]*g], B=[P2[0]+n[0]*g,P2[1]+n[1]*g];
     Z(-100,720,420,A[1]+2,131,12,50); P(560,A[1]); P(A[0],A[1]); M('under'); P(B[0],B[1]); M('end'); },
@@ -630,7 +636,7 @@ station({id:'S12E', scene:'S12', farOp:0.17, ent:[-100,720], ext:[2020,500],
 
 // ════════════════════════════════════════════ WORLD: chain the stations, build the climb line ════════════════════════════════════════════
 const $=id=>document.getElementById(id);
-const WORLD=$('world'), FAR=$('far'), LOGO=$('logo'), HUD=$('hud');
+const WORLD=$('world'), FAR=$('far'), LOGO=$('logo'), HUD=$('hud'), STAGE=$('stage');
 { let px=0, py=0;
   ST.forEach((S,i)=>{ if(i>0){ const A=ST[i-1]; px=A.ox+A.ext[0]+GAPX-S.ent[0]; py=A.oy+A.ext[1]-RISE-S.ent[1]; } S.ox=px; S.oy=py; S.scene=S.scene||S.id;
     S.bw=S.bw||1920; S.bh=S.bh||1080; }); }
@@ -662,10 +668,10 @@ function hold(t0,t1,c,curve){ key(t0,c,curve); key(t1,c); }
 function hto(t0,t1,mark,curve=ease.quintInOut){ HK.push({t:t0,s:HS}); HS=MS(mark); HK.push({t:t1,s:HS,curve}); }
 function travel(T,toCam,toMark,o={}){ const ta=T-0.55, tb=T+0.75; key(tb,toCam,o.curve||ease.quintInOut); MOVES.push({ta,tb,dip:o.dip??0.2,lean:o.lean??0.011}); HITS.push([tb,o.hit??4]);
   hto(T-0.66,T+0.48,toMark,ease.quintInOut); EV.push({t:ta,type:'whoosh',dur:1.3},{t:tb,type:'land'}); }
-const S6K=k=>C('S06',SX0+SW*k+SW/2-960,SY0-SH*k+170-540,1.22), S6W=C('S06',1760-960,700-540,0.555);
+const S6K=k=>C('S06',SX0+SW*k-960,SY0-SH*k+230-540,1.1)   /* framed on the step's left edge: the two steps below and the next one are whole, the frame edge only grazes empty card margin */, S6W=C('S06',1520-960,770-540,0.65);
 (function build(){
   // S01 · the line draws itself up from bottom-left; the camera rides it and settles
-  key(0,{...C('S01',-640,330,1.85),rot:-0.035}); hold(3.6,T1('S01')-0.55,C('S01'),ease.cubicInOut); hto(0,3.25,'S01.rest',ease.cubicInOut);
+  key(0,{...C('S01',-705,330,1.85),rot:-0.035}); hold(3.6,T1('S01')-0.55,C('S01'),ease.cubicInOut); hto(0,3.25,'S01.rest',ease.cubicInOut);
   const go=(id,i,o={})=>{ travel(T0(id),C(id),id+'.rest',{lean:i%2?-0.011:0.011,curve:i%2?ease.expoInOut:ease.quintInOut,...o}); key(T1(id)-0.55,C(id)); };
   go('S02',0);
   go('S03',1); { const t=cue('S03','ثاني'); hto(t,t+0.8,'S03.arrow',ease.expoOut); }
@@ -723,7 +729,7 @@ function logoRect(t){ const ta=cue('S01','Axi'), tu=cue('S01','تمويل')-0.45
 function drawLogo(t){ const r=logoRect(t); css(LOGO,'display',r.op>0?'':'none'); if(!r.op) return r;
   css(LOGO,'transform',`translate(${f2(r.x)}px,${f2(r.y)}px) scale(${r.s.toFixed(5)})`);
   const ta=cue('S01','Axi'), tg=cue('S01','Select');
-  for(let i=0;i<3;i++){ const d=t-ta-i*0.07>SET?{op:1,y:0,sx:1,sy:1}:OM.letterDrop(t,ta,i,{stagger:0.07,dist:150}); const el=LG_EL[i];
+  for(let i=0;i<3;i++){ const d=t-ta-i*0.07>stl(13,150)?{op:1,y:0,sx:1,sy:1}:OM.letterDrop(t,ta,i,{stagger:0.07,dist:150}); const el=LG_EL[i];
     css(el,'opacity',d.op>=0.999?'1':d.op.toFixed(3)); css(el,'transform',d.y===0&&d.sx===1?'none':`translate(0,${f2(d.y)}px) scale(${f4(d.sx)},${f4(d.sy)})`); css(el,'transformOrigin','50% 100%'); }
   const kg=tw(t,tg,tg+0.55,ease.expoOut), ig=imp(t,tg+0.5,{sqx:0.05,sqy:0.07}); const el=LG_EL[3];
   css(el,'opacity',t<tg?'0':Math.min(1,kg*2).toFixed(3)); css(el,'transform',kg>=1&&ig.r===0?'none':`translate(${f2((1-kg)*300)}px,0) scale(${f4(ig.sx)},${f4(ig.sy)})`); css(el,'transformOrigin','0% 70%');
@@ -749,14 +755,17 @@ function drawGround(cam){ const c=BG; c.setTransform(DPR,0,0,DPR,0,0); c.fillSty
   for(let x=G.x0;x<=G.x1;x+=G.spacing) for(let y=G.y0;y<=G.y1;y+=G.spacing){ const [sx,sy]=OM.project(M,x,y); if(sx<-8||sx>W+8||sy<-8||sy>H+12) continue;
     c.moveTo(sx,sy); c.lineTo(sx+2.6,sy-7); c.lineTo(sx+5.4,sy-7); c.lineTo(sx+2.8,sy); c.closePath(); }
   c.fill(); }
-function drawGrain(){ const c=grC.getContext('2d'); const w=256, d=c.createImageData(w,w), r=OM.rng(77); for(let i=0;i<w*w;i++){ const v=r()<0.5?0:255; d.data[i*4]=v; d.data[i*4+1]=v; d.data[i*4+2]=v; d.data[i*4+3]=Math.floor(r()*7); }
+// anti-banding dither: a 4×4 ordered (Bayer) pattern, ±6/255 at most. Same job as random grain on the dark gradient, but periodic,
+// so Chrome's PNG encoder compresses it: a capture costs ~0.35 s instead of ~0.9 s with per-pixel noise (measured, 1920×1080).
+function drawGrain(){ const c=grC.getContext('2d'); const w=256, d=c.createImageData(w,w), B=[[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
+  for(let y=0;y<w;y++) for(let x=0;x<w;x++){ const i=y*w+x, b=B[y&3][x&3], v=b<8?0:255; d.data[i*4]=v; d.data[i*4+1]=v; d.data[i*4+2]=v; d.data[i*4+3]=Math.round(Math.abs(b-7.5)/7.5*6); }
   const tile=document.createElement('canvas'); tile.width=tile.height=w; tile.getContext('2d').putImageData(d,0,0); const pat=c.createPattern(tile,'repeat'); c.fillStyle=pat; c.fillRect(0,0,grC.width,grC.height); }
 
 // ════════════════════════════════════════════ THE LINE (screen-space canvas through the camera) ════════════════════════════════════════════
 let HEAD=[0,0], HEADV=false;
 function drawLine(t,Mv,z){ const c=LN; c.setTransform(DPR,0,0,DPR,0,0); c.clearRect(0,0,W,H);
   for(const S of ST) if(S.vis&&S.decor) S.decor(c,Mv,z,t);
-  const s=headS(t); HEADV=false; if(s<=0.5) return;
+  const s=headS(t); HEADV=false;   // no early out at s≈0: the live dot is on screen from the first frame (no empty opening frame)
   let n=1; while(n<PL.length-1&&PL[n]<s) n++; const u=clamp((s-PL[n-1])/Math.max(1e-6,PL[n]-PL[n-1]));
   const hx=lerp(PX[n-1],PX[n],u), hy=lerp(PY[n-1],PY[n],u);
   const sp=[]; for(let i=0;i<n;i++) sp.push(OM.project(Mv,PX[i],PY[i])); const hp=OM.project(Mv,hx,hy); sp.push(hp);
@@ -787,6 +796,10 @@ function seek(t){
   drawLine(t,Mv,z);
   if(drawLogo(t).op) for(const im of LG_EL) pending.push(im.decode().catch(()=>{})); drawIdx(t);
   $('hudt').textContent='t='+t.toFixed(2)+'  '+TL.scenes.filter(s=>t>=s.t0&&t<s.t1).map(s=>s.id).join('');
+  // Purity at the pixel level: Chrome reuses cached paint for unchanged subtrees, and an element whose opacity went 1 → x paints
+  // ±1 level differently from one that was always x (measured: 9,286 px at t=175 reached from 178 vs from 174.98). A fresh
+  // layout + paint of the stage on every seek makes the frame a function of t alone, whatever was seeked before.
+  STAGE.style.display='none'; void STAGE.offsetHeight; STAGE.style.display='';
   return Promise.all(pending);
 }
 
