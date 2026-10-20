@@ -2,7 +2,7 @@
 
 | file | what |
 |---|---|
-| `Axi_Select_Reel_30s_9x16.mp4` | Instagram reel · 1080×1920 · 30 fps · 30.0 s · music + SFX · −13.8 LUFS · ready to post |
+| `Axi_Select_Reel_v2_30s_9x16.mp4` | **Instagram reel v2** · 1080×1920 · 30 fps · 30.0 s · 16 AI-generated clips (Higgsfield Seedance 2.5, animated from the brand deck's own photos) cut on the beat of Mixkit "Trap" (#318, Mixkit Free License) · ~60 cuts · Arabic kinetic type · ready to post |
 | `Axi_Select_Explainer_4m38s_16x9.mp4` | Full A–Z explainer · 1920×1080 · 30 fps · 4:37.8 · music bed + SFX at −22 LUFS, **no voice** (add yours on top) |
 | `Axi_Select_Explainer_Music_Bed.m4a` | the explainer's music + SFX alone, for your editor |
 | `Axi_Select_Explainer_Script_AR.md` | Iraqi-Arabic VO script: scene timecodes, when each VO line starts, on-screen text, ElevenLabs settings |
@@ -16,5 +16,5 @@ Axi calls the stage figures "indicative and subject to change", so check them be
 "14% in Seed" fast-track was a limited-time promotion that ended 30 Sep 2026, so neither film uses it. The deck's
 "$500K / 30:1 / 220+" figures are outdated and were replaced or left out.
 
-**Music** is original, synthesized in code (`../audio/*.py`): royalty-free, no licence needed.
+**Music:** reel v2 uses Mixkit track #318 "Trap" under the Mixkit Stock Music Free License (free for commercial use in videos, no attribution; the raw file may not be redistributed, so it is not in this repo). The explainer bed is original, synthesized in code (`../audio/*.py`).
 **Made with** the onetake skill: compositions `../reel/comp.html`, `../explainer/comp.html`; rendered with shutter motion blur.
