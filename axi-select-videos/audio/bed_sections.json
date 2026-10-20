@@ -1,0 +1,140 @@
+{
+  "bpm": 100.0,
+  "bar": 2.4,
+  "beat": 0.6,
+  "duration": 330.0,
+  "key": "D minor / F major",
+  "lufs_integrated": -20.0,
+  "true_peak_dbtp": -5.4,
+  "lra": 4.62,
+  "final_chord_t": 318.0,
+  "silence_at": 330.0,
+  "sections": [
+    {
+      "t0": 0.0,
+      "t1": 19.2,
+      "energy": 0.22,
+      "label": "intro",
+      "lufs": -24.65
+    },
+    {
+      "t0": 19.2,
+      "t1": 38.4,
+      "energy": 0.36,
+      "label": "pulse",
+      "lufs": -21.55
+    },
+    {
+      "t0": 38.4,
+      "t1": 57.6,
+      "energy": 0.46,
+      "label": "motion",
+      "lufs": -20.6
+    },
+    {
+      "t0": 57.6,
+      "t1": 76.8,
+      "energy": 0.52,
+      "label": "open",
+      "lufs": -20.13
+    },
+    {
+      "t0": 76.8,
+      "t1": 96.0,
+      "energy": 0.58,
+      "label": "lift",
+      "lufs": -19.87
+    },
+    {
+      "t0": 96.0,
+      "t1": 115.2,
+      "energy": 0.63,
+      "label": "glow",
+      "lufs": -19.56
+    },
+    {
+      "t0": 115.2,
+      "t1": 134.4,
+      "energy": 0.38,
+      "label": "breathe",
+      "lufs": -22.05
+    },
+    {
+      "t0": 134.4,
+      "t1": 153.6,
+      "energy": 0.55,
+      "label": "rebuild",
+      "lufs": -19.85
+    },
+    {
+      "t0": 153.6,
+      "t1": 172.8,
+      "energy": 0.66,
+      "label": "drive",
+      "lufs": -19.01
+    },
+    {
+      "t0": 172.8,
+      "t1": 192.0,
+      "energy": 0.7,
+      "label": "horizon",
+      "lufs": -18.73
+    },
+    {
+      "t0": 192.0,
+      "t1": 211.2,
+      "energy": 0.46,
+      "label": "focus",
+      "lufs": -21.13
+    },
+    {
+      "t0": 211.2,
+      "t1": 230.4,
+      "energy": 0.64,
+      "label": "climb",
+      "lufs": -19.21
+    },
+    {
+      "t0": 230.4,
+      "t1": 249.6,
+      "energy": 0.74,
+      "label": "summit",
+      "lufs": -18.45
+    },
+    {
+      "t0": 249.6,
+      "t1": 268.8,
+      "energy": 0.78,
+      "label": "summit-ii",
+      "lufs": -18.07
+    },
+    {
+      "t0": 268.8,
+      "t1": 288.0,
+      "energy": 0.6,
+      "label": "settle",
+      "lufs": -19.39
+    },
+    {
+      "t0": 288.0,
+      "t1": 307.2,
+      "energy": 0.44,
+      "label": "land",
+      "lufs": -20.36
+    },
+    {
+      "t0": 307.2,
+      "t1": 318.0,
+      "energy": 0.34,
+      "label": "outro",
+      "lufs": -22.39
+    },
+    {
+      "t0": 318.0,
+      "t1": 330.0,
+      "energy": 0.18,
+      "label": "ending",
+      "lufs": -26.71
+    }
+  ]
+}

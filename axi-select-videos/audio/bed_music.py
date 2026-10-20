@@ -12,8 +12,11 @@ Deterministic: fixed RNG seed.
   * Built to sit UNDER an Arabic narrator:
       - no lead melody, pitched material voiced C4+ (arp / bells F4+)
       - nothing between ~120 and ~170 Hz except the sub's harmonics
-      - static -3.5 dB master dip across 1-4 kHz (speech intelligibility band)
-      - gentle -1.5 dB dip around 220-480 Hz (narrator chest)
+      - static Mid/Side master carve: 1-4 kHz -4 dB in Mid / -2 dB in Side
+        (net ~-3.5 dB speech-band dip), plus -2.5 dB at 380-700 Hz and
+        -1.5 dB at 210-280 Hz in Mid only (narrator F1 / chest)
+      - pads widened (+1.5 dB side), sine bodies off-centre, arp alternates
+        sides per 16th: the centre is left open for the voice
   * Sections evolve every 8 bars (19.2 s) with a soft lift (reverse swell,
     noise air riser, filter / level swell, kick drop) into each new section.
   * Resolved ending (C sus -> F add9) in the last 12 s, fading to digital
@@ -67,6 +70,8 @@ NC = int(round(DUR * CR)) + 1
 TC = np.arange(NC) / CR
 
 TARGET_LUFS = -20.0
+G_SHIM_MIX = 0.3                    # shimmer dry level into the mix (send is separate)
+PAD_SIDE_GAIN = 10 ** (1.5 / 20)       # +1.5 dB side on the pad bus (mono loss stays ~1 dB)
 TP_CEIL_DB = -3.3                   # limiter ceiling (spec: <= -3.0 dBTP)
 
 SEED = 20261020
@@ -151,16 +156,16 @@ PLAN = [
     dict(label="open",      e=0.52, prog="B", arp="p16a",  kick="K1", shk=1, bright=0.40, shim=0.45, bells="start",  air=0.75),
     dict(label="lift",      e=0.58, prog="C", arp="p16b",  kick="K2", shk=1, bright=0.47, shim=0.45, bells=None,     air=0.80),
     dict(label="glow",      e=0.63, prog="C", arp="p16b",  kick="K2", shk=2, bright=0.55, shim=0.55, bells="sparse", air=0.80),
-    dict(label="breathe",   e=0.42, prog="A", arp="p8",    kick=None, shk=1, bright=0.36, shim=0.70, bells="start",  air=1.00),
+    dict(label="breathe",   e=0.38, prog="A", arp="p8",    kick=None, shk=1, bright=0.36, shim=0.70, bells="start",  air=1.00, trim=-2.0),
     dict(label="rebuild",   e=0.55, prog="D", arp="p16a",  kick="K1", shk=1, bright=0.45, shim=0.50, bells=None,     air=0.75),
     dict(label="drive",     e=0.66, prog="C", arp="p16c",  kick="K3", shk=2, bright=0.58, shim=0.50, bells=None,     air=0.80),
     dict(label="horizon",   e=0.70, prog="D", arp="p16c",  kick="K3", shk=2, bright=0.63, shim=0.60, bells="start",  air=0.85),
-    dict(label="focus",     e=0.54, prog="A", arp="p16a",  kick="K1", shk=1, bright=0.45, shim=0.45, bells=None,     air=0.75),
+    dict(label="focus",     e=0.46, prog="A", arp="p16a",  kick="K1", shk=1, bright=0.42, shim=0.45, bells=None,     air=0.75, trim=-1.5),
     dict(label="climb",     e=0.64, prog="B", arp="p16b",  kick="K2", shk=2, bright=0.56, shim=0.55, bells="sparse", air=0.80),
     dict(label="summit",    e=0.74, prog="C", arp="p16c",  kick="K3", shk=2, bright=0.68, shim=0.70, bells=None,     air=0.90),
     dict(label="summit-ii", e=0.78, prog="C", arp="p16c",  kick="K3", shk=2, bright=0.74, shim=0.80, bells="start",  air=0.95),
     dict(label="settle",    e=0.60, prog="A", arp="p16a",  kick="K2", shk=1, bright=0.52, shim=0.60, bells=None,     air=0.80),
-    dict(label="land",      e=0.48, prog="B", arp="p8",    kick="K1", shk=1, bright=0.40, shim=0.60, bells=None,     air=0.80),
+    dict(label="land",      e=0.44, prog="B", arp="p8",    kick="K1", shk=1, bright=0.40, shim=0.60, bells=None,     air=0.80),
     dict(label="outro",     e=0.34, prog="E", arp="p8out", kick=None, shk=0, bright=0.30, shim=0.65, bells=None,     air=0.90),
     dict(label="ending",    e=0.18, prog="F", arp=None,    kick=None, shk=0, bright=0.26, shim=0.90, bells="final",  air=0.80),
 ]
@@ -315,7 +320,7 @@ def make_ir(seconds, t60s, sr, seed, predelay=0.018, er_taps=12, xcorr=0.18):
         for _ in range(er_taps):
             d = r.uniform(0.006, 0.075)
             i = int(d * sr)
-            acc[i] += r.choice([-1, 1]) * r.uniform(0.25, 0.6) * math.exp(-d / 0.05) * 6.0
+            acc[i] += r.choice([-1, 1]) * r.uniform(0.25, 0.6) * math.exp(-d / 0.05) * 3.0
         acc = np.concatenate([np.zeros(int(predelay * sr)), acc])[:L]
         ir[:, ch] = acc
     ir = np.stack([ir[:, 0] + xcorr * ir[:, 1], ir[:, 1] + xcorr * ir[:, 0]], axis=1)
@@ -378,21 +383,28 @@ def render_pads():
                 gl, gr = pan_gains(0.85 * d * (1 if (ni % 2 == 0) else -1))
                 accL += s * gl
                 accR += s * gr
-            # sine body (centre-ish, gives warmth without buzz)
+            # sine body (warmth without buzz). Kept low and off-centre so the
+            # 300-800 Hz centre stays open for the narrator's first formant.
             phs = r.random() + np.cumsum(np.full(L, f)) / PSR
-            body = 0.9 * np.sin(2 * np.pi * phs) * ng
-            gl, gr = pan_gains(r.uniform(-0.25, 0.25))
+            body = 0.45 * np.sin(2 * np.pi * phs) * ng
+            gl, gr = pan_gains((0.25 + 0.15 * r.random()) * (1 if (ni % 2) else -1))
             accL += body * gl
             accR += body * gr
         # shimmer: top three voicing notes one octave up, soft sines w/ tremolo
-        for m in notes[-3:]:
+        for j, m in enumerate(notes[-3:]):
             f = mtof(m + 12)
-            ph = r.random() + np.cumsum(np.full(L, f)) / PSR
-            trem = 0.6 + 0.4 * np.sin(2 * np.pi * r.uniform(0.18, 0.45) * tt + r.uniform(0, 6.28))
-            s = (np.sin(2 * np.pi * ph) + 0.12 * np.sin(4 * np.pi * ph)) * trem
-            gl, gr = pan_gains(r.uniform(-0.7, 0.7))
-            sL += s * gl
-            sR += s * gr
+            # two voices left/right, each with its own slow +-1.2 cent pitch
+            # drift: a gentle, ever-changing chorus (~0.5-2 Hz beating) instead
+            # of an organ-like tremolo on a single sine
+            swell = 0.75 + 0.25 * np.sin(2 * np.pi * r.uniform(0.04, 0.09) * tt + r.uniform(0, 6.28))
+            for side in (-1, 1):
+                cents = 1.2 * np.sin(2 * np.pi * r.uniform(0.06, 0.15) * tt + r.uniform(0, 6.28))
+                fv = f * 2 ** (cents / 1200.0)
+                ph = r.random() + np.cumsum(fv) / PSR
+                s = (np.sin(2 * np.pi * ph) + 0.10 * np.sin(4 * np.pi * ph + 0.5)) * swell
+                gl, gr = pan_gains(side * (0.45 + 0.1 * j))
+                sL += s * gl
+                sR += s * gr
         i0 = int(round(start * PSR))
         add_at(pad, i0, np.stack([accL * env, accR * env], axis=1))
         senv = cos_ramp(tt / max(att, 1.6)) * env
@@ -401,7 +413,7 @@ def render_pads():
 
     # slow filter motion (24 dB/oct), cutoff from section brightness + LFOs + lifts
     bright = section_curve([p["bright"] for p in PLAN], rise_pre=BAR * 2, fall_post=2.4)
-    fc_ctrl = 650.0 * 2 ** (bright * 2.6) * (1 + 0.18 * LFO_A) * (1 + 0.55 * LIFT)
+    fc_ctrl = 900.0 * 2 ** (bright * 2.4) * (1 + 0.18 * LFO_A) * (1 + 0.55 * LIFT)
     # ending: close the filter slowly
     fc_ctrl *= np.where(TC > 318.0, np.exp(-np.maximum(0, TC - 320.0) / 9.0), 1.0)
     block = 128
@@ -409,6 +421,11 @@ def render_pads():
     fcb = np.interp(tb, TC, fc_ctrl)
     pad = tv_filter(pad, "lp", fcb, [0.54, 1.0], PSR, block)
     pad = signal.sosfilt(sos("highpass", 170, 2, PSR), pad, axis=0)
+    # widen: +3 dB side so the pad lives around the narrator, not on top of him
+    pm, ps = 0.5 * (pad[:, 0] + pad[:, 1]), 0.5 * (pad[:, 0] - pad[:, 1])
+    ps *= PAD_SIDE_GAIN
+    pad = np.stack([pm + ps, pm - ps], axis=1)
+    del pm, ps
     shim = signal.sosfilt(sos("highpass", 600, 2, PSR), shim, axis=0)
     shim = signal.sosfilt(sos("lowpass", 5000, 2, PSR), shim, axis=0)
     log("pads: filtered")
@@ -526,7 +543,9 @@ def render_arp():
             vq = int(np.clip(round(vel * 8), 1, 8))
             dq = int(round(gate * 100))
             note = arp_note(midi, bq, vq, dq, int(r.integers(0, 2)))
-            pn = 0.28 * math.sin(2 * math.pi * s / 11.3) + 0.06 * r.uniform(-1, 1)
+            # alternate sides per 16th + slow drift: keeps the arp off the
+            # centre where the voice sits
+            pn = 0.30 * math.sin(2 * math.pi * s / 11.3) + 0.30 * (1 if s % 2 else -1) + 0.05 * r.uniform(-1, 1)
             gl, gr = pan_gains(pn)
             add_at(arp, int(round(t * SR)), np.stack([note * gl, note * gr], axis=1))
             nnotes += 1
@@ -586,12 +605,26 @@ KICK_PATTERNS = {
 }
 
 
+def make_airhat(r):
+    L = int(0.32 * SR)
+    t = np.arange(L) / SR
+    nz = r.standard_normal(L)
+    nz = signal.sosfilt(sos("highpass", 7200, 4), nz)
+    nz = signal.sosfilt(sos("lowpass", 15500, 2), nz)
+    env = (1 - np.exp(-t / 0.0025)) * (0.65 * np.exp(-t / 0.045) + 0.35 * np.exp(-t / 0.13))
+    y = nz * env
+    y[-int(0.02 * SR):] *= np.linspace(1, 0, int(0.02 * SR))
+    return y / np.max(np.abs(y))
+
+
 def render_drums():
     r = np.random.default_rng(SEED + 3)
     kicks = [make_kick(r) for _ in range(4)]
     shakers = [make_shaker(r) for _ in range(8)]
+    hats = [make_airhat(r) for _ in range(6)]
     kick = np.zeros(N)
     shk = np.zeros((N, 2))
+    hat = np.zeros((N, 2))
     ktimes = []
     for k, p in enumerate(PLAN):
         t0, t1 = SEC_T0[k], SEC_T1[k]
@@ -633,7 +666,17 @@ def render_drums():
                     pnv = 0.22 if (s // 2) % 2 else -0.12
                     gl, gr = pan_gains(pnv + r.uniform(-0.05, 0.05))
                     add_at(shk, int(round(t * SR)), np.stack([sh * gl, sh * gr], axis=1))
-    return kick, shk, ktimes
+        if p["e"] >= 0.64 and p["kick"]:
+            # soft off-beat air hat: energy above the speech band in peak sections
+            hscale = float(db(8.0 * (p["e"] - 0.74)))
+            for b in range(nbars):
+                for s in (2, 6, 10, 14):
+                    t = t0 + b * BAR + s * STEP + r.normal(0, 0.002)
+                    v = (0.85 if s in (6, 14) else 0.7) * hscale * r.uniform(0.85, 1.0)
+                    hh = hats[int(r.integers(0, 6))] * v
+                    gl, gr = pan_gains(0.30 + r.uniform(-0.05, 0.05))
+                    add_at(hat, int(round(t * SR)), np.stack([hh * gl, hh * gr], axis=1))
+    return kick, shk, hat, ktimes
 
 
 def sidechain_env(ktimes, depth):
@@ -701,6 +744,7 @@ def render_air():
     am = 0.72 + 0.28 * np.sin(2 * np.pi * TC / (5.3 * BAR) + 0.3) * (0.6 + 0.4 * LFO_B)
     lvl = db(section_curve([20 * math.log10(max(p["air"], 1e-3)) for p in PLAN], BAR * 2, 2.4))
     lvl = lvl * db(5.0 * LIFT) * am
+    lvl = lvl * cos_ramp(TC / 6.0)          # fade in with the pads, no bare hiss at 0 s
     return nz * c2a(lvl)[:, None]
 
 
@@ -824,25 +868,6 @@ def true_peak_db(x):
 # --------------------------------------------------------------------------
 # Master processing
 # --------------------------------------------------------------------------
-def master_eq_curve(f):
-    lf = np.log2(np.maximum(f, 1.0))
-
-    def band(lo0, lo1, hi0, hi1):
-        w = np.zeros_like(lf)
-        a0, a1, b0, b1 = map(math.log2, (lo0, lo1, hi0, hi1))
-        w = np.where((lf >= a1) & (lf <= b0), 1.0, w)
-        m = (lf > a0) & (lf < a1)
-        w[m] = cos_ramp((lf[m] - a0) / (a1 - a0))
-        m = (lf > b0) & (lf < b1)
-        w[m] = cos_ramp(1 - (lf[m] - b0) / (b1 - b0))
-        return w
-
-    g = -3.5 * band(780, 1150, 3700, 5200)          # speech intelligibility dip
-    g += -1.5 * band(170, 230, 460, 650)             # narrator chest / mud
-    g += 1.0 * band(7500, 11000, 30000, 40000)       # a breath of air
-    return g
-
-
 def fft_eq(x, curve_fn):
     pad = SR
     n = x.shape[0] + 2 * pad
@@ -856,6 +881,45 @@ def fft_eq(x, curve_fn):
         X *= g
         out[:, c] = sfft.irfft(X, nfft, workers=4)[pad:pad + x.shape[0]]
     return out
+
+
+def _band(f, lo0, lo1, hi0, hi1):
+    """Raised-cosine (in log-frequency) band weight: 0 below lo0, 1 between
+    lo1 and hi0, 0 above hi1."""
+    lf = np.log2(np.maximum(f, 1.0))
+    w = np.zeros_like(lf)
+    a0, a1, b0, b1 = map(math.log2, (lo0, lo1, hi0, hi1))
+    w = np.where((lf >= a1) & (lf <= b0), 1.0, w)
+    m = (lf > a0) & (lf < a1)
+    w[m] = cos_ramp((lf[m] - a0) / (a1 - a0))
+    m = (lf > b0) & (lf < b1)
+    w[m] = cos_ramp(1 - (lf[m] - b0) / (b1 - b0))
+    return w
+
+
+# Mid/Side voice-over carve. The narrator sits in the centre, so the carve is
+# deeper in Mid than in Side; the net 1-4 kHz dip on the stereo bed is ~3.5 dB.
+def mid_eq_curve(f):
+    g = -4.0 * _band(f, 780, 1150, 3700, 5200)      # speech intelligibility band
+    g += -2.5 * _band(f, 280, 380, 700, 950)         # narrator F1 region / pad boxiness
+    g += -1.5 * _band(f, 160, 210, 280, 380)         # narrator chest
+    g += 1.0 * _band(f, 7500, 11000, 30000, 40000)   # air
+    return g
+
+
+def side_eq_curve(f):
+    g = -2.0 * _band(f, 780, 1150, 3700, 5200)
+    g += -0.5 * _band(f, 280, 380, 700, 950)
+    g += 2.0 * _band(f, 7500, 11000, 30000, 40000)
+    return g
+
+
+def ms_fft_eq(x):
+    m = 0.5 * (x[:, 0] + x[:, 1])
+    sd = 0.5 * (x[:, 0] - x[:, 1])
+    m = fft_eq(m[:, None], mid_eq_curve)[:, 0]
+    sd = fft_eq(sd[:, None], side_eq_curve)[:, 0]
+    return np.stack([m + sd, m - sd], axis=1)
 
 
 def glue_comp(x, thr_db, ratio=1.8, knee=8.0, att=0.035, rel=0.40, hop=48):
@@ -950,7 +1014,7 @@ def analyse(y, kw):
     print(f"\nCorrelation design-energy vs section loudness: {cc:.3f}")
 
     # boundary lifts: last bar before vs first bar after vs mid-section
-    print("\nBoundary momentary check (LUFS 400ms): [-1 bar mean] -> [first bar mean]")
+    print("\nBoundary momentary check (LUFS 400ms): [mid-section bars 3-6] / [last bar] -> [first bar of next]")
     zb, st = _block_power(kw, 0.4, 0.1)
     lb = -0.691 + 10 * np.log10(zb + 1e-30)
     tt = (st + 0.2 * SR) / SR
@@ -959,9 +1023,11 @@ def analyse(y, kw):
         T = SEC_T0[k]
         pre = lb[(tt >= T - BAR) & (tt < T)].mean()
         post = lb[(tt >= T) & (tt < T + BAR)].mean()
-        row.append(f"{T:5.1f}:{pre:5.1f}->{post:5.1f}")
-    for i in range(0, len(row), 6):
-        print("   " + "  ".join(row[i:i + 6]))
+        t0p = SEC_T0[k - 1]
+        mid = lb[(tt >= t0p + 2 * BAR) & (tt < min(t0p + 6 * BAR, T - BAR))].mean()
+        row.append(f"{T:5.1f}: {mid:5.1f}/{pre:5.1f}->{post:5.1f}")
+    for i in range(0, len(row), 4):
+        print("   " + "   ".join(row[i:i + 4]))
 
     # long-term spectrum around the speech band
     bp, f, P = band_profile(y)
@@ -1019,6 +1085,7 @@ def plot_spectrogram(y, stats):
             a.axvline(SEC_T0[k], color="white" if a is ax[0] else "k", lw=0.6, alpha=0.6)
         ax[1].text(SEC_T0[k] + 0.4, -12, PLAN[k]["label"], fontsize=7)
     ax[1].set_xlabel("time (s)")
+    ax[1].set_xlim(0, DUR)
     ax[1].legend(loc="lower center")
     fig.tight_layout()
     fig.savefig(OUT_PNG, dpi=90)
@@ -1028,7 +1095,9 @@ def plot_spectrogram(y, stats):
 # --------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------
-def main():
+def build_stems():
+    """Render every instrument and apply gain staging / automation.
+    Returns a dict of post-fader stems (stereo except the mono low group)."""
     log("render pads/shimmer")
     pad, shim = render_pads()
     log("render sub")
@@ -1036,7 +1105,7 @@ def main():
     log("render arp")
     arp = render_arp()
     log("render drums")
-    kick, shk, ktimes = render_drums()
+    kick, shk, hat, ktimes = render_drums()
     log("render bells")
     bells, nb = render_bells()
     log(f"bells: {nb} events; render air")
@@ -1061,17 +1130,18 @@ def main():
     sc_sub = sidechain_env(ktimes, 0.45)
     sc_arp = sidechain_env(ktimes, 0.12)
 
-    pad_db = section_curve([-1.0 + 3.0 * (p["e"] - 0.5) for p in PLAN], BAR * 2, 2.4) + 1.6 * LIFT
-    pad_db += np.where(TC < 0.0, 0, 0)
-    sub_lin = db(section_curve([-1.5 + 6.0 * (p["e"] - 0.5) for p in PLAN], BAR * 2, 2.4))
+    pad_db = (section_curve([-1.0 + 8.0 * (p["e"] - 0.5) + p.get("trim", 0.0) for p in PLAN], BAR * 2, 2.4)
+              + 1.6 * LIFT + 0.8 * LFO_A)
+    sub_lin = db(section_curve([-2.0 + 8.0 * (p["e"] - 0.5) for p in PLAN], BAR * 2, 2.4))
     sub_lin *= cos_ramp(TC / 5.0)            # sub breathes in over the intro
-    arp_db = section_curve([(-1.0 + 7.0 * (p["e"] - 0.5)) if p["arp"] else -40.0 for p in PLAN],
+    arp_db = section_curve([(-1.5 + 9.0 * (p["e"] - 0.5) + p.get("trim", 0.0)) if p["arp"] else -40.0 for p in PLAN],
                            BAR, 1.2) + 1.0 * LIFT
-    shim_lin = db(section_curve([20 * math.log10(p["shim"]) for p in PLAN], BAR * 2, 2.4)) * db(3.0 * LIFT)
+    shim_lin = db(section_curve([20 * math.log10(p["shim"]) + p.get("trim", 0.0) for p in PLAN], BAR * 2, 2.4)) * db(3.0 * LIFT)
 
-    G_PAD, G_SUB, G_ARP, G_SHIM = db(-21.0), db(-19.5), db(-25.0), db(-31.0)
-    G_KICK, G_SHK, G_BELL, G_AIR = db(-9.5), db(-25.0), db(-19.0), db(-46.0)
-    G_SWELL, G_IMP, G_WASH = db(-27.0), db(-15.0), db(-34.0)
+    G_PAD, G_SUB, G_ARP, G_SHIM = db(-21.0), db(-26.5), db(-24.0), db(-29.0)
+    G_KICK, G_SHK, G_BELL, G_AIR = db(-11.0), db(-13.0), db(-15.0), db(-38.0)
+    G_HAT = db(-17.0)
+    G_SWELL, G_IMP, G_WASH = db(-18.0), db(-18.5), db(-30.0)
 
     pad *= (G_PAD * c2a(db(pad_db)) * sc_soft)[:, None]
     sub = G_SUB * c2a(sub_lin) * sc_sub * sub
@@ -1079,6 +1149,7 @@ def main():
     shim *= (G_SHIM * c2a(shim_lin) * sc_soft)[:, None]
     kick *= G_KICK
     shk *= G_SHK
+    hat *= G_HAT
     bells *= G_BELL
     air *= (G_AIR * sc_soft)[:, None]
     swells *= G_SWELL
@@ -1092,27 +1163,33 @@ def main():
 
     log("delay + reverb")
     arp_dly = pingpong(arp, 0.45, 0.38, 5) * db(-8.0)
-    send = (0.20 * pad + 0.95 * shim + 0.24 * arp + 0.35 * arp_dly + 0.55 * bells
-            + 0.45 * swells + 1.0 * wash + 0.10 * shk)
+    send = (0.20 * pad + 0.70 * shim + 0.24 * arp + 0.35 * arp_dly + 0.55 * bells
+            + 0.45 * swells + 1.0 * wash + 0.10 * shk + 0.12 * hat)
     send = signal.sosfilt(sos("highpass", 240, 2), send, axis=0)
     wet = convolve_stereo(send, ir_hall)
     wet = signal.sosfilt(sos("lowpass", 8500, 2), wet, axis=0)
     wet *= db(-1.0)
 
+    return dict(pad=pad, shimmer=G_SHIM_MIX * shim, sub=sub, arp=arp, arp_dly=arp_dly, kick=kick, shaker=shk,
+                hat=hat, bells=bells, air=air, swells=swells, impacts=impacts, reverb=wet)
+
+
+def main():
+    stems = build_stems()
+
     def stem_db(x, k):
         a, b = int(SEC_T0[k] * SR), int(SEC_T1[k] * SR)
         return 20 * math.log10(rms(x[a:b]) + 1e-30)
 
-    stems = dict(pad=pad, shimmer=0.3 * shim, sub=sub, arp=arp, arp_dly=arp_dly, kick=kick, shaker=shk,
-                 bells=bells, air=air, swells=swells, impacts=impacts, reverb=wet)
     print("\nStem RMS dBFS (pre-master) in sections intro / motion / breathe / summit-ii / ending:")
     for nm, x in stems.items():
         print(f"   {nm:>8s} " + "  ".join(f"{stem_db(x, k):6.1f}" for k in (0, 2, 6, 13, 17)))
 
-    mix = (pad + 0.3 * shim + arp + arp_dly + shk + bells + air + swells + wet)
-    mono_low = sub + kick + impacts
-    mix += mono_low[:, None]
-    del pad, shim, arp, arp_dly, shk, bells, air, swells, wet, send, stems, sub, kick, impacts
+    MONO_LOW = ("sub", "kick", "impacts")
+    mix = sum(x for nm, x in stems.items() if nm not in MONO_LOW)
+    mono_low = sum(stems[nm] for nm in MONO_LOW)
+    mix = mix + mono_low[:, None]
+    del stems, mono_low
 
     # ---- master
     log("master: HP, mono-low, width")
@@ -1122,21 +1199,21 @@ def main():
     S = signal.sosfilt(sos("highpass", 140, 2), S) * 1.10
     mix = np.stack([M + S, M - S], axis=1)
     del M, S
-    log("master: FFT EQ (1-4 kHz speech dip, mud dip, air)")
-    mix = fft_eq(mix, master_eq_curve)
+    log("master: M/S FFT EQ (1-4 kHz speech carve, F1/chest carve in mid, air on sides)")
+    mix = ms_fft_eq(mix)
 
     # pre-normalise to -17 LUFS so the glue comp threshold is meaningful
     I0 = integrated_lufs(mix)
     mix *= db(-17.0 - I0)
     log(f"pre-master loudness {I0:.2f} LUFS -> -17.0")
-    mix, gr = glue_comp(mix, thr_db=-21.0, ratio=1.7)
+    mix, gr = glue_comp(mix, thr_db=-17.5, ratio=1.5)
     print(f"Glue comp GR: max {gr.max():.2f} dB, mean {gr.mean():.2f} dB, p95 {np.percentile(gr, 95):.2f} dB")
 
     # final fade (silence at exactly 330.000 s) + tiny start fade
     fade = np.ones(N)
     a = int(321.5 * SR)
     x = (T48[a:] - 321.5) / (DUR - 321.5)
-    fade[a:] = np.clip(1.0 - x * (N / (N - 1)), 0, 1) ** 2.2
+    fade[a:] = np.clip(1.0 - x, 0, 1) ** 2.2
     fade[:int(0.02 * SR)] = np.linspace(0, 1, int(0.02 * SR))
     fade[-1] = 0.0
     mix *= fade[:, None]
