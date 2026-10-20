@@ -1,0 +1,6 @@
+src/
+renders/
+frames/
+clips/
+*.wav
+*.mp3
