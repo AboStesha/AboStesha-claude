@@ -29,7 +29,7 @@ window.EDL = [
   S(b(24), b(26), 'k08_step', 0.2, 1.0, 1.02, 1.08, [0, 0, 0, 0], { ay: 700 }),
   S(b(26), STOP, 'k08_step', 2.5, 1.0, 1.32, 1.4, [0, 120, 0, 110], { ay: 700 }),
   // ── 09 BREAK: the lid shuts on the stop hit, tape-stop ramp, dark, dawn line ──
-  S(STOP, DROPB, 'k09_laptop_close', 1.6, 1.0, 1.08, 1.2, [0, 0, 0, 0], { ramp: ramp(1.0, 0.2, 0.286), dim: u => 0.12 + 0.76 * sstep(1.25, 1.42, u) }),
+  S(STOP, DROPB, 'k09_laptop_close', 1.05, 1.0, 1.08, 1.2, [0, 0, 0, 0], { ramp: ramp(1.4, 0.2, 0.286), dim: u => 0.12 + 0.76 * sstep(1.25, 1.42, u) }),
   // ── 10 DROP B: holiday / family ──
   S(DROPB, b(33), 'k15_tigris', 1.2, 1.0, 1.0, 1.06, [0, 0, 0, 0], { zin: [0.22, 0.3] }),
   S(b(33), b(34), 'k10_marsh', 1.4, 1.0, 1.04, 1.1),
@@ -93,8 +93,8 @@ T(b(5), b(8), 540, 1415, 52, [words('Axi Copy Trading')], steps(b(5), 3, 0.05), 
 
 // ═══ 04 the best traders, from around the world ═══
 const W4 = whip(b(12));
-[['../assets/3d/forex_coin_EUR_rosegold.png', 905, 520, 210, 5, 18, -6], ['../assets/3d/commodities_silver_bar_macro.png', 150, 930, 260, 8, -14, 4],
- ['../assets/3d/red_chrome_plate_AVAX.png', 900, 1470, 190, 6, 10, -8]].forEach(([src, x, y, w, bl, vx, r], i) =>
+[['img/forex_coin_EUR_rosegold.png', 905, 520, 210, 5, 18, -6], ['img/commodities_silver_bar_macro.png', 150, 930, 260, 8, -14, 4],
+ ['img/red_chrome_plate_AVAX.png', 900, 1470, 190, 6, 10, -8]].forEach(([src, x, y, w, bl, vx, r], i) =>
   U(b(8), b(12), x, y, `<img src="${src}" style="width:${w}px;display:block;filter:blur(${bl}px)">`, { enter: 'pop', te: b(8) + 0.05 * i, move: join(drift(b(8), vx, -8, r), W4) }));
 T(b(8), b(12), 540, 330, 98, [[W('أفضل'), W('المتداولين', 'b')], words('من حول العالم')], [b(8) + 0.03, b(8) + 0.09, b(9), b(9) + 0.06, b(9) + 0.12],
   { cls: 'ar ink', style: 'rise', enter: 'none', te: b(8), move: W4 });
