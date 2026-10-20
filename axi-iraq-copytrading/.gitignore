@@ -4,3 +4,9 @@ frames/
 clips/
 *.wav
 *.mp3
+# large brand-library extracts (re-extract from the guideline PDFs) and persona crops
+assets/3d/
+assets/bg/
+assets/ref/
+gen/start/
+tools/music/__pycache__/

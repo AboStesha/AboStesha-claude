@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- Axi Iraq · Copy Trading reel · 30 s · 1080×1920 · AI footage (Seedance 2.5) on the 124 BPM grid of Mixkit #1012 · onetake contract -->
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<title>Axi Iraq Copy Trading Reel</title>
+<style>
+@font-face{font-family:'NSA';src:url('../assets/fonts/noto-sans-arabic-arabic-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-08FF,U+200C-200F,U+2010-2011,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:'Inter';src:url('../assets/fonts/inter-latin-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2122,U+2190-2193,U+2212}
+:root{--red:#E4002E;--ink:#242528}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:'Inter','NSA',sans-serif;-webkit-font-smoothing:antialiased}
+#cv{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#ui,#top{position:absolute;inset:0}
+.it{position:absolute;left:0;top:0;display:none;transform-origin:50% 50%;box-sizing:border-box}
+.txt{white-space:nowrap;text-align:center}
+.ar{direction:rtl;font-family:'Inter','NSA',sans-serif;font-weight:300;letter-spacing:0}
+.lat{direction:ltr;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-.01em}
+.w{display:inline-block;margin:0 .12em;position:relative}
+.b{font-weight:700}
+.m{font-weight:400}
+.red{color:var(--red)}
+.ink{color:var(--ink)}
+.shadow{text-shadow:0 3px 24px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.4)}
+/* glass, per G-IQ p.43 */
+.gD{background:rgba(20,22,26,.72);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1.5px solid rgba(255,255,255,.25);border-radius:18px;color:#fff}
+.gL{background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,.18));-webkit-backdrop-filter:blur(22px) saturate(1.08);backdrop-filter:blur(22px) saturate(1.08);
+  border:2px solid rgba(255,255,255,.55);color:var(--ink);clip-path:polygon(0 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%)}
+.pad{padding:22px 46px 30px}
+.pill{border-radius:999px;padding:10px 44px 16px}
+.redpill{background:var(--red);color:#fff;border-radius:999px;padding:12px 52px 18px;font-weight:600}
+.chip{display:inline-block;border-radius:999px;padding:6px 22px 9px;font-size:30px;margin:0 6px}
+.chipL{background:rgba(255,255,255,.55);color:var(--ink);border:1.5px solid rgba(255,255,255,.8)}
+.chipD{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.tag{font-family:'Inter','NSA',sans-serif;font-weight:400;font-size:24px;opacity:.75;direction:rtl}
+.ul::before{content:'';position:absolute;right:0;bottom:-.02em;height:6px;width:100%;background:var(--red);transform-origin:100% 50%;transform:scaleX(var(--u,0))}
+.cur::after{content:'';position:absolute;left:-12px;top:18%;bottom:12%;width:4px;background:var(--red)}
+.bar{height:14px;border-radius:7px;background:rgba(36,37,40,.16)}
+.risk{background:rgba(255,255,255,.92);color:var(--ink);font-family:'Inter','NSA',sans-serif;font-weight:400;font-size:39px;line-height:1.38;direction:rtl;text-align:right;
+  padding:16px 30px 20px;border-radius:6px;white-space:normal}
+#hud{position:absolute;right:10px;bottom:8px;font:20px monospace;color:#ff0;display:none}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div id="ui"></div>
+  <div id="top"></div>
+  <div id="hud"></div>
+</div>
+<script src="motion.js"></script>
+<script src="clips.js"></script>
+<script src="edit.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+// Every value is a pure function of t. Footage = AI clips (frames/<clip>/NNNN.jpg, 30 fps, 720×1280) drawn 1.5× on
+// the canvas with a per-shot camera, kick punches, flashes, whips and zoom-throughs. Glass UI, type and brand layers
+// are DOM above it (backdrop-filter sees the footage). Arabic is animated per word or by mask, never per letter.
+// ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+const DUR = 30, FPS = 30;
+const { clamp, lerp, sstep } = OM;
+const CLIPS = window.CLIPS, EDL = window.EDL, ITEMS = window.ITEMS, KICKS = window.KICKS, FLASH = window.FLASH, OVL = window.OVL || [];
+window.__meta = { dur: DUR, fps: FPS, w: 1080, h: 1920, cuts: EDL.map(s => s[0]).filter(t => t > 0) };
+
+const cv = document.getElementById('cv'), g = cv.getContext('2d');
+g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+const IMG = new Map();
+function frameImg(clip, i) {
+  if (!CLIPS[clip]) clip = 'k16_glass';
+  const n = CLIPS[clip]; i = clamp(Math.round(i), 0, n - 1);
+  const src = `frames/${clip}/${String(i + 1).padStart(4, '0')}.jpg`;
+  let im = IMG.get(src);
+  if (!im) { im = new Image(); im.src = src; im.__p = im.decode().catch(() => {}); IMG.set(src, im); if (IMG.size > 500) { const k = IMG.keys().next().value; IMG.delete(k); } }
+  return im;
+}
+const GR = [0, 1, 2, 3].map(k => { const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d'); const d = x.createImageData(256, 256); const r = OM.rng(31 + k);
+  for (let i = 0; i < d.data.length; i += 4) { const v = r() * 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } x.putImageData(d, 0, 0); return c; });
+const VIG = (() => { const c = document.createElement('canvas'); c.width = 1080; c.height = 1920; const x = c.getContext('2d');
+  const gr = x.createRadialGradient(540, 900, 520, 540, 960, 1250); gr.addColorStop(0, 'rgba(10,14,20,0)'); gr.addColorStop(1, 'rgba(10,14,20,0.30)'); x.fillStyle = gr; x.fillRect(0, 0, 1080, 1920); return c; })();
+
+const shotAt = t => { for (let i = EDL.length - 1; i >= 0; i--) if (t >= EDL[i][0] && t < EDL[i][1]) return EDL[i]; return null; };
+const punch = t => { let s = 0; for (const k of KICKS) if (t >= k && t < k + 0.45) s += 0.032 * Math.exp(-(t - k) * 12); return s; };
+const kickPulse = t => { let s = 0; for (const k of KICKS) if (t >= k && t < k + 0.45) s += Math.exp(-(t - k) * 10); return s; };
+const HITS = window.HITS || [];
+function shake(t) { let x = 0, y = 0, r = 0; for (const [th, a, d] of HITS) { const s = OM.shake(t, th, { amp: a, decay: d, seed: Math.round(th * 100) }); x += s.x; y += s.y; r += s.rot; } return { x, y, r }; }
+const srcT = (sh, t) => { const fx = sh[11] || {}; return sh[3] + (fx.ramp ? fx.ramp(t - sh[0]) : (t - sh[0]) * sh[4]); };
+
+// camera of a shot at t: [zoom, dx, dy, rot, anchorX, anchorY, smear]
+function cam(sh, t) {
+  const [t0, t1, , , , z0, z1, dx0, dy0, dx1, dy1, fx = {}] = sh;
+  const u = (t - t0) / Math.max(1e-6, t1 - t0);
+  const e = fx.ease === 'in' ? u * u : fx.ease === 'snap' ? 1 - Math.pow(1 - u, 4) : fx.ease === 'out' ? 1 - (1 - u) * (1 - u) : u;
+  let z = lerp(z0, z1, e) * (1 + punch(t)), dx = lerp(dx0, dx1, e), dy = lerp(dy0, dy1, e), rot = fx.rot || 0, smear = 0;
+  const ax = fx.ax ?? 540, ay = fx.ay ?? 960;
+  if (fx.zout) { const k = clamp((t - (t1 - fx.zout[0])) / fx.zout[0]); z *= 1 + fx.zout[1] * k * k * k; }             // zoom-through exit
+  if (fx.zin) { const k = clamp((t - t0) / fx.zin[0]); z *= 1 + fx.zin[1] * Math.pow(1 - k, 3); }                      // land from a bigger frame
+  if (fx.whipOut) { const k = clamp((t - (t1 - fx.whipOut[0])) / fx.whipOut[0]); dx += fx.whipOut[1] * 1400 * k * k; smear = Math.max(smear, k); }
+  if (fx.whipIn) { const k = clamp((t - t0) / fx.whipIn[0]); const r = 1 - k; dx -= fx.whipIn[1] * 1400 * r * r; smear = Math.max(smear, r); }
+  if (fx.tilt) rot += fx.tilt * (1 - e);
+  return [z, dx, dy, rot, ax, ay, smear];
+}
+function blit(im, sh, t, clipRect, oy = 0, zMul = 1, ox0 = 0) {
+  const [z, dx, dy, rot, ax, ay, smear] = cam(sh, t), sk = shake(t), fx = sh[11] || {};
+  g.save();
+  if (clipRect) { g.beginPath(); g.rect(...clipRect); g.clip(); }
+  const bright = 1 + (fx.pulse ? fx.pulse.reduce((s, p) => s + (t >= p && t < p + 0.4 ? 0.35 * Math.exp(-(t - p) * 9) : 0), 0) : 0);
+  g.filter = `${fx.filter || 'contrast(1.05) saturate(0.97)'} brightness(${bright.toFixed(3)})${fx.blur ? ` blur(${fx.blur(t - sh[0]).toFixed(1)}px)` : ''}`;
+  const draw = (ox, a) => { g.save(); g.globalAlpha = a; g.translate(ax + sk.x + dx + ox + ox0, ay + sk.y + dy + oy); g.rotate(sk.r + rot); g.scale(z * zMul, z * zMul); g.drawImage(im, -ax, -ay, 1080, 1920); g.restore(); };
+  if (smear > 0.05) { const dir = Math.sign((fx.whipOut || fx.whipIn)[1]); for (let i = 0; i < 6; i++) draw(-dir * i * 70 * smear, i ? 0.22 : 1); }
+  else draw(0, 1);
+  g.restore(); g.filter = 'none';
+  if (fx.dim && !clipRect) { g.fillStyle = `rgba(4,6,10,${fx.dim(t - sh[0]).toFixed(3)})`; g.fillRect(0, 0, 1080, 1920); }
+}
+
+// ── DOM items (glass UI + type) ──
+const UI = document.getElementById('ui'), TOP = document.getElementById('top');
+const IT = ITEMS.map((d, i) => {
+  const el = document.createElement('div'); el.className = 'it ' + (d.cls || '');
+  if (d.lines) {                                     // type: lines of [word, cls, styleOverride]
+    el.classList.add('txt'); el.style.fontSize = d.size + 'px'; el.style.lineHeight = d.lh || 1.3;
+    d.words = []; d.lines.forEach((ln, li) => { const row = document.createElement('div'); row.className = (d.lcls && d.lcls[li]) || ''; if (d.lsize && d.lsize[li]) row.style.fontSize = d.lsize[li] + 'px';
+      ln.forEach(([w, c, st]) => { const s = document.createElement('span'); s.className = 'w ' + (c || ''); if ((c || '').includes('ic')) s.innerHTML = w; else s.textContent = w; s.__st = st; s.__line = li; row.appendChild(s); d.words.push(s); }); el.appendChild(row); });
+    if (d.after) el.insertAdjacentHTML('beforeend', d.after);
+  } else el.innerHTML = d.html || '';
+  if (d.w) el.style.width = d.w + 'px'; if (d.h) el.style.height = d.h + 'px';
+  (d.layer === 'top' ? TOP : UI).appendChild(el); d.el = el; d.idx = i; return d;
+});
+function measure() { IT.forEach(d => { d.el.style.display = 'block'; const r = d.el.getBoundingClientRect(); d.mw = r.width; d.mh = r.height; d.el.style.display = 'none'; }); }
+
+const ENTER = {
+  none: () => ({}),
+  rise: k => ({ ty: (1 - k) * 90, sc: 0.94 + 0.06 * k }),
+  pop: k => ({ sc: 0.55 + 0.45 * k }),
+  fold: k => ({ ry: 90 * (1 - k) }),
+  slideL: k => ({ tx: (1 - k) * 460 }),
+  slideR: k => ({ tx: -(1 - k) * 460 }),
+  drop: k => ({ ty: -(1 - k) * 140 }),
+  up: k => ({ ty: (1 - k) * 260 }),
+};
+function wordAnim(d, s, t, tw) {
+  const st = s.__st || d.style || 'rise', dt = t - tw;
+  if (dt < 0) { s.style.opacity = 0; s.style.transform = 'none'; s.style.filter = 'none'; s.style.clipPath = 'none'; return; }
+  let op = 1, tr = '', fl = 'none', cp = 'none';
+  if (st === 'rise') { const k = OM.spring(dt, 0.62, 24); op = clamp(dt / 0.08); tr = `translateY(${((1 - k) * 40).toFixed(1)}px)`; if (dt < 0.2) fl = `blur(${(12 * (1 - dt / 0.2)).toFixed(1)}px)`; }
+  else if (st === 'slam') { const k = OM.spring(dt, 0.5, 34); op = clamp(dt / 0.04); tr = `scale(${(1 + 0.42 * (1 - k)).toFixed(4)})`; if (dt < 0.07) fl = `blur(${(6 * (1 - dt / 0.07)).toFixed(1)}px)`; }
+  else if (st === 'pop') { const k = OM.spring(dt, 0.55, 26); op = clamp(dt / 0.06); tr = `translateY(${((1 - k) * 46).toFixed(1)}px) scale(${(0.82 + 0.18 * k).toFixed(4)})`; if (dt < 0.08) fl = `blur(${(8 * (1 - dt / 0.08)).toFixed(1)}px)`; }
+  else if (st === 'wipe') { const r = clamp(dt / 0.133); const k = OM.spring(dt, 0.5, 22); cp = `inset(-20% -5% -20% ${((1 - r) * 105).toFixed(1)}%)`; tr = `scale(${(1 + 0.12 * (1 - k)).toFixed(4)})`; if (dt < 0.07) fl = 'blur(2px)'; }
+  else if (st === 'fade') { const r = clamp(dt / 0.42); op = r; if (r < 1) fl = `blur(${(8 * (1 - r)).toFixed(1)}px)`; }
+  else if (st === 'mask') { const r = 1 - Math.pow(1 - clamp(dt / 0.2), 3); cp = `inset(-20% -5% -20% ${((1 - r) * 105).toFixed(1)}%)`; tr = `translateX(${((1 - r) * -14).toFixed(1)}px)`; }
+  else if (st === 'xrot') { const k = OM.spring(dt, 0.6, 22); op = clamp(dt / 0.08); tr = `perspective(700px) translateY(${((1 - k) * -50).toFixed(1)}px) rotateX(${(-30 * (1 - k)).toFixed(2)}deg)`; if (dt < 0.1) fl = `blur(${(6 * (1 - dt / 0.1)).toFixed(1)}px)`; }
+  s.style.opacity = op; s.style.transform = tr; s.style.filter = fl; s.style.clipPath = cp;
+  if (s.classList.contains('ul')) s.style.setProperty('--u', (1 - Math.pow(1 - clamp((dt - 0.12) / 0.3), 3)).toFixed(3));
+}
+function drawItems(t) {
+  const sk = shake(t);
+  for (const d of IT) {
+    const on = t >= d.t0 && t < d.t1; d.el.style.display = on ? 'block' : 'none'; if (!on) continue;
+    const te = d.te ?? d.t0, k = te <= t ? OM.spring(t - te, d.zeta ?? 0.62, d.omega ?? 22) : 0;
+    const en = (ENTER[d.enter || 'rise'] || ENTER.rise)(k);
+    const m = d.move ? d.move(t) : {};
+    const out = d.out ? sstep(d.t1 - d.out, d.t1, t) : 0;
+    const pul = d.pulse ? 1 + d.pulse * kickPulse(t) : 1;
+    const sc = (en.sc ?? 1) * (m.sc ?? 1) * pul;
+    const x = d.x - d.mw / 2, y = d.y - d.mh / 2;
+    d.el.style.left = x.toFixed(1) + 'px'; d.el.style.top = y.toFixed(1) + 'px';
+    let op = (d.enter === 'none' || d.enter === 'fold' || d.enter === 'pop' || d.enter === 'slideL' || d.enter === 'slideR' ? (te <= t ? clamp((t - te) / 0.05) : 0) : (te <= t ? clamp((t - te) / 0.1) : 0)) * (1 - out) * (m.op ?? 1);
+    if (d.dimAt && t >= d.dimAt[0]) op *= lerp(1, d.dimAt[1], sstep(d.dimAt[0], d.dimAt[0] + 0.2, t));
+    d.el.style.opacity = op.toFixed(3);
+    const sh = d.layer === 'top' || d.still ? { x: 0, y: 0 } : { x: sk.x * 0.4, y: sk.y * 0.4 };
+    d.el.style.transform = `translate(${((en.tx || 0) + (m.dx || 0) + sh.x).toFixed(1)}px,${((en.ty || 0) + (m.dy || 0) - out * 30 + sh.y).toFixed(1)}px)` +
+      (en.ry ? ` perspective(1400px) rotateY(${en.ry.toFixed(2)}deg)` : '') + (m.rot ? ` rotate(${m.rot.toFixed(2)}deg)` : '') + ` scale(${sc.toFixed(4)})`;
+    if (d.words) d.words.forEach((s, i) => { wordAnim(d, s, t, d.wt[Math.min(i, d.wt.length - 1)] + (i >= d.wt.length ? (i - d.wt.length + 1) * 0.06 : 0)); s.classList.toggle('cur', !!d.caret && s === d.words.filter((w, j) => t >= d.wt[Math.min(j, d.wt.length - 1)]).pop() && t < d.caret); });
+    if (d.upd) d.upd(t, d.el, d);
+  }
+}
+async function drawInsets(t) {           // video inside DOM cards: <canvas class="ins" data-clip data-src data-rate data-t0>
+  const ps = [];
+  for (const d of IT) { if (!(t >= d.t0 && t < d.t1) || !d.ins) continue;
+    for (const c of d.el.querySelectorAll('canvas.ins')) { const s = d.ins; const im = frameImg(s.clip, (s.src + (t - d.t0) * s.rate) * FPS);
+      ps.push(im.__p.then(() => { const x = c.getContext('2d'); x.filter = 'contrast(1.05) saturate(0.97)'; const W = c.width, H = c.height, z = s.z || 1;
+        const sw = 720 / z, sh = sw * H / W; x.drawImage(im, 360 - sw / 2 + (s.ox || 0), (s.oy ?? 640) - sh / 2, sw, sh, 0, 0, W, H); })); } }
+  await Promise.all(ps);
+}
+
+async function seek(t) {
+  const sh = shotAt(t), fx = sh ? sh[11] || {} : {};
+  let ims = [];
+  if (sh) { ims.push(frameImg(sh[2], srcT(sh, t) * FPS)); if (fx.split) { const s = fx.split; ims.push(frameImg(s.clip, (s.src + (t - sh[0]) * s.rate) * FPS)); } await Promise.all(ims.map(i => i.__p)); }
+  g.fillStyle = '#0b0d0f'; g.fillRect(0, 0, 1080, 1920);
+  if (sh) {
+    if (fx.split) { const s = fx.split, sh2 = [sh[0], sh[1], s.clip, s.src, s.rate, s.zz0, s.zz1, 0, 0, 0, 0, { pulse: s.pulse2, ax: s.ax2, ay: s.ay2 }];
+      if (s.h) {                                   // side by side: primary in the right half (RTL: the source), secondary in the left
+        blit(ims[0], sh, t, [541, 0, 539, 1920], 0, 1, s.ox1 || 0); blit(ims[1], sh2, t, [0, 0, 539, 1920], 0, 1, s.ox2 || 0);
+        g.fillStyle = 'rgba(255,255,255,.9)'; g.fillRect(538, 0, 4, 1920);
+      } else {
+        blit(ims[0], sh, t, [0, 0, 1080, 958], s.oy1 || 0, s.z1 || 1); blit(ims[1], sh2, t, [0, 962, 1080, 958], s.oy2 || 0, 1);
+        g.fillStyle = 'rgba(255,255,255,.85)'; g.fillRect(0, 958, 1080, 4); }
+    } else blit(ims[0], sh, t);
+  }
+  g.drawImage(VIG, 0, 0);
+  g.globalAlpha = 0.035; g.globalCompositeOperation = 'overlay'; const gt = GR[Math.round(t * FPS) % 4];
+  for (let y = 0; y < 1920; y += 256) for (let x = 0; x < 1080; x += 256) g.drawImage(gt, x, y);
+  g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+  for (const o of OVL) if (t >= o.t0 && t < o.t1) o.draw(g, t);
+  for (const [ft, col, st, dur = 0.2] of FLASH) { if (t >= ft && t < ft + dur) { g.fillStyle = col; g.globalAlpha = st * Math.exp(-(t - ft) * (4.4 / dur)); g.fillRect(0, 0, 1080, 1920); g.globalAlpha = 1; } }
+  drawItems(t); await drawInsets(t);
+  document.getElementById('hud').textContent = t.toFixed(3);
+  return true;
+}
+window.__seek = async t => { await seek(t); return true; };
+window.__ready = document.fonts.ready.then(() => { measure(); return seek(0); });
+window.__motion = (t0, t1) => {
+  const a = shotAt(t0), b = shotAt(t1); if (a !== b) return 120;
+  let ui = 0; for (const d of IT) { const te = d.te ?? d.t0; if ((t1 >= te && t0 < te + 0.4) || (d.move && t1 >= d.t0 && t0 < d.t1 && d.fast)) ui = 45; }
+  if (!a) return 24 + ui;
+  const m = t => { const c = cam(a, t), sk = shake(t); return [c[1] + sk.x, c[2] + sk.y, c[0], c[6]]; };
+  const p = m(t0), q = m(t1); return Math.max(ui, Math.hypot(p[0] - q[0], p[1] - q[1]) + Math.abs(p[2] - q[2]) * 1100 + Math.max(p[3], q[3]) * 300) + 24;
+};
+window.__events = () => window.EVENTS || [];
+const q = new URLSearchParams(location.search);
+if (q.has('hud')) document.getElementById('hud').style.display = 'block';
+if (q.has('t')) __ready.then(() => seek(parseFloat(q.get('t'))));
+</script>
+</body>
+</html>

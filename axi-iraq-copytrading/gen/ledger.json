@@ -1,0 +1,22 @@
+{
+ "jobs": {
+  "k01_hook": "fe92feaa-83a6-445b-9eab-439d0525df3a",
+  "k02_push": "c9f4b43e-9784-48dc-8b7e-27f2efd79031",
+  "k03_saeed_turn": "fa358d81-dd0d-4c30-b6e5-bc2bff827e6f",
+  "k04_noor_tablet": "52c17e91-0abf-4df3-9c10-f8c2a4d47e43",
+  "k05_coin": "50fe7e62-9e9b-4399-8149-443a00ba1ad6",
+  "k06_saeed_tap": "c2d0f9ce-41e7-4bab-ae3d-f83338c354bf",
+  "k07_noor_glow": "96a28f57-8020-44d0-a439-1e027b7cbae8",
+  "k08_step": "4b8f5c41-6972-454f-aa2c-1e22e80e936d",
+  "k04_noor_tablet_failed_1": "e00394f2-6848-4f35-a420-f6c376918e15",
+  "k09_laptop_close": "ccc0977b-6000-4422-ae67-b7b21ebe9fb3",
+  "k10_marsh": "f5ac289b-e56c-48d0-ae4a-a1bf99e6a145",
+  "k11_family": "e94abcbe-fcdf-4aae-af25-a4a716f07fe0",
+  "k12_noor_turn": "ec7ad5de-b39e-4b64-ac20-64a2755bbc0e",
+  "k13_stack": "5a85aa12-f1fe-42d3-a81b-a94b491cb6fd",
+  "k14_phone3d": "c1976450-3fca-45b9-ace7-57619c7f0b31",
+  "k15_tigris": "729e7ae6-b97e-4656-8934-81e4a259b5b7",
+  "k16_glass": "edaa1a2d-3213-43a9-b33b-3b6463cb97b3"
+ },
+ "credits_per_clip": 35
+}

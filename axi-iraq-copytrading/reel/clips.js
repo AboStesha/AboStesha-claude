@@ -1,0 +1,1 @@
+window.CLIPS = {"k01_hook": 151, "k02_push": 151, "k03_saeed_turn": 151, "k04_noor_tablet": 151, "k05_coin": 151, "k06_saeed_tap": 151, "k07_noor_glow": 151, "k08_step": 151, "k10_marsh": 151, "k11_family": 151, "k12_noor_turn": 151, "k13_stack": 151, "k14_phone3d": 151, "k15_tigris": 151, "k16_glass": 151};
