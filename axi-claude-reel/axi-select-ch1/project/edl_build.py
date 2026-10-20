@@ -12,13 +12,13 @@ XW = {"ax": 0.5, "ay": 1004 / 1080, "sx": 0.5, "sy": 0.86}
 def f(t):  # output seconds -> frame
     return int(round(t * FPS))
 
-# (vo_start, vo_end, clip, cam, note). clip "VC" = L4 under the virtual camera (k_vcam: s0, dy0, drift per s,
+# (vo_start, vo_end, clip, cam, note). clip "BR" = full-screen motion-graphics B-roll; "VC" = L4 under the virtual camera (k_vcam: s0, dy0, drift per s,
 # moves [t_vo, dur, s, dy, ease]); s 0.66 HOME, 0.30 WIDE, 0.22 extreme wide.
 HOME, WIDE, EW = 0.66, 0.30, 0.22
 S = [
     (0.00, 4.40, "VC", dict(s0=HOME, drift=0.006, moves=[[1.50, 0.62, WIDE, 0.0, "pull"]]), "A welcome: HOME, pull-out to WIDE on «Axi Select», lockup in the void"),
     (4.40, 8.84, "L5", dict(z0=1.00, z1=1.05), "B medium: what this video covers (sign-up / stages tiles)"),
-    (8.84, 14.88, "L1", dict(z0=1.03, z1=1.08, ax=0.33), "C three-quarter: the Axi Select trading account card"),
+    (8.84, 14.88, "BR", dict(id=1), "C B-ROLL 1 (full-screen motion graphics): open an Axi Select trading account with Axi, trade as usual"),
     (14.88, 18.50, "VC", dict(s0=WIDE, drift=0.008), "D DROP: smash cut to WIDE, floor ripple, Edge Score gauge to 50"),
     (18.50, 22.62, "L5", dict(z0=1.06, z1=1.11), "E medium: the two conditions (Edge Score 50+, $500)"),
     (22.62, 27.00, "L3", dict(z0=1.00, z1=1.05, ax=0.74), "F1 profile: Axi opens the allocation account"),
@@ -31,9 +31,9 @@ S = [
     (56.30, 58.40, "L2", dict(z0=1.04, z1=1.09, ay=0.4), "M close-up: «والمرحلة الأخيرة»"),
     (58.40, 60.30, "VC", dict(s0=EW * 1.04, dy0=0.03, drift=0.006), "M2 extreme wide: Pro M lights up"),
     (60.30, 64.62, "L5", dict(z0=1.00, z1=1.05), "N1 medium: funding from Axi"),
-    (64.62, 68.10, "L1", dict(z0=1.03, z1=1.08, ax=0.33), "N2 three-quarter: share of the profits"),
-    (68.10, 77.80, "VC", dict(s0=HOME, drift=0.004, moves=[[69.22, 0.62, WIDE, 0.0, "pull"]]), "O «يعني لنبسّطها أكثر»: HOME, pull-out to WIDE, your account + the funded allocation account"),
-    (77.80, 79.02, "L2", dict(z0=1.06, z1=1.12, ay=0.4, punch=0.06), "P close-up: «ملاحظة مهمة»"),
+    (64.62, 68.10, "BR", dict(id=2), "N2 B-ROLL 2 (full-screen motion graphics): trade with the funding, withdraw a share of the profits"),
+    (68.10, 78.04, "VC", dict(s0=HOME, drift=0.004, moves=[[69.22, 0.62, WIDE, 0.0, "pull"]]), "O «يعني لنبسّطها أكثر»: HOME, pull-out to WIDE, your account + the funded allocation account (holds through «Axi», 77.58-78.02)"),
+    (78.04, 79.02, "L2", dict(z0=1.06, z1=1.12, ay=0.4, punch=0.06), "P close-up: «ملاحظة مهمة»"),
     (79.02, 84.70, "L3", dict(z0=1.00, z1=1.05, ax=0.74), "Q profile: no direct trading, linked automatically"),
     (84.70, 91.04, "VC", dict(s0=WIDE, drift=0.006), "R DROP 2: smash cut to WIDE, trades copied along the arc, ×10"),
     (91.04, 95.95, "L2", dict(z0=1.00, z1=1.06, ay=0.4), "S close-up: «معامل الضرب»"),
@@ -41,10 +41,13 @@ S = [
     (102.15, 110.88, "VC", dict(s0=WIDE, drift=0.006, moves=[[105.58, 0.70, HOME, 0.0, "push"]]), "U RE-DROP: WIDE, red floor, 10%; V push back HOME: upcoming chapters"),
 ]
 
-shots = [{"f0": 0, "f1": f(P), "special": {"type": "k_card"}, "k_title": True, "note": "title card «(1) كيف تبدأ / مع Axi Select»"}]
+shots = [{"f0": 0, "f1": f(P), "special": {"type": "k_card", "allow": ["grain", "vignette"]}, "k_title": True, "note": "title card «(1) كيف تبدأ / مع Axi Select»"}]
 for vs, ve, clip, c, note in S:
     sh = {"f0": f(vs + P), "f1": f(ve + P), "note": note}
-    if clip == "VC":
+    if clip == "BR":  # full-screen motion graphics, no presenter (the voice carries on)
+        sh["special"] = {"type": "k_card", "allow": ["grain", "vignette"]}
+        sh["k_broll"] = c["id"]
+    elif clip == "VC":
         sh["clip"] = "L4"
         sh["k_vcam"] = {"t0": vs, **c}
         sh["cam"] = {"fit": "cover", "z": 1.0}
@@ -59,7 +62,7 @@ for vs, ve, clip, c, note in S:
         sh["cam"] = cam
         sh["src"] = round(vs + LAG.get(clip, 0.0), 3)
     shots.append(sh)
-shots.append({"f0": f(110.88 + P), "f1": f(END), "special": {"type": "k_card"}, "k_end": True, "note": "slash wipe -> Axi Select end card, fade to black"})
+shots.append({"f0": f(110.88 + P), "f1": f(END), "special": {"type": "k_card", "allow": ["grain", "vignette"]}, "k_end": True, "note": "slash wipe -> Axi Select end card, fade to black"})
 
 # subtitles (VO times) — Rabee's words, lightly normalised spelling
 SUBS = [
@@ -77,7 +80,7 @@ SUBS = [
     (32.52, 34.42, "أنت الآن في المرحلة الأولى"),
     (34.46, 36.75, "من مراحل البرنامج التمويلي Axi Select"),
     (36.84, 40.05, "ولديك تمويل بقيمة 5,000 دولار"),
-    (40.14, 42.35, "و Axi Select عبارة عن ستّ مراحل"),
+    (40.14, 42.35, "و Axi Select هو عبارة عن ستّ مراحل"),
     (42.42, 44.65, "المرحلة الأولى تُسمّى مرحلة Seed"),
     (44.72, 46.30, "أمّا بالنسبة للمرحلة الثانية"),
     (46.36, 47.95, "فهي مرحلة Incubation"),
@@ -93,8 +96,8 @@ SUBS = [
     (68.18, 69.60, "يعني لنبسّطها أكثر"),
     (69.66, 72.50, "عندك حساب تداول عم تتداول عليه بشكل اعتيادي"),
     (72.60, 75.15, "بالإضافة إلى حساب تخصيص مموَّل"),
-    (75.20, 77.75, "مقدَّم من شركة Axi"),
-    (77.88, 78.98, "ملاحظة مهمّة"),
+    (75.20, 78.04, "مقدَّم من شركة Axi"),
+    (78.04, 78.98, "ملاحظة مهمّة"),
     (79.02, 82.45, "حساب التخصيص لا يمكن التداول عليه بشكل مباشر"),
     (82.54, 85.95, "وإنّما هو مربوط تلقائياً بحساب التداول"),
     (86.04, 88.50, "ويقوم بنسخ جميع الصفقات المنفَّذة"),
@@ -103,10 +106,34 @@ SUBS = [
     (92.74, 95.85, "لأنّه رح نشرحها بالتفصيل في الفيديوهات القادمة"),
     (96.00, 98.05, "في كل مرحلة من هذه المراحل"),
     (98.12, 101.30, "هناك مجموعة من القواعد يجب القيام بها"),
-    (101.40, 105.50, "وأهمّها ألّا يصل انعكاس حساب التخصيص 10%"),
-    (105.58, 107.60, "لتعرف تفاصيل وقواعد كل مرحلة"),
-    (108.16, 110.30, "انتقل إلى الفيديوهات القادمة"),
+    (101.40, 105.50, "وأهمّها ألّا يصل انعكاس حساب التخصيص \u206610%\u2069"),
+    (105.58, 108.14, "لتعرف تفاصيل وقواعد كل مرحلة"),
+    (108.30, 110.30, "انتقل إلى الفيديوهات القادمة"),
 ]
+
+# subtitle spans in OUTPUT seconds: [start, end, text, hard_in, hard_out]. A boundary within 0.2 s of a picture cut is
+# snapped onto the cut and switches hard there; otherwise the renderer fades
+# (in from start - 0.05, out ending at end = spoken end + 0.12, never past the next start - 0.05).
+CUTS = sorted({sh["f0"] / FPS for sh in shots if sh["f0"] > 0})
+def near_cut(t, lo, hi):
+    c = [k for k in CUTS if t - lo <= k <= t + hi]
+    return min(c, key=lambda k: abs(k - t)) if c else None
+SPANS = []
+for a, b, text in SUBS:
+    s0 = a + P
+    c = near_cut(s0, 0.2, 0.2)
+    SPANS.append([c if c is not None else s0, b + P, text, c is not None, False])
+for i, sp in enumerate(SPANS):
+    nxt = SPANS[i + 1][0] - (0.0 if SPANS[i + 1][3] else 0.05) if i + 1 < len(SPANS) else 1e9
+    end = min(sp[1] + 0.12, nxt)
+    c = near_cut(end, 0.2, 0.2)
+    if c is not None and c > sp[0] + 0.3:
+        end, sp[4] = c, True
+    sp[1] = round(end, 4); sp[0] = round(sp[0], 4)
+
+def srt_time(t):
+    ms = int(round(t * 1000)); h, ms = divmod(ms, 3600000); m, ms = divmod(ms, 60000); s_, ms = divmod(ms, 1000)
+    return "%02d:%02d:%02d,%03d" % (h, m, s_, ms)
 
 E = {
     "canvas": {"w": 1920, "h": 1080, "fps": FPS, "frames": f(END), "bg": "#000000", "boil": 2},
@@ -123,7 +150,7 @@ E = {
     "post": {"grain": {"amt": 0.07}, "vignette": {"v": 0.2}},
     "sfx": {"auto": False, "cues": [], "hits": False},
     "audio": {"src": "audio/mix.m4a", "start": 0, "sfx": False, "codec": "copy"},
-    "k_t": {"P": P, "subs": SUBS},
+    "k_t": {"P": P, "subs": SPANS},
 }
 if "--cover" in sys.argv:
     E["canvas"]["frames"] = 1
@@ -133,6 +160,12 @@ if "--cover" in sys.argv:
 for a in sys.argv[1:]:
     if a == "--no-text": E["k_no_text"] = True
     if a == "--no-subs": E["k_no_subs"] = True
+for a in sys.argv[1:]:
+    if a.startswith("--srt="):  # the same spans as the burned-in subtitles (bidi isolates dropped)
+        with open(a[6:], "w", encoding="utf-8") as fh:
+            for i, (s0, s1, text, _, _) in enumerate(SPANS, 1):
+                fh.write("%d\n%s --> %s\n%s\n\n" % (i, srt_time(s0), srt_time(s1), text.replace("\u2066", "").replace("\u2069", "")))
+        print("wrote", a[6:], len(SPANS), "subtitles")
 out = "comp/edl.json" if not any(a.startswith("--out=") for a in sys.argv) else [a[6:] for a in sys.argv if a.startswith("--out=")][0]
 json.dump(E, open(out, "w"), ensure_ascii=False, indent=1)
 print("wrote", out, "shots", len(shots), "frames", E["canvas"]["frames"])

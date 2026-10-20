@@ -1,0 +1,242 @@
+[
+ {
+  "t": 68.2,
+  "cat": "riser",
+  "gain_db": -12,
+  "note": "O: soft riser into the HOME->WIDE pull-out (69.22); starts in the pause after «يعني» and swells under «لنبسّطها»"
+ },
+ {
+  "t": 69.8,
+  "cat": "whoosh",
+  "gain_db": -10,
+  "note": "O: trading card enters right (70.12); pause 69.61-70.00"
+ },
+ {
+  "t": 72.64,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "O: soft candle blip, a live candle prints (72.62); pause 72.64-72.93"
+ },
+ {
+  "t": 72.84,
+  "cat": "hit",
+  "gain_db": -8,
+  "note": "O: pop on the metallic '+' (72.85); same pause, before «بالإضافة»"
+ },
+ {
+  "t": 73.34,
+  "cat": "whoosh",
+  "gain_db": -12,
+  "note": "O: allocation card enters left (73.48); soft, in the dip between «بالإضافة» and «إلى»"
+ },
+ {
+  "t": 74.36,
+  "cat": "type",
+  "gain_db": -12,
+  "note": "O: metallic counter ticks as '$ 5,000' counts in (74.55-75.10); starts in the pause 74.34-74.44"
+ },
+ {
+  "t": 75.36,
+  "cat": "ui_blip",
+  "gain_db": -10,
+  "note": "O: metallic tick as the count settles and its sheen passes; pause 75.35-75.50"
+ },
+ {
+  "t": 76.64,
+  "cat": "type",
+  "gain_db": -10,
+  "note": "O: rain of ticks, the 16-mark ◢ pour into the allocation card (76.66-77.24); pause 76.63-76.80 before «شركة»"
+ },
+ {
+  "t": 77.5,
+  "cat": "flash",
+  "gain_db": -10,
+  "note": "O: accent into «Axi»: the wordmark pops 4 % and a red underline wipes in (77.56); pause 77.17-77.58"
+ },
+ {
+  "t": 78.1,
+  "cat": "ui_blip",
+  "gain_db": -6,
+  "note": "P: soft double tick, the red NOTE tag snaps in (78.12) after the O->P cut at 78.04; pause 77.70-78.22 before «ملاحظة»"
+ },
+ {
+  "t": 80.4,
+  "cat": "ui_blip",
+  "gain_db": -6,
+  "note": "Q: cursor click on the greyed «تداول» pill (80.42); pause 80.22-80.49"
+ },
+ {
+  "t": 80.44,
+  "cat": "ui_error",
+  "gain_db": -12,
+  "note": "Q: soft error buzz under the pill shake (80.46-80.76); starts in the same pause, before «لا»"
+ },
+ {
+  "t": 81.02,
+  "cat": "hit",
+  "gain_db": -6,
+  "note": "Q: metal lock snap, the padlock shackle closes (81.04); in the stop closure 80.99-81.09 of «التداول»"
+ },
+ {
+  "t": 82.62,
+  "cat": "whoosh",
+  "gain_db": -10,
+  "note": "Q: trading card rises in below (82.74); pause 82.41-82.86 before «وإنما»"
+ },
+ {
+  "t": 83.36,
+  "cat": "ui_blip",
+  "gain_db": -10,
+  "note": "Q: chain clink as the two links snap together (83.40); in the dip between «هو» and «مربوط»"
+ },
+ {
+  "t": 84.08,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "Q: soft blip, the first red pulse reaches the allocation card (84.09); pause 83.97-84.11"
+ },
+ {
+  "t": 84.7,
+  "cat": "boom",
+  "gain_db": -4,
+  "note": "R: sub boom on the smash cut and floor ripple (84.70, drop 2); after «تلقائياً», pause to 85.06"
+ },
+ {
+  "t": 86.77,
+  "cat": "dataswish",
+  "gain_db": -12,
+  "note": "R: soft zip, T1's comet leaves the trading card (86.77)"
+ },
+ {
+  "t": 87.07,
+  "cat": "ui_blip",
+  "gain_db": -9,
+  "note": "R: glassy ping, T1 flips x10 at the apex node (87.07); pause 87.05-87.13"
+ },
+ {
+  "t": 87.38,
+  "cat": "dataswish",
+  "gain_db": -12,
+  "note": "R: soft zip, T2's comet (87.38)"
+ },
+ {
+  "t": 87.68,
+  "cat": "ui_blip",
+  "gain_db": -9,
+  "note": "R: glassy ping, T2 at the apex (87.68); pause 87.65-87.72"
+ },
+ {
+  "t": 88.05,
+  "cat": "dataswish",
+  "gain_db": -12,
+  "note": "R: soft zip, T3's comet (88.05)"
+ },
+ {
+  "t": 88.35,
+  "cat": "ui_blip",
+  "gain_db": -9,
+  "note": "R: glassy ping, T3 at the apex (88.35); pause 88.29-88.42"
+ },
+ {
+  "t": 88.66,
+  "cat": "ui_blip",
+  "gain_db": -10,
+  "note": "R: landing click, T3 lands as «شراء 0.10» (88.65); pause 88.62-88.95"
+ },
+ {
+  "t": 88.84,
+  "cat": "hit",
+  "gain_db": -6,
+  "note": "R: deeper ping as the metallic x10 lands in the node (88.85); same pause, before «بمعامل»"
+ },
+ {
+  "t": 90.0,
+  "cat": "dataswish",
+  "gain_db": -12,
+  "note": "R: soft zip, T4's comet (90.00)"
+ },
+ {
+  "t": 90.16,
+  "cat": "ui_blip",
+  "gain_db": -9,
+  "note": "R: glassy ping, T4 passes the pulsing x10 node (90.225); pause 90.13-90.20"
+ },
+ {
+  "t": 91.4,
+  "cat": "whoosh",
+  "gain_db": -10,
+  "note": "S: soft paper-flag drop, the bookmark falls onto the tag (91.40-91.55); pause 91.03-91.48 before «احفظ»"
+ },
+ {
+  "t": 94.66,
+  "cat": "ui_blip",
+  "gain_db": -10,
+  "note": "S: tiny tick as the dark pill appears (94.64); pause 94.48-94.80"
+ },
+ {
+  "t": 96.78,
+  "cat": "scan",
+  "gain_db": -12,
+  "note": "T: one soft scan for the six stage symbols lighting 01-06 (96.80-97.70)"
+ },
+ {
+  "t": 99.1,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "T: soft check click, rule row 2 ticks red (99.10), on the short «من»"
+ },
+ {
+  "t": 99.5,
+  "cat": "ui_blip",
+  "gain_db": -10,
+  "note": "T: check click, rule row 3 ticks red (99.50); pause 99.46-99.54"
+ },
+ {
+  "t": 101.42,
+  "cat": "hit",
+  "gain_db": -9,
+  "note": "T: low emphasis tick, row 4 «حدّ الانعكاس» arrives in focus (101.40); pause 101.40-101.75 before «وأهمّها»"
+ },
+ {
+  "t": 102.48,
+  "cat": "riser",
+  "gain_db": -12,
+  "note": "U: low tension drone as the limit ring draws on the floor (102.55-103.25); starts in the pause 102.45-102.67"
+ },
+ {
+  "t": 103.5,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "U: descending tick, drawdown candle 3 (103.50); pause 103.46-103.55"
+ },
+ {
+  "t": 103.67,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "U: descending tick, candle 4 (103.65); pause 103.66-103.82"
+ },
+ {
+  "t": 103.84,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "U: descending tick, candle 5, the last red wick stops 8 px above −10% (103.80); pause 103.84-103.91"
+ },
+ {
+  "t": 104.14,
+  "cat": "hit",
+  "gain_db": -10,
+  "note": "U: heartbeat pulse 1 on the −10% line (104.125); pause 104.13-104.22"
+ },
+ {
+  "t": 104.38,
+  "cat": "hit",
+  "gain_db": -10,
+  "note": "U: heartbeat pulse 3 (104.425); pause 104.35-104.44"
+ },
+ {
+  "t": 104.66,
+  "cat": "hit",
+  "gain_db": -4,
+  "note": "U: firm soft hit as the metallic 10% lands (104.64); pause 104.62-104.97 before «عشرة»"
+ }
+]

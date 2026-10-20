@@ -1,0 +1,12 @@
+[
+ {"t": 8.84, "cat": "boom", "gain_db": -6, "note": "B-roll 1 hard cut-in (8.84); low and short, in the pause 8.81-8.90 before «ستقوم» (8.91)"},
+ {"t": 9.725, "cat": "ui_blip", "gain_db": -6, "note": "B-roll 1: the click on the pill's red disc (visual 9.70). A ~20 ms click placed in the /t/ closure 9.72-9.74 that ends «بفتح», just ahead of «حساب» (9.78); continuous speech, no longer gap here"},
+ {"t": 12.645, "cat": "whoosh", "gain_db": -9, "note": "B-roll 1: push-through into the chart (zoom 12.64-13.24); starts in the pause 12.64-12.67 before «وبدء»; keep the tail soft"},
+ {"t": 14.05, "cat": "ui_blip", "gain_db": -12, "note": "B-roll 1: the SELL ticket (14.05), in the pause 14.04-14.10 before «الاعتيادي»"},
+ {"t": 14.7, "cat": "riser", "gain_db": -12, "note": "B-roll 1 final punch (tall white candle 14.70, corner snap 14.76): a short reverse swell from the last syllable into the 14.79-15.01 silence, resolving into D's boom on the 14.88 cut (join.json)"},
+ {"t": 64.68, "cat": "boom", "gain_db": -6, "note": "B-roll 2 hard cut-in (64.60): just after «المال» ends (64.67), in the pause 64.68-64.95"},
+ {"t": 64.75, "cat": "ui_blip", "gain_db": -14, "note": "B-roll 2: the first new candle prints, in the same pause"},
+ {"t": 64.92, "cat": "ui_blip", "gain_db": -14, "note": "B-roll 2: the second candle prints, still before «يمكنك» (64.96); the other five prints sit on words and get no cue"},
+ {"t": 66.2, "cat": "whoosh", "gain_db": -9, "note": "B-roll 2: up-whoosh as the profit zone lifts (66.24), in the pause 66.19-66.33 before «وسحب» (66.35); short, done by 66.33"},
+ {"t": 67.985, "cat": "ui_blip", "gain_db": -9, "note": "B-roll 2: soft click on the «سحب الأرباح» pill (press 67.94). The nearest silence is the 20-40 ms /b/ closure 67.98-68.02 inside «الأرباح»; drop it if the mix hears it on the word"}
+]

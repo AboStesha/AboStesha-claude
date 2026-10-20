@@ -1,0 +1,86 @@
+[
+ {
+  "t": 0.0,
+  "out": true,
+  "cat": "riser",
+  "gain_db": -10,
+  "note": "title: low pad swell under the build (texture sweep 0-0.8, before the VO)"
+ },
+ {
+  "t": 0.25,
+  "out": true,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "title: soft tick, the red flag unfurls"
+ },
+ {
+  "t": 1.32,
+  "out": true,
+  "cat": "whoosh",
+  "gain_db": -12,
+  "note": "title: airy slide, the SELECT tag wipes on behind the red '/' edge (1.32-1.82)"
+ },
+ {
+  "t": 2.32,
+  "cat": "boom",
+  "gain_db": -10,
+  "note": "A: soft sub pulse for the floor ripple, in the voice's pause 2.30-2.62 (the spec's 2.20 is on «سيليكت»)"
+ },
+ {
+  "t": 5.25,
+  "cat": "ui_blip",
+  "gain_db": -8,
+  "note": "B: mouse click on the «افتح حساب» disc, in the pause 5.24-5.34"
+ },
+ {
+  "t": 7.95,
+  "cat": "scan",
+  "gain_db": -12,
+  "note": "B: sheen across 01 / 02, in the pause 7.75-8.08 before «Axi Select»"
+ },
+ {
+  "t": 105.72,
+  "cat": "whoosh",
+  "gain_db": -10,
+  "note": "V: soft push WIDE -> HOME (105.58-106.28), started in the pause 105.72-106.15"
+ },
+ {
+  "t": 108.28,
+  "cat": "dataswish",
+  "gain_db": -10,
+  "note": "V: card riffle, the next-video deck fans in 108.30, in the pause 108.17-108.47"
+ },
+ {
+  "t": 109.44,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "V: light tick, arrow nudge 1, in the word gap 109.43-109.50"
+ },
+ {
+  "t": 110.04,
+  "cat": "ui_blip",
+  "gain_db": -12,
+  "note": "V: light tick, arrow nudge 2, after the voice ends (110.0)"
+ },
+ {
+  "t": 113.4,
+  "out": true,
+  "cat": "whoosh",
+  "gain_db": -6,
+  "note": "end: chamfer swish; the wipe itself is drawn by 90_main at VO 110.36-110.88 (output 113.36-113.88)"
+ },
+ {
+  "t": 114.5,
+  "out": true,
+  "cat": "scan",
+  "gain_db": -10,
+  "note": "end: shimmer on the SELECT-tag wipe behind the red '/' edge (114.50-114.97); the logo has no sheen"
+ },
+ {
+  "t": 115.1,
+  "out": true,
+  "cat": "ui_blip",
+  "gain_db": -10,
+  "note": "end: soft UI tick, the red pill «انضم إلى آكسي سيليكت» lands"
+ }
+]

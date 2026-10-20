@@ -1,0 +1,62 @@
+[
+ {
+  "t": 14.88,
+  "cat": "boom",
+  "gain_db": -3,
+  "note": "D: sub boom on the smash cut / music drop; the red floor ripple starts on the cut. In the pause 14.76-15.00 before «وبمجرّد»."
+ },
+ {
+  "t": 18.7,
+  "cat": "whoosh",
+  "gain_db": -9,
+  "note": "E: soft whoosh as the right condition card enters (18.92). In the pause 18.65-18.96 after «50»."
+ },
+ {
+  "t": 20.3,
+  "cat": "whoosh",
+  "gain_db": -12,
+  "note": "E: «في حساب التداول» rises on the left card. On the 'f' of the function word «في» (20.30); very soft, keep its tail off «حساب»."
+ },
+ {
+  "t": 25.42,
+  "cat": "scan",
+  "gain_db": -12,
+  "note": "F1: soft shimmer as the skeleton resolves into «حساب التخصيص» (reveal 25.55). In the pause 25.41-25.60 before «اسمه»; keep it under the voice."
+ },
+ {
+  "t": 26.14,
+  "cat": "hit",
+  "gain_db": -9,
+  "note": "F1: short vault click-turn (spokes 90 degrees, unlocked; hub pulse). In the micro-pause 26.13-26.21 between «حساب» and «التخصيص»: keep it under 80 ms."
+ },
+ {
+  "t": 26.96,
+  "cat": "longwhoosh",
+  "gain_db": -6,
+  "note": "F1->F2: low riser/whoosh under the pull-out HOME -> WIDE (27.08-27.70). Starts in the pause 26.94-27.14 before «سيكون»."
+ },
+ {
+  "t": 29.72,
+  "cat": "whoosh",
+  "gain_db": -12,
+  "note": "F2: the axi wordmark rises above the allocation card (29.70). On the function word «الذي» (onset ~29.72 by the voice envelope)."
+ },
+ {
+  "t": 31.0,
+  "cat": "dataswish",
+  "gain_db": -12,
+  "note": "F2: the static dotted link draws right -> left above his head. On the function word «لك»."
+ },
+ {
+  "t": 31.98,
+  "cat": "flash",
+  "gain_db": -6,
+  "note": "G: bright glassy chime with micro sparkle ticks for «مبروك!» and the particle burst (32.00). In the pause 31.96-32.06 (pinned at 31.98 by the coordinator)."
+ },
+ {
+  "t": 32.62,
+  "cat": "ui_blip",
+  "gain_db": -9,
+  "note": "G: the stage pill '01' «المرحلة الأولى» appears. In the pause 32.52-32.95 before «أنت»."
+ }
+]

@@ -1,0 +1,881 @@
+{
+ "about": "Per-angle colour correction + unified black level, baked into the plates by render.py prep --vf. Chain: yuv(bt709 tv) -> gbrp16le; lutrgb per channel y = shoulder(gain * toe(x)), toe = normalised softplus black offset d (k = 4/d, 1 -> 1), quadratic highlight shoulder only on channels with gain > 1 (input 1 -> exactly 1, no clip); optional Rec.709 luma-preserving saturation (colorchannelmixer); optional master low-mid bump (L1 floor); -> yuv444p16le bt709 tv; prep then converts to yuvj420p JPEG q3 exactly as before. Targets: void mean 2.6/255 neutral (= L4's own void); neutral axis (grey beard) and skin level/chroma of L4 (main angle). Measured on 10 frames per clip; global plate look (contrast 1.05 saturate .93 brightness 1.01 + soft-light rgba(52,78,96) .14 + vignette .2) simulated in headless Chromium with the engine canvas ops (work/grade/look.js).",
+ "sample_frames": [
+  60,
+  360,
+  660,
+  960,
+  1260,
+  1560,
+  1860,
+  2160,
+  2460,
+  2760
+ ],
+ "clips": {
+  "L4": {
+   "vf": "scale=in_color_matrix=bt709:in_range=tv:out_range=pc:flags=accurate_rnd+full_chroma_int,format=gbrp16le,lutrgb=r='st(0,1.00038*val/maxval);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-0.00943*pow(ld(0)-0.8000,2))':g='maxval*0.99914*val/maxval':b='st(0,1.00588*(max(762.902*(val/maxval-0.005243),0)+log(1+exp(-abs(762.902*(val/maxval-0.005243)))))/758.902019);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-0.13875*pow(ld(0)-0.8000,2))',scale=out_color_matrix=bt709:out_range=tv:flags=accurate_rnd+full_chroma_int,format=yuv444p16le",
+   "params": {
+    "black_offset_d_8bit_rgb": [
+     0.0,
+     0.0,
+     1.337
+    ],
+    "gain_rgb": [
+     1.00038,
+     0.99914,
+     1.00588
+    ],
+    "saturation": 1.0,
+    "master_bump_A_x0_x1_8bit": null,
+    "pad_color": null
+   },
+   "before_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     1.0,
+     2.14,
+     6.0,
+     6.14
+    ],
+    "void_rgb_mean": [
+     2.61,
+     2.58,
+     3.37
+    ],
+    "skin": {
+     "n": 66619,
+     "rgb_mean": [
+      170.6,
+      124.8,
+      108.5
+     ],
+     "Y": 133.4,
+     "R/G": 1.367,
+     "B/G": 0.869
+    },
+    "highlights": {
+     "Y_p99_5": 130.6,
+     "Y_p99_9": 166.2,
+     "max_ch_p99_9": 208.0,
+     "pct_ge250": 0.002
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     60.28,
+     90.06,
+     119.55,
+     127.06
+    ],
+    "floor_rgb_mean": [
+     96.03,
+     89.49,
+     83.98
+    ]
+   },
+   "after_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     1.0,
+     2.0,
+     5.14,
+     6.14
+    ],
+    "void_rgb_mean": [
+     2.53,
+     2.53,
+     2.41
+    ],
+    "skin": {
+     "n": 66779,
+     "rgb_mean": [
+      170.6,
+      124.6,
+      108.4
+     ],
+     "Y": 133.2,
+     "R/G": 1.369,
+     "B/G": 0.869
+    },
+    "highlights": {
+     "Y_p99_5": 130.6,
+     "Y_p99_9": 166.2,
+     "max_ch_p99_9": 208.0,
+     "pct_ge250": 0.002
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     60.28,
+     90.06,
+     119.55,
+     127.06
+    ],
+    "floor_rgb_mean": [
+     96.05,
+     89.29,
+     83.8
+    ]
+   },
+   "before_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     0.14,
+     0.14
+    ],
+    "void_rgb_mean": [
+     0.0,
+     0.0,
+     0.11
+    ],
+    "skin": {
+     "n": 62317,
+     "rgb_mean": [
+      171.4,
+      126.0,
+      110.1
+     ],
+     "Y": 134.5,
+     "R/G": 1.361,
+     "B/G": 0.874
+    },
+    "highlights": {
+     "Y_p99_5": 127.7,
+     "Y_p99_9": 166.0,
+     "max_ch_p99_9": 208.0,
+     "pct_ge250": 0.0042
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     44.21,
+     76.77,
+     113.99,
+     122.2
+    ],
+    "floor_rgb_mean": [
+     81.87,
+     77.46,
+     73.47
+    ]
+   },
+   "after_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "void_rgb_mean": [
+     0.0,
+     0.0,
+     0.01
+    ],
+    "skin": {
+     "n": 62413,
+     "rgb_mean": [
+      171.3,
+      125.7,
+      109.9
+     ],
+     "Y": 134.2,
+     "R/G": 1.363,
+     "B/G": 0.874
+    },
+    "highlights": {
+     "Y_p99_5": 127.7,
+     "Y_p99_9": 166.0,
+     "max_ch_p99_9": 208.0,
+     "pct_ge250": 0.0042
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     44.14,
+     76.63,
+     113.99,
+     122.2
+    ],
+    "floor_rgb_mean": [
+     81.88,
+     77.28,
+     73.3
+    ]
+   }
+  },
+  "L5": {
+   "vf": "scale=in_color_matrix=bt709:in_range=tv:out_range=pc:flags=accurate_rnd+full_chroma_int,format=gbrp16le,lutrgb=r='maxval*0.86886*(max(539.112*(val/maxval-0.007420),0)+log(1+exp(-abs(539.112*(val/maxval-0.007420)))))/535.112051':g='maxval*0.89254*(max(182.338*(val/maxval-0.021937),0)+log(1+exp(-abs(182.338*(val/maxval-0.021937)))))/178.338220':b='maxval*0.93100*(max(103.208*(val/maxval-0.038757),0)+log(1+exp(-abs(103.208*(val/maxval-0.038757)))))/99.207528',colorchannelmixer=rr=1.04474:rg=-0.04064:rb=-0.00410:gr=-0.01208:gg=1.01618:gb=-0.00410:br=-0.01208:bg=-0.04064:bb=1.05272,scale=out_color_matrix=bt709:out_range=tv:flags=accurate_rnd+full_chroma_int,format=yuv444p16le",
+   "params": {
+    "black_offset_d_8bit_rgb": [
+     1.892,
+     5.594,
+     9.883
+    ],
+    "gain_rgb": [
+     0.86886,
+     0.89254,
+     0.931
+    ],
+    "saturation": 1.0568,
+    "master_bump_A_x0_x1_8bit": null,
+    "pad_color": null
+   },
+   "before_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     3.72,
+     7.15,
+     14.15,
+     16.08
+    ],
+    "void_rgb_mean": [
+     4.6,
+     8.14,
+     10.8
+    ],
+    "skin": {
+     "n": 307849,
+     "rgb_mean": [
+      180.9,
+      135.3,
+      114.4
+     ],
+     "Y": 143.5,
+     "R/G": 1.337,
+     "B/G": 0.846
+    },
+    "highlights": {
+     "Y_p99_5": 176.6,
+     "Y_p99_9": 194.0,
+     "max_ch_p99_9": 234.0,
+     "pct_ge250": 0.0022
+    }
+   },
+   "after_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.5,
+     2.0,
+     8.0,
+     10.14
+    ],
+    "void_rgb_mean": [
+     2.59,
+     2.55,
+     2.73
+    ],
+    "skin": {
+     "n": 272259,
+     "rgb_mean": [
+      166.9,
+      124.9,
+      105.9
+     ],
+     "Y": 132.5,
+     "R/G": 1.336,
+     "B/G": 0.848
+    },
+    "highlights": {
+     "Y_p99_5": 155.3,
+     "Y_p99_9": 171.1,
+     "max_ch_p99_9": 205.0,
+     "pct_ge250": 0.0
+    }
+   },
+   "before_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     1.57,
+     8.15,
+     9.22
+    ],
+    "void_rgb_mean": [
+     0.72,
+     2.2,
+     4.56
+    ],
+    "skin": {
+     "n": 286580,
+     "rgb_mean": [
+      184.5,
+      138.9,
+      118.4
+     ],
+     "Y": 147.1,
+     "R/G": 1.329,
+     "B/G": 0.853
+    },
+    "highlights": {
+     "Y_p99_5": 177.0,
+     "Y_p99_9": 195.4,
+     "max_ch_p99_9": 237.0,
+     "pct_ge250": 0.0039
+    }
+   },
+   "after_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     2.0,
+     4.14
+    ],
+    "void_rgb_mean": [
+     0.22,
+     0.24,
+     0.32
+    ],
+    "skin": {
+     "n": 256897,
+     "rgb_mean": [
+      166.7,
+      126.3,
+      108.0
+     ],
+     "Y": 133.5,
+     "R/G": 1.32,
+     "B/G": 0.856
+    },
+    "highlights": {
+     "Y_p99_5": 154.3,
+     "Y_p99_9": 170.9,
+     "max_ch_p99_9": 204.0,
+     "pct_ge250": 0.0
+    }
+   }
+  },
+  "L1": {
+   "vf": "scale=in_color_matrix=bt709:in_range=tv:out_range=pc:flags=accurate_rnd+full_chroma_int,format=gbrp16le,lutrgb=r='maxval*0.96038*val/maxval':g='maxval*0.96271*val/maxval':b='st(0,1.03279*val/maxval);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-0.60508*pow(ld(0)-0.8000,2))',colorchannelmixer=rr=0.98342:rg=0.01506:rb=0.00152:gr=0.00448:gg=0.99400:gb=0.00152:br=0.00448:bg=0.01506:bb=0.98046,lutrgb=r='val+maxval*0.02353*if(between(val/maxval,0.15686,0.58824),pow(sin(PI*(val/maxval-0.15686)/0.43137),2),0)':g='val+maxval*0.02353*if(between(val/maxval,0.15686,0.58824),pow(sin(PI*(val/maxval-0.15686)/0.43137),2),0)':b='val+maxval*0.02353*if(between(val/maxval,0.15686,0.58824),pow(sin(PI*(val/maxval-0.15686)/0.43137),2),0)',scale=out_color_matrix=bt709:out_range=tv:flags=accurate_rnd+full_chroma_int,format=yuv444p16le",
+   "params": {
+    "black_offset_d_8bit_rgb": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "gain_rgb": [
+     0.96038,
+     0.96271,
+     1.03279
+    ],
+    "saturation": 0.9789,
+    "master_bump_A_x0_x1_8bit": [
+     6,
+     40,
+     150
+    ],
+    "pad_color": null
+   },
+   "before_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     1.0,
+     2.0,
+     2.0,
+     3.0
+    ],
+    "void_rgb_mean": [
+     1.88,
+     1.88,
+     1.88
+    ],
+    "skin": {
+     "n": 161787,
+     "rgb_mean": [
+      175.6,
+      127.2,
+      101.6
+     ],
+     "Y": 135.6,
+     "R/G": 1.38,
+     "B/G": 0.799
+    },
+    "highlights": {
+     "Y_p99_5": 148.6,
+     "Y_p99_9": 175.7,
+     "max_ch_p99_9": 221.0,
+     "pct_ge250": 0.0028
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     42.63,
+     81.77,
+     114.06,
+     118.77
+    ],
+    "floor_rgb_mean": [
+     86.6,
+     79.82,
+     71.42
+    ]
+   },
+   "after_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     1.0,
+     2.0,
+     2.0,
+     3.0
+    ],
+    "void_rgb_mean": [
+     1.88,
+     1.88,
+     1.88
+    ],
+    "skin": {
+     "n": 159156,
+     "rgb_mean": [
+      169.4,
+      125.0,
+      108.3
+     ],
+     "Y": 133.2,
+     "R/G": 1.356,
+     "B/G": 0.867
+    },
+    "highlights": {
+     "Y_p99_5": 144.6,
+     "Y_p99_9": 169.7,
+     "max_ch_p99_9": 212.0,
+     "pct_ge250": 0.0015
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     40.63,
+     83.77,
+     114.85,
+     118.85
+    ],
+    "floor_rgb_mean": [
+     86.85,
+     80.76,
+     77.34
+    ]
+   },
+   "before_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "void_rgb_mean": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "skin": {
+     "n": 153652,
+     "rgb_mean": [
+      176.2,
+      128.4,
+      103.6
+     ],
+     "Y": 136.8,
+     "R/G": 1.372,
+     "B/G": 0.806
+    },
+    "highlights": {
+     "Y_p99_5": 147.2,
+     "Y_p99_9": 175.9,
+     "max_ch_p99_9": 222.0,
+     "pct_ge250": 0.0044
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     31.06,
+     67.56,
+     109.41,
+     115.49
+    ],
+    "floor_rgb_mean": [
+     73.01,
+     68.5,
+     62.19
+    ]
+   },
+   "after_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "void_rgb_mean": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "skin": {
+     "n": 151014,
+     "rgb_mean": [
+      169.3,
+      125.8,
+      110.0
+     ],
+     "Y": 133.9,
+     "R/G": 1.345,
+     "B/G": 0.874
+    },
+    "highlights": {
+     "Y_p99_5": 142.9,
+     "Y_p99_9": 169.7,
+     "max_ch_p99_9": 212.0,
+     "pct_ge250": 0.0034
+    },
+    "floor_Y_p5_p50_p95_p99": [
+     29.49,
+     69.42,
+     110.49,
+     115.49
+    ],
+    "floor_rgb_mean": [
+     73.3,
+     69.37,
+     67.28
+    ]
+   }
+  },
+  "L2": {
+   "vf": "scale=in_color_matrix=bt709:in_range=tv:out_range=pc:flags=accurate_rnd+full_chroma_int,format=gbrp16le,lutrgb=r='st(0,1.05129*(max(159.102*(val/maxval-0.025141),0)+log(1+exp(-abs(159.102*(val/maxval-0.025141)))))/155.101544);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-0.81223*pow(ld(0)-0.8000,2))':g='st(0,1.09297*(max(122.626*(val/maxval-0.032620),0)+log(1+exp(-abs(122.626*(val/maxval-0.032620)))))/118.625631);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-1.08319*pow(ld(0)-0.8000,2))':b='st(0,1.18955*(max(76.012*(val/maxval-0.052624),0)+log(1+exp(-abs(76.012*(val/maxval-0.052624)))))/72.011625);maxval*if(lte(ld(0),0.7605),ld(0),ld(0)-1.02946*pow(ld(0)-0.7605,2))',colorchannelmixer=rr=0.93428:rg=0.05970:rb=0.00603:gr=0.01775:gg=0.97623:gb=0.00603:br=0.01775:bg=0.05970:bb=0.92256,scale=out_color_matrix=bt709:out_range=tv:flags=accurate_rnd+full_chroma_int,format=yuv444p16le",
+   "params": {
+    "black_offset_d_8bit_rgb": [
+     6.411,
+     8.318,
+     13.419
+    ],
+    "gain_rgb": [
+     1.05129,
+     1.09297,
+     1.18955
+    ],
+    "saturation": 0.9165,
+    "master_bump_A_x0_x1_8bit": null,
+    "pad_color": null
+   },
+   "before_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     8.15,
+     10.08,
+     11.57,
+     12.08
+    ],
+    "void_rgb_mean": [
+     8.84,
+     9.55,
+     15.02
+    ],
+    "skin": {
+     "n": 1452965,
+     "rgb_mean": [
+      165.3,
+      119.4,
+      96.2
+     ],
+     "Y": 127.5,
+     "R/G": 1.385,
+     "B/G": 0.806
+    },
+    "highlights": {
+     "Y_p99_5": 183.1,
+     "Y_p99_9": 196.4,
+     "max_ch_p99_9": 234.0,
+     "pct_ge250": 0.0015
+    }
+   },
+   "after_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     2.0,
+     3.0,
+     3.0,
+     4.0
+    ],
+    "void_rgb_mean": [
+     2.56,
+     2.55,
+     2.55
+    ],
+    "skin": {
+     "n": 1411480,
+     "rgb_mean": [
+      169.0,
+      126.9,
+      106.7
+     ],
+     "Y": 134.4,
+     "R/G": 1.331,
+     "B/G": 0.841
+    },
+    "highlights": {
+     "Y_p99_5": 195.7,
+     "Y_p99_9": 210.3,
+     "max_ch_p99_9": 238.0,
+     "pct_ge250": 0.0036
+    }
+   },
+   "before_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     1.86,
+     4.0,
+     5.08,
+     6.08
+    ],
+    "void_rgb_mean": [
+     3.12,
+     3.62,
+     7.65
+    ],
+    "skin": {
+     "n": 1354525,
+     "rgb_mean": [
+      166.1,
+      120.9,
+      98.3
+     ],
+     "Y": 128.8,
+     "R/G": 1.374,
+     "B/G": 0.813
+    },
+    "highlights": {
+     "Y_p99_5": 184.0,
+     "Y_p99_9": 198.5,
+     "max_ch_p99_9": 237.0,
+     "pct_ge250": 0.0048
+    }
+   },
+   "after_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "void_rgb_mean": [
+     0.01,
+     0.0,
+     0.0
+    ],
+    "skin": {
+     "n": 1321546,
+     "rgb_mean": [
+      170.0,
+      128.8,
+      109.5
+     ],
+     "Y": 136.2,
+     "R/G": 1.32,
+     "B/G": 0.85
+    },
+    "highlights": {
+     "Y_p99_5": 197.3,
+     "Y_p99_9": 213.9,
+     "max_ch_p99_9": 242.0,
+     "pct_ge250": 0.0171
+    }
+   }
+  },
+  "L3": {
+   "vf": "crop=1920:820:0:130,scale=in_color_matrix=bt709:in_range=tv:out_range=pc:flags=accurate_rnd+full_chroma_int,format=gbrp16le,lutrgb=r='st(0,1.02389*(max(260.603*(val/maxval-0.015349),0)+log(1+exp(-abs(260.603*(val/maxval-0.015349)))))/256.602964);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-0.47661*pow(ld(0)-0.8000,2))':g='st(0,1.04041*(max(194.842*(val/maxval-0.020529),0)+log(1+exp(-abs(194.842*(val/maxval-0.020529)))))/190.842407);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-0.69923*pow(ld(0)-0.8000,2))':b='st(0,1.08962*(max(231.871*(val/maxval-0.017251),0)+log(1+exp(-abs(231.871*(val/maxval-0.017251)))))/227.870880);maxval*if(lte(ld(0),0.8000),ld(0),ld(0)-1.06842*pow(ld(0)-0.8000,2))',colorchannelmixer=rr=1.05659:rg=-0.05140:rb=-0.00519:gr=-0.01528:gg=1.02047:gb=-0.00519:br=-0.01528:bg=-0.05140:bb=1.06668,pad=1920:1080:0:130:color=0x030303,scale=out_color_matrix=bt709:out_range=tv:flags=accurate_rnd+full_chroma_int,format=yuv444p16le",
+   "params": {
+    "black_offset_d_8bit_rgb": [
+     3.914,
+     5.235,
+     4.399
+    ],
+    "gain_rgb": [
+     1.02389,
+     1.04041,
+     1.08962
+    ],
+    "saturation": 1.0719,
+    "master_bump_A_x0_x1_8bit": null,
+    "pad_color": "0x030303"
+   },
+   "before_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     5.5,
+     7.0,
+     8.0,
+     8.5
+    ],
+    "void_rgb_mean": [
+     7.63,
+     7.97,
+     7.8
+    ],
+    "skin": {
+     "n": 260319,
+     "rgb_mean": [
+      165.1,
+      123.7,
+      103.7
+     ],
+     "Y": 131.1,
+     "R/G": 1.335,
+     "B/G": 0.838
+    },
+    "highlights": {
+     "Y_p99_5": 156.5,
+     "Y_p99_9": 185.0,
+     "max_ch_p99_9": 228.0,
+     "pct_ge250": 0.0039
+    },
+    "pad_rgb_mean": [
+     4.68,
+     4.68,
+     4.68
+    ]
+   },
+   "after_prelook": {
+    "void_Y_p5_p50_p95_p99": [
+     1.5,
+     2.0,
+     3.5,
+     4.5
+    ],
+    "void_rgb_mean": [
+     2.31,
+     2.6,
+     2.42
+    ],
+    "skin": {
+     "n": 257836,
+     "rgb_mean": [
+      170.3,
+      125.6,
+      108.4
+     ],
+     "Y": 133.8,
+     "R/G": 1.356,
+     "B/G": 0.863
+    },
+    "highlights": {
+     "Y_p99_5": 160.5,
+     "Y_p99_9": 190.5,
+     "max_ch_p99_9": 235.0,
+     "pct_ge250": 0.0071
+    },
+    "pad_rgb_mean": [
+     3.0,
+     3.0,
+     3.0
+    ]
+   },
+   "before_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     2.0,
+     2.29
+    ],
+    "void_rgb_mean": [
+     0.45,
+     0.89,
+     0.41
+    ],
+    "skin": {
+     "n": 247669,
+     "rgb_mean": [
+      164.5,
+      123.8,
+      104.5
+     ],
+     "Y": 131.1,
+     "R/G": 1.329,
+     "B/G": 0.844
+    },
+    "highlights": {
+     "Y_p99_5": 155.4,
+     "Y_p99_9": 186.2,
+     "max_ch_p99_9": 230.0,
+     "pct_ge250": 0.0067
+    },
+    "pad_rgb_mean": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   },
+   "after_postlook": {
+    "void_Y_p5_p50_p95_p99": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "void_rgb_mean": [
+     0.42,
+     0.32,
+     0.29
+    ],
+    "skin": {
+     "n": 246407,
+     "rgb_mean": [
+      169.8,
+      125.8,
+      109.3
+     ],
+     "Y": 133.9,
+     "R/G": 1.35,
+     "B/G": 0.869
+    },
+    "highlights": {
+     "Y_p99_5": 160.0,
+     "Y_p99_9": 191.7,
+     "max_ch_p99_9": 237.0,
+     "pct_ge250": 0.0157
+    },
+    "pad_rgb_mean": [
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  }
+ },
+ "final_void_black": {
+  "prelook_rgb_8bit_mean": {
+   "L4": [
+    2.53,
+    2.53,
+    2.41
+   ],
+   "L5": [
+    2.59,
+    2.55,
+    2.73
+   ],
+   "L1": [
+    1.88,
+    1.88,
+    1.88
+   ],
+   "L2": [
+    2.56,
+    2.55,
+    2.55
+   ],
+   "L3": [
+    2.31,
+    2.6,
+    2.42
+   ]
+  },
+  "postlook_rgb_8bit_mean": {
+   "L4": [
+    0.0,
+    0.0,
+    0.01
+   ],
+   "L5": [
+    0.22,
+    0.24,
+    0.32
+   ],
+   "L1": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "L2": [
+    0.01,
+    0.0,
+    0.0
+   ],
+   "L3": [
+    0.42,
+    0.32,
+    0.29
+   ]
+  },
+  "graded_black_prelook": "#030303 (2.6,2.6,2.6)",
+  "postlook": "#000000"
+ },
+ "mograph_background": {
+  "recommended": "#000000",
+  "note": "k_card specials and fx overlays are drawn without the plate look (engine applies the look to the plate canvas only); the graded void lands on (0,0,0) after the look, so full-screen MG backgrounds should be #000000. A scene drawn through the plate look can use #030303 (the graded void; the look maps it to 0). The current #050607 card fill sits 5-7 levels above the plates."
+ }
+}
