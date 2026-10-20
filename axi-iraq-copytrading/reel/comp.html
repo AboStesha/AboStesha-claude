@@ -26,9 +26,9 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
 .shadow{text-shadow:0 3px 24px rgba(0,0,0,.55),0 0 2px rgba(0,0,0,.4)}
 /* glass, per G-IQ p.43 */
 .gD{background:rgba(20,22,26,.72);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1.5px solid rgba(255,255,255,.25);border-radius:18px;color:#fff}
-.gL{background:linear-gradient(135deg,rgba(255,255,255,.30),rgba(255,255,255,.18));-webkit-backdrop-filter:blur(22px) saturate(1.08);backdrop-filter:blur(22px) saturate(1.08);
+.gL{background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.16));-webkit-backdrop-filter:blur(22px) saturate(1.08);backdrop-filter:blur(22px) saturate(1.08);
   border:2px solid rgba(255,255,255,.55);border-radius:10px;color:var(--ink);clip-path:polygon(0 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%)}
-.gL::after{content:'';position:absolute;top:0;right:0;width:62px;height:2px;background:rgba(255,255,255,.55);transform-origin:100% 0;transform:translate(-13px,22px) rotate(45deg)}
+.gL::after{content:'';position:absolute;top:-3px;left:calc(100% - 43.4px);width:64px;height:2px;background:rgba(255,255,255,.55);transform-origin:0 50%;transform:rotate(45deg)}
 .gL.pill{clip-path:none}.gL.pill::after{display:none}
 .gL.op{background:linear-gradient(135deg,rgba(255,255,255,.80),rgba(255,255,255,.64))}
 .pad{padding:22px 46px 30px}
@@ -38,9 +38,10 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
 .chipL{background:rgba(255,255,255,.55);color:var(--ink);border:1.5px solid rgba(255,255,255,.8)}
 .chipD{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28)}
 .tag{font-family:'Inter','NSA',sans-serif;font-weight:500;font-size:34px;line-height:1.2;opacity:.92;direction:rtl}
-.ul::before{content:'';position:absolute;z-index:-1;right:0;bottom:-.02em;height:6px;width:100%;background:var(--red);transform-origin:100% 50%;transform:scaleX(var(--u,0))}
+.ul::before{content:'';position:absolute;z-index:-1;right:0;bottom:-.02em;height:6px;width:70%;background:var(--red);transform-origin:100% 50%;transform:scaleX(var(--u,0))}
 .cur::after{content:'';position:absolute;left:var(--cx,-12px);top:18%;bottom:12%;width:4px;background:var(--red)}
 .bar{height:14px;border-radius:7px;background:rgba(36,37,40,.16)}
+.gD .bar{background:rgba(255,255,255,.42)}
 .risk{background:rgba(255,255,255,.92);color:var(--ink);font-family:'Inter','NSA',sans-serif;font-weight:400;font-size:39px;line-height:1.38;direction:rtl;text-align:right;
   padding:16px 30px 20px;border-radius:6px;white-space:normal}
 #hud{position:absolute;right:10px;bottom:8px;font:20px monospace;color:#ff0;display:none}
@@ -105,12 +106,12 @@ function cam(sh, t) {
   if (fx.tilt) rot += fx.tilt * (1 - e);
   return [z, dx, dy, rot, ax, ay, smear];
 }
-function blit(im, sh, t, clipRect, oy = 0, zMul = 1, ox0 = 0) {      // im = [frameA, frameB, frac]
+function blit(im, sh, t, clipRect, oy = 0, zMul = 1, ox0 = 0, fOv) {      // im = [frameA, frameB, frac]
   const [z, dx, dy, rot, ax, ay, smear] = cam(sh, t), sk = shake(t), fx = sh[11] || {};
   g.save();
   if (clipRect) { g.beginPath(); g.rect(...clipRect); g.clip(); }
   const bright = 1 + (fx.pulse ? fx.pulse.reduce((s, p) => s + (t >= p && t < p + 0.4 ? 0.35 * Math.exp(-(t - p) * 9) : 0), 0) : 0);
-  g.filter = `${fx.filter || 'contrast(1.05) saturate(0.97)'} brightness(${bright.toFixed(3)})${fx.blur ? ` blur(${fx.blur(t - sh[0]).toFixed(1)}px)` : ''}`;
+  g.filter = `${fOv || fx.filter || 'contrast(1.05) saturate(0.97)'} brightness(${bright.toFixed(3)})${fx.blur ? ` blur(${fx.blur(t - sh[0]).toFixed(1)}px)` : ''}`;
   const draw = (ox, a) => { g.save(); g.globalAlpha = a; g.translate(ax + sk.x + dx + ox + ox0, ay + sk.y + dy + oy); g.rotate(sk.r + rot); g.scale(z * zMul * (fx.flip ? -1 : 1), z * zMul);
     g.drawImage(im[0], -ax, -ay, 1080, 1920); if (im[2] > 0.02 && im[1] !== im[0]) { g.globalAlpha = a * im[2]; g.drawImage(im[1], -ax, -ay, 1080, 1920); } g.restore(); };
   if (smear > 0.05) { const dir = Math.sign((fx.whipOut || fx.whipIn)[1]); for (let i = 0; i < 6; i++) draw(-dir * i * 40 * smear, i ? 0.22 : 1); }
@@ -192,14 +193,15 @@ async function drawInsets(t) {           // video inside DOM cards: <canvas clas
 
 async function seek(t) {
   const sh = shotAt(t), fx = sh ? sh[11] || {} : {};
-  const pair = async (clip, st) => { const f = Math.max(0, st * SRC_FPS), a = frameImg(clip, Math.floor(f)), b = frameImg(clip, Math.floor(f) + 1); await Promise.all([a.__p, b.__p]); return [a, b, f - Math.floor(f)]; };
+  const pair = async (clip, st, near) => { const f = Math.max(0, st * SRC_FPS); if (near) { const a = frameImg(clip, Math.round(f)); await a.__p; return [a, a, 0]; }
+    const a = frameImg(clip, Math.floor(f)), b = frameImg(clip, Math.floor(f) + 1); await Promise.all([a.__p, b.__p]); return [a, b, f - Math.floor(f)]; };
   let ims = [], nb = null;
-  if (sh) { ims.push(await pair(sh[2], srcT(sh, t))); if (fx.split) { const s = fx.split; ims.push(await pair(s.clip, s.src + (t - sh[0]) * s.rate)); }
+  if (sh) { ims.push(await pair(sh[2], srcT(sh, t), fx.nearest)); if (fx.split) { const s = fx.split; ims.push(await pair(s.clip, s.src + (t - sh[0]) * s.rate, s.nearest)); }
     const i = EDL.indexOf(sh);
-    if (fx.whipOut && t > sh[1] - fx.whipOut[0] && EDL[i + 1]) nb = [await pair(EDL[i + 1][2], EDL[i + 1][3]), -Math.sign(fx.whipOut[1]) * 1080];
-    if (fx.whipIn && t < sh[0] + fx.whipIn[0] && EDL[i - 1]) nb = [await pair(EDL[i - 1][2], srcT(EDL[i - 1], EDL[i - 1][1] - 1e-3)), Math.sign(fx.whipIn[1]) * 1080]; }
+    if (fx.whipOut && t > sh[1] - fx.whipOut[0] && EDL[i + 1]) nb = [await pair(EDL[i + 1][2], EDL[i + 1][3]), -Math.sign(fx.whipOut[1]) * 1080, EDL[i + 1]];
+    if (fx.whipIn && t < sh[0] + fx.whipIn[0] && EDL[i - 1]) nb = [await pair(EDL[i - 1][2], srcT(EDL[i - 1], EDL[i - 1][1] - 1e-3)), Math.sign(fx.whipIn[1]) * 1080, EDL[i - 1]]; }
   g.fillStyle = sh && sh[2] === 'k09_laptop_close' ? '#06080b' : '#C4C8CC'; g.fillRect(0, 0, 1080, 1920);
-  if (nb) blit(nb[0], sh, t, null, 0, 1, nb[1]);
+  if (nb) blit(nb[0], sh, t, null, 0, 1, nb[1], (nb[2][11] || {}).filter || 'contrast(1.05) saturate(0.97)');
   if (sh) {
     if (fx.split) { const s = fx.split, sh2 = [sh[0], sh[1], s.clip, s.src, s.rate, s.zz0, s.zz1, 0, 0, 0, 0, { pulse: s.pulse2, ax: s.ax2, ay: s.ay2 }];
       if (s.h) {                                   // side by side: primary in the right half (RTL: the source), secondary in the left
@@ -222,10 +224,10 @@ async function seek(t) {
 }
 const LEAD = 1 / 60;
 window.__seek = async t => { await seek(t + LEAD); return true; };
-window.__ready = document.fonts.ready.then(() => { measure(); return seek(LEAD); });
+window.__ready = Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { measure(); return seek(LEAD); });
 window.__motion = (t0, t1) => { t0 += LEAD; t1 += LEAD;
   const a = shotAt(t0), b = shotAt(t1); if (a !== b) return 120;
-  let ui = 0; for (const d of IT) { const te = d.te ?? d.t0; if (t1 >= te && t0 < te + 0.4) ui = Math.max(ui, d.enter === 'up' ? 260 : d.enter === 'drop' ? 140 : 90); if (d.move && d.fast && t1 >= d.t0 && t0 < d.t1) ui = Math.max(ui, 300); }
+  let ui = 0; for (const d of IT) { const te = d.te ?? d.t0; if (t1 >= te && t0 < te + 0.4) ui = Math.max(ui, d.enter === 'up' ? 260 : d.enter === 'drop' ? 140 : 90); if (d.move && t1 >= d.t0 && t0 < d.t1) { const a = d.move(t0), c = d.move(t1); ui = Math.max(ui, Math.hypot((c.dx || 0) - (a.dx || 0), (c.dy || 0) - (a.dy || 0)) + Math.abs((c.sc ?? 1) - (a.sc ?? 1)) * 600); } }
   if (!a) return 24 + ui;
   const m = t => { const c = cam(a, t), sk = shake(t); return [c[1] + sk.x, c[2] + sk.y, c[0], c[6]]; };
   const p = m(t0), q = m(t1); return Math.max(ui, Math.hypot(p[0] - q[0], p[1] - q[1]) + Math.abs(p[2] - q[2]) * 1100 + Math.max(p[3], q[3]) * 300) + 24;
