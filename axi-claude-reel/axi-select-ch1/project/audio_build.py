@@ -27,8 +27,8 @@ def load(p, ch=2):
     r = subprocess.run(["ffmpeg", "-v", "error", "-i", p, "-ac", str(ch), "-ar", str(SR), "-f", "f32le", "-"], capture_output=True, check=True)
     return np.frombuffer(r.stdout, np.float32).reshape(-1, ch).copy()
 
-def save(p, a):
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", str(a.shape[1]), "-i", "-", "-c:a", "pcm_s24le", p],
+def save(p, a, codec="pcm_s24le"):
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", str(a.shape[1]), "-i", "-", "-c:a", codec, p],
                    input=np.ascontiguousarray(a, np.float32).tobytes(), check=True)
 
 def place(dst, src, at):
@@ -61,26 +61,40 @@ for A in (196, 200, 204):  # splice at out OFF + b(A) = 107.3 / 109.5 / 111.7 (a
     print("splice candidate", A, "->", A + 48, "at out %.2f" % (OFF + b(A)), "chroma sim %.3f" % sims[A])
 A = max(sims, key=sims.get)
 if sims[204] >= sims[A] - 0.02: A = 204  # latest splice wins a near-tie (most of the cut stays untouched)
-XF = 0.035                                   # half of the 70 ms equal-power crossfade
+XF = 0.035                                   # half of the 70 ms crossfade (linear: both sides are beat-aligned and ~0.95 correlated)
 ta, tb = b(A), b(A + 48)
 seg_a = M[: int((ta + XF) * SR)].copy()
 seg_b = M[int((tb - XF) * SR):].copy()
-k = int(2 * XF * SR); th = np.linspace(0, np.pi / 2, k)[:, None]
-seg_a[-k:] *= np.cos(th); seg_b[:k] *= np.sin(th)
+k = int(2 * XF * SR); lin = np.linspace(0, 1, k)[:, None]
+seg_a[-k:] *= 1 - lin; seg_b[:k] *= lin
 mus = np.zeros((N, 2), np.float32)
 place(mus, seg_a, OFF)
 place(mus, seg_b, OFF + ta - XF)
 print("splice", A, "->", A + 48, "at out %.3f; ending (beat 256) at out %.3f" % (OFF + ta, OFF + ta + (b(256) - tb)))
 mus *= (0.5 + 0.5 * np.cos(np.pi * np.clip((t - 117.0) / 1.2, 0, 1)))[:, None]   # over the track's own stop (118.24)
-save("audio/music_edit.wav", mus)
+save("audio/music_edit.wav", mus, "pcm_f32le")
 
 # ---------------------------------------------------------------- 2. voice
 vo_src = next(p_ for p_ in ("audio/vo/vo1_clean_v6.wav", "audio/vo/vo1_clean_v5.wav", "audio/vo/vo1_clean_v4.wav") if os.path.exists(p_))
 print("voice", vo_src)
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", vo_src, "-af",
-                "acompressor=threshold=-22dB:ratio=2:attack=12:release=160:makeup=1,aresample=48000",
+                "acompressor=threshold=-22dB:ratio=2:attack=12:release=160:makeup=1,"
+                "alimiter=limit=0.29:attack=1:release=50:level=disabled:latency=1,aresample=48000",  # voice peaks 3 dB down before the master
                 "-ac", "1", "-c:a", "pcm_s24le", "audio/vo_comp.wav"], check=True)
 V1 = load("audio/vo_comp.wav", 1)[:, 0]
+# spot A: the repaired «مرحبا بك في» (VO 0.06-0.63) is ~15 dB short at 5-8 kHz against his other words: +14 dB high shelf
+# at 4 kHz (RBJ, S = 1) over that patch, 30 ms crossfades
+from scipy import signal as _sg
+def hishelf(fc, gdb):
+    A = 10 ** (gdb / 40); w0 = 2 * np.pi * fc / SR; al = np.sin(w0) / 2 * np.sqrt(2); c = np.cos(w0)
+    b_ = [A * ((A + 1) + (A - 1) * c + 2 * np.sqrt(A) * al), -2 * A * ((A - 1) + (A + 1) * c), A * ((A + 1) + (A - 1) * c - 2 * np.sqrt(A) * al)]
+    a_ = [(A + 1) - (A - 1) * c + 2 * np.sqrt(A) * al, 2 * ((A - 1) - (A + 1) * c), (A + 1) - (A - 1) * c - 2 * np.sqrt(A) * al]
+    return np.array(b_) / a_[0], np.array(a_) / a_[0]
+i0, i1, xf = int(0.03 * SR), int(0.66 * SR), int(0.03 * SR)
+hb, ha = hishelf(4000, 14.0)
+Vs = _sg.lfilter(hb, ha, V1[:i1 + xf].astype(np.float64))
+wgt = np.ones(i1 + xf); wgt[:i0] = 0; wgt[i0:i0 + xf] = np.linspace(0, 1, xf); wgt[i1:i1 + xf] = np.linspace(1, 0, xf)
+V1[:i1 + xf] = (V1[:i1 + xf] * (1 - wgt) + Vs * wgt).astype(np.float32)
 vo = np.zeros((N, 2), np.float32)
 place(vo, np.stack([V1, V1], 1), P)
 save("audio/vo_out.wav", vo)
@@ -115,7 +129,9 @@ for fp in sorted(glob.glob("work/sfx/*.json")):
         c(float(q["t"]), q["cat"], float(q.get("gain_db", -6)), bool(q.get("out")))
 # QA overrides (out s, category, action): the loud events and transients inside words
 OVR = [(11.81, "boom", -12), (17.70, "riser", -6), (29.14, "hit", -10), (62.40, "riser", -6), (63.00, "hit", -6),
-       (67.63, "boom", -6), (84.02, "hit", -10), (107.01, "hit", None), (107.38, "hit", None), (107.57, "hit", -10)]
+       (67.63, "boom", -6), (84.02, "hit", -10), (107.01, "hit", None), (107.38, "hit", None), (107.57, "hit", -12),
+       (91.35, "ui_blip", None), (93.16, "ui_blip", None)]
+MOVE = [(34.98, "flash", 34.87)]   # the G chime: cam__photo's transient sits 0.11 s into the file, so lead it into the 34.97 gap
 used = set()
 for q in C:
     for k_, (to, cat, act) in enumerate(OVR):
@@ -123,6 +139,13 @@ for q in C:
             used.add(k_); q["drop"] = act is None
             if act is not None: q["gain_db"] += act
 print("overrides matched", len(used), "of", len(OVR), "; unmatched:", [OVR[k_][:2] for k_ in range(len(OVR)) if k_ not in used])
+for to, cat, tn in MOVE:
+    for q in C:
+        if q["cat"] == cat and abs(q["t"] - to) <= 0.2: q["t"], q["pin"] = tn, True; print("moved", cat, to, "->", tn)
+# a pinned cue wins over group cues of the same category within 0.2 s (the drop-2 boom was doubled 190 ms later)
+pins = [q for q in C if q.get("pin")]
+for q in C:
+    if not q.get("pin") and any(p_["cat"] == q["cat"] and abs(p_["t"] - q["t"]) <= 0.2 for p_ in pins): q["drop"] = True; print("dropped duplicate of pinned", q["cat"], q["t"])
 PROTECT = [(3.00, 4.75), (41.55, 43.25)]
 TRANS = {"hit", "flash", "boom", "crack", "glitch", "ui_error", "ui_blip", "type"}
 out, moved, quiet = [], 0, 0
@@ -142,6 +165,8 @@ for q in sorted(C, key=lambda q: q["t"]):
         continue  # duplicate from two groups
     out.append({"t": q["t"], "cat": q["cat"], "gain_db": q["gain_db"]})
 C = out
+for q in C:  # whatever lands on «عشرة» (out 107.4-108.2) stays well under the voice
+    if q["cat"] in TRANS and 107.4 <= q["t"] <= 108.2: q["gain_db"] = min(q["gain_db"], -16.0)
 print("cues", len(C), "transients moved into pauses", moved, "lowered 12 dB", quiet)
 json.dump(C, open("audio/sfx_cues_plan.json", "w"), indent=0)
 r = subprocess.run(["python3", RR + "/sfx.py", "bed", ".", "--cues", "audio/sfx_cues_plan.json", "--music", "audio/music_edit.wav",
@@ -151,7 +176,7 @@ S = load("audio/sfx_bed.wav")
 S = np.pad(S, ((0, max(0, N - len(S))), (0, 0)))[:N]
 S *= ramp_env(PROTECT, -120)[:, None]                                         # nothing on the client's words
 S *= ramp_env([(12.10, 13.40)], -15, 0.2)[:, None]                            # B-roll 1 boom: shortened to ~0.4 s
-S *= ramp_env([(18.00, 19.20)], -12, 0.12)[:, None]                           # drop-1 boom tail off «بمجرّد»
+S *= ramp_env([(18.00, 19.85)], -12, 0.12)[:, None]                           # drop-1 boom tail and riser off «بمجرّد» / «Edge Score»
 
 # ---------------------------------------------------------------- 4. mix
 def env_db(x, win):
@@ -172,8 +197,10 @@ duck = np.interp(t, tt, dd)
 base = np.interp(t, [0, 2.30, 2.85, 17.7, 17.9, 18.6, 113.4, 113.9, 120],
                  [-5, -5, -12, -12, -9, -12, -12, -3, -3])   # dB: title open, under the voice (fully down before the first word), drop-1 lift, end card up
 mus_g = mus * (10 ** ((base - duck) / 20))[:, None]
-mus_g *= ramp_env([(2.80, 4.80), (41.45, 43.30)], -6, 0.1)[:, None]          # a further 6 dB under the client's two spots
-mus_g *= ramp_env([(2.85, 3.20)], -9, 0.05)[:, None]                          # and nearly out around the first word (the title's tail)
+mus_g *= ramp_env([(2.80, 5.35), (41.45, 43.30)], -6, 0.25)[:, None]         # a further 6 dB under the client's two spots
+mus_g *= ramp_env([(2.85, 5.35)], -9, 0.25)[:, None]                          # and nearly out under the greeting, back in the 5.35-5.63 pause
+mus_g *= ramp_env([(41.55, 42.05)], -20, 0.08)[:, None]                       # out under «خمسة»
+mus_g *= ramp_env([(107.55, 108.10)], -6, 0.1)[:, None]                       # the track's own hit at 107.89 sits on «عشرة»
 # SFX side-chain duck under the voice: up to 6 dB, attack ~10 ms, release ~150 ms
 vo_db = env_db(vo, 0.05)
 sw = np.clip((vo_db + 40) * 0.3, 0, 6)

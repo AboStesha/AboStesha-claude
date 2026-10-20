@@ -1,6 +1,6 @@
 # Axi Select, video 1 of 6: «(1) كيف تبدأ مع Axi Select», with Rabee (16:9, v2)
 
-1920×1080 · 25 fps · 120.0 s (3000 frames) · H.264 + AAC 48 kHz · −14.1 LUFS, −1.5 dBTP
+1920×1080 · 25 fps · 120.0 s (3000 frames) · H.264 + AAC 48 kHz · −14.1 LUFS, −1.2 dBTP
 
 The series is six videos, one per programme stage:
 
@@ -28,10 +28,10 @@ The series is six videos, one per programme stage:
    - **B-roll 1:** the «افتح حساب تداول» button is clicked and turns into the trading-account card. The official Axi Select logo builds in its name field and the axi wordmark in its company field. Then the camera dives into a live candlestick chart with buy and sell markers.
    - **B-roll 2:** the funded chart climbs, and the profit lifts off it into «حصّتك من الأرباح». A bar fills to «حتى 80%», and the «سحب الأرباح» button is pressed.
 2. **Voice at «مرحبا بك في برنامج التمويل» and at «5,000 دولار».** I re-repaired both spots from Rabee's own recording and spliced in only those words.
-   - **«مرحبا بك في»:** the leftover impact noise before the first word is gone. The bright frequencies of his voice (2.5–8 kHz), which the earlier separation had dulled, are restored to match his other words, so it no longer sounds muffled.
+   - **«مرحبا بك في»:** the leftover impact noise before the first word is gone. The bright frequencies of his voice (2.5–8 kHz), which the earlier separation had dulled, are restored to within about 2 dB of his next words, so it no longer sounds muffled. The music is almost out under the greeting.
    - **«خمسة آلاف دولار»:** the swish that leaked into «خمسة» is removed, its «س» is recovered, and the word is 6 dB louder.
      - The first syllable of «خمسة» is missing from the original recording itself, because a sound effect covered it. So the word is still lighter than the rest of the phrase.
-     - The number is also on screen, in the counter and the subtitle.
+     - The music drops out under «خمسة», and the number is also on screen, in the counter and the subtitle.
    - His words, timing, pitch and tone are unchanged, and the lip sync still matches.
    - **No SFX on either spot.** The music is fully ducked before the first word and dips a further 6 dB under both spots.
 3. **New motion graphics in the Axi Select brand** (your guideline PDF):
