@@ -5,3 +5,4 @@ audio/*.png
 **/review/probe/
 **/_frames/
 *.render.json
+renders/

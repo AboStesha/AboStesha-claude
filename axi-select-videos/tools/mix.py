@@ -11,6 +11,7 @@ a true-peak-safe limiter (4× oversampled peak)."""
 import argparse, asyncio, json, os
 import numpy as np, soundfile as sf, pyloudnorm as pyln
 from scipy.signal import resample_poly
+from scipy.ndimage import minimum_filter1d
 from playwright.async_api import async_playwright
 
 SR = 48000
@@ -18,13 +19,16 @@ H = os.path.dirname(os.path.abspath(__file__)); SFX = os.path.join(H, '..', 'aud
 KIT = {'whoosh': ['whoosh_short.wav', 'whoosh_long.wav'], 'impact': ['impact_hit.wav'], 'tick': ['tick.wav'],
        'roll': ['counter_roll.wav'], 'glitch': ['glitch.wav'], 'riser': ['riser_short.wav']}
 GAIN = {'whoosh': -9, 'impact': -6, 'tick': -14, 'roll': -12, 'glitch': -12, 'riser': -10}
+# the explainer's event kinds → a kit sound and a gain offset (dB)
+ALIAS = {'land': ('impact', -8), 'x': ('glitch', -2), 'press': ('tick', 0), 'flip': ('whoosh', -6), 'coin': ('tick', 2),
+         'unlock': ('tick', 2), 'fill': ('riser', -6), 'mirror': ('whoosh', -6)}
 
 
 async def events(comp, w, h):
     async with async_playwright() as p:
         b = await p.chromium.launch(); pg = await b.new_page(viewport={'width': w, 'height': h})
         await pg.goto('file://' + os.path.abspath(comp)); await pg.evaluate('window.__ready')
-        ev = await pg.evaluate('window.__events ? window.__events() : {T: window.__meta.dur, events: []}')
+        ev = await pg.evaluate('(() => { const e = window.__events ? window.__events() : []; return Array.isArray(e) ? {T: window.__meta.dur, events: e} : e; })()')
         await b.close(); return ev
 
 
@@ -45,15 +49,21 @@ def true_peak(x):
 
 
 def limit(x, ceiling_db):
-    c = 10 ** (ceiling_db / 20)
-    for _ in range(8):
-        tp = true_peak(x)
-        if tp <= c: break
-        env = np.maximum(np.abs(x).max(1), 1e-9)
-        g = np.minimum(1, c * 0.98 / env)
-        k = int(SR * 0.004); win = np.hanning(2 * k + 1); win /= win.sum()
-        g = np.minimum(g, np.convolve(np.pad(g, k, mode='edge'), win, 'valid'))   # smooth gain, attack ~4 ms
-        x = x * g[:, None]
+    """Look-ahead brickwall on the 4x-oversampled peak envelope, smoothed (attack ~3 ms, release ~60 ms)."""
+    c = 10 ** (ceiling_db / 20) * 0.97
+    for _ in range(6):
+        up = np.abs(resample_poly(x, 4, 1, axis=0)).max(1)
+        env = up[:len(up) // 4 * 4].reshape(-1, 4).max(1)
+        env = np.pad(env, (0, len(x) - len(env)), mode='edge')
+        g = np.minimum(1.0, c / np.maximum(env, 1e-9))
+        k = int(SR * 0.003)
+        gm = minimum_filter1d(g, size=k + 1, origin=-(k // 2))  # look-ahead min over the next k samples
+        rel = np.exp(-1 / (SR * 0.06)); out = np.empty_like(gm); cur = 1.0
+        for i in range(len(gm)):
+            cur = gm[i] if gm[i] < cur else gm[i] + (cur - gm[i]) * rel
+            out[i] = cur
+        x = x * out[:, None]
+        if true_peak(x) <= 10 ** (ceiling_db / 20): break
     return x
 
 
@@ -62,7 +72,7 @@ def main():
     ap.add_argument('--w', type=int, default=1920); ap.add_argument('--h', type=int, default=1080)
     ap.add_argument('--lufs', type=float, default=-14); ap.add_argument('--tp', type=float, default=-1.5)
     ap.add_argument('--fade', type=float, default=0.0); ap.add_argument('--sfx-db', type=float, default=0.0)
-    ap.add_argument('--duck-db', type=float, default=4.0)
+    ap.add_argument('--duck-db', type=float, default=4.0); ap.add_argument('--stem', default=None, help='also write the SFX-only stem here')
     a = ap.parse_args()
     ev = asyncio.run(events(a.comp, a.w, a.h)); T = float(ev['T']); N = int(round(T * SR))
     music = load(a.music)[:N]
@@ -72,22 +82,27 @@ def main():
     sfx = np.zeros((N, 2), np.float32); duck = np.ones(N, np.float32)
     evs = sorted(ev['events'], key=lambda e: e['t']); last = {}; placed = 0
     for i, e in enumerate(evs):
-        kind = e.get('kind'); t = float(e['t'])
+        kind = e.get('kind') or e.get('type'); t = float(e['t']); off = 0
+        if kind in ALIAS: kind, off = ALIAS[kind]
         if kind not in KIT or t < 0 or t >= T: continue
         if t - last.get(kind, -9) < 0.04: continue
         last[kind] = t
         files = KIT[kind]; f = files[i % len(files)] if kind != 'whoosh' else files[1 if e.get('v', 0.5) > 0.7 else 0]
         path = os.path.join(SFX, f)
         if not os.path.exists(path): continue
-        s = load(path) * 10 ** ((GAIN[kind] + a.sfx_db) / 20) * float(np.clip(e.get('v', 0.6), 0.15, 1.0)) / 0.6
+        s = load(path) * 10 ** ((GAIN[kind] + off + a.sfx_db) / 20) * float(np.clip(e.get('v', 0.6), 0.15, 1.0)) / 0.6
         s = pan2(s, float(e.get('pan', 0)) * 0.6)
         i0 = int(t * SR) - (int(0.08 * SR) if kind == 'whoosh' else 0); i0 = max(0, i0); i1 = min(N, i0 + len(s))
         sfx[i0:i1] += s[:i1 - i0]; placed += 1
+        if kind == 'whoosh':
+            d0 = max(0, int(t * SR) - int(0.1 * SR)); d1 = min(N, int(t * SR) + int(0.2 * SR))
+            duck[d0:d1] = np.minimum(duck[d0:d1], 10 ** (-1.5 / 20))
         if kind == 'impact':
             d0 = max(0, int(t * SR) - int(0.01 * SR)); d1 = min(N, int(t * SR) + int(0.35 * SR))
             env = 10 ** (-a.duck_db / 20 * np.sin(np.linspace(0, np.pi, d1 - d0)) ** 0.5)
             duck[d0:d1] = np.minimum(duck[d0:d1], env)
     mix = music * duck[:, None] + sfx
+    if a.stem: sf.write(a.stem, sfx, SR, subtype='PCM_24')
     meter = pyln.Meter(SR)
     l0 = meter.integrated_loudness(mix)
     mix = mix * 10 ** ((a.lufs - l0) / 20)
