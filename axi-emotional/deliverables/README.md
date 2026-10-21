@@ -33,4 +33,11 @@ Timings and plates: `docs/SCRIPT_FINAL.md`, `gen/shots.json`.
 - **Audio disclosure:** IQ p60 asks for an audio risk disclosure at the end. There is no voice-over by design, so this needs an exception.
 - **Persona count:** five personas appear in one post (IQ p46 allows at most two per post), which needs an exception.
 - **Landmarks:** Amedi (Duhok governorate), the Erbil citadel area and a ziggurat appear at the client's request. IQ p55 discourages tourist landmarks. There are no flags or religious symbols.
+- **Chart graphics:** at the client's request, mint/green candlestick charts appear in the backgrounds of cards 1, 4, 7, 8, 10, 11 and 13. FACTS 8.8/9.13 reserve mint for gains data, so this needs brand sign-off.
+- **Structure:** a small white Axi watermark (top-left) runs to the end card. There is no opening Axi Iraq lockup and no CTA screen (IQ p24/p44), by creative choice. If the brand manager requires them, they need an exception or a 1.5 s lockup added.
 - No profit promises, no numbers except «منذ 2007», and no third-party logos. All footage is AI-generated, so label it per platform rules where required.
+
+## QA (final)
+- Text: all 16 cards match `docs/SCRIPT_FINAL.md` word for word and sit inside the safe zones.
+- Audio: -14.3 LUFS integrated, true peak -1.7 dBTP, no clipping. The lift (30.0) and arrival (52.5) land on hard cuts.
+- Visual fixes applied after the first QA round: 6-frame crossfades, hard cuts at 6.56 s and 44.06 s (no face ghosting), the breath no longer goes fully black, the film opens on picture, the ziggurat grade is matched, and the Latin lines are larger.
