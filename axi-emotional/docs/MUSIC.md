@@ -14,6 +14,9 @@
 | **Edit** | `src/music/ad_music.wav`: 48 kHz, 24-bit PCM, stereo, exactly 2,160,000 frames (**45.000 s**). It measures **−16.2 LUFS integrated, −1.0 dBTP, LRA 17.8 LU**, with a short-term maximum of −8.3 LUFS at the C-major arrival. |
 | **Grid** | `src/music/grid.json`. It holds the grid, sections, lift, breath, accents, fade, splices, source map, level ride and the full verification report. |
 | **Rebuild** | `python3 -I -B tools/music/build_emotional.py src/music/mixkit_543_a_new_life.mp3 src/music [src/music/analysis]`. The build is deterministic: two runs gave byte-identical `ad_music.wav` and `grid.json`. The optional third argument also writes `ad_music_spectrogram.png`. |
+| **Edit, 60 s** | `src/music/ad_music_60.wav`: 48 kHz, 24-bit PCM, stereo, exactly 2,880,000 frames (**60.000 s**, 32 bars). It measures **−16.6 LUFS integrated, −1.0 dBTP, LRA 17.1 LU**, with a short-term maximum of −8.3 LUFS at the C-major arrival. See [60 s edit](#60-s-edit-client-feedback-round-2). |
+| **Grid, 60 s** | `src/music/grid_60.json`: the same fields as `grid.json`, plus `moments` (every named time below) and a spectral-flux check on each splice. |
+| **Rebuild, 60 s** | `python3 -I -B tools/music/build_emotional_60.py src/music/mixkit_543_a_new_life.mp3 src/music [src/music/analysis]`. The build is deterministic: two runs gave byte-identical `ad_music_60.wav` (sha256 `28a2eea0…0606`) and `grid_60.json`. The optional third argument also writes `ad_music_60_spectrogram.png`. The 45 s files are untouched: `ad_music.wav` is still `cb01dc8b…fcc7` and `grid.json` is still `e08ffe43…ebead`. |
 
 ## Licence
 
@@ -188,6 +191,145 @@ Mix notes:
 - Keep sound effects out of the four stabs (18.75–20.16), because the music's own accents carry them.
 - Put the breath and heartbeat SFX inside 20.56–22.50 and stop them by 22.48, so the lift hits from silence.
 
+## 60 s edit (client feedback round 2)
+
+The client wants the whole emotional life of a trader, the darkest and the brightest feelings, and allowed the ad to run longer. This edit uses the same track, the same grid and the same rules as the 45 s edit: splices only on bar lines, equal-power crossfades placed under or just before transients, the composer's own dynamics after the lift, and a fade only at the very end. The 45 s edit stays as it was.
+
+**60.000 s = 128 beats = 32 bars = 8 phrases of 4 bars.** The LIFT sits on bar 16 = **30.000 s**, the exact middle. There are 16 bars of darkness before it and four whole 4-bar phrases of the composer's after it.
+
+### The edit (bar-aligned, 5 splices)
+
+| Timeline | Bars | Source (s) | Source bars | Content |
+|---|---|---|---|---|
+| 0.000 – 20.625 | 0–10 | 4.013 – 24.638 | 2–12 | **intimate + tension, first wave.** One contiguous run with the same level ride as the 45 s edit: E drone, A-minor pad, melody notes, the stab figure played softly, then shimmer, low strings and ostinato at 13.125, and the four stabs |
+| 20.625 – 28.125 | 11–14 | 17.138 – 24.638 | 9–12 | **tension, second wave.** The composer's tension phrase again, as whole bars and 2 dB hotter: shimmer re-entry, ostinato, then the four stabs again. Splice 1 |
+| 28.125 – 30.000 | 15 | 2.138 – 4.013 | 1 | **breath.** The E drone rising out of the fade-in bar, +9 dB. Splice 2, the same joint as the 45 s edit's 20.625 |
+| 30.000 – 37.500 | 16–19 | 24.638 – 32.138 | 13–16 | **LIFT.** The composer's main entrance and its 4-bar phrase in A minor, crash bar last. Splice 3, the same joint as the 45 s edit's 22.5 |
+| 37.500 – 45.000 | 20–23 | 39.638 – 47.138 | 21–24 | **anthem.** Step-up into **F major**, the track's first major-key section. Build bar with crash 2 last. Splice 4 |
+| 45.000 – 60.000 | 24–31 | 62.138 – 77.138 | 33–40 | **anthem 2 + resolve.** D minor (33–34), G (35–36, with the fill), **C-major arrival** (37), diminuendo (38–40). Splice 5. The edit ends exactly on the source bar-41 line, as the 45 s edit does |
+
+After the lift the harmony runs **Am (30.0) → F (37.5) → Dm (45.0) → G (48.75) → C (52.5)**: vi–IV–ii–V–I in C. These are the composer's own keys in his order (bars 13–20 Am, 21–28 F, 29–36 Dm→G, 37 C), with the second half of each 8-bar group left out. Each phrase opens louder than the last. The downbeat bars measure −10.7, −9.5, −9.2 and −7.8 LUFS.
+
+**Why the tension phrase repeats.** The source has 11 bars before its main entrance (bars 2–12). The 60 s arc needs 15, so 4 bars must repeat. The composer wrote bars 5–8 and 9–12 as the same phrase twice: per-16th chroma matches 0.77–0.94 bar for bar, and bar 8 plays the stab figure softly (chroma 0.94 and onset pattern r = 0.74 against the stab bar 12). Bars 9–12 add the shimmer, low strings and ostinato. That makes the stab bar's tail a close match for the tail of bar 8, which normally leads into bar 9. The joint 12 → 9 measures a 4.2 dB spectral jump, against 6.2 dB at the composer's own 8 → 9. The two rejected options:
+
+- **Repeating the soft phrase 5–8.** The shimmer would then arrive only at 20.6 s, so the tension would start about 10 s too late.
+- **Looping ostinato bar 10 three times and starting on the fade-in bar 0.** That needs two 1-bar loops and a ride of about +27 dB on the opening.
+
+The repeat produces a false resolution. The first stabs (18.75) lead into more tension instead of a hit. Only the second stabs (26.25) fall into the breath and the lift.
+
+**Why F major at 37.5.** I built and measured four ways to fill bars 20–27 with whole phrases.
+
+| After the lift (src) | Accent 37.5 | Accent 45.0 | Keys 30–52.5 | Splices |
+|---|---|---|---|---|
+| **13–16, 21–24, 33–40 (chosen)** | **12.3 dB (sub +18.3)** | 1.1 dB | **Am → F → Dm → G** | 5 |
+| 13–20, 33–40 | 18.6 dB (sub +24.6) | 3.8 dB | Am for 15 s → Dm → G | 4 |
+| 13–16, 25–28, 33–40 | 7.2 dB | 3.0 dB | Am → F → Dm → G | 5 |
+| 13–16, 29–40 | 16.4 dB (sub +22.4) | 2.0 dB | Am → Dm for 11 s → G | 4 |
+
+Only the chosen fill and the 25–28 fill reach a major key before the end card, which gives the bright half of the feelings arc a bright colour 15 s before the C-major resolve. The other two stay minor until 52.5. Of the two F-major fills, the chosen one lands on the composer's own F-major entrance (bar 21, one of the track's biggest rises in the source, +13 dB) and steps up harder: 12.3 dB against 7.2 dB. Its step-up is smaller than the 13–20 fill's, but the F bar is louder than the lift bar (−9.5 against −10.7 LUFS). All four variants passed every splice check, including the flux check.
+
+**Why the arrival is at 52.5, not 50.** Four whole 4-bar phrases after a lift at 30.0 put the C-major arrival on bar 28 = 52.5. An arrival at 50.625 would need one of two compromises:
+
+- a 3-bar phrase, cutting either the crash bar or the dip bar, or
+- moving the lift to 28.125.
+
+The end card gets 7.5 s of resolve, as it does in the 45 s edit.
+
+**Splices.** Each is an equal-power crossfade that ends 1 ms before the earliest transient at that bar line, on either side. The detectors are the same three as before: a >1 kHz attack, a broadband 1 ms attack and a <150 Hz attack. There is one new check, **flux**: the spectral change in the 60 ms before the bar line, where every crossfade sits. It is compared with the composer's own phrase lines in the source (bars 9–37: 0.99–3.30 dB, and 8.29 dB at the main entrance, bar 13). All five splices pass every check (`verification.all_splices_ok`).
+
+| Splice | Crossfade | Why there | Level out → in (10 ms) | Max sample jump in crossfade / ±1 s 99.9th pct | HF >9 kHz in crossfade | Flux (natural into the incoming bar) |
+|---|---|---|---|---|---|---|
+| 20.625 (src 24.638 → 17.138) | 20.5652–20.6053 (**40 ms**) | Bar 9's swell starts 18.8 ms early. The fade ends just before it and 5.2 ms before the first >1 kHz energy of the suppressed bar-13 hit | −37.2 → −33.6 dBFS | 0.0018 / 0.0212 ✓ | −82 dBFS, 0.6 dB under the sides ✓ | 1.41 dB (0.99) ✓ |
+| 28.125 (src 24.638 → 2.138) | 28.0647–28.1047 (**40 ms**) | The same joint as the 45 s edit's 20.625 | −35.8 → −60.1 dBFS | 0.0021 / 0.0072 ✓ | −86 dBFS (noise floor) ✓ | 1.81 dB (0.72) ✓ |
+| 30.000 (src 4.013 → 24.638) | 29.9742–29.9842 (10 ms) | The same joint as the 45 s edit's 22.5. The pad joint sits under the lift | −47.3 → −27.4 dBFS | 0.0007 / 0.0234 ✓ | −88 dBFS, 36 dB under the sides ✓ | 7.36 dB, the hit itself (8.29) ✓ |
+| 37.500 (src 32.138 → 39.638) | 37.4707–37.4807 (10 ms) | Bar 21's sub swell starts 18.3 ms early, and the joint sits just before it. Crash bar 16 matches bar 20, which normally precedes bar 21 (chroma 0.94) | −26.2 → −23.9 dBFS | 0.0407 / 0.0440 ✓ | 5.1 dB under the sides ✓ | 2.59 dB (1.53). Under the composer's own 3.30 at bar 17 ✓ |
+| 45.000 (src 47.138 → 62.138) | 44.9690–44.9790 (10 ms) | Ends before the suppressed bar-25 sub swell (−20.0 ms). Build bar 24 matches build bar 32, which normally precedes bar 33 | −21.8 → −25.5 dBFS | 0.0330 / 0.0447 ✓ | 1.3 dB under the sides ✓ | 1.91 dB (1.75) ✓ |
+
+- **Grid check:** passed. The level-jump detector finds 33 strong onsets on the final timeline, and all 33 sit on the fixed 128.000 BPM grid: mean −3.5 ms, rms 9.4 ms, max 22.9 ms. The max is the same early soft swell at 12.633 as in the 45 s edit. A free fit gives 127.95 BPM.
+- **Start and end:** a 2 ms raised-cosine de-click at 0.000 s. The **fade runs only from 58.500 to 60.000**. The last sample is exactly 0.
+- **Other processing:** the level ride below, then one global gain of −0.71 dB to a −1.0 dBTP ceiling. This is the same gain as the 45 s edit, because the loudest peak is in the shared resolve. There is no limiter, no EQ and no compression.
+
+**Level ride.** It is cosine-interpolated in dB and applies to segments 1–3 only.
+
+| Timeline | Ride | Why |
+|---|---|---|
+| 0.000 → 20.625 | +15 → +13 → +12 → +9 → +7 dB, at the 45 s edit's points (0, 3.75, 7.5, 13.125, 18.75) | Unchanged: the same source run |
+| 20.625 → 26.25 → 28.125 | +11 → +9 → +9 dB | The second wave sits 2 dB above the first, so the tension keeps climbing into the stabs |
+| 28.125 → 30.000 (breath) | +9 dB | As in the 45 s edit: about 27 dB under the anthem, not a dropout |
+| 30.000 → 60.000 | 0 dB | The composer's own dynamics |
+
+Short-term loudness per bar (LUFS, 1.875 s windows):
+
+- **intimate:** −29.5 −27.9 −26.3 −24.2 −28.0
+- **tension:** −26.0 −27.9 −19.6 −18.2 −20.7 −22.0
+- **tension 2:** −17.6 −16.2 −18.7 −20.0
+- **breath:** −40.6
+- **lift:** −10.7 −13.9 −18.3 −16.4
+- **anthem:** −9.5 −11.1 −18.3 −12.0
+- **anthem 2:** −9.2 −10.8 −13.2 −11.7
+- **resolve:** −7.8 −10.2 −12.7 −18.9
+
+The two −18.3 bars are the composer's breathing bar, the third bar of the lift phrase and of the F phrase. The pulse keeps running through them.
+
+### Section map, 60.000 s (everything below is in `grid_60.json`)
+
+The grid is the same as the 45 s edit: **128.000 BPM**, beat 0.46875 s, bar 1.875 s. There are 32 bars and 128 beats. Downbeats run 0, 1.875 … 58.125.
+
+| Section | Time | Bars | Level (rms / LUFS) | What is in the music |
+|---|---|---|---|---|
+| **intimate** | 0.000 – 9.375 | 0–4 | −34.0 dBFS / −26.8 | E drone, then the A-minor pad from 3.75. No pulse. Dark and close |
+| **tension** | 9.375 – 20.625 | 5–10 | −29.8 / −21.2 | Melody notes from 9.375. The stab figure played softly at 11.25. **13.125: shimmer, low strings and ostinato enter.** **Stabs 1 at 18.750 · 19.219 · 19.688 · 20.156** |
+| **tension 2** | 20.625 – 28.125 | 11–14 | −26.6 / −17.9 | **20.625: shimmer re-entry, 2 dB hotter.** **Stabs 2 at 26.250 · 26.719 · 27.188 · 27.656**, then the music falls away |
+| **breath** | 28.125 – 30.000 | 15 | −47.8 / −40.6 | Measured near-silence **28.082 – 30.005**: 50 ms level −52 / −48 / −37 dBFS (min / median / max), 27 dB under the lift and anthem median |
+| **LIFT** | **30.000** (attack 30.005) | 16 | | Hit, sub boom and crash, all at once |
+| lift phrase | 30.000 – 37.500 | 16–19 | −22.9 / −13.9 | Full strings in A minor and the 128 BPM ostinato. **Crash 1 at 35.625** |
+| **anthem** | 37.500 – 45.000 | 20–23 | −20.7 / −11.8 | **37.5: second step-up into F major**, the first major-key section, with sub +18 dB. **Crash 2 at 43.125** on the build bar |
+| **anthem 2** | 45.000 – 52.500 | 24–27 | −19.8 / −11.0 | **45.0: D-minor phrase start**, fuller (+2.8 LU over the bar before) but soft-edged: an onset of 1.1 dB, so it is a phrase line, not a hit. **48.75: G (dominant).** **50.625: sub drops out and a fill builds into the arrival** |
+| **resolve** | 52.500 – 60.000 | 28–31 | −19.9 / −10.9 | **52.5: C-major arrival with a sub boom (logo hit)**, the loudest point (short-term −8.3 LUFS at about 54.0). The strings release from about 57 s. **Fade 58.5–60.0 only** |
+
+**Accents for cuts** (`grid_60.json → accents`, scored as in the 45 s edit):
+
+- **Major:**
+  - 30.000: LIFT, 30 dB
+  - 35.625: crash 1, 10 dB
+  - 37.500: F-major step-up, 12 dB, sub +18
+  - 43.125: crash 2, 12 dB, >2 kHz +12
+  - 52.500: arrival, 15 dB, sub +21
+- **Medium:**
+  - 9.375 (melody), 13.125 (shimmer entry), 20.625 (wave 2)
+  - both stab groups: 6–9 dB, except the softer fourth stab at 3 dB
+  - 30.469 · 30.938 · 31.406: the ostinato settling, >2 kHz +12 to +14 dB
+  - 31.875 · 32.344 · 34.688 (+14 dB >2 kHz) · 36.563 · 37.969 · 45.000 (phrase line) · 45.469 · 48.750 (G) · 50.625 (fill)
+- **Minor:** 18 more beats with 4–6 dB jumps.
+
+`grid_60.json → moments` holds every time named above, from `melody_in` to `fade`.
+
+### How the 60 s music can carry the feelings arc (a suggestion for SCRIPT.md)
+
+| Time | Music | Emotional colour it carries |
+|---|---|---|
+| 0.0 – 9.4 | E drone into the A-minor pad | Alone with the screen. The quiet before the open |
+| 9.4 – 13.1 | Melody notes, the soft stab figure | Doubt starts. The first wrong feeling |
+| 13.125 | Shimmer, strings and pulse enter | The trade goes against you |
+| 18.75 – 20.16 | Stabs 1 | Four fast cuts. The first hit to the account |
+| 20.625 | The tension comes back hotter | It is not over: chasing it, hiding it |
+| 26.25 – 27.66 | Stabs 2 | Four fast cuts. The darkest beat |
+| 28.08 – 30.00 | Breath | The empty moment. One line, heartbeat or breath SFX only |
+| **30.0** | **LIFT** | **The turn: getting back up** |
+| 30.0 – 37.5 | Lift phrase, crash 1 at 35.625 | Discipline, a plan, steady hands |
+| **37.5** | **F major, first light** | **The first bright feeling: calm, patience paying off** |
+| 37.5 – 45.0 | F phrase, crash 2 at 43.125 | Confidence, pride in the process |
+| **45.0** | D-minor phrase line, fuller | **"Built by traders, for traders"** (weight, belonging) |
+| 48.75 – 50.6 | G, then the fill with the sub out | Build into the payoff |
+| **52.5** | **C-major arrival** | **Logo slam / end card** |
+| 52.5 – 60.0 | Resolve and ring-out | End card. The risk strip sits in the last ≥3 s (57.0–60.0 or longer) over the release and the 58.5 fade |
+
+Mix notes for the 60 s edit:
+
+- Keep sound effects out of both stab groups (18.75–20.16 and 26.25–27.66), because the music's own accents carry them.
+- Put the breath and heartbeat SFX inside 28.08–30.00 and stop them by 29.97, where the lift crossfade starts, so the lift hits from silence.
+- The 52.5 arrival is the loudest moment and sits under the end card on purpose. If the risk strip needs more air, duck the music 2–3 dB from about 54 s. Don't fade before 58.5.
+
 ## Files
 
 - `src/music/ad_music.wav`: the edit (gitignored; never distribute it on its own)
@@ -195,3 +337,7 @@ Mix notes:
 - `src/music/analysis/ad_music_spectrogram.png`: spectrogram, waveform with beats, onsets and the breath, and the 10 ms and short-term-LUFS curves, with sections and splices marked
 - `src/music/mixkit_*.mp3`: the 20 candidates. `src/music/analysis/`: their `*.analysis.json`, spectrograms and `summary.json`
 - `tools/music/build_emotional.py`: the edit and its verification. `analyze_music.py`, `musiclib.py` (`fit_grid` is used for the grid check) and the other tools in `tools/music/` are unchanged
+- `src/music/ad_music_60.wav`: the 60 s edit (gitignored; never distribute it on its own, and the same Mixkit licence terms apply)
+- `src/music/grid_60.json`: the 60 s grid, sections, `moments`, lift, breath, accents, fade, splices, source map, ride and `verification`. The verification covers loudness, per-bar LUFS, grid fits, splice checks including flux, and `all_splices_ok`
+- `src/music/analysis/ad_music_60_spectrogram.png`: the 60 s spectrogram, waveform and loudness picture, with sections and splices marked
+- `tools/music/build_emotional_60.py`: the 60 s edit and its verification. It stands alone and does not import `build_emotional.py`
