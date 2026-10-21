@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Super Virtual Studio — دراسة الجدوى</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="slides.css">
+<script src="voxel.js"></script>
+<script src="models.js"></script>
+<script src="data.js"></script>
+</head>
+<body>
+
+<!-- 01 COVER -->
+<section class="slide s-cover">
+  <div class="cover-text">
+    <div class="kicker">INVESTOR BRIEF · FEASIBILITY 2027–2031<span class="px"></span></div>
+    <div class="logo-big"><svg viewBox="0 0 860 350" width="860" height="350" style="display:block;margin-left:auto">
+      <defs>
+        <linearGradient id="lg1" x1="0" x2="1"><stop offset="0" stop-color="#FFC24B"/><stop offset=".6" stop-color="#E8794A"/><stop offset="1" stop-color="#FF5D6C"/></linearGradient>
+        <linearGradient id="lg2" x1="0" x2="1"><stop offset="0" stop-color="#8FE6FF"/><stop offset=".5" stop-color="#45D6FF"/><stop offset="1" stop-color="#B98CFF"/></linearGradient>
+      </defs>
+      <g font-family="Silkscreen" font-weight="700" font-size="112" text-anchor="end" letter-spacing="2">
+        <text x="858" y="100" fill="url(#lg1)">SUPER</text>
+        <text x="858" y="214" fill="url(#lg2)">VIRTUAL</text>
+        <text x="858" y="328" fill="url(#lg1)">STUDIO</text>
+      </g></svg></div>
+    <p class="cover-ar">استوديو هوليوودي متكامل بالذكاء الاصطناعي… <b>داخل عالم من البكسل</b></p>
+    <p class="cover-sub">تدخل كمنتج، يستقبلك مساعدك، تختار طاقمك، تمشي داخل موقع التصوير وتصوّر بهاتفك — والذكاء الاصطناعي يحوّل ذلك كله إلى فيلم أو إعلان أو مقطع فايرال.</p>
+    <div class="cover-chips">
+      <div class="chip"><b class="num" id="c-invest"></b><span id="c-invest-l">إجمالي التمويل المطلوب</span></div>
+      <div class="chip"><b id="c-be"></b><span id="c-be-l">نقطة التعادل الشهرية</span></div>
+      <div class="chip"><b class="num c-green" id="c-5y"></b><span>الربح التشغيلي التراكمي لـ5 سنوات (EBITDA)</span></div>
+    </div>
+  </div>
+  <div class="cover-art vox" id="v-office"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr">سرّي · أكتوبر 2026 · <span class="num">01/13</span></span></div>
+</section>
+
+<!-- 02 OPPORTUNITY -->
+<section class="slide s-opp">
+  <div class="kicker">02 · THE OPPORTUNITY<span class="px"></span></div>
+  <h1>الذكاء الاصطناعي أعطى الجميع كاميرا… <em>لا استوديو</em></h1>
+  <p class="sub">صانع الأفلام بالذكاء الاصطناعي اليوم يتنقّل بين 8 و12 أداة منفصلة، ويكتب أوامر نصية (برومبت) بدلاً من أن يُخرج. نحن نجمع الطاقم والموقع والكاميرا في عالم واحد يمكن المشي داخله.</p>
+  <div class="row opp-row">
+    <div class="col pains">
+      <div class="card pain"><span class="pi">01</span><h3>تشتّت الأدوات</h3><p>سيناريو في أداة، وصور في أخرى، وفيديو في ثالثة، والصوت والموسيقى والمونتاج في غيرها. لا ذاكرة مشتركة للشخصيات أو الأسلوب.</p></div>
+      <div class="card pain"><span class="pi">02</span><h3>البرومبت ليس إخراجاً</h3><p>لا تحكّم حقيقياً بزاوية الكاميرا وحركتها وأماكن الممثلين. المخرج يريد أن «يقف» في المشهد، لا أن يصفه.</p></div>
+      <div class="card pain"><span class="pi">03</span><h3>هدر في التوليد</h3><p>كل لقطة فاشلة تكلّف مالاً. وغياب المعاينة المسبقة (Previz) يجعل الإنتاج مكلفاً وعشوائياً.</p></div>
+    </div>
+    <div class="col market">
+      <div class="mk-grid" id="mk-grid"></div>
+      <div class="card proof"><h3 class="c-amber">الدليل: السوق يدفع الآن</h3><p id="proof-text"></p></div>
+    </div>
+  </div>
+  <div class="src" id="src-2"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">02/13</span></span></div>
+</section>
+
+<!-- 03 EXPERIENCE -->
+<section class="slide s-exp">
+  <div class="kicker">03 · THE EXPERIENCE<span class="px"></span></div>
+  <h1>تدخل <em>كمنتج</em>… وفريق العمل يأتي إليك</h1>
+  <p class="sub">كل لاعب يبدأ في مكتب المنتج. شاشتان فقط تعرضان صوراً واقعية خارج أسلوب البكسل: <b>التابلت</b> في يدك (شاشة مراقبة متكاملة للمخرج) و<b>شاشة المكتب</b> الكبيرة.</p>
+  <div class="row exp-row">
+    <div class="steps">
+      <div class="step"><b>1</b><div><h4>تدخل مكتب المنتج</h4><p>تتقمّص شخصية بكسل وترى بعينيها (منظور الشخص الأول) داخل عالم ثلاثي الأبعاد.</p></div></div>
+      <div class="step"><b>2</b><div><h4>المساعد يسألك: ماذا نصنع اليوم؟</h4><p>فيلم قصير أو إعلان أو ريمكس فايرال — بالصوت أو بالكتابة.</p></div></div>
+      <div class="step"><b>3</b><div><h4>التابلت يقترح «أساليب مرجعية»</h4><p>تختار الأسلوب الذي يلهمك، أو تبحث في مكتبتنا حسب الفئة.</p></div></div>
+      <div class="step"><b>4</b><div><h4>Auto أو Customize</h4><p>Auto: الطاقم كله يعمل وحده بعد عرض التكلفة. Customize: تجلس مع كل فرد على حدة.</p></div></div>
+      <div class="step"><b>5</b><div><h4>الكاتب يكتب… وأنت تتابع</h4><p>ترسل فكرتك أو مسودتك من الكمبيوتر عبر التابلت، وتلتقي ببقية الطاقم أثناء الكتابة.</p></div></div>
+      <div class="step"><b>6</b><div><h4>كل ما يكتمل يظهر على التابلت</h4><p>مشاهد وشخصيات وصور بالترتيب للمراجعة، ثم العرض النهائي في قاعة العرض.</p></div></div>
+    </div>
+    <div class="tablet-wrap">
+      <div class="tablet">
+        <div class="t-bar"><span class="rec"></span>DIRECTOR MONITOR<span class="t-right">PROJECT · SHORT FILM</span></div>
+        <div class="t-body">
+          <div class="chat">
+            <div class="bub a">أهلاً أيها المنتج! ماذا نصنع اليوم؟</div>
+            <div class="bub u">فيلم قصير مدته 3 دقائق عن رجل يعود إلى مدينته بعد 20 عاماً.</div>
+            <div class="bub a">رائع. هذه أساليب مرجعية تناسب قصتك — اختر واحداً:</div>
+          </div>
+          <div class="posters">
+            <div class="poster p1"><i></i><b>ملحمة صحراوية</b><span>عدسات واسعة · ضوء ذهبي</span></div>
+            <div class="poster p2"><i></i><b>نوار حضري ليلي</b><span>نيون · ظلال حادة</span></div>
+            <div class="poster p3"><i></i><b>واقعية حميمية</b><span>كاميرا محمولة · ألوان دافئة</span></div>
+          </div>
+          <div class="modes">
+            <div class="mode on"><b>AUTO</b><span>طاقم كامل · تكلفة تقديرية <span class="num">≈ $330</span></span></div>
+            <div class="mode"><b>CUSTOMIZE</b><span>اختر كل فرد بنفسك</span></div>
+          </div>
+          <div class="progress">
+            <span class="pg done">السيناريو ✓</span><span class="pg done">الشخصيات ✓</span><span class="pg run">الموقع 60%</span><span class="pg">التصوير</span><span class="pg">المونتاج</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-chars">
+        <div class="vox ch" id="v-producer"></div>
+        <div class="vox ch" id="v-assistant"></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">03/13</span></span></div>
+</section>
+
+<!-- 04 PIPELINE -->
+<section class="slide s-crew">
+  <div class="kicker">04 · THE AI CREW<span class="px"></span></div>
+  <h1>طاقم من وكلاء الذكاء الاصطناعي… وأنت <em>صاحب القرار</em></h1>
+  <p class="sub">كل فرد يعرّف نفسه ويعرض مقترحاته مع أمثلة من اللغة السينمائية؛ في وضع Auto يعمل الطاقم وحده، وفي وضع Customize تجلس مع كلٍّ منهم على حدة.</p>
+  <div class="crew-grid">
+    <div class="crew"><span class="tag clay ph">ما قبل الإنتاج</span><div class="vox cv" id="v-writer"></div><div><h4>الكاتب</h4><p>يقرأ مسودتك على شاشة المكتب، ويطوّر السيناريو، ويعرض التعديلات لتوافق عليها.</p></div></div>
+    <div class="crew"><span class="tag clay ph">ما قبل الإنتاج</span><div class="vox cv" id="v-director"></div><div><h4>المخرج <span class="tag clay">حتى 5 مخرجين</span></h4><p>لوحة قصة (Storyboard) لكل مشهد مع أمثلة من اللغة السينمائية؛ ويمكن تعيين مخرج مختلف لكل مشهد.</p></div></div>
+    <div class="crew"><span class="tag clay ph">ما قبل الإنتاج</span><div class="vox cv" id="v-casting"></div><div><h4>اختيار الممثلين</h4><p>يولّد جميع شخصيات السيناريو لتوافق عليها واحدة تلو الأخرى؛ ويُستمدّ الأداء من فيديو سيلفي أو يُولَّد تلقائياً.</p></div></div>
+    <div class="crew"><span class="tag clay ph">ما قبل الإنتاج</span><div class="vox cv" id="v-art"></div><div><h4>المدير الفني</h4><p>لوحة مزاج (Mood board) ورندر نهائي للديكور والمدن والإكسسوارات — أو يبني لك موقعاً افتراضياً تمشي فيه.</p></div></div>
+    <div class="crew"><span class="tag cyan ph">التصوير</span><div class="vox cv" id="v-dop"></div><div><h4>مدير التصوير</h4><p>يتفق معك على العدسة ونوع الكاميرا وحركتها؛ أو تمسك الكاميرا بنفسك في وضع الكاميرا (Camera Mode).</p></div></div>
+    <div class="crew"><span class="tag violet ph">ما بعد الإنتاج</span><div class="vox cv" id="v-editor"></div><div><h4>المونتير · الألوان · المؤثرات</h4><p>خط زمني (Timeline) أمامك على الشاشة: قطع وتصحيح ألوان ومؤثرات بصرية مع مراجع من أفلام عالمية.</p></div></div>
+    <div class="crew"><span class="tag violet ph">ما بعد الإنتاج</span><div class="vox cv" id="v-composer"></div><div><h4>الموسيقار ومصمّم الصوت</h4><p>موسيقى تصويرية ومؤثرات صوتية (Foley) — وفق مرجعك أو بأسلوب الفيلم المختار منذ البداية.</p></div></div>
+    <div class="crew screening"><span class="tag amber ph">العرض</span><div class="vox cv wide" id="v-cinema"></div><div><h4>قاعة العرض</h4><p>العرض الأول لفيلمك على شاشة سينما عملاقة داخل العالم — ثم التحميل والمشاركة.</p></div></div>
+  </div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">04/13</span></span></div>
+</section>
+
+<!-- 05 WEDGE -->
+<section class="slide s-moat">
+  <div class="kicker">05 · THE WEDGE<span class="px"></span></div>
+  <h1>السلاح السري: <em>الاستوديو الافتراضي</em> و<em>الكاميرا الافتراضية</em></h1>
+  <p class="sub">بدلاً من وصف اللقطة بالكلام، تقف داخلها. كل ما تفعله في عالم البكسل يصبح «مرجعاً» دقيقاً يوجّه نموذج الفيديو — وهذا ما يجعل صنّاع الأفلام يتعلّقون بالمنصة.</p>
+  <div class="row moat-row">
+    <div class="moat-scene">
+      <div class="vox" id="v-studio"></div>
+      <div class="lbl l1"><span class="tag cyan">BLOCKOUT 3D</span> موقع يبنيه المدير الفني من السيناريو</div>
+      <div class="lbl l2"><span class="tag clay">ACTORS</span> تضع الممثلين بنفسك</div>
+      <div class="lbl l3"><span class="tag amber">CRANE · DRONE · DOLLY</span> أدوات كاميرا داخل اللعبة</div>
+    </div>
+    <div class="col moat-side">
+      <div class="card m1">
+        <h3><span class="tag cyan">01</span> لقطة من التابلت ← رندر واقعي</h3>
+        <div class="render-pair">
+          <div class="rp"><div class="vox" id="v-blockshot"></div><span>اللقطة داخل عالم البكسل</span></div>
+          <div class="arrow">←</div>
+          <div class="rp"><div class="render-img" id="render-img"></div><span>الرندر الواقعي بالزاوية نفسها</span></div>
+        </div>
+        <p class="proof-note"><b class="c-green">ليس تصوّراً:</b> وُلِّد هذا الرندر فعلاً من صورة البكسل المجاورة بنموذج GPT Image 2.5 في أقل من دقيقة وبسنتات معدودة. (صورة ثابتة؛ التالي: فيديو بمسار الكاميرا نفسه.)</p>
+      </div>
+      <div class="card m2">
+        <h3><span class="tag clay">02</span> هاتفك يصبح كاميرا داخل المشهد</h3>
+        <p>تسجّل الحركة بهاتفك أو بأي كاميرا رقمية ← نحوّلها إلى مسار كاميرا نظيف ← يولّد الذكاء الاصطناعي اللقطة النهائية بالمسار نفسه.</p>
+        <div class="moves"><span>Steadicam</span><span>Drone</span><span>Crane / Jimmy Jib</span><span>Gimbal</span><span>Handheld</span></div>
+      </div>
+      <div class="card m3">
+        <h3><span class="tag amber">03</span> أداء الممثل من فيديو سيلفي</h3>
+        <p>تصوّر وجهك أو جسمك بكاميرا ثابتة ← يصبح مرجعاً لأداء الشخصية (Performance Transfer).</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">05/13</span></span></div>
+</section>
+
+<!-- 06 CATEGORIES & ROADMAP -->
+<section class="slide s-cat">
+  <div class="kicker">06 · PRODUCTS · ROADMAP<span class="px"></span></div>
+  <h1>ثلاث فئات… <em>وترتيب إطلاق يقلّل الحرق</em></h1>
+  <div class="row cat-row">
+    <div class="card cat c1"><div class="cat-top"><span class="tag green">PHASE 1 · MAY 2027</span><div class="vox cat-v" id="v-remix"></div></div><h3>Viral Remix</h3><p>صورتك (بعد التحقق) + قالب ترند مرخّص، أو نسخة بأسلوب الترند فقط (دون صوته أو لقطاته) ← فيديو جديد بطله أنت، دون أي برومبت.</p><div class="cat-k"><span>دوره: <b>بوابة جذب الجمهور</b></span><span>السعر: <b class="num">$9–19</b>/شهر</span></div></div>
+    <div class="card cat c2"><div class="cat-top"><span class="tag clay">PHASE 1B · AUG 2027</span><div class="vox cat-v" id="v-cinema-ico"></div></div><h3>Cinema Studio</h3><p>أفلام قصيرة كاملة بالطاقم الافتراضي؛ ثم الاستوديو والكاميرا الافتراضية (ديسمبر 2027). رصيد شهري + باقات رصيد للأفلام الكاملة.</p><div class="cat-k"><span>دوره: <b>المنتج الأساسي ومصدر التميّز</b></span><span>السعر: <b class="num">$29–129</b>/شهر</span></div></div>
+    <div class="card cat c3"><div class="cat-top"><span class="tag amber">PHASE 2 · FEB 2028</span><div class="vox cat-v" id="v-ads-ico"></div></div><h3>Ads Studio</h3><p>الرحلة نفسها للإعلانات: منتجك وعلامتك التجارية، بمقاسات كل منصة، ونسخ متعددة لاختبار A/B.</p><div class="cat-k"><span>دوره: <b>الشريحة الأعلى دفعاً</b> (الشركات)</span><span>السعر: <b class="num">$299–999</b>/شهر</span></div></div>
+  </div>
+  <div class="card edits">
+    <h3 class="c-amber">قرارات استراتيجية على الفكرة الأصلية</h3>
+    <div class="edits-grid">
+      <div><b>1. الفايرال بوابة دخول آمنة لا مصدر الربح.</b> يُطلَق أولاً لاستقطاب الجمهور، بقوالب مرخّصة ووجه المستخدم نفسه فقط — لا رفع لفيديوهات الآخرين أو وجوههم.</div>
+      <div><b>2. «أسلوب» لا «أسماء».</b> طاقم بشخصيات أصلية وملفات أسلوب تقنية — دون أسماء مخرجين حقيقيين أو لقطات من أفلام محمية.</div>
+      <div><b>3. ممثلون مولَّدون + سوق مرخّص.</b> لا أشباه للمشاهير؛ مكتبة ممثلين أصليين، وممثلون حقيقيون يرخّصون ملامحهم مقابل حصة من الإيراد.</div>
+      <div><b>4. المعاينة المسبقة (Previz) أولاً = هامش أعلى.</b> عالم البكسل معاينة شبه مجانية تقلّل التوليدات الفاشلة المكلفة قبل الرندر النهائي.</div>
+      <div><b>5. الشركات مبكراً.</b> الإعلانات بعد السينما بستة أشهر فقط: Higgsfield يخدم 390 شركة من Fortune 500، وإيراد عقود الشركات لديه تضاعف 10 مرات منذ يونيو 2026.</div>
+      <div><b>6. عالمي من اليوم الأول.</b> إنجليزي وبالدولار، برنامج مبدعين بعمولة 20–25%، قالب أو ميزة جديدة كل أسبوع، ومهرجان شهري بجوائز يصنع محتوانا التسويقي.</div>
+    </div>
+  </div>
+  <div class="roadmap">
+    <div class="rm"><b>مايو 2027</b><span>Viral Remix + مكتب المنتج</span></div>
+    <div class="rm"><b>أغسطس 2027</b><span>Cinema Studio (Auto + Customize)</span></div>
+    <div class="rm"><b>ديسمبر 2027</b><span>الاستوديو والكاميرا الافتراضية</span></div>
+    <div class="rm"><b>فبراير 2028</b><span>Ads Studio للشركات</span></div>
+    <div class="rm"><b>ديسمبر 2028</b><span>Super Marketing Agency</span></div>
+  </div>
+  <p class="gate">← اتجاه الزمن · كل مرحلة تُفتح بمؤشر لا بتاريخ: Cinema عند 3 آلاف مشترك · Ads عند <span class="num">$300K</span> إيراداً شهرياً · SMA عند 200 حساب إعلانات.</p>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">06/13</span></span></div>
+</section>
+
+<!-- 07 COMPETITION -->
+<section class="slide s-comp">
+  <div class="kicker">07 · COMPETITION<span class="px"></span></div>
+  <h1>هل توجد منصة كهذه؟ <em>أجزاء منها نعم… أما الكل فلا</em></h1>
+  <p class="sub" id="comp-sub"></p>
+  <div class="row comp-row">
+    <div class="card comp-table"><table id="comp-table"></table><div class="comp-legend"><span class="legend-d"><i class="d y"></i> متوفر</span><span class="legend-d"><i class="d p"></i> جزئي</span><span class="legend-d"><i class="d n"></i> غير متوفر</span><span class="legend-d"><i class="d pl"></i> مخطّط لدينا (2027–2028)</span></div></div>
+    <div class="col comp-side">
+      <div class="card"><h3 class="c-red">الخطر الأكبر</h3><p id="comp-threat"></p></div>
+      <div class="card"><h3 class="c-green">ما يصعب نسخه</h3><p id="comp-moat"></p></div>
+    </div>
+  </div>
+  <div class="src" id="src-7"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">07/13</span></span></div>
+</section>
+
+<!-- 08 LEGAL -->
+<section class="slide s-legal">
+  <div class="kicker">08 · LEGAL SHIELD<span class="px"></span></div>
+  <h1>قانونياً: عبارة «Inspired by» وحدها <em>لا تحميك</em></h1>
+  <p class="sub">الأسلوب الفني غير محمي بحقوق المؤلف — لكن الأسماء والوجوه والأصوات واللقطات محمية. الحل: نبيع «الأسلوب» ولا نستخدم «الهوية».</p>
+  <div class="row legal-row">
+    <div class="card legal-table"><table id="legal-table"></table></div>
+    <div class="col legal-side">
+      <div class="card"><h3 class="c-amber">القواعد الذهبية</h3><ul id="legal-rules"></ul></div>
+      <div class="card legal-cost"><h3>تكلفة التأسيس القانوني</h3><div id="legal-cost"></div></div>
+    </div>
+  </div>
+  <div class="src" id="src-8"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">08/13</span></span></div>
+</section>
+
+<!-- 09 TECH & UNIT COST -->
+<section class="slide s-tech">
+  <div class="kicker">09 · TECH · UNIT ECONOMICS<span class="px"></span></div>
+  <h1>لا نبني نماذج فيديو… <em>نبني الاستوديو فوقها</em></h1>
+  <p class="sub">نستأجر أفضل النماذج عبر API ونوجّه كل لقطة إلى النموذج الأنسب سعراً وجودة؛ التوليد يشكّل 75–85% من تكلفة الفيلم.</p>
+  <div class="row tech-row">
+    <div class="stack" id="stack"></div>
+    <div class="col tech-side">
+      <div class="card unit"><h3>تكلفة الوحدة وهامشها</h3><table id="unit-table"></table></div>
+      <div class="card cheap"><h3 class="c-green">كيف نبنيه بأقل تكلفة</h3><ul id="cheap-list"></ul></div>
+    </div>
+  </div>
+  <div class="src" id="src-9"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">09/13</span></span></div>
+</section>
+
+<!-- 10 TEAM & TIMELINE -->
+<section class="slide s-team">
+  <div class="kicker">10 · TEAM · TIMELINE · FIRST STEPS<span class="px"></span></div>
+  <h1><em>12 شخصاً</em> في السنة الأولى، وأول إطلاق بعد <em>4 أشهر</em></h1>
+  <div class="row team-row">
+    <div class="card team-card"><h3>الفريق (عن بُعد، ومعزَّز بالذكاء الاصطناعي)</h3><table id="team-table"></table><p class="team-note" id="team-note"></p></div>
+    <div class="col team-right">
+      <div class="card gantt-card"><div class="chart-head"><h3>الجدول الزمني</h3><div class="g-legend" id="g-legend"></div></div><div id="gantt"></div></div>
+      <div class="row steps90">
+        <div class="card s90"><h3 class="c-amber">أول 90 يوماً</h3><ol id="first-steps"></ol></div>
+        <div class="card lean"><h3 class="c-green">أقل مسار ممكن</h3><div class="lean-v num">$50–80K</div><p id="lean-text"></p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">10/13</span></span></div>
+</section>
+
+<!-- 11 SUPER MARKETING AGENCY -->
+<section class="slide s-sma">
+  <div class="kicker">11 · PROJECT #2 · SUPER MARKETING AGENCY<span class="px"></span></div>
+  <h1>المشروع الثاني: <em>وكالة تسويق</em> بالذكاء الاصطناعي</h1>
+  <div class="row sma-row">
+    <div class="sma-art"><div class="vox" id="v-agency"></div><div class="lbl s1"><span class="tag green">1 TEAM = 1 CLIENT</span> فريق متكامل لكل شركة عميلة</div><div class="lbl s2"><span class="tag violet">∞ TEAMS</span> عدد غير محدود — ولكل فريق اشتراكه</div></div>
+    <div class="col sma-side">
+      <div class="card"><h3>الفكرة</h3><p>تدخل مبنى شركتك؛ لكل عميل «فريق تسويق» متكامل: مخطِّط استراتيجي، وكاتب محتوى، ومصمم، وصانع فيديو وإعلانات (بمحرّك Super Virtual Studio)، ومسؤول شراء إعلانات، ومدير لحسابات التواصل الاجتماعي، وأخصائي SEO، ومحلل بيانات.</p></div>
+      <div class="sma-kpis" id="sma-kpis"></div>
+      <div class="card verdict"><h3 class="c-amber">التوصية: هل نبدأ بالوكالة أولاً؟ لا — لكن لا نؤخّرها.</h3><p id="sma-verdict"></p></div>
+    </div>
+  </div>
+  <div class="src" id="src-11"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">11/13</span></span></div>
+</section>
+
+<!-- 12 FINANCIAL PLAN -->
+<section class="slide s-fin">
+  <div class="kicker">12 · FINANCIAL PLAN · BASE CASE<span class="px"></span></div>
+  <h1>كم ننفق وكم نجني… <em>كل ربع سنة</em></h1>
+  <div class="fin-kpis" id="fin-kpis"></div>
+  <div class="card chart-card"><div class="chart-head"><h3>الإنفاق مقابل الإيراد لكل ربع (بملايين الدولارات)</h3><div class="legend"><span class="lg rev">الإيراد</span><span class="lg sp">الإنفاق الكلي</span><span class="lg cash">رصيد النقد</span></div></div><div id="q-chart"></div></div>
+  <div class="src" id="src-12"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">12/13</span></span></div>
+</section>
+
+<!-- 13 INVESTMENT CASE -->
+<section class="slide s-inv">
+  <div class="kicker">13 · THE INVESTMENT CASE<span class="px"></span></div>
+  <h1>الخلاصة: التمويل، <em>والتعادل</em>، وأرباح 5 سنوات</h1>
+  <div class="row inv-row">
+    <div class="col inv-left">
+      <div class="big-kpi" id="inv-kpis"></div>
+      <div class="card why"><h3 class="c-amber">لماذا يستحق الاستثمار؟</h3><ul id="why-list"></ul></div>
+      <div class="assume" id="assume"></div>
+    </div>
+    <div class="card pl-card"><div class="chart-head"><h3>الربح/الخسارة التشغيلية لكل سنة (EBITDA)</h3><div class="legend"><span class="lg rev">الإيراد</span><span class="lg sp">الإنفاق</span></div></div><div id="y-chart"></div><div class="pl-total" id="pl-total"></div><p class="pl-scen" id="pl-scen"></p></div>
+  </div>
+  <div class="src" id="src-13"></div>
+  <div class="foot"><span class="logo"><i></i>SUPER VIRTUAL STUDIO</span><span class="fr"><span class="num">13/13</span></span></div>
+</section>
+
+<script src="content.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>
