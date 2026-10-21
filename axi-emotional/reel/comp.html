@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Axi · «بناها متداولون» brand film · 60 s · 1080×1920 · AI footage (Seedance 2.5, 720p) on the 128 BPM grid of Mixkit #543 · onetake contract -->
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<title>Axi Built By Traders</title>
+<style>
+@font-face{font-family:'NSA';src:url('../assets/fonts/noto-sans-arabic-arabic-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0600-06FF,U+0750-077F,U+0870-08FF,U+200C-200F,U+2010-2011,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:'Inter';src:url('../assets/fonts/inter-latin-wght-normal.woff2') format('woff2');font-weight:100 900;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2122,U+2190-2193,U+2212}
+:root{--red:#E4002E;--ink:#242528}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:absolute;inset:0;overflow:hidden;background:#000;color:#fff;font-family:'Inter','NSA',sans-serif;-webkit-font-smoothing:antialiased}
+#cv{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#ui,#top{position:absolute;inset:0}
+.it{position:absolute;left:0;top:0;display:none;transform-origin:50% 50%;box-sizing:border-box}
+.txt{white-space:nowrap;text-align:center}
+.ar{direction:rtl;font-family:'Inter','NSA',sans-serif;font-weight:500;letter-spacing:0}
+.lat{direction:ltr;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:.02em}
+.w{display:inline-block;margin:0 .13em;position:relative}
+.l2{font-weight:400}
+.b{font-weight:700}
+.shadow{text-shadow:0 2px 18px rgba(0,0,0,.65),0 0 3px rgba(0,0,0,.5)}
+#hud{position:absolute;right:10px;bottom:8px;font:20px monospace;color:#ff0;display:none}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div id="ui"></div>
+  <div id="top"></div>
+  <div id="hud"></div>
+</div>
+<script src="motion.js"></script>
+<script src="clips.js"></script>
+<script src="edit.js"></script>
+<script>
+// Every value is a pure function of t. Footage = Seedance clips (frames24/<clip>/NNNN.jpg, 24 fps, 720×1280) drawn
+// 1.5× on the canvas with a slow per-shot camera, a cool desaturated film grade, grain, vignette and soft crossfades.
+// Type is DOM above it, animated per word. The breath (28.125–30.0) dims to near black; the lift lands at 30.0.
+const DUR = 60, FPS = 30;
+const { clamp, lerp, sstep } = OM;
+const CLIPS = window.CLIPS, EDL = window.EDL, ITEMS = window.ITEMS, FLASH = window.FLASH || [], OVL = window.OVL || [];
+window.__meta = { dur: DUR, fps: FPS, w: 1080, h: 1920, cuts: EDL.map(s => s[0]).filter(t => t > 0) };
+
+const cv = document.getElementById('cv'), g = cv.getContext('2d');
+g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high';
+const IMG = new Map();
+const SRC_FPS = 24;
+function frameImg(clip, i) {
+  const n = CLIPS[clip] || 1; i = clamp(Math.round(i), 0, n - 1);
+  const src = `frames24/${clip}/${String(i + 1).padStart(4, '0')}.jpg`;
+  let im = IMG.get(src);
+  if (!im) { im = new Image(); im.src = src; im.__p = im.decode().catch(() => {}); IMG.set(src, im); if (IMG.size > 500) { const k = IMG.keys().next().value; IMG.delete(k); } }
+  return im;
+}
+const GR = [0, 1, 2, 3].map(k => { const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d'); const d = x.createImageData(256, 256); const r = OM.rng(31 + k);
+  for (let i = 0; i < d.data.length; i += 4) { const v = r() * 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } x.putImageData(d, 0, 0); return c; });
+const VIG = (() => { const c = document.createElement('canvas'); c.width = 1080; c.height = 1920; const x = c.getContext('2d');
+  const gr = x.createRadialGradient(540, 960, 420, 540, 960, 1220); gr.addColorStop(0, 'rgba(4,8,14,0)'); gr.addColorStop(1, 'rgba(4,8,14,0.55)'); x.fillStyle = gr; x.fillRect(0, 0, 1080, 1920); return c; })();
+
+const shotAt = t => { for (let i = EDL.length - 1; i >= 0; i--) if (t >= EDL[i][0] && t < EDL[i][1]) return EDL[i]; return null; };
+const srcT = (sh, t) => sh[3] + (t - sh[0]) * sh[4];
+const BASE = 'contrast(1.10) saturate(0.78) brightness(0.96)';
+
+// camera of a shot at t: [zoom, dx, dy, anchorX, anchorY]
+function cam(sh, t) {
+  const [t0, t1, , , , z0, z1, dx0, dy0, dx1, dy1, fx = {}] = sh;
+  const u = clamp((t - t0) / Math.max(1e-6, t1 - t0));
+  const e = fx.ease === 'out' ? 1 - (1 - u) * (1 - u) : fx.ease === 'io' ? u * u * (3 - 2 * u) : u;
+  return [lerp(z0, z1, e), lerp(dx0, dx1, e), lerp(dy0, dy1, e), fx.ax ?? 540, fx.ay ?? 960];
+}
+function blit(im, sh, t, alpha = 1) {      // im = [frameA, frameB, frac]
+  const [z, dx, dy, ax, ay] = cam(sh, t), fx = sh[11] || {};
+  g.save(); g.globalAlpha = alpha;
+  g.filter = fx.filter || BASE;
+  g.translate(ax + dx, ay + dy); g.scale(z * (fx.flip ? -1 : 1), z);
+  g.drawImage(im[0], -ax, -ay, 1080, 1920);
+  if (im[2] > 0.02 && im[1] !== im[0]) { g.globalAlpha = alpha * im[2]; g.drawImage(im[1], -ax, -ay, 1080, 1920); }
+  g.restore(); g.filter = 'none';
+  if (fx.tint) { g.save(); g.globalAlpha = alpha; g.globalCompositeOperation = 'soft-light'; g.fillStyle = fx.tint; g.fillRect(0, 0, 1080, 1920); g.restore(); }
+  if (fx.dim) { g.fillStyle = `rgba(2,3,6,${(alpha * fx.dim(t - sh[0])).toFixed(3)})`; g.fillRect(0, 0, 1080, 1920); }
+}
+
+// ── DOM items (type) ──
+const UI = document.getElementById('ui'), TOP = document.getElementById('top');
+const IT = ITEMS.map((d, i) => {
+  const el = document.createElement('div'); el.className = 'it ' + (d.cls || '');
+  if (d.lines) {
+    el.classList.add('txt'); el.style.fontSize = d.size + 'px'; el.style.lineHeight = d.lh || 1.42;
+    d.words = []; d.lines.forEach((ln, li) => { const row = document.createElement('div'); row.className = (d.lcls && d.lcls[li]) || ''; if (d.lsize && d.lsize[li]) row.style.fontSize = d.lsize[li] + 'px';
+      ln.forEach(([w, c]) => { const s = document.createElement('span'); s.className = 'w ' + (c || ''); s.textContent = w; row.appendChild(s); d.words.push(s); }); el.appendChild(row); });
+  } else el.innerHTML = d.html || '';
+  if (d.w) el.style.width = d.w + 'px'; if (d.h) el.style.height = d.h + 'px';
+  (d.layer === 'top' ? TOP : UI).appendChild(el); d.el = el; return d;
+});
+function measure() { IT.forEach(d => { d.el.style.display = 'block'; const r = d.el.getBoundingClientRect(); d.mw = r.width; d.mh = r.height; d.el.style.display = 'none'; }); }
+
+function wordAnim(d, s, t, tw) {
+  const dt = t - tw;
+  if (dt < 0) { s.style.opacity = 0; s.style.transform = 'none'; s.style.filter = 'none'; return; }
+  const k = OM.spring(dt, 0.9, 9), r = clamp(dt / 0.55);
+  s.style.opacity = (r * r * (3 - 2 * r)).toFixed(3);
+  s.style.transform = `translateY(${((1 - k) * 26).toFixed(1)}px)`;
+  s.style.filter = dt < 0.5 ? `blur(${(10 * (1 - dt / 0.5)).toFixed(1)}px)` : 'none';
+}
+function drawItems(t) {
+  for (const d of IT) {
+    const on = t >= d.t0 && t < d.t1; d.el.style.display = on ? 'block' : 'none'; if (!on) continue;
+    const te = d.te ?? d.t0, k = te <= t ? OM.spring(t - te, d.zeta ?? 0.9, d.omega ?? 10) : 0;
+    const out = d.out ? sstep(d.t1 - d.out, d.t1, t) : 0;
+    const sc = d.enter === 'pop' ? 0.9 + 0.1 * k : 1;
+    d.el.style.left = (d.x - d.mw / 2).toFixed(1) + 'px'; d.el.style.top = (d.y - d.mh / 2).toFixed(1) + 'px';
+    let op = (te <= t ? clamp((t - te) / (d.fadeIn ?? 0.12)) : 0) * (1 - out);
+    if (d.dimAt) op *= lerp(1, d.dimAt[2], sstep(d.dimAt[0], d.dimAt[1], t));
+    d.el.style.opacity = op.toFixed(3);
+    const dy = (d.drift ? -d.drift * (t - d.t0) : 0) - out * 14;
+    d.el.style.transform = `translate(0px,${dy.toFixed(1)}px) scale(${sc.toFixed(4)})`;
+    d.el.style.filter = out > 0 ? `blur(${(6 * out).toFixed(1)}px)` : 'none';
+    if (d.words) d.words.forEach((s, i) => wordAnim(d, s, t, d.wt[Math.min(i, d.wt.length - 1)]));
+    if (d.upd) d.upd(t, d.el, d);
+  }
+}
+
+async function seek(t) {
+  const sh = shotAt(t), fx = sh ? sh[11] || {} : {};
+  const pair = async (s, st) => { const f = Math.max(0, st * SRC_FPS);
+    const a = frameImg(s[2], Math.floor(f)), b = frameImg(s[2], Math.floor(f) + 1); await Promise.all([a.__p, b.__p]); return [a, b, f - Math.floor(f)]; };
+  g.fillStyle = '#000'; g.fillRect(0, 0, 1080, 1920);
+  if (sh && sh[2] !== 'none') {
+    const i = EDL.indexOf(sh), prev = EDL[i - 1];
+    if (fx.xf && prev && prev[2] !== 'none' && t < sh[0] + fx.xf) {
+      const k = sstep(sh[0], sh[0] + fx.xf, t);
+      blit(await pair(prev, srcT(prev, t)), prev, t, 1); blit(await pair(sh, srcT(sh, t)), sh, t, k);
+    } else blit(await pair(sh, srcT(sh, t)), sh, t, 1);
+  }
+  if (!fx.card) {
+    g.drawImage(VIG, 0, 0);
+    g.globalAlpha = 0.07; g.globalCompositeOperation = 'overlay'; const gt = GR[Math.round(t * FPS) % 4];
+    for (let y = 0; y < 1920; y += 256) for (let x = 0; x < 1080; x += 256) g.drawImage(gt, x, y);
+    g.globalAlpha = 1; g.globalCompositeOperation = 'source-over';
+  }
+  for (const o of OVL) if (t >= o.t0 && t < o.t1) o.draw(g, t);
+  for (const [ft, col, st, dur = 0.4] of FLASH) { if (t >= ft && t < ft + dur) { g.fillStyle = col; g.globalAlpha = st * Math.exp(-(t - ft) * (4.4 / dur)); g.fillRect(0, 0, 1080, 1920); g.globalAlpha = 1; } }
+  drawItems(t);
+  document.getElementById('hud').textContent = t.toFixed(3);
+  return true;
+}
+const LEAD = 1 / 60;
+window.__seek = async t => { await seek(t + LEAD); return true; };
+window.__ready = Promise.all([document.fonts.ready, ...[...document.images].map(i => i.decode().catch(() => {}))]).then(() => { measure(); return seek(LEAD); });
+window.__motion = (t0, t1) => { t0 += LEAD; t1 += LEAD;
+  const a = shotAt(t0), b = shotAt(t1); if (a !== b) return 120;
+  let ui = 0; for (const d of IT) { const te = d.te ?? d.t0; if (t1 >= te && t0 < te + 0.6) ui = Math.max(ui, 40); if (d.words) for (const w of d.wt) if (t1 >= w && t0 < w + 0.6) ui = Math.max(ui, 40); }
+  if (!a) return 24 + ui;
+  const p = cam(a, t0), q = cam(a, t1); return Math.max(ui, Math.hypot(p[1] - q[1], p[2] - q[2]) + Math.abs(p[0] - q[0]) * 1100) + 24;
+};
+window.__events = () => window.EVENTS || [];
+const q = new URLSearchParams(location.search);
+if (q.has('hud')) document.getElementById('hud').style.display = 'block';
+if (q.has('t')) __ready.then(() => seek(parseFloat(q.get('t'))));
+</script>
+</body>
+</html>

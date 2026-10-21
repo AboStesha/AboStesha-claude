@@ -29,7 +29,7 @@
   "ar": "تلتزم بخطتك / فتؤتي ثمارها",
   "en": "You stick to your plan / and it bears fruit",
   "plate": "Rojin/ro_R1_dusk_rock.png",
-  "media": "upload",
+  "media": "media:510311c4-72b8-486e-b8e5-cad9588f23f9",
   "motion": "She sits on the rock, opens the small notebook on her knee, reads her plan, then looks at the red phone and nods slightly with quiet satisfaction. Wind moves her hair, clouds drift slowly. Slow gentle push-in."
  },
  {
@@ -62,7 +62,7 @@
   "ar": "صفقة مفتوحة / ولا تستطيع النوم",
   "en": "A trade still open / and you can't sleep",
   "plate": "Sarmad/sa_170008.png",
-  "media": "upload",
+  "media": "media:dc9c9b26-8d2c-4e26-a92d-1acc09379429",
   "motion": "Late at night by the window, the red phone lights his face. He looks at the phone, then out at the city, then back at the phone, restless and unable to rest. City lights twinkle. Very slow push-in."
  },
  {
@@ -95,7 +95,7 @@
   "ar": "خسارة بعد خسارة / وتشك في نفسك",
   "en": "Loss after loss / and you start doubting yourself",
   "plate": "Saeed/se_150800.png",
-  "media": "upload",
+  "media": "media:60c63427-3525-4e58-83e0-f869f9ea111d",
   "motion": "He sits on the rock in the drifting mist looking at the red phone; his shoulders drop, he slowly lowers the phone onto his knee and looks away into the fog. Locked camera with a very slow push."
  },
  {
@@ -106,7 +106,7 @@
   "ar": "قررت ألا تدخل / وكنت على حق",
   "en": "You decided not to enter / and you were right",
   "plate": "Rojin/ro_K3_amedi_terrace_bluehour_clean.png",
-  "media": "upload",
+  "media": "media:8f094522-cdce-4b29-b7ca-a7270965f901",
   "motion": "Blue hour: she stands at the glass balustrade looking at the clifftop town, glances at the red phone, then calmly lowers it and looks back at the view with quiet confidence. Town lights twinkle, clouds drift. Slow aerial drift backward."
  },
  {
@@ -117,7 +117,7 @@
   "ar": "تستيقظ / والصفقة وصلت إلى هدفها",
   "en": "You wake up / and the trade has reached its target",
   "plate": "Sarmad/sa_170020.png",
-  "media": "upload",
+  "media": "media:9911664c-a7e2-4dc1-8a0a-ef74a62350e2",
   "motion": "Early morning in a cable car at sunrise: he glances down at the red phone and a slow warm smile spreads across his face; the cable car glides gently and soft sunlight moves across his face."
  },
  {
@@ -128,7 +128,7 @@
   "ar": "خبر مفاجئ / يقلب السوق ضدك",
   "en": "Sudden news / turns the market against you",
   "plate": "Saeed/se_155202.png",
-  "media": "upload",
+  "media": "media:e83cdad2-b005-452b-a366-0c0a7cada2b4",
   "motion": "In the fog between tall glass towers he walks toward camera reading the red phone, then suddenly stops dead and slowly lowers it, staring ahead. Fog drifts. Locked long lens."
  },
  {
@@ -139,7 +139,7 @@
   "ar": "تشعر أن شموعك / تحرك أحداث العالم",
   "en": "You feel your candles / are moving the world's events",
   "plate": "Rojin/ro_C8_rooftop_wide_dawn_clean.png",
-  "media": "upload",
+  "media": "media:ecef1d6b-d089-416a-8167-da4a843cb324",
   "motion": "Dawn on the rooftop terrace: she stands at the glass railing holding the red phone while the candlestick charts on the tower facades glow and climb; first light spreads over the city and the river. Slow crane up."
  },
  {
@@ -149,9 +149,9 @@
   "tone": "ending",
   "ar": "في آكسي / نحن متداولون مثلك",
   "en": "At Axi / we are traders, like you",
-  "plate": "Noor/no_N3_closeup_sunrise.png",
-  "media": "upload",
-  "motion": "Sunrise close-up: she looks down at the red phone, then lifts her eyes straight into the lens with a calm, confident small smile. Mist drifts behind her. Very slow push-in."
+  "plate": "Noor/no_citadel_walk.png",
+  "media": "media:b1dfe29e-d514-4e88-8560-94a90c04f49e",
+  "motion": "She walks steadily and confidently across the wet stone plaza, red tablet in hand, eyes ahead; mist drifts slowly around the ancient fortress walls on the hill behind her and the heavy clouds move. Slow tracking shot alongside her."
  },
  {
   "n": 15,
@@ -161,7 +161,7 @@
   "ar": "لذلك نفهم ما تمر به / في الأيام الصعبة والجيدة",
   "en": "That is why we understand what you go through / on the hard days and the good ones",
   "plate": "Rojin/ro_R3_valley_walk.png",
-  "media": "upload",
+  "media": "media:1394f3dd-fd3a-440f-be74-36de2b8e43e1",
   "motion": "Sunrise in a vast mountain valley: the tiny figure walks steadily along the dirt track; mist drifts across the valley floor and light breaks through the clouds. Very slow crane up revealing more sky."
  },
  {
@@ -171,8 +171,8 @@
   "tone": "ending",
   "ar": "بناها متداولون / من أجل المتداولين · منذ 2007",
   "en": "Built by traders / for traders · Since 2007 (+ Latin brand line; end card from 55.3125)",
-  "plate": "Noor/no_N2_river_sunrise.png",
-  "media": "upload",
-  "motion": "Full sunrise on the riverbank: she stands looking over the water as the sun clears the mist and light spreads across the river. Very slow crane up."
+  "plate": "Noor/no_ziggurat_dust.png",
+  "media": "media:cf14bb2d-6adc-4d5b-8054-fc3a67b31d8e",
+  "motion": "She stands still before the ancient stepped ziggurat holding the red tablet; dust clouds roll slowly behind it, wind moves her hair, she lifts her chin and looks into the distance with calm pride. Very slow push-in."
  }
 ]
