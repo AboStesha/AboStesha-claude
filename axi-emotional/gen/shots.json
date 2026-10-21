@@ -1,0 +1,178 @@
+[
+ {
+  "n": 1,
+  "t_in": 0,
+  "t_out": 3.75,
+  "tone": "good",
+  "ar": "أول صفقة ناجحة / لا تنساها أبدا",
+  "en": "Your first winning trade / you never forget it",
+  "plate": "Rojin/ro_C4_glass_closeup_night.png",
+  "media": "media:d30ecccf-1a42-4520-b0e4-a5accea71cfa",
+  "motion": "Slow push-in through the glass. The woman looks down at the red tablet; the glowing candlestick reflection drifts slowly across the glass over her face; she breathes out and a small proud smile appears. City lights shimmer as soft bokeh."
+ },
+ {
+  "n": 2,
+  "t_in": 3.75,
+  "t_out": 6.5625,
+  "tone": "good",
+  "ar": "يرتد السعر / من الخط الذي رسمته",
+  "en": "The price bounces / off the line you drew",
+  "plate": "Sarmad/sa_165949.png",
+  "media": "media:1ce18249-d255-4da6-bdfc-67c8cd6d6f09",
+  "motion": "Very slow push-in on a long lens. The man looks at his red phone, then lifts his eyes calmly toward the chart-lit towers across the river; a faint knowing look; the reflections ripple gently on the water."
+ },
+ {
+  "n": 3,
+  "t_in": 6.5625,
+  "t_out": 9.375,
+  "tone": "good",
+  "ar": "تلتزم بخطتك / فتؤتي ثمارها",
+  "en": "You stick to your plan / and it bears fruit",
+  "plate": "Rojin/ro_R1_dusk_rock.png",
+  "media": "upload",
+  "motion": "She sits on the rock, opens the small notebook on her knee, reads her plan, then looks at the red phone and nods slightly with quiet satisfaction. Wind moves her hair, clouds drift slowly. Slow gentle push-in."
+ },
+ {
+  "n": 4,
+  "t_in": 9.375,
+  "t_out": 12.1875,
+  "tone": "hard",
+  "ar": "تشتري متأخرا / عند أعلى سعر",
+  "en": "You buy late / at the highest price",
+  "plate": "Aesha/ae_plaza_fountains_night.png",
+  "media": "media:69b86d0c-aab9-439b-9f1d-a1997a882622",
+  "motion": "She walks slowly toward camera across the wet plaza, taps her red phone once, then looks up at the giant chart screen above and stops, a flicker of regret on her face. Fountains move, reflections shimmer on the wet stone. Slow tracking back."
+ },
+ {
+  "n": 5,
+  "t_in": 12.1875,
+  "t_out": 15.0,
+  "tone": "good",
+  "ar": "تدخل رغم الخوف / وتنجح الصفقة",
+  "en": "You enter despite the fear / and the trade works",
+  "plate": "Noor/no_glass_elevator_night.png",
+  "media": "media:84b7a889-1e15-4923-b6f1-ace55fc9e7a3",
+  "motion": "The glass elevator rises smoothly up the tower at night. She holds the red tablet against her chest, takes a breath and looks out over the city with calm determination as the city lights slide down past the glass. Steady upward camera move."
+ },
+ {
+  "n": 6,
+  "t_in": 15.0,
+  "t_out": 17.8125,
+  "tone": "hard",
+  "ar": "صفقة مفتوحة / ولا تستطيع النوم",
+  "en": "A trade still open / and you can't sleep",
+  "plate": "Sarmad/sa_170008.png",
+  "media": "upload",
+  "motion": "Late at night by the window, the red phone lights his face. He looks at the phone, then out at the city, then back at the phone, restless and unable to rest. City lights twinkle. Very slow push-in."
+ },
+ {
+  "n": 7,
+  "t_in": 17.8125,
+  "t_out": 21.5625,
+  "tone": "hard",
+  "ar": "تراقب الخسارة تكبر / ولا تغلق الصفقة",
+  "en": "You watch the loss grow / and you don't close the trade",
+  "plate": "Rojin/ro_C2_trading_floor_night.png",
+  "media": "media:08c1cfc9-1250-4d42-9011-a7144d2de985",
+  "motion": "Empty trading floor at night. She stands still looking up at the wall of screens while the candlestick charts on them slowly flicker and move. She does not move, holding the red tablet. Slow push-in down the aisle between the desks."
+ },
+ {
+  "n": 8,
+  "t_in": 21.5625,
+  "t_out": 25.3125,
+  "tone": "good",
+  "ar": "تضغط زر الشراء / ويتحرك السعر معك فورا",
+  "en": "You press buy / and the price moves your way at once",
+  "plate": "_chart_style_refs/ref_rooftop_pool_chart_reflection.png",
+  "media": "media:79a59b13-9e67-42c2-931d-bcad50b7b0f2",
+  "motion": "Night rooftop: she stands at the glass railing and taps the red phone once; the candlestick chart reflected in the black pool starts rising smoothly; she stays calm and still. Slow sideways orbit, city lights far below."
+ },
+ {
+  "n": 9,
+  "t_in": 25.3125,
+  "t_out": 30.0,
+  "tone": "hard",
+  "ar": "خسارة بعد خسارة / وتشك في نفسك",
+  "en": "Loss after loss / and you start doubting yourself",
+  "plate": "Saeed/se_150800.png",
+  "media": "upload",
+  "motion": "He sits on the rock in the drifting mist looking at the red phone; his shoulders drop, he slowly lowers the phone onto his knee and looks away into the fog. Locked camera with a very slow push."
+ },
+ {
+  "n": 10,
+  "t_in": 30.0,
+  "t_out": 33.75,
+  "tone": "good",
+  "ar": "قررت ألا تدخل / وكنت على حق",
+  "en": "You decided not to enter / and you were right",
+  "plate": "Rojin/ro_K3_amedi_terrace_bluehour_clean.png",
+  "media": "upload",
+  "motion": "Blue hour: she stands at the glass balustrade looking at the clifftop town, glances at the red phone, then calmly lowers it and looks back at the view with quiet confidence. Town lights twinkle, clouds drift. Slow aerial drift backward."
+ },
+ {
+  "n": 11,
+  "t_in": 33.75,
+  "t_out": 37.5,
+  "tone": "good",
+  "ar": "تستيقظ / والصفقة وصلت إلى هدفها",
+  "en": "You wake up / and the trade has reached its target",
+  "plate": "Sarmad/sa_170020.png",
+  "media": "upload",
+  "motion": "Early morning in a cable car at sunrise: he glances down at the red phone and a slow warm smile spreads across his face; the cable car glides gently and soft sunlight moves across his face."
+ },
+ {
+  "n": 12,
+  "t_in": 37.5,
+  "t_out": 40.3125,
+  "tone": "hard",
+  "ar": "خبر مفاجئ / يقلب السوق ضدك",
+  "en": "Sudden news / turns the market against you",
+  "plate": "Saeed/se_155202.png",
+  "media": "upload",
+  "motion": "In the fog between tall glass towers he walks toward camera reading the red phone, then suddenly stops dead and slowly lowers it, staring ahead. Fog drifts. Locked long lens."
+ },
+ {
+  "n": 13,
+  "t_in": 40.3125,
+  "t_out": 44.0625,
+  "tone": "good",
+  "ar": "تشعر أن شموعك / تحرك أحداث العالم",
+  "en": "You feel your candles / are moving the world's events",
+  "plate": "Rojin/ro_C8_rooftop_wide_dawn_clean.png",
+  "media": "upload",
+  "motion": "Dawn on the rooftop terrace: she stands at the glass railing holding the red phone while the candlestick charts on the tower facades glow and climb; first light spreads over the city and the river. Slow crane up."
+ },
+ {
+  "n": 14,
+  "t_in": 44.0625,
+  "t_out": 47.8125,
+  "tone": "ending",
+  "ar": "في آكسي / نحن متداولون مثلك",
+  "en": "At Axi / we are traders, like you",
+  "plate": "Noor/no_N3_closeup_sunrise.png",
+  "media": "upload",
+  "motion": "Sunrise close-up: she looks down at the red phone, then lifts her eyes straight into the lens with a calm, confident small smile. Mist drifts behind her. Very slow push-in."
+ },
+ {
+  "n": 15,
+  "t_in": 47.8125,
+  "t_out": 52.5,
+  "tone": "ending",
+  "ar": "لذلك نفهم ما تمر به / في الأيام الصعبة والجيدة",
+  "en": "That is why we understand what you go through / on the hard days and the good ones",
+  "plate": "Rojin/ro_R3_valley_walk.png",
+  "media": "upload",
+  "motion": "Sunrise in a vast mountain valley: the tiny figure walks steadily along the dirt track; mist drifts across the valley floor and light breaks through the clouds. Very slow crane up revealing more sky."
+ },
+ {
+  "n": 16,
+  "t_in": 52.5,
+  "t_out": 60.0,
+  "tone": "ending",
+  "ar": "بناها متداولون / من أجل المتداولين · منذ 2007",
+  "en": "Built by traders / for traders · Since 2007 (+ Latin brand line; end card from 55.3125)",
+  "plate": "Noor/no_N2_river_sunrise.png",
+  "media": "upload",
+  "motion": "Full sunrise on the riverbank: she stands looking over the water as the sun clears the mist and light spreads across the river. Very slow crane up."
+ }
+]
