@@ -1,0 +1,16 @@
+[
+ {"t": 0.00, "cat": "longwhoosh", "gain_db": -14, "out": true, "note": "title card: low pad swell under the music intro"},
+ {"t": 0.25, "cat": "ui_blip", "gain_db": -14, "out": true, "note": "title card: the flag unfurls (0.25-0.47)"},
+ {"t": 1.32, "cat": "whoosh", "gain_db": -14, "out": true, "note": "title card: the SELECT tag wipe (no shimmer cue: no sheen on the logo)"},
+ {"t": 3.05, "cat": "whoosh", "gain_db": -14, "note": "A: the HOME -> WIDE pull (output 3.68; his first 0.2 s, output 3.06-3.26, stays free)"},
+ {"t": 5.56, "cat": "hit", "gain_db": -10, "note": "A: logo sting in the pause 5.53-5.68; also carries the floor ripple"},
+ {"t": 7.46, "cat": "dataswish", "gain_db": -16, "note": "A: the four DIM condition pips land («لتفاصيل»)"},
+ {"t": 76.75, "cat": "flash", "gain_db": -10, "note": "P: glassy chime in the pause 76.68-77.33, after drop 2's boom (no boom added)"},
+ {"t": 77.64, "cat": "whoosh", "gain_db": -12, "note": "Q: the headline reveal"},
+ {"t": 78.99, "cat": "riser", "gain_db": -14, "note": "Q: the red 40 % sweep 78.99-79.44, ending on «40»; nothing transient on the word"},
+ {"t": 81.30, "cat": "dataswish", "gain_db": -14, "note": "Q: the profit flow into your red arc (81.30-81.83)"},
+ {"t": 82.13, "cat": "whoosh", "gain_db": -12, "note": "Q: the push WIDE -> HOME in the pause 82.05-82.37"},
+ {"t": 83.00, "cat": "whoosh", "gain_db": -18, "note": "Q: logo air as the official logo builds in the card («Axi»)"},
+ {"t": 84.09, "cat": "whoosh", "gain_db": -10, "note": "end wipe chamfer swish, after the last syllable (84.02), pause 84.01-86.03"},
+ {"t": 86.21, "cat": "ui_blip", "gain_db": -14, "out": true, "note": "end card: the pill (the music's ending hit at 85.36 carries the logo build)"}
+]

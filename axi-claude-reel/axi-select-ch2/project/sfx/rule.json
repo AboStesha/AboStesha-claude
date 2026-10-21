@@ -1,0 +1,16 @@
+[
+ {"t": 8.90, "cat": "ui_blip", "gain_db": -12, "note": "B: the red NOTE TAG snaps in (pause 8.70-8.98)"},
+ {"t": 10.09, "cat": "dataswish", "gain_db": -8, "note": "C: hard cut into B-roll 1 (only the drops get booms)"},
+ {"t": 12.00, "cat": "whoosh", "gain_db": -12, "note": "C: the red money-out burst leaves the pill"},
+ {"t": 14.22, "cat": "ui_blip", "gain_db": -14, "note": "C: the playhead starts travelling (pause 13.98-14.29)"},
+ {"t": 15.66, "cat": "whoosh", "gain_db": -12, "note": "C: the red shutter closes the withdrawal window"},
+ {"t": 15.96, "cat": "hit", "gain_db": -12, "note": "C: the padlock shackle snaps, in the 10 ms gap before «تداول»; under the pause map's 80 ms, so audio_build plays it 12 dB lower, under the shutter whoosh"},
+ {"t": 22.30, "cat": "whoosh", "gain_db": -12, "note": "E: the qualify card enters"},
+ {"t": 23.80, "cat": "scan", "gain_db": -14, "note": "E: the 41 gauge ticks power on"},
+ {"t": 26.80, "cat": "scan", "gain_db": -14, "note": "E: the counter rises 0 -> 60 (nothing on «ستّين»)"},
+ {"t": 27.99, "cat": "ui_blip", "gain_db": -12, "note": "E: settle (pause 27.98-28.12)"},
+ {"t": 28.46, "cat": "whoosh", "gain_db": -14, "note": "F: the right condition card enters"},
+ {"t": 28.96, "cat": "ui_blip", "gain_db": -12, "note": "F: the right card's check tab (pause 28.92-29.15)"},
+ {"t": 31.00, "cat": "scan", "gain_db": -16, "note": "F: the $1,000 counter"},
+ {"t": 31.98, "cat": "ui_blip", "gain_db": -12, "note": "F: the left card's check tab (pause 31.95-32.40); the drop-1 boom on the cut is already in the mix"}
+]

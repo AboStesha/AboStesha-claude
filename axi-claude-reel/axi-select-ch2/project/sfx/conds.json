@@ -1,0 +1,15 @@
+[
+ {"t": 51.08, "cat": "whoosh", "gain_db": -14, "note": "J: the condition card + pip row enter (non-transient, over «المرحلة»)"},
+ {"t": 51.60, "cat": "ui_blip", "gain_db": -14, "note": "J: pip 1 (tickets) pulse, pause 51.46-51.66 before «يجب»"},
+ {"t": 51.99, "cat": "scan", "gain_db": -16, "note": "J: the 40-ticket grid fills with the counter (51.99-52.68); one bed, no per-ticket ticks; nothing on the '+' (no pause near 54.01)"},
+ {"t": 55.00, "cat": "whoosh", "gain_db": -14, "note": "K: «عائد» rises + the chart corners fly out (non-transient, just ahead of «عائد» 55.05)"},
+ {"t": 55.50, "cat": "ui_blip", "gain_db": -14, "note": "K: the candles step up, pause 55.40-55.66; nothing on «سبعة»"},
+ {"t": 57.01, "cat": "hit", "gain_db": -12, "note": "L: hard cut to WIDE, pause 56.94-57.08 (no music drop here, so no boom)"},
+ {"t": 57.42, "cat": "poweron", "gain_db": -14, "note": "L: the dashed RED limit ring draws on the floor (57.42-58.12)"},
+ {"t": 58.20, "cat": "scan", "gain_db": -16, "note": "L: the equity line falls toward the limit (58.20-58.57)"},
+ {"t": 59.86, "cat": "hit", "gain_db": -10, "note": "L: the third limit-line pulse (59.88), pause 59.84-60.08; nothing on «عشرة»"},
+ {"t": 61.92, "cat": "whoosh", "gain_db": -10, "note": "M: the condition card + pip row enter"},
+ {"t": 62.70, "cat": "scan", "gain_db": -16, "note": "M: the day ticks light with the 0 -> 60 counter (62.70-63.31)"},
+ {"t": 65.95, "cat": "hit", "gain_db": -12, "note": "M: the FIRST-TRADE chip lands on the track, pause 65.92-66.22"},
+ {"t": 67.40, "cat": "ui_blip", "gain_db": -12, "note": "M: resolve after the RED check tab, pause 67.37-67.66"}
+]

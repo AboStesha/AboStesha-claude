@@ -1,0 +1,91 @@
+{
+ "out": "/home/user/rr/axi-select-ch2/audio/vo/vo2_patched.wav",
+ "base": "/home/user/rr/axi-select-ch2/audio/vo/vo2_clean.wav",
+ "stem_gain_db": 3.0,
+ "spans": [
+  {
+   "name": "S1 «أضعاف هذا المبلغ»",
+   "vo_window": [
+    35.085,
+    36.31
+   ],
+   "fade_ms": 20.0,
+   "band_hz": [
+    3000,
+    24000
+   ],
+   "source": "big_beta5e; «هذا» 0.5 big_beta5e + 0.5 MDX23C>MBR",
+   "samples": [
+    1683600,
+    1743361
+   ],
+   "times": [
+    35.075,
+    36.32002083333333
+   ]
+  },
+  {
+   "name": "S2 «ألف دولار»",
+   "vo_window": [
+    37.99,
+    38.555
+   ],
+   "fade_ms": 20.0,
+   "band_hz": [
+    3500,
+    24000
+   ],
+   "source": "0.75 big_beta5e + 0.25 MDX23C>MBR",
+   "samples": [
+    1823040,
+    1851121
+   ],
+   "times": [
+    37.98,
+    38.565020833333335
+   ]
+  },
+  {
+   "name": "S3 «ستقوم»",
+   "vo_window": [
+    38.735,
+    39.205
+   ],
+   "fade_ms": 20.0,
+   "band_hz": [
+    3500,
+    24000
+   ],
+   "source": "MDX23C>MBR (/s/, to 38.93) then big_beta5e",
+   "samples": [
+    1858800,
+    1882321
+   ],
+   "times": [
+    38.725,
+    39.215020833333334
+   ]
+  },
+  {
+   "name": "S4 «عشرة آلاف»",
+   "vo_window": [
+    40.62,
+    41.465
+   ],
+   "fade_ms": 20.0,
+   "band_hz": [
+    3500,
+    24000
+   ],
+   "source": "0.85 big_beta5e + 0.15 MDX23C>MBR, then MDX23C>MBR for the final /f/ from 41.33",
+   "samples": [
+    1949280,
+    1990801
+   ],
+   "times": [
+    40.61,
+    41.47502083333333
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1291 @@
+{
+ "concept": "AXI SELECT 2/6 · «(2) مرحلة Incubation»: THE RULES OF THE INCUBATOR. Video 2 is the same brand world as video 1 v2: pure black, Axi red #E4002E as the only accent, white and greys, metallic numerals, TAG plates and chamfered cards, the ◢ texture, ▲▲▲, the red flag and the official logo PNGs. It uses the same studio (the L4 virtual camera and floor light) and the same kit.\n\nThe video tells one chain:\n- you are now in stage 2;\n- one rule comes before anything: withdraw only before your first trade, in every stage;\n- how you got in: Edge Score 60+ and $1,000+;\n- what Axi gives: x10, so $1,000 → $10,000 and $2,000 → $20,000 (the Incubation cap);\n- what you must do: four conditions that build a checklist (40 trades, +7%, never −10%, 60 days from the first trade);\n- where it leads: the flag climbs from stage 2 to Acceleration, and next comes video (3);\n- the reward: «مبروك!» and a 40% profit share in the Axi Select account.\n\nSymbols\n- Fixed across the series: CANDLES = your trading account, VAULT = Axi's allocation account, DOME = Incubation (stage 2), CHEV = Acceleration (stage 3), the red flag marker = you.\n- New in video 2:\n  - TICKETS (40 trades), TARGET (+7%), SHIELD (the limit, from video 1), CALENDAR (60 days);\n  - the RULE MARK: an open white segment, then a RED first-trade tick, then the rest dimmed (open window → first trade → locked). It is B-roll 1's withdrawal timeline in miniature, and D stamps it on every stage's landing;\n  - the FIRST-TRADE chip. It is the moment the withdrawal window closes and the moment the 60-day clock starts, so it appears in B-roll 1 and again in the 60-day beat, tying the rule to the condition;\n  - the four CONDITION PIPS: seeded in A, lit one per condition shot (J, L, M), ticked DONE as the recap in M, and carried, all DONE, into N;\n  - the DONUT (the 40% share), with your 40% on the side facing the profit flow.\n- The ▲▲▲ brand mark only ever sits beside a rising numeral. The CHEV stage symbol is used only for Acceleration.\n\nTwo full-screen B-rolls with hard cuts (client note 1)\n- B-roll 1, «نافذة السحب» (output 0:10.72-0:17.72): a stage timeline whose withdrawal window is open until the first-trade chip lands, then locks with a padlock.\n- B-roll 2, «x10» (output 0:37.04-0:48.04): a multiplier gate turns your account's $1,000 block into ten blocks ($10,000), then $2,000 into twenty. The total is left for the next shot, where Rabee says it.\n\nIn the studio\n- the official lockup in the void (A);\n- the six-stage staircase twice: in D every landing gets the rule mark as a red comet climbs it, and in N the set is already standing and the flag climbs from Incubation to Acceleration;\n- the page-8 'x10' hero over his head (G), cut in on DROP 1;\n- the dashed red limit ring on the floor (L), with an equity line that dips toward −10% and recovers;\n- a WIDE → HOME push that ends on the official logo inside the Axi Select account card (Q).\n\nMusic (built: W2 work/audio_build.py, audio/music_plan.json)\n- DROP 1 at output 33.00 = VO 32.37: the smash cut F → G into the funding section, in the pause before «ستقوم».\n- A quiet break bar under «في الفيديو القادم» (output 74.45-76.64 = VO 73.82-76.01).\n- DROP 2 at output 76.64, its boom at output 76.69 = VO 76.06: the cut O → P into «مبروك!».\n- The track's own ending hit at output 85.36: the end card's logo build.\n- The picture follows the mix; the mix is not rebuilt.\n\nRules carried over from video 1's QA\n- Nothing covers him, the subtitle band or the bug zone.\n- Exits end at least 2 frames before every cut or camera move.\n- One flag per scene.\n- Arabic clips reach baseline + 0.6 em.\n- Hits land on measured onsets (see word_onsets: whisper ran 0.1-0.7 s early).\n- SFX sit in measured pauses; nothing transient lands on a word that carries meaning (the cue lists use the audio_build categories).\n- Red floor marks are crisp decals, and soft pools are white.\n- One fading layer per group.\n- No sheen on the white logos or on white type.\n\nTiming (the soundtrack is already built for this; the draft's P = 1.06 is superseded)\n- output = VO + P with P = 0.63, 25 fps, END 91.00 s = 2275 frames.\n- Title card output 0.00-3.00 (frames 0-75) = up to VO 2.37. Speech starts at VO 2.43 (output 3.06), so HOME holds Rabee 0.06 s before «مرحباً».\n- The last word «Select» ends at VO 84.01-84.02. End wipe VO 84.09-84.61 (output 84.72-85.24, frames 2118-2131); end card output 85.24-91.00 (frames 2131-2275).\n- With P = 0.63 the frame grid in VO is 0.01 + 0.04n. Every cut sits on it, inside a measured pause (W2 work/vo_pauses_vo.json). The one exception is O → P at 76.05, on the last −40 dB frame of «القادم», so that the drop's boom lands on P's first frame.",
+ "design_system": "SAME AS VIDEO 1 v2: palette, type, the measured brand marks (1)-(17), layout and keep-outs, camera, motion and performance, exactly as in SC/sel/mg_final_design_system.txt. Where the delivered video 1 code differs from that text, the CODE wins:\n- the pure #000 MG pages;\n- the staircase geometry in W1 comp/src/32_stages.js (st_LX [1540,1300,1060,820,580,340], st_LY [742,642,542,442,342,242], cards 230x88, ground to x 1780);\n- the end-card timing structure in 30_open.js op_end;\n- 90_main's end wipe (a #000 panel with the '/' edge over V/Q held at full opacity).\n\nONLY WHAT DIFFERS IN VIDEO 2\n\n1. Black (client note 5)\n   - Every MG page is pure #000000: title card, both B-rolls, the end wipe and the end card.\n   - No INK #0B0C0E base and no radial lift: the mg_final.json text for the title, B-roll and end card is superseded.\n   - Light comes only from designed elements: the ◢ texture, bokeh, haze, logo and type.\n\n2. Floor\n   - Soft pools are WHITE only: the base pool .18, a lift to .26 on hero landings, and an inner pool of .12 inside rings.\n   - Red on the floor is only a crisp decal: pad rim, ripple, stage pulse, limit ring (ringq), ◢ field.\n   - Video 1's red pool under the stool in D is not repeated.\n\n3. Timeline\n   - output = VO + 0.63 (P), the value the built soundtrack uses. Title card output 0.00-3.00.\n   - End wipe VO 84.09-84.61; end card output 85.24-91.00.\n   - Total 91.00 s (2275 frames).\n   - Cuts at VO 0.01 + 0.04n (exact frames).\n\n4. Bug\n   - On over VO 8.81-77.21 on presenter shots: switched on at the A → B cut and off at the P → Q cut, never mid-shot.\n   - Off in the title card, in A (the lockup is in the void), in both B-rolls (VO 10.09-17.09 and 36.41-47.41), in all of Q (the official logo builds in the account card there, and Q mirrors A) and on the end card.\n   - 90_main must read the window from k_t (kit_additions K11).\n\n5. Arabic clip rule\n   - Every per-word reveal clip extends from baseline − 1.25 em to baseline + 0.70 em.\n   - The kit's headline() already does this. Video 1's op_words clip stops at + 0.45 em and must be widened wherever it is copied.\n\n6. Condition pips (new system; kit pips(), K7)\n   - Four TAG plates read right to left: 1 TICKETS (40 trades), 2 TARGET (+7%), 3 SHIELD (never −10%), 4 CALENDAR (60 days).\n   - Minimum size 72x48 (30 px symbols); A uses 112x72.\n   - States:\n     - DIM: no fill, outline white .25, symbol DIM;\n     - LIT: PANEL, RED rim 1.5 px, symbol white + red;\n     - DONE: fill .7, outline white .25, symbol white .8 (its red element too), the top-left cut RED with a white tick.\n   - Sequence: A shows all four DIM. J: 1 LIT, turning DONE on '40+' (54.01). K shows no pips (it is a 2.4 s close-up). L: 1-2 DONE + 3 LIT. M: 1-3 DONE + 4 LIT; 4 turns DONE on «تحقيق» (66.43) and the four pulse right to left: that is the recap. N: all four DONE in the readout from the cut, one pulse on «مؤهّلاً» (68.07).\n\n7. Counters\n   - Every counter uses the kit's metalCount() in fixed final slots. It lands on the measured onset of the spoken number (word_onsets): 60 27.48, $1,000 31.71, $1,000 38.01, $10,000 40.75, $2,000 43.32, $20,000 49.30, 40 52.68, 60 63.31, 40% 79.44. ('7%' and '−10%' land as static numerals on 56.23 and 59.20.)\n   - Numbers he does not say are static (the '$100,000' Acceleration cap), or not shown at all (the 60% Axi remainder, and the B-roll-2 total before he says it).\n\n8. ▲▲▲ placements in video 2: beside 'x10' (G), '$10,000' (B-roll 2), '$20,000' (I), '7%' (K) and '40%' (Q). Never beside a threshold ('60+' in E, '40+' in J) or a limit ('−10%' in L). The full stagger (3 × 0.08 s + 0.3 s = 0.54 s) must finish before the exit.\n\n9. Multiplier numerals\n   - 'x10' uses a Latin x in metal() (natural advance).\n   - In equations the multiplication sign is a RED '×' (U+00D7) in Inter 300.\n\n10. Footnote under '−10%' (L): «* قد تختلف النسبة حسب المرحلة» / «وفق شروط البرنامج», A300 34 grey α .85, on screen ≥ 2.2 s. axi.com lists −7% max loss for Incubation, and Rabee says 10%: keep his words plus this footnote.\n\n11. Measured widths\n   - Every width in this spec is what the renderer draws: Chromium 153 canvas measureText with the project fonts at the stated weight and size (W2 comp/fonts alex_ar.woff2, alex_lat.woff2, inter.ttf, loaded with FontFace weight '100 900' exactly as engine.js loadFonts does; tool /home/user/rr/ep2-director/measure.js). Metal widths follow metalLayout.\n   - inter.ttf is variable with an opsz axis (14-32), and Chromium canvas applies optical sizing automatically: opsz = font size, clamped to 32. Text-shaping tools at the default opsz 14 (HarfBuzz, FreeType, a DOM span with font-optical-sizing:none) measure Inter 6-10 % wider than the render: 'Incubation' I300 110 is 488 in the canvas and 537 at opsz 14; 'Acceleration' I400 26 is 146 / 155; 'Edge Score' I300 40 is 198 / 213. Never re-anchor from such a tool. Builders fit-check with measure() and metalWidth() at init.\n\n12. Money strings in metal() and metalCount()\n   - Always pass them without a space: '$1,000', '$2,000', '$10,000', '$20,000', '$100,000' (fmtMoney style). metalLayout already adds 0.2 em after a full-size '$'; an ASCII space would add a 0.28 em cell on top.\n\n13. The RULE MARK (D, and the readout glyph)\n   - On a landing read from its right end (where you step on): a 5 px white α 1 segment (open window), a RED 3x22 tick (first trade), then the rest of the landing dimmed to white .25 (locked).\n   - In text it is a glyph: a 24x5 white bar with a 3x14 RED tick at its left end.\n\n14. SFX are written as 'category gain_db @ VO time (note)' with the audio_build categories (boom, buzz, corrupt, crack, dataswish, flash, glitch, hit, longwhoosh, powerdown, poweron, riser, scan, static, type, ui_blip, ui_error, whoosh). Transients (hit, flash, boom, crack, glitch, ui_error, ui_blip, type) only go in measured pauses. The two drops' booms are in the mix already, and no group adds a boom.",
+ "edl_meta": {
+  "P": 0.63,
+  "FPS": 25,
+  "END_output_s": 91.0,
+  "frames": 2275,
+  "frame_grid_vo": "VO = 0.01 + 0.04n (frame = round((VO + 0.63) * 25))",
+  "title_card": {
+   "output": [
+    0.0,
+    3.0
+   ],
+   "frames": [
+    0,
+    75
+   ],
+   "vo_end": 2.37,
+   "k_title": true,
+   "k_beat": "TITLE",
+   "note": "title card «(2) مرحلة Incubation» / «مع» + official logo"
+  },
+  "end_wipe": {
+   "vo": [
+    84.09,
+    84.61
+   ],
+   "output": [
+    84.72,
+    85.24
+   ],
+   "frames": [
+    2118,
+    2131
+   ],
+   "note": "90_main endWipe over Q held at full opacity (k_t.wipe)"
+  },
+  "end_card": {
+   "vo": [
+    84.61,
+    90.37
+   ],
+   "output": [
+    85.24,
+    91.0
+   ],
+   "frames": [
+    2131,
+    2275
+   ],
+   "k_end": true,
+   "k_beat": "END",
+   "note": "the end card; its logo build starts on the music's ending hit (output 85.36)"
+  },
+  "LAG": {
+   "L1": 0.0,
+   "L2": 0.0,
+   "L3": 0.023,
+   "L4": 0.0,
+   "L5": 0.023,
+   "method": "Measured for the ep2 renders (W2 inputs/aroll/L1-L5.mp4): GCC-PHAT cross-correlation of each plate's audio against audio/vo/vo2_clean.wav at 16 kHz over four 25 s windows (VO 0, 20, 40, 60). L3 and L5: +23.0 ms in all four windows; L1, L2 and L4: 0.0 ms. These are video 1's values, already in W2 work/edl_build.py LAG. src = VO + LAG for L1/L2/L3/L5; VC shots (L4) use src = VO."
+  },
+  "cams": "HOME 0.66, WIDE 0.30, EW 0.22 (dy .03). Pull 0.62 s expo (97 % at +0.31). Push 0.70 s S-curve. A cut never lands on a VC→VC pair: every VC shot is bracketed by another angle or a B-roll.",
+  "cut_rule": "Every cut is at VO 0.01 + 0.04n, an exact frame, inside a measured pause of W2 work/vo_pauses_vo.json. Exception: O → P at 76.05 is 0.01 s before the pause 76.06-76.30, on the −40 dB tail of «القادم», so the drop-2 boom (output 76.69) lands on P's first frame.",
+  "k_beat": "edl_build writes sh['k_beat'] = the beat letter (6th field of each shot). Groups pick their shots by S.shot.k_beat, never by float t0 / f0 values.",
+  "music": {
+   "source": "W2 audio/music_plan.json (built by work/audio_build.py, mix in audio/mix.m4a)",
+   "D1_output": 33.0,
+   "D1_vo": 32.37,
+   "D2_output": 76.636,
+   "D2_boom_output": 76.69,
+   "D2_boom_vo": 76.06,
+   "break_bar_output": [
+    74.45,
+    76.64
+   ],
+   "END_HIT_output": 85.364,
+   "note": "DROP 1 = the F → G smash cut (VO 32.37). DROP 2 = the O → P cut (VO 76.05). The ending hit = the end-card logo build (output 85.36). Both drop booms are pinned in the mix: no group adds a boom anywhere. Music ducks 10 dB under the voice."
+  }
+ },
+ "shots_format": "[vo_start, vo_end, clip, camera params, note, k_beat]. Frames: f0 = round((vo_start + 0.63) * 25), f1 = round((vo_end + 0.63) * 25).",
+ "shots": [
+  [
+   2.37,
+   8.81,
+   "VC",
+   {
+    "s0": 0.66,
+    "drift": 0.006,
+    "moves": [
+     [
+      3.05,
+      0.62,
+      0.3,
+      0.0,
+      "pull"
+     ]
+    ]
+   },
+   "A welcome (f 75-236): HOME clean, pull to WIDE on «في المرحلة», kicker «المرحلة الثانية» + official lockup in the void, «مرحلة Incubation» line, stage-2 floor pad, four DIM condition pips",
+   "A"
+  ],
+  [
+   8.81,
+   10.09,
+   "L2",
+   {
+    "z0": 1.06,
+    "z1": 1.12,
+    "ay": 0.4,
+    "punch": 0.06
+   },
+   "B close-up (f 236-268): «ملاحظة مهمّة» red note tag; bug on from this cut",
+   "B"
+  ],
+  [
+   10.09,
+   17.09,
+   "BR",
+   {
+    "id": 1
+   },
+   "C B-ROLL 1 (f 268-443, full-screen MG): the withdrawal window, open until the first trade, then locked",
+   "C"
+  ],
+  [
+   17.09,
+   21.85,
+   "VC",
+   {
+    "s0": 0.22,
+    "dy0": 0.03,
+    "drift": 0.006
+   },
+   "D (f 443-562): hard cut to extreme wide, staircase built, S1 done, S2 lit, the rule mark stamped on all six landings",
+   "D"
+  ],
+  [
+   21.85,
+   28.05,
+   "L1",
+   {
+    "z0": 1.03,
+    "z1": 1.08,
+    "ax": 0.33
+   },
+   "E three-quarter (f 562-717): qualify for Incubation, Edge Score gauge to 60+",
+   "E"
+  ],
+  [
+   28.05,
+   32.37,
+   "L5",
+   {
+    "z0": 1.0,
+    "z1": 1.05
+   },
+   "F medium (f 717-825): the two conditions met (60+ Edge Score, $1,000+ in the trading account)",
+   "F"
+  ],
+  [
+   32.37,
+   36.41,
+   "VC",
+   {
+    "s0": 0.3,
+    "drift": 0.008
+   },
+   "G DROP 1 (f 825-926): smash cut to WIDE in the pause before «ستقوم», page-8 'x10' hero, «تمويلك حتى», chip '$1,000'",
+   "G"
+  ],
+  [
+   36.41,
+   47.41,
+   "BR",
+   {
+    "id": 2
+   },
+   "H B-ROLL 2 (f 926-1201, full-screen MG): the x10 gate, $1,000 → ten blocks ($10,000), $2,000 → twenty blocks",
+   "H"
+  ],
+  [
+   47.41,
+   50.65,
+   "L3",
+   {
+    "z0": 1.0,
+    "z1": 1.05,
+    "ax": 0.74
+   },
+   "I profile (f 1201-1282): card-less page-8 hero '$20,000', the Incubation cap",
+   "I"
+  ],
+  [
+   50.65,
+   54.65,
+   "L5",
+   {
+    "z0": 1.06,
+    "z1": 1.1
+   },
+   "J medium (f 1282-1382): condition 1, 40 trades (ticket grid, '40+')",
+   "J"
+  ],
+  [
+   54.65,
+   57.01,
+   "L2",
+   {
+    "z0": 1.0,
+    "z1": 1.05,
+    "ay": 0.4,
+    "punch": 0.05
+   },
+   "K close-up (f 1382-1441): condition 2, +7% (target line, '7%' ▲▲▲)",
+   "K"
+  ],
+  [
+   57.01,
+   61.49,
+   "VC",
+   {
+    "s0": 0.3,
+    "drift": 0.006
+   },
+   "L WIDE (f 1441-1553, hard cut, no drop): condition 3, the limit ring on the floor, equity line that never reaches −10%, '−10%' + footnote",
+   "L"
+  ],
+  [
+   61.49,
+   67.53,
+   "L1",
+   {
+    "z0": 1.04,
+    "z1": 1.09,
+    "ax": 0.33
+   },
+   "M three-quarter (f 1553-1704): condition 4, 60 days from the first trade, then the pip recap",
+   "M"
+  ],
+  [
+   67.53,
+   72.37,
+   "VC",
+   {
+    "s0": 0.22,
+    "dy0": 0.03,
+    "drift": 0.006
+   },
+   "N extreme wide (f 1704-1825): the staircase already standing, the flag climbs S2 → S3, Acceleration lights",
+   "N"
+  ],
+  [
+   72.37,
+   76.05,
+   "L3",
+   {
+    "z0": 1.02,
+    "z1": 1.07,
+    "ax": 0.74
+   },
+   "O profile (f 1825-1917): the six episode chips (01 done, 02 this video, 03 next), next-video deck '(3)' Acceleration, red pill",
+   "O"
+  ],
+  [
+   76.05,
+   77.21,
+   "L2",
+   {
+    "z0": 1.04,
+    "z1": 1.1,
+    "ay": 0.4,
+    "punch": 0.06
+   },
+   "P DROP 2 (f 1917-1946): close-up, «مبروك!» punch; bug off at this shot's end",
+   "P"
+  ],
+  [
+   77.21,
+   84.61,
+   "VC",
+   {
+    "s0": 0.3,
+    "drift": 0.005,
+    "moves": [
+     [
+      82.13,
+      0.7,
+      0.66,
+      0.0,
+      "push"
+     ]
+    ]
+   },
+   "Q WIDE (f 1946-2131): 40% share donut + the Axi Select account card, push to HOME in the pause, official logo builds in the card; held into the end wipe (VO 84.09-84.61); no bug",
+   "Q"
+  ]
+ ],
+ "word_onsets": {
+  "method": "MMS forced alignment (torchaudio MMS_FA, romanized ASR words) on vo2_clean.wav, checked by hand against a 10 ms RMS envelope and a 3.5 kHz band: /s/, /ʃ/ and /sˤ/ onsets show as a band rise, and stops and glottal stops as dips. Whisper (clean_large.json) ran 0.1-0.7 s EARLY throughout, worst at segment starts: «مرحباً» 1.94 → 2.43, «ستقوم» 32.17 → 32.40, «Select» end 83.35 → 84.02. Values are VO seconds; [a-b] = real pause (below −48 dBFS) where SFX go. The authoritative pause map for cuts and SFX is W2 work/vo_pauses_vo.json (−42 dBFS, ≥ 80 ms), the one audio_build.py uses. Re-checked for the final: «ستّين» at 27.48 (the /s/ runs 27.475-27.56; 27.57 was its end, MMS confidence 0.09).",
+  "list": "مرحباً 2.43 · بك 2.86 · في 3.18 · المرحلة 3.36 · الثانية 3.78 · من 4.34 · مراحل 4.52 · Axi 5.01 · Select 5.24 · [5.54-5.68] · مرحلة 5.68 · Incubation 6.18 · قبل 6.78 · أن 7.00 · أتعرّض 7.08 · لتفاصيل 7.46 · هذه 8.08 · المرحلة 8.30-8.71 · [8.71-8.95] · ملاحظة 8.95 · مهمّة 9.48-9.87 · [9.87-10.20] · إذا 10.20 · أردت 10.48 · القيام 10.70 · بأي 11.16 · عملية 11.46 · سحب 11.82 · للأموال 12.20 · عليك 12.96 · القيام 13.28 · بذلك 13.68 · [13.99-14.29] · قبل 14.29 · تنفيذ 14.68 · [15.12-15.31] · أي 15.31 · صفقة 15.59 · تداول 16.04 · في 16.38 · هذه 16.46 · المرحلة 16.60-17.07 · وهذه 17.19 · القاعدة 17.52 · [18.02-18.41] · يتم 18.41 · تطبيقها 18.70 · في 19.44 · جميع 19.62 · [20.16-20.30] · مراحل 20.30 · [20.91-21.16] · Axi 21.17 · Select 21.53 · [21.75-21.96] · للتأهّل 21.96 · لمرحلة 22.50 · Incubation 22.94 · [23.61-23.79] · يجب 23.79 · أن 24.16 · تكون 24.28 · علامة 24.62 · الـ 25.02 · Edge 25.18 · Score 25.40 · الخاصة 25.78 · بك 26.20 · [26.31-26.46] · لا 26.46 · تقلّ 26.80 · عن 27.30 · 60 (ستّين, /s/ onset) 27.48-27.98 · [27.99-28.12] · وأقلّ 28.12 · مبلغ 28.60 · [28.95-29.15] · في 29.15 · حساب 29.36 · التداول 29.68 · الخاص 30.16 · بك 30.59 · يجب 30.79 · أن 31.12 · يكون 31.25 · 1,000 («ألف», no «دولار» spoken) 31.71-31.97 · [31.97-32.40] · ستقوم 32.40 (its /q/ closure 32.91-32.97) · Axi 33.28 · بتمويلك 33.69 · لغاية 34.45 · عشرة 34.88 · أضعاف 35.27 · هذا 35.67 · المبلغ 35.93-36.29 · [36.29-36.51] · يعني 36.51 · إذا 37.03 · كان 37.21 · حسابك 37.53 · 1,000 (ألف) 38.01 · دولار 38.31-38.56 · [38.56-38.75] · ستقوم 38.75 · Axi 39.25 · بتمويلك 39.51 · [40.02-40.13] · بمبلغ 40.13 · 10,000 (عشرة) 40.75 · آلاف 41.15 · [41.44-41.54] · دولار 41.54 · أمّا 41.93 · إذا 42.13 · كان 42.33 · حسابك 42.63 · [43.03-43.32] · 2,000 (ألفين) 43.32 · دولار 43.68-43.91 · [43.91-44.18] · ستقوم 44.18 · Axi 44.75 · بتمويلك 45.05 · [45.51-45.63] · أيضاً 45.63 · بعشرة 45.99 · أضعاف 46.45 · هذا 46.76 · المبلغ 47.01-47.35 · [47.35-47.48] · ليصل 47.48 · قيمة 48.03 · التمويل 48.35 · [48.81-48.99] · إلى 48.99 · 20,000 (عشرين) 49.30 · ألف 49.90-50.08 · [50.08-50.49] · دولار 50.49-50.62 (weak) · في 50.68 · هذه 50.79 · المرحلة 51.03 · [51.50-51.66] · يجب 51.66 · عليك 51.99 · إتمام 52.33 · 40 (أربعين) 52.68 · صفقة 53.09 · مستقلّة 53.38 · على 54.01 · الأقل 54.19-54.53 · وتحقيق 54.70 · عائد 55.05 · [55.42-55.66] · لا 55.66 · يقلّ 55.81 · عن 56.13 · 7 (/s/) 56.23 · % 56.52-56.96 · [56.96-57.08] · مع 57.08 · عدم 57.38 · الوصول 57.67 · إلى 58.15 · نسبة 58.35 · انعكاس 58.57 · 10 59.20 · % 59.50-59.85 · [59.85-60.08] · في أي 60.08 · وقت 60.41 · من 60.65 · الأوقات 60.89-61.32 · [61.32-61.66] · وخلال 61.66 · فترة 62.23 · لا 62.65 · تقلّ 62.84 · عن 63.21 · 60 (/s/) 63.31 · يوماً 63.89-64.14 · [64.14-64.38] · من 64.38 · تاريخ 64.63 · [65.22-65.42] · أول 65.42 · صفقة 65.80-65.93 · [65.93-66.11] · عند 66.22 · تحقيق 66.43 · هذه 66.81 · الشروط 66.95-67.47 · [67.47-67.64] · ستصبح 67.64 · مؤهّلاً 68.07 · للانتقال 68.57 · للمرحلة 69.19 · الثالثة 69.69-70.21 · [70.21-70.47] · وهي 70.47 · مرحلة 70.75 · Acceleration 71.30-72.08 · [72.08-72.45] · والتي 72.45 · سنتعرّف 72.83 · عليها 73.39 · بالتفصيل 73.71 · [74.40-74.57] · في 74.57 · الفيديو 74.83 · القادم 75.55-76.08 · [76.08-76.29] · مبروك 76.29-76.73 · [76.73-77.33] · أصبح 77.33 · لك 77.65 · الآن 77.85 · حصّة 78.15 · مشاركة 78.43 · بنسبة 78.99 · 40 79.44 · % 80.00-80.53 · [80.53-80.81] · من 80.81 · الأرباح 81.01 · المحقّقة 81.51 · [82.06-82.31] · في 82.31 · حساب 82.46 · Axi 83.00 · Select 83.27-84.02 · silence from 84.03"
+ },
+ "beats": [
+  {
+   "k_beat": "TITLE",
+   "vo_start": -0.63,
+   "vo_end": 2.37,
+   "shot": "TITLE CARD (output 0.00-3.00, f 0-75), full-screen MG",
+   "words": "(music intro, before VO)",
+   "visual": "Brand page: the stage chip, then «(2) مرحلة Incubation» and «مع» + the official logo build. Full spec in title_card.",
+   "region": "full frame",
+   "text": "chip DOME + '02' | flag + '(2)' «مرحلة» 'Incubation' | «مع» + official logo PNG",
+   "sfx": "output seconds (out: true): longwhoosh −14 @ 0.00 (pad swell); ui_blip −14 @ 0.25 (flag); whoosh −14 @ 1.32 (tag wipe). No shimmer cue (no sheen on the logo).",
+   "cost": "medium",
+   "group": "open",
+   "symbols": [
+    "dome",
+    "flag",
+    "triTex",
+    "bokeh",
+    "logoBuild",
+    "metal"
+   ]
+  },
+  {
+   "k_beat": "A",
+   "vo_start": 2.37,
+   "vo_end": 8.81,
+   "shot": "A · VC HOME, pull-out to WIDE at 3.05 (0.62 s expo, 97 % at 3.36, settled 3.67), WIDE to the cut; bug OFF",
+   "words": "مرحباً بك في المرحلة الثانية من مراحل Axi Select / مرحلة الـ Incubation / قبل أن أتعرّض لتفاصيل هذه المرحلة",
+   "visual": "WELCOME TO STAGE 2.\n- 2.37-3.05: HOME, clean while he greets (speech starts at 2.43). Base floor pool .18 (white).\n- 3.05-3.67: the pull runs with nothing on screen.\n- 3.80, on «الثانية» (3.78): the kicker «المرحلة الثانية» rises 16 px (0.42 s e4). Its mirrored flag unfurls at the right end 3.84-4.06: the scene's one flag.\n- 4.84: logoBuild (d 0.75, no sheen), locked to «Axi» (5.01) and «Select» (5.24). axi_part rises 4.84-5.22; the SELECT tag wipes 5.07-5.48 behind the red '/' edge.\n- 5.02-6.70: ◢ FLOOR RIPPLE as in video 1 A. A ring wave R = 0.3 + 7(t − 5.02) m through the floorTris field (band 1.0 m, peak .55); the trail (.06) is its own shape fading 6.40-6.70. The pool lifts .18 → .26 over 5.02-5.60.\n- 5.72-6.40, «مرحلة الـ Incubation» (5.68 / 6.18): the STAGE LINE under the logo.\n  - The DOME draws 5.72-6.20; its sapling grows 5.95-6.40, red bud last.\n  - «مرحلة» rises at 5.80 (RTL clip + 16 px).\n  - 'Incubation' mask-reveals left to right over 6.08-6.40, leading the word by 0.1 s.\n- 6.18, the floor:\n  - the stage-2 PAD (padPts) rim traces by dash progress 6.18-6.58 (RED decal, 0.04 m), inner white .14 from 6.30;\n  - a RED stage pulse fires from the pad (fRipple R 2.1 m, d 0.8).\n- 6.80-7.10: the logo exits with op_logoOut (the tag wipes off right to left, then axi sinks into its clip), and the kicker and flag fade (eio 0.30). The stage line and pad stay.\n- 7.46, on «لتفاصيل» (7.46): FOUR CONDITION PIPS (112x72) land where the logo was, right to left (0.08 s stagger, 0.40 s expo, 16 px rise). All are DIM: tickets, target, shield, calendar. They are the 'details' to come; each lights in its own shot (J, L, M).\n- 8.08, «هذه المرحلة»: one skeleton shimmer band (white α .12, 80 px wide, 20°) sweeps right to left across the four DIM pips in 0.5 s (placeholders, not a sheen on white).\n- Exit 8.40-8.70, as one layer (eio): pips, stage line, pad and pool (back to .18). The cut is at 8.81.",
+   "region": "HOME keep-out x 740-1140, y 280-900 (nothing is on screen at HOME). At WIDE, everything stays above the keep-out (y 470):\n- kicker: A300 40 grey (225 px), centred x 946 (x 834-1059), baseline 118 (glyphs y 85-129); flag h 18 (w 13) mirrored at x 1081-1094, y 85-103;\n- logo: 680x149 centred (946,252), at x 606-1286, y 178-326. Its 37 px clear space (y 141-363) is kept clear of the kicker and the stage line;\n- stage line, baseline 436, RTL, centred on 946 (x 686-1206):\n  - DOME 60 px centred (1176,410);\n  - «مرحلة» A300 56 grey (142 px), right-aligned x 1126;\n  - 'Incubation' I300 64 white (282 px), right-aligned x 968 (x 686-968, cap top 389);\n  - bottom 451, 19 px above the keep-out;\n- pips: TAG 112x72 (cuts 26x31) at y 232-304, pitch 128: pip1 x 1082-1194, pip2 954-1066, pip3 826-938, pip4 698-810. Symbols 44 px DIM, centred y 268 at x 1138 / 1010 / 882 / 754;\n- floor: the pad (floorP u −1..1, v −0.8..0.8) and the rings sit around the stool, drawn in plate space through VM.",
+   "text": "«المرحلة الثانية» | official logo PNG | «مرحلة» 'Incubation' | pips (symbols only)",
+   "sfx": "whoosh −14 @ 3.05 (the pull); hit −10 @ 5.56 (logo sting in the pause 5.53-5.68; it also carries the ◢ ripple); dataswish −16 @ 7.46 (the pips). VO 2.43-2.63 (his first 0.2 s) stays free. The draft's flag tick 3.84, sub pulse 5.02, floor thunk 6.18 and shimmer 8.08 are cut: all sat on words.",
+   "cost": "medium",
+   "group": "open",
+   "symbols": [
+    "dome",
+    "flag",
+    "logoBuild",
+    "op_logoOut",
+    "pips",
+    "tickets",
+    "target",
+    "shield",
+    "calendar",
+    "floorTris",
+    "padPts",
+    "fRipple",
+    "fPool"
+   ]
+  },
+  {
+   "k_beat": "B",
+   "vo_start": 8.81,
+   "vo_end": 10.09,
+   "shot": "B · L2 close-up (the bug switches on at this cut)",
+   "words": "ملاحظة مهمّة",
+   "visual": "NOTE TAG, as video 1 P.\n- 8.97, word-locked («ملاحظة» starts 8.95, 0.16 s after the cut): a RED TAG plate holding a white '!' snaps in (scaleX 0 → 1 from its right edge, 0.2 s expo).\n- 9.02-9.40: «ملاحظة مهمّة» reveals per word from the right (clip + 18 px rise, 0.42 s e4, 0.07 s stagger). The clip reaches baseline + 0.70 em.\n- 9.48, on «مهمّة» (9.48):\n  - a 3 px RED underline draws right to left under «مهمّة» (0.25 s e3): the visible accent;\n  - the RED tag pops once: scale 1 → 1.06 → 1 about its centre (0.2 s). No rotation (panels never overshoot or rock).\n- Exit 9.75-10.01. The cut is at 10.09.",
+   "region": "L2 slot x 100-650, y 140-500:\n- RED TAG 96x72 (cuts 26x31) at x 540-636, y 260-332; '!' I600 48 white, centred (588,314);\n- «ملاحظة مهمّة» A500 56 white (382 px), right-aligned x 520, baseline 318 (x 138-520);\n- «مهمّة» is the left word (159 px, x 138-297): underline x 138-297, y 338-341.",
+   "text": "'!' «ملاحظة مهمّة»",
+   "sfx": "ui_blip −12 @ 8.90 (pause 8.70-8.98)",
+   "cost": "low",
+   "group": "rule",
+   "symbols": [
+    "tag",
+    "headline-style reveal"
+   ]
+  },
+  {
+   "k_beat": "C",
+   "vo_start": 10.09,
+   "vo_end": 17.09,
+   "shot": "C · B-ROLL 1, full-screen MG, hard cut in and out, voice continues, no bug",
+   "words": "إذا أردت القيام بأي عملية سحب للأموال / عليك القيام بذلك قبل تنفيذ أي صفقة تداول في هذه المرحلة",
+   "visual": "SHOWPIECE: THE WITHDRAWAL WINDOW.\n- A stage timeline runs left to right, and the DARK pill «سحب الأموال» is clicked and works while the window is open.\n- The playhead ('now') travels until the FIRST-TRADE chip lands; the window then closes behind a red shutter and a padlock drops on the pill.\n- Trading candles print after the cutoff, and a bracket marks «هذه المرحلة».\nSecond by second in broll_1.",
+   "region": "full frame; nothing below y 950",
+   "text": "«سحب الأموال» «قبل تنفيذ أي صفقة» | pill «سحب الأموال» | chip 'Incubation' «بداية المرحلة» | «أول صفقة» | «هذه المرحلة»",
+   "sfx": "see broll_1",
+   "cost": "high",
+   "group": "rule",
+   "symbols": [
+    "brScene",
+    "corners",
+    "pill",
+    "cursor",
+    "padlock",
+    "tradeChip",
+    "dome",
+    "candle",
+    "tag"
+   ]
+  },
+  {
+   "k_beat": "D",
+   "vo_start": 17.09,
+   "vo_end": 21.85,
+   "shot": "D · VC EW (hard cut from B-roll 1; no music drop here), static with drift",
+   "words": "وهذه القاعدة يتم تطبيقها في جميع مراحل Axi Select",
+   "visual": "THE RULE, MARKED ON EVERY STAGE. Staircase geometry, card states and the marker are exactly W1 32_stages.js (st_LX, st_LY, st_CW 230, st_MAIN, st_card, st_mkAt, st_ewM), stored in plate space via ewP.\n- 17.09 cut:\n  - the base pool .18 is on at once;\n  - a floor RIPPLE fires on the cut (fRipple R 6 m, d 0.9, clipped at the near plane);\n  - the PAD rim traces 17.11-17.45 (RED decal, dash progress), inner white .14 over 17.21-17.45.\n- 17.52 «القاعدة»: READOUT line 1 rises: the WITHDRAW symbol (K4) draws 17.52-17.92 and «القاعدة» rises (0.45 s expo, 20 px).\n- 17.52-17.82: the ground line runs from the pad's right edge (1060,742) to x 1780 (expo).\n- 17.60-18.20: the stair line climbs (dash progress, e4).\n- 17.70-18.30: the six TAG stage cards pop in the DIM state (0.08 s stagger, S1 → S6).\n- 18.41, «يتم» (after the pause 18.01-18.41):\n  - S1 turns DONE (red top-left cut + white tick, 0.3 s): video 1's stage, passed;\n  - S2 LIGHTS (0.35 s: PANEL, RED rim, DOME draws 18.45-18.95, '$20,000' on the card);\n  - the flag MARKER drops 6 px onto S2 (18.45-18.77): you are here.\n- 19.62-20.52, «في جميع مراحل» (19.62 / 20.30): THE RULE MARK, landing by landing (design_system 13).\n  - A red COMET (kit comet, K13: head r 7, glow 26, 6-dot tail at 9 px) runs st_MAIN from the pad to S6 in 0.90 s (eio).\n  - When its head reaches landing k's right end (K13 passTimes on st_MAIN; for S1 the first riser at x 1540), that landing gets three layers, in plate space via ewP:\n    1. OPEN WINDOW: a 5 px white α 1 segment over the 3 px line, from xR = st_LX[k] + 240 to xR − 64 (draws right to left, 0.10 s);\n    2. FIRST TRADE, 0.10 s later: a RED 3x22 tick at x xR − 64, y st_LY[k] − 6 to + 16, dropping 10 px into place (0.15 s e4);\n    3. LOCKED, with 2: the rest of the landing (st_LX[k] to xR − 64) dims from white .7 to .25 (0.2 s).\n  - Time on a landing runs the way you walk it (right to left: you step on at its right end), so each landing is B-roll 1's timeline in miniature, mirrored. The stage cards do not flash or take badges: the landings carry the rule.\n- 20.30 «مراحل»: readout line 2 «في جميع المراحل» rises (0.45 s expo, 20 px). 20.55-20.80: its rule-mark glyph draws at the line's left end (the bar right to left in 0.10 s, then the RED tick drops 6 px, 0.15 s e4).\n- 21.17 «Axi», 21.53 «Select»:\n  - 21.17: the six rule marks pop once together, as a visible accent (they are already white, so not a white flash): the open segments thicken 5 → 9 → 5 px and the RED ticks scale 1 → 1.3 → 1 about their tops (0.25 s);\n  - 21.17: a STAGE PULSE fires from the pad (fRipple R 2.1 m, d 0.8).\n- Exit: nothing continues into L1.\n  - 21.40-21.62: the readout and marker fade as one layer (eio);\n  - 21.42-21.62: the cards fold into their landings (scaleY → 0 toward the line, S6 first, 0.008 s stagger);\n  - 21.44-21.64: the line retracts toward the pad, and each landing's rule mark goes with its landing;\n  - 21.44-21.66: the pad and pool go out.\n- The cut is at 21.85.",
+   "region": "EW screen px (stored in plate space):\n- landings S1 1540-1780 @742, S2 1300-1540 @642, S3 1060-1300 @542, S4 820-1060 @442, S5 580-820 @342, S6 340-580 @242;\n- rule marks (open segment xR−64..xR, RED tick at xR−64): S1 1716-1780 @742, S2 1476-1540 @642, S3 1236-1300 @542, S4 996-1060 @442, S5 756-820 @342, S6 516-580 @242;\n- cards TAG 230x88 at (st_LX+5, st_LY−96);\n- marker foot on S2 (1513,546).\nREADOUT, inside x 1346-1840, y 98-228:\n- line 1: WITHDRAW symbol 44 px at x 1796-1840, y 98-142; «القاعدة» A300 36 grey (114 px), right-aligned x 1780, baseline 130 (x 1666-1780);\n- line 2: «في جميع المراحل» A300 52 white (393 px), right-aligned x 1780, baseline 200 (x 1387-1780, glyphs y 157-228);\n- glyph: white bar 24x5 at x 1349-1373, y 183-188; RED tick 3x14 at x 1346-1349, y 179-193 (lands there after its 6 px drop).\nClearances: the readout stays above the marker's flag (top ≈ 466) and the S2 card (top 546), and right of S3 (x ≤ 1295). The S4 card bottom (434) is 118 px above the head (552); the risers are 50+ px outside the EW keep-out (x 870-1010, y 540-760).",
+   "text": "«القاعدة» «في جميع المراحل» | cards Seed · Incubation · Acceleration · Pro · Pro 500 · Pro M (S2 amount '$20,000')",
+   "sfx": "hit −12 @ 17.09 (pause 17.04-17.19; no music drop here); scan −14 @ 17.60 (the line draw); ui_blip −14 @ 18.34 (S1 done, pause 18.01-18.41); dataswish −12 @ 19.62 (the comet); ui_blip −12 @ 20.16 (pause 20.13-20.32, one crisp click for the marks); hit −12 @ 21.10 (pause 20.90-21.17, the pulse at 21.17)",
+   "cost": "high",
+   "group": "stairs",
+   "symbols": [
+    "staircase (W1 32_stages.js)",
+    "flagMarker",
+    "comet (K13)",
+    "rule mark (local, design_system 13)",
+    "withdraw (K4)",
+    "dome",
+    "sprout",
+    "chev",
+    "bars",
+    "tag500",
+    "summit",
+    "padPts",
+    "fRipple",
+    "fPool"
+   ]
+  },
+  {
+   "k_beat": "E",
+   "vo_start": 21.85,
+   "vo_end": 28.05,
+   "shot": "E · L1 three-quarter",
+   "words": "للتأهّل لمرحلة الـ Incubation / يجب أن تكون علامة الـ Edge Score الخاصة بك لا تقلّ عن 60",
+   "visual": "QUALIFY FOR INCUBATION: THE GAUGE GOES TO 60. Video 1's D arc, now in a card, with the bar raised from 50 to 60.\n- 22.30-22.75 (0.45 s after the cut; «للتأهّل» 21.96): the CARD enters (clip from the right edge + 24 px rise, 0.5 s expo; content 0.12 s later) with its header «للتأهّل لمرحلة».\n- 22.84-23.20: 'Incubation' mask-reveals left to right, leading the word (22.94) by 0.1 s. 22.94-23.44: the DOME draws (sapling 23.10-23.50).\n- 23.80-24.30, «يجب» (23.79): the gauge powers on.\n  - 41 radial ticks (TRACK #2A2B2F) appear left to right (0.012 s stagger).\n  - A DIM reference notch (video 1's threshold, unlabelled) sits at the apex, and a white threshold notch sits at 60 %.\n- 25.18 «Edge»: 'Edge Score' rises 12 px (0.4 s).\n- 26.46 «لا تقلّ»: «الحدّ الأدنى للتأهّل» rises.\n- 26.80-27.48, «تقلّ عن 60»:\n  - the metallic counter counts 0 → 60 (quartOut, kit metalCount) and lands on the /s/ of «ستّين» (27.48);\n  - in sync, ticks 0-24 light from the left end, each white for 2 frames, then RED, finishing at 27.48;\n  - a red glow sprite (r 22) rides the leading tick.\n- 27.48: the 60 % notch flashes RED with a glow (r 36, 0.3 s).\n- 27.50-27.62: a RED '+' lands (scale .6 → 1 + 6 px rise, 0.12 s expo), giving '60+'. No ▲▲▲: 60 is a threshold, not a rising numeral.\n- Exit 27.68-27.96: the ticks unlight right to left in 0.10 s, then one layer fades. The cut is at 28.05; '60+' returns in F's right card at 28.46, as in video 1.",
+   "region": "CARD 580x560 at x 1240-1820, y 200-760 (cut 48). Content stays out of the top-right 56 px square. All x ≥ 1240 (L1 free x 1220-1840).\n- header: A300 40 grey (232 px), right-aligned x 1780, baseline 292;\n- 'Incubation': I300 52 white (230 px), right-aligned x 1780, baseline 356 (x 1550-1780, cap top 318); DOME 64 px at x 1272-1336, y 260-324;\n- gauge, centre (1530,640): minor ticks r 176-194 (4 px wide); majors (both ends, the quarters, the apex) r 176-204; arc ends x 1326-1734 at y 640; apex y 436;\n- 60 % notch: radial r 212-230 at angle 1.6π (≈ (1598,430)), white 3 px, RED on landing;\n- DIM apex notch r 212-226 (y 414-428), no label;\n- '60+' as one group, 179 px, centred x 1530:\n  - '60' metallic I200 112 (125 px) at x 1441-1566, baseline 590, cap top 509;\n  - '+' RED I200 78 (46 px) at x 1574-1620, baseline 572 (y 533-567), 8 px after the '60';\n  - every corner stays ≥ 17 px inside the inner tick radius 176 (the '60''s top-left corner is at r 159);\n- 'Edge Score': I300 36 white (178 px), centred x 1530, baseline 636;\n- «الحدّ الأدنى للتأهّل»: A300 34 grey (255 px), centred x 1530, baseline 700 (bottom 709).",
+   "text": "«للتأهّل لمرحلة» 'Incubation' | '60' → '60+' | 'Edge Score' | «الحدّ الأدنى للتأهّل»",
+   "sfx": "whoosh −12 @ 22.30; scan −14 @ 23.80 (the ticks power on); scan −14 @ 26.80 (the counter, rising); ui_blip −12 @ 27.99 (settle, pause 27.98-28.12). Nothing on «ستّين».",
+   "cost": "medium",
+   "group": "rule",
+   "symbols": [
+    "card",
+    "dome",
+    "metalCount",
+    "glow"
+   ]
+  },
+  {
+   "k_beat": "F",
+   "vo_start": 28.05,
+   "vo_end": 32.37,
+   "shot": "F · L5 medium",
+   "words": "وأقلّ مبلغ في حساب التداول الخاص بك يجب أن يكون 1,000 (ألف)",
+   "visual": "THE TWO CONDITIONS, BOTH MET. Video 1 E's two-card layout. Right card first (RTL).\n- 28.46-28.91, RIGHT card (0.41 s after the cut): «الشرط الأول»; the mini GAUGE's red fill sweeps to 60 % over 28.62-28.95 (k.val .6); '60' + RED '+'; 'Edge Score'. 28.96: its chamfer becomes a RED CHECK TAB (0.25 s).\n- 28.62-29.07, LEFT card, on «مبلغ» (28.60): «الشرط الثاني»; CANDLES (your trading account) draws 28.80-29.30. An amount skeleton (TRACK bar, shimmer right to left every 0.9 s) holds the number's place.\n- 29.38 «حساب التداول» (29.36): «في حساب التداول» rises.\n- 31.00-31.71:\n  - the skeleton dissolves (0.12 s);\n  - '$1,000' counts 0 → 1,000 (quartOut, fixed cells) and lands on «ألف» (31.71).\n- 31.78-31.96: a RED '+' lands (at least $1,000; 0.18 s expo).\n- 31.84-32.04: the left CHECK TAB ticks, in the pause 31.95-32.40. No sheen.\n- 32.06-32.28: both cards exit as one layer (eio). The cut is at 32.37, on DROP 1.",
+   "region": "Right CARD 470x320 at x 1350-1820, y 320-640 (cut 38):\n- «الشرط الأول» A400 36 grey (182 px), right-aligned x 1780, baseline 392;\n- GAUGE 84 px at x 1382-1466, y 352-436;\n- '60' metallic I200 100 (111 px), right-aligned x 1715; RED '+' I200 100 (59 px) at x 1721-1780; baseline 530;\n- 'Edge Score' I300 34 white (166 px), right-aligned x 1780, baseline 584.\nLeft CARD 470x320 at x 100-570 (same grid, right edge x 530):\n- «الشرط الثاني» A400 36 grey (189 px), right-aligned x 530, baseline 392;\n- CANDLES 84 px at x 132-216, y 352-436;\n- skeleton 300x44 r 8 at x 230-530, y 478-522;\n- '$1,000' metallic I200 100 with a full-size '$' (300 px), right-aligned x 465 (x 165-465); RED '+' I200 100 at x 471-530; baseline 530;\n- «في حساب التداول» A400 34 white (270 px), right-aligned x 530, baseline 584.",
+   "text": "«الشرط الأول» '60+' 'Edge Score' | «الشرط الثاني» '$1,000+' «في حساب التداول»",
+   "sfx": "whoosh −14 @ 28.46; ui_blip −12 @ 28.96 (right check, pause 28.92-29.15); scan −16 @ 31.00 (the counter); ui_blip −12 @ 31.98 (left check, pause 31.95-32.40). The drop-1 boom on the cut (output 33.00) is already in the mix.",
+   "cost": "low",
+   "group": "rule",
+   "symbols": [
+    "card",
+    "gauge",
+    "candles",
+    "metalCount",
+    "skeleton"
+   ]
+  },
+  {
+   "k_beat": "G",
+   "vo_start": 32.37,
+   "vo_end": 36.41,
+   "shot": "G · VC WIDE: smash cut on DROP 1 (VO 32.37 = output 33.00, the pause before «ستقوم»), static with drift",
+   "words": "ستقوم Axi بتمويلك لغاية عشرة أضعاف هذا المبلغ",
+   "visual": "FUNDED UP TO x10: the page-8 moment, with Rabee as the small figure under the numeral.\n- 32.37: smash cut on the music's drop (its boom is in the mix on this frame). A floor RIPPLE from the stool (a red ring plus a white ring 0.1 s behind), clipped at the near plane; the white pool flashes .18 → .26 → .18 over 32.37-32.90.\n- 33.28 «Axi»: the axi wordmark (axi_part_white) rises 12 px into the top centre (0.4 s).\n- 33.69 «بتمويلك»: a two-tone headline reveals per word from the right: «تمويلك» (white) at 33.69, then «حتى» (grey) at 34.45 on «لغاية». The scene's one flag sits at the right end (unfurls 33.70-33.92).\n- 34.86, on «عشرة» (34.88):\n  - metallic 'x10' lands (scale 1.04 → 1 + 20 px rise, 0.35 s expo), its bottom 28 % fading into black above his head;\n  - ▲▲▲ pop to its left at 34.95 (done by 35.49) and wave;\n  - the white pool brightens .18 → .26 (34.88-35.20).\n- 35.27 «أضعاف»: a TAG chip enters to the right of 'x10' (scaleX 0 → 1 from its right edge + 12 px rise, 0.35 s expo) and lands at 35.62, just ahead of «هذا المبلغ» (35.67): CANDLES 36 px + '$1,000' (static, the amount just named in F). In RTL it reads '$1,000', then 'x10'.\n- 35.62-35.97: one sheen across 'x10' (metal only).\n- Exit 36.05-36.33 as one layer, with the pool back to .18. The cut into B-roll 2 is at 36.41.",
+   "region": "WIDE keep-out x 845-1035, y 470-760; everything sits above y 452.\n- axi wordmark h 56 (108 px) at x 892-1000, y 92-148;\n- headline A300 56, baseline 230: «تمويلك» (177 px) at x 916-1093, «حتى» (100 px) at x 800-900; flag h 20 (w 15) at x 1121-1136, y 185-205;\n- 'x10' metallic I200 220 (304 px), centred x 946 (x 794-1098), baseline 450, cap top 290, fading from y 405;\n- ▲▲▲ at x 752-770, y 380 / 402 / 424 (24 px from the 'x');\n- chip: TAG 250x64 (cuts 23x28) at x 1150-1400, y 362-426. CANDLES 36 px centred (1366,394); '$1,000' metallic I300 34 (106 px), right-aligned x 1340 (x 1234-1340), baseline 407.",
+   "text": "axi wordmark | «تمويلك» (white) «حتى» (grey) | 'x10' | chip '$1,000'",
+   "sfx": "No boom: drop 1 is in the mix at output 33.00. riser −14 @ 34.40-34.86 (non-transient, ends on the onset of «عشرة»). There is no pause between 33.0 and 36.28, so nothing else.",
+   "cost": "medium",
+   "group": "fund",
+   "symbols": [
+    "axiMark",
+    "headline",
+    "flag",
+    "metal",
+    "chev3",
+    "tag",
+    "candles",
+    "fRipple",
+    "fPool",
+    "withSheen"
+   ]
+  },
+  {
+   "k_beat": "H",
+   "vo_start": 36.41,
+   "vo_end": 47.41,
+   "shot": "H · B-ROLL 2, full-screen MG, hard cut in and out, voice continues, no bug",
+   "words": "يعني إذا كان حسابك 1,000 دولار / ستقوم Axi بتمويلك بمبلغ 10,000 دولار / أمّا إذا كان حسابك 2,000 دولار / ستقوم Axi بتمويلك أيضاً بعشرة أضعاف هذا المبلغ",
+   "visual": "SHOWPIECE: THE x10 GATE.\n- Your account (right) holds one $1,000 block. It passes through the RED-rimmed 'x10' gate (centre) and arrives in Axi's funding card (left) as TEN blocks, as '$10,000' counts up.\n- Then the account becomes $2,000 (two blocks), and twenty blocks arrive. The total stays a skeleton until Rabee says it in the next shot.\nSecond by second in broll_2.",
+   "region": "full frame; nothing below y 950",
+   "text": "«مثال» → «مثال آخر» | «حسابك» '$1,000' → '$2,000' | 'x10' | «تمويل» + axi wordmark, '$10,000'",
+   "sfx": "see broll_2",
+   "cost": "high",
+   "group": "fund",
+   "symbols": [
+    "brScene",
+    "card",
+    "tag",
+    "corners",
+    "candles",
+    "vault",
+    "axiMark",
+    "metalCount",
+    "chev3",
+    "skeleton",
+    "comet (K13)",
+    "flag",
+    "glow"
+   ]
+  },
+  {
+   "k_beat": "I",
+   "vo_start": 47.41,
+   "vo_end": 50.65,
+   "shot": "I · L3 profile",
+   "words": "لتصل قيمة التمويل إلى 20,000 دولار",
+   "visual": "THE ANSWER: $20,000, THE INCUBATION CAP. Card-less, page-8 style, in the L3 free zone (after B-roll 2's two cards and before J and M's cards).\n- 47.86 (0.45 s after the cut, in the pause 47.85-48.03): the kicker «قيمة التمويل» rises 16 px (0.42 s e4), landing on «قيمة» (48.03).\n- 48.20-48.55 «التمويل»: the equation line rises left to right (0.06 s stagger, 12 px rise, e4): '$2,000' (metallic), '×' (RED), '10', '='. It is the B-roll's second example in one line.\n- 48.60-49.30: '$20,000' counts 0 → 20,000 (metalCount, quartOut, fixed cells, bottom 28 % fade) and lands on «عشرين» (49.30). ▲▲▲ pop to its right at 49.32 (done by 49.86) and wave.\n- 49.45-49.87: the cap row rises 12 px (0.42 s e4), right after the counter lands: DOME + «سقف التمويل» + 'Incubation' (axi.com: $20,000 is the Incubation maximum; video 1 called these caps «تمويل حتى»).\n- 49.90-50.25: one sheen across '$20,000' (metal only).\n- Exit 50.30-50.57 as one layer. The cut is at 50.65.",
+   "region": "L3 free x 80-800 (nothing at x > 800):\n- kicker «قيمة التمويل» A500 44 white (277 px), right-aligned x 693, baseline 330 (x 416-693);\n- equation, LTR, baseline 420: '$2,000' metallic I300 44 (146 px) at x 120-266; RED '×' I300 44 (27 px) at x 282-309; '10' I300 44 white (41 px) at x 325-366; '=' I300 44 grey (27 px) at x 377-404;\n- '$20,000': metallic I200 150 (573 px; metalWidth), left-aligned x 120 (x 120-693), baseline 560, cap top 451, fading over y 529-560;\n- ▲▲▲ at x 717-735, y 490 / 512 / 534;\n- cap row, baseline 640, RTL from x 693: DOME 36 px centred (675,628); «سقف التمويل» A300 34 grey (203 px), right-aligned x 645 (x 442-645); 'Incubation' I400 30 white (139 px), right-aligned x 430 (x 291-430).",
+   "text": "«قيمة التمويل» | '$2,000 × 10 =' | '$20,000' | «سقف التمويل» 'Incubation'",
+   "sfx": "whoosh −12 @ 47.86 (pause 47.85-48.03); scan −16 @ 48.60 (the rolling counter only; no hit on «عشرين»)",
+   "cost": "low",
+   "group": "fund",
+   "symbols": [
+    "metal",
+    "metalCount",
+    "chev3",
+    "dome",
+    "withSheen"
+   ]
+  },
+  {
+   "k_beat": "J",
+   "vo_start": 50.65,
+   "vo_end": 54.65,
+   "shot": "J · L5 medium",
+   "words": "في هذه المرحلة يجب عليك إتمام 40 صفقة مستقلّة على الأقل",
+   "visual": "CONDITION 1: 40 TRADES.\n- 51.08-51.53 (0.43 s after the cut; «المرحلة» 51.03): the CARD enters with the CONDITION PIPS on top (pip 1 LIT, 2-4 DIM).\n- 51.66 «يجب عليك»: pip 1 (tickets) pulses once (scale 1.08, 0.3 s).\n- 51.99-52.68, «عليك إتمام 40»: the TICKET GRID fills.\n  - 40 mini TAG tickets pop one by one, right to left and row by row (0.017 s stagger; each 0.16 s back 1.4: a white flash, then a white .55 outline over a TRACK fill).\n  - In sync, '40' counts 0 → 40 (quartOut, fixed cells) and lands on «40» (52.68).\n- 53.09 «صفقة»: «صفقة مستقلّة» rises.\n- 53.38 «مستقلّة»: the grid's gaps open by 4 px (0.3 s e4): separate trades.\n- 54.01 «على الأقل»: a RED '+' lands, giving '40+'; pip 1 turns DONE (0.25 s cross-fade, K7).\n- Exit 54.28-54.56. The cut is at 54.65.",
+   "region": "CARD 470x520 at x 1350-1820, y 240-760 (cut 48); L5 free x 1350-1840.\n- pips: TAG 72x48 (cuts 17x21), pitch 84, right-aligned at x 1750 (pip1 x 1678-1750 … pip4 x 1426-1498), y 262-310; symbols 30 px;\n- ticket grid: 8 x 5 TAG 40x22, pitch 52 x 34, at x 1376-1780; row tops 346 / 380 / 414 / 448 / 482 (bottom 504);\n- '40': metallic I200 130 (152 px), right-aligned x 1715, baseline 650, cap top 555; '+' RED I200 90 (53 px) at x 1724-1777, baseline 630;\n- «صفقة مستقلّة»: A400 38 white (260 px), right-aligned x 1780, baseline 716.",
+   "text": "pips | 40 tickets | '40' → '40+' | «صفقة مستقلّة»",
+   "sfx": "whoosh −14 @ 51.08; ui_blip −14 @ 51.60 (pause 51.46-51.66, the pip pulse); scan −16 @ 51.99 (the grid fills; the draft's 40 ticks were transients on speech). Nothing on the '+' (no pause near 54.01).",
+   "cost": "medium",
+   "group": "conds",
+   "symbols": [
+    "card",
+    "pips",
+    "tickets",
+    "tag",
+    "metalCount"
+   ]
+  },
+  {
+   "k_beat": "K",
+   "vo_start": 54.65,
+   "vo_end": 57.01,
+   "shot": "K · L2 close-up",
+   "words": "وتحقيق عائد لا يقلّ عن 7%",
+   "visual": "CONDITION 2: +7%. No pip row here (a 2.4 s close-up; the pips return in L).\n- 55.06 «عائد» (55.05):\n  - «عائد» rises;\n  - the chart's corner triangles fly out (L 18, 0.45 s expo) around a dotted TARGET line.\n- 55.20-55.70: five candles step up toward the target line (0.1 s stagger, 0.22 s each), mostly white, one red.\n- 55.66 «لا يقلّ عن»: the kicker rises (grey).\n- 56.12: ▲▲▲ pop to the left of the numeral (0.08 s stagger, 0.3 s each: the third lands by 56.66), 0.11 s ahead of «7».\n- 56.20, on «7» (56.23):\n  - metallic '7%' lands (scale 1.04 → 1, 0.25 s);\n  - the last candle's high touches the target line, which flashes RED (0.25 s).\n- Exit 56.68-56.92. The cut is at 57.01.",
+   "region": "L2 slot x 100-650, y 140-500:\n- «عائد»: A500 48 white (91 px), right-aligned x 620, baseline 212;\n- «لا يقلّ عن»: A300 34 grey (144 px), right-aligned x 620, baseline 262;\n- '7%': metallic I200 160 with '%' at .62 (169 px), right-aligned x 620 (x 451-620), baseline 440, cap top 324, bottom 28 % fade;\n- ▲▲▲ at x 415-433, y 370 / 392 / 414;\n- chart: corners at x 120-340, y 250-470; target line y 280 (white .30, dash 3/6), x 130-330; candles body 18, pitch 36, centres x 150-294.",
+   "text": "«عائد» «لا يقلّ عن» '7%'",
+   "sfx": "whoosh −14 @ 55.00 (non-transient, ahead of «عائد»); ui_blip −14 @ 55.50 (pause 55.40-55.66). Nothing on «7».",
+   "cost": "low",
+   "group": "conds",
+   "symbols": [
+    "target",
+    "corners",
+    "candle",
+    "metal",
+    "chev3"
+   ]
+  },
+  {
+   "k_beat": "L",
+   "vo_start": 57.01,
+   "vo_end": 61.49,
+   "shot": "L · VC WIDE (hard cut; no music drop here), static with drift",
+   "words": "مع عدم الوصول إلى نسبة انعكاس 10% في أي وقت من الأوقات",
+   "visual": "CONDITION 3: NEVER −10%. Video 1 U's layout mirrored, with a different chart: '−10%' and the footnote in the LEFT third, an equity LINE in the RIGHT third, the headline in the top band, the ring on the floor.\n- 57.01: hard cut; pool .18.\n- 57.42-58.12 «عدم الوصول»: the dashed RED LIMIT RING draws clockwise on the floor around the stool (floorLight ringq: R 1.15 m, 24 arcs of 10° with 5° gaps, w 0.05 m, RED decal .8, drawn on by u), with a soft white pool inside (fPool .12). Once drawn it is static: no rotation.\n- 57.44-57.95: the two-tone headline «عدم الوصول إلى» (grey) «نسبة الانعكاس» (white) reveals per word, with the scene's flag.\n- 57.60: the pip row lands under the headline (1-2 DONE, 3 shield LIT, 4 DIM).\n- RIGHT CHART (corners L 18, dotted sides):\n  - 58.12: the dashed RED limit line draws left to right, with its '−10%' label;\n  - 58.20-58.57: the EQUITY LINE (2.5 px white; the area under it white α .08) draws left to right from y 420 and falls; on «انعكاس» (58.57) its low lands 8 px above the limit line;\n  - 59.32, 59.60, 59.88: the limit line pulses (alpha .5 → 1, 0.15 s) while the equity holds just above it.\n- 59.18, on «10» (59.20): '−10%' lands in the left third (scale 1.04 → 1, 0.25 s): a RED '−' + metallic '10%'. The footnote fades in with it (59.20-59.50).\n- 59.45-59.90: one sheen across the metallic '10%' (not the red minus).\n- 60.08 «في أي وقت»: the equity line recovers: it climbs 60 px over 0.4 s (e3).\n- 60.48-61.08 «من الأوقات»: the line keeps printing rightward (a new point every 0.3 s while the plot scrolls one pitch, 0.2 s e4), every low 8-40 px above the limit. That is the only continuing motion, and it is data.\n- Exit 61.13-61.41 as one layer, with the ring, pool, headline and pips. The cut is at 61.49. The footnote is on screen 59.20-61.41 (2.2 s).",
+   "region": "WIDE.\n- headline A300 52, baseline 170: «عدم الوصول إلى» (365 px) at x 936-1301, «نسبة الانعكاس» (330 px) at x 591-921; flag h 18 (w 13) at x 1327-1340, y 128-146;\n- pips: TAG 72x48 (cuts 17x21), pitch 84, centred on x 946: pip1 x 1036-1108, pip2 952-1024, pip3 868-940, pip4 784-856, y 210-258; symbols 30 px;\n- HERO, right-aligned x 690, baseline 430: '10%' metallic I200 240 (346 px) at x 344-690, cap top 256, bottom 28 % fade; RED '−' (U+2212) Inter 200 240 (142 px advance) at x 202-344, its bar at y 356-367;\n- footnote, A300 34 grey α .85, right-aligned x 690: «* قد تختلف النسبة حسب المرحلة» (464 px, x 226-690) at baseline 494; «وفق شروط البرنامج» (276 px, x 414-690) at baseline 540;\n- chart frame x 1230-1770, y 330-650 (corner triangles L 18, dotted sides 1.5 px white .22): limit line y 600 (RED 2 px, dash 8/6) from x 1240 to 1760; '−10%' I500 30 RED (76 px) left-aligned x 1240, baseline 590; equity plot x 1250-1750, pitch 40 px per point, starting at y 420, its low (1600,592), recovering to ≈ y 530;\n- ring on screen ≈ x 765-1128, y 708-810 (plate space via VM).",
+   "text": "«عدم الوصول إلى» (grey) «نسبة الانعكاس» (white) | pips | hero '−10%' | line label '−10%' | «* قد تختلف النسبة حسب المرحلة» / «وفق شروط البرنامج»",
+   "sfx": "hit −12 @ 57.01 (pause 56.94-57.08; no music drop here); poweron −14 @ 57.42 (the ring draws); scan −16 @ 58.20 (the equity line falls); hit −10 @ 59.86 (pause 59.84-60.08, the third limit pulse). Nothing on «10».",
+   "cost": "high",
+   "group": "conds",
+   "symbols": [
+    "ringq (floorLight)",
+    "fPool",
+    "headline",
+    "flag",
+    "pips",
+    "shield",
+    "corners",
+    "series/line",
+    "metal"
+   ]
+  },
+  {
+   "k_beat": "M",
+   "vo_start": 61.49,
+   "vo_end": 67.53,
+   "shot": "M · L1 three-quarter",
+   "words": "وخلال فترة لا تقلّ عن 60 يوماً من تاريخ أول صفقة / عند تحقيق هذه الشروط",
+   "visual": "CONDITION 4: 60 DAYS FROM THE FIRST TRADE, then THE RECAP on the pip row.\n- 61.92-62.37 (0.43 s after the cut): the CARD enters with the pip row (1-3 DONE, 4 calendar LIT).\n- 62.23 «فترة»:\n  - the CALENDAR draws 62.25-62.75, static (k.fill 1: all its cells filled, the RED cell included);\n  - the DAY TRACK draws left to right 62.25-62.65 (0.4 s e4) with its 12 ticks (days 5 … 60) DIM;\n  - «فترة لا تقلّ عن» rises at 62.30.\n- 62.70-63.31, «تقلّ عن 60»: '60' counts 0 → 60 (quartOut) and lands on «60» (63.31); in sync, tick i (day 5i) turns white as the count passes 5i, and the '60' label at the track's right end lights at 63.31.\n- 63.89 «يوماً»: «يوماً» rises.\n- 65.80 «صفقة» («أول» 65.42): the FIRST-TRADE chip, the same chip that closed the withdrawal window in B-roll 1, drops onto the track's left end (0.3 s expo + 4 px settle).\n- 65.85-66.30: the track fills RED from the chip to day 60 (quartOut): 60 days from the first trade.\n- 66.43 «تحقيق»: pip 4 turns DONE (0.25 s cross-fade); then the four DONE pips pulse right to left (66.43, 66.51, 66.59, 66.67; scale 1.08, 0.25 s each): the recap of all four conditions.\n- 66.95 «الشروط»: the card's chamfer becomes a RED CHECK TAB (0.25 s).\n- Exit 67.17-67.45. The cut is at 67.53; the four DONE pips continue in N's readout.",
+   "region": "CARD 580x430 at x 1240-1820, y 170-600 (cut 48); L1 free x 1220-1840.\n- pips: TAG 72x48 (cuts 17x21), pitch 84, right-aligned x 1750 (pip1 x 1678-1750 … pip4 x 1426-1498), y 210-258 (19 px above the kicker's tallest glyph at y 277);\n- CALENDAR 110 px at x 1660-1770, y 300-410;\n- «فترة لا تقلّ عن»: A300 36 grey (229 px), right-aligned x 1630, baseline 318 (x 1401-1630, glyphs y 277-328);\n- '60': metallic I200 130 (146 px), right-aligned x 1630 (x 1484-1630), baseline 440 (cap top 345); «يوماً» A400 40 white (76 px), right-aligned x 1462 (x 1386-1462, 22 px from the '60'), baseline 440;\n- day track: TAG 500x24 at x 1280-1780, y 470-494 (TRACK); 12 ticks every 5 days (h 8, DIM, then white); '60' I400 26 grey (32 px) centred x 1764, baseline 462;\n- FIRST-TRADE chip (kit tradeChip, K9): TAG 220x50 at x 1280-1500, y 508-558. «أول صفقة» A400 34 white (161 px), right-aligned x 1455, baseline 545; RED filled circle r 6 centred (1474,533).",
+   "text": "pips | «فترة لا تقلّ عن» '60' «يوماً» | track '60' | «أول صفقة»",
+   "sfx": "whoosh −10 @ 61.92; scan −16 @ 62.70 (the day ticks light with the counter); hit −12 @ 65.95 (pause 65.92-66.22, the chip lands); ui_blip −12 @ 67.40 (pause 67.37-67.66, resolving after the check tab)",
+   "cost": "medium",
+   "group": "conds",
+   "symbols": [
+    "card",
+    "pips",
+    "calendar",
+    "tickets",
+    "target",
+    "shield",
+    "tradeChip",
+    "metalCount",
+    "tag"
+   ]
+  },
+  {
+   "k_beat": "N",
+   "vo_start": 67.53,
+   "vo_end": 72.37,
+   "shot": "N · VC EW (hard cut), static with drift",
+   "words": "ستصبح مؤهّلاً للانتقال للمرحلة الثالثة / وهي مرحلة الـ Acceleration",
+   "visual": "THE FLAG CLIMBS TO STAGE 3. The set is already standing: the viewer built it with D 46 s ago, so N does not rebuild it.\n- 67.53, the first frame (static, full opacity): base pool .18; the PAD (RED rim + inner white .14); the ground line and stair line in their base look (D's rule marks are not carried over); the six cards in their states: S1 DONE, S2 LIT (DOME, '$20,000'), S3-S6 DIM; and, in the readout, the four condition pips, all DONE, carried from M.\n- 67.95 (0.42 s after the cut): the flag MARKER drops 6 px onto S2 (0.32 s e4).\n- 68.07 «مؤهّلاً»: the four pips pulse once together (scale 1.08, 0.25 s).\n- 68.57 «للانتقال»: S3 pre-highlights (outline .6, 0.25 s).\n- 69.19 «للمرحلة»: the READOUT label «المرحلة الثالثة» rises.\n- 69.62-70.07, «الثالثة» (69.69): the marker slides along the stair (st_MKP) from S2 to S3 (0.45 s expo), and S2 turns DONE (red cut + tick).\n- 71.30, «Acceleration» (71.30):\n  - S3 LIGHTS (0.35 s): the CHEVRONS ignite bottom to top (back 1.4), then idle; '$100,000' shows on the card;\n  - a floor STAGE PULSE fires from the pad (fRipple R 2.1 m, d 0.8);\n  - the readout adds 'Acceleration' (71.30), «تمويل حتى» (71.36) and '$100,000' (71.42, static: he does not say the cap; STAGES[2].amt).\n- 71.60-71.85: a 3 px RED underline draws left to right under 'Acceleration' (e3): the visible accent (no sheen on white type).\n- Exit 72.04-72.26: the readout, pips and marker fade as one layer; the cards fold into their landings (S6 first); the line retracts; the pad and pool go out. The cut is at 72.37.",
+   "region": "Staircase as in D. Marker foot on S2 (1513,546), then on S3 (1273,446).\nREADOUT, right-aligned at x 1840:\n- pips: TAG 72x48 (cuts 17x21), pitch 84: pip1 x 1768-1840, pip2 1684-1756, pip3 1600-1672, pip4 1516-1588, y 96-144, all DONE;\n- «المرحلة الثالثة» A300 36 grey (205 px), baseline 200;\n- 'Acceleration' I300 52 white (272 px, x 1568-1840), baseline 266; its RED underline at x 1568-1840, y 276-279;\n- «تمويل حتى» A300 34 grey (161 px), baseline 320;\n- '$100,000' metallic I200 96 (400 px, x 1440-1840), baseline 420, cap top 350.\nThe readout clears the S2 marker's flag (top ≈ 466), S3 (x ≤ 1295) and the S2 card (top 546).",
+   "text": "pips | «المرحلة الثالثة» 'Acceleration' «تمويل حتى» '$100,000' | stage cards",
+   "sfx": "whoosh −14 @ 69.62 (the marker's travel); hit −10 @ 71.20 (pause 71.06-71.27, just ahead of the S3 ignition at 71.30). The draft's glissando (there is no line draw now), flag tick and chevron ticks are cut.",
+   "cost": "medium",
+   "group": "stairs",
+   "symbols": [
+    "staircase (W1 32_stages.js)",
+    "flagMarker",
+    "pips",
+    "dome",
+    "chev",
+    "sprout",
+    "bars",
+    "tag500",
+    "summit",
+    "fRipple",
+    "fPool",
+    "padPts"
+   ]
+  },
+  {
+   "k_beat": "O",
+   "vo_start": 72.37,
+   "vo_end": 76.05,
+   "shot": "O · L3 profile",
+   "words": "والتي سنتعرّف عليها بالتفصيل في الفيديو القادم",
+   "visual": "WHAT'S NEXT: the six episode chips and the next-video deck (video 1 V, mirrored into the left zone).\n- 72.84 «سنتعرّف» (72.83): the SIX EPISODE CHIPS (one video per stage, in the title chip's grammar, so they read as videos, not as the staircase's stages) reveal right to left, 01 first (0.05 s stagger; each scaleX 0 → 1 from its right edge, 0.3 s expo), landing in their states:\n  - 01 Seed: DONE (RED top-left cut with a white tick, fill .7);\n  - 02 Incubation (this video): identical to the title chip: PANEL, RED rim 1.5 px, RED '02', DOME white + red;\n  - 03 Acceleration (next): outline white .6, CHEV white, '03' white;\n  - 04-06: DIM.\n- 73.71 «بالتفصيل»: chip 03 pulses (scale 1 → 1.08 → 1, 0.45 s) while its outline goes white .6 → RED → white .6.\n- 74.57-75.07 «في الفيديو القادم»: the deck of three CARDs fans in (0.08 s stagger). The front card shows «الفيديو التالي», a metallic '(3)', the CHEVRONS (ignite), 'Acceleration' and «المرحلة الثالثة».\n- 74.90-75.30: a RED pill «انتقل إلى الفيديو التالي» with the white circle and a red ←.\n- 75.25-75.60: one sheen on '(3)'.\n- 75.55-75.71 «القادم»: the arrow taps left (7 px out and back).\n- Exit 75.72-75.96. The cut is at 76.05, on DROP 2.",
+   "region": "L3 free x 80-800.\n- episode chips: TAG 88x48 (cuts 17x21), pitch 96, y 168-216, right to left: 01 x 632-720, 02 x 536-624, 03 x 440-528, 04 x 344-432, 05 x 248-336, 06 x 152-240. In each: index '0N' Inter 500 24 (24-30 px), left-aligned at X+14, baseline 201; stage symbol 26 px centred (X+64, 192) (≥ 7 px from the index); symbols sprout, dome, chev, bars, tag500, summit.\n- front CARD 470x250 at x 250-720, y 330-580 (c 30; nothing in x 682-720, y 330-368); back cards offset (−22,−22) and (−44,−44) at alpha .55 (x ≥ 206, y ≥ 286).\n- card contents:\n  - «الفيديو التالي» A300 38 grey (206 px), right-aligned x 680, baseline 392;\n  - '(3)' metallic I200 140 (154 px) at x 280-434, baseline 540;\n  - CHEVRONS 56 px centred (652,448);\n  - 'Acceleration' I300 34 white (176 px), right-aligned x 680 (x 504-680), baseline 516;\n  - «المرحلة الثالثة» A300 34 grey (195 px), right-aligned x 680, baseline 558.\n- RED pill 500x84 at x 220-720, y 610-694: label A500 34 white (354 px), right-aligned x 625; white circle d 70 centred (678,652) with a RED ←.",
+   "text": "chips 01-06 | «الفيديو التالي» '(3)' 'Acceleration' «المرحلة الثالثة» | pill «انتقل إلى الفيديو التالي»",
+   "sfx": "whoosh −14 @ 72.84 (the chips); whoosh −12 @ 74.42 (pause 74.39-74.58, the deck riffle); ui_blip −14 @ 75.68 (pause 75.67-75.78, the arrow tap's return). The music's break bar runs under 73.82-76.01.",
+   "cost": "low",
+   "group": "stairs",
+   "symbols": [
+    "tag (done)",
+    "sprout",
+    "dome",
+    "chev",
+    "bars",
+    "tag500",
+    "summit",
+    "card",
+    "metal",
+    "pill (op_pillArrow)"
+   ]
+  },
+  {
+   "k_beat": "P",
+   "vo_start": 76.05,
+   "vo_end": 77.21,
+   "shot": "P · L2 close-up: the cut on DROP 2 (the boom at output 76.69 lands on this shot's first frame)",
+   "words": "مبروك!",
+   "visual": "THE PUNCH.\n- 76.05: hard cut on the drop.\n- 76.31, word-locked («مبروك!» 76.29-76.30): «مبروك!» lands with a 16 px rise (0.3 s expo), and its mirrored flag unfurls at the right (76.33-76.55).\n- 76.31-76.91: a burst of 16 brand particles (10 RED ◢ at 10 px, 6 white ▲ at 12 px, alpha .6) radiates from behind the word out to r 150 (quartOut), spinning and fading to 0, inside the slot (video 1 G, W1 31_join.js jn_G).\n- Exit 76.92-77.12. The cut is at 77.21 (the bug switches off there); the subtitle holds to the cut.",
+   "region": "L2 slot:\n- «مبروك!» A600 84 white (272 px), right-aligned x 580, baseline 330 (x 308-580, top 262);\n- flag h 29 (w 22) at x 622-644, y 262-291;\n- burst centre (444,300), reaching x 294-594, y 150-450.",
+   "text": "«مبروك!»",
+   "sfx": "flash −10 @ 76.75 (pause 76.68-77.33: a bright glassy chime after the drop, not on it). No boom: the mix has drop 2's.",
+   "cost": "low",
+   "group": "open",
+   "symbols": [
+    "flag",
+    "particle burst (W1 31_join.js)"
+   ]
+  },
+  {
+   "k_beat": "Q",
+   "vo_start": 77.21,
+   "vo_end": 84.61,
+   "shot": "Q · VC WIDE (hard cut), push WIDE → HOME at 82.13 (S-curve 0.7 s, settled 82.83), held into the end wipe; no bug",
+   "words": "أصبح لك الآن حصّة مشاركة بنسبة 40% / من الأرباح المحقّقة في حساب Axi Select",
+   "visual": "YOUR SHARE: 40%.\n- 77.21: hard cut; pool .18. The bug is off for the whole shot: the official logo builds in the account card, and Q mirrors A.\n- 77.64-78.20: the headline reveals per word from the right: «أصبح لك» (grey) on 77.33-77.65, then «حصّة مشاركة» (white) on «حصّة» (78.15). The scene's one flag.\n- 78.16-78.60: the DONUT track (TRACK #2A2B2F, w 34) draws clockwise from 12 o'clock (0.45 s e2).\n- 78.99-79.44, «بنسبة 40»:\n  - the RED arc sweeps COUNTER-CLOCKWISE from 12 o'clock to 40 % (K6 o.ccw, quartOut), so your 40 % fills the LEFT half, facing the card and the profit flow; the metallic '40%' counts 0 → 40 in the centre; both land on «40» (79.44);\n  - ▲▲▲ pop inside the hole, left of the numeral, at 79.46 (done by 80.00);\n  - the white pool lifts .18 → .26 over 79.44-79.80.\n- 79.50: the grey remainder lifts from TRACK to DIM #55575C (0.3 s), and the labels land: «لك» (white) beside the red arc, 'Axi' (grey) beside the grey arc. The rest gets no number, because he does not say it.\n- 80.84-81.30, «من الأرباح» (80.81):\n  - the LEFT card enters: VAULT, «حساب», and a skeleton name field (shimmer);\n  - «من الأرباح المحقّقة» (grey) rises under the donut.\n- 81.01-81.45 «الأرباح المحقّقة»: a mini profit chart builds in the card (corners L 18; 10 candles rising over a dotted base line, 0.04 s stagger; the profit zone fills white α .16 → 0).\n- 81.30-81.83, PROFIT FLOW: 10 RED ◢ marks (12 px) leave the chart's top and fly over his head into YOUR red arc (0.025 s stagger, 0.30 s each, inOutCubic), vanishing on contact at the arc's midpoint (1318,377). The red arc thickens by 4 px as they arrive (81.60-81.98, e3) and stays thick.\n- 82.13-82.83: the push WIDE → HOME. It starts in the pause 82.05-82.37 and settles at 82.83, before the logo build at 83.00. Nothing enters, exits or animates during it (the thickening ended at 81.98). The headline, donut, labels, sub-label and card hold still in screen space: every box is free at both WIDE and HOME.\n- 82.86-82.98: the skeleton dissolves.\n- 83.00 «Axi», 83.27 «Select»: the OFFICIAL LOGO builds in the name field (logoBuild d 0.7: axi rises 83.00-83.35, the SELECT tag wipes 83.21-83.60). No sheen.\n- It holds at full opacity into the end wipe (VO 84.09-84.61), as video 1's V did.",
+   "region": "Headline, A300 56, baseline 160: «أصبح لك» (205 px) at x 1010-1215, «حصّة مشاركة» (317 px) at x 677-994; flag h 20 (w 15) at x 1243-1258, y 115-135. It is free at WIDE (the void) and at HOME (above y 280).\nRight third:\n- donut centre (1480,430), r 170, ring width 34 (outer 187: x 1293-1667, y 243-617); the red arc runs from −π/2 counter-clockwise to −π/2 − 0.8π (12 o'clock round the left side to about 7 o'clock); its midpoint (1318,377); the grey arc's midpoint (1642,482);\n- '40%' metallic I200 120 (205 px), centred x 1480 (x 1378-1582), baseline 474, cap top 387; ▲▲▲ at x 1344-1362, y 420 / 442 / 464;\n- «لك» A400 36 white (44 px), centred x 1250 (x 1228-1272), baseline 455: beside the red arc at 9 o'clock, 21 px from the ring, and below the flow, which passes over it at y ≈ 345;\n- 'Axi' I400 30 grey (41 px), centred x 1706, baseline 506: beside the grey arc at about 4 o'clock;\n- «من الأرباح المحقّقة» A300 36 grey (294 px), centred x 1480, baseline 682 (bottom 691 < 700).\nLeft third, CARD 520x300 at x 160-680, y 300-600 (cut 36):\n- VAULT 64 px at x 192-256, y 332-396;\n- «حساب» A500 42 white (119 px), right-aligned x 630, baseline 372;\n- name field: skeleton 300x44 at x 330-630, y 413-457, then the logo 300x66 at x 330-630, y 402-468 (clear space 16 px: the title's bottom 383 and the chart top 490 stay outside);\n- profit chart: corners at x 192-630, y 490-580.\nFlow path: quadratic from (520,488) via (930,190) to (1318,377); apex ≈ (1015,305), above his head (WIDE keep-out top 470) and below the headline.\nAt HOME: the card sits inside x 80-720 and the donut and labels inside x 1160-1840.",
+   "text": "«أصبح لك» (grey) «حصّة مشاركة» (white) | '40%' «لك» 'Axi' | «من الأرباح المحقّقة» | «حساب» + official logo PNG",
+   "sfx": "whoosh −12 @ 77.64; riser −14 @ 78.99-79.44 (the sweep, ending on «40»; nothing transient on the word); dataswish −14 @ 81.30 (the flow); whoosh −12 @ 82.13 (pause 82.05-82.37, the push); whoosh −18 @ 83.00 (logo air); whoosh −10 @ 84.09 (the end-wipe chamfer swish, after the last syllable at 84.02, pause 84.01-86.03)",
+   "cost": "high",
+   "group": "open",
+   "symbols": [
+    "headline",
+    "flag",
+    "donut (K6, o.ccw)",
+    "metalCount",
+    "chev3",
+    "card",
+    "vault",
+    "skeleton",
+    "corners",
+    "candle",
+    "logoBuild",
+    "fPool"
+   ]
+  },
+  {
+   "k_beat": "END",
+   "vo_start": 84.61,
+   "vo_end": 90.37,
+   "shot": "END CARD (output 85.24-91.00, f 2131-2275), full-screen MG",
+   "words": "(music out)",
+   "visual": "The chamfer wipe (VO 84.09-84.61) runs over Q held, into the brand page: the official logo build on the music's ending hit, the CTA pill, the footer and the T&C. Nothing sits inside the logo's clear space. Full spec in end_card.",
+   "region": "full frame",
+   "text": "official logo | «انضم إلى آكسي سيليكت» | 'TRADE YOUR EDGE.    ///    LEARN MORE ON AXI.COM' | «تخضع عمليات تخصيص رأس المال في Axi Select لشروط وأحكام البرنامج»",
+   "sfx": "output seconds (out: true): ui_blip −14 @ 86.21 (the pill). The music's own ending hit (85.36) carries the logo build; no cue doubles it. The tail is gone by 90.8.",
+   "cost": "medium",
+   "group": "open",
+   "symbols": [
+    "logoBuild",
+    "triTex",
+    "bokeh",
+    "pill"
+   ]
+  }
+ ],
+ "title_card": "OUTPUT 0.00-3.00 (75 frames). Full-screen brand page on pure #000000; no presenter, no bug, no subtitles. It is video 1's delivered op_title (W1 30_open.js), re-texted for video 2.\n\nBACKGROUND\n- Pure #000 (no INK, no radial lift).\n- ◢ TEXTURE sprite as measured (9 px marks, 57x61 pitch, RED .27 → .12 over five rows, nothing below about y 330), revealed by a right-to-left sweep with the logo slant (slantClip, 0.82 px of x per px of y) over 0.00-0.80, drifting −4 px/s.\n- Candle bokeh low (op_bokeh, layer top 500), alpha .35 e2 over 0.00-0.60.\n- The card pushes from scale 1.00 to 1.02 about (960,540) over 0-2.6 s. The bokeh is drawn unscaled, outside the push.\n\nSTAGE CHIP (the '02' tag with the dome)\n- TAG 200x64 (cuts 23x28) at x 860-1060, y 284-348, LIT state: PANEL plus a RED rim 1.5 px.\n- DOME 40 px centred (985,316); '02' Inter 500 30 RED (36 px), left-aligned x 915, baseline 327.\n- It sits 25 px above the flag, inside the faint bottom rows of the ◢ band; the PANEL covers the texture behind it.\n\nLINE 1, RTL, baseline 470 (spans x 422-1498, centred on 960)\n- Reading order: flag, '(2)', «مرحلة», 'Incubation'.\n- Mirrored RED flag h 40 (w 30) at x 1468-1498, y 373-413 (top on the alef line).\n- '(2)' metallic Inter 200 120 (129 px) at x 1283-1412, 56 px from the flag.\n- «مرحلة» Alexandria 300 120 white (305 px), right-aligned x 1249 (x 944-1249).\n- 'Incubation' Inter 300 110 white (488 px), right-aligned x 910 (x 422-910, cap top 390), one word space (34 px) to the left.\n\nLINE 2, baseline 650 (as video 1)\n- «مع» Alexandria 300 72 #8E9095 (100 px), right-aligned x 1330.\n- The OFFICIAL LOGO 600x131 at x 590-1190, y 560-691, with 40 px to «مع» (outside its 33 px clear space). Nothing else touches the logo.\n\nTIMING\n- 0.00-0.80: texture sweep; 0.00-0.60: bokeh in.\n- 0.20-0.60: the chip reveals from its right edge with a 20 px rise (expo); 0.30-0.80: the DOME draws (sapling 0.55-0.95, red bud last).\n- 0.25-0.47: the flag unfurls.\n- 0.35-0.80: '(2)' rises 40 px through a clip (e4); one sheen 0.85-1.35 (metallic numerals only).\n- 0.45-0.95: «مرحلة» reveals from the right (clip + 18 px rise, clip to baseline + 0.70 em).\n- 0.62-1.02: 'Incubation' mask-reveals left to right (Latin builds L → R).\n- 0.95-1.30: «مع» rises 16 px.\n- 1.05-1.95: logoBuild (d 0.9, no sheen). axi_part rises 1.05-1.50; the SELECT tag wipes 1.32-1.82 behind the red '/' edge.\n- 1.95-2.62: hold. The whole title has been readable since 1.82.\n- 2.62-2.94: exit. Everything fades with y −10 px (eio 0.32 s); the texture and bokeh dim to 0.\n- 2.86-2.94: black over everything (op_black); then a hard cut to HOME at output 3.00 (VO 2.37, frame 75). His first word is at output 3.06.\n\nSFX (output seconds, \"out\": true)\n- longwhoosh −14 @ 0.00 (low pad swell, under the music intro)\n- ui_blip −14 @ 0.25 (the flag)\n- whoosh −14 @ 1.32 (the tag wipe)\n- no shimmer cue (no sheen on the logo)",
+ "broll_1": "B-ROLL 1 «نافذة السحب». VO 10.09-17.09 (output 10.72-17.72, frames 268-443, 175 frames). Full-screen MG, no presenter, no bug. A hard cut in from L2 (B) and a hard cut out into D (EW; no music drop there); the voice continues. Subtitles stay, so nothing goes below y 950. Every exit inside the scene is an in-out fade that loses at most 14.3 % per frame (smoothstep over 0.42 s, or linear over 0.28 s), as in W1 34_broll.js.\n\nWord onsets (measured, see word_onsets): إذا 10.20 · أردت 10.48 · القيام 10.70 · بأي 11.16 · عملية 11.46 · سحب 11.82 · للأموال 12.20 · عليك 12.96 · القيام 13.28 · بذلك 13.68 · [13.98-14.29] · قبل 14.29 · تنفيذ 14.68 · [15.09-15.31] · أي 15.31 · صفقة 15.59 · تداول 16.04 · في 16.38 · هذه 16.46 · المرحلة 16.60-17.03.\n\nWORLD (kit brScene, K12: the delivered W1 34_broll.js world)\n- Pure #000; the ◢ floor world below a horizon at y 610 (f 1000, camera 1.6 m, dolly 1.2 m/s, cz0 0).\n- Horizon haze .06; candle bokeh band (layer top 362) drawn 1:1 outside the drift.\n- The scene drifts +0.5 %/s about (960,540).\n\nFIXED GEOMETRY (screen px)\n- FRAME: corner triangles (legs 28) at x 200-1720, y 300-880, with dotted vertical sides (1.5 px white .22, dash 2/6).\n- HEADLINE, right-aligned x 1720:\n  - line 1 «سحب الأموال» A300 64 white (367 px, x 1353-1720), baseline 176; flag h 22 (w 16) mirrored at x 1752-1768, y 124-146;\n  - line 2 «قبل تنفيذ أي صفقة» A300 48 grey (419 px, x 1297-1720), baseline 244, revealed word by word: «قبل» (85 px) x 1635-1720, «تنفيذ» (107) x 1515-1622, «أي» (54) x 1448-1502, «صفقة» (137) x 1297-1434.\n- TIMELINE (time runs left to right, as in every chart): 3 px white .7 at y 720 from x 260 to 1660, with a white arrowhead (12x14) at 1660 and ticks every 70 px from x 300 (h 8, white .25).\n- START node:\n  - a 3 px white tick at x 300 (y 700-740);\n  - chip TAG 210x60 (cuts 21x26) at x 300-510, y 748-808: DOME 36 px centred (480,778) and 'Incubation' Inter 400 26 white (123 px), right-aligned x 456, baseline 787;\n  - «بداية المرحلة» A300 34 grey (184 px), right-aligned x 510, baseline 852.\n- WITHDRAW PILL: DARK 340x76 (r 38) at x 320-660, y 560-636, filled opaque #303133. RED circle d 62 centred (622,598) with a white ←; label «سحب الأموال» A400 34 white (204 px), right-aligned x 573 (x 369-573; pill() leaves 212 px of label room at w 340).\n- WINDOW zone: from x 300 to the playhead, y 520-718. Fill white α .06, top edge 2 px white .45 at y 520. Its right edge starts at x 760.\n- 'ALLOWED' chip: a small RED TAG 52x36 (cuts 9x11) with a white tick, at x 676-728, y 580-616: inside the window, 16 px right of the pill and centred on it vertically, clear of the padlock's landing box (x 294-366).\n- PLAYHEAD ('now'): 2 px white line from y 500 to 718, with a ▼ head (white 16x12) at y 488-500. It starts at x 760, right of the pill and the chip, so it never crosses them.\n- Draw order, back to front: window zone, playhead, pill, 'allowed' chip, padlock, cursor.\n- FIRST-TRADE chip (kit tradeChip, K9): TAG 230x60 at x 885-1115, y 748-808. «أول صفقة» A400 34 white (161 px), right-aligned x 1070, baseline 790; RED filled circle r 6 centred (1089,778). On the line: a white ring r 12 (2 px) at (1000,720).\n- TRADES: 8 candles to the right of the cutoff (body 18, pitch 64, centres x 1064-1512), in the price band y 560-700, seeded mulberry32, mostly up.\n- BRACKET «هذه المرحلة»: a 1.5 px white .45 line at y 462 from x 300 to 1660, with 8 px end ticks down; label A300 34 grey (181 px), centred x 980, baseline 446.\n\nSECOND BY SECOND (VO)\n- 10.09: hard cut in on the lit world. 10.12-10.57: the frame's corner triangles fly out from the centre (expo); 10.42-10.72: the dotted sides draw.\n- 10.20-10.70 «إذا أردت»: the timeline draws left to right (e4, 0.5 s), ticks with it.\n- 10.48 «أردت»: the START chip reveals from its right edge with a 20 px rise (0.4 s expo); the DOME draws 10.55-11.05; «بداية المرحلة» rises at 10.60.\n- 11.16-11.38 «بأي»: the pill's RED circle scales 0 → 1 at (622,598) (0.22 s expo) with its white ←. With it, the WINDOW zone fades in over x 300-760 (11.16-11.44, linear 0.28 s): the window is open.\n- 11.30-11.65: the pill extends leftward out of the circle (expo).\n- 11.62-11.95: the pill's label «سحب الأموال» reveals right to left, landing on «سحب» (11.82).\n- 11.50-11.80: the CURSOR (34 px) glides from (760,900) to the circle (expo).\n- 11.84 CLICK: the pill at .96 for 2 frames, plus a 2 px red ring from r 31 to 2.6r (0.4 s).\n- 11.80-12.20 «سحب»: headline line 1 «سحب الأموال» reveals per word, and its flag unfurls (11.82-12.04).\n- 12.00-12.60 «للأموال» (12.20): MONEY OUT. 10 RED ◢ marks (14 px) burst from the circle and fly up-left out of the pill (to x 300-520, y 330-460), spinning, alpha 1 → 0 (quartOut).\n- 12.30: the 'allowed' chip lands at x 676-728 (scale back 1.4, 0.25 s), inside the open window. The cursor fades 12.10-12.38 (linear 0.28 s).\n- 12.96-13.30 «عليك»: the PLAYHEAD appears at the window's right edge, x 760: its line draws down from the ▼ head (0.3 s e3).\n- 13.68 «بذلك»: the pill pulses once (scale 1.03, 0.3 s).\n- 14.29 «قبل»: line 2's «قبل» reveals (grey). The playhead starts travelling right, x 760 → 1000 over 14.29-15.59 (eio), and the window grows with it.\n- 14.68 «تنفيذ»: «تنفيذ» reveals; a GHOST first-trade chip (dashed outline, white .4) appears at x 885-1115: the trade to come.\n- 15.31 «أي»: «أي» reveals.\n- 15.40-15.68: the 'allowed' chip fades (linear 0.28 s), gone before the padlock moves.\n- 15.59 «صفقة»: «صفقة» reveals.\n  - The playhead reaches x 1000, and the FIRST-TRADE chip turns solid (scale back 1.4, 0.25 s), with the white ring on the line.\n  - A white candle prints above the line at x 1000.\n  - The CUTOFF, a 3 px RED line at x 1000, rises from y 718 to 500 (0.2 s e4).\n- 15.66-15.96, THE WINDOW CLOSES:\n  - a RED slanted shutter edge (3 px, logo slant 0.82) sweeps from x 1000 left to x 300 (0.30 s expo), and the zone it passes turns TRACK α .5;\n  - the PADLOCK (sym 72 px) drops from y 540 onto the pill's left end, centred (330,598), over 15.70-15.88 (e4). Its shackle closes over 15.88-15.96 (k.open 1 → 0) and snaps at 15.96, with a 2-frame 4 px shake and a red ring (r 30 → 70, 0.4 s);\n  - the pill mutes (fill #2A2B2F, label #55575C, circle #55575C) over 15.72-15.95.\n- 16.04-16.92 «تداول»: right of the cutoff, the 8 trade candles print left to right, one every 0.11 s (each 0.22 s e4, wick 0.08 s later). The last one breathes ±6 px.\n- 16.42 «في هذه المرحلة»: the bracket draws from the centre outward (0.35 s e3) and «هذه المرحلة» rises; the START chip's DOME pulses once (scale 1.06).\n- 17.03-17.09: hold. Hard cut out at full opacity into D.\n\nSFX\n- dataswish −8 @ 10.09 (the cut-in; only the two drops get booms)\n- ui_blip −16 @ 11.84 (the click; there is no pause nearby, so audio_build plays it 12 dB lower again: a felt tick, not a hit)\n- whoosh −12 @ 12.00 (the ◢ burst)\n- ui_blip −14 @ 14.22 (pause 13.98-14.29, as the playhead starts)\n- whoosh −12 @ 15.66 (the shutter; it replaces the draft's thock on «صفقة»)\n- hit −12 @ 15.96 (the shackle snap, in the 10 ms gap before the /t/ of «تداول»; that gap is shorter than the pause map's 80 ms, so audio_build plays it 12 dB lower, which is right under the shutter whoosh)\n- no riser into D (D has no drop), no candle blips",
+ "broll_2": "B-ROLL 2 «x10». VO 36.41-47.41 (output 37.04-48.04, frames 926-1201, 275 frames). Full-screen MG, no presenter, no bug. A hard cut in from G (WIDE) and a hard cut out into I (L3); the voice continues. Nothing goes below y 950. Exits inside follow the same 14.3 %-per-frame rule as B-roll 1.\n\nWord onsets: [36.28-36.53] · يعني 36.53 · إذا 37.03 · كان 37.21 · حسابك 37.53 · ألف 38.01 · دولار 38.31 · [38.56-38.75] · ستقوم 38.75 · Axi 39.25 · بتمويلك 39.51 · [40.02-40.13] · بمبلغ 40.13 · عشرة 40.75 · آلاف 41.15 · [41.44-41.54] · دولار 41.54 · أمّا 41.93 · إذا 42.13 · كان 42.33 · حسابك 42.63 · [43.03-43.32] · ألفين 43.32 · دولار 43.68 · [43.91-44.18] · ستقوم 44.18 · Axi 44.75 · بتمويلك 45.05 · [45.51-45.63] · أيضاً 45.63 · بعشرة 45.99 · أضعاف 46.45 · هذا 46.76 · المبلغ 47.01-47.35.\n\nWORLD: kit brScene, the same as B-roll 1 with the world advanced (cz0 37, as video 1's B-roll 2) and the bokeh layer top at 370.\n\nFLOW: right to left (RTL, the same direction as video 1's copy arc): your account on the RIGHT → the gate in the CENTRE → Axi's funding on the LEFT.\n\nFIXED GEOMETRY (screen px)\n- KICKER: «مثال» A300 56 white (112 px), right-aligned x 1740 (x 1628-1740), baseline 160; flag h 20 (w 15) mirrored at x 1768-1783, y 115-135. At 41.93 «آخر» A300 56 grey (65 px) joins at x 1547-1612, giving «مثال آخر».\n- RIGHT CARD «حسابك» (trading account): CARD 440x420 at x 1300-1740, y 240-660 (cut 44):\n  - CANDLES 56 px at x 1332-1388, y 272-328;\n  - «حسابك» A500 44 white (141 px), right-aligned x 1700, baseline 330;\n  - balance metallic I200 88, right-aligned x 1700, baseline 450 ('$1,000' 267 px, x 1433-1700; '$2,000' 287 px, x 1413-1700);\n  - unit blocks: TAG 70x36 (cuts 13x15), fill white α .88, no outline. Block 1 at x 1630-1700, y 540-576; block 2 at x 1550-1620.\n- GATE (the multiplier):\n  - TAG 260x150 (cuts 53x65) at x 830-1090, y 370-520, PANEL fill; rim white .25 when idle, RED 2 px when armed;\n  - 'x10' metallic I200 96 (133 px), centred x 960 (x 893-1026), baseline 480;\n  - corner triangles (legs 18) at x 806-1114, y 346-544.\n- PATHS: dotted, 3 px dots every 12 px, white .12 idle and .30 armed.\n  - in: a quadratic from the block centre (1665,558) via (1380,445) to the gate's right edge (1094,445);\n  - out: from the gate's left edge (826,445) via (700,445) to each grid slot's centre.\n- LEFT CARD «تمويل Axi» (allocation): CARD 480x520 at x 180-660, y 220-740 (cut 48):\n  - VAULT 56 px at x 212-268, y 252-308;\n  - «تمويل» A500 44 white (126 px), right-aligned x 620, baseline 330; the axi wordmark h 40 (77 px) at x 401-478, y 294-334, read after «تمويل»;\n  - amount metallic I200 88, right-aligned x 620, baseline 450 ('$10,000' 318 px, x 302-620, cap top 386);\n  - ▲▲▲ at x 240-258, y 400 / 422 / 444;\n  - total skeleton for example 2: 340x60 r 10 at x 280-620, y 392-452;\n  - GRID: unit blocks 70x36, 5 per row, pitch 80 x 46, at x 230-620, filled right to left (slot 1 at x 550-620); row tops 490 / 536 / 582 / 628.\n\nSECOND BY SECOND (VO)\n- 36.41: hard cut in on the lit world (4 s after drop 1). The gate already stands idle (PANEL, white .25 rim, no 'x10'); its corner triangles fly out 36.44-36.89 and the paths fade in at .12.\n- 36.52 «يعني»: the kicker «مثال» reveals and its flag unfurls (36.54-36.76).\n- 37.05-37.50, «إذا كان حسابك»: the RIGHT card enters (clip from the right edge + 24 px rise, 0.5 s expo); its CANDLES draw; «حسابك» lands on 37.53.\n- 37.51-38.01: '$1,000' counts 0 → 1,000 (metalCount, quartOut) and lands on «ألف» (38.01). At 38.00, block 1 pops into the well (scale .9 → 1, back 1.4, 0.25 s).\n- 38.31-38.70 «دولار»: one sheen across '$1,000'.\n- 38.75, «ستقوم», THE GATE ARMS:\n  - its rim turns RED (0.25 s);\n  - 'x10' rises 16 px through a clip (38.78-39.20, e4);\n  - the corner triangles snap 6 px outward and back (0.15 s);\n  - the paths brighten to .30.\n- 39.22-39.67 «Axi» (39.25): the LEFT card enters; the axi wordmark rises 12 px on «Axi»; the VAULT draws.\n- 39.55-40.05 «بتمويلك»: a GHOST copy of block 1 (a TAG outline, white .6, led by the kit comet K13 at its defaults: head r 7, glow 26, 6-dot tail at 9 px) rides the in-path into the gate (inOutCubic 0.5 s).\n- 40.05: the gate FLASHES (rim white for 2 frames, then RED; 'x10' scale pulse 1.08, 0.25 s), and the vault spokes turn 120°.\n- 40.20-40.75, «بمبلغ عشرة»: TEN blocks leave the gate's left edge along the out-path into grid rows 1-2 (0.05 s stagger, 0.30 s each, e3, each landing with a 3 px settle). In sync, '$10,000' counts 0 → 10,000 (quartOut) and lands on «عشرة» (40.75).\n- 41.15 «آلاف»: ▲▲▲ pop to the left of '$10,000' and wave; one sheen 41.15-41.55.\n- 41.54 «دولار»: the vault hub pulses once.\n- 41.93 «أمّا»: «آخر» joins the kicker.\n- 42.15-42.45, RESET:\n  - the ten blocks drop 16 px and fade (0.02 s stagger, smoothstep);\n  - '$10,000' and the ▲▲▲ fade;\n  - the gate rim returns to white .25 and the paths to .12.\n- 42.82-43.32, «حسابك ألفين»: the right balance counts 1,000 → 2,000 (quartOut) and lands on «ألفين» (43.32); block 2 slides in to the left of block 1 (43.10-43.35, e4).\n- 43.68 «دولار»: one sheen across '$2,000'.\n- 44.05, in the pause 43.91-44.18: the gate re-arms (rim RED, corners snap, paths .30).\n- 44.75 «Axi»: the axi wordmark pulses (scale 1.04, 0.25 s).\n- 45.05-45.60 «بتمويلك»: two ghost copies ride the in-path into the gate, 0.12 s apart (0.5 s each), each led by a K13 comet.\n- 45.66 «أيضاً»: the gate flashes. The left amount slot shows the TOTAL SKELETON (shimmer right to left every 0.9 s): the total is said in the next shot.\n- 45.99-46.75, «بعشرة أضعاف»: TWENTY blocks fly into grid rows 1-4 (0.035 s stagger, 0.30 s each).\n- 46.76-47.06 «هذا المبلغ»: THIS AMOUNT. The right card's two blocks get a 2 px RED rim and pop (scale 1 → 1.08 → 1, 0.15 s, twice: 46.76 and 46.91); with the first pop, a 3 px RED underline draws right to left under '$2,000' (x 1413-1700, y 462-465, 0.25 s e3). (The blocks are already white α .88, so a white flash would not show.)\n- 47.06-47.41: hold. Hard cut out at full opacity into I.\n\nSFX\n- dataswish −8 @ 36.41 (the cut-in; only the two drops get booms)\n- ui_blip −12 @ 37.94 (the counter landing, in the pause 37.93-38.01, just before «ألف»)\n- ui_blip −12 @ 38.62 (the gate arms, pause 38.55-38.75)\n- whoosh −14 @ 39.55 (the ghost's ride)\n- ui_blip −12 @ 40.05 (the gate flash, pause 40.01-40.15)\n- dataswish −14 @ 40.20 (the ten blocks; the draft's ten clinks were transients on speech)\n- whoosh −12 @ 41.46 (the reset, pause 41.42-41.55)\n- ui_blip −12 @ 43.26 (the counter landing, pause 43.02-43.32, just before «ألفين»)\n- ui_blip −12 @ 44.05 (the re-arm, pause 43.89-44.20)\n- whoosh −14 @ 45.05 (the two ghosts)\n- ui_blip −12 @ 45.56 (the gate flash, pause 45.50-45.63)\n- dataswish −14 @ 45.99 (the twenty blocks)\n- no riser into I (I has no drop), no shimmer on «آلاف»",
+ "end_card": "VO 84.61-90.37 = output 85.24-91.00 (frames 2131-2275, 144 frames). No presenter, no subtitles, no bug. It is video 1's delivered op_end (W1 30_open.js), re-timed onto video 2's soundtrack, on pure #000. All end-card times below are OUTPUT seconds, as the builders need them (the end card has no VO).\n\nTRANSITION, VO 84.09-84.61 (output 84.72-85.24, frames 2118-2131, 13 frames): CHAMFER WIPE (90_main endWipe, k_t.wipe)\n- A #000 panel enters from the right with a full-height '/' edge (slant 0.82) carrying a 3 px RED line, eio.\n- It covers Q, held at full opacity underneath (logo card, donut, headline). Nothing is half-faded.\n- The wipe starts 0.07 s after the last syllable ends (84.02), in the pause 84.01-86.03.\n\nBACKGROUND\n- Pure #000.\n- ◢ TEXTURE top band revealed row by row over output 85.36-85.76 (op_triRows), with the logo's clear-space cut-out [561, 231, 1359, 466].\n- Candle bokeh (op_bokeh, layer top 420), alpha .32 e2 over 85.41-85.96, in card-local time.\n\nLAYOUT (centred, as video 1)\n- OFFICIAL LOGO 720x157 at x 600-1320, y 270-427 (clear space 39 px).\n- RED pill 600x100 at x 660-1260, y 520-620: «انضم إلى آكسي سيليكت» Alexandria 500 46 white (500 px), centred, baseline 588. No arrow and no ▲▲▲.\n- Footer, centred at baseline 720: 'TRADE YOUR EDGE.    ///    LEARN MORE ON AXI.COM', Inter 500 30 with 4 px tracking, #8E9095, with 'AXI.COM' in RED.\n- T&C, centred at baseline 968: «تخضع عمليات تخصيص رأس المال في Axi Select لشروط وأحكام البرنامج», Alexandria 300 34 #6E7075, with 'Axi Select' drawn as an Inter 300 31 run.\n\nTIMING (output seconds)\n- 85.24-85.36: black (the wipe's panel) for 3 frames.\n- 85.36: the music's own ending hit (audio/music_plan.json END_HIT 85.364). The ◢ rows start (85.36-85.76) and logoBuild starts (t0 85.36, d 0.85, no sheen): axi rises on the hit, the SELECT tag wipes in behind it, done by 86.21.\n- 85.41-85.96: the bokeh fades in.\n- 86.21-86.61: the pill scales .92 → 1 with alpha (expo).\n- 86.61-87.01: the footer fades in while its tracking tightens 10 → 4 px.\n- 86.91-87.31: the T&C fades in.\n- 87.81-88.31: one white sheen across the RED pill (white on red reads; never on the logo).\n- 85.36-90.20: a slow 1.5 % push. The CTA, axi.com and the T&C stay readable from 87.31 to 90.20 (2.9 s).\n- 90.20-90.88: everything fades to black together (eio) with the music tail (gone by 90.8).\n- 90.88-91.00: pure black. END = output 91.00 (frame 2275).\n\nSFX\n- whoosh −10 @ VO 84.09 (the chamfer swish; listed in Q's cues)\n- ui_blip −14 @ output 86.21 (out: true; the pill)\n- nothing on the logo: the music's ending hit (85.36) is the logo's sound",
+ "groups": [
+  {
+   "file": "30_open.js",
+   "name": "open",
+   "prefix": "op_",
+   "beats": [
+    "TITLE CARD (output 0-3.00, f 0-75)",
+    "A VO 2.37-8.81 (VC)",
+    "P VO 76.05-77.21 (L2)",
+    "Q VO 77.21-84.61 (VC, push at 82.13)",
+    "END CARD (output 85.24-91.00, f 2131-2275)"
+   ],
+   "owns": "title(); end(); draw() for A, P, Q; floor() for A and Q (base pool .18, the ◢ ripple, the stage-2 pad and pulse in A; the pool lift in Q). Optional cover().",
+   "copy_from_video1": "W1 30_open.js: op_title, op_black, op_bokeh, op_words (widen its clip to baseline + 0.70 em), op_logoOut, op_floorA (re-timed to 5.02), op_triRows, op_footer, op_tc, op_end (re-timed onto output 85.36); W1 31_join.js jn_G (the «مبروك!» burst); W1 32_stages.js st_PAD, st_PADLEN and the pad rim (for A's pad).",
+   "kit_needs": [
+    "logoBuild",
+    "logo",
+    "triTex",
+    "slantClip",
+    "flag",
+    "headline",
+    "metal",
+    "metalCount (K8)",
+    "sym: dome, tickets (K1), target (K2), shield, calendar (K3), vault",
+    "pips (K7)",
+    "donut (K6, with o.ccw and o.restCol)",
+    "skeleton (K10)",
+    "chev3",
+    "card",
+    "tag",
+    "corners",
+    "chart/candle",
+    "glow",
+    "withSheen",
+    "pill",
+    "floorTris",
+    "padPts",
+    "fRipple",
+    "fPool",
+    "floorLight"
+   ],
+   "notes": "Shot ownership by S.shot.k_beat: 'TITLE', 'A', 'P', 'Q', 'END' (for reference: A k_vcam.t0 2.37, f 75-236; P clip L2 f 1917-1946; Q k_vcam.t0 77.21, f 1946-2131). A is HOME → WIDE (the pull at 3.05) and nothing may enter during the pull. Q pushes at 82.13 with every element static. The bug is off in A and Q (k_t.bug [8.81, 77.21]). P's cut and Q's flow carry no boom: drop 2 is in the mix. The end card's logo build starts on the music's ending hit at output 85.36; END is output 91.00."
+  },
+  {
+   "file": "31_rule.js",
+   "name": "rule",
+   "prefix": "ru_",
+   "beats": [
+    "B VO 8.81-10.09 (L2)",
+    "C B-ROLL 1 VO 10.09-17.09 (k_broll 1)",
+    "E VO 21.85-28.05 (L1)",
+    "F VO 28.05-32.37 (L5)"
+   ],
+   "owns": "broll(x, t, S, 1); draw() for B, E, F.",
+   "copy_from_video1": "W1 33_accounts.js ac_P (note tag; replace its rock with the scale pop), ac_tick; W1 31_join.js jn_D (gauge arc ticks: re-centre and re-scale), jn_Ecard and jn_E (two condition cards), jn_gaugeRed; W1 34_broll.js br_ticket, br_skel (or kit K10), br_headline; W1 30_open.js cursor and click handling.",
+   "kit_needs": [
+    "brScene (K12)",
+    "tag",
+    "card (tab check)",
+    "pill",
+    "cursor",
+    "sym: padlock, dome, gauge, candles",
+    "tradeChip (K9)",
+    "metalCount (K8)",
+    "skeleton (K10)",
+    "corners",
+    "candle",
+    "glow",
+    "headline",
+    "flag"
+   ],
+   "notes": "Shot ownership by S.shot.k_beat: 'B', 'C', 'E', 'F' (for reference: B clip L2 f 236-268; C k_broll 1 f 268-443; E clip L1 f 562-717; F clip L5 f 717-825). Counters: 60 → 27.48 (the /s/ of «ستّين»), $1,000 → 31.71. E has no ▲▲▲. F's exit ends at 32.28: the cut at 32.37 is DROP 1."
+  },
+  {
+   "file": "32_stairs.js",
+   "name": "stairs",
+   "prefix": "sr_",
+   "beats": [
+    "D VO 17.09-21.85 (VC EW)",
+    "N VO 67.53-72.37 (VC EW)",
+    "O VO 72.37-76.05 (L3)"
+   ],
+   "owns": "draw() and floor() for D and N (pool .18, pad, ripple, pulses); draw() for O.",
+   "copy_from_video1": "W1 32_stages.js: st_bump, st_out, st_xf, st_plen, st_at, st_poly, st_name, st_marker, st_PAD, st_floor (pad, pulses), st_ringCut, st_LX, st_LY, st_CW, st_GX, st_MAIN, st_ML, st_LD0, st_ewM, st_symK, st_cs (rewritten for the D and N state tables), st_card, st_MK, st_MKP, st_mkAt, st_stair, st_readout (replace its comet with kit comet K13 and its passTimes); W1 30_open.js op_symState, op_drawSym, op_pillArrow, op_tick and the V deck code (op_drawV, mirrored into the left zone); the title chip (op_title) for O's episode chips.",
+   "kit_needs": [
+    "STAGES",
+    "sym: sprout, dome, chev, bars, tag500, summit, withdraw (K4)",
+    "comet (K13)",
+    "pips (K7)",
+    "tag (done)",
+    "card",
+    "metal",
+    "flag",
+    "flagMarker",
+    "glow",
+    "pill",
+    "padPts",
+    "fRipple",
+    "fPool",
+    "floorLight",
+    "ewP",
+    "VM"
+   ],
+   "notes": "Shot ownership by S.shot.k_beat: 'D', 'N', 'O' (for reference: D k_vcam.t0 17.09, f 443-562; N k_vcam.t0 67.53, f 1704-1825; O clip L3 f 1825-1917).\nCard states:\n- D: all DIM at pop; S1 DONE at 18.41; S2 LIT at 18.41; the marker on S2 18.45-21.62. The rule marks (design_system 13) are a local helper sr_ruleMark(x, k, u1, u2) in plate space, fired from comet passTimes at each landing's right end.\n- N: the set stands at full opacity from the first frame (pad, lines, S1 DONE, S2 LIT, S3-S6 DIM, the four DONE pips in the readout); no rule marks; the marker drops onto S2 at 67.95; slides to S3 at 69.62; S3 LIT at 71.30.\nNeither D nor N is followed by an EW shot, so the set never holds into a cut: both fold. O's six chips are the title chip in miniature (they mean videos, not the staircase's stages)."
+  },
+  {
+   "file": "33_fund.js",
+   "name": "fund",
+   "prefix": "fu_",
+   "beats": [
+    "G VO 32.37-36.41 (VC WIDE, DROP 1)",
+    "H B-ROLL 2 VO 36.41-47.41 (k_broll 2)",
+    "I VO 47.41-50.65 (L3)"
+   ],
+   "owns": "broll(x, t, S, 2); draw() for G and I; floor() for G (pool .18 → .26, the ripple on the cut).",
+   "copy_from_video1": "W1 32_stages.js st_seed/H2 (the '$5,000' page-8 hero: reuse for 'x10' and I's '$20,000'); W1 33_accounts.js ac_R (the ghost chip riding a path and the apex flash; its comet is replaced by kit comet K13), ac_chip; W1 34_broll.js br_headline.",
+   "kit_needs": [
+    "brScene (K12)",
+    "axiMark",
+    "headline",
+    "flag",
+    "metal",
+    "metalCount (K8)",
+    "chev3",
+    "card",
+    "tag",
+    "corners",
+    "sym: candles, vault, dome",
+    "skeleton (K10)",
+    "comet (K13)",
+    "glow",
+    "withSheen",
+    "fRipple",
+    "fPool"
+   ],
+   "notes": "Shot ownership by S.shot.k_beat: 'G', 'H', 'I' (for reference: G k_vcam.t0 32.37, f 825-926; H k_broll 2 f 926-1201; I clip L3 f 1201-1282). G's cut is DROP 1: the mix has its boom, so no group cue there. Counters: $1,000 → 38.01, $10,000 → 40.75, $2,000 → 43.32, $20,000 → 49.30. The B-roll-2 total for example 2 stays a skeleton. I is card-less."
+  },
+  {
+   "file": "34_conds.js",
+   "name": "conds",
+   "prefix": "cd_",
+   "beats": [
+    "J VO 50.65-54.65 (L5)",
+    "K VO 54.65-57.01 (L2)",
+    "L VO 57.01-61.49 (VC WIDE)",
+    "M VO 61.49-67.53 (L1)"
+   ],
+   "owns": "draw() for J, K, L, M; floor() for L (pool .18, the limit ring ringq, the inner white pool .12).",
+   "copy_from_video1": "W1 33_accounts.js ac_U (the limit line, '10%' and footnote: mirror it, and draw an equity line instead of its candles) and ac_floorU (the dashed limit ring, without any rotation); W1 31_join.js jn_frame and jn_chart (K's candles; the line plot for L via kit series()).",
+   "kit_needs": [
+    "card",
+    "tag (done)",
+    "pips (K7)",
+    "sym: tickets (K1), target (K2), shield, calendar (K3)",
+    "tradeChip (K9)",
+    "metalCount (K8)",
+    "metal",
+    "chev3",
+    "corners",
+    "candle",
+    "series",
+    "headline",
+    "flag",
+    "floorLight ringq",
+    "fPool"
+   ],
+   "notes": "Shot ownership by S.shot.k_beat: 'J', 'K', 'L', 'M' (for reference: J clip L5 f 1282-1382; K clip L2 f 1382-1441; L k_vcam.t0 57.01, f 1441-1553; M clip L1 f 1553-1704). Counters: 40 → 52.68, 60 → 63.31; '7%' lands static at 56.20 and '−10%' at 59.18. Pip states per shot as in design_system 6 (K has no pip row). L's cut has no drop: hit −12 only. The ring is static once drawn (ringq has no rotation, and none is wanted)."
+  }
+ ],
+ "groups_build_order": "1. Before any group starts, the ORCHESTRATOR builds and owns the shared layer:\n   - 15_kit2.js: kit_additions K1-K4, K6-K10, K12 and K13 (K5 is withdrawn);\n   - K11: the 90_main.js changes (k_t.bug, k_t.wipe) and W2 work/edl_build.py for ep2 (the shots list with k_beat, P 0.63, END 91.00, LAG, subs).\n   Groups never edit 00_head, 10_kit, 15_kit2, 20_studio, 90_main or edl_build; kit problems are reported back to the orchestrator.\n2. The five groups are built in parallel.\n3. Each group draws only inside the shots it owns, picked by S.shot.k_beat (never by float t0 or f0 values), so nothing leaks into a neighbour's shot.\n4. Every floor shape goes through the group's floor(t, sh, S): one floorLight() call per frame, made by 90_main.\n5. Every group writes its SFX as JSON (W2 work/sfx/<g>.json) from its beats' sfx lines; no group adds a boom.",
+ "kit_additions": [
+  {
+   "id": "K1",
+   "where": "15_kit2.js (sym extension)",
+   "name": "sym 'tickets' (40 trades)",
+   "spec": "100-unit box, y down.\n- Three TAG plates (tagPath) from back to front: (−46,−36, 58x28), (−32,−20, 58x28), (−18,−4, 58x28).\n- Each is first filled opaque #131417 (o.fill), so it hides the strokes behind it, then stroked white. Draw-on per plate by dash progress (perimeter = the flattened polygon length).\n- RED filled circle r 5 at (29,10), inside the front ticket. It fades in over the last 12 % of u. (No ▲: the ▲ mark only sits beside a rising numeral.)\n- Exactly one RED element. DIM variant: all strokes DIM, circle DIM. DONE (in pips): the circle turns white .8."
+  },
+  {
+   "id": "K2",
+   "where": "15_kit2.js (sym extension)",
+   "name": "sym 'target' (profit target +7%)",
+   "spec": "- Target line from (−46,−30) to (46,−30): white, dash [7,6]. It cannot use dash draw-on, so it fades in with alpha e2(u).\n- Rising polyline (−46,36) (−22,14) (−6,22) (16,−4) (32,−30): white, draw-on by dash progress. It ends ON the dot: the target is reached.\n- RED filled circle r 7 at (32,−30), on the target line, fading in over the last 12 %.\n- Exactly one RED element. Do NOT use 'chev' (that is Acceleration) or chev3 for this condition."
+  },
+  {
+   "id": "K3",
+   "where": "15_kit2.js (sym extension)",
+   "name": "sym 'calendar' (60 days), state k.fill 0..1",
+   "spec": "- Body roundRect(−40,−32, 80x72, r 8); header line from (−40,−12) to (40,−12); binder rings (−20,−42)→(−20,−24) and (20,−42)→(20,−24). All white strokes, draw-on per subpath.\n- 8 day cells 12x12 at columns x −30, −12, 6, 24 and rows y −2, 16.\n- Order RTL: top row right to left (cells 1-4), then bottom row right to left (cells 5-8).\n- sym() is stateless (it only receives k), so the pop is a function of k.fill: for cell i (1..8), p_i = cl(8·k.fill − (i − 1)); the cell is drawn at scale .6 + .4·e3(p_i) about its centre, alpha e3(p_i). Cells 1-7 fill white α .9; cell 8 (bottom-left, x −30, y 16) fills RED.\n- Unfilled cells (p_i = 0) are stroked white α .35 at 1.5 px.\n- Exactly one RED element. Default k.fill = 1 (all filled): M uses the static default."
+  },
+  {
+   "id": "K4",
+   "where": "15_kit2.js (sym extension)",
+   "name": "sym 'withdraw' (money out of the account)",
+   "spec": "- CARD outline chamferPath(−38,−30, 64x44, cut 12, r 6), stroked white; chip line from (−28,−10) to (−8,−10).\n- RED arrow, stroke width ×1.4, round caps: shaft (12,0) → (12,40); head (2,30) → (12,42) → (22,30).\n- Exactly one RED element. Used in D's readout (44 px)."
+  },
+  {
+   "id": "K5",
+   "where": "—",
+   "name": "lockBadge: WITHDRAWN",
+   "spec": "Not built. Red padlock badges on all six stage cards read as the game-UI convention 'these stages are locked', and a d 26 disc does not fit the TAG's notch. D uses the RULE MARK (design_system 13) on the landings instead, as a local helper in 32_stairs.js."
+  },
+  {
+   "id": "K6",
+   "where": "15_kit2.js",
+   "name": "donut(x, cx, cy, r, w, frac, o)",
+   "spec": "- Track: a full circle of radius r, lineWidth w, colour o.restCol (default TRACK #2A2B2F; Q lerps it to DIM #55575C after the sweep), drawn clockwise from −π/2 over o.u (0..1, draw-on).\n- Red arc, lineWidth w + (o.grow || 0), RED, lineCap 'butt':\n  - o.ccw false (default): from −π/2 clockwise to −π/2 + 2π·frac;\n  - o.ccw true: from −π/2 counter-clockwise to −π/2 − 2π·frac (canvas arc(..., anticlockwise = true)). Q uses this, so the 40 % sits on the left half, facing the card and the flow.\n- When 0 < frac < 1: 2 px #000 radial separators at both ends of the red arc.\n- o.a: alpha. Returns { endAngle, midAngle, mid: [x, y] } (the red arc's midpoint, where Q's profit flow lands; the grey arc's midpoint is its opposite along the circle).\n- Used in Q: r 170, w 34, frac 0 → .40, ccw true: red midpoint (1318,377)."
+  },
+  {
+   "id": "K7",
+   "where": "15_kit2.js",
+   "name": "pips(x, Xr, Y, w, h, pitch, st, o)",
+   "spec": "The four CONDITION PIPS.\n- TAG plates right to left: pip i (0..3) at X = Xr − w − i·pitch, size w x h. Minimum size 72x48 (30 px symbols).\n- Symbols [tickets, target, shield, calendar] at 0.62h, centred.\n- st[i] = { s: 'dim' | 'lit' | 'done', u: 0..1 (progress into s, from the previous state), pulse: 0..1 }.\n  - dim: no fill, outline white .25, symbol DIM;\n  - lit: PANEL fill, RED rim 1.5 px, symbol white + red, plus an optional pulse (scale 1 + .08 sin(πp));\n  - done: fill .7, outline white .25, symbol white α .8 including its red element, top-left cut RED with a white tick (tag() o.done = u).\n- Transitions are a 0.25 s cross-fade driven by st.u (e3):\n  - DIM → LIT: rim white .25 → RED; fill 0 → PANEL .96; symbol DIM → white with its red element.\n  - LIT → DONE: fill .96 → .7; rim RED → white .25; the symbol's red element → white .8; tag() o.done = u draws the red cut and tick.\n  - Pulses are independent of the state and can run in any state.\n- o.a: group alpha (fade one layer).\n- o.shimmer 0..1: one white α .12 band, 80 px, 20°, sweeping right to left over the row (source-atop on an offscreen copy, as withSheen). Used only in A, on DIM pips.\n- o.enter 0..1: per-pip staggered entry (0.08 s RTL, 16 px rise, expo).\nSizes used: A 112x72 / 128; J, L, M and N 72x48 / 84. K has no pip row."
+  },
+  {
+   "id": "K8",
+   "where": "15_kit2.js",
+   "name": "metalCount(x, value, fin, X, Y, size, o)",
+   "spec": "Video 1's st_count, generalized.\n- fin is the final string, always WITHOUT a space after '$' ('$1,000', '$10,000', '$2,000', '$20,000', '60', '40', '40%'): metalLayout already adds 0.2 em after a full-size '$', and an ASCII space would add a 0.28 em cell on top. The prose may write '$ 1,000' as notation; code never does.\n- Split fin into a prefix (everything before the first digit: '$' or nothing), a body (digits and commas) and a suffix (after the last digit: '%').\n- L = metalLayout(fin, size, w); slot = the centre of each body glyph in L.\n- The current body is Math.round(value), formatted with commas if fin's body has commas. Its glyphs are drawn right-aligned into the final body's slots, each centred on its slot. The prefix and suffix are drawn at their final positions.\n- When Math.round(value) equals the final number, it draws metal(x, fin, …) (static, natural advances, with o.sheen), so the landed frame never moves.\n- o: w (200), align (left | center | right), a, fade (bottom 28 %, heroes ≥ 150 px). Returns L.width.\n- Value curve: value = final · e4(pr(tv, t0, tLand)), with tLand = the measured onset of the spoken number (design_system 7)."
+  },
+  {
+   "id": "K9",
+   "where": "15_kit2.js",
+   "name": "tradeChip(x, X, Y, w, h, label, o)",
+   "spec": "The FIRST-TRADE chip, shared by B-roll 1 and M.\n- TAG plate, PANEL + hairline.\n- Arabic label A400 34 white, right-aligned at X + w − 45, baseline Y + h/2 + 12.\n- RED filled circle r 6 centred at (X + w − 26, Y + h/2). (No ▲: the ▲ mark only sits beside a rising numeral.)\n- o.ghost: no fill, dashed outline white .4 (dash 6/5), label α .4, circle white .4.\n- o.pop 0..1: back(1.4) scale about the chip centre.\n- o.ring 0..1: a white 2 px ring r 12 → 30 fading at (o.ringX, o.ringY).\n- o.a: alpha."
+  },
+  {
+   "id": "K10",
+   "where": "15_kit2.js",
+   "name": "skeleton(x, X, Y, w, h, t, a, o)",
+   "spec": "Placeholder bar.\n- TRACK #2A2B2F roundRect, r = min(8, h/2).\n- A shimmer band (white α .10, 80 px wide, 20°) moves right to left every 0.9 s; phase = (t % 0.9) / 0.9, clipped to the bar.\n- o.dissolve 0..1: alpha 1 − e2(dissolve) and scaleY 1 → .9.\nUsed in F (the amount), H (the example-2 total) and Q (the name field). A's pip shimmer uses pips' o.shimmer."
+  },
+  {
+   "id": "K11",
+   "where": "90_main.js + W2 work/edl_build.py (k_t); owner: the orchestrator, before the groups start",
+   "name": "timeline, bug and end-wipe windows from k_t",
+   "spec": "- edl_build.py for ep2:\n  - P = 0.63, FPS 25, END = 91.00 (2275 frames).\n  - The title shot runs f 0 → f(2.37 + P) = 75 (k_title, k_beat 'TITLE').\n  - Shots follow the 'shots' list; each gets sh['k_beat'] = its 6th field. src = VO + LAG for L1/L2/L3/L5 with LAG {L3: 0.023, L5: 0.023} (measured, edl_meta.LAG); VC shots src = VO.\n  - The end card runs f(84.61 + P) = 2131 → 2275 (k_end, k_beat 'END').\n  - subs: the 'subs' lines + P; boundaries within 0.2 s of a cut snap onto the cut (as W1).\n  - k_t = { P, subs, bug, wipe }.\n- 90_main bug(): replace the hard-coded VO 4.40-110.88 with k_t.bug = [8.81, 77.21]: on at the A → B cut, off at the P → Q cut. It is drawn on presenter shots only (not k_broll, k_title or k_end), so it is also off in both B-rolls.\n- 90_main endWipe(): replace v(110.36)…v(110.88) with k_t.wipe = [84.09, 84.61] (output 84.72-85.24). Same #000 panel, '/' edge (slant 0.82) and 3 px RED line, eio."
+  },
+  {
+   "id": "K12",
+   "where": "15_kit2.js",
+   "name": "brScene(x, t, lt, o, draw): the shared B-roll world",
+   "spec": "Move the delivered W1 34_broll.js world into the kit, so both B-roll groups share it: br_LAD, br_ladder, br_floorFill, br_floor, br_haze, br_bokehLayer and br_bokeh, plus the smoothstep br_ss (exported as ss).\nbrScene:\n- draws br_haze(x) and br_bokeh(x, lt, o.bokehY) 1:1, outside the drift;\n- then sets the drift (scale 1 + 0.005·lt about (960,540));\n- calls br_floor(x, o.cz0 + 1.2·lt);\n- awaits draw(x) inside the same transform, and restores.\nSettings:\n- B-roll 1: cz0 0, bokehY 362;\n- B-roll 2: cz0 37, bokehY 370.\n- The background stays pure #000 (no fill: the k_card special is already #000)."
+  },
+  {
+   "id": "K13",
+   "where": "15_kit2.js",
+   "name": "comet(x, pts, u, o) and comet.passTimes(pts, t0, d, ease, marks)",
+   "spec": "The red comet, shared by D (stairs) and B-roll 2 (fund), so the two builds cannot diverge (they were copies of W1 st_cometPass and ac_R).\n- pts: a polyline (or a sampled quadratic) in the caller's space; the head position is found by ARC LENGTH: d = u · L(pts) (u already eased by the caller).\n- Head: RED disc r o.r (default 7) with a white core r 3; one cached glow sprite r o.glow (default 26), RED α .35 (a sprite, no ctx.filter).\n- Tail: o.tail dots (default 6) behind the head, every o.gap px of arc (default 9), radius and alpha falling linearly to 30 %.\n- o.a: alpha; o.fade: tail-only fade at the end.\n- comet.passTimes(pts, t0, d, ease, marks): for each point in marks, the time the head reaches its arc-length position (bisection on the ease, as W1 st_cometPass). D passes each landing's right end (for S1, the first riser at x 1540); B-roll 2 passes the gate edge for its flash."
+  }
+ ],
+ "subs": {
+  "format": "[vo_start, vo_end, text]; VO seconds from word_onsets. edl_build adds P (0.63) and a +0.12 s hold, and snaps boundaries within 0.2 s of a cut onto the cut, as W1 edl_build.py. Latin numbers that touch Arabic punctuation or line ends are wrapped in U+2066 … U+2069. Text follows ep2_script.json (ASR fixes applied), with one deliberate grammar fix: «لتصل قيمة التمويل» (he says «ليصل», a masculine verb on the feminine «قيمة»; revert to «ليصل» if the client wants verbatim subtitles). «1,000» at 31.71 is spoken without «دولار», so the subtitle has none. «مبروك!» ends at 77.10 so its hold snaps onto the P → Q cut (77.21) instead of flashing for 0.56 s. The last line ends at 83.97 so its hold ends on the wipe start (84.09). Every line is ≤ 42 characters; the longest is «قبل تنفيذ أي صفقة تداول في هذه المرحلة» (38 characters, 715 px at Alexandria 500 36).",
+  "lines": [
+   [
+    2.43,
+    4.3,
+    "مرحباً بك في المرحلة الثانية"
+   ],
+   [
+    4.34,
+    5.55,
+    "من مراحل Axi Select"
+   ],
+   [
+    5.68,
+    6.74,
+    "مرحلة الـ Incubation"
+   ],
+   [
+    6.78,
+    8.74,
+    "قبل أن أتعرّض لتفاصيل هذه المرحلة"
+   ],
+   [
+    8.95,
+    9.87,
+    "ملاحظة مهمّة"
+   ],
+   [
+    10.2,
+    12.82,
+    "إذا أردت القيام بأي عملية سحب للأموال"
+   ],
+   [
+    12.96,
+    14.04,
+    "عليك القيام بذلك"
+   ],
+   [
+    14.29,
+    17.07,
+    "قبل تنفيذ أي صفقة تداول في هذه المرحلة"
+   ],
+   [
+    17.19,
+    19.3,
+    "وهذه القاعدة يتم تطبيقها"
+   ],
+   [
+    19.44,
+    21.75,
+    "في جميع مراحل Axi Select"
+   ],
+   [
+    21.96,
+    23.61,
+    "للتأهّل لمرحلة الـ Incubation"
+   ],
+   [
+    23.79,
+    25.74,
+    "يجب أن تكون علامة الـ Edge Score"
+   ],
+   [
+    25.78,
+    27.98,
+    "الخاصة بك لا تقلّ عن 60"
+   ],
+   [
+    28.12,
+    30.72,
+    "وأقلّ مبلغ في حساب التداول الخاص بك"
+   ],
+   [
+    30.79,
+    31.97,
+    "يجب أن يكون ⁦1,000⁩"
+   ],
+   [
+    32.4,
+    34.4,
+    "ستقوم Axi بتمويلك"
+   ],
+   [
+    34.45,
+    36.29,
+    "لغاية عشرة أضعاف هذا المبلغ"
+   ],
+   [
+    36.51,
+    38.56,
+    "يعني إذا كان حسابك ⁦1,000⁩ دولار"
+   ],
+   [
+    38.75,
+    41.9,
+    "ستقوم Axi بتمويلك بمبلغ ⁦10,000⁩ دولار"
+   ],
+   [
+    41.93,
+    43.91,
+    "أمّا إذا كان حسابك ⁦2,000⁩ دولار"
+   ],
+   [
+    44.18,
+    45.95,
+    "ستقوم Axi بتمويلك أيضاً"
+   ],
+   [
+    45.99,
+    47.35,
+    "بعشرة أضعاف هذا المبلغ"
+   ],
+   [
+    47.48,
+    50.62,
+    "لتصل قيمة التمويل إلى ⁦20,000⁩ دولار"
+   ],
+   [
+    50.68,
+    52.28,
+    "في هذه المرحلة يجب عليك"
+   ],
+   [
+    52.33,
+    54.53,
+    "إتمام 40 صفقة مستقلّة على الأقل"
+   ],
+   [
+    54.7,
+    56.96,
+    "وتحقيق عائد لا يقلّ عن ⁦7%⁩"
+   ],
+   [
+    57.08,
+    59.85,
+    "مع عدم الوصول إلى نسبة انعكاس ⁦10%⁩"
+   ],
+   [
+    60.08,
+    61.32,
+    "في أي وقت من الأوقات"
+   ],
+   [
+    61.66,
+    64.14,
+    "وخلال فترة لا تقلّ عن 60 يوماً"
+   ],
+   [
+    64.38,
+    65.93,
+    "من تاريخ أول صفقة"
+   ],
+   [
+    66.22,
+    67.47,
+    "عند تحقيق هذه الشروط"
+   ],
+   [
+    67.64,
+    70.21,
+    "ستصبح مؤهّلاً للانتقال للمرحلة الثالثة"
+   ],
+   [
+    70.47,
+    72.08,
+    "وهي مرحلة الـ Acceleration"
+   ],
+   [
+    72.45,
+    74.4,
+    "والتي سنتعرّف عليها بالتفصيل"
+   ],
+   [
+    74.57,
+    76.08,
+    "في الفيديو القادم"
+   ],
+   [
+    76.29,
+    77.1,
+    "مبروك!"
+   ],
+   [
+    77.33,
+    80.53,
+    "أصبح لك الآن حصّة مشاركة بنسبة ⁦40%⁩"
+   ],
+   [
+    80.81,
+    83.97,
+    "من الأرباح المحقّقة في حساب Axi Select"
+   ]
+  ]
+ },
+ "checks": [
+  "Keep-outs: HOME x 740-1140 / y 280-900; WIDE x 845-1035 / y 470-760; EW x 870-1010 / y 540-760; L5 x 590-1330; L1 x ≤ 1180; L3 x ≥ 820; L2 only x 100-650 / y 140-500. Subtitle band y 975-1050; bug zone x 60-260 / y 40-115 on presenter shots (bug on VO 8.81-77.21).",
+  "No VC → VC cut; every VC shot sits between other angles or B-rolls.",
+  "Cuts (VO / frame), all on the 0.01 + 0.04n grid and in measured pauses (O → P 0.01 s before its pause, by design): A 2.37/75 · B 8.81/236 · C 10.09/268 · D 17.09/443 · E 21.85/562 · F 28.05/717 · G 32.37/825 (DROP 1) · H 36.41/926 · I 47.41/1201 · J 50.65/1282 · K 54.65/1382 · L 57.01/1441 · M 61.49/1553 · N 67.53/1704 · O 72.37/1825 · P 76.05/1917 (DROP 2) · Q 77.21/1946 · wipe 84.09/2118 · end card 84.61/2131 · END 2275.",
+  "Exits end ≤ cut − 0.08 s (exit end / cut): A 8.70/8.81 · B 10.01/10.09 · E 27.96/28.05 · F 32.28/32.37 · G 36.33/36.41 · I 50.57/50.65 · J 54.56/54.65 · K 56.92/57.01 · L 61.41/61.49 · M 67.45/67.53 · N 72.26/72.37 · O 75.96/76.05 · P 77.12/77.21. Q holds into the wipe; the B-rolls cut at full opacity; D and N fold by 21.66 and 72.26.",
+  "Entries land before their exits: G's chip 35.27-35.62 (exit 36.05); I's cap row 49.45-49.87 (exit 50.30); K's ▲▲▲ 56.12-56.66 (exit 56.68); E has no ▲▲▲; Q's arc thickening ends 81.98 (push 82.13).",
+  "Camera moves: A's pull at 3.05 has nothing on screen. Q's push at 82.13 has every element static, and nothing enters until 82.86.",
+  "Music: DROP 1 on the F → G cut (output 33.00); DROP 2's boom (output 76.69) on P's first frame (76.68-76.72); the ending hit (85.36) on the end card's logo build. No group cue is a boom. No transient sits on a spoken number.",
+  "Flags, one per scene: title (line 1), A (kicker), B-roll 1 (headline), G (headline), B-roll 2 (kicker), L (headline), P («مبروك!»), Q (headline); plus the flag MARKER in D and N. None on card headers (E, F, J, K, M, O have no flag; I has none).",
+  "Symbols: the RED ▲ appears nowhere except ▲▲▲ beside rising numerals; tickets and the first-trade chip use a RED dot. CHEV only for Acceleration (N, O). DOME for Incubation (title, A, B-roll 1, D, E, I, N, O).",
+  "Facts: Edge Score 60 · $1,000 min · x10 · $1,000 → $10,000 · $2,000 → $20,000 (Incubation cap) · 40 trades · 7% · 10% (his words, with the footnote; axi.com −7%) · 60 days from the first trade · 40% profit share · Acceleration cap $100,000 (static). The withdrawal-before-first-trade rule applies in every stage.",
+  "Totals: 17 shots, 2 B-rolls (18.0 s), 19 beats including the title and end card; output 91.00 s = 2275 frames."
+ ],
+ "rejected_issues": [
+  {
+   "issue": "brand: 'All Latin and numeral widths are 8-14 % too narrow' (title_card, A, E, F, G, K, L, M, N, O, and «مبروك!» at 302 px)",
+   "decision": "Rejected as a global re-measure; one layout fix taken.",
+   "why": "The draft's widths are what the renderer draws. The comp draws text on a Chromium canvas, and inter.ttf is a variable font with an opsz axis (14-32), which Chromium applies automatically (opsz = font size, clamped to 32). Re-measured in the sandbox with Chromium 153 and FontFace weight '100 900', exactly as engine.js loads the fonts: 'Incubation' I300 110 = 488 in the canvas and 537 with optical sizing off; 'Acceleration' I400 26 = 146 / 155; 'Edge Score' I300 40 = 198 / 213; «مبروك!» A600 84 = 272. HarfBuzz at its default opsz 14 gives the 'off' numbers, and video 1's spec figures (154, 215) were computed the same way. So the title line, A's stage line, G's ▲▲▲ gap (24 px), K, O's '(3)' and P stay as drafted. Taken anyway: E's '60+' is regrouped ('60' I200 112 + '+' I200 78, centred, ≥ 17 px inside the tick ring), because the drafted '+' corner sat at r 175, on the ring, at any width; M's «يوماً» moves to x 1462 with its new A400 40 weight. design_system 11 now records the opsz cause, so nobody re-anchors from HarfBuzz."
+  },
+  {
+   "issue": "brand: 'Move O → P to VO 76.09 (frame 1918)'",
+   "decision": "Rejected; the cut is at VO 76.05 (frame 1917), as the timing critic proposed.",
+   "why": "At 76.05 the pinned drop-2 boom (output 76.69) lands 0.01 s after the cut, on P's first frame, and the music's downbeat (76.636) leads the picture by 44 ms. At 76.09 the boom would land on O's last frame and the downbeat would lead by 84 ms, past the 45 ms audio-lead tolerance. The voice at 76.05 is the −40 dB tail of «القادم» (the pause map starts at 76.06), so the cut is effectively in the pause. O's exit becomes 75.72-75.96."
+  },
+  {
+   "issue": "timing: 'k_t.bug = [8.81, 84.61]'",
+   "decision": "Rejected in favour of the brand critic's [8.81, 77.21].",
+   "why": "The official lockup builds inside Q's account card (83.00-83.60); a bug on Q would put two official logos on screen. Q mirrors A, which also has no bug. The bug switches only on cuts (on at A → B, off at P → Q)."
+  },
+  {
+   "issue": "brand (Q): place «لك» at (1254, baseline 376)",
+   "decision": "Modified: «لك» is centred x 1250, baseline 455.",
+   "why": "With the corrected flow ending on the red arc's midpoint (1318,377), the marks pass (1240, ≈345) on their way in, so at baseline 376 they would fly through the label. At 9 o'clock, below the landing point, it still sits beside the red arc (21 px from the ring) and the flow passes clear above it."
+  },
+  {
+   "issue": "brand (Q, optional): 4 RED marks into the red arc and 6 white marks on to the grey arc's midpoint",
+   "decision": "Not taken.",
+   "why": "The six white marks would have to cross the '40%' numeral in the donut's hole, and the 60 % is a number he does not say. All 10 marks fly into your 40 %."
+  },
+  {
+   "issue": "brand (B-roll 1): 'on «عليك» the playhead appears at x 420', with the playhead drawn behind the pill",
+   "decision": "Modified: the playhead appears at x 760, the window's right edge, and travels 760 → 1000.",
+   "why": "Starting it right of the pill (x 320-660) and the 'allowed' chip (x 676-728) means it never crosses either, so no layering trick is needed (the draw order is still specced). The window zone still fades in at 11.16 with the pill's circle, as asked."
+  },
+  {
+   "issue": "timing (B-roll 1): fade the 'allowed' chip over 15.60-15.68",
+   "decision": "Modified: it fades over 15.40-15.68.",
+   "why": "A 0.08 s fade loses 50 % per frame and breaks the B-roll's own rule (at most 14.3 % per frame: linear 0.28 s). It is still gone before the padlock moves at 15.70."
+  },
+  {
+   "issue": "brand (D): 'replace the badge pulse with one white flash of the six open segments'",
+   "decision": "Modified: the rule marks pop instead (segments 5 → 9 → 5 px, RED ticks scale 1.3).",
+   "why": "The open segments are already white α 1, so a white flash would be invisible: the same fault the brand critic found in B-roll 2."
+  },
+  {
+   "issue": "timing (Q): re-cue the 79.44 ping to the pause at 80.52",
+   "decision": "Not taken: a non-transient riser −14 dB over 78.99-79.44 ends on the landing instead.",
+   "why": "A ping 1.1 s after the visual would read as a late cue. The riser keeps the word clear and still marks the landing, as G's does."
+  },
+  {
+   "issue": "brand (D, L): cut hits at −10 dB / timing: −12 dB",
+   "decision": "−12 dB.",
+   "why": "These cuts have no drop; quieter hits keep the two real drops dominant."
+  },
+  {
+   "issue": "brand (I): '$20,000' at I200 150 'about 625 px'",
+   "decision": "Taken at the measured 573 px (x 120-693); ▲▲▲ at x 717-735.",
+   "why": "metalWidth in the renderer (see the widths entry)."
+  },
+  {
+   "issue": "brand (L): '−10%' 'about 518 px in total'",
+   "decision": "Taken at the measured 488 px: RED '−' 142 px (x 202-344) + metallic '10%' 346 px (x 344-690).",
+   "why": "Canvas measureText and metalLayout in Chromium 153."
+  },
+  {
+   "issue": "brand (N): pips 'entering at 67.94 with one pulse on «مؤهّلاً» (68.07)'",
+   "decision": "Modified: the four DONE pips are on screen from N's first frame (carried from M) and pulse at 68.07.",
+   "why": "A 0.54 s staggered entry from 67.94 would still be running at 68.07, so the pulse would land on a half-entered row. The set-piece rule already lets N's staircase stand on its first frame, and the pips belong to that set."
+  }
+ ],
+ "changelog": [
+  "Timeline: P 1.06 → 0.63 (the built soundtrack). Title 0-3.00 ends at VO 2.37; END 91.00 = 2275 frames; end wipe VO 84.09-84.61; end card output 85.24-91.00 with the logo build on the music's ending hit (85.36). All cuts re-gridded to VO 0.01 + 0.04n; B-roll 1 output 10.72-17.72, B-roll 2 output 37.04-48.04.",
+  "Music: F → G moved to VO 32.37 (DROP 1) and O → P to 76.05 (DROP 2's boom on P's first frame). D and L lose their drop booms (hit −12 dB), G and P lose theirs (the mix has them), the B-roll cut-ins become dataswish −8, B-roll 1's riser into D and B-roll 2's riser into I are cut, and P's chime moves to 76.75. edl_meta.music records audio/music_plan.json.",
+  "Exits re-timed for the new cuts: E 27.68-27.96, F lands '+' and the check tab 31.78-32.04 and exits 32.06-32.28 (no sheen), K 56.68-56.92, O 75.72-75.96.",
+  "D: the padlock badges are gone (K5 withdrawn). As the comet climbs, each landing gets the RULE MARK (open segment → RED first-trade tick → dimmed rest). The readout is «القاعدة» + the WITHDRAW symbol, then «في جميع المراحل» A300 52 ending in the rule-mark glyph.",
+  "Q: the red arc sweeps counter-clockwise, so your 40 % faces the card; the flow lands on its midpoint (1318,377) on a new path; the labels swap sides; the remainder lifts to DIM; the flow runs 81.30-81.83 with the thickening done by 81.98; the push starts at 82.13; the bug is off for all of Q.",
+  "M: the 2x2 recap chips are gone; the pip row is the recap (pip 4 DONE + four pulses), and the four DONE pips carry into N. The calendar is static; the day track draws at 62.25 and lights its 12 ticks with the counter.",
+  "N: opens on the standing set (no rebuild); only the marker, the pip pulse, S3's pre-highlight, the climb and the ignition move. The readout drops to baselines 200/266/320/420 under the pips. A RED underline replaces the sheen on 'Acceleration'.",
+  "O: the six-stage row is now six episode chips in the title chip's grammar (01 done, 02 = the title chip, 03 next, 04-06 dim); the RED index and red bar are gone.",
+  "L: mirrored and re-charted: '−10%' (RED minus + metallic '10%') and the footnote in the left third (on screen 2.2 s), an equity line in the right third, a static ring, 72x48 pips.",
+  "I: card-less page-8 hero '$20,000' (I200 150); the cap row lands 49.45-49.87.",
+  "G: the chip enters on «أضعاف» (35.27) and lands at 35.62; exit 36.05-36.33.",
+  "K: no pip row; ▲▲▲ from 56.12, done by 56.66. E: no ▲▲▲; the counter lands on the measured /s/ at 27.48; the 'Seed 50' label is gone; '60+' regrouped inside the gauge.",
+  "B-roll 1: the window zone opens at 11.16; the 'allowed' chip moves right of the pill (x 676-728) and fades 15.40-15.68; the playhead starts at x 760 so it never crosses the pill; the pill widens to 340 px; the cursor fade obeys the 14.3 %-per-frame rule; the shackle snaps at 15.96.",
+  "B-roll 2: 'this amount' is a RED rim + pop on the two blocks and a RED underline under '$2,000' (a white flash on white blocks was invisible); the ghost's comet is kit K13.",
+  "SFX: every cue rewritten in audio_build categories with VO times; no transient on a spoken number or key word; cues re-cued into measured pauses (W2 work/vo_pauses_vo.json) or replaced by non-transient risers, scans and whooshes.",
+  "Kit: K1/K9 lose the RED ▲ (a RED dot instead); K2's line ends on its dot; K3's pop is a function of k.fill; K6 gains o.ccw, o.restCol and a midpoint return; K7 gets a 72x48 minimum and defined transitions; K8 forbids '$ ' strings; K13 comet added; K11 updated (P 0.63, END 91.00, k_beat, LAG, bug [8.81, 77.21], wipe [84.09, 84.61]); the orchestrator owns 15_kit2.js and K11.",
+  "Type: A kicker A300 40; I header A500 44; D line 2 A300 52; «يوماً» A400 40. B's tag rock replaced by a 1.06 scale pop, exit 9.75-10.01.",
+  "Groups: shots carry k_beat and groups match on it; stairs adds flagMarker, pips and comet; fund adds flag and comet; conds adds fPool and series.",
+  "LAG measured for the ep2 renders: L3 and L5 +23 ms, L1/L2/L4 0 ms (GCC-PHAT against vo2_clean.wav, four windows).",
+  "Subs: «لتصل قيمة التمويل» (grammar; revertible); «مبروك!» held to the P → Q cut; the last line ends on the wipe start."
+ ]
+}

@@ -1,0 +1,13 @@
+[
+ {"t": 17.09, "cat": "hit", "gain_db": -12, "note": "D: hard cut from B-roll 1 into the EW staircase + floor ripple (pause 17.04-17.19; no music drop here, so no boom)"},
+ {"t": 17.60, "cat": "scan", "gain_db": -14, "note": "D: the ground and stair line draw (17.52-18.20)"},
+ {"t": 18.34, "cat": "ui_blip", "gain_db": -14, "note": "D: S1 turns DONE / S2 lights (pause 18.01-18.41)"},
+ {"t": 19.62, "cat": "dataswish", "gain_db": -12, "note": "D: the red comet climbs the stair (19.62-20.52)"},
+ {"t": 20.16, "cat": "ui_blip", "gain_db": -12, "note": "D: one crisp click for the six rule marks (pause 20.13-20.32)"},
+ {"t": 21.10, "cat": "hit", "gain_db": -12, "note": "D: the rule marks pop + the stage pulse at 21.17 (pause 20.90-21.17)"},
+ {"t": 69.62, "cat": "whoosh", "gain_db": -14, "note": "N: the flag marker slides S2 -> S3 (69.62-70.07)"},
+ {"t": 71.20, "cat": "hit", "gain_db": -10, "note": "N: just ahead of the S3 ignition and stage pulse at 71.30 (pause 71.06-71.27)"},
+ {"t": 72.84, "cat": "whoosh", "gain_db": -14, "note": "O: the six episode chips reveal right to left"},
+ {"t": 74.42, "cat": "whoosh", "gain_db": -12, "note": "O: the next-video deck riffle (pause 74.39-74.58)"},
+ {"t": 75.68, "cat": "ui_blip", "gain_db": -14, "note": "O: the arrow tap's return (pause 75.67-75.78); the music's break bar runs under 73.82-76.01"}
+]

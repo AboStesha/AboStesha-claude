@@ -1,0 +1,15 @@
+[
+ {"t": 34.40, "cat": "riser", "gain_db": -14, "note": "G: riser 34.40-34.86 into the 'x10' landing, ending on the onset of «عشرة» (34.88); non-transient. No boom: drop 1 is in the mix at output 33.00, and there is no pause in 33.0-36.28 for anything else"},
+ {"t": 36.30, "cat": "dataswish", "gain_db": -16, "note": "H: into the hard cut into B-roll 2 (36.41), in the pause 36.28-36.53, clear of «يعني» (only the two drops get booms); audio QA: was 36.41 / -8, over «يعني»"},
+ {"t": 37.94, "cat": "ui_blip", "gain_db": -12, "note": "H: the $1,000 counter landing, pause 37.93-38.01, just before «ألف»"},
+ {"t": 38.62, "cat": "ui_blip", "gain_db": -12, "note": "H: the gate arms (rim RED at 38.75), pause 38.55-38.75"},
+ {"t": 39.55, "cat": "whoosh", "gain_db": -14, "note": "H: the ghost of block 1 rides the in-path into the gate (39.55-40.05), led by the red comet"},
+ {"t": 40.05, "cat": "ui_blip", "gain_db": -12, "note": "H: the gate flash, pause 40.01-40.15"},
+ {"t": 40.20, "cat": "dataswish", "gain_db": -14, "note": "H: the ten blocks fly into the grid (no per-block clinks: they would be transients on speech)"},
+ {"t": 43.26, "cat": "ui_blip", "gain_db": -12, "note": "H: the $2,000 counter landing, pause 43.02-43.32, just before «ألفين»"},
+ {"t": 44.05, "cat": "ui_blip", "gain_db": -12, "note": "H: the gate re-arms, pause 43.89-44.20"},
+ {"t": 45.05, "cat": "whoosh", "gain_db": -14, "note": "H: the two ghosts ride the in-path (45.05 / 45.17, 0.5 s each)"},
+ {"t": 45.56, "cat": "ui_blip", "gain_db": -12, "note": "H: the gate flash (45.66), pause 45.50-45.63"},
+ {"t": 47.86, "cat": "whoosh", "gain_db": -12, "note": "I: the kicker «قيمة التمويل» rises, pause 47.85-48.03"},
+ {"t": 48.60, "cat": "scan", "gain_db": -16, "note": "I: the rolling $20,000 counter (48.60-49.30); no hit on «عشرين»"}
+]
