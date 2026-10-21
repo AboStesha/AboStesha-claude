@@ -19,8 +19,12 @@ html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
 .ar{direction:rtl;font-family:'Inter','NSA',sans-serif;font-weight:500;letter-spacing:0}
 .lat{direction:ltr;font-family:'Inter',sans-serif;font-weight:400;letter-spacing:.02em}
 .w{display:inline-block;margin:0 .13em;position:relative}
-.l2{font-weight:400}
+.l2{font-weight:350;opacity:.95}
+.l1{font-weight:700;letter-spacing:-.005em}
 .b{font-weight:700}
+.k{display:inline-block}
+.k::after{content:'';position:absolute;left:-2%;right:-2%;bottom:-.06em;height:.09em;min-height:6px;background:#E4002E;border-radius:3px;
+  transform-origin:100% 50%;transform:scaleX(var(--u,0));box-shadow:0 0 18px rgba(228,0,46,.55)}
 .shadow{text-shadow:0 2px 18px rgba(0,0,0,.65),0 0 3px rgba(0,0,0,.5)}
 #hud{position:absolute;right:10px;bottom:8px;font:20px monospace;color:#ff0;display:none}
 </style>
@@ -90,27 +94,50 @@ const IT = ITEMS.map((d, i) => {
   if (d.lines) {
     el.classList.add('txt'); el.style.fontSize = d.size + 'px'; el.style.lineHeight = d.lh || 1.42;
     d.words = []; d.lines.forEach((ln, li) => { const row = document.createElement('div'); row.className = (d.lcls && d.lcls[li]) || ''; if (d.lsize && d.lsize[li]) row.style.fontSize = d.lsize[li] + 'px';
-      ln.forEach(([w, c]) => { const s = document.createElement('span'); s.className = 'w ' + (c || ''); s.textContent = w; row.appendChild(s); d.words.push(s); }); el.appendChild(row); });
+      ln.forEach(([w, c, st]) => { const s = document.createElement('span'); s.className = 'w ' + (c || ''); s.textContent = w; s.__st = st; row.appendChild(s); d.words.push(s); }); el.appendChild(row); });
   } else el.innerHTML = d.html || '';
   if (d.w) el.style.width = d.w + 'px'; if (d.h) el.style.height = d.h + 'px';
   (d.layer === 'top' ? TOP : UI).appendChild(el); d.el = el; return d;
 });
 function measure() { IT.forEach(d => { d.el.style.display = 'block'; const r = d.el.getBoundingClientRect(); d.mw = r.width; d.mh = r.height; d.el.style.display = 'none'; }); }
 
-function wordAnim(d, s, t, tw) {
-  const dt = t - tw;
-  if (dt < 0) { s.style.opacity = 0; s.style.transform = 'none'; s.style.filter = 'none'; return; }
-  const k = OM.spring(dt, 0.9, 9), r = clamp(dt / 0.55);
-  s.style.opacity = (r * r * (3 - 2 * r)).toFixed(3);
-  s.style.transform = `translateY(${((1 - k) * 26).toFixed(1)}px)`;
-  s.style.filter = dt < 0.5 ? `blur(${(10 * (1 - dt / 0.5)).toFixed(1)}px)` : 'none';
+// word styles: 'mask' = RTL clip reveal + rise out of blur (line 1); 'rise' = out of a baseline slot (line 2); 'track' = Latin
+// letter-spacing closes in. A key word (.k) pulses once and draws its red underline from the right. Exit: words float up and blur out, first word first.
+function wordAnim(d, s, t, tw, i, n) {
+  const dt = t - tw, st = s.__st || 'mask';
+  if (dt < 0) { s.style.opacity = 0; s.style.transform = 'none'; s.style.filter = 'none'; s.style.clipPath = 'none'; s.style.letterSpacing = ''; return; }
+  let op = 1, ty = 0, sc = 1, fl = 0, cp = 'none', ls = '';
+  if (st === 'mask') {
+    const r = 1 - Math.pow(1 - clamp(dt / 0.42), 3), k = OM.spring(dt, 0.78, 13);
+    cp = r >= 0.999 ? 'none' : `inset(-30% -4% -30% ${((1 - r) * 104).toFixed(1)}%)`;
+    ty = (1 - k) * 34; fl = dt < 0.36 ? 9 * (1 - dt / 0.36) : 0; op = clamp(dt / 0.12);
+  } else if (st === 'rise') {                         // rises out of a fixed slot at its baseline (safe for joined Arabic)
+    const r = 1 - Math.pow(1 - clamp(dt / 0.55), 3);
+    op = clamp(dt / 0.18); ty = (1 - r) * 0.62 * d.size; cp = r >= 0.999 ? 'none' : `inset(-40% -12% ${ty.toFixed(1)}px -12%)`; fl = dt < 0.3 ? 4 * (1 - dt / 0.3) : 0;
+  } else if (st === 'track') {                        // Latin only: letter-spacing closes in
+    const r = 1 - Math.pow(1 - clamp(dt / 0.7), 3);
+    op = clamp(dt / 0.35); ls = `${(0.22 * (1 - r)).toFixed(3)}em`; fl = dt < 0.3 ? 6 * (1 - dt / 0.3) : 0; ty = (1 - r) * 10;
+  }
+  if (s.classList.contains('k')) {
+    const kd = dt - (st === 'rise' ? 0.52 : 0.32);
+    if (kd > 0) { sc *= 1 + 0.1 * Math.exp(-kd * 7) * Math.sin(Math.min(kd * 9, Math.PI)); s.style.setProperty('--u', (1 - Math.pow(1 - clamp(kd / 0.45), 3)).toFixed(3)); }
+    else s.style.setProperty('--u', '0');
+  }
+  if (d.xo) {                                         // staggered exit
+    const xs = d.t1 - d.xo - (n - 1 - i) * 0.045, x = clamp((t - xs) / 0.32);
+    if (x > 0) { const e = x * x; op *= 1 - e; ty -= 22 * e; fl = Math.max(fl, 8 * e); }
+  }
+  s.style.opacity = op.toFixed(3);
+  s.style.transform = `translateY(${ty.toFixed(1)}px) scale(${sc.toFixed(4)})`;
+  s.style.filter = fl > 0.05 ? `blur(${fl.toFixed(1)}px)` : 'none';
+  s.style.clipPath = cp; s.style.letterSpacing = ls;
 }
 function drawItems(t) {
   for (const d of IT) {
     const on = t >= d.t0 && t < d.t1; d.el.style.display = on ? 'block' : 'none'; if (!on) continue;
     const te = d.te ?? d.t0, k = te <= t ? OM.spring(t - te, d.zeta ?? 0.9, d.omega ?? 10) : 0;
     const out = d.out ? sstep(d.t1 - d.out, d.t1, t) : 0;
-    const sc = d.enter === 'pop' ? 0.9 + 0.1 * k : 1;
+    const sc = (d.enter === 'pop' ? 0.9 + 0.1 * k : 1) * (d.push ? 1 + d.push * clamp((t - d.t0) / Math.max(0.1, d.t1 - d.t0)) : 1);
     d.el.style.left = (d.x - d.mw / 2).toFixed(1) + 'px'; d.el.style.top = (d.y - d.mh / 2).toFixed(1) + 'px';
     let op = (te <= t ? clamp((t - te) / (d.fadeIn ?? 0.12)) : 0) * (1 - out);
     if (d.dimAt) op *= lerp(1, d.dimAt[2], sstep(d.dimAt[0], d.dimAt[1], t));
@@ -118,7 +145,7 @@ function drawItems(t) {
     const dy = (d.drift ? -d.drift * (t - d.t0) : 0) - out * 14;
     d.el.style.transform = `translate(0px,${dy.toFixed(1)}px) scale(${sc.toFixed(4)})`;
     d.el.style.filter = out > 0 ? `blur(${(6 * out).toFixed(1)}px)` : 'none';
-    if (d.words) d.words.forEach((s, i) => wordAnim(d, s, t, d.wt[Math.min(i, d.wt.length - 1)]));
+    if (d.words) d.words.forEach((s, i) => wordAnim(d, s, t, d.wt[Math.min(i, d.wt.length - 1)], i, d.words.length));
     if (d.upd) d.upd(t, d.el, d);
   }
 }

@@ -72,9 +72,9 @@
   "tone": "hard",
   "ar": "تراقب الخسارة تكبر / ولا تغلق الصفقة",
   "en": "You watch the loss grow / and you don't close the trade",
-  "plate": "Rojin/ro_C2_trading_floor_night.png",
-  "media": "media:08c1cfc9-1250-4d42-9011-a7144d2de985",
-  "motion": "Empty trading floor at night. She stands still looking up at the wall of screens while the candlestick charts on them slowly flicker and move. She does not move, holding the red tablet. Slow push-in down the aisle between the desks."
+  "plate": "Saeed/se_baghdad_river_night.png",
+  "media": "media:c69ef544-7d6c-4a53-b0da-6bc0cb62caa5",
+  "motion": "Night, Baghdad, the Tigris riverwalk. He walks slowly along the wet stone, eyes on his red phone. Behind him the candlestick charts on the tower facades keep printing; the trend slides down and red candles grow; reflections ripple on the river. Baghdad Tower stays still."
  },
  {
   "n": 8,
@@ -170,9 +170,20 @@
   "t_out": 60.0,
   "tone": "ending",
   "ar": "بناها متداولون / من أجل المتداولين · منذ 2007",
-  "en": "Built by traders / for traders · Since 2007 (+ Latin brand line; end card from 55.3125)",
+  "en": "Built by traders / for traders · Since 2007 (+ Latin brand line; lockup over Noor under the giant screen from 55.3125)",
   "plate": "Noor/no_ziggurat_dust.png",
   "media": "media:cf14bb2d-6adc-4d5b-8054-fc3a67b31d8e",
   "motion": "She stands still before the ancient stepped ziggurat holding the red tablet; dust clouds roll slowly behind it, wind moves her hair, she lifts her chin and looks into the distance with calm pride. Very slow push-in."
+ },
+ {
+  "n": 17,
+  "t_in": 55.3125,
+  "t_out": 60.0,
+  "tone": "lockup",
+  "ar": "آكسي · منذ 2007",
+  "en": "Axi logo · Since 2007 · Built by traders, for traders",
+  "plate": "Noor/no_giant_screen_user.png",
+  "media": "media:732de586-468d-46da-a44b-5dcf194391f6",
+  "motion": "She walks slowly toward the giant chart screen of a dark glass atrium; the rising chart glows; her reflection on the black marble floor."
  }
 ]
