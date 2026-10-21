@@ -51,8 +51,8 @@ function card(i, l1, l2, y, key, o = {}) {
   const x = o.x || 540; rule(t0 + 0.02, t1 - 0.02, y - 124, 72, Object.assign({ x }, o.dimAt ? { dimAt: o.dimAt } : {}));
   return T(t0, t1 - 0.02, x, y, 66, b.length ? [a, b] : [a], wt, Object.assign({ xo: 0.42, push: 0.03, lsize: [80, 64] }, o));
 }
-const TOPY = 360, LOWY = 1430, SAEEDY = 360;
-card(1, 'أول صفقة ناجحة', 'لا تنساها أبدا', TOPY, 'ناجحة');
+const TOPY = 360, LOWY = 1430, MIDY = 1160, SAEEDY = 360;
+card(1, 'أول صفقة ناجحة', 'لا تنساها أبدا', MIDY, 'ناجحة');
 card(2, 'يرتد السعر', 'من الخط الذي رسمته', TOPY, 'رسمته', { x: 650 });
 card(3, 'تلتزم بخطتك', 'فتؤتي ثمارها', TOPY, 'ثمارها');
 card(4, 'تشتري متأخرا', 'عند أعلى سعر', LOWY, 'متأخرا');
@@ -90,11 +90,12 @@ window.FLASH = [[LIFT, 'rgba(255,246,232,1)', 0.38, 0.7], [ARRIVE, 'rgba(255,246
 window.OVL = [
   { t0: 0, t1: 0.5, draw: (g, t) => { g.fillStyle = `rgba(0,0,0,${(0.45 * (1 - sstep(0, 0.5, t))).toFixed(3)})`; g.fillRect(0, 0, 1080, 1920); } },   // open on picture, lifting from half-dark
   { t0: 0, t1: END + 0.6, draw: (g, t) => {                                                                                                         // soft band behind the type
-      const LOW = [4, 5, 9], n = Math.max(1, C.findIndex(c => c > t)), cur = LOW.includes(n) ? 1 : 0, prev = LOW.includes(n - 1) ? 1 : 0;
-      const lo = lerp(prev, cur, sstep(C[n - 1], C[n - 1] + 0.3, t)), fade = 1 - sstep(END, END + 0.6, t);
-      const band = (y, a0, a1, w) => { if (w < 0.002) return; const gr = g.createLinearGradient(0, y, 0, y + 840);
-        gr.addColorStop(0, `rgba(2,4,8,${(a0 * w).toFixed(3)})`); gr.addColorStop(1, `rgba(2,4,8,${(a1 * w).toFixed(3)})`); g.fillStyle = gr; g.fillRect(0, y, 1080, 840); };
-      band(0, 0.55, 0, (1 - lo) * fade); band(1080, 0, 0.6, lo * fade); } },
+      const POS = n => [4, 5, 9].includes(n) ? 1 : n === 1 ? 2 : 0;                    // 0 top, 1 low, 2 mid (card 1 sits on her blouse)
+      const n = Math.max(1, C.findIndex(c => c > t)), k = sstep(C[n - 1], C[n - 1] + 0.3, t), fade = 1 - sstep(END, END + 0.6, t);
+      const w = [0, 1, 2].map(p => lerp(n > 1 && POS(n - 1) === p ? 1 : n === 1 && POS(1) === p ? 1 : 0, POS(n) === p ? 1 : 0, k) * fade);
+      const band = (y, h, stops, a) => { if (a < 0.002) return; const gr = g.createLinearGradient(0, y, 0, y + h);
+        stops.forEach(([o, al]) => gr.addColorStop(o, `rgba(2,4,8,${(al * a).toFixed(3)})`)); g.fillStyle = gr; g.fillRect(0, y, 1080, h); };
+      band(0, 840, [[0, 0.55], [1, 0]], w[0]); band(1080, 840, [[0, 0], [1, 0.6]], w[1]); band(MIDY - 460, 920, [[0, 0], [0.5, 0.58], [1, 0]], w[2]); } },
   { t0: END, t1: 60.01, draw: (g, t) => {                                                                                                            // the screen's sky darkens under the lockup
       const k = sstep(END, END + 0.8, t), gr = g.createLinearGradient(0, 0, 0, 900);
       gr.addColorStop(0, `rgba(2,4,8,${(0.72 * k).toFixed(3)})`); gr.addColorStop(0.62, `rgba(2,4,8,${(0.5 * k).toFixed(3)})`); gr.addColorStop(1, 'rgba(2,4,8,0)');

@@ -50,8 +50,12 @@ Timings and plates: `docs/SCRIPT_FINAL.md`, `gen/shots.json`.
   - The «آكسي» underline cleared the dots of the final ي.
   - Card 2 moved right and card 6 moved left, so the type clears the man's head.
   - Card 9 moved to the lower band, over the coat.
+  - Card 1 moved to the middle of the frame (over the blouse, with a soft dark band behind it), at the client's request.
   - The type band now blends between top and bottom and hands over to the lockup instead of switching on one frame.
 - Checked and not changed:
   - Card 7 shows Saeed: the young, dark-haired man of `src/personas/Saeed/`.
   - Card 14 line 2 is bold on purpose.
 - Audio: -14.3 LUFS integrated, true peak -1.7 dBTP, 60.000 s, no black frames.
+
+## Voice-over (optional)
+An ElevenLabs-ready Arabic VO script with per-line timecodes is in `docs/VO_SCRIPT_ElevenLabs.md`. The client generates the audio. The delivered film has no VO.
