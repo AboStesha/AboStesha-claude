@@ -40,32 +40,32 @@ window.EDL = [
 // pulses and draws a red underline; a white hairline opens above; the card pushes in slowly and leaves word by word.
 const I = [];
 const T = (t0, t1, x, y, size, lines, wt, o = {}) => (I.push(Object.assign({ t0, t1, x, y, size, lines, wt, cls: 'ar shadow' }, o)), I[I.length - 1]);
-const mk = (s, c, st, key) => s.split(' ').map(w => [w, c + (w === key ? ' k' : ''), st]);
-const rule = (t0, t1, y, w = 72, o = {}) => I.push(Object.assign({ t0, t1, x: 540, y, w, h: 2, enter: 'none', fadeIn: 0.01,
+const mk = (s, c, st, key, kc = ' k') => s.split(' ').map(w => [w, c + (w === key ? kc : ''), st]);
+const rule = (t0, t1, y, w = 72, o = {}) => I.push(Object.assign({ t0, t1, x: o.x || 540, y, w, h: 2, enter: 'none', fadeIn: 0.01,
   html: '<div style="width:100%;height:100%;background:rgba(255,255,255,.78);border-radius:1px;box-shadow:0 0 10px rgba(0,0,0,.5)"></div>',
   upd: (t, el) => { const a = 1 - Math.pow(1 - clamp((t - t0) / 0.55), 3), b = sstep(t1 - 0.45, t1 - 0.12, t);
     el.firstChild.style.transform = `scaleX(${(a * (1 - b)).toFixed(3)})`; } }, o));
 function card(i, l1, l2, y, key, o = {}) {
-  const t0 = C[i - 1], t1 = C[i], a = mk(l1, 'l1', 'mask', key), b = l2 ? mk(l2, o.l2c || 'l2', 'rise', key) : [];
+  const t0 = C[i - 1], t1 = C[i], kc = o.kd ? ' k kd' : ' k', a = mk(l1, 'l1', 'mask', key, kc), b = l2 ? mk(l2, o.l2c || 'l2', 'rise', key, kc) : [];
   const wt = []; let t = t0 + 0.12; a.forEach(() => { wt.push(t); t += 0.11; }); t += 0.22; b.forEach(() => { wt.push(t); t += 0.09; });
-  rule(t0 + 0.02, t1 - 0.02, y - 124, 72, o.dimAt ? { dimAt: o.dimAt } : {});
-  return T(t0, t1 - 0.02, 540, y, 66, b.length ? [a, b] : [a], wt, Object.assign({ xo: 0.42, push: 0.03, lsize: [80, 64] }, o));
+  const x = o.x || 540; rule(t0 + 0.02, t1 - 0.02, y - 124, 72, Object.assign({ x }, o.dimAt ? { dimAt: o.dimAt } : {}));
+  return T(t0, t1 - 0.02, x, y, 66, b.length ? [a, b] : [a], wt, Object.assign({ xo: 0.42, push: 0.03, lsize: [80, 64] }, o));
 }
 const TOPY = 360, LOWY = 1430, SAEEDY = 360;
 card(1, 'أول صفقة ناجحة', 'لا تنساها أبدا', TOPY, 'ناجحة');
-card(2, 'يرتد السعر', 'من الخط الذي رسمته', TOPY, 'رسمته');
+card(2, 'يرتد السعر', 'من الخط الذي رسمته', TOPY, 'رسمته', { x: 650 });
 card(3, 'تلتزم بخطتك', 'فتؤتي ثمارها', TOPY, 'ثمارها');
 card(4, 'تشتري متأخرا', 'عند أعلى سعر', LOWY, 'متأخرا');
 card(5, 'تدخل رغم الخوف', 'وتنجح الصفقة', LOWY, 'الخوف');
-card(6, 'صفقة مفتوحة', 'ولا تستطيع النوم', TOPY, 'النوم');
+card(6, 'صفقة مفتوحة', 'ولا تستطيع النوم', TOPY, 'النوم', { x: 430 });
 card(7, 'تراقب الخسارة تكبر', 'ولا تغلق الصفقة', SAEEDY, 'تكبر');
 card(8, 'تضغط زر الشراء', 'ويتحرك السعر معك فورا', TOPY, 'فورا');
-card(9, 'خسارة بعد خسارة', 'وتشك في نفسك', TOPY, 'نفسك', { xo: 0, dimAt: [28.125, 29.7, 0.15] });
+card(9, 'خسارة بعد خسارة', 'وتشك في نفسك', LOWY, 'نفسك', { xo: 0, dimAt: [28.125, 29.7, 0.15] });
 card(10, 'قررت ألا تدخل', 'وكنت على حق', TOPY, 'حق');
 card(11, 'تستيقظ', 'والصفقة وصلت إلى هدفها', TOPY, 'هدفها');
 card(12, 'خبر مفاجئ', 'يقلب السوق ضدك', TOPY, 'مفاجئ');
 card(13, 'تشعر أن شموعك', 'تحرك أحداث العالم', TOPY, 'شموعك');
-card(14, 'في آكسي', 'نحن متداولون مثلك', TOPY, 'آكسي', { lsize: [80, 72], l2c: 'b' });
+card(14, 'في آكسي', 'نحن متداولون مثلك', TOPY, 'آكسي', { lsize: [80, 72], l2c: 'b', kd: true, lh: 1.58 });
 card(15, 'لذلك نفهم ما تمر به', 'في الأيام الصعبة والجيدة', TOPY, 'نفهم');
 // brand line at the arrival: both «traders» underline in turn; the Latin line tracks in beneath
 rule(ARRIVE + 0.02, END - 0.02, 252, 96);
@@ -89,11 +89,12 @@ window.ITEMS = I;
 window.FLASH = [[LIFT, 'rgba(255,246,232,1)', 0.38, 0.7], [ARRIVE, 'rgba(255,246,232,1)', 0.45, 0.8]];
 window.OVL = [
   { t0: 0, t1: 0.5, draw: (g, t) => { g.fillStyle = `rgba(0,0,0,${(0.45 * (1 - sstep(0, 0.5, t))).toFixed(3)})`; g.fillRect(0, 0, 1080, 1920); } },   // open on picture, lifting from half-dark
-  { t0: 0, t1: END, draw: (g, t) => {                                                                                                                // soft band behind the type
-      const top = [4, 5].indexOf(C.findIndex(c => c > t)) < 0;
-      const y = top ? 0 : 1080, gr = g.createLinearGradient(0, y, 0, y + 840);
-      if (top) { gr.addColorStop(0, 'rgba(2,4,8,0.55)'); gr.addColorStop(1, 'rgba(2,4,8,0)'); } else { gr.addColorStop(0, 'rgba(2,4,8,0)'); gr.addColorStop(1, 'rgba(2,4,8,0.6)'); }
-      g.fillStyle = gr; g.fillRect(0, y, 1080, 840); } },
+  { t0: 0, t1: END + 0.6, draw: (g, t) => {                                                                                                         // soft band behind the type
+      const LOW = [4, 5, 9], n = Math.max(1, C.findIndex(c => c > t)), cur = LOW.includes(n) ? 1 : 0, prev = LOW.includes(n - 1) ? 1 : 0;
+      const lo = lerp(prev, cur, sstep(C[n - 1], C[n - 1] + 0.3, t)), fade = 1 - sstep(END, END + 0.6, t);
+      const band = (y, a0, a1, w) => { if (w < 0.002) return; const gr = g.createLinearGradient(0, y, 0, y + 840);
+        gr.addColorStop(0, `rgba(2,4,8,${(a0 * w).toFixed(3)})`); gr.addColorStop(1, `rgba(2,4,8,${(a1 * w).toFixed(3)})`); g.fillStyle = gr; g.fillRect(0, y, 1080, 840); };
+      band(0, 0.55, 0, (1 - lo) * fade); band(1080, 0, 0.6, lo * fade); } },
   { t0: END, t1: 60.01, draw: (g, t) => {                                                                                                            // the screen's sky darkens under the lockup
       const k = sstep(END, END + 0.8, t), gr = g.createLinearGradient(0, 0, 0, 900);
       gr.addColorStop(0, `rgba(2,4,8,${(0.72 * k).toFixed(3)})`); gr.addColorStop(0.62, `rgba(2,4,8,${(0.5 * k).toFixed(3)})`); gr.addColorStop(1, 'rgba(2,4,8,0)');

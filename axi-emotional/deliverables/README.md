@@ -42,3 +42,16 @@ Timings and plates: `docs/SCRIPT_FINAL.md`, `gen/shots.json`.
 - Text: all 16 cards match `docs/SCRIPT_FINAL.md` word for word and sit inside the safe zones.
 - Audio: -14.3 LUFS integrated, true peak -1.7 dBTP, no clipping. The lift (30.0) and arrival (52.5) land on hard cuts.
 - Visual fixes applied after the first QA round: 6-frame crossfades, hard cuts at 6.56 s and 44.06 s (no face ghosting), the breath no longer goes fully black, the film opens on picture, the ziggurat grade is matched, and the Latin lines are larger.
+
+## QA (v4)
+- Four-lens review (text, typography, picture, client brief) with two skeptics per finding.
+- Text: every card matches `docs/SCRIPT_FINAL.md` word for word, with correct hamzas and letter joining.
+- Fixed after review:
+  - The «آكسي» underline cleared the dots of the final ي.
+  - Card 2 moved right and card 6 moved left, so the type clears the man's head.
+  - Card 9 moved to the lower band, over the coat.
+  - The type band now blends between top and bottom and hands over to the lockup instead of switching on one frame.
+- Checked and not changed:
+  - Card 7 shows Saeed: the young, dark-haired man of `src/personas/Saeed/`.
+  - Card 14 line 2 is bold on purpose.
+- Audio: -14.3 LUFS integrated, true peak -1.7 dBTP, 60.000 s, no black frames.
