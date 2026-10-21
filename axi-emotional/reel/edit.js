@@ -14,7 +14,7 @@ const COOL = 'rgba(70,110,150,0.22)', WARM = 'rgba(255,214,170,0.14)';
 window.EDL = [
   S(C[0], C[1], 'c01', 0.10, 0.95, 1.00, 1.06, [0, 0, 0, -20], { filter: NIGHT, tint: COOL, ay: 820 }),
   S(C[1], C[2], 'c02', 0.40, 0.95, 1.04, 1.00, [0, 0, 0, 0], { filter: NIGHT, tint: COOL, xf: XF }),
-  S(C[2], C[3], 'c03', 0.60, 1.00, 1.00, 1.05, [0, 0, 0, -10], { filter: NIGHT, tint: COOL, xf: XF, ay: 1100 }),
+  S(C[2], C[3], 'c03', 1.70, 1.00, 1.00, 1.05, [0, 0, 0, -10], { filter: NIGHT, tint: COOL, xf: XF, ay: 1100 }),
   S(C[3], C[4], 'c04', 0.40, 1.00, 1.02, 1.07, [0, 0, 0, 0], { filter: NIGHT, tint: COOL, xf: XF }),
   S(C[4], C[5], 'c05', 0.50, 1.00, 1.00, 1.04, [0, 10, 0, -10], { filter: NIGHT, tint: COOL, xf: XF }),
   S(C[5], C[6], 'c06', 0.40, 0.95, 1.05, 1.00, [0, 0, 0, 0], { filter: NIGHT, tint: COOL, xf: XF }),
