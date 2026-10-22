@@ -57,5 +57,14 @@ Timings and plates: `docs/SCRIPT_FINAL.md`, `gen/shots.json`.
   - Card 14 line 2 is bold on purpose.
 - Audio: -14.3 LUFS integrated, true peak -1.7 dBTP, 60.000 s, no black frames.
 
-## Voice-over (optional)
-An ElevenLabs-ready Arabic VO script with per-line timecodes is in `docs/VO_SCRIPT_ElevenLabs.md`. The client generates the audio. The delivered film has no VO.
+## Voice-over (five voices, client-generated in ElevenLabs)
+- **Source:** `audio/vo/raw/*.wav` (gitignored). `tools/vo_cut.py` splits each take into its lines, using faster-whisper word times plus energy minima; every cut was re-transcribed and checked. `tools/vo_mix.py` places and mixes them.
+- **Lines:** each line starts with its card's first word.
+  - Lines 1–8 share one gentle tempo (1.095×, formants preserved) and have inner pauses tightened to 0.22 s so they fit the 2.8 s cards.
+  - Lines 9–16 play at natural speed.
+  - Line 10 waits for the lift at 30.0 s.
+- **Line 16:** all five voices on Noor's phrasing, with the others 7 dB lower and spread across the stereo field.
+- **Removed:** the «آكسي منذ عام 2007» line, at the client's request. The lockup has no voice.
+- **Mix:** each line is high-passed, de-essed, lightly compressed and levelled, and a shared short room sits on all of them. The music ducks per line by 1–11 dB to keep the voice about 9 LU above it. Master: -14.0 LUFS, -1.7 dBTP.
+- **Check by ear:** speech recognition hears line 02 «رسمتَه» as «أقسمته» and line 07 «تراقب» as «تواقب». If either voice mispronounced it, regenerate only that line and rerun `tools/vo_cut.py` and `tools/vo_mix.py`.
+- **Script:** `docs/VO_SCRIPT_ElevenLabs.md`.
