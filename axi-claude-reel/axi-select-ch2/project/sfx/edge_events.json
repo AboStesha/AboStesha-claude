@@ -1,0 +1,9 @@
+[
+ {"t_out": 22.48, "t_vo": 21.85, "event": "B-roll 3 hard cut in from D (pause VO 21.74-21.98): the lit world, the baseline starts drawing right to left", "type": "whoosh", "lib": "dataswish", "gain_db": -8},
+ {"t_out": 22.55, "t_vo": 21.92, "event": "the six bars rise out of the baseline right to left (to out 23.30); optional, very low under «للتأهّل»", "type": "slide", "lib": "scan", "gain_db": -18},
+ {"t_out": 23.47, "t_vo": 22.84, "event": "soft swell leading Incubation lighting (out 23.51) and the push-in (out 23.57-24.37); no transient on «Incubation»", "type": "whoosh", "lib": "longwhoosh", "gain_db": -16},
+ {"t_out": 24.33, "t_vo": 23.70, "event": "the threshold line starts drawing at the 60 level (pause VO 23.60-23.80)", "type": "click", "lib": "ui_blip", "gain_db": -12},
+ {"t_out": 26.97, "t_vo": 26.34, "event": "the skeleton dissolves and the counter's '0' appears (pause VO 26.30-26.47)", "type": "pop", "lib": "ui_blip", "gain_db": -14},
+ {"t_out": 27.09, "t_vo": 26.46, "event": "the counter runs 0 -> 60 and the bar fills red; it lands at out 28.11 (VO 27.48, «ستّين»), where there is NO sound", "type": "counter_roll", "lib": "scan", "gain_db": -16},
+ {"t_out": 28.62, "t_vo": 27.99, "event": "'60+' settles after its sheen (sheen ends out 28.60), in the pause VO 27.98-28.12, before the hard cut to F at out 28.68", "type": "ping", "lib": "ui_blip", "gain_db": -14}
+]

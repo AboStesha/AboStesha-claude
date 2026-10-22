@@ -1,0 +1,13 @@
+AXI SELECT · SFX PALETTE (videos 1 and 2) - SOURCES AND LICENCES
+
+Every file in this folder (50 WAVs, 48 kHz stereo float) was SYNTHESISED for this project by
+/home/user/rr/sound3/sfx/src/gen_palette.py (with src/dsp.py), numpy + scipy only:
+filtered-noise sweeps (STFT-domain time-varying band-pass) with doppler-style pitch curves and equal-power pans,
+modal (struck-object) resonators, sine / additive tones tuned to D minor, layered transients, one shared synthetic
+reverb impulse response (generated noise with frequency-dependent decay), one family EQ and loudness normalisation.
+
+No recorded samples, no third-party sound libraries, no AI music or AI sound services were used.
+The bundled CC0 library ($HF_WORKFLOWS/katana/scripts/sfx_lib) was reviewed but NOT used.
+
+Licence of the generated sounds: original work made for the Axi Select series; free of third-party rights.
+Re-generate deterministically: python3 -I /home/user/rr/sound3/sfx/src/gen_palette.py

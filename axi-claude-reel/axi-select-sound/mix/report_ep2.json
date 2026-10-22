@@ -1,0 +1,1078 @@
+{
+ "episode": "ep2",
+ "duration_s": 91.0,
+ "voice_offset_P": 0.63,
+ "settings": {
+  "VOICE": {
+   "hpf": 70.0,
+   "lufs": -20.0,
+   "ratio": 2.0,
+   "knee": 6.0,
+   "thr_rel": 2.0,
+   "det": 0.005,
+   "att": 0.01,
+   "rel": 0.15,
+   "plr_ceiling": 12.5,
+   "lim_la": 0.005,
+   "lim_rel": 0.1,
+   "dc_hpf": 10.0,
+   "rot": [
+    150.0,
+    300.0,
+    600.0,
+    1200.0
+   ],
+   "rot_q": 0.5,
+   "peak_margin_db": 0.25
+  },
+  "MUSIC": {
+   "vm_target": 16.0,
+   "duck_db": 1.0,
+   "band_db": 3.0,
+   "band": [
+    1000.0,
+    4000.0
+   ],
+   "cap_db": 6.0,
+   "vm_floor": 11.5,
+   "att": 0.2,
+   "rel": 0.7,
+   "bridge": 0.6,
+   "first_ramp": 1.9,
+   "end_lift_db": 2.0,
+   "hpf": 15.0,
+   "vm_gate_db": 18.0
+  },
+  "SFX": {
+   "rel_voice_db": -10.0,
+   "snr_target": 4.0,
+   "max_boost": 10.0,
+   "ui_win": [
+    -14.0,
+    -8.0
+   ],
+   "hit_win": [
+    -12.0,
+    -2.0
+   ],
+   "nudges": [
+    -0.02,
+    -0.03,
+    -0.04,
+    0.02,
+    0.03,
+    0.04
+   ],
+   "mask_margin": 6.0,
+   "max_cut": 3.0,
+   "max_cut_if_audible": 6.0,
+   "hpf": 15.0,
+   "own_band_within_db": 10.0,
+   "peak_under_voice_tp_db": 1.0,
+   "gr_fix_above_db": 2.0
+  },
+  "MASTER": {
+   "lufs": -14.0,
+   "ceiling": -1.4,
+   "la": 0.003,
+   "rel": 0.12,
+   "aac_max_tp": -1.1,
+   "dc_hpf": 10.0
+  }
+ },
+ "voice": {
+  "source": "/home/user/rr/axi-select-ch2/audio/vo/vo2_sync.wav",
+  "phase_rotator": {
+   "allpass_hz": [
+    150.0,
+    300.0,
+    600.0,
+    1200.0
+   ],
+   "q": 0.5,
+   "plr_before_db": 18.24,
+   "plr_after_db": 17.45
+  },
+  "input_gain_db": 1.94,
+  "median_10ms_dbfs": -25.29,
+  "comp_threshold_dbfs": -23.29,
+  "comp_gr_db_speech": {
+   "p50": 1.66,
+   "p90": 3.36,
+   "p99": 4.52,
+   "max": 6.11
+  },
+  "sibilance_5_10k_vs_median_db": {
+   "p99": -8.99,
+   "p999": -4.42,
+   "max": -2.51,
+   "deesser": "off (not needed: sibilant band stays under his median syllable level)"
+  },
+  "rides": [
+   "VO 50.43-50.65 +12.5 dB (level only)"
+  ],
+  "peak_limiter": {
+   "ceiling_rel_lufs_db": 12.5,
+   "tp_before_rel_db": 15.61,
+   "gr_max_db": 3.11,
+   "ms_over_1db": 1293.6,
+   "ms_over_0p1db": 10923.9,
+   "events_over_1db": 20
+  },
+  "n_word_onsets": 269,
+  "peak_ref_lufs_100ms_p95": -15.86,
+  "peak_fit_to_master": {
+   "margin_db": 0.25,
+   "ceiling_dbtp_after_master_gain": -1.65,
+   "gr_max_db": 0.12,
+   "ms_over_0p5db": 0.0,
+   "ms_over_1db": 0.0
+  },
+  "peak_limiting_total": {
+   "gr_max_db": 3.11,
+   "ms_over_1db": 1298.2,
+   "ms_over_3db": 16.7
+  }
+ },
+ "music": {
+  "stems_vs_mix_max_err_db": -132.5,
+  "static_gain_db": -15.66,
+  "duck_db_broadband": 1.0,
+  "band_dip_db": 3.0,
+  "duck_total_max_db": 3.39,
+  "extra_duck_max_db": 2.39,
+  "extra_duck_seconds": 4.2,
+  "vm_1s_db": {
+   "median": 16.0,
+   "p10": 13.83,
+   "p90": 17.8,
+   "min": 11.75,
+   "min_at_s": 82.49
+  }
+ },
+ "speech_guard": [],
+ "sfx": {
+  "cues": 162,
+  "placements": 351,
+  "render_vs_delivered_bed_max_err_db": -154.0,
+  "delivered_bed_peak_dbfs": -5.69,
+  "manual_fixes": {
+   "41": {
+    "t": 19.04,
+    "file": "tick_a",
+    "shift": 0.06,
+    "max_gain_db": -8.0,
+    "why": "tick + ping/flag sat on the onset of «يتم» (out 19.04) at every +-40 ms nudge (-1.2 dB after a 6 dB cut); the picture event (flag drops, Seed red cut, Incubation rim) starts at frame 477 = 19.08, so +60 ms puts the tick at 19.10 (+20 ms) and the ping/flag at 19.14, clear of both onsets (19.04, 19.17); capped at its previous level so the ping's ring stays 6 dB under the /t/ of «يتم» at 19.17"
+   },
+   "95": {
+    "t": 48.83,
+    "file": "pop_a",
+    "repeat_times": [
+     0.02,
+     0.07,
+     0.17,
+     0.21
+    ],
+    "max_gain_db": -5.0,
+    "why": "the 4 equation pops (0.06 s stagger) always put one pop on «التمويل» (out 48.93); the elements fade in at 48.84 / 48.92 / 48.96 / 49.04, so the pops go to 48.85 / 48.90 / 49.00 / 49.04: two before the onset, two in the pause 48.99-49.08; gain capped so pop 2's tail stays >= 6 dB under the onset's 1-8 kHz energy"
+   },
+   "34": {
+    "t": 16.22,
+    "file": "whoosh_long_rise",
+    "max_gain_db": -7.85,
+    "why": "the playhead whoosh peaks, and its stamp + shutter land, on the /q/ burst of «صفقة» (out 16.20-16.26): Whisper on voice + music reads «صفقة», with this cue «صفة»; 8 dB down restores «صفقة» (still 25 dB over voice + music in its own band)"
+   },
+   "123": {
+    "t": 66.43,
+    "file": "stamp",
+    "t_main": 66.57,
+    "why": "the stamp sat on the /q/ burst of «صفقة» (out 66.43-66.48, 10-20 dB over the burst in 1-8 kHz; the mix ASR read «صفحة»); the stamp alone moves to 66.57, right after the word, and the mixer's own nudge adds +20 ms (stamp 66.59, track-fill sweep 66.50 with the fill; the chip shows 66.44-66.48, so the stamp sounds 110-150 ms late). Whisper still misreads this «صفقة» under any bed (also with no SFX and the music 6 dB down): the word itself is fragile in the enhanced voice"
+   },
+   "137": {
+    "t": 75.2,
+    "file": "slide_card_b",
+    "shift": 0.07,
+    "max_gain_db": -3.0,
+    "why": "the deck's slides sat on «في» (out 75.24) at every +-40 ms nudge, cut 3 dB and inaudible (1.0 dB); the cards fan in over 75.20-75.36, so +70 ms (sound late, inside the delay tolerance) clears the onset and lets the mixer level it; capped so its tail stays 6 dB under the next onset (75.63)"
+   }
+  },
+  "global_offset_db": 0.14,
+  "n_audible_ge3db": 162,
+  "n_measured": 162,
+  "n_silent_protected": 0,
+  "snr_db": {
+   "min": 4.0,
+   "median": 23.55
+  },
+  "dominant_band_snr_db": {
+   "median": 16.23,
+   "n_ge3": 149
+  },
+  "rel_voice_peak_db": {
+   "ui_median": -10.72,
+   "ui_range": [
+    -14.25,
+    -8.0
+   ],
+   "hit_median": -9.22,
+   "hit_range": [
+    -13.95,
+    -4.34
+   ]
+  },
+  "nudged": 35,
+  "masking_cuts": 5,
+  "gr_fixes": 4,
+  "peak_capped": 5,
+  "boosted": 26,
+  "lowered": 37,
+  "onset_conflicts_left": [
+   [
+    40.83,
+    "glitch_swipe_b",
+    [
+     [
+      40.8,
+      40.859,
+      -6.0
+     ]
+    ]
+   ],
+   [
+    46.62,
+    "glitch_swipe_a",
+    [
+     [
+      46.84,
+      46.88,
+      -6.0
+     ],
+     [
+      46.84,
+      46.89,
+      -6.0
+     ],
+     [
+      47.02,
+      47.02,
+      -6.0
+     ],
+     [
+      47.02,
+      47.03,
+      -6.0
+     ],
+     [
+      47.02,
+      47.055,
+      -6.0
+     ],
+     [
+      47.02,
+      47.065,
+      -6.0
+     ]
+    ]
+   ],
+   [
+    76.94,
+    "chime_glass",
+    [
+     [
+      76.93,
+      76.98,
+      -6.0
+     ]
+    ]
+   ],
+   [
+    80.07,
+    "counter_roll_s",
+    [
+     [
+      80.17,
+      80.19,
+      -6.0
+     ],
+     [
+      80.17,
+      80.2,
+      -6.0
+     ]
+    ]
+   ]
+  ],
+  "below_3db": []
+ },
+ "master_gr_culprits": [
+  {
+   "pass_": 0,
+   "t": 18.341,
+   "gr_db": 2.2,
+   "voice_pk_dbfs": -3.3,
+   "music_pk_dbfs": -25.0,
+   "sfx_pk_dbfs": -6.8,
+   "sfx_adds_db": 4.07,
+   "lowered_cues": [
+    [
+     18.33,
+     "pop_a",
+     1.0
+    ],
+    [
+     18.15,
+     "scan_draw_a",
+     1.0
+    ],
+    [
+     17.72,
+     "impact_deep",
+     1.0
+    ]
+   ]
+  },
+  {
+   "pass_": 0,
+   "t": 32.135,
+   "gr_db": 2.89,
+   "voice_pk_dbfs": -5.3,
+   "music_pk_dbfs": -22.8,
+   "sfx_pk_dbfs": -4.1,
+   "sfx_adds_db": 6.28,
+   "lowered_cues": [
+    [
+     32.34,
+     "counter_roll_m",
+     1.39
+    ]
+   ]
+  },
+  {
+   "pass_": 1,
+   "t": 32.133,
+   "gr_db": 2.18,
+   "voice_pk_dbfs": -5.3,
+   "music_pk_dbfs": -25.7,
+   "sfx_pk_dbfs": -5.5,
+   "sfx_adds_db": 5.57,
+   "lowered_cues": [
+    [
+     32.34,
+     "counter_roll_m",
+     1.0
+    ]
+   ]
+  }
+ ],
+ "master": {
+  "static_gain_db": 5.828,
+  "limiter_ceiling_dbtp": -1.4,
+  "limiter_gr_max_db": 1.86,
+  "limiter_gr_max_at_s": 18.341,
+  "limiter_ms_over_0p5db": 1556.0,
+  "limiter_ms_over_1db": 289.6,
+  "limiter_ms_over_2db": 0.0
+ },
+ "final_wav": {
+  "samples": 4368000,
+  "duration_s": 91.0,
+  "integrated_lufs": -14.01,
+  "true_peak_dbtp": -1.4,
+  "sample_peak_dbfs": -1.41,
+  "lra_lu": 1.61,
+  "clipped_samples": 0,
+  "dc_offset": [
+   1.1540038900060967e-06,
+   8.56100721455319e-07
+  ],
+  "lr_correlation": 0.939,
+  "mono_fold_loss_lu": 0.11,
+  "lr_balance_db": -0.0
+ },
+ "final_m4a": {
+  "decoded_samples": 4368384,
+  "integrated_lufs": -14.03,
+  "true_peak_dbtp": -1.34,
+  "ffprobe": {
+   "programs": [],
+   "streams": [
+    {
+     "codec_name": "aac",
+     "sample_rate": "48000",
+     "channels": 2,
+     "duration": "91.000000",
+     "bit_rate": "260088"
+    }
+   ],
+   "format": {
+    "duration": "91.000000"
+   }
+  }
+ },
+ "stems_integrated_lufs": {
+  "voice": -14.33,
+  "music": -28.85,
+  "sfx": -22.42,
+  "mix": -14.01
+ },
+ "start_curve": {
+  "momentary_400ms_every_0p25s": {
+   "music": [
+    [
+     0.25,
+     -28.9
+    ],
+    [
+     0.5,
+     -27.5
+    ],
+    [
+     0.75,
+     -27.3
+    ],
+    [
+     1.0,
+     -26.0
+    ],
+    [
+     1.25,
+     -27.3
+    ],
+    [
+     1.5,
+     -28.1
+    ],
+    [
+     1.75,
+     -26.6
+    ],
+    [
+     2.0,
+     -27.6
+    ],
+    [
+     2.25,
+     -29.0
+    ],
+    [
+     2.5,
+     -28.8
+    ],
+    [
+     2.75,
+     -28.9
+    ],
+    [
+     3.0,
+     -29.5
+    ],
+    [
+     3.25,
+     -29.8
+    ],
+    [
+     3.5,
+     -29.6
+    ],
+    [
+     3.75,
+     -29.5
+    ],
+    [
+     4.0,
+     -28.9
+    ],
+    [
+     4.25,
+     -28.4
+    ],
+    [
+     4.5,
+     -28.2
+    ],
+    [
+     4.75,
+     -28.4
+    ],
+    [
+     5.0,
+     -28.5
+    ],
+    [
+     5.25,
+     -28.6
+    ],
+    [
+     5.5,
+     -28.6
+    ],
+    [
+     5.75,
+     -28.6
+    ],
+    [
+     6.0,
+     -27.7
+    ],
+    [
+     6.25,
+     -27.6
+    ],
+    [
+     6.5,
+     -28.0
+    ],
+    [
+     6.75,
+     -27.5
+    ],
+    [
+     7.0,
+     -27.6
+    ],
+    [
+     7.25,
+     -29.7
+    ],
+    [
+     7.5,
+     -30.4
+    ],
+    [
+     7.75,
+     -30.1
+    ],
+    [
+     8.0,
+     -28.5
+    ]
+   ],
+   "voice": [
+    [
+     0.25,
+     -200.7
+    ],
+    [
+     0.5,
+     -200.7
+    ],
+    [
+     0.75,
+     -200.7
+    ],
+    [
+     1.0,
+     -200.7
+    ],
+    [
+     1.25,
+     -200.7
+    ],
+    [
+     1.5,
+     -200.7
+    ],
+    [
+     1.75,
+     -200.7
+    ],
+    [
+     2.0,
+     -200.7
+    ],
+    [
+     2.25,
+     -200.7
+    ],
+    [
+     2.5,
+     -200.7
+    ],
+    [
+     2.75,
+     -200.7
+    ],
+    [
+     3.0,
+     -15.1
+    ],
+    [
+     3.25,
+     -11.5
+    ],
+    [
+     3.5,
+     -13.0
+    ],
+    [
+     3.75,
+     -14.8
+    ],
+    [
+     4.0,
+     -13.0
+    ],
+    [
+     4.25,
+     -12.5
+    ],
+    [
+     4.5,
+     -12.4
+    ],
+    [
+     4.75,
+     -12.6
+    ],
+    [
+     5.0,
+     -15.7
+    ],
+    [
+     5.25,
+     -15.2
+    ],
+    [
+     5.5,
+     -14.6
+    ],
+    [
+     5.75,
+     -16.3
+    ],
+    [
+     6.0,
+     -15.7
+    ],
+    [
+     6.25,
+     -21.3
+    ],
+    [
+     6.5,
+     -15.2
+    ],
+    [
+     6.75,
+     -15.1
+    ],
+    [
+     7.0,
+     -15.6
+    ],
+    [
+     7.25,
+     -15.8
+    ],
+    [
+     7.5,
+     -13.4
+    ],
+    [
+     7.75,
+     -11.3
+    ],
+    [
+     8.0,
+     -11.3
+    ]
+   ],
+   "mix": [
+    [
+     0.25,
+     -19.1
+    ],
+    [
+     0.5,
+     -20.7
+    ],
+    [
+     0.75,
+     -23.5
+    ],
+    [
+     1.0,
+     -22.8
+    ],
+    [
+     1.25,
+     -20.2
+    ],
+    [
+     1.5,
+     -18.3
+    ],
+    [
+     1.75,
+     -17.8
+    ],
+    [
+     2.0,
+     -18.9
+    ],
+    [
+     2.25,
+     -21.8
+    ],
+    [
+     2.5,
+     -25.2
+    ],
+    [
+     2.75,
+     -24.4
+    ],
+    [
+     3.0,
+     -14.9
+    ],
+    [
+     3.25,
+     -11.5
+    ],
+    [
+     3.5,
+     -12.9
+    ],
+    [
+     3.75,
+     -13.8
+    ],
+    [
+     4.0,
+     -12.3
+    ],
+    [
+     4.25,
+     -12.3
+    ],
+    [
+     4.5,
+     -12.0
+    ],
+    [
+     4.75,
+     -12.4
+    ],
+    [
+     5.0,
+     -15.6
+    ],
+    [
+     5.25,
+     -15.0
+    ],
+    [
+     5.5,
+     -14.5
+    ],
+    [
+     5.75,
+     -14.3
+    ],
+    [
+     6.0,
+     -13.5
+    ],
+    [
+     6.25,
+     -16.1
+    ],
+    [
+     6.5,
+     -13.6
+    ],
+    [
+     6.75,
+     -13.9
+    ],
+    [
+     7.0,
+     -14.1
+    ],
+    [
+     7.25,
+     -15.2
+    ],
+    [
+     7.5,
+     -13.1
+    ],
+    [
+     7.75,
+     -11.3
+    ],
+    [
+     8.0,
+     -11.2
+    ]
+   ],
+   "sfx": [
+    [
+     0.25,
+     -19.5
+    ],
+    [
+     0.5,
+     -21.7
+    ],
+    [
+     0.75,
+     -25.9
+    ],
+    [
+     1.0,
+     -25.9
+    ],
+    [
+     1.25,
+     -21.2
+    ],
+    [
+     1.5,
+     -18.7
+    ],
+    [
+     1.75,
+     -18.4
+    ],
+    [
+     2.0,
+     -19.6
+    ],
+    [
+     2.25,
+     -22.8
+    ],
+    [
+     2.5,
+     -27.9
+    ],
+    [
+     2.75,
+     -26.4
+    ],
+    [
+     3.0,
+     -34.0
+    ],
+    [
+     3.25,
+     -49.4
+    ],
+    [
+     3.5,
+     -49.4
+    ],
+    [
+     3.75,
+     -20.7
+    ],
+    [
+     4.0,
+     -20.7
+    ],
+    [
+     4.25,
+     -27.5
+    ],
+    [
+     4.5,
+     -24.3
+    ],
+    [
+     4.75,
+     -30.4
+    ],
+    [
+     5.0,
+     -49.0
+    ],
+    [
+     5.25,
+     -58.2
+    ],
+    [
+     5.5,
+     -26.8
+    ],
+    [
+     5.75,
+     -18.3
+    ],
+    [
+     6.0,
+     -17.2
+    ],
+    [
+     6.25,
+     -17.8
+    ],
+    [
+     6.5,
+     -18.3
+    ],
+    [
+     6.75,
+     -19.2
+    ],
+    [
+     7.0,
+     -20.5
+    ],
+    [
+     7.25,
+     -25.6
+    ],
+    [
+     7.5,
+     -25.0
+    ],
+    [
+     7.75,
+     -30.3
+    ],
+    [
+     8.0,
+     -25.4
+    ]
+   ]
+  },
+  "music_title_0p5_to_ramp_start_lufs": -26.68,
+  "music_title_0p4_to_2p6_lufs": -27.44,
+  "music_title_max_momentary_lufs": -25.92,
+  "music_under_first_words_lufs": -28.36,
+  "music_under_speech_median_momentary_lufs": -29.44,
+  "title_minus_under_first_words_lu": 0.92,
+  "title_minus_under_speech_median_lu": 2.0
+ },
+ "music_evenness": {
+  "short_term_3s_lufs": {
+   "min": -31.22,
+   "max": -27.77,
+   "range_lu": 3.46,
+   "p5": -30.57,
+   "p95": -28.23,
+   "min_at_s": 51.9,
+   "max_at_s": 1.6
+  },
+  "excluded_windows": [
+   [
+    32.6,
+    36.5
+   ],
+   [
+    73.9,
+    80.2
+   ],
+   [
+    84.6,
+    91.0
+   ]
+  ],
+  "whole_video_incl_exceptions": {
+   "min": -40.35,
+   "max": -23.68
+  }
+ },
+ "marks_momentary_lufs": {
+  "B-roll 1 cut": {
+   "t": 10.72,
+   "music": -28.4,
+   "sfx": -19.0,
+   "mix": -18.2
+  },
+  "staircase cut": {
+   "t": 17.72,
+   "music": -29.0,
+   "sfx": -20.4,
+   "mix": -15.9
+  },
+  "B-roll 3 cut": {
+   "t": 22.48,
+   "music": -30.5,
+   "sfx": -19.7,
+   "mix": -18.7
+  },
+  "F cut": {
+   "t": 28.68,
+   "music": -29.8,
+   "sfx": -25.9,
+   "mix": -18.8
+  },
+  "DROP 1": {
+   "t": 33.0,
+   "music": -26.7,
+   "sfx": -19.7,
+   "mix": -14.7
+  },
+  "B-roll 2": {
+   "t": 37.04,
+   "music": -29.2,
+   "sfx": -18.4,
+   "mix": -15.5
+  },
+  "N cut (stage 3)": {
+   "t": 68.16,
+   "music": -26.9,
+   "sfx": -26.3,
+   "mix": -18.2
+  },
+  "break": {
+   "t": 74.45,
+   "music": -30.3,
+   "sfx": -25.8,
+   "mix": -14.6
+  },
+  "DROP 2": {
+   "t": 76.68,
+   "music": -28.2,
+   "sfx": -20.8,
+   "mix": -17.6
+  },
+  "camera push": {
+   "t": 82.76,
+   "music": -28.7,
+   "sfx": -31.2,
+   "mix": -16.7
+  },
+  "end wipe": {
+   "t": 84.72,
+   "music": -27.5,
+   "sfx": -20.8,
+   "mix": -16.9
+  },
+  "END hit": {
+   "t": 85.364,
+   "music": -22.6,
+   "sfx": -19.9,
+   "mix": -18.6
+  }
+ },
+ "mux": [
+  {
+   "src": "/home/user/rr/axi-select-ch2/out/v2/pic_subs.mp4",
+   "dst": "/home/user/rr/axi-select-ch2/out/final4/AxiSelect_Ch2_Rabee_16x9.mp4",
+   "probe": {
+    "programs": [],
+    "streams": [
+     {
+      "codec_name": "h264",
+      "codec_type": "video",
+      "duration": "91.000000",
+      "nb_frames": "2275"
+     },
+     {
+      "codec_name": "aac",
+      "codec_type": "audio",
+      "duration": "91.000000",
+      "nb_frames": "4267"
+     }
+    ],
+    "format": {
+     "duration": "91.000000"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,3578 @@
+[
+ {
+  "t": 0.0,
+  "file": "whoosh_long_fall.wav",
+  "gain_db": -9,
+  "pan": 0.35,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "◢ texture sweep right to left (0-0.80) + bokeh in",
+  "x": 960,
+  "rate": 0.975
+ },
+ {
+  "t": 0.25,
+  "file": "flag_flutter.wav",
+  "gain_db": -12,
+  "pan": 0.25,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "mirrored red flag unfurls (0.25-0.47)",
+  "x": 1286,
+  "y": 393,
+  "rate": 0.9913
+ },
+ {
+  "t": 0.37,
+  "file": "reveal_air_a.wav",
+  "gain_db": -11,
+  "pan": 0.14,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "'(1)' rises 40 px through its clip (0.35-0.80)",
+  "x": 1140,
+  "t_vis": 0.35,
+  "rate": 1.0076
+ },
+ {
+  "t": 0.49,
+  "file": "reveal_air_b.wav",
+  "gain_db": -12,
+  "pan": -0.05,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "«كيف تبدأ» reveals word by word from the right (0.45, 0.1 s stagger)",
+  "x": 900,
+  "t_vis": 0.45,
+  "rate": 1.0239
+ },
+ {
+  "t": 0.85,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -13,
+  "pan": 0.14,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "one sheen across the metallic '(1)' (0.85-1.35) + «مع» rises 16 px (0.95)",
+  "x": 1140
+ },
+ {
+  "t": 1.05,
+  "file": "shimmer_logo.wav",
+  "gain_db": -7,
+  "pan": -0.05,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "official logo build: axi rises (1.05-1.50)",
+  "x": 890,
+  "dur": 1.82,
+  "fade": 0.45
+ },
+ {
+  "t": 1.32,
+  "file": "whoosh_soft_b.wav",
+  "gain_db": -13,
+  "pan": -0.01,
+  "sync": "onset",
+  "beat": "TITLE",
+  "event": "SELECT tag wipes in behind the red '/' edge (1.32-1.82)",
+  "x": 950,
+  "dur": 1.5,
+  "fade": 0.3,
+  "rate": 1.0229
+ },
+ {
+  "t": 2.75,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "TITLE",
+  "event": "title exit: everything fades with y -10 px (2.62-2.94), black",
+  "x": 960,
+  "t_vis": 2.62,
+  "dur": 0.3,
+  "fade": 0.12,
+  "rate": 0.9892
+ },
+ {
+  "t": 4.78,
+  "file": "shimmer_logo.wav",
+  "gain_db": -7,
+  "pan": -0.01,
+  "sync": "onset",
+  "beat": "A",
+  "event": "official lockup builds in the void: axi rises (1.78-2.16); pool lifts .18 -> .30",
+  "x": 946,
+  "y": 305
+ },
+ {
+  "t": 5.1,
+  "file": "reveal_air_a.wav",
+  "gain_db": -12,
+  "pan": 0.03,
+  "sync": "onset",
+  "beat": "A",
+  "event": "kicker «برنامج التمويل» rises 16 px + its flag unfurls (2.16-2.38) | SELECT tag wipes (2.00-2.42) | + ◢ floor ripple ring wave from the stool (2.20-3.90)",
+  "x": 1000,
+  "y": 150,
+  "layers": [
+   {
+    "t": 5.16,
+    "file": "flag_flutter.wav",
+    "gain_db": -15,
+    "pan": 0.1,
+    "rate": 1.0145
+   },
+   {
+    "t": 5.0,
+    "file": "whoosh_soft_b.wav",
+    "gain_db": -15,
+    "pan": 0.11,
+    "rate": 1.0072
+   },
+   {
+    "t": 5.2,
+    "file": "sonar_white.wav",
+    "gain_db": -8,
+    "pan": 0.0,
+    "sync": "onset"
+   }
+  ],
+  "rate": 1.0218,
+  "merged": [
+   {
+    "t": 5.2,
+    "file": "sonar_white.wav",
+    "t_vis": 5.2,
+    "x": 960,
+    "y": 900
+   }
+  ]
+ },
+ {
+  "t": 7.08,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -14,
+  "pan": -0.01,
+  "sync": "peak",
+  "beat": "A",
+  "event": "exit: SELECT tag wipes off RTL, axi sinks, the kicker fades, pool back (4.00-4.30)",
+  "x": 946,
+  "t_vis": 7.0,
+  "rate": 1.0044
+ },
+ {
+  "t": 7.8,
+  "file": "slide_card_a.wav",
+  "gain_db": -7,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "B",
+  "event": "RIGHT card 01 «الاشتراك» enters (mini DARK pill «افتح حساب»)",
+  "x": 1600,
+  "rate": 1.0207
+ },
+ {
+  "t": 7.98,
+  "file": "reveal_air_c.wav",
+  "gain_db": -16,
+  "pan": 0.58,
+  "sync": "onset",
+  "beat": "B",
+  "event": "the cursor glides in to the pill's circle",
+  "x": 1700,
+  "rate": 0.9871
+ },
+ {
+  "t": 8.24,
+  "file": "click_ui_a.wav",
+  "gain_db": -6,
+  "pan": 0.61,
+  "sync": "onset",
+  "beat": "B",
+  "event": "CLICK on the mini pill (.96 for 2 frames + red ring) | + LEFT card 02 «التقدّم في المراحل» enters",
+  "x": 1740,
+  "rate": 1.0034,
+  "layers": [
+   {
+    "t": 8.32,
+    "file": "slide_card_b.wav",
+    "gain_db": -7,
+    "pan": -0.5,
+    "sync": "onset",
+    "rate": 1.0197
+   }
+  ],
+  "merged": [
+   {
+    "t": 8.32,
+    "file": "slide_card_b.wav",
+    "t_vis": 8.32,
+    "x": 320,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 8.8,
+  "file": "scan_draw_a.wav",
+  "gain_db": -11,
+  "pan": -0.39,
+  "sync": "onset",
+  "beat": "B",
+  "event": "a 6-step stair line draws from bottom-right up to top-left (5.80-6.25)",
+  "x": 360,
+  "pan_to": -0.56,
+  "rate": 0.986
+ },
+ {
+  "t": 9.12,
+  "file": "flag_drop.wav",
+  "gain_db": -10,
+  "pan": -0.38,
+  "sync": "onset",
+  "beat": "B",
+  "event": "the flag MARKER plants on step 1",
+  "x": 470,
+  "rate": 1.0023
+ },
+ {
+  "t": 9.3,
+  "file": "tick_c.wav",
+  "gain_db": -12,
+  "pan": -0.41,
+  "sync": "onset",
+  "beat": "B",
+  "event": "the flag climbs one step every 0.2 s (5 expo hops, 6.30-7.30)",
+  "x": 360,
+  "repeat": [
+   5,
+   0.2
+  ],
+  "rate_step": 0.04,
+  "pan_to": -0.55
+ },
+ {
+  "t": 10.95,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -11,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "B",
+  "event": "one sheen across the metallic '01' and '02'",
+  "x": 960
+ },
+ {
+  "t": 11.38,
+  "file": "whoosh_soft_a.wav",
+  "gain_db": -14,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "B",
+  "event": "exit, right card first (8.30 / 8.36)",
+  "x": 960,
+  "t_vis": 11.3,
+  "rate": 1.0012
+ },
+ {
+  "t": 11.84,
+  "file": "whoosh_hard_a.wav",
+  "gain_db": -5,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "C",
+  "event": "hard cut into B-roll 1 + the red disc pops (8.86)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 11.84,
+    "file": "thud_soft_a.wav",
+    "gain_db": -12,
+    "pan": 0.0,
+    "rate": 1.0103
+   },
+   {
+    "t": 11.86,
+    "file": "pop_c.wav",
+    "gain_db": -11,
+    "pan": -0.2
+   }
+  ],
+  "rate": 1.0175
+ },
+ {
+  "t": 11.96,
+  "file": "tick_c.wav",
+  "gain_db": -14,
+  "pan": -0.2,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the white ← draws in the disc",
+  "x": 700,
+  "rate": 1.05
+ },
+ {
+  "t": 12.22,
+  "file": "slide_card_a.wav",
+  "gain_db": -10,
+  "pan": -0.28,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the DARK pill extends leftward out of the disc on «بفتح» | + the pill label «افتح حساب تداول» reveals right to left | + the cursor glides in (9.28)",
+  "x": 600,
+  "rate": 1.0002,
+  "layers": [
+   {
+    "t": 12.3,
+    "file": "reveal_air_a.wav",
+    "gain_db": -13,
+    "pan": -0.31,
+    "sync": "onset",
+    "rate": 1.0165
+   }
+  ],
+  "merged": [
+   {
+    "t": 12.3,
+    "file": "reveal_air_a.wav",
+    "t_vis": 12.3,
+    "x": 560,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 12.7,
+  "file": "click_ui_a.wav",
+  "gain_db": -6,
+  "pan": -0.2,
+  "sync": "onset",
+  "beat": "C",
+  "event": "CLICK on the disc + click ring",
+  "x": 700,
+  "rate": 0.9828
+ },
+ {
+  "t": 12.82,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -9,
+  "pan": -0.28,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the pill MORPHS into the chamfered account card; the disc becomes the header's flag (9.76)",
+  "x": 640,
+  "t_vis": 12.76,
+  "layers": [
+   {
+    "t": 12.8,
+    "file": "flag_flutter.wav",
+    "gain_db": -14,
+    "pan": -0.08,
+    "rate": 0.9918
+   }
+  ],
+  "rate": 0.9991
+ },
+ {
+  "t": 13.1,
+  "file": "reveal_air_b.wav",
+  "gain_db": -12,
+  "pan": -0.2,
+  "sync": "onset",
+  "beat": "C",
+  "event": "header «حساب تداول» reveals + divider draws (10.18) + the chart well fills with candles (10.20)",
+  "x": 700,
+  "layers": [
+   {
+    "t": 13.18,
+    "file": "scan_draw_a.wav",
+    "gain_db": -15,
+    "pan": -0.28,
+    "dur": 0.4,
+    "rate": 1.0081
+   },
+   {
+    "t": 13.2,
+    "file": "tick_b.wav",
+    "gain_db": -19,
+    "pan": -0.4,
+    "repeat": [
+     16,
+     0.035
+    ],
+    "rate_step": 0.008,
+    "pan_to": -0.05
+   }
+  ],
+  "rate": 1.0154
+ },
+ {
+  "t": 13.28,
+  "file": "reveal_air_c.wav",
+  "gain_db": -15,
+  "pan": 0.19,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the field skeletons appear (name, company, status)",
+  "x": 1200,
+  "rate": 0.9817
+ },
+ {
+  "t": 14.02,
+  "file": "shimmer_logo.wav",
+  "gain_db": -8,
+  "pan": 0.23,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the OFFICIAL LOGO builds in the name field",
+  "x": 1250
+ },
+ {
+  "t": 15.04,
+  "file": "reveal_air_a.wav",
+  "gain_db": -14,
+  "pan": 0.23,
+  "sync": "onset",
+  "beat": "C",
+  "event": "skeleton 2 dissolves; the axi wordmark lands in the company field (12.12)",
+  "x": 1250,
+  "layers": [
+   {
+    "t": 15.12,
+    "file": "pop_a.wav",
+    "gain_db": -13,
+    "pan": 0.23
+   }
+  ],
+  "rate": 1.0144
+ },
+ {
+  "t": 15.22,
+  "file": "pop_c.wav",
+  "gain_db": -11,
+  "pan": 0.23,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the status field «نشط» appears with its pulsing red dot (12.18-12.22)",
+  "x": 1250
+ },
+ {
+  "t": 15.64,
+  "file": "cam_push.wav",
+  "gain_db": -6,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "C",
+  "event": "DIVE: the card's chart well zooms into the full-screen chart (12.64)",
+  "x": 960,
+  "rate": 0.997
+ },
+ {
+  "t": 15.84,
+  "file": "stamp.wav",
+  "gain_db": -10,
+  "pan": 0.46,
+  "sync": "onset",
+  "beat": "C",
+  "event": "the edge marker grows into the RED TAG price tab",
+  "x": 1550,
+  "rate": 1.0133
+ },
+ {
+  "t": 16.0,
+  "file": "reveal_air_b.wav",
+  "gain_db": -12,
+  "pan": 0.27,
+  "sync": "onset",
+  "beat": "C",
+  "event": "headline 2 «تداول بالشكل الاعتيادي» + the travelling flag lands as its flag",
+  "x": 1300,
+  "layers": [
+   {
+    "t": 16.0,
+    "file": "flag_flutter.wav",
+    "gain_db": -15,
+    "pan": 0.53,
+    "rate": 1.0223
+   }
+  ],
+  "rate": 0.9796
+ },
+ {
+  "t": 16.2,
+  "file": "tick_b.wav",
+  "gain_db": -13,
+  "pan": 0.38,
+  "sync": "onset",
+  "beat": "C",
+  "event": "live candles print every 0.3 s",
+  "x": 1450,
+  "repeat": [
+   2,
+   0.3
+  ],
+  "rate_step": 0.03
+ },
+ {
+  "t": 16.35,
+  "file": "pop_b.wav",
+  "gain_db": -9,
+  "pan": 0.27,
+  "sync": "onset",
+  "beat": "C",
+  "event": "BUY ticket: white ring on the close + dark chip with a RED ▲",
+  "x": 1300,
+  "layers": [
+   {
+    "t": 16.35,
+    "file": "tick_a.wav",
+    "gain_db": -12,
+    "pan": 0.27,
+    "rate": 1.0049
+   }
+  ]
+ },
+ {
+  "t": 16.8,
+  "file": "tick_b.wav",
+  "gain_db": -13,
+  "pan": 0.38,
+  "sync": "onset",
+  "beat": "C",
+  "event": "a live candle prints | + ▲▲▲ pop beside the price",
+  "x": 1450,
+  "rate": 1.06,
+  "layers": [
+   {
+    "t": 16.9,
+    "file": "pop_c.wav",
+    "gain_db": -12,
+    "pan": 0.19,
+    "sync": "onset",
+    "repeat": [
+     3,
+     0.07
+    ]
+   }
+  ],
+  "merged": [
+   {
+    "t": 16.9,
+    "file": "pop_c.wav",
+    "t_vis": 16.9,
+    "x": 1200,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 17.05,
+  "file": "pop_a.wav",
+  "gain_db": -9,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "C",
+  "event": "SELL ticket: ring + chip with a white ▼",
+  "x": 1500,
+  "layers": [
+   {
+    "t": 17.05,
+    "file": "tick_c.wav",
+    "gain_db": -12,
+    "pan": 0.42,
+    "rate": 1.0039
+   }
+  ]
+ },
+ {
+  "t": 17.4,
+  "file": "tick_b.wav",
+  "gain_db": -13,
+  "pan": 0.38,
+  "sync": "onset",
+  "beat": "C",
+  "event": "live candles print (14.40, 14.70)",
+  "x": 1450,
+  "repeat": [
+   2,
+   0.3
+  ],
+  "rate_step": 0.03
+ },
+ {
+  "t": 17.76,
+  "file": "riser_short.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "C",
+  "event": "into the cut: the final punch, a tall white candle + the corners snap (14.70-14.76) | + DROP 1 smash cut: floor RIPPLE (red ring + white ring 0.1 s behind) (layers the score's drop)",
+  "x": 1500,
+  "t_vis": 17.7,
+  "layers": [
+   {
+    "t": 17.76,
+    "file": "tick_a.wav",
+    "gain_db": -10,
+    "pan": 0.5,
+    "rate": 0.9865
+   },
+   {
+    "t": 17.88,
+    "file": "boom_drop.wav",
+    "gain_db": -8,
+    "pan": 0.0,
+    "sync": "onset"
+   },
+   {
+    "t": 17.88,
+    "file": "sonar_white.wav",
+    "gain_db": -11,
+    "pan": 0.0
+   }
+  ],
+  "rate": 0.9938,
+  "merged": [
+   {
+    "t": 17.88,
+    "file": "boom_drop.wav",
+    "t_vis": 17.88,
+    "x": 960,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 18.2,
+  "file": "sonar_red.wav",
+  "gain_db": -12,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "D",
+  "event": "a steady red POOL fades in under the stool",
+  "x": 960,
+  "y": 950
+ },
+ {
+  "t": 18.35,
+  "file": "tick_b.wav",
+  "gain_db": -17,
+  "pan": -0.16,
+  "sync": "onset",
+  "beat": "D",
+  "event": "the gauge powers on: 41 radial ticks appear left to right (0.012 s stagger)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 18.35,
+    "file": "scan_draw_a.wav",
+    "gain_db": -15,
+    "pan": -0.16,
+    "pan_to": 0.16,
+    "rate": 0.9854
+   }
+  ],
+  "repeat": [
+   12,
+   0.042
+  ],
+  "rate_step": 0.012,
+  "pan_to": 0.16
+ },
+ {
+  "t": 19.04,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "D",
+  "event": "'Edge Score' rises 12 px",
+  "x": 960,
+  "rate": 1.009
+ },
+ {
+  "t": 19.3,
+  "file": "reveal_air_a.wav",
+  "gain_db": -13,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "D",
+  "event": "«الحدّ الأدنى للانضمام» rises",
+  "x": 960,
+  "rate": 0.9753
+ },
+ {
+  "t": 20.96,
+  "file": "counter_roll_l.wav",
+  "gain_db": -9,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "D",
+  "event": "the metallic counter 0 -> 50 (quadOut, 17.05-17.96) while the ticks light white -> RED | + 50 lands: apex notch flashes RED + RED '+' + ▲▲▲ pop",
+  "x": 960,
+  "t_vis": 20.05,
+  "rate": 1.1,
+  "layers": [
+   {
+    "t": 20.96,
+    "file": "ping_land_a.wav",
+    "gain_db": -8,
+    "pan": 0.0,
+    "sync": "onset"
+   },
+   {
+    "t": 20.98,
+    "file": "pop_b.wav",
+    "gain_db": -12,
+    "pan": -0.12,
+    "repeat": [
+     3,
+     0.07
+    ],
+    "rate_seq": [
+     1.0,
+     1.12246,
+     1.18921
+    ]
+   }
+  ],
+  "merged": [
+   {
+    "t": 20.96,
+    "file": "ping_land_a.wav",
+    "t_vis": 20.96,
+    "x": 960,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 21.18,
+  "file": "tick_a.wav",
+  "gain_db": -19,
+  "pan": 0.16,
+  "sync": "onset",
+  "beat": "D",
+  "event": "the ticks unlight right to left in 0.12 s, then everything fades",
+  "x": 960,
+  "repeat": [
+   6,
+   0.02
+  ],
+  "rate_step": -0.02,
+  "pan_to": -0.16
+ },
+ {
+  "t": 21.92,
+  "file": "slide_card_a.wav",
+  "gain_db": -7,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "E",
+  "event": "RIGHT card «الشرط الأول» enters; its mini gauge sweeps red to the apex (19.10-19.45)",
+  "x": 1600,
+  "layers": [
+   {
+    "t": 22.1,
+    "file": "scan_draw_a.wav",
+    "gain_db": -15,
+    "pan": 0.54,
+    "dur": 0.4,
+    "rate": 0.9833
+   }
+  ],
+  "rate": 0.9906
+ },
+ {
+  "t": 22.32,
+  "file": "slide_card_b.wav",
+  "gain_db": -7,
+  "pan": -0.5,
+  "sync": "onset",
+  "beat": "E",
+  "event": "LEFT card «الشرط الثاني» enters",
+  "x": 320,
+  "rate": 1.0069
+ },
+ {
+  "t": 22.45,
+  "file": "tick_a.wav",
+  "gain_db": -8,
+  "pan": 0.64,
+  "sync": "onset",
+  "beat": "E",
+  "event": "the right card's chamfer becomes a RED CHECK TAB | + three coins drop (19.42, 19.57, 19.72)",
+  "x": 1780,
+  "layers": [
+   {
+    "t": 22.42,
+    "file": "ping_land_b.wav",
+    "gain_db": -15,
+    "pan": -0.55,
+    "repeat": [
+     3,
+     0.15
+    ],
+    "dur": 0.5,
+    "rate_seq": [
+     1.0,
+     1.12246,
+     1.18921
+    ]
+   }
+  ],
+  "rate": 1.0232
+ },
+ {
+  "t": 22.9,
+  "file": "counter_roll_s.wav",
+  "gain_db": -10,
+  "pan": -0.5,
+  "sync": "peak",
+  "beat": "E",
+  "event": "'$ 500' counts 0 -> 500 (19.37-19.90) | + '$ 500' lands",
+  "x": 320,
+  "t_vis": 22.37,
+  "rate": 0.85,
+  "layers": [
+   {
+    "t": 22.9,
+    "file": "ping_land_a.wav",
+    "gain_db": -11,
+    "pan": -0.5,
+    "sync": "onset"
+   }
+  ],
+  "merged": [
+   {
+    "t": 22.9,
+    "file": "ping_land_a.wav",
+    "t_vis": 22.9,
+    "x": 320,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 23.3,
+  "file": "reveal_air_a.wav",
+  "gain_db": -13,
+  "pan": -0.5,
+  "sync": "onset",
+  "beat": "E",
+  "event": "«في حساب التداول» rises",
+  "x": 320,
+  "rate": 1.0222
+ },
+ {
+  "t": 24.4,
+  "file": "tick_a.wav",
+  "gain_db": -8,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "E",
+  "event": "the left card's CHECK TAB ticks",
+  "x": 500,
+  "rate": 1.04
+ },
+ {
+  "t": 25.2,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "E",
+  "event": "exit, right card first (22.15 / 22.22)",
+  "x": 960,
+  "t_vis": 25.15,
+  "rate": 1.0048
+ },
+ {
+  "t": 26.1,
+  "file": "reveal_air_b.wav",
+  "gain_db": -14,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "the TRADING card fades in at .7 (live mini chart)",
+  "x": 500,
+  "rate": 1.0211
+ },
+ {
+  "t": 26.66,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": -0.44,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "the axi wordmark rises 12 px",
+  "x": 400,
+  "rate": 0.9874
+ },
+ {
+  "t": 26.98,
+  "file": "slide_card_b.wav",
+  "gain_db": -7,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "a NEW card slides out from behind the trading card",
+  "x": 450,
+  "rate": 1.0037
+ },
+ {
+  "t": 27.3,
+  "file": "pop_c.wav",
+  "gain_db": -10,
+  "pan": -0.2,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "its chamfer becomes a RED NEW TAB with a white '+'",
+  "x": 700
+ },
+ {
+  "t": 27.55,
+  "file": "scan_draw_a.wav",
+  "gain_db": -12,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "the VAULT draws on (title still a skeleton, shimmering)",
+  "x": 300,
+  "rate": 0.9863
+ },
+ {
+  "t": 28.55,
+  "file": "reveal_air_a.wav",
+  "gain_db": -12,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "the skeleton dissolves and «حساب التخصيص» reveals right to left | 'Allocation Account' (25.85)",
+  "x": 500,
+  "layers": [
+   {
+    "t": 28.55,
+    "file": "shimmer_sheen.wav",
+    "gain_db": -15,
+    "pan": -0.36
+   },
+   {
+    "t": 28.85,
+    "file": "reveal_air_c.wav",
+    "gain_db": -15,
+    "pan": -0.36,
+    "rate": 0.9881
+   }
+  ],
+  "rate": 1.0026
+ },
+ {
+  "t": 29.14,
+  "file": "lock_padlock.wav",
+  "gain_db": -10,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "F1",
+  "event": "the vault spokes turn 90° (unlocked) + the red hub pulses",
+  "x": 300,
+  "rate": 0.92
+ },
+ {
+  "t": 30.08,
+  "file": "cam_pull.wav",
+  "gain_db": -7,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "camera pull HOME -> WIDE (0.62 s expo)",
+  "x": 960,
+  "rate": 0.9853
+ },
+ {
+  "t": 31.04,
+  "file": "slide_card_b.wav",
+  "gain_db": -7,
+  "pan": -0.44,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "LEFT allocation card enters (VAULT, title, «مخصّص للمبلغ التمويلي») + its red floor spill (28.24)",
+  "x": 400,
+  "layers": [
+   {
+    "t": 31.24,
+    "file": "sonar_red.wav",
+    "gain_db": -16,
+    "pan": -0.44
+   }
+  ],
+  "rate": 1.0016
+ },
+ {
+  "t": 31.45,
+  "file": "slide_card_a.wav",
+  "gain_db": -8,
+  "pan": 0.46,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "RIGHT trading card enters at .8 + white floor spill (28.70)",
+  "x": 1550,
+  "rate": 1.0179
+ },
+ {
+  "t": 31.6,
+  "file": "tick_b.wav",
+  "gain_db": -16,
+  "pan": 0.38,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "its mini chart of 10 candles builds in corner triangles (28.60-29.10)",
+  "x": 1550,
+  "repeat": [
+   10,
+   0.05
+  ],
+  "rate_step": 0.015,
+  "pan_to": 0.58
+ },
+ {
+  "t": 31.95,
+  "file": "scan_draw_a.wav",
+  "gain_db": -11,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "an empty TAG-shaped funding track draws in on the allocation card",
+  "x": 400,
+  "pan_to": -0.55,
+  "rate": 1.0005
+ },
+ {
+  "t": 32.7,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": -0.44,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "the axi wordmark rises above the allocation card | the trading chart goes live (29.70)",
+  "x": 400,
+  "rate": 1.0168
+ },
+ {
+  "t": 33.02,
+  "file": "tick_c.wav",
+  "gain_db": -17,
+  "pan": -0.44,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "FUNDING POUR: 36 red ◢ fall from the wordmark into the card (0.03 s stagger) as the track fills and the spokes turn",
+  "x": 400,
+  "layers": [
+   {
+    "t": 33.08,
+    "file": "scan_draw_b.wav",
+    "gain_db": -12,
+    "pan": -0.34,
+    "pan_to": -0.55,
+    "rate": 0.9758
+   }
+  ],
+  "repeat": [
+   18,
+   0.06
+  ],
+  "rate_step": 0.01
+ },
+ {
+  "t": 33.3,
+  "file": "tick_b.wav",
+  "gain_db": -17,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "the live trading chart prints a candle every 0.6 s",
+  "x": 1600,
+  "repeat": [
+   2,
+   0.6
+  ],
+  "rate_step": 0.04
+ },
+ {
+  "t": 34.0,
+  "file": "scan_draw_a.wav",
+  "gain_db": -12,
+  "pan": 0.27,
+  "sync": "onset",
+  "beat": "F2",
+  "event": "a dotted link draws right to left above his head | sheen on the wordmark (31.06)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 34.06,
+    "file": "shimmer_sheen.wav",
+    "gain_db": -13,
+    "pan": -0.44
+   }
+  ],
+  "pan_to": -0.24,
+  "rate": 1.0158
+ },
+ {
+  "t": 34.62,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "F2",
+  "event": "exit (31.55-31.84)",
+  "x": 960,
+  "t_vis": 34.55,
+  "rate": 0.9821
+ },
+ {
+  "t": 35.0,
+  "file": "chime_glass.wav",
+  "gain_db": -5,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "G",
+  "event": "«مبروك!» lands + its flag unfurls + 16 brand particles burst",
+  "x": 450,
+  "layers": [
+   {
+    "t": 35.02,
+    "file": "flag_flutter.wav",
+    "gain_db": -14,
+    "pan": -0.26,
+    "rate": 0.9911
+   }
+  ]
+ },
+ {
+  "t": 35.62,
+  "file": "pop_b.wav",
+  "gain_db": -9,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "G",
+  "event": "a DARK stage pill appears: red circle '01' + «المرحلة الأولى»",
+  "x": 450,
+  "layers": [
+   {
+    "t": 35.62,
+    "file": "slide_card_a.wav",
+    "gain_db": -14,
+    "pan": -0.4,
+    "rate": 1.0074
+   }
+  ]
+ },
+ {
+  "t": 36.4,
+  "file": "thud_soft_a.wav",
+  "gain_db": -11,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "H1",
+  "event": "hard cut to WIDE",
+  "x": 960,
+  "rate": 0.981
+ },
+ {
+  "t": 36.8,
+  "file": "sonar_red.wav",
+  "gain_db": -9,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "H1",
+  "event": "the STAGE-1 floor PAD: red rim traces by dash progress, inner white, 6 ◢ blink",
+  "x": 960,
+  "y": 950,
+  "layers": [
+   {
+    "t": 36.8,
+    "file": "scan_draw_a.wav",
+    "gain_db": -16,
+    "pan": 0.0,
+    "dur": 0.45,
+    "rate": 0.99
+   }
+  ]
+ },
+ {
+  "t": 37.0,
+  "file": "slide_card_a.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "H1",
+  "event": "the SEED TAG plate enters centre-top (RTL clip + 20 px rise): '01' «المرحلة الأولى» 'Seed'",
+  "x": 960,
+  "y": 200,
+  "rate": 1.0136
+ },
+ {
+  "t": 37.25,
+  "file": "scan_draw_a.wav",
+  "gain_db": -12,
+  "pan": 0.08,
+  "sync": "onset",
+  "beat": "H1",
+  "event": "the SPROUT draws (seed drops, stem grows, leaves open, red leaf last)",
+  "x": 1060,
+  "rate": 1.15
+ },
+ {
+  "t": 39.05,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -11,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "H1",
+  "event": "sheen across 'Seed' + one red flash of the tag rim",
+  "x": 960
+ },
+ {
+  "t": 39.52,
+  "file": "whoosh_soft_b.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "H1",
+  "event": "the tag compresses into a chip and slides up to the top centre (36.52-36.90)",
+  "x": 960,
+  "rate": 1.0126
+ },
+ {
+  "t": 39.95,
+  "file": "reveal_air_a.wav",
+  "gain_db": -12,
+  "pan": 0.11,
+  "sync": "onset",
+  "beat": "H2",
+  "event": "the two-tone headline reveals per word from the right",
+  "x": 1100,
+  "rate": 0.9789
+ },
+ {
+  "t": 40.65,
+  "file": "counter_roll_l.wav",
+  "gain_db": -11,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "H2",
+  "event": "'$ 5,000' starts counting (37.65; it lands at 41.62, inside the protected window: the roll is cut at 41.40) | + ▲▲▲ pop to the left of the '$' and wave",
+  "x": 960,
+  "dur": 0.75,
+  "fade": 0.12,
+  "layers": [
+   {
+    "t": 40.75,
+    "file": "pop_c.wav",
+    "gain_db": -12,
+    "pan": -0.2,
+    "sync": "onset",
+    "repeat": [
+     3,
+     0.07
+    ]
+   }
+  ],
+  "merged": [
+   {
+    "t": 40.75,
+    "file": "pop_c.wav",
+    "t_vis": 40.75,
+    "x": 700,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 44.2,
+  "file": "scan_draw_a.wav",
+  "gain_db": -11,
+  "pan": 0.48,
+  "sync": "onset",
+  "beat": "I",
+  "event": "the ground line runs from the pad to x 1840 (41.20-41.50) | the stair line climbs (41.35-41.95)",
+  "x": 1700,
+  "layers": [
+   {
+    "t": 44.35,
+    "file": "scan_draw_b.wav",
+    "gain_db": -11,
+    "pan": 0.48,
+    "pan_to": -0.48,
+    "rate": 1.0205
+   }
+  ],
+  "pan_to": 0.69,
+  "rate": 0.9778
+ },
+ {
+  "t": 44.45,
+  "file": "pop_a.wav",
+  "gain_db": -13,
+  "pan": 0.54,
+  "sync": "onset",
+  "beat": "I",
+  "event": "six TAG stage cards pop onto their landings in DIM (0.08 s stagger)",
+  "x": 1000,
+  "repeat": [
+   6,
+   0.08
+  ],
+  "pan_to": -0.39,
+  "rate_seq": [
+   1.0,
+   1.05946,
+   1.18921,
+   1.33484,
+   1.33484,
+   1.33484
+  ]
+ },
+ {
+  "t": 44.8,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": 0.62,
+  "sync": "onset",
+  "beat": "I",
+  "event": "READOUT: metallic '6' + «مراحل»; the card outlines flash red in sequence",
+  "x": 1750,
+  "layers": [
+   {
+    "t": 44.8,
+    "file": "tick_c.wav",
+    "gain_db": -17,
+    "pan": 0.54,
+    "repeat": [
+     6,
+     0.08
+    ],
+    "rate_step": 0.03,
+    "pan_to": -0.39
+   }
+  ],
+  "rate": 1.0104
+ },
+ {
+  "t": 45.55,
+  "file": "sonar_red.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "I",
+  "event": "S1 LIGHTS (panel, red rim, sprout, '$ 5,000') + the flag MARKER drops onto S1 + STAGE PULSE | readout swaps (42.60)",
+  "x": 1655,
+  "layers": [
+   {
+    "t": 45.55,
+    "file": "ping_land_b.wav",
+    "gain_db": -11,
+    "pan": 0.54
+   },
+   {
+    "t": 45.55,
+    "file": "flag_drop.wav",
+    "gain_db": -11,
+    "pan": 0.54,
+    "rate": 1.0122
+   },
+   {
+    "t": 45.62,
+    "file": "reveal_air_a.wav",
+    "gain_db": -14,
+    "pan": 0.62,
+    "rate": 1.0049
+   }
+  ]
+ },
+ {
+  "t": 47.15,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -11,
+  "pan": 0.54,
+  "sync": "onset",
+  "beat": "I",
+  "event": "S1 rim flash + sheen on 'Seed'",
+  "x": 1655
+ },
+ {
+  "t": 47.36,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": 0.34,
+  "sync": "peak",
+  "beat": "I",
+  "event": "the readout and the marker fade (44.28-44.60)",
+  "x": 1500,
+  "t_vis": 47.28,
+  "rate": 1.0094
+ },
+ {
+  "t": 48.25,
+  "file": "slide_card_a.wav",
+  "gain_db": -7,
+  "pan": 0.46,
+  "sync": "onset",
+  "beat": "J",
+  "event": "the CARD enters: «المرحلة الثانية», '02', a mini stair with the flag on step 1",
+  "x": 1550,
+  "rate": 0.9757
+ },
+ {
+  "t": 48.7,
+  "file": "scan_draw_a.wav",
+  "gain_db": -12,
+  "pan": 0.59,
+  "sync": "onset",
+  "beat": "J",
+  "event": "the DOME draws, then the sapling grows inside (red leaf last)",
+  "x": 1710,
+  "rate": 0.992
+ },
+ {
+  "t": 49.1,
+  "file": "flag_drop.wav",
+  "gain_db": -10,
+  "pan": 0.34,
+  "sync": "onset",
+  "beat": "J",
+  "event": "the mini-stair flag hops to step 2",
+  "x": 1400,
+  "rate": 1.0083
+ },
+ {
+  "t": 49.88,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": 0.46,
+  "sync": "onset",
+  "beat": "J",
+  "event": "'Incubation' mask-reveals left to right",
+  "x": 1550,
+  "rate": 1.0246
+ },
+ {
+  "t": 50.47,
+  "file": "counter_roll_s.wav",
+  "gain_db": -11,
+  "pan": 0.46,
+  "sync": "peak",
+  "beat": "J",
+  "event": "«تمويل حتى» rises and '$ 20,000' counts (47.10-47.47) | + '$ 20,000' lands",
+  "x": 1550,
+  "t_vis": 50.1,
+  "layers": [
+   {
+    "t": 50.04,
+    "file": "reveal_air_a.wav",
+    "gain_db": -15,
+    "pan": 0.5,
+    "rate": 0.9836
+   },
+   {
+    "t": 50.47,
+    "file": "ping_land_b.wav",
+    "gain_db": -12,
+    "pan": 0.46,
+    "sync": "onset"
+   }
+  ],
+  "rate": 1.2,
+  "merged": [
+   {
+    "t": 50.47,
+    "file": "ping_land_b.wav",
+    "t_vis": 50.47,
+    "x": 1550,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 51.4,
+  "file": "slide_card_b.wav",
+  "gain_db": -7,
+  "pan": -0.46,
+  "sync": "onset",
+  "beat": "K",
+  "event": "the CARD enters on the left: «المرحلة الثالثة», '03', mini stair (flag on step 2)",
+  "x": 370,
+  "rate": 1.0236
+ },
+ {
+  "t": 51.75,
+  "file": "pop_c.wav",
+  "gain_db": -10,
+  "pan": -0.38,
+  "sync": "onset",
+  "beat": "K",
+  "event": "the CHEVRONS ignite bottom to top (back 1.4), then idle with speed dashes",
+  "x": 472,
+  "repeat": [
+   3,
+   0.08
+  ],
+  "rate_seq": [
+   0.99999,
+   1.12246,
+   1.25991
+  ]
+ },
+ {
+  "t": 51.95,
+  "file": "flag_drop.wav",
+  "gain_db": -10,
+  "pan": -0.59,
+  "sync": "onset",
+  "beat": "K",
+  "event": "the mini-stair flag hops to step 3",
+  "x": 200,
+  "rate": 1.0062
+ },
+ {
+  "t": 52.3,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": -0.46,
+  "sync": "onset",
+  "beat": "K",
+  "event": "'Acceleration' reveals",
+  "x": 370,
+  "rate": 1.0225
+ },
+ {
+  "t": 52.93,
+  "file": "counter_roll_s.wav",
+  "gain_db": -11,
+  "pan": -0.46,
+  "sync": "peak",
+  "beat": "K",
+  "event": "«تمويل حتى» and '$ 100,000' count up (49.50-49.93) | + '$ 100,000' lands",
+  "x": 370,
+  "t_vis": 52.5,
+  "rate": 1.05,
+  "layers": [
+   {
+    "t": 52.93,
+    "file": "ping_land_b.wav",
+    "gain_db": -12,
+    "pan": -0.46,
+    "sync": "onset",
+    "rate": 1.12246
+   }
+  ],
+  "merged": [
+   {
+    "t": 52.93,
+    "file": "ping_land_b.wav",
+    "t_vis": 52.93,
+    "x": 370,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 53.36,
+  "file": "thud_soft_a.wav",
+  "gain_db": -11,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "L",
+  "event": "hard cut to the extreme wide: the staircase stands (S1-S2 DONE, S3 LIT), pad on",
+  "x": 960,
+  "rate": 1.0214
+ },
+ {
+  "t": 53.76,
+  "file": "flag_drop.wav",
+  "gain_db": -9,
+  "pan": 0.24,
+  "sync": "onset",
+  "beat": "L",
+  "event": "the flag MARKER drops onto S3",
+  "x": 1273,
+  "rate": 0.9877
+ },
+ {
+  "t": 54.3,
+  "file": "tick_c.wav",
+  "gain_db": -12,
+  "pan": -0.02,
+  "sync": "onset",
+  "beat": "L",
+  "event": "S4 pre-highlights + the readout label «المرحلة الرابعة» rises",
+  "x": 935,
+  "layers": [
+   {
+    "t": 54.3,
+    "file": "reveal_air_a.wav",
+    "gain_db": -14,
+    "pan": 0.62,
+    "rate": 0.9968
+   }
+  ],
+  "rate": 1.0041
+ },
+ {
+  "t": 55.1,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -10,
+  "pan": 0.11,
+  "sync": "onset",
+  "beat": "L",
+  "event": "the marker slides S3 -> S4 (0.45 s expo); S3 turns DONE",
+  "x": 1100,
+  "layers": [
+   {
+    "t": 55.22,
+    "file": "tick_a.wav",
+    "gain_db": -12,
+    "pan": 0.17,
+    "rate": 1.0131
+   }
+  ],
+  "rate": 1.0204
+ },
+ {
+  "t": 55.26,
+  "file": "sonar_red.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "L",
+  "event": "S4 Pro LIGHTS (rising bars, '$ 200,000') + STAGE PULSE + readout adds 'Pro' and counts '$ 200,000' (0.6 s)",
+  "x": 935,
+  "layers": [
+   {
+    "t": 55.26,
+    "file": "ping_land_b.wav",
+    "gain_db": -11,
+    "pan": -0.02,
+    "rate": 1.12246
+   },
+   {
+    "t": 55.89,
+    "file": "counter_roll_s.wav",
+    "gain_db": -12,
+    "pan": 0.62,
+    "sync": "peak",
+    "rate": 0.75
+   }
+  ]
+ },
+ {
+  "t": 56.75,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -14,
+  "pan": 0.58,
+  "sync": "peak",
+  "beat": "L",
+  "event": "the readout block lifts and fades",
+  "x": 1700,
+  "t_vis": 56.75,
+  "rate": 1.003
+ },
+ {
+  "t": 57.16,
+  "file": "tick_c.wav",
+  "gain_db": -12,
+  "pan": -0.21,
+  "sync": "onset",
+  "beat": "L",
+  "event": "S5 pre-highlights + the label «المرحلة الخامسة» rises",
+  "x": 695,
+  "layers": [
+   {
+    "t": 57.16,
+    "file": "reveal_air_b.wav",
+    "gain_db": -14,
+    "pan": 0.62,
+    "rate": 1.012
+   }
+  ],
+  "rate": 1.05
+ },
+ {
+  "t": 57.9,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -10,
+  "pan": -0.08,
+  "sync": "onset",
+  "beat": "L",
+  "event": "the marker slides S4 -> S5; S4 turns DONE",
+  "x": 860,
+  "layers": [
+   {
+    "t": 58.02,
+    "file": "tick_a.wav",
+    "gain_db": -12,
+    "pan": -0.02,
+    "rate": 0.9783
+   }
+  ],
+  "rate": 1.04
+ },
+ {
+  "t": 58.05,
+  "file": "sonar_red.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "L",
+  "event": "S5 Pro 500 LIGHTS (red '500' TAG) + STAGE PULSE + readout 'Pro 500' '$ 500,000' (0.5 s) + ▲▲▲",
+  "x": 695,
+  "layers": [
+   {
+    "t": 58.05,
+    "file": "ping_land_b.wav",
+    "gain_db": -11,
+    "pan": -0.21,
+    "rate": 1.12246
+   },
+   {
+    "t": 58.6,
+    "file": "counter_roll_s.wav",
+    "gain_db": -12,
+    "pan": 0.62,
+    "sync": "peak",
+    "rate": 0.9
+   },
+   {
+    "t": 58.2,
+    "file": "pop_c.wav",
+    "gain_db": -14,
+    "pan": 0.54,
+    "repeat": [
+     3,
+     0.07
+    ],
+    "rate_seq": [
+     0.99999,
+     1.12246,
+     1.25991
+    ]
+   },
+   {
+    "t": 58.44,
+    "file": "shimmer_sheen.wav",
+    "gain_db": -14,
+    "pan": -0.21
+   }
+  ]
+ },
+ {
+  "t": 58.98,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": 0.42,
+  "sync": "peak",
+  "beat": "L",
+  "event": "the readout and the marker go out",
+  "x": 1500,
+  "t_vis": 58.92,
+  "rate": 1.0182
+ },
+ {
+  "t": 59.7,
+  "file": "scan_draw_b.wav",
+  "gain_db": -11,
+  "pan": -0.59,
+  "sync": "onset",
+  "beat": "M",
+  "event": "the SUMMIT symbol draws (5 px strokes) + «المرحلة الأخيرة» reveals right to left",
+  "x": 300,
+  "layers": [
+   {
+    "t": 59.72,
+    "file": "reveal_air_a.wav",
+    "gain_db": -14,
+    "pan": -0.4,
+    "rate": 0.9773
+   }
+  ],
+  "rate": 0.9846
+ },
+ {
+  "t": 60.1,
+  "file": "flag_flutter.wav",
+  "gain_db": -11,
+  "pan": -0.59,
+  "sync": "onset",
+  "beat": "M",
+  "event": "the red flag climbs the summit pole (e4) | '06' lands",
+  "x": 200,
+  "layers": [
+   {
+    "t": 60.1,
+    "file": "pop_b.wav",
+    "gain_db": -12,
+    "pan": -0.28
+   }
+  ],
+  "rate": 1.0009
+ },
+ {
+  "t": 60.5,
+  "file": "flag_drop.wav",
+  "gain_db": -10,
+  "pan": -0.59,
+  "sync": "onset",
+  "beat": "M",
+  "event": "the flag plants with a 4 px settle | + sheen on the metallic '06'",
+  "x": 200,
+  "t_vis": 60.45,
+  "dur": 0.5,
+  "rate": 1.0172,
+  "layers": [
+   {
+    "t": 60.55,
+    "file": "shimmer_sheen.wav",
+    "gain_db": -12,
+    "pan": -0.28,
+    "sync": "onset"
+   }
+  ],
+  "merged": [
+   {
+    "t": 60.55,
+    "file": "shimmer_sheen.wav",
+    "t_vis": 60.55,
+    "x": 600,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 61.4,
+  "file": "thud_soft_a.wav",
+  "gain_db": -12,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "hard cut to the extreme wide",
+  "x": 960,
+  "rate": 0.9998
+ },
+ {
+  "t": 61.8,
+  "file": "flag_drop.wav",
+  "gain_db": -10,
+  "pan": -0.13,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "the marker appears on S5 + S6 pre-highlights",
+  "x": 793,
+  "layers": [
+   {
+    "t": 61.8,
+    "file": "tick_c.wav",
+    "gain_db": -13,
+    "pan": -0.39,
+    "rate": 1.0088
+   }
+  ],
+  "rate": 1.0161
+ },
+ {
+  "t": 62.05,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -10,
+  "pan": -0.27,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "the marker climbs to S6; S5 turns DONE",
+  "x": 620,
+  "rate": 1.08
+ },
+ {
+  "t": 62.22,
+  "file": "ping_land_a.wav",
+  "gain_db": -9,
+  "pan": -0.39,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "S6 LIGHTS: the SUMMIT symbol (its own flag climbs) + '$ 1,000,000'; readout «المرحلة الأخيرة» 'Pro M'",
+  "x": 455,
+  "layers": [
+   {
+    "t": 62.22,
+    "file": "reveal_air_a.wav",
+    "gain_db": -14,
+    "pan": 0.62,
+    "rate": 0.9914
+   }
+  ]
+ },
+ {
+  "t": 62.45,
+  "file": "scan_draw_b.wav",
+  "gain_db": -8,
+  "pan": 0.27,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "a red COMET runs the whole line from the pad to S6 in 0.35 s; each rim flashes",
+  "x": 900,
+  "layers": [
+   {
+    "t": 62.45,
+    "file": "tick_c.wav",
+    "gain_db": -14,
+    "pan": 0.54,
+    "repeat": [
+     6,
+     0.055
+    ],
+    "rate_step": 0.035,
+    "pan_to": -0.39
+   }
+  ],
+  "pan_to": -0.39,
+  "pan_dur": 0.35,
+  "rate": 1.6
+ },
+ {
+  "t": 62.8,
+  "file": "impact_deep.wav",
+  "gain_db": -7,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "the comet lands on S6: a big floor pulse (0.3 -> 4 m)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 62.8,
+    "file": "sonar_white.wav",
+    "gain_db": -11,
+    "pan": 0.0
+   }
+  ],
+  "rate": 0.9814
+ },
+ {
+  "t": 62.94,
+  "file": "whoosh_soft_b.wav",
+  "gain_db": -12,
+  "pan": -0.12,
+  "sync": "onset",
+  "beat": "M2",
+  "event": "the cards fold into their landings, the line retracts to the pad, the pad goes off",
+  "x": 1000,
+  "rate": 0.9977
+ },
+ {
+  "t": 63.75,
+  "file": "reveal_air_a.wav",
+  "gain_db": -11,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "the RIGHT header lands with its flag",
+  "x": 1600,
+  "layers": [
+   {
+    "t": 63.77,
+    "file": "flag_flutter.wav",
+    "gain_db": -15,
+    "pan": 0.64,
+    "rate": 1.0067
+   }
+  ],
+  "rate": 1.014
+ },
+ {
+  "t": 63.95,
+  "file": "pop_a.wav",
+  "gain_db": -12,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "six TAG rows rise 24 px, Seed first (0.09 s stagger): symbol, name, metallic cap",
+  "x": 1600,
+  "repeat": [
+   6,
+   0.09
+  ],
+  "rate_seq": [
+   1.0,
+   1.05946,
+   1.18921,
+   1.33484,
+   1.33484,
+   1.33484
+  ]
+ },
+ {
+  "t": 64.45,
+  "file": "tick_a.wav",
+  "gain_db": -12,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "the Pro M row gets a red rim",
+  "x": 1600,
+  "rate": 1.1
+ },
+ {
+  "t": 65.32,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": -0.49,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "LEFT: the axi wordmark rises",
+  "x": 330,
+  "rate": 1.0129
+ },
+ {
+  "t": 65.7,
+  "file": "tick_c.wav",
+  "gain_db": -17,
+  "pan": -0.49,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "FUNDING POUR: 30 red ◢ fall from the wordmark into the VAULT",
+  "x": 330,
+  "repeat": [
+   12,
+   0.058
+  ],
+  "rate_step": 0.01
+ },
+ {
+  "t": 66.12,
+  "file": "lock_padlock.wav",
+  "gain_db": -11,
+  "pan": -0.5,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "the vault spokes turn 120° and the hub pulses (63.36) | the DARK pill «تمويلك من Axi» appears (63.14)",
+  "x": 325,
+  "layers": [
+   {
+    "t": 66.14,
+    "file": "slide_card_b.wav",
+    "gain_db": -12,
+    "pan": -0.36,
+    "rate": 0.9882
+   },
+   {
+    "t": 66.36,
+    "file": "pop_a.wav",
+    "gain_db": -13,
+    "pan": -0.5
+   }
+  ],
+  "rate": 0.9
+ },
+ {
+  "t": 66.66,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -12,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "N1",
+  "event": "the six caps sheen bottom to top | + the arrow nudges 6 px (63.70, 64.00)",
+  "x": 1600,
+  "layers": [
+   {
+    "t": 66.7,
+    "file": "click_ui_b.wav",
+    "gain_db": -13,
+    "pan": -0.2,
+    "sync": "onset",
+    "rate": 0.9782,
+    "repeat": [
+     2,
+     0.3
+    ]
+   }
+  ],
+  "merged": [
+   {
+    "t": 66.7,
+    "file": "click_ui_b.wav",
+    "t_vis": 66.7,
+    "x": 700,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 67.62,
+  "file": "whoosh_hard_b.wav",
+  "gain_db": -5,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "N2",
+  "event": "hard cut into B-roll 2 + the headline lands with the scene's flag (64.66)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 67.62,
+    "file": "thud_soft_b.wav",
+    "gain_db": -12,
+    "pan": 0.0,
+    "rate": 0.9872
+   },
+   {
+    "t": 67.66,
+    "file": "reveal_air_a.wav",
+    "gain_db": -13,
+    "pan": 0.27,
+    "rate": 0.9799
+   },
+   {
+    "t": 67.68,
+    "file": "flag_flutter.wav",
+    "gain_db": -15,
+    "pan": 0.58,
+    "rate": 1.0226
+   }
+  ],
+  "rate": 0.9945
+ },
+ {
+  "t": 67.75,
+  "file": "tick_b.wav",
+  "gain_db": -13,
+  "pan": -0.05,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the live chart prints and climbs: a candle every 0.17 s (64.75-65.77)",
+  "x": 900,
+  "repeat": [
+   7,
+   0.17
+  ],
+  "rate_step": 0.025,
+  "pan_to": 0.27
+ },
+ {
+  "t": 68.4,
+  "file": "reveal_air_c.wav",
+  "gain_db": -15,
+  "pan": 0.11,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the profit zone label appears over the funded-capital line",
+  "x": 1100,
+  "rate": 0.9771
+ },
+ {
+  "t": 69.24,
+  "file": "whoosh_long_rise.wav",
+  "gain_db": -12,
+  "pan": 0.03,
+  "sync": "peak",
+  "beat": "N2",
+  "event": "the profit ZONE detaches with a RED outline and lifts (66.24)",
+  "x": 1000,
+  "t_vis": 69.24,
+  "dur": 1.3,
+  "rate": 0.9934
+ },
+ {
+  "t": 69.46,
+  "file": "slide_card_a.wav",
+  "gain_db": -8,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the right panel «حصّتك من الأرباح» reveals right to left",
+  "x": 1500,
+  "rate": 1.0097
+ },
+ {
+  "t": 69.62,
+  "file": "glitch_swipe_a.wav",
+  "gain_db": -9,
+  "pan": 0.03,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the zone FLIES into the panel and lands as the split-bar track",
+  "x": 1200,
+  "pan_to": 0.42,
+  "rate": 0.976
+ },
+ {
+  "t": 70.02,
+  "file": "scan_draw_a.wav",
+  "gain_db": -10,
+  "pan": 0.27,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the bar fills RED to «حتى» 80% «لك» | the footnote fades in (67.00)",
+  "x": 1500,
+  "layers": [
+   {
+    "t": 70.02,
+    "file": "counter_roll_s.wav",
+    "gain_db": -14,
+    "pan": 0.42
+   }
+  ],
+  "pan_to": 0.5,
+  "rate": 0.9923
+ },
+ {
+  "t": 70.18,
+  "file": "reveal_air_b.wav",
+  "gain_db": -14,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the labels «لك» / 'Axi' land",
+  "x": 1500,
+  "rate": 1.0087
+ },
+ {
+  "t": 70.42,
+  "file": "pop_b.wav",
+  "gain_db": -9,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the RED pill «سحب الأرباح» appears",
+  "x": 1500
+ },
+ {
+  "t": 70.94,
+  "file": "click_ui_a.wav",
+  "gain_db": -7,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "N2",
+  "event": "the pill is PRESSED",
+  "x": 1500,
+  "rate": 0.9913
+ },
+ {
+  "t": 71.1,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -14,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "O",
+  "event": "hard cut out of B-roll 2 to HOME",
+  "x": 960,
+  "rate": 1.0076
+ },
+ {
+  "t": 72.22,
+  "file": "cam_pull.wav",
+  "gain_db": -7,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "O",
+  "event": "camera pull HOME -> WIDE on «لنبسّطها» (0.62 s expo)",
+  "x": 960,
+  "rate": 1.0239
+ },
+ {
+  "t": 73.12,
+  "file": "slide_card_a.wav",
+  "gain_db": -7,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "O",
+  "event": "the RIGHT trading card enters",
+  "x": 1560,
+  "rate": 0.9902
+ },
+ {
+  "t": 73.55,
+  "file": "tick_b.wav",
+  "gain_db": -16,
+  "pan": 0.38,
+  "sync": "onset",
+  "beat": "O",
+  "event": "its mini chart of 12 candles builds in corner triangles (70.55-70.93)",
+  "x": 1560,
+  "repeat": [
+   12,
+   0.0345
+  ],
+  "rate_step": 0.012,
+  "pan_to": 0.58
+ },
+ {
+  "t": 74.0,
+  "file": "pop_c.wav",
+  "gain_db": -10,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "O",
+  "event": "BUY marker: a white ring on the candle + a red ▲ below",
+  "x": 1560,
+  "layers": [
+   {
+    "t": 74.0,
+    "file": "tick_a.wav",
+    "gain_db": -13,
+    "pan": 0.47,
+    "rate": 1.0155
+   }
+  ]
+ },
+ {
+  "t": 74.42,
+  "file": "tick_b.wav",
+  "gain_db": -16,
+  "pan": 0.54,
+  "sync": "onset",
+  "beat": "O",
+  "event": "the chart goes live: a new candle every 0.6 s",
+  "x": 1650,
+  "repeat": [
+   2,
+   0.6
+  ],
+  "rate_step": 0.04
+ },
+ {
+  "t": 74.62,
+  "file": "pop_c.wav",
+  "gain_db": -10,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "O",
+  "event": "BUY marker 2",
+  "x": 1600,
+  "layers": [
+   {
+    "t": 74.62,
+    "file": "tick_a.wav",
+    "gain_db": -13,
+    "pan": 0.5,
+    "rate": 0.9982
+   }
+  ],
+  "rate": 1.12246
+ },
+ {
+  "t": 75.85,
+  "file": "pop_b.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "O",
+  "event": "a metallic '+' pops above Rabee, between the cards (scale .8 -> 1, back)",
+  "x": 960,
+  "y": 250,
+  "layers": [
+   {
+    "t": 75.85,
+    "file": "thud_soft_b.wav",
+    "gain_db": -13,
+    "pan": 0.0,
+    "rate": 1.0145
+   }
+  ]
+ },
+ {
+  "t": 76.48,
+  "file": "slide_card_b.wav",
+  "gain_db": -7,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "the LEFT allocation card enters (VAULT, title, sub «مموَّل»)",
+  "x": 380,
+  "rate": 0.9881
+ },
+ {
+  "t": 77.55,
+  "file": "counter_roll_s.wav",
+  "gain_db": -10,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "'$ 5,000' counts in metallic (74.55-75.10) | the 'Seed' chip (74.70)",
+  "x": 380,
+  "layers": [
+   {
+    "t": 77.7,
+    "file": "pop_a.wav",
+    "gain_db": -13,
+    "pan": -0.55
+   }
+  ],
+  "rate": 0.82
+ },
+ {
+  "t": 78.1,
+  "file": "ping_land_b.wav",
+  "gain_db": -11,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "'$ 5,000' lands; its sheen passes (75.15-75.60)",
+  "x": 380,
+  "layers": [
+   {
+    "t": 78.15,
+    "file": "shimmer_sheen.wav",
+    "gain_db": -15,
+    "pan": -0.45
+   }
+  ]
+ },
+ {
+  "t": 78.66,
+  "file": "reveal_air_c.wav",
+  "gain_db": -12,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "the axi wordmark rises above the allocation card",
+  "x": 380,
+  "rate": 0.987
+ },
+ {
+  "t": 79.66,
+  "file": "reveal_air_b.wav",
+  "gain_db": -15,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "a short ◢ pour (16 marks) starts falling from the wordmark into the card",
+  "x": 380,
+  "rate": 1.0033
+ },
+ {
+  "t": 79.94,
+  "file": "tick_c.wav",
+  "gain_db": -16,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "the ◢ marks land in the card (76.94-77.24); the vault hub pulses (76.98)",
+  "x": 380,
+  "layers": [
+   {
+    "t": 80.0,
+    "file": "pop_a.wav",
+    "gain_db": -13,
+    "pan": -0.56
+   }
+  ],
+  "repeat": [
+   8,
+   0.043
+  ],
+  "rate_step": 0.012
+ },
+ {
+  "t": 80.56,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -11,
+  "pan": -0.45,
+  "sync": "onset",
+  "beat": "O",
+  "event": "«Axi»: the wordmark pops 4 % + a red underline wipes in + sheen",
+  "x": 380,
+  "layers": [
+   {
+    "t": 80.56,
+    "file": "pop_c.wav",
+    "gain_db": -13,
+    "pan": -0.45
+   }
+  ]
+ },
+ {
+  "t": 81.12,
+  "file": "stamp.wav",
+  "gain_db": -9,
+  "pan": -0.49,
+  "sync": "onset",
+  "beat": "P",
+  "event": "a RED TAG '!' snaps in (scaleX from its right edge) | «ملاحظة مهمّة» reveals (78.18)",
+  "x": 330,
+  "layers": [
+   {
+    "t": 81.18,
+    "file": "reveal_air_a.wav",
+    "gain_db": -12,
+    "pan": -0.4,
+    "rate": 0.995
+   }
+  ],
+  "rate": 1.0023
+ },
+ {
+  "t": 81.44,
+  "file": "tick_b.wav",
+  "gain_db": -11,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "P",
+  "event": "the tag rocks ±4° twice",
+  "x": 300,
+  "repeat": [
+   2,
+   0.1
+  ],
+  "rate_step": 0.05
+ },
+ {
+  "t": 82.4,
+  "file": "slide_card_b.wav",
+  "gain_db": -7,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "the ALLOCATION card enters with a greyed DARK pill «تداول»",
+  "x": 450,
+  "rate": 0.9849
+ },
+ {
+  "t": 83.12,
+  "file": "reveal_air_c.wav",
+  "gain_db": -16,
+  "pan": -0.28,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "the cursor glides to the pill",
+  "x": 600,
+  "rate": 1.0012
+ },
+ {
+  "t": 83.42,
+  "file": "click_ui_a.wav",
+  "gain_db": -6,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "CLICK on the greyed pill | + the pill shakes ±8 px three times: no (80.46-80.76)",
+  "x": 450,
+  "layers": [
+   {
+    "t": 83.46,
+    "file": "tick_b.wav",
+    "gain_db": -14,
+    "pan": -0.4,
+    "repeat": [
+     3,
+     0.1
+    ],
+    "rate": 0.8,
+    "rate_step": -0.03
+   }
+  ],
+  "rate": 1.0175
+ },
+ {
+  "t": 83.82,
+  "file": "flag_drop.wav",
+  "gain_db": -11,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "the PADLOCK drops onto the pill's left end",
+  "x": 300,
+  "rate": 0.85,
+  "dur": 0.25
+ },
+ {
+  "t": 84.04,
+  "file": "lock_padlock.wav",
+  "gain_db": -4,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "the shackle SNAPS down + 2-frame shake + red ring",
+  "x": 300,
+  "rate": 1.0001
+ },
+ {
+  "t": 84.46,
+  "file": "scan_draw_a.wav",
+  "gain_db": -10,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "a red 3 px SLASH crosses the pill + «لا تداول مباشر» appears",
+  "x": 450,
+  "layers": [
+   {
+    "t": 84.5,
+    "file": "reveal_air_a.wav",
+    "gain_db": -14,
+    "pan": -0.4,
+    "rate": 1.0092
+   }
+  ],
+  "rate": 1.3,
+  "dur": 0.35
+ },
+ {
+  "t": 85.74,
+  "file": "slide_card_a.wav",
+  "gain_db": -8,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "the TRADING card rises in below",
+  "x": 450,
+  "rate": 0.9828
+ },
+ {
+  "t": 86.1,
+  "file": "scan_draw_a.wav",
+  "gain_db": -11,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "a dotted vertical link draws bottom to top",
+  "x": 450,
+  "rate": 1.1
+ },
+ {
+  "t": 86.4,
+  "file": "lock_padlock.wav",
+  "gain_db": -10,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "the CHAIN symbol snaps together on an INK disc (two links slide in) + «ربط تلقائي»",
+  "x": 450,
+  "layers": [
+   {
+    "t": 86.42,
+    "file": "reveal_air_c.wav",
+    "gain_db": -15,
+    "pan": -0.36,
+    "rate": 1.0081
+   }
+  ],
+  "rate": 1.2
+ },
+ {
+  "t": 86.84,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -13,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "red pulse 1 travels up the link (0.25 s); the card rim flashes red on arrival",
+  "x": 450,
+  "layers": [
+   {
+    "t": 87.09,
+    "file": "pop_c.wav",
+    "gain_db": -12,
+    "pan": -0.4
+   }
+  ],
+  "rate": 1.2
+ },
+ {
+  "t": 87.06,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -14,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "Q",
+  "event": "red pulse 2 travels up the link; the rim flashes again",
+  "x": 450,
+  "layers": [
+   {
+    "t": 87.31,
+    "file": "pop_c.wav",
+    "gain_db": -12,
+    "pan": -0.4,
+    "rate": 1.12246
+   }
+  ],
+  "rate": 1.28
+ },
+ {
+  "t": 87.68,
+  "file": "boom_drop.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "DROP 2 smash cut: floor RIPPLE (layers the score's drop)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 87.68,
+    "file": "sonar_white.wav",
+    "gain_db": -11,
+    "pan": 0.0
+   }
+  ]
+ },
+ {
+  "t": 88.1,
+  "file": "slide_card_a.wav",
+  "gain_db": -8,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "R",
+  "event": "both cards enter: trading (right) first, then allocation (85.20)",
+  "x": 1560,
+  "layers": [
+   {
+    "t": 88.2,
+    "file": "slide_card_b.wav",
+    "gain_db": -8,
+    "pan": -0.47,
+    "rate": 1.0233
+   }
+  ],
+  "rate": 0.9806
+ },
+ {
+  "t": 88.55,
+  "file": "scan_draw_b.wav",
+  "gain_db": -10,
+  "pan": 0.34,
+  "sync": "onset",
+  "beat": "R",
+  "event": "a red dotted ARC draws right to left over Rabee's head",
+  "x": 960,
+  "pan_to": -0.34,
+  "pan_dur": 0.5,
+  "rate": 0.997
+ },
+ {
+  "t": 89.0,
+  "file": "stamp.wav",
+  "gain_db": -9,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "the apex NODE (TAG plate) enters with the COPY symbol and «نسخ تلقائي»",
+  "x": 960,
+  "y": 200,
+  "rate": 1.0133
+ },
+ {
+  "t": 89.67,
+  "file": "pop_a.wav",
+  "gain_db": -12,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T1 «شراء 0.01» -> «شراء 0.10»: the chip appears in the trading list | + T1 «شراء 0.01» -> «شراء 0.10»: its ghost rides the arc behind a red comet",
+  "x": 1560,
+  "layers": [
+   {
+    "t": 89.77,
+    "file": "glitch_swipe_b.wav",
+    "gain_db": -10,
+    "pan": 0.34,
+    "sync": "onset",
+    "rate": 1.0,
+    "pan_to": -0.34,
+    "pan_dur": 0.6
+   }
+  ],
+  "merged": [
+   {
+    "t": 89.77,
+    "file": "glitch_swipe_b.wav",
+    "t_vis": 89.77,
+    "x": 1200,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 90.07,
+  "file": "ping_land_b.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T1 «شراء 0.01» -> «شراء 0.10»: at the apex the node flashes, the lot flips x10, the ghost scales 1 -> 1.25",
+  "x": 960,
+  "y": 200,
+  "rate": 1.12246
+ },
+ {
+  "t": 90.28,
+  "file": "pop_a.wav",
+  "gain_db": -12,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T2 «بيع 0.02» -> «بيع 0.20»: the chip appears in the trading list | + T1 «شراء 0.01» -> «شراء 0.10»: lands in the allocation list (red edge) + a SPILL pulse under the card | + T2 «بيع 0.02» -> «بيع 0.20»: its ghost rides the arc behind a red comet",
+  "x": 1560,
+  "rate": 1.05946,
+  "layers": [
+   {
+    "t": 90.37,
+    "file": "pop_b.wav",
+    "gain_db": -10,
+    "pan": -0.47,
+    "sync": "onset"
+   },
+   {
+    "t": 90.37,
+    "file": "tick_a.wav",
+    "gain_db": -14,
+    "pan": -0.47,
+    "rate": 1.0
+   },
+   {
+    "t": 90.38,
+    "file": "glitch_swipe_b.wav",
+    "gain_db": -10,
+    "pan": 0.34,
+    "sync": "onset",
+    "rate": 1.04,
+    "pan_to": -0.34,
+    "pan_dur": 0.6
+   }
+  ],
+  "merged": [
+   {
+    "t": 90.37,
+    "file": "pop_b.wav",
+    "t_vis": 90.37,
+    "x": 360,
+    "y": null
+   },
+   {
+    "t": 90.38,
+    "file": "glitch_swipe_b.wav",
+    "t_vis": 90.38,
+    "x": 1200,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 90.68,
+  "file": "ping_land_b.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T2 «بيع 0.02» -> «بيع 0.20»: at the apex the node flashes, the lot flips x10, the ghost scales 1 -> 1.25",
+  "x": 960,
+  "y": 200,
+  "rate": 1.12246
+ },
+ {
+  "t": 90.95,
+  "file": "pop_a.wav",
+  "gain_db": -12,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T3 «شراء 0.01» -> «شراء 0.10»: the chip appears in the trading list | + T2 «بيع 0.02» -> «بيع 0.20»: lands in the allocation list (red edge) + a SPILL pulse under the card | + T3 «شراء 0.01» -> «شراء 0.10»: its ghost rides the arc behind a red comet",
+  "x": 1560,
+  "layers": [
+   {
+    "t": 90.98,
+    "file": "pop_b.wav",
+    "gain_db": -10,
+    "pan": -0.47,
+    "sync": "onset"
+   },
+   {
+    "t": 90.98,
+    "file": "tick_a.wav",
+    "gain_db": -14,
+    "pan": -0.47,
+    "rate": 1.04
+   },
+   {
+    "t": 91.05,
+    "file": "glitch_swipe_b.wav",
+    "gain_db": -10,
+    "pan": 0.34,
+    "sync": "onset",
+    "rate": 0.97,
+    "pan_to": -0.34,
+    "pan_dur": 0.6
+   }
+  ],
+  "merged": [
+   {
+    "t": 90.98,
+    "file": "pop_b.wav",
+    "t_vis": 90.98,
+    "x": 360,
+    "y": null
+   },
+   {
+    "t": 91.05,
+    "file": "glitch_swipe_b.wav",
+    "t_vis": 91.05,
+    "x": 1200,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 91.35,
+  "file": "ping_land_b.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T3 «شراء 0.01» -> «شراء 0.10»: at the apex the node flashes, the lot flips x10, the ghost scales 1 -> 1.25",
+  "x": 960,
+  "y": 200
+ },
+ {
+  "t": 91.62,
+  "file": "impact_deep.wav",
+  "gain_db": -9,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "the node's copy icon MORPHS into a metallic 'x10'; the label crossfades to «معامل الضرب» | + T3 «شراء 0.01» -> «شراء 0.10»: lands in the allocation list (red edge) + a SPILL pulse under the card",
+  "x": 960,
+  "y": 200,
+  "layers": [
+   {
+    "t": 91.7,
+    "file": "shimmer_sheen.wav",
+    "gain_db": -13,
+    "pan": 0.0
+   },
+   {
+    "t": 91.65,
+    "file": "pop_b.wav",
+    "gain_db": -10,
+    "pan": -0.47,
+    "sync": "onset"
+   },
+   {
+    "t": 91.65,
+    "file": "tick_a.wav",
+    "gain_db": -14,
+    "pan": -0.47,
+    "rate": 0.97
+   }
+  ],
+  "rate": 1.009,
+  "merged": [
+   {
+    "t": 91.65,
+    "file": "pop_b.wav",
+    "t_vis": 91.65,
+    "x": 360,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 92.4,
+  "file": "reveal_air_c.wav",
+  "gain_db": -13,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "the caption «مثال: مرحلة Seed» appears",
+  "x": 960,
+  "rate": 0.9916
+ },
+ {
+  "t": 92.9,
+  "file": "pop_a.wav",
+  "gain_db": -12,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T4 «شراء 0.03» -> «شراء 0.30»: the chip appears in the trading list | + T4 «شراء 0.03» -> «شراء 0.30»: its ghost rides the arc behind a red comet",
+  "x": 1560,
+  "rate": 1.05946,
+  "layers": [
+   {
+    "t": 93.0,
+    "file": "glitch_swipe_b.wav",
+    "gain_db": -10,
+    "pan": 0.34,
+    "sync": "onset",
+    "rate": 1.08,
+    "pan_to": -0.34,
+    "pan_dur": 0.45
+   }
+  ],
+  "merged": [
+   {
+    "t": 93.0,
+    "file": "glitch_swipe_b.wav",
+    "t_vis": 93.0,
+    "x": 1200,
+    "y": null
+   }
+  ]
+ },
+ {
+  "t": 93.225,
+  "file": "ping_land_b.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T4 «شراء 0.03» -> «شراء 0.30»: at the apex the node flashes, the lot flips x10, the ghost scales 1 -> 1.25",
+  "x": 960,
+  "y": 200,
+  "rate": 1.12246
+ },
+ {
+  "t": 93.45,
+  "file": "pop_b.wav",
+  "gain_db": -10,
+  "pan": -0.47,
+  "sync": "onset",
+  "beat": "R",
+  "event": "T4 «شراء 0.03» -> «شراء 0.30»: lands in the allocation list (red edge) + a SPILL pulse under the card",
+  "x": 360,
+  "layers": [
+   {
+    "t": 93.45,
+    "file": "tick_a.wav",
+    "gain_db": -14,
+    "pan": -0.47,
+    "rate": 1.08
+   }
+  ],
+  "rate": 1.12246
+ },
+ {
+  "t": 94.32,
+  "file": "slide_card_a.wav",
+  "gain_db": -8,
+  "pan": -0.44,
+  "sync": "onset",
+  "beat": "S",
+  "event": "the TAG plate enters holding «معامل الضرب» and a metallic 'x10'",
+  "x": 400,
+  "rate": 1.0232
+ },
+ {
+  "t": 94.44,
+  "file": "flag_drop.wav",
+  "gain_db": -9,
+  "pan": -0.48,
+  "sync": "onset",
+  "beat": "S",
+  "event": "a RED FLAG bookmark (h 56) drops from above and clips onto the tag's top edge",
+  "x": 350,
+  "t_vis": 94.4,
+  "rate": 0.9895
+ },
+ {
+  "t": 95.38,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -11,
+  "pan": -0.4,
+  "sync": "onset",
+  "beat": "S",
+  "event": "one sheen on 'x10'",
+  "x": 450
+ },
+ {
+  "t": 97.64,
+  "file": "pop_b.wav",
+  "gain_db": -9,
+  "pan": -0.44,
+  "sync": "onset",
+  "beat": "S",
+  "event": "a DARK pill with a red circle ← appears under the tag",
+  "x": 400
+ },
+ {
+  "t": 99.4,
+  "file": "slide_card_a.wav",
+  "gain_db": -7,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "T",
+  "event": "the CARD enters with its two-tone header",
+  "x": 1560,
+  "rate": 0.9884
+ },
+ {
+  "t": 99.8,
+  "file": "tick_c.wav",
+  "gain_db": -12,
+  "pan": 0.62,
+  "sync": "onset",
+  "beat": "T",
+  "event": "six stage symbols light 01 -> 06 (0.15 s each), then settle white",
+  "x": 1560,
+  "repeat": [
+   6,
+   0.15
+  ],
+  "rate_step": 0.035,
+  "pan_to": 0.33
+ },
+ {
+  "t": 101.6,
+  "file": "slide_card_b.wav",
+  "gain_db": -12,
+  "pan": 0.5,
+  "sync": "onset",
+  "beat": "T",
+  "event": "three rule rows slide in 30 px from the right (checkbox + abstract bar)",
+  "x": 1560,
+  "repeat": [
+   3,
+   0.4
+  ],
+  "rate_step": 0.02
+ },
+ {
+  "t": 101.76,
+  "file": "tick_a.wav",
+  "gain_db": -9,
+  "pan": 0.58,
+  "sync": "onset",
+  "beat": "T",
+  "event": "the three checks tick red (98.76, 99.16, 99.56)",
+  "x": 1700,
+  "t_vis": 101.7,
+  "repeat": [
+   3,
+   0.4
+  ],
+  "rate_step": 0.04
+ },
+ {
+  "t": 104.4,
+  "file": "thud_soft_b.wav",
+  "gain_db": -9,
+  "pan": 0.47,
+  "sync": "onset",
+  "beat": "T",
+  "event": "row 4 arrives in focus: RED checkbox '!', SHIELD, «حدّ الانعكاس», red bar; rows 1-3 dim",
+  "x": 1560,
+  "layers": [
+   {
+    "t": 104.4,
+    "file": "stamp.wav",
+    "gain_db": -13,
+    "pan": 0.58,
+    "rate": 0.9964
+   }
+  ],
+  "rate": 1.0037
+ },
+ {
+  "t": 105.16,
+  "file": "impact_deep.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "U",
+  "event": "RE-DROP: hard cut to WIDE (the score's re-lift)",
+  "x": 960,
+  "rate": 1.02
+ },
+ {
+  "t": 105.55,
+  "file": "scan_draw_b.wav",
+  "gain_db": -10,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "U",
+  "event": "the dashed red LIMIT RING draws clockwise on the floor around the stool + soft pool inside",
+  "x": 960,
+  "y": 900,
+  "layers": [
+   {
+    "t": 105.55,
+    "file": "sub_drop.wav",
+    "gain_db": -16,
+    "pan": 0.0
+   },
+   {
+    "t": 105.6,
+    "file": "reveal_air_a.wav",
+    "gain_db": -13,
+    "pan": 0.03,
+    "rate": 1.0217
+   }
+  ],
+  "rate": 0.9863
+ },
+ {
+  "t": 105.75,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -13,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "U",
+  "event": "the LEFT chart's corner triangles fly out + dotted sides",
+  "x": 500,
+  "rate": 1.0026
+ },
+ {
+  "t": 105.87,
+  "file": "tick_b.wav",
+  "gain_db": -19,
+  "pan": -0.55,
+  "sync": "onset",
+  "beat": "U",
+  "event": "the chart's first six candles print (0.05 s stagger)",
+  "x": 400,
+  "repeat": [
+   6,
+   0.05
+  ],
+  "rate_step": 0.01,
+  "pan_to": -0.4
+ },
+ {
+  "t": 106.0,
+  "file": "scan_draw_a.wav",
+  "gain_db": -11,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "U",
+  "event": "a dashed red limit line draws, labelled '−10%'",
+  "x": 450,
+  "pan_to": -0.2,
+  "rate": 0.9852
+ },
+ {
+  "t": 106.2,
+  "file": "tick_b.wav",
+  "gain_db": -12,
+  "pan": -0.52,
+  "sync": "onset",
+  "beat": "U",
+  "event": "five candles step DOWN, mostly red, toward the line (the last wick stops 8 px above it)",
+  "x": 450,
+  "repeat": [
+   5,
+   0.15
+  ],
+  "rate": 0.95,
+  "rate_step": -0.035,
+  "pan_to": -0.24
+ },
+ {
+  "t": 107.05,
+  "file": "thud_soft_a.wav",
+  "gain_db": -11,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "U",
+  "event": "the limit line pulses 3 times (heartbeat, 0.15 s each)",
+  "x": 500,
+  "repeat_times": [
+   0.0,
+   0.15,
+   0.3
+  ],
+  "rate": 0.85
+ },
+ {
+  "t": 107.3,
+  "file": "tick_c.wav",
+  "gain_db": -11,
+  "pan": -0.2,
+  "sync": "onset",
+  "beat": "U",
+  "event": "a white RECOVERY candle prints: the limit is never reached",
+  "x": 700,
+  "rate": 1.1
+ },
+ {
+  "t": 107.64,
+  "file": "thud_soft_b.wav",
+  "gain_db": -7,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "U",
+  "event": "metallic '10%' LANDS in the right third (scale 1.04 -> 1) | footnote fades in (104.90)",
+  "x": 1500,
+  "layers": [
+   {
+    "t": 107.64,
+    "file": "ping_land_b.wav",
+    "gain_db": -12,
+    "pan": 0.42,
+    "rate": 0.8909
+   },
+   {
+    "t": 107.9,
+    "file": "reveal_air_b.wav",
+    "gain_db": -15,
+    "pan": 0.42,
+    "rate": 0.9859
+   }
+  ],
+  "rate": 1.0005
+ },
+ {
+  "t": 107.98,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -12,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "U",
+  "event": "sheen across '10%'",
+  "x": 1500
+ },
+ {
+  "t": 108.29,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -14,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "U",
+  "event": "the ring, its pool and the headline exit (105.20-105.50)",
+  "x": 960,
+  "t_vis": 108.2,
+  "rate": 0.9831
+ },
+ {
+  "t": 108.58,
+  "file": "cam_push.wav",
+  "gain_db": -7,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "V",
+  "event": "camera push WIDE -> HOME (S-curve 0.7 s)",
+  "x": 960,
+  "rate": 0.9994
+ },
+ {
+  "t": 109.38,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": -0.4,
+  "sync": "peak",
+  "beat": "V",
+  "event": "U's chart exits",
+  "x": 450,
+  "t_vis": 109.3,
+  "rate": 1.0157
+ },
+ {
+  "t": 110.05,
+  "file": "reveal_air_a.wav",
+  "gain_db": -11,
+  "pan": -0.36,
+  "sync": "onset",
+  "beat": "V",
+  "event": "LEFT: the two-tone headline lands with its flag",
+  "x": 500,
+  "layers": [
+   {
+    "t": 110.07,
+    "file": "flag_flutter.wav",
+    "gain_db": -15,
+    "pan": -0.2,
+    "rate": 1.0248
+   }
+  ],
+  "rate": 0.9821
+ },
+ {
+  "t": 110.3,
+  "file": "pop_a.wav",
+  "gain_db": -13,
+  "pan": -0.24,
+  "sync": "onset",
+  "beat": "V",
+  "event": "the six stage symbols appear in a row and light once in sequence (0.05 s stagger)",
+  "x": 500,
+  "repeat": [
+   6,
+   0.05
+  ],
+  "pan_to": -0.47,
+  "rate_seq": [
+   1.0,
+   1.05946,
+   1.18921,
+   1.33484,
+   1.33484,
+   1.33484
+  ]
+ },
+ {
+  "t": 110.7,
+  "file": "whoosh_soft_c.wav",
+  "gain_db": -15,
+  "pan": 0.42,
+  "sync": "onset",
+  "beat": "V",
+  "event": "U's '10%' and footnote exit",
+  "x": 1500,
+  "rate": 1.0147
+ },
+ {
+  "t": 111.3,
+  "file": "slide_card_a.wav",
+  "gain_db": -10,
+  "pan": 0.41,
+  "sync": "onset",
+  "beat": "V",
+  "event": "RIGHT: the next-video deck fans in (three cards, 0.08 s stagger)",
+  "x": 1485,
+  "repeat": [
+   3,
+   0.08
+  ],
+  "rate_step": 0.04
+ },
+ {
+  "t": 111.7,
+  "file": "pop_b.wav",
+  "gain_db": -9,
+  "pan": 0.4,
+  "sync": "onset",
+  "beat": "V",
+  "event": "the RED pill appears with a white circle and a red ←",
+  "x": 1470
+ },
+ {
+  "t": 112.42,
+  "file": "click_ui_b.wav",
+  "gain_db": -12,
+  "pan": 0.27,
+  "sync": "onset",
+  "beat": "V",
+  "event": "the arrow nudges left (109.42, 110.04)",
+  "x": 1300,
+  "repeat_times": [
+   0.0,
+   0.62
+  ],
+  "rate": 1.0136
+ },
+ {
+  "t": 112.55,
+  "file": "slide_card_b.wav",
+  "gain_db": -11,
+  "pan": 0.41,
+  "sync": "onset",
+  "beat": "V",
+  "event": "the front card slides 40 px left and tilts −3°, revealing '(3)' behind",
+  "x": 1485,
+  "rate": 0.9799
+ },
+ {
+  "t": 113.62,
+  "file": "wipe_end.wav",
+  "gain_db": -5,
+  "pan": 0.0,
+  "sync": "peak",
+  "beat": "V",
+  "event": "END WIPE: a #000 chamfer panel with a red '/' edge sweeps in from the right (113.36-113.88)",
+  "x": 960,
+  "t_vis": 113.36,
+  "rate": 0.9962
+ },
+ {
+  "t": 113.88,
+  "file": "boom_end.wav",
+  "gain_db": -7,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "END",
+  "event": "end card on the score's ending hit (layers it); the ◢ rows reveal (114.00-114.40)",
+  "x": 960,
+  "layers": [
+   {
+    "t": 114.0,
+    "file": "reveal_air_b.wav",
+    "gain_db": -14,
+    "pan": 0.0,
+    "rate": 1.0053
+   }
+  ]
+ },
+ {
+  "t": 114.25,
+  "file": "shimmer_logo.wav",
+  "gain_db": -7,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "END",
+  "event": "the official logo builds (axi rises 114.25-114.67)",
+  "x": 960,
+  "y": 350
+ },
+ {
+  "t": 114.5,
+  "file": "whoosh_soft_b.wav",
+  "gain_db": -14,
+  "pan": 0.08,
+  "sync": "onset",
+  "beat": "END",
+  "event": "the SELECT tag wipes in behind the red edge (114.50-114.97)",
+  "x": 1050,
+  "y": 350,
+  "rate": 0.9952
+ },
+ {
+  "t": 115.1,
+  "file": "pop_b.wav",
+  "gain_db": -8,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "END",
+  "event": "the RED pill «انضم إلى آكسي سيليكت» scales in (.92 -> 1)",
+  "x": 960,
+  "y": 570,
+  "layers": [
+   {
+    "t": 115.1,
+    "file": "slide_card_a.wav",
+    "gain_db": -14,
+    "pan": 0.0,
+    "rate": 1.0042
+   }
+  ]
+ },
+ {
+  "t": 115.5,
+  "file": "reveal_air_c.wav",
+  "gain_db": -14,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "END",
+  "event": "the footer fades in while its tracking tightens",
+  "x": 960,
+  "y": 720,
+  "rate": 0.9778
+ },
+ {
+  "t": 115.8,
+  "file": "reveal_air_a.wav",
+  "gain_db": -16,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "END",
+  "event": "the T&C fades in",
+  "x": 960,
+  "y": 968,
+  "rate": 0.9941
+ },
+ {
+  "t": 116.7,
+  "file": "shimmer_sheen.wav",
+  "gain_db": -11,
+  "pan": 0.0,
+  "sync": "onset",
+  "beat": "END",
+  "event": "one white sheen across the RED pill",
+  "x": 960,
+  "y": 570
+ }
+]

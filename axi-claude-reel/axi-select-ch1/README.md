@@ -17,8 +17,7 @@ The series is six videos, one per programme stage:
 
 | File | Use |
 |---|---|
-| `AxiSelect_Ch1_Rabee_16x9.mp4` | Video 1 with Arabic subtitles burned in, for social feeds |
-| `AxiSelect_Ch1_Rabee_16x9_clean.mp4` | The same cut without subtitles, for YouTube with the SRT |
+| `AxiSelect_Ch1_Rabee_16x9.mp4` | Video 1 with Arabic subtitles burned in (v3: new music and sound effects; picture and voice unchanged) |
 | `AxiSelect_Ch1_Rabee_cover.jpg` | Cover / thumbnail («الحلقة 1 من 6») |
 | `AxiSelect_Ch1_subtitles_ar.srt` | The subtitles as a separate file, on the same timing as the burned-in ones |
 
@@ -76,15 +75,20 @@ The series is six videos, one per programme stage:
 | 105.2–113.9 | Re-drop: the red limit ring and **10%**, then a push back HOME: the six videos, next «(2) Incubation» |
 | 113.9–120 | Slash wipe, then the end card «انضم إلى آكسي سيليكت» and a fade to black |
 
-## Sound
+## Sound (v3)
 
-- **Music:** the same track as v1, re-cut on its beat grid.
-  - The drops land on «وبمجرّد» and «بحساب التداول».
-  - One seamless 48-beat jump sits under the voice at 1:49.5, so the track's own ending lands on the end card. It uses an equal-power crossfade.
-  - The track's abrupt stop is faded.
-- **Ducking:** the music sits 10 dB lower whenever he speaks, engaging just before each phrase.
-- **SFX:** new SFX for the new graphics, from a CC0 library. Each click and hit is placed in a real pause in his speech, or played much quieter where there is none.
-- **Master:** a static gain to −14 LUFS with a true-peak limit, so there is no pumping.
+- **Music:** a new original score in D minor, shared with video 2 and written in code. It uses CC0 VSCO-2 string, piano
+  and percussion samples plus my own synthesis.
+  - The old library track is gone.
+  - The level stays even from the start to the end card, with no fade after the opening.
+  - The drops land on «وبمجرّد» (0:17.9) and «بحساب التداول» (1:27.7), a lift lands on the 10 % ring (1:45.2), and the end
+    hit lands on the end card (1:53.9).
+- **SFX:** 211 synthesised cues for the graphics. None sits on the start of a word. The two windows you flagged (0:03.0–0:04.75
+  and 0:41.55–0:43.25) are silent.
+- **Voice:** unchanged (the approved v2 voice).
+- **Mix:** the music sits about 16 dB under the voice, with a light dip only where needed. Master −14 LUFS, true peak
+  −1.3 dB.
+- **Sound code:** shared with video 2, in `../axi-select-sound/`.
 
 ## Please check before publishing
 

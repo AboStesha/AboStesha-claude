@@ -25,7 +25,7 @@ S = [
     (8.81, 10.09, "L2", dict(z0=1.06, z1=1.12, ay=0.4, punch=0.06), "B close-up (f 236-268): «ملاحظة مهمّة» red note tag; bug on from this cut", "B"),
     (10.09, 17.09, "BR", dict(id=1), "C B-ROLL 1 (f 268-443, full-screen MG): the withdrawal window, open until the first trade, then locked", "C"),
     (17.09, 21.85, "VC", dict(s0=EW, dy0=0.03, drift=0.006), "D (f 443-562): hard cut to extreme wide, staircase built, S1 done, S2 lit, the rule mark stamped on all six landings", "D"),
-    (21.85, 28.05, "L1", dict(z0=1.03, z1=1.08, ax=0.33), "E three-quarter (f 562-717): qualify for Incubation, Edge Score gauge to 60+", "E"),
+    (21.85, 28.05, "BR", dict(id=3), "E B-ROLL 3 (f 562-717, full-screen MG, replaces the three-quarter shot at the client's request): the Edge Score of every stage, Incubation needs 60", "E"),
     (28.05, 32.37, "L5", dict(z0=1.0, z1=1.05), "F medium (f 717-825): the two conditions met (60+ Edge Score, $1,000+ in the trading account)", "F"),
     (32.37, 36.41, "VC", dict(s0=WIDE, drift=0.008), "G DROP 1 (f 825-926): smash cut to WIDE in the pause before «ستقوم», page-8 'x10' hero, «تمويلك حتى», chip '$1,000'", "G"),
     (36.41, 47.41, "BR", dict(id=2), "H B-ROLL 2 (f 926-1201, full-screen MG): the x10 gate, $1,000 → ten blocks ($10,000), $2,000 → twenty blocks", "H"),
@@ -72,7 +72,7 @@ SUBS = [
     (2.43, 4.30, "مرحباً بك في المرحلة الثانية"),
     (4.34, 5.55, "من مراحل Axi Select"),
     (5.68, 6.74, "مرحلة الـ Incubation"),
-    (6.78, 8.74, "قبل أن أتعرّض لتفاصيل هذه المرحلة"),
+    (6.78, 8.74, "قبل أن نتعرّف على تفاصيل هذه المرحلة"),
     (8.95, 9.87, "ملاحظة مهمّة"),
     (10.20, 12.82, "إذا أردت القيام بأي عملية سحب للأموال"),
     (12.96, 14.04, "عليك القيام بذلك"),
@@ -86,17 +86,17 @@ SUBS = [
     (30.79, 31.97, "يجب أن يكون \u20661,000\u2069"),
     (32.40, 34.40, "ستقوم Axi بتمويلك"),
     (34.45, 36.29, "لغاية عشرة أضعاف هذا المبلغ"),
-    (36.51, 38.56, "يعني إذا كان حسابك \u20661,000\u2069 دولار"),
+    (36.51, 38.56, "يعني إذا كان في حسابك \u20661,000\u2069 دولار"),
     (38.75, 41.90, "ستقوم Axi بتمويلك بمبلغ \u206610,000\u2069 دولار"),
-    (41.93, 43.91, "أمّا إذا كان حسابك \u20662,000\u2069 دولار"),
+    (41.93, 43.91, "أمّا إذا كان في حسابك \u20662,000\u2069 دولار"),
     (44.18, 45.95, "ستقوم Axi بتمويلك أيضاً"),
     (45.99, 47.35, "بعشرة أضعاف هذا المبلغ"),
     (47.48, 50.62, "لتصل قيمة التمويل إلى \u206620,000\u2069 دولار"),
     (50.68, 52.28, "في هذه المرحلة يجب عليك"),
     (52.33, 54.53, "إتمام 40 صفقة مستقلّة على الأقل"),
-    (54.70, 56.96, "وتحقيق عائد لا يقلّ عن \u20667%\u2069"),
+    (54.70, 56.96, "لتحقيق عائد لا يقلّ عن \u20667%\u2069"),
     (57.08, 59.85, "مع عدم الوصول إلى نسبة انعكاس \u206610%\u2069"),
-    (60.08, 61.32, "في أي وقت من الأوقات"),
+    (60.08, 61.32, "بأي وقت من الأوقات"),
     (61.66, 64.14, "وخلال فترة لا تقلّ عن 60 يوماً"),
     (64.38, 65.93, "من تاريخ أول صفقة"),
     (66.22, 67.47, "عند تحقيق هذه الشروط"),
@@ -106,7 +106,7 @@ SUBS = [
     (74.57, 76.08, "في الفيديو القادم"),
     (76.29, 77.10, "مبروك!"),
     (77.33, 80.53, "أصبح لك الآن حصّة مشاركة بنسبة \u206640%\u2069"),
-    (80.81, 83.97, "من الأرباح المحقّقة في حساب Axi Select"),
+    (80.81, 83.97, "من الأرباح المحقّقة في حساب التخصيص"),
 ]
 
 # subtitle spans in OUTPUT seconds: [start, end, text, hard_in, hard_out]. A boundary within 0.2 s of a picture cut is
@@ -132,7 +132,7 @@ for i, sp in enumerate(SPANS):
 # H 46.6): switch them hard instead, just before the next word (the end of the voice pause between them, else the next
 # line's start)
 try:
-    PZ = json.load(open("work/vo_pauses_vo.json"))
+    PZ = json.load(open("work/vo_pauses_sync.json"))  # pause map of the final voice vo2_sync (client-enhanced, lip-synced)
 except OSError:
     PZ = []
 for i in range(len(SUBS) - 1):

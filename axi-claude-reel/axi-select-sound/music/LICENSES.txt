@@ -1,0 +1,21 @@
+Axi Select series score - sample sources and licences
+=====================================================
+
+1. VS Chamber Orchestra: Community Edition (VSCO 2 CE)
+   Source:   https://github.com/sgossner/VSCO-2-CE  (branch master, fetched 2026-10-21 by src/fetch_samples.py;
+             the file list is pinned in samples/tree.json)
+   Licence:  CC0 1.0 Universal (public-domain dedication) - see vsco/LICENSE (copied from the repository)
+   Credits (encouraged, not required): recorded by Sam Gossner & Simon Dalzell, sample cutting by Elan Hickler /
+             Soundemote, Versilian Studios LLC; Upright Piano sampled by Simon Dalzell of Ivy Audio (vsco/Keys/Upright Piano/Info.txt).
+   Used here (only these folders were downloaded, see samples/vsco/):
+     Strings/Cello Section (susvib v1/v3, spic v1/v2 round robins RR1 + RR2 (RR2 added 2026-10-21 by the v2 review), trem v1), Strings/Solo Contrabass (SusNV v1/v3, Spic v1),
+     Strings/Viola Section (susvib v1), Strings/Violin Section (susVib v1, Trem v1), Keys/Upright Piano (dyn1, dyn2),
+     Percussion/Timpani (hits v1/v3, rolls), Percussion/BDrumNewhit (v3/v5/v7), Percussion/Snare2-taps,
+     VSCO 1 Percussion/drums/bass (bdrum muted/open), VSCO 1 Percussion/varMetal/Gong (hits, scrapes, roll),
+     VSCO 1 Percussion/varMetal/Cymbals/susp (FX scrapes, soft-mallet rolls), VSCO 1 Percussion/varWood (wood clicks, claves).
+   All of them are transposed, filtered, layered and re-arranged by src/compose.py; no phrase or loop of the library is used as is.
+
+2. Material created for this score (no third-party rights): the composition itself (theme, harmony, arrangement, timing),
+   the synthesised parts in src/lib.py - the D-A drone (additive band-limited saw stacks), the heartbeat sub pulse, the watch
+   ticks, the sub drops, the noise risers, the reverse-reverb swells, the three synthetic hall/room impulse responses -
+   and all mixing/processing. No AI music service, no library music track, nothing from the old HeyGen track.

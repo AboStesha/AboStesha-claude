@@ -1,0 +1,1315 @@
+{
+ "sections": [
+  {
+   "name": "title: theme statement (D4 F4 E4 on felt piano, low strings Dm with violins, soft low hit)",
+   "t0": 0.0,
+   "t1": 3.338,
+   "bars": [
+    0,
+    0
+   ]
+  },
+  {
+   "name": "A: intro under the welcome (Dm Bb), the violins stay on softly, his first words 3.00-4.75 kept clear of new attacks",
+   "t0": 3.338,
+   "t1": 12.063,
+   "bars": [
+    1,
+    3
+   ]
+  },
+  {
+   "name": "A': B-roll 1, soft watch ticks + cello motif D3 F3 E3; pre-drop Gm-A, riser, reverse swell",
+   "t0": 12.063,
+   "t1": 17.88,
+   "bars": [
+    4,
+    5
+   ]
+  },
+  {
+   "name": "B: DROP 1 drive, spiccato figure A, pulse + muted kick; violins open on «مبروك!» (34.92)",
+   "t0": 17.88,
+   "t1": 41.147,
+   "bars": [
+    6,
+    13
+   ]
+  },
+  {
+   "name": "B': thin figure B under the «5000$» explanation (no attack inside 41.55-43.25)",
+   "t0": 41.147,
+   "t1": 52.78,
+   "bars": [
+    14,
+    17
+   ]
+  },
+  {
+   "name": "B'': figure A into the calm",
+   "t0": 52.78,
+   "t1": 64.413,
+   "bars": [
+    18,
+    21
+   ]
+  },
+  {
+   "name": "calm: no ostinato, a soft pulse, B-roll 2 carries the motif on piano; pre-drop 2 (straight eighths crescendo)",
+   "t0": 64.413,
+   "t1": 87.68,
+   "bars": [
+    22,
+    29
+   ]
+  },
+  {
+   "name": "C: DROP 2 drive, the theme on cellos + piano; rolling figure C into the re-lift",
+   "t0": 87.68,
+   "t1": 105.16,
+   "bars": [
+    30,
+    35
+   ]
+  },
+  {
+   "name": "C': re-lift on Eb (bII) at the 10% limit ring: dark hit, cello tremolo; Bb - C rise, straight eighths into the end",
+   "t0": 105.16,
+   "t1": 113.88,
+   "bars": [
+    36,
+    38
+   ]
+  },
+  {
+   "name": "END: deep hit + Dm(add9) chord, natural decay",
+   "t0": 113.88,
+   "t1": 120.0,
+   "bars": [
+    39,
+    39
+   ]
+  }
+ ],
+ "drops": {
+  "DROP1": 17.88,
+  "DROP2": 87.68,
+  "RELIFT": 105.16,
+  "END_HIT": 113.88
+ },
+ "notes": [
+  "DROP 2 is placed on the picture cut to WIDE on «بحساب التداول»: EDL frame 2192 = 87.68 s (the brief said 87.70); DROP 1 = frame 447 = 17.88; the re-lift = bar 36 = 105.16 exactly (frame 2629; v1 was 13 ms early); END hit = 113.88 (frame 2847).",
+  "The client's two windows (3.00-4.75 «مرحبا بك في برنامج التمويل», 41.55-43.25 «خمسة آلاف دولار») contain no new note, hit or tick onset: the chords just sustain there (checked: src/check_windows.py).",
+  "The watch ticks play only in B-roll 1 (12.06-16.43), soft.",
+  "«خمسة آلاف دولار» (41.55-43.25), his softest line: the music also steps back 3.5 dB over 41.1-43.7 (0.4 s ramps)."
+ ],
+ "string_notes": 200,
+ "chords": [
+  [
+   -1,
+   0,
+   "Dm"
+  ],
+  [
+   2,
+   0,
+   "Bb"
+  ],
+  [
+   4,
+   0,
+   "Gm"
+  ],
+  [
+   5,
+   2,
+   "A"
+  ],
+  [
+   6,
+   0,
+   "Dm"
+  ],
+  [
+   7,
+   0,
+   "Bb"
+  ],
+  [
+   8,
+   0,
+   "Gm"
+  ],
+  [
+   9,
+   0,
+   "Asus"
+  ],
+  [
+   9,
+   2,
+   "A"
+  ],
+  [
+   10,
+   0,
+   "Dm"
+  ],
+  [
+   11,
+   0,
+   "Bb"
+  ],
+  [
+   12,
+   0,
+   "Gm"
+  ],
+  [
+   13,
+   0,
+   "Asus"
+  ],
+  [
+   13,
+   2,
+   "A"
+  ],
+  [
+   14,
+   0,
+   "Dm"
+  ],
+  [
+   15,
+   0,
+   "Bb"
+  ],
+  [
+   16,
+   0,
+   "Gm"
+  ],
+  [
+   17,
+   0,
+   "Asus"
+  ],
+  [
+   17,
+   2,
+   "A"
+  ],
+  [
+   18,
+   0,
+   "Dm"
+  ],
+  [
+   19,
+   0,
+   "Bb"
+  ],
+  [
+   20,
+   0,
+   "Gm"
+  ],
+  [
+   21,
+   0,
+   "Asus"
+  ],
+  [
+   21,
+   2,
+   "A"
+  ],
+  [
+   22,
+   0,
+   "Dm"
+  ],
+  [
+   23,
+   0,
+   "Bb"
+  ],
+  [
+   24,
+   0,
+   "Gm"
+  ],
+  [
+   25,
+   0,
+   "Asus"
+  ],
+  [
+   26,
+   0,
+   "Dm"
+  ],
+  [
+   27,
+   0,
+   "Bb"
+  ],
+  [
+   28,
+   0,
+   "Gm"
+  ],
+  [
+   29,
+   0,
+   "Asus"
+  ],
+  [
+   29,
+   2,
+   "A"
+  ],
+  [
+   30,
+   0,
+   "Dm"
+  ],
+  [
+   31,
+   0,
+   "Bb"
+  ],
+  [
+   32,
+   0,
+   "Gm"
+  ],
+  [
+   33,
+   0,
+   "Asus"
+  ],
+  [
+   33,
+   2,
+   "A"
+  ],
+  [
+   34,
+   0,
+   "Dm"
+  ],
+  [
+   35,
+   0,
+   "Gm"
+  ],
+  [
+   36,
+   0,
+   "Eb"
+  ],
+  [
+   37,
+   0,
+   "Bb"
+  ],
+  [
+   38,
+   0,
+   "C"
+  ],
+  [
+   39,
+   0,
+   "Dm_end"
+  ],
+  [
+   39,
+   0,
+   null
+  ]
+ ],
+ "quiet_windows_no_new_attacks": [
+  [
+   3.0,
+   4.75
+  ],
+  [
+   41.55,
+   43.25
+  ]
+ ],
+ "episode": "ep1",
+ "duration_s": 120.0,
+ "sample_rate": 48000,
+ "key": "D minor (Aeolian; Asus4/A as V)",
+ "meter": "4/4",
+ "tempo_map": [
+  {
+   "from_bar": 0,
+   "t": 0.43,
+   "bar_s": 2.90833,
+   "bpm": 82.521
+  },
+  {
+   "from_bar": 30,
+   "t": 87.68,
+   "bar_s": 2.91333,
+   "bpm": 82.38
+  },
+  {
+   "from_bar": 36,
+   "t": 105.16,
+   "bar_s": 2.90667,
+   "bpm": 82.569
+  }
+ ],
+ "bars": [
+  {
+   "bar": 0,
+   "t": 0.43
+  },
+  {
+   "bar": 1,
+   "t": 3.338
+  },
+  {
+   "bar": 2,
+   "t": 6.247
+  },
+  {
+   "bar": 3,
+   "t": 9.155
+  },
+  {
+   "bar": 4,
+   "t": 12.063
+  },
+  {
+   "bar": 5,
+   "t": 14.972
+  },
+  {
+   "bar": 6,
+   "t": 17.88
+  },
+  {
+   "bar": 7,
+   "t": 20.788
+  },
+  {
+   "bar": 8,
+   "t": 23.697
+  },
+  {
+   "bar": 9,
+   "t": 26.605
+  },
+  {
+   "bar": 10,
+   "t": 29.513
+  },
+  {
+   "bar": 11,
+   "t": 32.422
+  },
+  {
+   "bar": 12,
+   "t": 35.33
+  },
+  {
+   "bar": 13,
+   "t": 38.238
+  },
+  {
+   "bar": 14,
+   "t": 41.147
+  },
+  {
+   "bar": 15,
+   "t": 44.055
+  },
+  {
+   "bar": 16,
+   "t": 46.963
+  },
+  {
+   "bar": 17,
+   "t": 49.872
+  },
+  {
+   "bar": 18,
+   "t": 52.78
+  },
+  {
+   "bar": 19,
+   "t": 55.688
+  },
+  {
+   "bar": 20,
+   "t": 58.597
+  },
+  {
+   "bar": 21,
+   "t": 61.505
+  },
+  {
+   "bar": 22,
+   "t": 64.413
+  },
+  {
+   "bar": 23,
+   "t": 67.322
+  },
+  {
+   "bar": 24,
+   "t": 70.23
+  },
+  {
+   "bar": 25,
+   "t": 73.138
+  },
+  {
+   "bar": 26,
+   "t": 76.047
+  },
+  {
+   "bar": 27,
+   "t": 78.955
+  },
+  {
+   "bar": 28,
+   "t": 81.863
+  },
+  {
+   "bar": 29,
+   "t": 84.772
+  },
+  {
+   "bar": 30,
+   "t": 87.68
+  },
+  {
+   "bar": 31,
+   "t": 90.593
+  },
+  {
+   "bar": 32,
+   "t": 93.507
+  },
+  {
+   "bar": 33,
+   "t": 96.42
+  },
+  {
+   "bar": 34,
+   "t": 99.333
+  },
+  {
+   "bar": 35,
+   "t": 102.247
+  },
+  {
+   "bar": 36,
+   "t": 105.16
+  },
+  {
+   "bar": 37,
+   "t": 108.067
+  },
+  {
+   "bar": 38,
+   "t": 110.973
+  },
+  {
+   "bar": 39,
+   "t": 113.88
+  }
+ ],
+ "speech_window": [
+  3.0,
+  113.88
+ ],
+ "speech_band_cut_db": {
+  "pads": 6.0,
+  "bass": 4.0,
+  "perc": 4.0,
+  "motif": 6.0,
+  "fx": 4.0
+ },
+ "speech_lowmid_120_300_cut_db": {
+  "pads": 2.5,
+  "bass": 2.0,
+  "perc": 0.0,
+  "motif": 1.5,
+  "fx": 0.0
+ },
+ "loudness": {
+  "integrated_lufs": -18.04,
+  "sample_peak_dbfs": -3.4,
+  "true_peak_dbtp": -3.39,
+  "limiter_max_gr_db": -3.22
+ },
+ "stems": {
+  "pads": "cello/viola/violin section sustains, the D2+D3 drone; metallic textures are in fx",
+  "bass": "contrabass sustains, heartbeat pulse (D1 with a D2/A2 body), cello spiccato ostinato + contrabass doubles",
+  "perc": "watch ticks (B-roll 1 and the break only), muted kick, timpani",
+  "motif": "felt piano and solo-line cello (the theme)",
+  "fx": "impacts (bass drum + timpani + sub drop + gong), risers, reverse swells, bowed metal, the end-card hit"
+ },
+ "mixing_notes": "Composed as underscore: the title is only ~2 LU above the music under speech, so play the music at one constant gain under the voice (no big duck at his first word); the 1-4 kHz band is already carved 3.0-113.9 s. Drops/hits are exact on the picture cuts listed in drops.",
+ "events": [
+  {
+   "t": 0.43,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 1.157,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 1.884,
+   "stem": "motif",
+   "what": "piano 64"
+  },
+  {
+   "t": 0.43,
+   "stem": "motif",
+   "what": "piano 38"
+  },
+  {
+   "t": 0.43,
+   "stem": "motif",
+   "what": "piano 50"
+  },
+  {
+   "t": 0.425,
+   "stem": "fx",
+   "what": "title hit"
+  },
+  {
+   "t": 6.257,
+   "stem": "motif",
+   "what": "piano 46"
+  },
+  {
+   "t": 12.073,
+   "stem": "motif",
+   "what": "piano 43"
+  },
+  {
+   "t": 0.43,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 6.247,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 9.155,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 12.063,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 14.972,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 16.426,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 11.84,
+   "stem": "fx",
+   "what": "metal scrape1"
+  },
+  {
+   "t": 12.063,
+   "stem": "motif",
+   "what": "cello 50"
+  },
+  {
+   "t": 12.79,
+   "stem": "motif",
+   "what": "cello 53"
+  },
+  {
+   "t": 13.517,
+   "stem": "motif",
+   "what": "cello 52"
+  },
+  {
+   "t": 14.962,
+   "stem": "fx",
+   "what": "noise riser"
+  },
+  {
+   "t": 15.689,
+   "stem": "fx",
+   "what": "cymbal swell"
+  },
+  {
+   "t": 17.88,
+   "stem": "fx",
+   "what": "impact bd"
+  },
+  {
+   "t": 17.88,
+   "stem": "fx",
+   "what": "impact sub"
+  },
+  {
+   "t": 17.88,
+   "stem": "fx",
+   "what": "timp D"
+  },
+  {
+   "t": 17.88,
+   "stem": "fx",
+   "what": "impact gong"
+  },
+  {
+   "t": 17.88,
+   "stem": "motif",
+   "what": "piano 26"
+  },
+  {
+   "t": 17.88,
+   "stem": "motif",
+   "what": "piano 38"
+  },
+  {
+   "t": 17.88,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 19.334,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 20.788,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 23.697,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 26.605,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 29.513,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 29.513,
+   "stem": "perc",
+   "what": "timp D"
+  },
+  {
+   "t": 32.422,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 35.33,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 38.238,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 41.147,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 44.055,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 46.963,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 49.872,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 52.78,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 52.78,
+   "stem": "perc",
+   "what": "timp D"
+  },
+  {
+   "t": 55.688,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 58.597,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 61.505,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 34.57,
+   "stem": "pads",
+   "what": "violin 69"
+  },
+  {
+   "t": 34.57,
+   "stem": "pads",
+   "what": "violin 74"
+  },
+  {
+   "t": 33.72,
+   "stem": "fx",
+   "what": "cymbal swell"
+  },
+  {
+   "t": 64.413,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 67.322,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 70.23,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 73.138,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 76.047,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 78.955,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 81.863,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 64.423,
+   "stem": "motif",
+   "what": "piano 50"
+  },
+  {
+   "t": 73.148,
+   "stem": "motif",
+   "what": "piano 45"
+  },
+  {
+   "t": 76.057,
+   "stem": "motif",
+   "what": "piano 50"
+  },
+  {
+   "t": 81.873,
+   "stem": "motif",
+   "what": "piano 43"
+  },
+  {
+   "t": 67.6,
+   "stem": "fx",
+   "what": "metal scrape2"
+  },
+  {
+   "t": 68.049,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 68.776,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 69.503,
+   "stem": "motif",
+   "what": "piano 64"
+  },
+  {
+   "t": 70.957,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 71.684,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 72.411,
+   "stem": "motif",
+   "what": "piano 67"
+  },
+  {
+   "t": 73.865,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 74.593,
+   "stem": "motif",
+   "what": "piano 64"
+  },
+  {
+   "t": 67.322,
+   "stem": "motif",
+   "what": "cello 46"
+  },
+  {
+   "t": 70.23,
+   "stem": "motif",
+   "what": "cello 43"
+  },
+  {
+   "t": 78.955,
+   "stem": "perc",
+   "what": "timp Bb"
+  },
+  {
+   "t": 84.772,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 86.226,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 84.762,
+   "stem": "fx",
+   "what": "noise riser"
+  },
+  {
+   "t": 85.489,
+   "stem": "fx",
+   "what": "cymbal swell"
+  },
+  {
+   "t": 87.68,
+   "stem": "fx",
+   "what": "impact bd"
+  },
+  {
+   "t": 87.68,
+   "stem": "fx",
+   "what": "impact sub"
+  },
+  {
+   "t": 87.68,
+   "stem": "fx",
+   "what": "timp D"
+  },
+  {
+   "t": 87.68,
+   "stem": "fx",
+   "what": "impact gong"
+  },
+  {
+   "t": 87.68,
+   "stem": "motif",
+   "what": "piano 26"
+  },
+  {
+   "t": 87.68,
+   "stem": "motif",
+   "what": "piano 38"
+  },
+  {
+   "t": 87.68,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 89.137,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 87.68,
+   "stem": "perc",
+   "what": "timp D"
+  },
+  {
+   "t": 90.593,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 93.507,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 96.42,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 99.333,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 100.79,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 99.333,
+   "stem": "perc",
+   "what": "timp D"
+  },
+  {
+   "t": 102.247,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 103.703,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 87.68,
+   "stem": "motif",
+   "what": "cello 50"
+  },
+  {
+   "t": 88.408,
+   "stem": "motif",
+   "what": "cello 53"
+  },
+  {
+   "t": 89.137,
+   "stem": "motif",
+   "what": "cello 52"
+  },
+  {
+   "t": 92.778,
+   "stem": "motif",
+   "what": "cello 50"
+  },
+  {
+   "t": 93.507,
+   "stem": "motif",
+   "what": "cello 50"
+  },
+  {
+   "t": 94.235,
+   "stem": "motif",
+   "what": "cello 53"
+  },
+  {
+   "t": 94.963,
+   "stem": "motif",
+   "what": "cello 55"
+  },
+  {
+   "t": 97.148,
+   "stem": "motif",
+   "what": "cello 53"
+  },
+  {
+   "t": 97.877,
+   "stem": "motif",
+   "what": "cello 52"
+  },
+  {
+   "t": 99.333,
+   "stem": "motif",
+   "what": "cello 50"
+  },
+  {
+   "t": 87.68,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 88.408,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 89.137,
+   "stem": "motif",
+   "what": "piano 64"
+  },
+  {
+   "t": 92.778,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 93.507,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 94.235,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 94.963,
+   "stem": "motif",
+   "what": "piano 67"
+  },
+  {
+   "t": 97.148,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 97.877,
+   "stem": "motif",
+   "what": "piano 64"
+  },
+  {
+   "t": 99.333,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 105.16,
+   "stem": "fx",
+   "what": "impact bd"
+  },
+  {
+   "t": 105.16,
+   "stem": "fx",
+   "what": "impact sub"
+  },
+  {
+   "t": 105.16,
+   "stem": "fx",
+   "what": "timp Eb"
+  },
+  {
+   "t": 105.16,
+   "stem": "fx",
+   "what": "impact gong"
+  },
+  {
+   "t": 105.11,
+   "stem": "pads",
+   "what": "cello tremolo"
+  },
+  {
+   "t": 105.16,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 108.067,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 109.52,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 110.973,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 112.427,
+   "stem": "bass",
+   "what": "pulse"
+  },
+  {
+   "t": 105.41,
+   "stem": "fx",
+   "what": "metal gscrape3"
+  },
+  {
+   "t": 108.067,
+   "stem": "pads",
+   "what": "violin 65"
+  },
+  {
+   "t": 110.973,
+   "stem": "pads",
+   "what": "violin 67"
+  },
+  {
+   "t": 108.067,
+   "stem": "motif",
+   "what": "cello 53"
+  },
+  {
+   "t": 110.973,
+   "stem": "motif",
+   "what": "cello 55"
+  },
+  {
+   "t": 112.427,
+   "stem": "motif",
+   "what": "cello 53"
+  },
+  {
+   "t": 113.153,
+   "stem": "motif",
+   "what": "cello 52"
+  },
+  {
+   "t": 110.973,
+   "stem": "motif",
+   "what": "piano 67"
+  },
+  {
+   "t": 112.427,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 113.153,
+   "stem": "motif",
+   "what": "piano 64"
+  },
+  {
+   "t": 108.067,
+   "stem": "perc",
+   "what": "timp Bb"
+  },
+  {
+   "t": 110.973,
+   "stem": "perc",
+   "what": "timp C"
+  },
+  {
+   "t": 110.963,
+   "stem": "fx",
+   "what": "noise riser"
+  },
+  {
+   "t": 111.545,
+   "stem": "fx",
+   "what": "cymbal swell"
+  },
+  {
+   "t": 111.68,
+   "stem": "perc",
+   "what": "timp roll"
+  },
+  {
+   "t": 113.88,
+   "stem": "fx",
+   "what": "impact bd"
+  },
+  {
+   "t": 113.88,
+   "stem": "fx",
+   "what": "impact sub"
+  },
+  {
+   "t": 113.88,
+   "stem": "fx",
+   "what": "timp D"
+  },
+  {
+   "t": 113.88,
+   "stem": "fx",
+   "what": "impact gong"
+  },
+  {
+   "t": 113.892,
+   "stem": "motif",
+   "what": "piano 26"
+  },
+  {
+   "t": 113.916,
+   "stem": "motif",
+   "what": "piano 38"
+  },
+  {
+   "t": 113.88,
+   "stem": "motif",
+   "what": "piano 45"
+  },
+  {
+   "t": 113.88,
+   "stem": "motif",
+   "what": "piano 50"
+  },
+  {
+   "t": 113.904,
+   "stem": "motif",
+   "what": "piano 57"
+  },
+  {
+   "t": 113.904,
+   "stem": "motif",
+   "what": "piano 62"
+  },
+  {
+   "t": 113.88,
+   "stem": "motif",
+   "what": "piano 65"
+  },
+  {
+   "t": 113.88,
+   "stem": "motif",
+   "what": "cello 50"
+  },
+  {
+   "t": 113.88,
+   "stem": "pads",
+   "what": "violin 76"
+  }
+ ]
+}

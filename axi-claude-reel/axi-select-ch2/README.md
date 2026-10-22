@@ -17,8 +17,7 @@ The series is six videos, one per programme stage:
 
 | File | Use |
 |---|---|
-| `AxiSelect_Ch2_Rabee_16x9.mp4` | Video 2 with Arabic subtitles burned in, for social feeds |
-| `AxiSelect_Ch2_Rabee_16x9_clean.mp4` | The same cut without subtitles, for YouTube with the SRT |
+| `AxiSelect_Ch2_Rabee_16x9.mp4` | Video 2 with Arabic subtitles burned in (v2: new sound, new shot at 0:22–0:28) |
 | `AxiSelect_Ch2_Rabee_cover.jpg` | Cover / thumbnail («الحلقة 2 من 6») |
 | `AxiSelect_Ch2_subtitles_ar.srt` | The subtitles as a separate file, on the same timing as the burned-in ones |
 
@@ -59,7 +58,8 @@ The series is six videos, one per programme stage:
 | 9.4–10.7 | Close-up «ملاحظة مهمّة» |
 | 10.7–17.7 | **B-roll 1:** withdraw only before the first trade of a stage |
 | 17.7–22.5 | Extreme wide: the six-stage staircase, the rule applies in every stage |
-| 22.5–33.0 | Qualify for Incubation: Edge Score 60+ and $1,000 in the trading account |
+| 22.5–28.7 | **B-roll 3:** the minimum Edge Score of every stage as bars (Seed 50, Incubation 60, Acceleration 70, Pro / Pro 500 / Pro M 90); Incubation lights up and fills to 60+ |
+| 28.7–33.0 | Qualify for Incubation: $1,000 in the trading account |
 | 33.0–37.0 | **Music drop** on «ستقوم Axi بتمويلك»: WIDE, 'x10' |
 | 37.0–48.0 | **B-roll 2:** $1,000 → $10,000; $2,000 → $20,000 |
 | 48.0–51.3 | Profile: $20,000, the Incubation cap |
@@ -69,24 +69,35 @@ The series is six videos, one per programme stage:
 | 77.8–85.2 | WIDE, push to HOME: your 40 % share of the profits in your Axi Select account |
 | 85.2–91 | End card «انضم إلى آكسي سيليكت», fade to black |
 
-## Sound
+## Sound (v2)
 
-- **Music:** the same track as video 1, re-cut on its beat grid (three seamless bar-aligned jumps). The drops land on
-  «ستقوم Axi بتمويلك» and just before «مبروك!», with a quiet break bar under «في الفيديو القادم»; the track's own
-  ending lands on the end card.
-- **Ducking:** the music sits 10 dB lower whenever he speaks.
-- **SFX:** CC0 library sounds for the graphics, each placed in a real pause in his speech.
-- **Master:** a static gain to −14 LUFS with a true-peak limit, so there is no pumping.
+- **Voice:** your enhanced recording of Rabee. The old music and effects were separated out of it, and his words, tone and
+  level are kept.
+  - **Echo:** it was a copy of his voice 85 ms away from each word, already in the recording (0:04–0:46). It is now
+    removed.
+  - **Lip-sync:** your enhanced file had moved 0:04–0:45 85 ms early, ahead of his lips. That stretch is moved back, so
+    every word sits on his lips again (measured within 1 ms).
+  - **Two words:** «صفقة» and «تقلّ عن» were blurred by the enhancement and are clear again.
+  - **Last line:** «من الأرباح المحقّقة في حساب التخصيص».
+- **Music:** an original score written in code for this series, using no AI music service: D minor, cello, strings,
+  felt piano and low pulses, with CC0 VSCO-2 samples and my own synthesis.
+  - The drops land on «ستقوم Axi بتمويلك» (0:33) and «مبروك!» (1:16.7), and the end hit lands on the end card.
+  - The level is steady from the title into his first words, with no drop.
+- **SFX:** 162 synthesised cues, one for every element that appears, moves, lands or counts, including the new B-roll 3.
+  None sits on the start of a word.
+- **Mix:** the music sits about 16 dB under the voice. Master −14 LUFS, true peak −1.3 dB.
+- **Subtitles** now follow what he says in the enhanced take (L04, L18, L20, L26, L28, L38). «لتصل» and «60 يوماً» are kept
+  as grammar fixes.
 
 ## Please check before publishing
 
-1. **Drawdown 10 %:** Rabee says the limit is 10 %; axi.com lists −7 % for Incubation. The footnote
+1. **Listen on headphones:** the voice joins at 0:04.3, 0:15.0, 0:19.4 and 0:45.4, where his recording was
+   moved back onto his lips.
+2. **Drawdown 10 %:** Rabee says the limit is 10 %; axi.com lists −7 % for Incubation. The footnote
    «* قد تختلف النسبة حسب المرحلة وفق شروط البرنامج» stays on screen.
-2. **Facts from axi.com:** Edge Score 60, $1,000 minimum, ×10, $20,000 cap, 40 trades, 7 %, 60 days, 40 % share,
+3. **Facts from axi.com:** Edge Score 60, $1,000 minimum, ×10, $20,000 cap, 40 trades, 7 %, 60 days, 40 % share,
    Acceleration $100,000.
-3. **Subtitle grammar:** the subtitle reads «لتصل قيمة التمويل» (he says «ليصل»); say if you want it word for word.
-4. **A quick listen on headphones** to 0:36–0:40 (the restored "$1,000" passage). It passes every measurement, but no
-   one has listened to it yet.
+4. **Subtitle grammar:** the subtitle reads «لتصل قيمة التمويل» (he says «ليصل»); say if you want it word for word.
 5. **Risk warning:** none on screen beyond the end card's T&C line. Confirm with compliance before paid use.
 
 ## Videos 3–6 (Diva): what I need
