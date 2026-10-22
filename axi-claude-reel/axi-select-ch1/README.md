@@ -85,7 +85,11 @@ The series is six videos, one per programme stage:
     hit lands on the end card (1:53.9).
 - **SFX:** 211 synthesised cues for the graphics. None sits on the start of a word. The two windows you flagged (0:03.0–0:04.75
   and 0:41.55–0:43.25) are silent.
-- **Voice:** unchanged (the approved v2 voice).
+- **Voice:** two spots are rebuilt from Rabee's own recordings. In the source, a sound effect covered his voice at both.
+  - «مرحبا بك في» (0:03) is his own clean «مرحبا بك في» from video 2.
+  - «خمسة آلاف دولار» (0:41.6) is assembled from his own syllables: «خمسة» from his «الخامسة» (0:57) in this video, «آلاف»
+    and «دولار» from video 2.
+  - Speech recognition now reads both phrases correctly. Please listen to them once.
 - **Mix:** the music sits about 16 dB under the voice, with a light dip only where needed. Master −14 LUFS, true peak
   −1.3 dB.
 - **Sound code:** shared with video 2, in `../axi-select-sound/`.

@@ -54,7 +54,7 @@ PAL = S3 + "/sfx/palette"
 EPS = {
     "ep2": dict(
         dur=91.0, P=0.63,
-        vo=W2 + "/audio/vo/vo2_sync.wav",                     # final voice: client-enhanced take, cleaned, re-synced to the lips (md5 a359c2a2...)
+        vo=W2 + "/audio/vo/vo2_sync2.wav",                    # final voice + «يتم تطبيقها» doubled 120 ms replaced from the original take
         music=S3 + "/music/ep2", cues=S3 + "/sfx/cues_ep2.json", bed=S3 + "/sfx/bed_ep2.wav", sfx_master_db=2.0,
         protect=[],
         first_word=3.06, title_end=3.00,
@@ -95,7 +95,7 @@ EPS = {
         mux=[(W2 + "/out/v2/pic_subs.mp4", W2 + "/out/final4/AxiSelect_Ch2_Rabee_16x9.mp4")]),   # subtitled version only
     "ep1": dict(
         dur=120.0, P=3.0,
-        vo=W1 + "/audio/vo/vo1_clean_v5.wav",
+        vo=W1 + "/audio/vo/vo1_clean_v6.wav",   # v5 + «مرحبا بك في» and «خمسة آلاف دولار» rebuilt from his own recordings
         music=S3 + "/music/ep1", cues=S3 + "/sfx/cues_ep1.json", bed=S3 + "/sfx/bed_ep1.wav", sfx_master_db=2.0,
         protect=[(3.00, 4.75), (41.55, 43.25)],
         first_word=3.00, title_end=3.00,
@@ -107,7 +107,7 @@ EPS = {
         speech_guard=[(106.05, 106.62, -8.0, 0.0, "«انعكاس» under the 10%-limit cluster (candles print / limit line / step-down "
                                                    "ticks: their 2-8 kHz sum was 7.5 dB over the voice); the mix ASR read «إحكاس», "
                                                    "8 dB down restores «انعكاس»")],
-        spotA=(0.03, 0.66, 4000.0, 14.0, 0.03),                     # VO s window, shelf fc, gain dB, crossfade s
+        spotA=None,                                                # the old spot-A shelf is not needed: «مرحبا بك في» is now a clean take
         cue_fix={   # cue index in cues_ep1.json: the mixer's fixed decisions where no +-1 frame nudge clears a word onset
                     # (per-repeat check: a repeat is dropped when its own 1-8 kHz energy in the onset's first 60 ms is > -6 dB
                     # re the voice at the cue's unreduced level; picture frames checked in AxiSelect_Ch1_Rabee_16x9_v2.mp4)

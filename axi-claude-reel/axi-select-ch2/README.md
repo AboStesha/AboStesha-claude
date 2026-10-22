@@ -78,6 +78,8 @@ The series is six videos, one per programme stage:
   - **Lip-sync:** your enhanced file had moved 0:04–0:45 85 ms early, ahead of his lips. That stretch is moved back, so
     every word sits on his lips again (measured within 1 ms).
   - **Two words:** «صفقة» and «تقلّ عن» were blurred by the enhancement and are clear again.
+  - **«يتم تطبيقها» (0:19):** 0.08 s was playing twice at a join. That piece now comes from his original take, so the
+    word is no longer doubled.
   - **Last line:** «من الأرباح المحقّقة في حساب التخصيص».
 - **Music:** an original score written in code for this series, using no AI music service: D minor, cello, strings,
   felt piano and low pulses, with CC0 VSCO-2 samples and my own synthesis.
