@@ -1,146 +1,159 @@
-# Axi · «بناها متداولون»: voice-over script for ElevenLabs (five voices)
+# Axi · «بناها متداولون»: voice-over lines by character (ElevenLabs)
 
-The words are the locked on-screen script (`docs/SCRIPT_FINAL.md`), unchanged.
-- Each line is spoken by the character on screen in that shot, so the five traders hand the story to each other.
-- Light diacritics mark only the words a voice can misread.
-- «منذ 2007» is written out as «منذُ عام ألفين وسبعة».
-
-## How to generate
-- **Best: Eleven v3 → Text to Dialogue.** Add one row per line below in order, and set each row's voice to the character named.
-- **Or one voice at a time:** use the per-character blocks at the end, then place each line at its timecode.
-- **Tags:** the English words in [brackets] are v3 audio tags and are not spoken.
-  - The first tag sets the feeling of the scene.
-  - The tag after «...» marks where the feeling turns.
+Generate each line as its own clip, and name the file by its number (for example `01_Rojin.mp3`). In the edit, place each clip at its start time.
+- **Model:** Eleven v3, stability Natural (0.5), speed about 0.9.
+- **Tags:** the English words in [brackets] set the feeling and are not spoken.
+  - The first tag is the scene's mood.
+  - The second tag (after «...») is where the feeling turns.
   - Multilingual v2 does not read tags, so delete them there.
-- **Settings:** stability Natural (0.5), speed about 0.9. Keep tags subtle (no crying, no shouting); the film is restrained.
+- **Line 16 (all):** every character records it, and you stack the five takes: Noor at full level, the others about 6 dB lower.
+- **Gap:** leave 0:28.1–0:30.0 silent (the breath before the lift).
 
-## Cast (voice direction for the Voice Library or Voice Design)
-| Character | On screen | Voice to look for |
-|---|---|---|
-| **Rojin** | young woman, light-grey suit, Duhok/Amedi | young female, warm, clear MSA, soft-spoken, a smile in the voice |
-| **Noor** | woman, charcoal suit, citadel and ziggurat | female, 30s, low and composed, confident and sincere: the brand voice |
-| **Aesha** | young woman in hijab, white suit | young female, bright, quick, energetic but controlled |
-| **Saeed** | young man, curly dark hair, black coat, Baghdad | male, about 30, slightly husky, intense, inward |
-| **Sarmad** | older man, grey hair, moustache | male, 50s, deep, slow and warm, the experienced trader |
+## Rojin: 6 lines
 
-## The relay (in order)
-```
-ROJIN:  [softly, nostalgic] أوَّلُ صفقةٍ ناجحة... [a small smile] لا تنساها أبدًا.
+Voice: young female, warm, clear MSA, soft-spoken, a smile in the voice
 
-SARMAD: [quietly satisfied] يرتدُّ السعر... [soft knowing chuckle] من الخطِّ الذي رسمتَه.
-
-ROJIN:  [calm, assured] تلتزمُ بخطَّتِك... [content] فتُؤتي ثمارَها.
-
-AESHA:  [rueful] تشتري متأخِّرًا... [sighs] عند أعلى سعر.
-
-NOOR:   [tense, holding her breath] تدخلُ رغمَ الخوف... [exhales, relieved] وتنجحُ الصفقة.
-
-SARMAD: [tired, low, late at night] صفقةٌ مفتوحة... [weary sigh] ولا تستطيعُ النوم.
-
-SAEED:  [tense, under his breath] تراقبُ الخسارةَ تكبُر... [stubborn] ولا تُغلِقُ الصفقة.
-
-AESHA:  [focused] تضغطُ زرَّ الشراء... [excited, breathless] ويتحرَّكُ السعرُ معك فورًا.
-
-SAEED:  [heavy, deflated] خسارةٌ بعد خسارة... [whispers] وتشكُّ في نفسِك.
-
-ROJIN:  [calm, quiet strength] قرَّرتَ ألّا تدخل... [quietly proud] وكنتَ على حق.
-
-SARMAD: [warm, just woken] تستيقظ... [gentle delight] والصفقةُ وصلت إلى هدفِها.
-
-SAEED:  [sharp, alert] خبرٌ مفاجئ... [grim] يقلبُ السوقَ ضدَّك.
-
-ROJIN:  [awed, rising] تشعرُ أنَّ شموعَك... [quiet wonder] تُحرِّكُ أحداثَ العالم.
-
-NOOR:   [warm, sincere, to the viewer] في آكسي... نحنُ متداولون مثلُك.
-
-ROJIN:  [gentle, empathetic] لذلك نفهمُ ما تمرُّ به... في الأيامِ الصعبةِ والجيِّدة.
-
-ALL:    [confident, proud] بناها متداولون... من أجلِ المتداولين.
-
-NOOR:   [calm, assured signature] آكسي... منذُ عام ألفين وسبعة.
-```
-
-**ALL (line 16):**
-- Generate the line once with each of the five voices, using the same tags.
-- Stack the five takes at 52.65 s: Noor at full level, the other four about 6 dB lower.
-- The result is five traders saying the thesis of the film together, landing on the music's arrival at 52.5.
-
-## Timecodes (place each line at its "in" time)
-| # | in (s) | end by (s) | voice | feeling | line |
-|---|---|---|---|---|---|
-| 1 | 0.15 | 3.6 | Rojin | nostalgic warmth | أوَّلُ صفقةٍ ناجحة... لا تنساها أبدًا |
-| 2 | 3.9 | 6.4 | Sarmad | quiet vindication | يرتدُّ السعر... من الخطِّ الذي رسمتَه |
-| 3 | 6.7 | 9.2 | Rojin | calm discipline paying off | تلتزمُ بخطَّتِك... فتُؤتي ثمارَها |
-| 4 | 9.5 | 12.0 | Aesha | regret, a wince | تشتري متأخِّرًا... عند أعلى سعر |
-| 5 | 12.3 | 14.8 | Noor | fear → relief | تدخلُ رغمَ الخوف... وتنجحُ الصفقة |
-| 6 | 15.1 | 17.6 | Sarmad | sleepless fatigue | صفقةٌ مفتوحة... ولا تستطيعُ النوم |
-| 7 | 17.95 | 21.4 | Saeed | tension, denial | تراقبُ الخسارةَ تكبُر... ولا تُغلِقُ الصفقة |
-| 8 | 21.7 | 25.1 | Aesha | focus → rush | تضغطُ زرَّ الشراء... ويتحرَّكُ السعرُ معك فورًا |
-| 9 | 25.45 | 28.0 | Saeed | defeat, self-doubt | خسارةٌ بعد خسارة... وتشكُّ في نفسِك (then silence: the breath, 28.1–30.0) |
-| 10 | 30.15 | 33.5 | Rojin | quiet strength (the lift) | قرَّرتَ ألّا تدخل... وكنتَ على حق |
-| 11 | 33.9 | 37.3 | Sarmad | morning joy | تستيقظ... والصفقةُ وصلت إلى هدفِها |
-| 12 | 37.65 | 40.1 | Saeed | alarm, gravity | خبرٌ مفاجئ... يقلبُ السوقَ ضدَّك |
-| 13 | 40.45 | 43.9 | Rojin | awe, pride | تشعرُ أنَّ شموعَك... تُحرِّكُ أحداثَ العالم |
-| 14 | 44.2 | 47.6 | Noor | sincere warmth | في آكسي... نحنُ متداولون مثلُك |
-| 15 | 47.95 | 52.3 | Rojin | empathy | لذلك نفهمُ ما تمرُّ به... في الأيامِ الصعبةِ والجيِّدة |
-| 16 | 52.65 | 55.1 | ALL (Noor leads) | unified pride | بناها متداولون... من أجلِ المتداولين |
-| 17 | 55.8 | 58.4 | Noor | calm signature | آكسي... منذُ عام ألفين وسبعة |
-
-## Per-character blocks (for one voice at a time; lines in film order)
-**Rojin**: lines 1, 3, 10, 13, 15 (+16)
+**01_Rojin**: starts 0:00.15, ends by 0:03.60
 ```
 [softly, nostalgic] أوَّلُ صفقةٍ ناجحة... [a small smile] لا تنساها أبدًا.
+```
 
+**03_Rojin**: starts 0:06.70, ends by 0:09.20
+```
 [calm, assured] تلتزمُ بخطَّتِك... [content] فتُؤتي ثمارَها.
+```
 
+**10_Rojin**: starts 0:30.15, ends by 0:33.50
+```
 [calm, quiet strength] قرَّرتَ ألّا تدخل... [quietly proud] وكنتَ على حق.
+```
 
+**13_Rojin**: starts 0:40.45, ends by 0:43.90
+```
 [awed, rising] تشعرُ أنَّ شموعَك... [quiet wonder] تُحرِّكُ أحداثَ العالم.
+```
 
+**15_Rojin**: starts 0:47.95, ends by 0:52.30
+```
 [gentle, empathetic] لذلك نفهمُ ما تمرُّ به... في الأيامِ الصعبةِ والجيِّدة.
+```
 
+**16_Rojin**: starts 0:52.65, ends by 0:55.10 (all five voices, stacked)
+```
 [confident, proud] بناها متداولون... من أجلِ المتداولين.
 ```
-**Noor**: lines 5, 14, 16, 17
+
+## Noor: 4 lines
+
+Voice: female, 30s, low and composed, confident and sincere: the brand voice
+
+**05_Noor**: starts 0:12.30, ends by 0:14.80
 ```
 [tense, holding her breath] تدخلُ رغمَ الخوف... [exhales, relieved] وتنجحُ الصفقة.
+```
 
+**14_Noor**: starts 0:44.20, ends by 0:47.60
+```
 [warm, sincere, to the viewer] في آكسي... نحنُ متداولون مثلُك.
+```
 
+**16_Noor**: starts 0:52.65, ends by 0:55.10 (all five voices, stacked)
+```
 [confident, proud] بناها متداولون... من أجلِ المتداولين.
+```
 
+**17_Noor**: starts 0:55.80, ends by 0:58.40
+```
 [calm, assured signature] آكسي... منذُ عام ألفين وسبعة.
 ```
-**Aesha**: lines 4, 8 (+16)
+
+## Aesha: 3 lines
+
+Voice: young female, bright, quick, energetic but controlled
+
+**04_Aesha**: starts 0:09.50, ends by 0:12.00
 ```
 [rueful] تشتري متأخِّرًا... [sighs] عند أعلى سعر.
+```
 
+**08_Aesha**: starts 0:21.70, ends by 0:25.10
+```
 [focused] تضغطُ زرَّ الشراء... [excited, breathless] ويتحرَّكُ السعرُ معك فورًا.
+```
 
+**16_Aesha**: starts 0:52.65, ends by 0:55.10 (all five voices, stacked)
+```
 [confident, proud] بناها متداولون... من أجلِ المتداولين.
 ```
-**Saeed**: lines 7, 9, 12 (+16)
+
+## Saeed: 4 lines
+
+Voice: male, about 30, slightly husky, intense, inward
+
+**07_Saeed**: starts 0:17.95, ends by 0:21.40
 ```
 [tense, under his breath] تراقبُ الخسارةَ تكبُر... [stubborn] ولا تُغلِقُ الصفقة.
+```
 
+**09_Saeed**: starts 0:25.45, ends by 0:28.00
+```
 [heavy, deflated] خسارةٌ بعد خسارة... [whispers] وتشكُّ في نفسِك.
+```
 
+**12_Saeed**: starts 0:37.65, ends by 0:40.10
+```
 [sharp, alert] خبرٌ مفاجئ... [grim] يقلبُ السوقَ ضدَّك.
+```
 
+**16_Saeed**: starts 0:52.65, ends by 0:55.10 (all five voices, stacked)
+```
 [confident, proud] بناها متداولون... من أجلِ المتداولين.
 ```
-**Sarmad**: lines 2, 6, 11 (+16)
+
+## Sarmad: 4 lines
+
+Voice: male, 50s, deep, slow and warm, the experienced trader
+
+**02_Sarmad**: starts 0:03.90, ends by 0:06.40
 ```
 [quietly satisfied] يرتدُّ السعر... [soft knowing chuckle] من الخطِّ الذي رسمتَه.
+```
 
+**06_Sarmad**: starts 0:15.10, ends by 0:17.60
+```
 [tired, low, late at night] صفقةٌ مفتوحة... [weary sigh] ولا تستطيعُ النوم.
+```
 
+**11_Sarmad**: starts 0:33.90, ends by 0:37.30
+```
 [warm, just woken] تستيقظ... [gentle delight] والصفقةُ وصلت إلى هدفِها.
+```
 
+**16_Sarmad**: starts 0:52.65, ends by 0:55.10 (all five voices, stacked)
+```
 [confident, proud] بناها متداولون... من أجلِ المتداولين.
 ```
 
-## Tips
-- **Line 8** is the fastest read (about 3.4 s). If it runs long, regenerate it alone at speed 1.0.
-- **Mix:** keep the voices about 3 dB above the music and duck the music under them. Leave 28.1–30.0 silent so the breath and the lift still hit.
-- **Weak tags:** if a tag comes out too strong or theatrical, regenerate with only the first tag of the line.
+## Full order (for checking the edit)
+
+| # | start | voice | line |
+|---|---|---|---|
+| 01 | 0:00.15 | Rojin | أوَّلُ صفقةٍ ناجحة... لا تنساها أبدًا. |
+| 02 | 0:03.90 | Sarmad | يرتدُّ السعر... من الخطِّ الذي رسمتَه. |
+| 03 | 0:06.70 | Rojin | تلتزمُ بخطَّتِك... فتُؤتي ثمارَها. |
+| 04 | 0:09.50 | Aesha | تشتري متأخِّرًا... عند أعلى سعر. |
+| 05 | 0:12.30 | Noor | تدخلُ رغمَ الخوف... وتنجحُ الصفقة. |
+| 06 | 0:15.10 | Sarmad | صفقةٌ مفتوحة... ولا تستطيعُ النوم. |
+| 07 | 0:17.95 | Saeed | تراقبُ الخسارةَ تكبُر... ولا تُغلِقُ الصفقة. |
+| 08 | 0:21.70 | Aesha | تضغطُ زرَّ الشراء... ويتحرَّكُ السعرُ معك فورًا. |
+| 09 | 0:25.45 | Saeed | خسارةٌ بعد خسارة... وتشكُّ في نفسِك. |
+| 10 | 0:30.15 | Rojin | قرَّرتَ ألّا تدخل... وكنتَ على حق. |
+| 11 | 0:33.90 | Sarmad | تستيقظ... والصفقةُ وصلت إلى هدفِها. |
+| 12 | 0:37.65 | Saeed | خبرٌ مفاجئ... يقلبُ السوقَ ضدَّك. |
+| 13 | 0:40.45 | Rojin | تشعرُ أنَّ شموعَك... تُحرِّكُ أحداثَ العالم. |
+| 14 | 0:44.20 | Noor | في آكسي... نحنُ متداولون مثلُك. |
+| 15 | 0:47.95 | Rojin | لذلك نفهمُ ما تمرُّ به... في الأيامِ الصعبةِ والجيِّدة. |
+| 16 | 0:52.65 | ALL (Noor leads) | بناها متداولون... من أجلِ المتداولين. |
+| 17 | 0:55.80 | Noor | آكسي... منذُ عام ألفين وسبعة. |
+
+If a line runs past its end time, regenerate it alone at speed 1.0. Line 08 is the tightest at about 3.4 s.
