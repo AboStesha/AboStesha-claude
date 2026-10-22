@@ -95,7 +95,7 @@ EPS = {
         mux=[(W2 + "/out/v2/pic_subs.mp4", W2 + "/out/final4/AxiSelect_Ch2_Rabee_16x9.mp4")]),   # subtitled version only
     "ep1": dict(
         dur=120.0, P=3.0,
-        vo=W1 + "/audio/vo/vo1_clean_v6.wav",   # v5 + «مرحبا بك في» and «خمسة آلاف دولار» rebuilt from his own recordings
+        vo=W1 + "/audio/vo/vo1_clean_v7.wav",   # v5 + «مرحبا بك في» rebuilt from his own recording (video 2); «5000» as in v5
         music=S3 + "/music/ep1", cues=S3 + "/sfx/cues_ep1.json", bed=S3 + "/sfx/bed_ep1.wav", sfx_master_db=2.0,
         protect=[(3.00, 4.75), (41.55, 43.25)],
         first_word=3.00, title_end=3.00,
