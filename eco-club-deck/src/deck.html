@@ -1,0 +1,616 @@
+<title>نادي البيئة الثقافي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="مقترح استثماري تفاعلي لنادي البيئة الثقافي «جنائن» في بغداد">
+<style>
+{{FONTS}}
+{{CSS}}
+</style>
+
+<div id="app" dir="rtl" lang="ar">
+  <div class="bgs" aria-hidden="true"></div>
+  <canvas class="contours" aria-hidden="true"></canvas>
+  <canvas class="motes" aria-hidden="true"></canvas>
+
+  <div class="stage-wrap">
+    <main class="stage">
+
+      <!-- ============ 1. COVER ============ -->
+      <section class="slide s-cover" id="s-cover" data-chapter="المشروع" data-title="الغلاف" data-bg="hero" data-veil="cover" data-motes="1">
+        <div class="cover-eyebrow" data-a data-d="1">
+          <span class="tag p1">مقترح استثماري · بغداد ٢٠٢٦</span>
+          <span class="tag">وزارة البيئة × وزارة الثقافة</span>
+          <span class="tag">٥ دونم · ١٢٬٥٠٠ م²</span>
+        </div>
+        <div class="cover-title">
+          <h1 class="h-xl" data-a data-d="2">{{BRAND_AR}}</h1>
+          <div class="sub" data-a data-d="3">
+            <div class="en">{{BRAND_EN}}</div>
+            <div class="ar">نادي البيئة الثقافي</div>
+          </div>
+        </div>
+        <p class="cover-line" data-a data-d="4">{{TAGLINE}}</p>
+        <div class="cover-foot" data-a data-d="5">
+          <div class="to">
+            <div><span>مقدَّم إلى</span><b>معالي وزيرة البيئة</b></div>
+            <div><span>بالشراكة مع</span><b>وزارة الثقافة</b></div>
+            <div><span>وإلى</span><b>الشريك المستثمر</b></div>
+          </div>
+          <button class="btn" type="button" data-magnetic data-go="s-glance">ابدأ العرض
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ============ 2. GLANCE ============ -->
+      <section class="slide" id="s-glance" data-chapter="المشروع" data-title="المشروع في دقيقة">
+        <div class="kicker" data-a><span class="bar"></span>المشروع في دقيقة<span class="lat">At a glance</span></div>
+        <h2 class="h-l" data-a data-d="1" style="max-width:24ch">نادي عضويات أخضر يجمع <span class="gold">الحضارة والطبيعة والترفيه</span> في مكان واحد</h2>
+        <p class="lead" data-a data-d="2" style="max-width:62ch">{{GLANCE_LEAD}}</p>
+        <div class="glance-grid" data-a data-d="3" style="margin-top:44px">
+          <div class="stat"><div class="v"><span data-count="12500">١٢٬٥٠٠</span><small>م²</small></div><div class="l">٥ دونم عراقي (الدونم = ٢٬٥٠٠ م²)<br>الأرض على الدولة</div></div>
+          <div class="stat"><div class="v"><span data-count="2" data-dur="900">٢</span><small>مليون $</small></div><div class="l">ميزانية المرحلة الأولى<br>بناء وتجهيز وتشغيل أولي</div></div>
+          <div class="stat"><div class="v"><span data-count="{{OPEN_MONTH}}" data-dur="1200">١٢</span><small>شهراً</small></div><div class="l">حتى افتتاح المرحلة الأولى<br>والمرحلة الثانية من الأرباح</div></div>
+          <div class="stat"><div class="v"><span data-count="{{IDEAS_COUNT}}">٥٠</span><small>فكرة</small></div><div class="l">قيّمها مجلس من ٦ خبراء<br>ورتّبها بالأرقام</div></div>
+        </div>
+        <div class="pillars mt-auto" data-a data-d="4">
+          <div class="pillar" style="--c:var(--palm)"><h3>بيئة</h3><p>أول نادٍ في العراق يقيس أثره البيئي ويعلنه: أشجار، طاقة شمسية، تدوير.</p></div>
+          <div class="pillar" style="--c:var(--clay)"><h3>ثقافة</h3><p>سومر وبابل وبغداد العباسية تُعاش هنا يومياً، ولا تُعرض خلف زجاج.</p></div>
+          <div class="pillar" style="--c:var(--lapis)"><h3>ترفيه</h3><p>تجارب جماعية لم يرها العراق: لوكا لاند، قاعة فورتكس، تحديات تراثية.</p></div>
+          <div class="pillar" style="--c:var(--gold)"><h3>رياضة</h3><p>فروسية وبولو الساحات وتحديات كرة القدم وألعاب الفرق.</p></div>
+        </div>
+      </section>
+
+      <!-- ============ 3. WHY ============ -->
+      <section class="slide" id="s-why" data-chapter="المشروع" data-title="لماذا الآن">
+        <div class="head">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>لماذا هذا المشروع مهم<span class="lat">Why now</span></div>
+            <h2 class="h-l" data-a data-d="1">بغداد شابّة، حارّة، وتفقد خضرتها</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:40ch">جمهور ضخم يبحث عن مكان نظيف وآمن وممتع، ومدينة تحتاج ظلّاً وهواءً وثقافة. هذا النادي يجيب عن الحاجتين معاً.</p>
+        </div>
+        <div class="why-grid">{{WHY_CARDS}}</div>
+      </section>
+
+      <!-- ============ 4. COUNCIL ============ -->
+      <section class="slide" id="s-council" data-chapter="المجلس والفكرة" data-title="مجلس الخبراء">
+        <div class="kicker" data-a><span class="bar"></span>مجلس الخبراء<span class="lat">The council</span></div>
+        <div class="council">
+          <div class="table" data-a="scale" data-d="1">
+            <div class="ring"></div><div class="ring r2"></div>
+            <div class="core"><div><b>المجلس</b><span>مرّر على أي مقعد</span></div></div>
+          </div>
+          <div class="persona" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- ============ 5. MERGE ============ -->
+      <section class="slide" id="s-merge" data-chapter="المجلس والفكرة" data-title="طريقة تفكيرهم + أفكارك">
+        <div class="head">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>تحليل طريقة التفكير<span class="lat">Reading the brief</span></div>
+            <h2 class="h-l" data-a data-d="1">ماذا طلبت الوزارتان، وماذا تريدان فعلاً</h2>
+          </div>
+        </div>
+        <div class="merge">
+          <div class="colm" style="--c:var(--sand-2)" data-a data-d="2">
+            <h3><i></i>ما طلبوه</h3>
+            {{ASKED}}
+          </div>
+          <div class="colm" style="--c:var(--gold)" data-a data-d="3">
+            <h3><i></i>ما يريدونه فعلاً</h3>
+            {{WANT}}
+          </div>
+          <div class="colm" style="--c:var(--lapis)" data-a data-d="4">
+            <h3><i></i>ما تضيفه أفكارك</h3>
+            {{ADDS}}
+          </div>
+          <div class="fusion" data-a="scale" data-d="5">
+            <span class="eq">طلبهم + دوافعهم + أفكارك =</span>
+            <h3>{{FUSION_TITLE}}</h3>
+            <p>{{FUSION_TEXT}}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6. HILL ============ -->
+      <section class="slide" id="s-hill" data-chapter="المجلس والفكرة" data-title="التلّة: الفكرة المعمارية">
+        <div class="hill">
+          <div class="col">
+            <div class="kicker" data-a><span class="bar"></span>الفكرة المعمارية<span class="lat">The Hill</span></div>
+            <h2 class="h-l" data-a data-d="1">تلّة واحدة،<br><span class="gold">ثلاث تجارب</span></h2>
+            <p class="lead" data-a data-d="2">بدل ثلاثة مبانٍ منفصلة، نرفع الأرض نفسها في موجة خضراء انسيابية: القاعة في بطنها، والمسرح على كتفها، والسماء فوقها. نوفّر الأرض، ونعزل الحرّ، ونصنع معلماً يُصوَّر.</p>
+            <div class="hill-list" data-a data-d="3" style="margin-top:14px">
+              <button type="button" class="hill-item" data-l="3" style="--c:var(--palm)"><span class="n">٣</span><span><h3>قمّة التلّة · Bending with Nature</h3><p>أعلى نقطة في النادي، تواجه الغروب: تأمّل ونجوم ويوغا وورش فنية.</p></span></button>
+              <button type="button" class="hill-item" data-l="2" style="--c:var(--gold)"><span class="n">٢</span><span><h3>المسرح الروماني الحديث</h3><p>مدرجات محفورة في الكتف الشرقي، تطلّ على الخشبة وساحة الفروسية معاً.</p></span></button>
+              <button type="button" class="hill-item" data-l="1" style="--c:var(--lapis)"><span class="n">١</span><span><h3>قاعة فورتكس</h3><p>قاعة الشاشة العملاقة تحت سقف أخضر وتربة تخفّض حرارتها وكلفة تبريدها.</p></span></button>
+            </div>
+          </div>
+          <div class="iso-wrap" data-a="scale" data-d="2">
+            <div class="iso">
+              <div class="layer l1" data-l="1">
+                <svg viewBox="0 0 520 520" aria-hidden="true">
+                  <path d="M250 36C360 30 470 92 486 214C500 330 430 468 290 484C160 498 52 420 38 290C26 170 120 42 250 36Z" fill="#0d1f2c" stroke="#5675DB" stroke-width="3"/>
+                  <rect x="120" y="150" width="280" height="230" rx="40" fill="#13264a" stroke="#5675DB" stroke-width="2" opacity=".9"/>
+                  <path d="M150 170Q260 140 370 170" stroke="#9fb3ff" stroke-width="8" fill="none" stroke-linecap="round"/>
+                  <g stroke="#5675DB" stroke-width="2" fill="none" opacity=".8"><path d="M160 230Q260 205 360 230"/><path d="M160 262Q260 237 360 262"/><path d="M160 294Q260 269 360 294"/><path d="M160 326Q260 301 360 326"/><path d="M170 356Q260 333 350 356"/></g>
+                  <rect x="236" y="384" width="48" height="60" rx="6" fill="#5675DB" opacity=".7"/>
+                </svg>
+              </div>
+              <div class="layer l2" data-l="2">
+                <svg viewBox="0 0 520 520" aria-hidden="true">
+                  <path d="M250 36C360 30 470 92 486 214C500 330 430 468 290 484C160 498 52 420 38 290C26 170 120 42 250 36Z" fill="rgba(217,168,69,.08)" stroke="#D9A845" stroke-width="2.5" stroke-dasharray="6 6"/>
+                  <g fill="none" stroke="#D9A845" stroke-width="5" stroke-linecap="round"><path d="M330 150Q420 260 330 370"/><path d="M360 128Q470 260 360 392" opacity=".85"/><path d="M392 110Q515 260 392 410" opacity=".7"/><path d="M424 96Q548 260 424 424" opacity=".55"/></g>
+                  <path d="M300 205Q340 260 300 315" fill="#D9A845" opacity=".5"/>
+                </svg>
+              </div>
+              <div class="layer l3" data-l="3">
+                <svg viewBox="0 0 520 520" aria-hidden="true">
+                  <path d="M250 36C360 30 470 92 486 214C500 330 430 468 290 484C160 498 52 420 38 290C26 170 120 42 250 36Z" fill="rgba(63,143,95,.55)" stroke="#63B383" stroke-width="3"/>
+                  <g fill="none" stroke="#9ad9b0" stroke-width="1.6" opacity=".75">
+                    <path d="M246 80C340 76 432 128 444 222C454 316 396 428 286 440C180 452 92 386 82 286C72 186 150 84 246 80Z"/>
+                    <path d="M240 128C318 126 392 168 400 240C408 312 360 396 280 404C200 412 132 360 126 284C118 208 170 132 240 128Z"/>
+                    <path d="M236 176C292 176 344 204 348 256C352 308 318 360 266 364C214 368 174 336 172 286C170 236 192 178 236 176Z"/>
+                    <path d="M232 222C266 222 296 240 296 268C296 296 276 318 250 318C224 318 208 300 208 274C208 248 214 222 232 222Z"/>
+                  </g>
+                  <circle cx="70" cy="120" r="22" fill="#F2CD7C"/>
+                  <g fill="#EFE4CD"><circle cx="230" cy="262" r="4"/><circle cx="250" cy="282" r="4"/><circle cx="214" cy="290" r="4"/><circle cx="268" cy="250" r="4"/></g>
+                </svg>
+              </div>
+            </div>
+            <button type="button" class="btn ghost hill-toggle"><span>فكّ الطبقات</span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 7. MASTER PLAN ============ -->
+      <section class="slide" id="s-plan" data-chapter="المكان" data-title="المخطط العام">
+        <div class="head" style="margin-bottom:22px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>المخطط العام<span class="lat">Master plan · 12,500 m²</span></div>
+            <h2 class="h-m" data-a data-d="1">كيف نوزّع ١٢٬٥٠٠ م² على سبع مناطق</h2>
+          </div>
+          <p class="micro" data-a data-d="2" style="max-width:36ch">مخطط استرشادي بافتراض قطعة ١٢٥×١٠٠ م والشارع جنوباً؛ يُعدَّل بعد المسح الفعلي للموقع. اضغط أي منطقة لفتح صفحتها.</p>
+        </div>
+        <div class="plan">
+          <div class="plan-svg" data-a="scale" data-d="2">{{PLAN_SVG}}</div>
+          <div class="plan-panel" data-a data-d="3">
+            <div class="zone-list"></div>
+            <div class="zone-detail"><h3>مرّر على المخطط</h3><p class="small muted" style="margin-top:6px">{{PLAN_IDLE}}</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 8. VORTEX ============ -->
+      <section class="slide" id="s-vortex" data-chapter="المكان" data-title="قاعة فورتكس">
+        <div class="zone-slide">
+          <div class="zone-copy">
+            <div class="kicker" data-a><span class="bar"></span>المنطقة ٣ · داخل التلّة<span class="lat">Vortex Hall</span></div>
+            <h2 class="h-l" data-a data-d="1">قاعة فورتكس</h2>
+            <div class="en" data-a data-d="1">VORTEX HALL · THE BIG SCREEN</div>
+            <p class="lead" data-a data-d="2">{{VORTEX_LEAD}}</p>
+            <div class="io" data-a data-d="3">
+              <div><h4>من الخارج</h4><p>{{VORTEX_OUT}}</p></div>
+              <div><h4>من الداخل</h4><p>{{VORTEX_IN}}</p></div>
+            </div>
+            <div class="facts" data-a data-d="4">{{VORTEX_FACTS}}</div>
+          </div>
+          <div class="media" id="m-vortex" data-a="wipe" data-d="1" data-depth="1">
+            <img data-img="vortex_int" class="swap is-on" data-k="in" alt="داخل قاعة فورتكس أثناء عرض مباراة على الشاشة العملاقة">
+            <img data-img="vortex_ext" class="swap" data-k="out" alt="مدخل قاعة فورتكس الخارج من تحت التلة الخضراء">
+            <div class="media-tabs"><div class="tabs" role="tablist" data-swap-group="m-vortex">
+              <button type="button" role="tab" aria-selected="true" data-k="in" data-cap="ليلة مباراة على الشاشة المنحنية">من الداخل</button>
+              <button type="button" role="tab" aria-selected="false" data-k="out" data-cap="المدخل المستقل للفعاليات">من الخارج</button>
+            </div></div>
+            <span class="cap">ليلة مباراة على الشاشة المنحنية</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 9. THEATER + SUMMIT ============ -->
+      <section class="slide" id="s-theater" data-chapter="المكان" data-title="المسرح وقمة التلّة">
+        <div class="zone-slide flip">
+          <div class="media" id="m-theater" data-a="wipe" data-d="1" data-depth="1">
+            <img data-img="theater" class="swap is-on" data-k="th" alt="المسرح الروماني الحديث المحفور في التلة وقت الغروب">
+            <img data-img="summit" class="swap" data-k="su" alt="قمة التلة: يوغا ورصد نجوم مقابل الغروب">
+            <div class="media-tabs"><div class="tabs" role="tablist" data-swap-group="m-theater">
+              <button type="button" role="tab" aria-selected="true" data-k="th" data-panel="th" data-cap="أمسية مقام عراقي على المسرح">المسرح</button>
+              <button type="button" role="tab" aria-selected="false" data-k="su" data-panel="su" data-cap="الغروب من قمّة التلّة">قمّة التلّة</button>
+            </div></div>
+            <span class="cap">أمسية مقام عراقي على المسرح</span>
+          </div>
+          <div class="zone-copy">
+            <div class="kicker" data-a><span class="bar"></span>المنطقة ٣ · كتف التلّة وقمّتها<span class="lat">Amphitheatre & summit</span></div>
+            <div data-panel-id="th">
+              <h2 class="h-l" data-a data-d="1">المسرح الروماني الحديث</h2>
+              <div class="en">MODERN AMPHITHEATRE</div>
+              <p class="lead">{{THEATER_LEAD}}</p>
+              <div class="io"><div><h4>من الخارج</h4><p>{{THEATER_OUT}}</p></div><div><h4>البرنامج</h4><p>{{THEATER_PROG}}</p></div></div>
+            </div>
+            <div data-panel-id="su" hidden>
+              <h2 class="h-l">قمّة التلّة</h2>
+              <div class="en">BENDING WITH NATURE</div>
+              <p class="lead">{{SUMMIT_LEAD}}</p>
+              <div class="io"><div><h4>التصميم</h4><p>{{SUMMIT_OUT}}</p></div><div><h4>البرنامج</h4><p>{{SUMMIT_PROG}}</p></div></div>
+            </div>
+            <div class="facts" data-a data-d="4">{{THEATER_FACTS}}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 10. ARENA ============ -->
+      <section class="slide" id="s-arena" data-chapter="المكان" data-title="الفروسية والبولو" data-bg="polo" data-veil="soft">
+        <div class="col" style="max-width:820px;margin-top:auto">
+          <div class="kicker" data-a><span class="bar"></span>المنطقة ٢<span class="lat">Equestrian & arena polo</span></div>
+          <h2 class="h-l" data-a data-d="1">ساحة الفروسية والبولو</h2>
+          <p class="lead" data-a data-d="2" style="max-width:56ch">{{ARENA_LEAD}}</p>
+        </div>
+        <div class="grid g3" style="margin-top:28px" data-a data-d="3">
+          {{ARENA_CARDS}}
+        </div>
+        <div class="facts" style="margin-top:24px" data-a data-d="4">{{ARENA_FACTS}}</div>
+      </section>
+
+      <!-- ============ 11. BEFORE CHRIST ============ -->
+      <section class="slide" id="s-bc" data-chapter="المكان" data-title="قسم «قبل الميلاد»">
+        <div class="bc">
+          <div class="zone-copy">
+            <div class="kicker" data-a><span class="bar"></span>المنطقة ٤<span class="lat">Before Christ · ق.م</span></div>
+            <h2 class="h-l" data-a data-d="1">قسم «قبل الميلاد»</h2>
+            <p class="lead" data-a data-d="2" style="font-size:21px">{{BC_LEAD}}</p>
+            <div class="bc-tabs" data-a data-d="3">
+              <button type="button" class="bc-tab is-on" data-k="gate" data-cap="البوابة: هنا تُسلَّم الهواتف"><span class="n">٠</span><span><h4>البوابة والقرية</h4><p>{{BC_GATE}}</p></span></button>
+              <button type="button" class="bc-tab" data-k="food" data-cap="مطعم الأجداد على ضوء الشموع"><span class="n">١</span><span><h4>مطعم الأجداد</h4><p>{{BC_FOOD}}</p></span></button>
+              <button type="button" class="bc-tab" data-k="hand" data-cap="معرض «صُنع في اليد» ومزاده الأسبوعي"><span class="n">٢</span><span><h4>صُنع في اليد</h4><p>{{BC_HAND}}</p></span></button>
+              <button type="button" class="bc-tab" data-k="wisdom" data-cap="بيت الحكمة: صالون الأدباء"><span class="n">٣</span><span><h4>بيت الحكمة</h4><p>{{BC_WISDOM}}</p></span></button>
+              <button type="button" class="bc-tab" data-k="work" data-cap="ورش العطور العباسية والفسيفساء"><span class="n">٤</span><span><h4>ورش التلّة العالية</h4><p>{{BC_WORK}}</p></span></button>
+            </div>
+            <div class="bc-rules" data-a data-d="4">
+              <span class="tag">بلا هواتف · صناديق أمانات</span><span class="tag">شموع وفوانيس ليلاً</span><span class="tag">موسيقى حيّة بلا مكبّرات</span><span class="tag">قهوة على الفحم</span>
+            </div>
+          </div>
+          <div class="media" data-a="wipe" data-d="1" data-depth="1">
+            <img data-img="bc_ext" class="swap is-on" data-k="gate" alt="بوابة قرية قبل الميلاد ليلاً مع الشموع وخزائن الهواتف">
+            <img data-img="bc_restaurant" class="swap" data-k="food" alt="مطعم الأجداد على ضوء الشموع مع عازف عود">
+            <img data-img="gallery" class="swap" data-k="hand" alt="معرض صنع في اليد أثناء مزاد">
+            <img data-img="wisdom" class="swap" data-k="wisdom" alt="صالون بيت الحكمة مع أدباء وشعراء">
+            <img data-img="workshop" class="swap" data-k="work" alt="ورشة صناعة العطور والفسيفساء">
+            <span class="cap">البوابة: هنا تُسلَّم الهواتف</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 12. FOOD ============ -->
+      <section class="slide" id="s-food" data-chapter="المكان" data-title="المطاعم والمقاهي">
+        <div class="zone-slide">
+          <div class="zone-copy">
+            <div class="kicker" data-a><span class="bar"></span>المنطقة ٦<span class="lat">Food & drink</span></div>
+            <div data-panel-id="uruk">
+              <h2 class="h-l" data-a data-d="1">مطعم أوروك</h2>
+              <div class="en">URUK · VENICE IN THE DESERT</div>
+              <p class="lead" data-a data-d="2">{{URUK_LEAD}}</p>
+              <ul class="ticks" data-a data-d="3" style="margin-top:20px">{{URUK_TICKS}}</ul>
+            </div>
+            <div data-panel-id="fs" hidden>
+              <h2 class="h-l">فود ستيشن</h2>
+              <div class="en">FOOD STATION · PLAY & DINE</div>
+              <p class="lead">{{FS_LEAD}}</p>
+              <ul class="ticks" style="margin-top:20px">{{FS_TICKS}}</ul>
+            </div>
+            <div class="facts" data-a data-d="4">{{FOOD_FACTS}}</div>
+          </div>
+          <div class="media" id="m-food" data-a="wipe" data-d="1" data-depth="1">
+            <img data-img="uruk" class="swap is-on" data-k="uruk" alt="مطعم أوروك: قنوات أسماك بجانب الطاولات وشواء المسكوف">
+            <img data-img="foodstation" class="swap" data-k="fs" alt="فود ستيشن: مقصورات خاصة بشاشة وجهاز ألعاب">
+            <div class="media-tabs"><div class="tabs" role="tablist" data-swap-group="m-food">
+              <button type="button" role="tab" aria-selected="true" data-k="uruk" data-panel="uruk" data-cap="اصطد سمكتك، والشيف يشويها مسكوفاً">أوروك</button>
+              <button type="button" role="tab" aria-selected="false" data-k="fs" data-panel="fs" data-cap="مقصورة لكل مجموعة: شاشة وجهاز ألعاب وطلبات">فود ستيشن</button>
+            </div></div>
+            <span class="cap">اصطد سمكتك، والشيف يشويها مسكوفاً</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 13. LUCA LAND ============ -->
+      <section class="slide" id="s-luca" data-chapter="المكان" data-title="لوكا لاند">
+        <div class="luca">
+          <div class="col" style="gap:0">
+            <div class="kicker" data-a><span class="bar"></span>المنطقة ٥<span class="lat">Luca Land · adventure zone</span></div>
+            <h2 class="h-l" data-a data-d="1">لوكا لاند</h2>
+            <p class="lead" data-a data-d="2" style="font-size:20px;max-width:60ch">{{LUCA_LEAD}}</p>
+            <div class="luca-filter" data-a data-d="3">
+              <button type="button" class="is-on" data-f="all">الكل</button>
+              <button type="button" data-f="P1">الافتتاح</button>
+              <button type="button" data-f="P2">المرحلة ٢</button>
+              <button type="button" data-f="EVENT">فعاليات</button>
+              <button type="button" data-f="REPLACE">بدائل ذكية</button>
+            </div>
+            <div class="games" data-a data-d="4"></div>
+          </div>
+          <div class="luca-media" data-a="wipe" data-d="2">
+            <div class="media" data-depth="1"><img data-img="luca" alt="داخل جناح المغامرات: أرضية تفاعلية وغرفة تكسير وأركيد"><span class="cap">جناح المغامرات من الداخل</span></div>
+            <div class="duo">
+              <div class="media" data-depth=".6"><img data-img="challenge" alt="بطولة الألعاب التراثية: شد الحبل والدعبل"><span class="cap">تحدّي الأجداد</span></div>
+              <div class="media" data-depth=".6"><img data-img="luca_ext" alt="جناح لوكا لاند من الخارج مع المتاهة الملوّنة"><span class="cap">الجناح والمتاهة</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 14. NEXT PHASE ============ -->
+      <section class="slide" id="s-next" data-chapter="المكان" data-title="المرحلة الثانية" data-bg="balloons" data-veil="soft">
+        <div class="col" style="max-width:860px;margin-top:auto">
+          <div class="kicker" data-a><span class="bar"></span>بعد الافتتاح<span class="lat">Phase 2 · funded by year-one profits</span></div>
+          <h2 class="h-l" data-a data-d="1">المرحلة الثانية تُبنى من أرباح السنة الأولى</h2>
+          <p class="lead" data-a data-d="2" style="max-width:60ch">{{NEXT_LEAD}}</p>
+        </div>
+        <div class="grid g4" style="margin-top:30px" data-a data-d="3">{{NEXT_CARDS}}</div>
+      </section>
+
+      <!-- ============ 15. ECO ============ -->
+      <section class="slide" id="s-eco" data-chapter="الرسالة" data-title="رسالة وزارة البيئة" data-bg="forest" data-veil="deep">
+        <div class="eco">
+          <div class="col">
+            <div class="kicker" data-a><span class="bar"></span>ما يقدّمه المشروع لوزارة البيئة<span class="lat">Environmental mission</span></div>
+            <h2 class="h-l" data-a data-d="1">نادٍ يقيس أثره البيئي <span class="gold">ويعلنه كل شهر</span></h2>
+            <p class="lead" data-a data-d="2" style="max-width:52ch">{{ECO_LEAD}}</p>
+            <div class="kpi-row" data-a data-d="3" style="margin-top:12px">{{ECO_KPIS}}</div>
+            <div class="eco-programs" data-a data-d="4">{{ECO_PROGRAMS}}</div>
+          </div>
+          <div class="loop" data-a="scale" data-d="2">
+            <svg viewBox="0 0 600 600" aria-label="دورة الاستدامة في النادي"></svg>
+            <div class="loop-center"><div><b>دورة جنائن الخضراء</b><span>كل عملية في النادي تغذّي التي بعدها. مرّر على المراحل.</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 16. CULTURE ============ -->
+      <section class="slide" id="s-culture" data-chapter="الرسالة" data-title="رسالة وزارة الثقافة">
+        <div class="head" style="margin-bottom:24px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>ما يقدّمه المشروع لوزارة الثقافة<span class="lat">A week of culture</span></div>
+            <h2 class="h-l" data-a data-d="1">أسبوع ثقافي لا يتوقف</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:44ch">{{CULTURE_LEAD}}</p>
+        </div>
+        <div class="week"></div>
+      </section>
+
+      <!-- ============ 17. RANKING ============ -->
+      <section class="slide" id="s-rank" data-chapter="الأولويات" data-title="ترتيب الأفكار">
+        <div class="head" style="margin-bottom:18px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>ترتيب الأفكار من الأهم إلى الأقل<span class="lat">Idea scorecard</span></div>
+            <h2 class="h-m" data-a data-d="1">{{RANK_TITLE}}</h2>
+          </div>
+        </div>
+        <div class="rank">
+          <div class="col" style="gap:0" data-a data-d="2">
+            <div class="rank-controls">
+              <button type="button" class="is-on" data-k="total">المجموع</button>
+              <button type="button" data-k="revenue">العائد</button>
+              <button type="button" data-k="street">جاذبية الشارع</button>
+              <button type="button" data-k="eco">بيئة وثقافة</button>
+              <button type="button" data-k="feas">قابلية التنفيذ</button>
+              <button type="button" data-k="viral">الانتشار</button>
+            </div>
+            <div class="rank-list"></div>
+            <div class="rank-controls rank-pages" style="margin-top:10px"></div>
+          </div>
+          <div class="rank-side" data-a data-d="3">
+            <div class="card plain rank-tip" style="padding:0">
+              <h3>كيف حسبنا الدرجة</h3>
+              <p class="small muted" style="margin:4px 0 12px">كل فكرة أخذت من ١ إلى ٥ في خمسة معايير، ثم جُمعت بالأوزان التالية من ١٠٠. مرّر على أي فكرة لترى تفاصيلها.</p>
+              <div class="legend-weights">
+                <div><span>العائد المالي</span><b>٢٥</b></div><div><span>جاذبية الشارع العراقي</span><b>٢٥</b></div><div><span>القيمة البيئية والثقافية</span><b>٢٠</b></div><div><span>قابلية التنفيذ على الأرض والميزانية</span><b>٢٠</b></div><div><span>الانتشار في السوشيال ميديا</span><b>١٠</b></div>
+              </div>
+            </div>
+            <div class="micro">المقياس الحالي: <span class="rank-scale"></span></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag p1">الافتتاح</span><span class="tag p2">المرحلة ٢</span><span class="tag ev">فعالية</span><span class="tag rep">بديل</span><span class="tag drop">مؤجّل</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 18. SWAPS ============ -->
+      <section class="slide" id="s-swaps" data-chapter="الأولويات" data-title="تعديلات ذكية">
+        <div class="head">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>تعديلات ذكية<span class="lat">Keep the spirit, change the method</span></div>
+            <h2 class="h-l" data-a data-d="1">نحتفظ بروح الفكرة، ونغيّر طريقة تنفيذها</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:38ch">بعض الأفكار رائعة لكنها لا تناسب الأرض أو القانون أو أزمة المياه. مرّر على كل بطاقة لترى البديل.</p>
+        </div>
+        <div class="swaps"></div>
+      </section>
+
+      <!-- ============ 19. BUDGET ============ -->
+      <section class="slide" id="s-budget" data-chapter="الأرقام" data-title="توزيع الميزانية">
+        <div class="budget">
+          <div class="donut" data-a="scale" data-d="1">
+            <svg aria-label="توزيع ميزانية المرحلة الأولى"></svg>
+            <div class="donut-center"><div><div class="v">٢٬٠٠٠٬٠٠٠</div><div class="p">دولار أمريكي</div><div class="l">ميزانية المرحلة الأولى<br><span class="micro">مرّر على أي جزء</span></div></div></div>
+          </div>
+          <div class="col">
+            <div class="kicker" data-a><span class="bar"></span>أين تذهب الـ ٢ مليون دولار<span class="lat">Phase-1 capex</span></div>
+            <h2 class="h-m" data-a data-d="1">{{BUDGET_TITLE}}</h2>
+            <p class="small muted" data-a data-d="2" style="max-width:62ch">{{BUDGET_NOTE}}</p>
+            <div class="blist" data-a data-d="3" style="margin-top:8px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 20. LEVERAGE ============ -->
+      <section class="slide" id="s-leverage" data-chapter="الأرقام" data-title="التمويل الذكي">
+        <div class="kicker" data-a><span class="bar"></span>التمويل الذكي<span class="lat">Beyond the two million</span></div>
+        <h2 class="h-l" data-a data-d="1" style="max-width:26ch">{{LEV_TITLE}}</h2>
+        <p class="lead" data-a data-d="2" style="max-width:66ch">{{LEV_LEAD}}</p>
+        <div class="lev" style="margin-top:34px">
+          <div class="lev-bar" data-a="wipe" data-d="3"></div>
+          <div class="grid g4" data-a data-d="4">{{LEV_CARDS}}</div>
+        </div>
+      </section>
+
+      <!-- ============ 21. REVENUE ============ -->
+      <section class="slide" id="s-revenue" data-chapter="الأرقام" data-title="العائد المتوقع">
+        <div class="head" style="margin-bottom:24px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>العائد المتوقع سنوياً<span class="lat">Steady-state year (Y2–Y3)</span></div>
+            <h2 class="h-m" data-a data-d="1">{{REV_TITLE}}</h2>
+          </div>
+          <div class="tabs rev-tabs" role="tablist" data-a data-d="2">
+            <button type="button" role="tab" aria-selected="false" data-sc="0">محافظ</button>
+            <button type="button" role="tab" aria-selected="true" data-sc="1">أساسي</button>
+            <button type="button" role="tab" aria-selected="false" data-sc="2">متفائل</button>
+          </div>
+        </div>
+        <div class="rev">
+          <div class="col" data-a data-d="3">
+            <div class="streams"></div>
+            <p class="micro" style="margin-top:12px">{{REV_ASSUMP}}</p>
+          </div>
+          <div class="pnl" data-a data-d="4"></div>
+        </div>
+      </section>
+
+      <!-- ============ 22. CALCULATOR ============ -->
+      <section class="slide" id="s-calc" data-chapter="الأرقام" data-title="حاسبة العائد">
+        <div class="calc">
+          <div class="col">
+            <div class="kicker" data-a><span class="bar"></span>جرّب بنفسك<span class="lat">Live payback calculator</span></div>
+            <h2 class="h-m" data-a data-d="1">حرّك الافتراضات وشاهد متى تعود الـ ٢ مليون</h2>
+            <div class="sliders" data-a data-d="2" style="margin-top:14px">{{CALC_SLIDERS}}</div>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:6px" data-a data-d="3"><button type="button" class="btn ghost" data-act="calc-reset">إرجاع الافتراضات الأساسية</button><span class="micro">{{CALC_NOTE}}</span></div>
+          </div>
+          <div data-a="scale" data-d="2">
+            <div class="gauge">
+              <svg viewBox="0 0 540 300" aria-hidden="true">
+                <path d="M40 270A230 230 0 0 1 500 270" fill="none" stroke="rgba(239,228,205,.1)" stroke-width="26" stroke-linecap="round"/>
+                <path id="gauge-arc" d="M40 270A230 230 0 0 1 500 270" fill="none" stroke="var(--palm)" stroke-width="26" stroke-linecap="round" stroke-dasharray="0 1000" style="transition:stroke-dasharray .6s var(--ease),stroke .4s"/>
+                <text x="40" y="298" fill="#8C826D" font-size="14" text-anchor="middle" font-family="Readex Pro, sans-serif">٨+ سنوات</text>
+                <text x="500" y="298" fill="#8C826D" font-size="14" text-anchor="middle" font-family="Readex Pro, sans-serif">فوري</text>
+                <text x="270" y="22" fill="#8C826D" font-size="14" text-anchor="middle" font-family="Readex Pro, sans-serif">٤ سنوات</text>
+              </svg>
+              <div class="readout"><div class="v">—</div><div class="l">سنوات لاسترداد ٢ مليون $</div></div>
+            </div>
+            <div class="calc-out">
+              <div><span>الإيرادات</span><b data-o="rev">—</b></div>
+              <div><span>التكاليف</span><b data-o="opex">—</b></div>
+              <div><span>الربح التشغيلي</span><b data-o="ebitda">—</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 23. MEMBERS ============ -->
+      <section class="slide" id="s-members" data-chapter="الأرقام" data-title="العضويات">
+        <div class="head">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>نظام العضويات<span class="lat">Membership tiers</span></div>
+            <h2 class="h-l" data-a data-d="1">{{MEMBERS_TITLE}}</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:40ch">{{MEMBERS_LEAD}}</p>
+        </div>
+        <div class="tiers"></div>
+      </section>
+
+      <!-- ============ 24. MARKETING ============ -->
+      <section class="slide" id="s-marketing" data-chapter="التنفيذ" data-title="خطة الإطلاق والتسويق">
+        <div class="head" style="margin-bottom:46px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>خطة الإطلاق والتسويق<span class="lat">Go-to-market</span></div>
+            <h2 class="h-l" data-a data-d="1">{{MK_TITLE}}</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:40ch">{{MK_LEAD}}</p>
+        </div>
+        <div class="mk"></div>
+      </section>
+
+      <!-- ============ 25. TIMELINE ============ -->
+      <section class="slide" id="s-timeline" data-chapter="التنفيذ" data-title="الجدول الزمني">
+        <div class="head" style="margin-bottom:38px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>الجدول الزمني<span class="lat">24-month roadmap</span></div>
+            <h2 class="h-l" data-a data-d="1">{{TL_TITLE}}</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:42ch">{{TL_LEAD}}</p>
+        </div>
+        <div class="gantt" data-a data-d="3">
+          <div class="g-head"><span class="micro">المهمة</span><div class="g-months"></div></div>
+          <div class="g-rows"></div>
+          <div class="g-legend">{{TL_LEGEND}}</div>
+        </div>
+      </section>
+
+      <!-- ============ 26. MISTAKES ============ -->
+      <section class="slide" id="s-mistakes" data-chapter="التنفيذ" data-title="أخطاء يجب تجنّبها">
+        <div class="head" style="margin-bottom:26px">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>أخطاء يجب تجنّبها<span class="lat">Risks & how we avoid them</span></div>
+            <h2 class="h-l" data-a data-d="1">ما يُفشل مشاريع كهذه، وكيف نتجنّبه</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:34ch">مرّر على كل بطاقة لترى الحل الذي وضعه المجلس.</p>
+        </div>
+        <div class="mist"></div>
+      </section>
+
+      <!-- ============ 27. KPI ============ -->
+      <section class="slide" id="s-kpi" data-chapter="التنفيذ" data-title="مؤشرات النجاح" data-bg="recycle" data-veil="deep">
+        <div class="head">
+          <div>
+            <div class="kicker" data-a><span class="bar"></span>كيف نقيس النجاح<span class="lat">Year-one scorecard</span></div>
+            <h2 class="h-l" data-a data-d="1">أرقام تُعلن للناس كل شهر</h2>
+          </div>
+          <p class="lead" data-a data-d="2" style="max-width:42ch">لوحة مؤشرات علنية على شاشة القاعة وتطبيق النادي، تحمي المشروع من تهمة «الغسيل الأخضر» وتمنح الوزيرة أرقاماً حقيقية تعلنها.</p>
+        </div>
+        <div class="dash"></div>
+      </section>
+
+      <!-- ============ 28. ASK ============ -->
+      <section class="slide" id="s-ask" data-chapter="التنفيذ" data-title="ما نطلبه اليوم" data-bg="summit" data-veil="soft" data-motes="1">
+        <div class="kicker" data-a><span class="bar"></span>الخطوة التالية<span class="lat">The ask</span></div>
+        <p class="close-line" data-a data-d="1">{{CLOSE_LINE}}</p>
+        <div class="ask mt-auto"></div>
+        <div class="cover-foot" data-a data-d="6" style="margin-top:30px">
+          <div class="to"><div><span>{{BRAND_AR}}</span><b>نادي البيئة الثقافي · بغداد</b></div></div>
+          <button class="btn ghost" type="button" data-go="s-cover">العودة إلى البداية</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="chrome">
+    <button class="brand" type="button" aria-label="العودة إلى الغلاف">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="11" cy="12" r="4" fill="#F2CD7C"/><path d="M3 31C9 21 15 17 21 17s12 6 16 14" stroke="#D9A845" stroke-width="2.2" stroke-linecap="round"/><path d="M9 31c4-6 8-9 12-9s8 3 11 9" stroke="#D9A845" stroke-width="1.6" stroke-linecap="round" opacity=".7"/><path d="M15 31c2-3 4-4.5 6-4.5s4 1.5 6 4.5" stroke="#D9A845" stroke-width="1.2" stroke-linecap="round" opacity=".5"/></svg>
+      <div><b>{{BRAND_AR}}</b><span>{{BRAND_EN_SHORT}}</span></div>
+    </button>
+    <div class="chapter-label"></div>
+    <nav class="rail" aria-label="الشرائح"></nav>
+    <div class="navbar">
+      <button type="button" data-act="toc" aria-label="فهرس الشرائح"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+      <button type="button" data-act="prev" aria-label="الشريحة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <span class="count"></span>
+      <button type="button" data-act="next" aria-label="الشريحة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    </div>
+    <div class="hint"><span><kbd>→</kbd> <kbd>←</kbd> أو العجلة للتنقّل</span><span><kbd>O</kbd> الفهرس</span><span><kbd>F</kbd> ملء الشاشة</span></div>
+    <div class="progress"><i></i></div>
+  </div>
+
+  <div class="toc" role="dialog" aria-label="فهرس العرض">
+    <div class="toc-in">
+      <div class="toc-head"><h2 class="h-m">فهرس العرض</h2><button type="button" class="btn ghost" data-act="toc-close">إغلاق</button></div>
+      <div class="toc-grid"></div>
+    </div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+</div>
+
+<script>window.IMG = {{IMGJSON}};</script>
+<script>
+{{DATA}}
+</script>
+<script>
+{{APP}}
+</script>

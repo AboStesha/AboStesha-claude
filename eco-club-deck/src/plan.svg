@@ -1,0 +1,125 @@
+<svg viewBox="-90 -96 1430 1196" preserveAspectRatio="xMidYMid meet" role="img" aria-label="المخطط العام للنادي على مساحة ١٢٬٥٠٠ متر مربع">
+  <defs>
+    <pattern id="sand" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#3a2f17"/><circle cx="3" cy="3" r="1.4" fill="#D9A845" opacity=".55"/><circle cx="10" cy="9" r="1.1" fill="#D9A845" opacity=".4"/></pattern>
+    <pattern id="solar" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="18" height="18" fill="#2a2a30"/><line x1="0" y1="0" x2="0" y2="18" stroke="#8fa3c9" stroke-width="5" opacity=".55"/></pattern>
+    <radialGradient id="hillg" cx="40%" cy="45%" r="70%"><stop offset="0" stop-color="#7fd19e"/><stop offset="1" stop-color="#2f7a4f"/></radialGradient>
+  </defs>
+
+  <!-- plot -->
+  <rect x="0" y="0" width="1250" height="1000" rx="10" fill="#0c1a15" stroke="rgba(239,228,205,.35)" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <!-- 7 green belt & members' forest -->
+  <g class="zone" data-zone="green" tabindex="0">
+    <path class="shape" fill="#3F8F5F" fill-opacity=".34" stroke="#63B383" stroke-width="1.5" d="M0 0H1250V60C1100 75 900 55 700 70C520 82 300 60 120 72C88 74 74 90 72 120C70 300 86 500 66 700C56 820 74 920 62 1000H0Z M670 312C800 298 1000 318 1238 304L1240 404C1060 416 860 396 670 410Z M652 712C700 702 740 712 754 726L758 1000H648Z"/>
+    <g fill="#63B383" opacity=".9" pointer-events="none">
+      <circle cx="40" cy="30" r="13"/><circle cx="130" cy="34" r="11"/><circle cx="230" cy="28" r="13"/><circle cx="330" cy="34" r="11"/><circle cx="430" cy="28" r="13"/><circle cx="530" cy="34" r="11"/><circle cx="630" cy="28" r="13"/><circle cx="730" cy="32" r="11"/><circle cx="830" cy="28" r="13"/><circle cx="930" cy="33" r="11"/><circle cx="1030" cy="28" r="13"/><circle cx="1130" cy="33" r="11"/><circle cx="1215" cy="28" r="12"/>
+      <circle cx="32" cy="130" r="12"/><circle cx="34" cy="230" r="11"/><circle cx="30" cy="330" r="13"/><circle cx="34" cy="430" r="11"/><circle cx="30" cy="530" r="13"/><circle cx="32" cy="630" r="11"/><circle cx="30" cy="730" r="13"/><circle cx="32" cy="830" r="11"/><circle cx="30" cy="930" r="12"/>
+      <circle cx="720" cy="355" r="12"/><circle cx="790" cy="345" r="10"/><circle cx="1010" cy="350" r="12"/><circle cx="1080" cy="362" r="10"/><circle cx="1150" cy="350" r="12"/><circle cx="1210" cy="362" r="10"/>
+      <circle cx="700" cy="790" r="11"/><circle cx="706" cy="880" r="11"/><circle cx="700" cy="960" r="11"/>
+    </g>
+    <g class="badge"><circle cx="900" cy="357" r="22" fill="#3F8F5F" stroke="#08120E" stroke-width="3"/><text x="900" y="358" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٧</text></g>
+  </g>
+
+  <!-- 4 before-christ village -->
+  <g class="zone" data-zone="bc" tabindex="0">
+    <path class="shape" fill="#D9774A" fill-opacity=".3" stroke="#D9774A" stroke-width="1.5" d="M88 90C250 82 450 96 640 88C652 150 646 240 632 300C560 318 520 346 470 336C380 318 300 306 220 324C160 336 110 326 90 306C84 226 86 154 88 90Z"/>
+    <g pointer-events="none" fill="none" stroke="#E9A27E" stroke-width="1.6" opacity=".9">
+      <circle cx="150" cy="150" r="26"/><circle cx="215" cy="140" r="18"/><circle cx="520" cy="150" r="28"/><circle cx="585" cy="215" r="18"/><circle cx="160" cy="250" r="20"/>
+      <rect x="270" y="150" width="190" height="120" rx="6" stroke-dasharray="4 4"/>
+      <path d="M365 270V330" stroke-dasharray="3 5"/>
+    </g>
+    <g class="badge"><circle cx="365" cy="210" r="22" fill="#D9774A" stroke="#08120E" stroke-width="3"/><text x="365" y="211" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٤</text></g>
+  </g>
+
+  <!-- 5 luca land -->
+  <g class="zone" data-zone="luca" tabindex="0">
+    <path class="shape" fill="#5675DB" fill-opacity=".28" stroke="#5675DB" stroke-width="1.5" d="M674 86C850 80 1050 94 1238 84L1238 294C1050 302 860 290 678 300C666 222 670 152 674 86Z"/>
+    <g pointer-events="none">
+      <rect x="990" y="106" width="226" height="168" rx="22" fill="#5675DB" fill-opacity=".35" stroke="#8ea4ee" stroke-width="1.5"/>
+      <g fill="none" stroke="#8ea4ee" stroke-width="2" opacity=".85"><path d="M700 112H960V272H700Z"/><path d="M730 112V170H800M840 112V200H760V240M880 150V272M920 112V220H840M700 205H730M960 160H910M800 240H880"/></g>
+    </g>
+    <g class="badge"><circle cx="1103" cy="190" r="22" fill="#5675DB" stroke="#08120E" stroke-width="3"/><text x="1103" y="191" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٥</text></g>
+  </g>
+
+  <!-- 3 the hill -->
+  <g class="zone" data-zone="hill" tabindex="0">
+    <path class="shape" fill="url(#hillg)" fill-opacity=".42" stroke="#63B383" stroke-width="2" d="M300 340C410 330 520 390 545 490C566 600 526 726 426 768C326 808 182 788 122 708C72 640 74 508 112 428C152 356 222 344 300 340Z"/>
+    <g pointer-events="none" fill="none" stroke="#9ad9b0" stroke-width="1.3" opacity=".7">
+      <path d="M298 388C392 380 482 432 500 514C518 604 486 704 404 738C322 772 206 754 160 690C122 636 124 528 156 466C188 408 236 392 298 388Z"/>
+      <path d="M296 436C374 430 446 472 458 538C472 610 446 682 384 708C320 734 232 720 198 670C170 628 172 548 196 502C220 456 250 440 296 436Z"/>
+      <path d="M290 486C348 482 400 512 408 560C416 610 396 656 352 672C306 690 248 680 226 646C206 616 210 560 228 530C246 500 260 488 290 486Z"/>
+    </g>
+    <rect x="170" y="560" width="250" height="150" rx="34" fill="none" stroke="#9fb3ff" stroke-width="1.6" stroke-dasharray="6 5" pointer-events="none"/>
+    <g pointer-events="none" fill="none" stroke="#F2CD7C" stroke-width="3" stroke-linecap="round" opacity=".9">
+      <path d="M520 470A110 110 0 0 0 520 620"/><path d="M490 445A145 145 0 0 0 490 645" opacity=".75"/><path d="M460 425A178 178 0 0 0 460 665" opacity=".55"/>
+    </g>
+    <path d="M560 515A30 30 0 0 1 560 575Z" fill="#F2CD7C" opacity=".8" pointer-events="none"/>
+    <g class="badge"><circle cx="300" cy="490" r="22" fill="#63B383" stroke="#08120E" stroke-width="3"/><text x="300" y="491" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٣</text></g>
+  </g>
+
+  <!-- 2 equestrian arena + stables -->
+  <g class="zone" data-zone="arena" tabindex="0">
+    <path class="shape" fill="url(#sand)" fill-opacity=".9" stroke="#D9A845" stroke-width="2" d="M604 476Q604 436 644 436H1056Q1096 436 1096 476V636Q1096 676 1056 676H644Q604 676 604 636Z M1116 436H1238V646H1116Z"/>
+    <g pointer-events="none" stroke="#D9A845" stroke-width="1.4" fill="none" opacity=".8"><path d="M1116 488H1238M1116 540H1238M1116 592H1238"/><path d="M1177 436V646"/></g>
+    <g class="badge"><circle cx="850" cy="556" r="22" fill="#D9A845" stroke="#08120E" stroke-width="3"/><text x="850" y="557" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٢</text></g>
+  </g>
+
+  <!-- 1 entrance & solar parking (south-west, beside the hall's event door) -->
+  <g class="zone" data-zone="entry" tabindex="0">
+    <path class="shape" fill="#C2B59A" fill-opacity=".2" stroke="#C2B59A" stroke-width="1.5" d="M88 806C220 796 420 812 636 802L640 994H88C84 932 86 864 88 806Z"/>
+    <g pointer-events="none">
+      <rect x="112" y="828" width="500" height="58" rx="6" fill="url(#solar)" opacity=".9"/>
+      <rect x="112" y="910" width="500" height="58" rx="6" fill="url(#solar)" opacity=".9"/>
+    </g>
+    <g class="badge"><circle cx="360" cy="898" r="22" fill="#C2B59A" stroke="#08120E" stroke-width="3"/><text x="360" y="899" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">١</text></g>
+  </g>
+
+  <!-- 6 food & drink (south-east, downwind of the north-west Shamal) -->
+  <g class="zone" data-zone="food" tabindex="0">
+    <path class="shape" fill="#4BB8AE" fill-opacity=".26" stroke="#4BB8AE" stroke-width="1.5" d="M768 724C900 716 1100 728 1238 720V994H764C762 902 766 806 768 724Z"/>
+    <g pointer-events="none" fill="none" stroke="#7fe0d6" stroke-width="3" opacity=".85" stroke-linecap="round">
+      <path d="M792 790C850 775 910 805 970 790S1060 775 1080 790"/><path d="M792 850C850 835 910 865 970 850S1060 835 1080 850"/>
+    </g>
+    <rect x="1100" y="756" width="120" height="150" rx="20" fill="#4BB8AE" fill-opacity=".3" stroke="#7fe0d6" stroke-width="1.4" pointer-events="none"/>
+    <circle cx="930" cy="930" r="22" fill="none" stroke="#F2CD7C" stroke-width="2" pointer-events="none"/>
+    <g class="badge"><circle cx="1160" cy="950" r="22" fill="#4BB8AE" stroke="#08120E" stroke-width="3"/><text x="1160" y="951" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٦</text></g>
+  </g>
+
+  <!-- promenade -->
+  <path d="M702 1000C700 900 704 800 700 740C690 712 600 716 582 692C566 640 572 520 584 440C592 388 612 356 652 330" fill="none" stroke="#F2CD7C" stroke-width="10" stroke-linecap="round" opacity=".22" pointer-events="none"/>
+  <path d="M652 330C600 316 560 318 520 334M652 330C700 316 760 316 820 300" fill="none" stroke="#F2CD7C" stroke-width="6" stroke-linecap="round" opacity=".18" pointer-events="none"/>
+
+  <!-- annotations -->
+  <g font-family="Readex Pro, sans-serif" font-size="17" fill="#C2B59A" pointer-events="none">
+    <text x="625" y="1050" text-anchor="middle" fill="#8C826D">الشارع الرئيسي</text>
+    <path d="M60 1028H1190" stroke="#8C826D" stroke-width="1.5" stroke-dasharray="14 10"/>
+    <text x="702" y="1080" text-anchor="middle" fill="#F2CD7C">البوابة الرئيسية ↑</text>
+    <text x="300" y="790" text-anchor="middle" fill="#9fb3ff" font-size="14">مدخل الفعاليات المستقل ↓</text>
+    <text x="300" y="640" text-anchor="middle" fill="#9fb3ff" font-size="14">قاعة فورتكس</text>
+    <text x="512" y="720" text-anchor="middle" fill="#F2CD7C" font-size="14">المسرح</text>
+    <text x="1177" y="672" text-anchor="middle" fill="#D9A845" font-size="14">الإسطبلات</text>
+    <text x="830" y="128" text-anchor="middle" fill="#8ea4ee" font-size="14">المتاهة</text>
+    <text x="935" y="760" text-anchor="middle" fill="#7fe0d6" font-size="14">قنوات أوروك</text><text x="1160" y="925" text-anchor="middle" fill="#7fe0d6" font-size="13">فود ستيشن</text>
+  </g>
+
+  <!-- sunset & wind -->
+  <g pointer-events="none" font-family="Readex Pro, sans-serif">
+    <circle cx="-52" cy="520" r="20" fill="#F2CD7C"/>
+    <path d="M-30 520H-6" stroke="#F2CD7C" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="-52" y="566" text-anchor="middle" fill="#F2CD7C" font-size="15">الغروب</text>
+    <path d="M-60 -70L30 -10" stroke="#8fd3ff" stroke-width="2.5" marker-end="url(#arr)"/>
+    <text x="-50" y="-80" fill="#8fd3ff" font-size="15">الشمال الغربي</text>
+  </g>
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8fd3ff"/></marker></defs>
+
+  <!-- compass & scale -->
+  <g transform="translate(1300 -40)" pointer-events="none" font-family="Readex Pro, sans-serif">
+    <circle r="30" fill="none" stroke="rgba(239,228,205,.35)"/>
+    <path d="M0 -24L8 6L0 0L-8 6Z" fill="#EFE4CD"/>
+    <text y="52" text-anchor="middle" fill="#EFE4CD" font-size="16">شمال</text>
+  </g>
+  <g transform="translate(1050 -50)" pointer-events="none" font-family="Readex Pro, sans-serif" font-size="14" fill="#8C826D">
+    <rect x="0" y="0" width="100" height="8" fill="#EFE4CD"/><rect x="100" y="0" width="100" height="8" fill="none" stroke="#EFE4CD"/>
+    <text x="0" y="30" text-anchor="middle">٠</text><text x="100" y="30" text-anchor="middle">١٠</text><text x="200" y="30" text-anchor="middle">٢٠ م</text>
+  </g>
+</svg>
