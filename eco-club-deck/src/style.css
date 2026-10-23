@@ -382,7 +382,7 @@ ul.clean { list-style: none; margin: 0; padding: 0; }
 .zone.is-on .badge circle { r: 26; }
 .plan-panel { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .zone-list { display: grid; gap: 3px; }
-.zone-row { display: grid; grid-template-columns: 26px 1fr 72px 90px; gap: 10px; align-items: center; padding: 5px 10px; border-radius: 11px; cursor: pointer; border: 1px solid transparent; background: none; text-align: right; color: var(--sand-2); font-size: 15px; transition: background .3s, border-color .3s, color .3s; }
+.zone-row { display: grid; grid-template-columns: 26px 1fr 72px 90px; gap: 10px; align-items: center; padding: 2px 10px; border-radius: 11px; cursor: pointer; border: 1px solid transparent; background: none; text-align: right; color: var(--sand-2); font-size: 15px; transition: background .3s, border-color .3s, color .3s; }
 .zone-row:hover, .zone-row.is-on { background: rgba(239, 228, 205, .06); border-color: var(--line); color: var(--sand); }
 .zone-row .dot { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; color: var(--ink); background: var(--c); font-weight: 600; }
 .zone-row .a { text-align: left; direction: ltr; font-variant-numeric: tabular-nums; color: var(--sand); }
@@ -600,7 +600,7 @@ input[type="range"]:focus-visible { outline: 2px solid var(--gold-2); outline-of
 .is-deck .slide:not(.is-active) .g-bar { transform: scaleX(0); }
 .g-bar span { position: absolute; inset-inline-start: 8px; top: 50%; transform: translateY(-50%); font-size: 11px; color: var(--ink); font-weight: 600; white-space: nowrap; }
 .g-mark { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--gold-2); }
-.g-mark span { position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; color: var(--gold-2); background: var(--ink); padding: 0 6px; }
+.g-mark span { position: absolute; top: 2px; right: 8px; white-space: nowrap; font-size: 12px; color: var(--gold-2); background: var(--ink); padding: 0 6px; }
 .g-legend { display: flex; gap: 18px; margin-top: 18px; flex-wrap: wrap; font-size: 14px; color: var(--sand-2); }
 .g-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--c); margin-inline-end: 7px; vertical-align: -1px; }
 
@@ -657,6 +657,7 @@ input[type="range"]:focus-visible { outline: 2px solid var(--gold-2); outline-of
 .is-scroll .h-l, .is-scroll .zone-copy .h-l { font-size: 36px; }
 .is-scroll .h-m { font-size: 30px; }
 .is-scroll .lead { font-size: 18px; }
+.is-scroll .kicker { flex-wrap: wrap; row-gap: 4px; }
 .is-scroll .head { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 22px; }
 .is-scroll .g2, .is-scroll .g3, .is-scroll .g4, .is-scroll .g5, .is-scroll .g6 { grid-template-columns: minmax(0, 1fr); }
 .is-scroll .row { flex-direction: column; }
@@ -671,6 +672,7 @@ input[type="range"]:focus-visible { outline: 2px solid var(--gold-2); outline-of
 .is-scroll .zone-slide .media, .is-scroll .bc .media { height: auto; aspect-ratio: 16 / 10; order: -1; }
 .is-scroll .luca-media { display: none; }
 .is-scroll .games { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.is-scroll .game p { display: block; -webkit-line-clamp: unset; overflow: visible; }
 .is-scroll .table { width: 100%; max-width: 360px; height: auto; aspect-ratio: 1; margin: 0 auto; }
 .is-scroll .table .ring { inset: 13%; }
 .is-scroll .table .ring.r2 { inset: 27%; }

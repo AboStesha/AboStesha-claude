@@ -468,7 +468,7 @@
   const ranking = (() => {
     const host = $('#s-rank'); if (!host || !D.ranking) return null;
     const list = $('.rank-list', host), tip = $('.rank-tip', host);
-    const TIER = { P1: ['p1', 'الافتتاح'], P2: ['p2', 'المرحلة ٢'], EVENT: ['ev', 'فعالية'], REPLACE: ['rep', 'بديل'], DROP: ['drop', 'مؤجّل'] };
+    const TIER = { P1: ['p1', 'الافتتاح'], P2: ['p2', 'المرحلة ٢'], EVENT: ['ev', 'فعالية'], REPLACE: ['rep', 'بديل'], DROP: ['drop', 'مستبعد'] };
     const COL = { P1: 'var(--gold)', P2: 'var(--lapis)', EVENT: 'var(--palm)', REPLACE: 'var(--clay)', DROP: 'var(--sand-3)' };
     const rows = D.ranking.map(r => {
       const el = document.createElement('div'); el.className = 'rank-row';
