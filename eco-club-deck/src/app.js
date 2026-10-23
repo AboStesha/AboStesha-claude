@@ -517,7 +517,7 @@
     items.forEach((m, i) => {
       const el = document.createElement('div'); el.className = 'swap'; el.tabIndex = 0;
       el.setAttribute('data-a', ''); el.setAttribute('data-d', String(Math.min(8, i + 1)));
-      el.innerHTML = `<div class="swap-in"><div class="swap-f"><span class="lbl">${m.fl}</span><h4>${m.f}</h4><p>${m.fp || ''}</p><span class="flipnote">مرّر للحل ←</span></div>
+      el.innerHTML = `<div class="swap-in"><div class="swap-f"><span class="lbl">${m.fl}</span><h4>${m.f}</h4><p>${m.fp || ''}</p><span class="flipnote">${m.bl}: <b>${m.b}</b></span></div>
         <div class="swap-b"><span class="lbl">${m.bl}</span><h4>${m.b}</h4><p>${m.bp || ''}</p></div></div>`;
       el.addEventListener('click', () => el.classList.toggle('is-flipped'));
       el.addEventListener('keydown', e => { if (e.key === 'Enter') el.classList.toggle('is-flipped'); });
@@ -592,7 +592,7 @@
         <div class="pnl-row"><span>التكاليف التشغيلية${R.shareNote ? ' (شاملة حصة الدولة)' : ''}</span><b>${money(opex, 2)}</b></div>
         <div class="pnl-row hi"><span>الربح التشغيلي EBITDA</span><b>${money(ebitda, 2)}</b></div>
         <div class="pnl-row"><span>هامش الربح</span><b>${pct(margin)}</b></div>
-        <div class="pnl-row hi"><span>الاسترداد البسيط (سنة مستقرة)</span><b>${ebitda > 0 ? fmt(pay, 1) + ' سنوات' : 'لا يُسترد (خسارة تشغيلية)'}</b></div>
+        <div class="pnl-row"><span>الاسترداد البسيط قبل حصة الدولة</span><b>${ebitda > 0 ? fmt(pay, 1) + ' سنوات' : 'لا يُسترد (خسارة تشغيلية)'}</b></div>
         <p class="micro">${R.note}</p>`;
     }
     $$('.rev-tabs button', host).forEach(b => b.addEventListener('click', () => { sc = +b.dataset.sc; $$('.rev-tabs button', host).forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false')); apply(); }));
