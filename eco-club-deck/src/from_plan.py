@@ -78,7 +78,8 @@ ebitda = [rev_t[i] - opx_t[i] for i in range(3)]
 revenue = dict(capex=2_000_000, streams=streams, opex=opex, shareNote=False,
                totals=dict(rev=rev_t, opex=opx_t, ebitda=ebitda),
                note=('سنة مستقرة، بسعر ١٤٥٠ ديناراً للدولار، قبل حصة الدولة. الاسترداد البسيط = ٢ مليون ÷ الربح التشغيلي. '
-                     'العائد الداخلي غير المُرفَع بحسب المجلس: المحافظ خاسر، والأساسي ≈٨٪ على مدة العقد، والمتفائل ≈٢٢٪.'))
+                     'معدل العائد الداخلي قبل التمويل بالدين بحسب المجلس: المتحفظ خاسر، والأساسي نحو ٤٪ على ١٥ سنة ونحو ٨٪ على ٣٠ سنة، والمتفائل نحو ٢٢٪. '
+         'وبعد التدرّج وحصة الدولة (ربح تشغيلي نحو ٢٩٣ ألفاً عند ٣٪) واحتياطي الإحلال يُسترد رأس المال في الأساسي نحو السنة ١٢.'))
 
 # ---------- calculator calibrated to the base case ----------
 base = {s['k']: s['v'][1] for s in streams}
@@ -95,8 +96,8 @@ spend = round(visitor_usd * FX / 360 / visitors_day / 500) * 500
 events_m = 13
 event_net = round(events_usd / 12 / events_m / 50) * 50
 opex_var = 0.12
-opex_fixed = round((opx_t[1] - opex_var * rev_t[1]) / 10000) * 10000
-calc = dict(fx=FX, ticket=0, eventNet=event_net, fixedOther=round(other_usd / 1000) * 1000, opexFixed=opex_fixed, opexVar=opex_var, capex=2_000_000,
+opex_fixed = opx_t[1] - opex_var * rev_t[1]
+calc = dict(fx=FX, ticket=0, eventNet=event_net, fixedOther=round(rev_t[1] - (accounts * fee * 12 / FX + visitors_day * 360 * spend / FX + events_m * 12 * event_net)), opexFixed=opex_fixed, opexVar=opex_var, capex=2_000_000,
             defaults=dict(c_members=accounts, c_fee=fee, c_visitors=visitors_day, c_spend=spend, c_events=events_m))
 chk_rev = accounts * fee * 12 / FX + visitors_day * 360 * spend / FX + events_m * 12 * event_net + calc['fixedOther']
 chk_ebitda = chk_rev - (opex_fixed + opex_var * chk_rev)
@@ -108,12 +109,19 @@ for i, m in enumerate(P['memberships']):
     name, _, who = m['tier_ar'].partition(':')
     name = name.strip().strip('«»')
     tiers.append(dict(name=name, who=who.strip(), iqd=m['price_iqd_month'], usd=round(m['price_iqd_month'] / FX),
-                      per='شهرياً', perks=[fixnames(x) for x in m['perks_ar'][:4]], target=m['target_count'], unit='حساب', color=TCOL[i % len(TCOL)],
+                      per='شهرياً', perks=[fixnames(x).replace('موقف مضمون', 'أولوية في الموقف') for x in m['perks_ar'][:4]], target=m['target_count'], unit=('حسابات' if 3 <= m['target_count'] % 100 <= 10 else 'حساباً' if m['target_count'] % 100 > 10 else 'حساب'), color=TCOL[i % len(TCOL)],
                       feat='الخيار الأذكى للعائلة' if name == 'بستان' else ''))
 
 # ---------- ranking ----------
-ranking = [dict(id=r['id'], name=r['name_ar'], revenue=r['revenue'], street=r['street'], eco=r['eco_culture'], feas=r['feasibility'],
-                viral=r['virality'], total=r['total'], tier=r['tier'], note=r['note_ar']) for r in P['idea_ranking']]
+import re
+RENAME = {'الأرض حمم: أرضية تفاعلية': 'الأرض تحترق: أرضية تفاعلية', 'كشك الصراخ': 'صرخة للمناخ', 'لعبة الحبار العراقية': 'ألعاب الدربونة', 'أركادستان': 'أركيدستان', 'رياضة الجاغر': 'نزال كلكامش (اليوغر)', 'معرض «صُنع باليد» والمزادات': 'معرض «صُنع في اليد» والمزادات', 'مدينة الفقاعات': 'فقاعات بغداد', 'التلة العالية: الانحناء مع الطبيعة': 'قمّة التلّة: الانحناء مع الطبيعة'}
+IDNAME = {r['id']: RENAME.get(r['name_ar'], r['name_ar']) for r in P['idea_ranking']}
+def rnote(s):
+    s = s.replace('تُدمج مع U27 في «قاعة التلّة»', 'تُدمج في «قاعة فورتكس»')
+    s = re.sub(r'(?<![A-Za-z])[UCM]\d+', lambda m: '«' + IDNAME.get(m.group(0), m.group(0)) + '»', s)
+    return fixnames(s).replace('نجمة الدربونة', 'نجمة لوكا لاند')
+ranking = [dict(id=r['id'], name=RENAME.get(r['name_ar'], r['name_ar']), revenue=r['revenue'], street=r['street'], eco=r['eco_culture'], feas=r['feasibility'],
+                viral=r['virality'], total=r['total'], tier=r['tier'], note=rnote(r['note_ar'])) for r in P['idea_ranking']]
 
 off = P['off_budget_funding']
 partners = [o for o in off if not any(w in o['source_ar'] for w in ('سيولة', 'البيع المسبق', 'تسهيل', 'طابوقة'))]
@@ -142,20 +150,20 @@ N = dict(
     games=GAMES, loop=LOOP, week=WEEK,
     swaps=[dict(**{('from' if k == 'from_' else k): v for k, v in s.items()}) for s in SWAPS],
     mistakes=MISTAKES, marketing=MARKETING,
-    kpis=[dict(k='البيئة', color='var(--palm)', items=[dict(k='الكهرباء من الشمس بالعداد', v='١٢٪ ثم ٥٠٪'), dict(k='الري بماء غير صالح للشرب', v='≥ ٤٠٪'),
-                 dict(k='بقاء أشجار المؤسسين (١٥٠) بعد ٢٤ شهراً', v='≥ ٨٥٪'), dict(k='طلاب حكوميون مجاناً (السنة ٢)', v='٨٬٠٠٠'),
-                 dict(k='نفايات تُحوَّل عن الطمر', v='≥ ٦٠٪'), dict(k='غبار القاعة مقارنة بالخارج', v='−٧٠٪')]),
-          dict(k='الثقافة', color='var(--clay)', items=[dict(k='فعاليات ثقافية شهرياً', v='≥ ١٢'), dict(k='مدفوعات مباشرة للفنانين سنوياً', v='≥ ٧٥ ألف $'),
+    kpis=[dict(k='البيئة', color='var(--palm)', items=[dict(k='الكهرباء من الشمس بالعداد (ثم ٣٥–٥٠٪ بعقد شراء طاقة)', v='١٢–١٥٪'), dict(k='الري بمياه معاد استخدامها (وضوء ورمادي وتكثيف)', v='٤٠٪ فأكثر'),
+                 dict(k='بقاء أشجار المؤسسين (١٥٠) بعد ٢٤ شهراً', v='٨٥٪ فأكثر'), dict(k='طلاب المدارس الحكومية مجاناً (السنة ٢)', v='٨٬٠٠٠'),
+                 dict(k='نفايات تُحوَّل عن الطمر', v='٦٠٪ فأكثر'), dict(k='غبار القاعة مقارنة بالخارج', v='أقل بـ٧٠٪')]),
+          dict(k='الثقافة', color='var(--clay)', items=[dict(k='فعاليات ثقافية شهرياً', v='١٢ فأكثر'), dict(k='مدفوعات مباشرة للفنانين سنوياً', v='٧٥ ألف $ فأكثر'),
                  dict(k='فنانون وحرفيون من المحافظات', v='٥٠'), dict(k='متدرّبون في الورش سنوياً', v='٥٬٠٠٠'),
                  dict(k='مواهب شابة على المسرح سنوياً', v='١٠٠'), dict(k='ليالي القاعة والمسرح للثقافة', v='٢٠٪')]),
-          dict(k='الأعمال والمجتمع', color='var(--gold)', items=[dict(k='عضويات في حساب الضمان قبل الخرسانة', v='٢٥٠'), dict(k='حسابات دافعة نهاية السنة ٢', v='≈ ٣٠٠'),
-                 dict(k='أيام فعاليات في القاعة سنوياً', v='≈ ١٥٥'), dict(k='هامش الربح التشغيلي (أساسي)', v='≈ ٢٢٪'),
-                 dict(k='رعاية موقّعة قبل الافتتاح', v='٧٥ ألف $'), dict(k='نساء في موظفي الواجهة', v='≥ ٣٠٪')])],
-    ask=[dict(k='من معالي الوزيرة', items=['عقد استثمار مؤسسي لـ٣٠ سنة عبر هيئة استثمار بغداد، بترسية شفافة', 'حصة دولة قابلة للتفاوض: إيجار رمزي و٣٪ ثم ٥٪، أو بديل عيني',
+          dict(k='الأعمال والمجتمع', color='var(--gold)', items=[dict(k='عضويات في حساب الضمان قبل الخرسانة', v='٢٥٠'), dict(k='حسابات دافعة نهاية السنة ٢', v='نحو ٣٠٠'),
+                 dict(k='أيام فعاليات في القاعة سنوياً', v='نحو ١٥٥'), dict(k='هامش الربح التشغيلي (سنة الاستقرار)', v='نحو ٢٢٪'),
+                 dict(k='رعاية موقّعة قبل الافتتاح', v='٧٥ ألف $'), dict(k='نساء في موظفي الواجهة', v='٣٠٪ فأكثر')])],
+    ask=[dict(k='من معالي الوزيرة', items=['عقد استثمار مؤسسي لـ٣٠ سنة عبر هيئة استثمار بغداد، بترسية شفافة', 'حصة للدولة قابلة للتفاوض: إيجار رمزي و٣٪ من صافي إيراد النادي ثم ٥٪، أو بديل عيني',
                                          '١٢ يوماً مجانياً للوزارتين بدل الحجز المضمون', 'تراخيص منسّقة خلال ٦–٩ أشهر، وأرض حكومية لموقف ٢٠٠ سيارة',
                                          'مذكرة مع وزارة التربية، ومستشار تاريخي من وزارة الثقافة']),
-         dict(k='من المستثمر', items=['٢ مليون $ على ٣ شرائح مرتبطة بالبوابات', 'تسهيل احتياطي ١٥٠ ألف $ لتجاوز الكلفة',
-                                      'قيادة التشغيل ورئاسة مجلس الإدارة، وتوظيف بإعلانات منشورة', 'الحماية: تعويض عند الإنهاء، وأصول قابلة للنقل']),
+         dict(k='من المستثمر', items=['٢ مليون $ على ٣ شرائح مرتبطة بشروط إنجاز', 'تسهيل احتياطي ١٥٠ ألف $ لتغطية أي تجاوز في الكلفة',
+                                      'قيادة التشغيل ورئاسة مجلس الإدارة، وتوظيف بإعلانات منشورة', 'وله في المقابل: تعويض عند الإنهاء المبكر، وأصول قابلة للنقل']),
          dict(k='الخطوات القادمة', items=['٣٠ يوماً: مذكرة تفاهم ثلاثية، والتحقق من السند، والدفاع المدني', '٦٠ يوماً: دراسة السوق، والتسوق الخفي، ولقاء الجيران',
                                           '٩٠ يوماً: طلب الرخصة، وعروض الأسعار، وخطابات النوايا', '٢٢ نيسان ٢٠٢٧: إطلاق المؤسسين في يوم الأرض'])],
     assumptions=P['revenue']['assumptions_ar'],

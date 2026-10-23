@@ -16,7 +16,7 @@
   const money = (usd, d) => {
     const a = Math.abs(usd);
     if (a >= 1e6) return fmt(usd / 1e6, d ?? (usd % 1e6 === 0 ? 0 : 2)) + ' مليون $';
-    if (a >= 1e3) return fmt(Math.round(usd / 1e3)) + ' ألف $';
+    if (a >= 1e3) { const t = Math.round(usd / 1e3), r = Math.abs(t) % 100; return fmt(t) + (r >= 3 && r <= 10 ? ' آلاف $' : ' ألف $'); }
     return fmt(usd) + ' $';
   };
   const pct = (v, d = 0) => fmt(v, d) + '٪';
@@ -592,7 +592,7 @@
         <div class="pnl-row"><span>التكاليف التشغيلية${R.shareNote ? ' (شاملة حصة الدولة)' : ''}</span><b>${money(opex, 2)}</b></div>
         <div class="pnl-row hi"><span>الربح التشغيلي EBITDA</span><b>${money(ebitda, 2)}</b></div>
         <div class="pnl-row"><span>هامش الربح</span><b>${pct(margin)}</b></div>
-        <div class="pnl-row hi"><span>استرداد رأس المال</span><b>${fmt(pay, 1)} سنة</b></div>
+        <div class="pnl-row hi"><span>الاسترداد البسيط (سنة مستقرة)</span><b>${ebitda > 0 ? fmt(pay, 1) + ' سنوات' : 'لا يُسترد (خسارة تشغيلية)'}</b></div>
         <p class="micro">${R.note}</p>`;
     }
     $$('.rev-tabs button', host).forEach(b => b.addEventListener('click', () => { sc = +b.dataset.sc; $$('.rev-tabs button', host).forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false')); apply(); }));
@@ -621,7 +621,7 @@
       outs.rev.textContent = money(rev, 2); outs.opex.textContent = money(opex, 2); outs.ebitda.textContent = money(ebitda, 2);
       const shown = Math.min(pay, 8);
       val.textContent = pay > 20 ? '—' : fmt(pay, 1);
-      lbl.textContent = pay > 20 ? 'لا يسترد رأس المال بهذه الافتراضات' : 'سنوات لاسترداد ٢ مليون $';
+      lbl.textContent = pay > 20 ? 'لا يسترد رأس المال بهذه الافتراضات' : 'سنوات استرداد بسيط لمليونَي دولار';
       const k = 1 - Math.min(shown, 8) / 8;
       arc.setAttribute('stroke-dasharray', `${ARC * k} ${ARC}`);
       arc.setAttribute('stroke', pay <= 3 ? 'var(--palm)' : pay <= 5 ? 'var(--gold)' : 'var(--clay)');
