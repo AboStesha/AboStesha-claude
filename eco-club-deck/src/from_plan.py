@@ -140,7 +140,7 @@ ranking = [dict(id=r['id'], name=r['name_ar'], revenue=r['revenue'], street=r['s
 N = dict(
     plan_source=sys.argv[1], fx=FX,
     brand=dict(ar='جنائن', en="JANA'IN · BAGHDAD", en_short="JANA'IN",
-               tagline='أبرد مكان في بغداد: ظلٌّ وهواءٌ نقي، ونخلةٌ باسم كل عضو، وحضارة الرافدين تُعاش من جديد.',
+               tagline='ظلٌّ في قلب بغداد: هواءٌ نقيّ، ونخلةٌ باسم كل عائلة، وحضارة الرافدين تُعاش من جديد.',
                council_tagline=P['brand']['tagline_ar']),
     open_month=open_month, ideas_count=len(ranking),
     zones=zones,
