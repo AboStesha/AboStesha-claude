@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Writes data.js (window.DATA) from numbers.json plus the fixed lists below."""
-import json, pathlib
+import json, pathlib, re
 
 HERE = pathlib.Path(__file__).parent
 N = json.loads((HERE / 'numbers.json').read_text(encoding='utf-8'))
@@ -54,7 +54,19 @@ COUNCIL = [
 
 DATA = dict(council=COUNCIL)
 DATA.update({k: N[k] for k in ['zones', 'games', 'loop', 'week', 'ranking', 'swaps', 'mistakes', 'budget', 'leverage',
-                               'revenue', 'calc', 'tiers', 'marketing', 'gantt', 'ganttMarks', 'kpis', 'ask'] if k in N})
+                               'revenue', 'calc', 'tiers', 'marketing', 'gantt', 'ganttMonths', 'ganttMarks', 'kpis', 'ask'] if k in N})
+
+AR = '٠١٢٣٤٥٦٧٨٩'
+SKIP = {'color', 'id', 'slide', 'c', 'icon', 'ink', 'cat', 'tier', 'p', 'en'}
+def arab(o, key=None):
+    if isinstance(o, dict):
+        return {k: arab(v, k) for k, v in o.items()}
+    if isinstance(o, list):
+        return [arab(v, key) for v in o]
+    if isinstance(o, str) and key not in SKIP and 'var(' not in o and not o.startswith('#'):
+        return re.sub(r'(?<![A-Za-z])\d+(?:[.,]\d+)*', lambda m: ''.join(AR[int(ch)] if ch.isdigit() else ('٬' if ch == ',' else '٫') for ch in m.group(0)), o)
+    return o
+DATA = arab(DATA)
 
 (HERE / 'data.js').write_text(ICONS + '\nwindow.DATA = ' + json.dumps(DATA, ensure_ascii=False, indent=1) + ';\n', encoding='utf-8')
 print('data.js written:', ', '.join(DATA))

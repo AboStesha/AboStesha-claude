@@ -10,14 +10,26 @@
 
   <!-- 7 green belt & members' forest -->
   <g class="zone" data-zone="green" tabindex="0">
-    <path class="shape" fill="#3F8F5F" fill-opacity=".34" stroke="#63B383" stroke-width="1.5" d="M0 0H1250V60C1100 75 900 55 700 70C520 82 300 60 120 72C88 74 74 90 72 120C70 300 86 500 66 700C56 820 74 920 62 1000H0Z M670 312C800 298 1000 318 1238 304L1240 404C1060 416 860 396 670 410Z M652 712C700 702 740 712 754 726L758 1000H648Z"/>
+    <path class="shape" fill="#3F8F5F" fill-opacity=".34" stroke="#63B383" stroke-width="1.5" d="M0 0H1250V60C1100 75 900 55 700 70C520 82 300 60 120 72C88 74 74 90 72 120C70 300 86 500 66 700C56 820 74 920 62 1000H0Z M652 712C700 702 740 712 754 726L758 1000H648Z"/>
     <g fill="#63B383" opacity=".9" pointer-events="none">
       <circle cx="40" cy="30" r="13"/><circle cx="130" cy="34" r="11"/><circle cx="230" cy="28" r="13"/><circle cx="330" cy="34" r="11"/><circle cx="430" cy="28" r="13"/><circle cx="530" cy="34" r="11"/><circle cx="630" cy="28" r="13"/><circle cx="730" cy="32" r="11"/><circle cx="830" cy="28" r="13"/><circle cx="930" cy="33" r="11"/><circle cx="1030" cy="28" r="13"/><circle cx="1130" cy="33" r="11"/><circle cx="1215" cy="28" r="12"/>
       <circle cx="32" cy="130" r="12"/><circle cx="34" cy="230" r="11"/><circle cx="30" cy="330" r="13"/><circle cx="34" cy="430" r="11"/><circle cx="30" cy="530" r="13"/><circle cx="32" cy="630" r="11"/><circle cx="30" cy="730" r="13"/><circle cx="32" cy="830" r="11"/><circle cx="30" cy="930" r="12"/>
-      <circle cx="720" cy="355" r="12"/><circle cx="790" cy="345" r="10"/><circle cx="1010" cy="350" r="12"/><circle cx="1080" cy="362" r="10"/><circle cx="1150" cy="350" r="12"/><circle cx="1210" cy="362" r="10"/>
+      
       <circle cx="700" cy="790" r="11"/><circle cx="706" cy="880" r="11"/><circle cx="700" cy="960" r="11"/>
     </g>
-    <g class="badge"><circle cx="900" cy="357" r="22" fill="#3F8F5F" stroke="#08120E" stroke-width="3"/><text x="900" y="358" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٧</text></g>
+    <g class="badge"><circle cx="36" cy="590" r="22" fill="#3F8F5F" stroke="#08120E" stroke-width="3"/><text x="36" y="591" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٨</text></g>
+  </g>
+
+
+  <!-- 7 eco house: academy, nursery, recycling lab -->
+  <g class="zone" data-zone="eco" tabindex="0">
+    <path class="shape" fill="#8BC34A" fill-opacity=".24" stroke="#A5D66B" stroke-width="1.5" d="M670 312C800 298 1000 318 1238 304L1240 404C1060 416 860 396 670 410Z"/>
+    <g pointer-events="none">
+      <rect x="1060" y="322" width="160" height="70" rx="14" fill="#A5D66B" fill-opacity=".3" stroke="#A5D66B" stroke-width="1.4"/>
+      <g fill="#A5D66B" opacity=".85"><circle cx="720" cy="360" r="8"/><circle cx="750" cy="350" r="7"/><circle cx="780" cy="364" r="8"/><circle cx="810" cy="352" r="7"/><circle cx="840" cy="364" r="8"/><circle cx="870" cy="352" r="7"/><circle cx="900" cy="366" r="8"/></g>
+      <path d="M940 330h70v60h-70z" fill="none" stroke="#A5D66B" stroke-width="1.4" stroke-dasharray="4 4"/>
+    </g>
+    <g class="badge"><circle cx="975" cy="360" r="22" fill="#A5D66B" stroke="#08120E" stroke-width="3"/><text x="975" y="361" text-anchor="middle" dominant-baseline="middle" fill="#08120E" font-size="20" font-weight="600" font-family="Readex Pro, sans-serif">٧</text></g>
   </g>
 
   <!-- 4 before-christ village -->
@@ -98,7 +110,7 @@
     <text x="300" y="640" text-anchor="middle" fill="#9fb3ff" font-size="14">قاعة فورتكس</text>
     <text x="512" y="720" text-anchor="middle" fill="#F2CD7C" font-size="14">المسرح</text>
     <text x="1177" y="672" text-anchor="middle" fill="#D9A845" font-size="14">الإسطبلات</text>
-    <text x="830" y="128" text-anchor="middle" fill="#8ea4ee" font-size="14">المتاهة</text>
+    <text x="830" y="128" text-anchor="middle" fill="#8ea4ee" font-size="14">المتاهة</text><text x="1140" y="430" text-anchor="middle" fill="#A5D66B" font-size="13">المشتل والأكاديمية</text>
     <text x="935" y="760" text-anchor="middle" fill="#7fe0d6" font-size="14">قنوات أوروك</text><text x="1160" y="925" text-anchor="middle" fill="#7fe0d6" font-size="13">فود ستيشن</text>
   </g>
 

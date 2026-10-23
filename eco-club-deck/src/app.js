@@ -663,15 +663,16 @@
   (() => {
     const host = $('#s-timeline'); if (!host || !D.gantt) return;
     const months = $('.g-months', host), rows = $('.g-rows', host);
-    for (let m = 1; m <= 24; m++) { const s = document.createElement('span'); s.textContent = toAr(m); months.appendChild(s); }
+    const M = D.ganttMonths || 24; host.style.setProperty('--gm', M);
+    for (let m = 1; m <= M; m++) { const s = document.createElement('span'); s.textContent = toAr(m); months.appendChild(s); }
     D.gantt.forEach((g, i) => {
       const r = document.createElement('div'); r.className = 'g-row';
-      r.innerHTML = `<span class="nm">${g.t}</span><span class="g-track"><span class="g-bar" style="right:${(g.s - 1) / 24 * 100}%;width:${(g.e - g.s + 1) / 24 * 100}%;--c:${g.c};transition-delay:${.1 + i * .06}s"><span>${g.lbl || ''}</span></span></span>`;
+      r.innerHTML = `<span class="nm">${g.t}</span><span class="g-track"><span class="g-bar" style="right:${(g.s - 1) / M * 100}%;width:${(g.e - g.s + 1) / M * 100}%;--c:${g.c};transition-delay:${.1 + i * .06}s"><span>${g.lbl || ''}</span></span></span>`;
       rows.appendChild(r);
     });
     (D.ganttMarks || []).forEach(mk => {
       const m = document.createElement('span'); m.className = 'g-mark';
-      m.style.right = `calc(318px + (100% - 318px) * ${(mk.m) / 24})`;
+      m.style.right = `calc(318px + (100% - 318px) * ${(mk.m) / M})`;
       m.innerHTML = `<span>${mk.t}</span>`; rows.appendChild(m);
     });
   })();
