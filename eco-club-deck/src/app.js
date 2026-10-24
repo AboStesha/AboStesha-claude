@@ -2,16 +2,23 @@
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-  const IMG = window.IMG || {};
-  const D = window.DATA || {};
+  const IMG = window.IMG || {}, THUMB = window.IMG_T || {};
   const W = 1600, H = 900;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(pointer: fine)').matches;
   const AR = '٠١٢٣٤٥٦٧٨٩';
   const toAr = s => String(s).replace(/\d/g, d => AR[d]);
 
-  /* ---------- Images ---------- */
-  $$('img[data-img]').forEach(img => { const k = img.dataset.img; if (IMG[k]) img.src = IMG[k]; img.decoding = 'async'; img.draggable = false; });
+  /* ---------- Images: only slides near the viewer hold a decoded picture ----------
+     Decoding all ~100 pictures at once runs iPhones out of memory and Safari reloads or kills the page. */
+  const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+  function setImg(img, on) {
+    const k = on && IMG[img.dataset.img] ? img.dataset.img : '';
+    if (img._k === k) return;
+    img._k = k;
+    img.src = k ? IMG[k] : BLANK;
+  }
+  $$('img[data-img]').forEach(img => { img.decoding = 'async'; img.draggable = false; });
 
   const stage = $('.stage');
   const slides = $$('.slide');
@@ -24,7 +31,7 @@
     const el = document.createElement('div');
     el.className = 'bg' + (k ? '' : ' plain');
     el.dataset.veil = s.dataset.veil || 'side';
-    if (k && IMG[k]) { const im = new Image(); im.src = IMG[k]; im.alt = ''; im.draggable = false; el.appendChild(im); }
+    if (k && IMG[k]) { const im = new Image(); im.dataset.img = k; im.alt = ''; im.draggable = false; el.appendChild(im); }
     bgsEl.appendChild(el);
     return el;
   });
@@ -36,7 +43,7 @@
       let sb = $(':scope > .sbg', s);
       if (on && k && IMG[k] && !sb) {
         sb = document.createElement('div'); sb.className = 'sbg';
-        const im = new Image(); im.src = IMG[k]; im.alt = ''; im.loading = 'lazy'; sb.appendChild(im);
+        const im = new Image(); im.dataset.img = k; im.alt = ''; sb.appendChild(im);
         s.prepend(sb);
       }
       if (!on && sb) sb.remove();
@@ -54,7 +61,31 @@
     setScrollBgs(m === 'scroll');
     if (m === 'scroll') slides.forEach(s => { s.classList.add('is-active'); enter(s); });
     else { slides.forEach((s, i) => s.classList.toggle('is-active', i === idx)); enter(slides[idx]); }
+    bgEls.forEach(b => b.firstChild && setImg(b.firstChild, false));
+    if (m === 'deck') warmAround();
+    else if (nearIo) slides.forEach(s => { nearIo.unobserve(s); nearIo.observe(s); });   // re-observing reports every slide afresh
+    else slides.forEach((s, i) => warm(i, true));
   }
+
+  /* which slides keep their pictures: deck mode = the current one, one back and two ahead;
+     scroll mode = whatever is within one and a half screens of the viewport */
+  function warm(i, on) {
+    $$('img[data-img]', slides[i]).forEach(img => setImg(img, on));
+    const b = bgEls[i].firstChild;
+    if (b) setImg(b, on && mode === 'deck');
+  }
+  let coolT = 0;
+  function warmAround() {
+    if (mode !== 'deck') return;
+    const keep = i => i >= idx - 1 && i <= idx + 2;
+    slides.forEach((s, i) => { if (keep(i)) warm(i, true); });
+    clearTimeout(coolT);   // let the outgoing slide finish its exit before dropping its pictures
+    coolT = setTimeout(() => slides.forEach((s, i) => { if (!keep(i)) warm(i, false); }), 1000);
+  }
+  const nearIo = 'IntersectionObserver' in window ? new IntersectionObserver(es => {
+    if (mode !== 'scroll') return;
+    es.forEach(en => warm(slides.indexOf(en.target), en.isIntersecting));
+  }, { rootMargin: '150% 0px 150% 0px' }) : null;
   addEventListener('resize', () => { fit(); setMode(pickMode()); });
 
   /* ---------- Chrome: rail, counter, chapter label, index overlay ---------- */
@@ -74,11 +105,14 @@
   slides.forEach((s, i) => {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'toc-item';
     const k = s.dataset.bg || s.dataset.thumb;
-    b.innerHTML = `<span class="th">${k && IMG[k] ? `<img src="${IMG[k]}" alt="">` : ''}</span><span class="n">${toAr(String(i + 1).padStart(2, '0'))}</span><span class="t">${s.dataset.title}</span>`;
+    b.innerHTML = `<span class="th">${k && THUMB[k] ? `<img data-thumb="${k}" alt="">` : ''}</span><span class="n">${toAr(String(i + 1).padStart(2, '0'))}</span><span class="t">${s.dataset.title}</span>`;
     b.addEventListener('click', () => { closeToc(); go(i); });
     tocGrid.appendChild(b);
   });
-  function openToc() { toc.classList.add('is-open'); $$('.toc-item').forEach((b, i) => b.classList.toggle('is-on', i === idx)); }
+  function openToc() {
+    $$('img[data-thumb]', toc).forEach(im => { if (!im.src) im.src = THUMB[im.dataset.thumb]; });
+    toc.classList.add('is-open'); $$('.toc-item').forEach((b, i) => b.classList.toggle('is-on', i === idx));
+  }
   function closeToc() { toc.classList.remove('is-open'); }
   $('[data-act="toc"]').addEventListener('click', openToc);
   $('[data-act="toc-close"]').addEventListener('click', closeToc);
@@ -113,6 +147,7 @@
     idx = n;
     slides[idx].classList.add('is-active');
     bgEls.forEach((b, i) => b.classList.toggle('is-on', i === idx));
+    warmAround();
     chrome();
     enter(slides[idx]);
     particles.toggle(!!slides[idx].dataset.particles);
@@ -238,7 +273,7 @@
       const host = group.closest('.slide');
       // on phones the frame is hidden and the cover image above the title swaps instead
       const pic = $(`.view[data-k="${b.dataset.k}"] img`, frame), cover = $(':scope > .sbg img', host);
-      if (pic && cover) cover.src = pic.src;
+      if (pic && cover) { cover.dataset.img = pic.dataset.img; setImg(cover, true); }
       $$('[data-pane]', host).forEach(p => p.classList.toggle('is-on', p.dataset.pane === b.dataset.k));
     }
     btns.forEach(b => b.addEventListener('click', () => { user = true; show(b); }));
@@ -256,6 +291,7 @@
     function on(id) {
       rows.forEach(r => r.classList.toggle('is-on', r.dataset.z === id));
       zones.forEach(z => z.classList.toggle('is-on', z.dataset.z === id));
+      $$('.area', host).forEach(z => z.classList.toggle('is-on', z.dataset.z === id));
       host.classList.toggle('has-on', !!id);
       const r = rows.find(x => x.dataset.z === id);
       if (info) info.innerHTML = r ? `<b>${r.dataset.name}</b><span>${r.dataset.note}</span>` : info.dataset.idle;

@@ -6,7 +6,8 @@ WebP renders that are actually used, and writes:
   index.html            standalone page (works offline, from a USB stick or a browser)
   dist/artifact.html    the same page without the document skeleton, for the Artifact host
 """
-import base64, html, json, pathlib, re, sys
+import base64, html, io, json, pathlib, re, sys
+from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / 'src'
@@ -28,6 +29,8 @@ def copy_block(s, size='h-l'):
     t = f'<h2 class="{size}" data-a style="--d:1">{s["title"]}</h2>'
     ln = f'<p class="line" data-a style="--d:2">{s["line"]}</p>' if s.get('line') else ''
     return f'<div class="copy">{kicker(s)}{s.get("pre", "")}{t}{ln}{chips(s.get("chips", []))}{s.get("extra", "")}</div>'
+
+def tag(z): return f' <em>{z["tag"]}</em>' if z.get('tag') else ''
 
 def tile(img, title='', sub='', tag='', d=3, cls=''):
     cap = f'<div class="cap"><b>{title}</b>{f"<span>{sub}</span>" if sub else ""}</div>' if title else ''
@@ -74,8 +77,12 @@ def render(s):
         body = copy_block(s, 'h-m') + f'<div class="aud" style="--n:{len(s["items"])}">{tiles}</div>'
     elif t == 'plan':
         pins = ''.join(f'<button type="button" class="pin" data-z="{z["n"]}" style="right:{100 - z["x"]}%;top:{z["y"]}%;--zc:{z["c"]}" aria-label="{esc(z["name"])}">{ar(z["n"])}</button>' for z in s['zones'])
-        rows = ''.join(f'<button type="button" class="zone-row" data-z="{z["n"]}" data-name="{esc(z["name"])}" data-note="{esc(z["note"])}" style="--zc:{z["c"]}"><i>{ar(z["n"])}</i><span>{z["name"]}</span></button>' for z in s['zones'])
-        body = (f'<div class="plan-wrap"><div class="plan-pic" data-a style="--d:2"><img data-img="{s["img"]}" alt="المخطط من الأعلى">{pins}'
+        rows = ''.join(f'<button type="button" class="zone-row" data-z="{z["n"]}" data-name="{esc(z["name"])}" data-note="{esc(z["note"])}" style="--zc:{z["c"]}"><i>{ar(z["n"])}</i><span>{z["name"]}{tag(z)}</span></button>' for z in s['zones'])
+        # zones outside the render (the neighbouring land) get a dashed outline and a label
+        polys = ''.join(f'<polygon class="area" data-z="{z["n"]}" points="{" ".join(f"{x},{y}" for x, y in z["area"])}" style="--zc:{z["c"]}"/>' for z in s['zones'] if z.get('area'))
+        areas = (f'<svg class="plan-areas" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">{polys}</svg>'
+                 + ''.join(f'<span class="area-lbl" style="right:{100 - z["label"][0]}%;top:{z["label"][1]}%;--zc:{z["c"]}">{z["tag"]}</span>' for z in s['zones'] if z.get('area'))) if polys else ''
+        body = (f'<div class="plan-wrap"><div class="plan-pic" data-a style="--d:2"><img data-img="{s["img"]}" alt="المخطط من الأعلى">{areas}{pins}'
                 f'<div class="zone-info" data-idle="{esc(s["idle"])}">{s["idle"]}</div></div>'
                 f'<div class="copy">{kicker(s)}<h2 class="h-s plan-title" data-a style="--d:1">{s["title"]}</h2>'
                 f'<div class="zone-list" data-a style="--d:3">{rows}</div></div></div>')
@@ -136,7 +143,7 @@ SHELL = '''<title>نادي البيئة الثقافي</title>
 <div class="hint" aria-hidden="true"><span><kbd>←</kbd> <kbd>→</kbd> للتنقل</span><span><kbd>O</kbd> الفهرس</span><span><kbd>F</kbd> ملء الشاشة</span></div>
 <div class="toc" role="dialog" aria-label="فهرس الشرائح"><div class="toc-head"><h3>كل الشرائح</h3><button type="button" data-act="toc-close" aria-label="إغلاق">×</button></div><div class="toc-grid"></div></div>
 <div class="cursor" aria-hidden="true"></div><div class="cursor-dot" aria-hidden="true"></div>
-<script>window.IMG = {IMGJSON};</script>
+<script>window.IMG = {IMGJSON}; window.IMG_T = {THUMBJSON};</script>
 <script>
 {APP}
 </script>'''
@@ -151,13 +158,19 @@ def main():
     used = set(re.findall(r'data-(?:img|bg|thumb)="([a-z_0-9]+)"', slides_html))
     imgs = {p.stem: 'data:image/webp;base64,' + base64.b64encode(p.read_bytes()).decode()
             for p in sorted((ROOT / 'assets').glob('*.webp')) if p.stem in used}
+    # small copies for the slide index, so opening it does not decode thirty full pictures
+    thumbs = {}
+    for k in sorted(set(re.findall(r'data-(?:bg|thumb)="([a-z_0-9]+)"', slides_html))):
+        im = Image.open(ROOT / 'assets' / f'{k}.webp'); im.thumbnail((360, 360))
+        buf = io.BytesIO(); im.save(buf, 'WEBP', quality=60)
+        thumbs[k] = 'data:image/webp;base64,' + base64.b64encode(buf.getvalue()).decode()
     missing = used - set(imgs)
     if missing:
         sys.exit(f'missing images: {sorted(missing)}')
     out = (SHELL.replace('{FONTS}', (SRC / 'fonts.css').read_text(encoding='utf-8'))
                 .replace('{CSS}', (SRC / 'style.css').read_text(encoding='utf-8'))
                 .replace('{SLIDES}', slides_html).replace('{LOGO}', LOGO)
-                .replace('{IMGJSON}', json.dumps(imgs))
+                .replace('{IMGJSON}', json.dumps(imgs)).replace('{THUMBJSON}', json.dumps(thumbs))
                 .replace('{APP}', (SRC / 'app.js').read_text(encoding='utf-8')))
     (ROOT / 'dist').mkdir(exist_ok=True)
     (ROOT / 'dist' / 'artifact.html').write_text(out, encoding='utf-8')
