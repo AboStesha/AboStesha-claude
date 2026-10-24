@@ -317,11 +317,12 @@ window.FS_DATA = (function () {
   // optimistic = medium with ~30% more customers and ~10% higher prices (fixed contracts: +40%),
   // unless a driver gives its own [mid, opt] pair
   const r05 = v => (v >= 100 ? Math.round(v / 100) * 100 : Math.round(v * 2) / 2);
-  const d = (label, unit, q, p, per, days) => {
+  // cost (optional): the driver's own direct cost, { n: label, cu: cost per unit } or { n: label, v: share of revenue }
+  const d = (label, unit, q, p, per, days, cost) => {
     const qm = Array.isArray(q) ? q[0] : q, pm = Array.isArray(p) ? p[0] : p;
     const qo = Array.isArray(q) ? q[1] : qm === 1 ? 1 : Math.round(qm * 1.3);
     const po = Array.isArray(p) ? p[1] : qm === 1 ? r05(pm * 1.4) : r05(pm * 1.1);
-    return { label, unit, q: { mid: qm, opt: qo }, p: { mid: pm, opt: po }, per, days };
+    return { label, unit, q: { mid: qm, opt: qo }, p: { mid: pm, opt: po }, per, days, cost };
   };
 
   const ideas = {
@@ -616,45 +617,60 @@ window.FS_DATA = (function () {
       note: 'أجور الدي جي العالميين (نحو ٥٥ ألف $ لفنان بمستوى مونولينك) يتحمّلها المتعهّد مقابل حصة من التذاكر. المصاريف الثابتة تشمل تجديد العرض الغامر كل سنتين.',
     },
     skeet: {
-      name: 'رماية الأطباق', tag: 'على أرض مجاورة', build: 6,
+      name: 'رماية الأطباق', tag: 'ساحة بخمس منصات وخط تراب ورماية ليزر، على أرض مجاورة', build: 6,
       capex: [
-        { n: 'ملعبا سكيت كاملان: آلات وأبراج ومنصات وإنارة وسواتر', v: 240000 },
-        { n: 'مبنى الرماية ومخزن أسلحة مؤمَّن', v: 110000 },
-        { n: '١٠ بنادق للنادي مع الترخيص', v: 20000 },
+        { n: 'تهيئة الأرض والسواتر وسياج منطقة الأمان (~١٫١ كم)', v: 35000 },
+        { n: 'ساحة رماية بخمس منصات وست آلات قذف أوتوماتيكية', v: 40000 },
+        { n: 'خط رماية تراب بآلة أوتوماتيكية', v: 12000 },
+        { n: 'مبنى استقبال ومخزن أسلحة مؤمَّن ومنصة رماية مظللة', v: 75000 },
+        { n: 'إنارة LED للرماية المسائية', v: 30000 },
+        { n: '٨ بنادق للنادي', v: 12000 },
         { n: 'تراخيص ودراسة سلامة', v: 30000 },
-        { n: 'تهيئة الأرض المجاورة', v: 40000 },
+        { n: 'نظام رماية ليزر بخمس بنادق (بلا ذخيرة)', v: 20000 },
+        { n: 'معدات حماية السمع والعين ونقطة بيع', v: 8000 },
       ],
       rev: [
-        d('جولات رماية (٢٥ طبقاً، شاملة الخرطوش)', 'جولة/يوم', 18, 40, 'day', 240),
-        d('عضويات رماية سنوية', 'عضو/سنة', 60, 500, 'year'),
-        d('دورات ومسابقات', 'شهر', 1, 2000, 'month'),
+        d('جولات رماية حيّة (٢٥ طبقاً، سعر مختلط للضيوف والأعضاء)', 'جولة/يوم', [14, 22], [38, 42], 'day', 250, { n: 'الخرطوش والأطباق (٢٣ $ للجولة)', cu: 23 }),
+        d('عضويات رماية سنوية (بسعر جولة مخفّض)', 'عضو/سنة', [45, 70], [450, 600], 'year'),
+        d('تدريب خاص', 'ساعة/يوم', [1.2, 2.2], [30, 40], 'day', 250),
+        d('باقات الشركات والمجموعات (جولة حيّة وليزر وتدريب)', 'شخص/سنة', [225, 560], [85, 100], 'year', undefined, { n: 'كلفة باقات الشركات (٢٨٪)', v: 0.28 }),
+        d('رماية الليزر للعائلات والمبتدئين', 'لعبة/يوم', [8, 14], [6, 8], 'day', 250, { n: 'مستهلكات الليزر (٥٪)', v: 0.05 }),
+        d('تأجير الليزر للأعراس والمدارس والشركات', 'حجز/سنة', [10, 24], [350, 450], 'year', undefined, { n: 'نقل وتشغيل الليزر خارج النادي (١٠٪)', v: 0.1 }),
+        d('رعاية الدوري والمسابقات', 'سنة', [1, 1], [10000, 25000], 'year'),
+        d('مبيعات الإكسسوارات', 'سنة', [1, 1], [4000, 8000], 'year', undefined, { n: 'كلفة البضاعة المباعة (٦٠٪)', v: 0.6 }),
       ],
-      varPct: 0.61, fixed: 90000,
-      note: 'ميزة للأعضاء والهيبة أكثر منها مصدر ربح: كلفة الخرطوش والأطباق نحو ٢٧ $ للجولة، ولا يوجد سوق رماية أطباق في بغداد بعد.',
-      risk: 'تحتاج ترخيصاً من وزارة الداخلية وفق قانون الأسلحة رقم ٥١ لسنة ٢٠١٧، ونحو ٥٠ دونماً خالية لمنطقة سقوط الخردق.',
+      varPct: 0.03, fixed: 92000,
+      note: 'بدل ملعبي سكيت أولمبيين: ساحة بخمس منصات وخط تراب يرميان نحو منطقة أمان واحدة، فتنخفض الكلفة إلى النصف والأرض من ٥٠ دونماً إلى نحو ٣٠–٣٥. ما يجعلها رابحة: استيراد الخرطوش والأطباق بالجملة حتى لا تزيد على ٢٣ $ للجولة، وبيع الخرطوش داخل النادي فقط، وباقات الشركات والليزر والتدريب لأن كلفتها قليلة، والإنارة للرماية المسائية في الصيف. نقطة التعادل نحو ٨ جولات يومياً، وكل جولة إضافية يومياً تضيف نحو ٣٤٠٠ $ ربحاً في السنة: ٢٢ جولة تعطي نحو ٤٧ ألف $، و٤٠ جولة نحو ١٠٨ آلاف $ (استرداد في ٣ سنوات).',
+      risk: 'تحتاج ترخيصاً من وزارة الداخلية وفق قانون الأسلحة رقم ٥١ لسنة ٢٠١٧، والتأكد من السماح بتأجير البنادق وبيع الخرطوش لغير حاملي الرخص، وموافقة مكتوبة على منطقة أمان بنحو ٢٧٥ م. يُنصح ببدء رماية الليزر أولاً لاختبار الطلب قبل الرماية الحيّة.',
     },
     polo: {
-      name: 'البولو والإسطبل', tag: 'على أرض مجاورة (~٢٤ دونماً)', build: 12,
+      name: 'البولو والإسطبل', tag: 'ملعب بولو رملي صغير وركوب خيل للأعضاء، على أرض مجاورة (~٤ دونمات)', build: 8,
       capex: [
-        { n: 'ملعب بولو كامل: تسوية وتصريف وعشب وري', v: 750000 },
-        { n: 'إسطبل ٢٥ مربطاً مع مخازن وعيادة وسكن سياس', v: 330000 },
-        { n: '٨ خيول بولو مستوردة و١٢ حصان ركوب', v: 208000 },
-        { n: 'ساحة تدريب رملية', v: 100000 },
-        { n: 'مدرجات ونادٍ صغير', v: 160000 },
-        { n: 'معدات', v: 30000 },
-        { n: 'بئر ومياه للري', v: 40000 },
+        { n: 'ملعب بولو رملي ٩١×٤٦ م: تسوية وتصريف ورمل وألياف وألواح ١٫٥ م ومرميان', v: 190000 },
+        { n: 'إنارة LED للعب المسائي', v: 60000 },
+        { n: 'ري وتثبيت الغبار، وجرار ومسلفة للأرضية', v: 30000 },
+        { n: 'ساحة تدريب ٢٠×٤٠ م وحلقة ترويض', v: 35000 },
+        { n: 'إسطبل ١٦ مربطاً مع غرف السروج والأعلاف ومراوح ورذاذ', v: 170000 },
+        { n: '١٢ حصان ركوب مدرَّباً', v: 42000 },
+        { n: 'سروج وخوذ ودروع ومضارب وكرات', v: 25000 },
+        { n: 'مدرج مظلل لـ٢٠٠ متفرج مع حمامات وغرف تبديل', v: 70000 },
+        { n: 'بئر ومضخة وخزان', v: 40000 },
+        { n: 'تهيئة الأرض المجاورة وسياجها', v: 20000 },
       ],
       rev: [
-        d('جولات خيل للأعضاء والعائلات', 'جولة/يوم', 20, 25, 'day', 240),
-        d('أكاديمية الفروسية', 'متدرب/شهر', 100, 100, 'month'),
-        d('عضويات لاعبي البولو', 'لاعب/سنة', 15, 5000, 'year'),
-        d('دروس بولو مع الحصان', 'درس/يوم', 4, 80, 'day', 250),
-        d('إيواء خيول خاصة', 'حصان/شهر', 6, 500, 'month'),
-        d('بطولات بولو (صافي بعد كلفة التنظيم)', 'بطولة', [1, 1], [10000, 10000], 'year'),
+        d('جولة ركوب مع مرافق (٣٠ دقيقة)', 'جولة/يوم', [8, 10], [20, 25], 'day', 260),
+        d('اشتراك شهري: ٨ دروس جماعية', 'مشترك/شهر', [35, 50], [130, 150], 'month'),
+        d('درس خاص (٤٥ دقيقة)', 'درس/يوم', [2, 3], [35, 45], 'day', 250),
+        d('تجربة البولو على حصان المدرسة', 'درس/يوم', [1, 1.5], [50, 60], 'day', 200),
+        d('رسم قسم الفروسية فوق عضوية النادي', 'عضو/سنة', [25, 50], [400, 600], 'year'),
+        d('إيواء خيول خاصة', 'حصان/شهر', [3, 3], [300, 400], 'month', undefined, { n: 'علف ورعاية الخيول الخاصة (٨٠٪)', v: 0.8 }),
+        d('مخيمات الأطفال في العطل', 'طفل/أسبوع', [40, 100], [120, 150], 'year', undefined, { n: 'كلفة المخيمات (٢٥٪)', v: 0.25 }),
+        d('تأجير الملعب (عروض، مدارس، شركات، تصوير)', 'حجز/سنة', [4, 10], [1500, 2500], 'year', undefined, { n: 'كلفة تأجير الملعب (٢٠٪)', v: 0.2 }),
+        d('مباريات استعراضية بلاعبين عالميين (صافي بعد كلفة اللاعبين والخيول)', 'مباراة', [2, 3], [5000, 35000], 'year'),
       ],
-      varPct: 0.15, fixed: 325000,
-      note: 'فكرة للهيبة والتسويق أكثر منها للربح: رعاية ٢٠ حصاناً وصيانة الملعب نحو ٢٣٠ ألف $ سنوياً، والبطولة الواحدة تكلّف نحو ٢٠٠ ألف $ تغطيها الرعايات بالكاد.',
-      risk: 'تحتاج تخصيص أرض مجاورة ونحو ٨٠ ألف م³ ماء سنوياً للعشب، والبطولات تحتاج ٦٤ حصاناً أو أكثر تُستأجر أو تأتي مع الفرق.',
+      varPct: 0.05, fixed: 144000,
+      note: 'ملعب أرينا بقياس البطولات (٩١×٤٦ م) بدل ملعب عشبي كامل: الكلفة أقل من النصف، والأرض نحو ٤ دونمات بدل ٢٤. النادي يملك ١٢ حصان ركوب للأعضاء طوال السنة، وخيول المباريات تُستأجر. المباراة الواحدة تكلّف نحو ١٥٠ إلى ١٨٠ ألف $ (لاعبون محترفون، نقل خيول، مدرجات مؤقتة)، ولا تُحجز إلا بعد توقيع راعٍ رئيسي يغطيها؛ لذلك تُحسب هنا بصافيها فقط. المصاريف الثابتة: ٦٣ ألف $ رواتب (مدير ومدرب و٣ سيّاس وحارس)، و٣٣ ألف $ رعاية ١٢ حصاناً. في السيناريو المتوسط يغطي نفسه تقريباً، والربح يأتي من المباريات المموَّلة بالرعاة وزيادة المشتركين: ٧٠ مشتركاً شهرياً وجولات بـ٢٥ $ ترفع ربحه إلى نحو ٥٦ ألف $.',
+      risk: 'لا يوجد سوق لتأجير خيول البولو في العراق: خيول المباريات تأتي من الخارج بنقل بري أو جوي وأوراق بيطرية (٣٠ إلى ٨٠ ألف $ للمباراة)، وهذا أكبر مخاطر التنفيذ. ١٢ حصاناً تخدم نحو ٣٠ جلسة يومياً كحد آمن.',
     },
   };
 
@@ -670,7 +686,7 @@ window.FS_DATA = (function () {
     { name: 'المرحلة الخامسة', short: 'م٥', ideas: ['vortex'],
       why: 'فورتكس: أغلى فكرة، تأتي بعد أن يقوى صندوق النادي.' },
     { name: 'المرحلة السادسة', short: 'م٦', ideas: ['skeet', 'polo'],
-      why: 'على الأرض المجاورة بعد تخصيصها وترخيص الرماية.' },
+      why: 'على الأرض المجاورة بعد تخصيصها وترخيص الرماية: ملعب بولو صغير وإسطبل، وساحة رماية أطباق.' },
   ];
 
   const assumptions = {
@@ -712,7 +728,7 @@ window.FS_DATA = (function () {
 
   const A = assumptions, ar = v => Number(v).toLocaleString('ar-EG');
   A.display = [
-    ['الأرض', 'تخصيص مجاني أو رمزي من الدولة، مع أرض مجاورة للبولو والرماية والبستان'],
+    ['الأرض', 'تخصيص مجاني أو رمزي من الدولة، مع أرض مجاورة: نحو ٤ دونمات للبولو و٣٠–٣٥ دونماً لمنطقة أمان الرماية'],
     ['من يدخل النادي', 'الأعضاء وضيوفهم بتذكرة ضيف، وتذاكر عامة لفورتكس وبابل أرينا والمهرجانات'],
     ['الأسعار', 'بالدولار الثابت، بسعر صرف مرجعي ١٣١٠ إلى ١٤٥٠ ديناراً'],
     ['ميزانية المرحلة الأولى', `${ar(A.phase1Budget / 1e6)} مليون $، تشمل الموافقات والإطلاق ورأس مال التشغيل`],
@@ -736,7 +752,8 @@ window.FS_DATA = (function () {
   const risks = [
     ['الصيف', 'حرارة بغداد بين حزيران وآب تُضعف الألعاب المفتوحة؛ الأرقام سنوية متوسطة وتفترض تظليلاً ورذاذاً وفعاليات مسائية.'],
     ['التراخيص', 'الرماية تحتاج ترخيص أسلحة، والحفلات تحتاج موافقات أمنية لكل فعالية. التأخير يؤجّل الإيراد.'],
-    ['الأرض المجاورة', 'البولو والرماية مشروطان بتخصيص أرض إضافية؛ بدونها تُحذف المرحلة السادسة.'],
+    ['الأرض المجاورة', 'البولو يحتاج نحو ٤ دونمات (٣ كحد أدنى)، والرماية نحو ٣٠–٣٥ دونماً لمنطقة الأمان؛ بدون تخصيصها تُحذف المرحلة السادسة.'],
+    ['خيول البولو', 'لا يوجد سوق لتأجير خيول البولو في العراق، فخيول المباريات الاستعراضية تُجلب من الخارج، والمباراة لا تُحجز قبل توقيع راعٍ يغطي كلفتها.'],
     ['الأسعار المستوردة', 'معظم المعدات مستوردة: الشحن والجمارك وتغيّر سعر الصرف قد ترفع الكلفة ١٥ إلى ٣٥٪.'],
     ['الطلب الفعلي', 'أعداد الزوار تقديرية بلا دراسة سوق ميدانية، وتفترض دخول الضيوف والجمهور؛ إذا بقي النادي للأعضاء فقط تنخفض الإيرادات كثيراً. يُنصح باستبيان وبيع عضويات مسبقاً قبل البناء.'],
     ['المساحة', 'خمسة دونمات (١٢٥٠٠ م²) ضيقة على كل الأفكار مع مدرج لـ٣٠٠٠ ومواقفه؛ يلزم مخطط كتلي، وقد يُصغَّر المدرج أو تُستعمل مواقف خارجية بحافلات، والبستان على الأرض المجاورة.'],
@@ -779,6 +796,25 @@ window.FS_DATA = (function () {
     { t: 'إيرادات القاعات الغامرة لكل زائر (Culturespaces)', u: 'https://fr.wikipedia.org/wiki/Culturespaces' },
     { t: 'مونولينك', u: 'https://en.wikipedia.org/wiki/Monolink' },
     { t: 'مناخ بغداد ومواسم الفعاليات المفتوحة', u: 'https://weatherspark.com/y/148803/Average-Weather-at-Baghdad-International-Airport-Iraq-Year-Round' },
+    { t: 'قياس ملعب بولو الأرينا (قواعد HPA)', u: 'https://hpa-polo.co.uk/download/HPA-Green-Book-2024-PROOF-5-1.pdf' },
+    { t: 'قياس ملعب بولو الأرينا (قواعد USPA)', u: 'https://d3uxdg7queknzi.cloudfront.net/assets/pdf/2025-2026-Arena-Rules.pdf' },
+    { t: 'كلفة إنشاء ساحة خيل رملية', u: 'https://www.supermoney.com/cost-build-outdoor-riding-arena' },
+    { t: 'إنارة ساحات الخيل', u: 'https://sportsvenuecalculator.com/knowledge/led-sports-lighting/horse-arena-lighting/' },
+    { t: 'أسعار ركوب الخيل والإيواء في كربلاء', u: 'https://964media.com/515694/' },
+    { t: 'أسعار الخيول في مزاد الموصل', u: 'https://964media.com/647265/' },
+    { t: 'أسعار الشعير والجت في العراق', u: 'https://964media.com/45822/' },
+    { t: 'أسعار دروس الفروسية والإيواء في الأردن', u: 'https://www.aliaalassafacademy.com/training/livery' },
+    { t: 'أسعار مدرسة ركوب الخيل في نادي الحبتور للبولو', u: 'https://www.alhabtoorpoloclub.com/equestrian/riding-school' },
+    { t: 'أسعار تأجير خيول البولو حسب البلد', u: 'https://worldpologuide.com/costs' },
+    { t: 'كلفة نقل الخيول جواً', u: 'https://www.emotrans-global.com/blog/horse-transport-cost/' },
+    { t: 'ضيافة كأس دبي الذهبية للبولو', u: 'https://www.dubaipologoldcup.com/about-us/hospitality' },
+    { t: 'مشروع مجمع البولو في أربيل', u: 'https://www.kurdistan24.net/en/story/924510' },
+    { t: 'أسعار آلات قذف الأطباق', u: 'https://www.shootinguk.co.uk/?p=43963' },
+    { t: 'سعر خرطوش التراب', u: 'https://varuste.net/fr/p18852/saga-skeet-trap-12-70-24-g-25-pcs' },
+    { t: 'سعر أطباق الرماية', u: 'https://www.sportsmans.com/shooting-gear-gun-supplies/shooting-specialty/clay-sports/clay-targets/white-flyer-orange-trap-skeet-clay-target-135-count/p/308408' },
+    { t: 'منطقة أمان رماية الأطباق (CPSA)', u: 'https://consult.defra.gov.uk/natural-england/open-access-restriction-at-moorcock-clay-pigeon/results/moorcockoutcomereport.pdf' },
+    { t: 'تأجير رماية الليزر', u: 'https://laserclayshooting.com/hire/' },
+    { t: 'واقع الرماية الرياضية في العراق', u: 'https://jummar.media/?p=12458' },
   ];
   // how phase 1 starts, month by month; the page fills the month tokens from the model:
   // {pre} approvals end, {s} build start, {ie} infrastructure done, {e} last build month, {o1} soft opening, {o} full opening
@@ -805,12 +841,21 @@ window.FS_DATA = (function () {
   function driverValue(d, scn) { return d.q[scn] * d.p[scn] * PERIODS[d.per](d); }
 
   // steady-state yearly P&L of one idea, before club overhead and membership
+  // a driver may carry its own direct cost: a cost per unit sold (cu) or a share of its revenue (v);
+  // the idea's varPct covers the drivers that carry neither
+  function driverCost(d, scn) {
+    if (!d.cost) return null;
+    const cu = d.cost.cu === undefined ? null : Array.isArray(d.cost.cu) ? d.cost.cu[scn === 'opt' ? 1 : 0] : d.cost.cu;
+    return cu !== null ? d.q[scn] * cu * PERIODS[d.per](d) : driverValue(d, scn) * d.cost.v;
+  }
   function ideaPL(idea, scn, A) {
     const lines = idea.rev.map(d => ({ label: d.label, value: driverValue(d, scn) }));
     const gross = lines.reduce((s, l) => s + l.value, 0);
     const tax = idea.salesTax ? gross - gross / (1 + idea.salesTax) : 0;   // menu prices include sales tax
     const rev = gross - tax;
-    const variable = rev * idea.varPct;
+    const costs = idea.rev.map(d => d.cost && { label: d.cost.n, value: driverCost(d, scn) }).filter(Boolean);
+    const plain = idea.rev.reduce((s, d) => s + (d.cost ? 0 : driverValue(d, scn)), 0) * (gross ? rev / gross : 0);
+    const variable = costs.reduce((s, c) => s + c.value, 0) + plain * idea.varPct;
     const renewal = idea.rev.length ? rev * A.renewalPct : 0;               // equipment replacement reserve
     const fixed = idea.fixed * (scn === 'opt' ? A.optFixed : 1);           // busier venues need more staff
     const op = rev - variable - renewal - fixed;
@@ -818,7 +863,7 @@ window.FS_DATA = (function () {
     const design = hard * A.designPct;
     const contingency = (hard + design) * A.contingency;
     const capex = hard + design + contingency;
-    return { lines, gross, tax, rev, variable, renewal, fixed, op, hard, design, contingency, capex,
+    return { lines, gross, tax, rev, costs, plainVar: plain * idea.varPct, variable, renewal, fixed, op, hard, design, contingency, capex,
              margin: rev ? op / rev : 0, payback: op > 0 ? capex / op : Infinity };
   }
 
@@ -1086,7 +1131,7 @@ window.FS_DATA = (function () {
     $('#advice').innerHTML = `
       <div class="card"><h3>الأسرع استرداداً</h3><p class="sub">تعيد كلفتها في ثلاث سنوات أو أقل (السيناريو ${SCN[scn]})</p><ul class="list">${strong.map(li).join('')}</ul></div>
       <div class="card"><h3>الأضعف مالياً</h3><p class="sub">أكثر من سبع سنوات؛ قيمتها في الصورة والجذب أكثر من الربح</p><ul class="list">${weak.map(li).join('')}</ul></div>
-      <div class="card"><h3>نسخة مركّزة: بدون ${names}</h3><p class="sub">المرحلة السادسة تحتاج أرضاً إضافية وتكاد لا تربح</p>
+      <div class="card"><h3>نسخة مركّزة: بدون ${names}</h3><p class="sub">المرحلة السادسة تحتاج أرضاً إضافية، وربحها قليل في السيناريو المتوسط</p>
         <ul class="list">
           <li><span>كلفة البناء</span><b>${money(foc.capex)} <s>${money(full.capex)}</s></b></li>
           <li><span>ربح النادي السنوي</span><b>${money(foc.op)} <s>${money(full.op)}</s></b></li>
@@ -1144,7 +1189,8 @@ window.FS_DATA = (function () {
         ${cur.tax ? `<li><span>ضريبة المبيعات ${nf(it.salesTax * 100)}٪ ضمن الأسعار</span><b>−${money(cur.tax)}</b></li>` : ''}
         <li class="tot"><span>صافي الإيراد</span><b>${money(cur.rev)}</b></li></ul>` : '<p>لا إيراد مباشر.</p>'}</div>
       <div><h4>التكاليف والربح، السيناريو ${SCN[s]}</h4>${it.rev.length ? `<ul>
-        <li><span>تكاليف متغيرة (${nf(it.varPct * 100)}٪ من الإيراد)</span><b>${money(cur.variable)}</b></li>
+        ${cur.costs.map(c => `<li><span>${c.label}</span><b>${money(c.value)}</b></li>`).join('')}
+        <li><span>${cur.costs.length ? 'تكاليف متغيرة أخرى' : 'تكاليف متغيرة'} (${nf(it.varPct * 100)}٪ من ${cur.costs.length ? 'باقي ' : ''}الإيراد)</span><b>${money(cur.plainVar)}</b></li>
         <li><span>احتياطي تجديد المعدات ${nf(A.renewalPct * 100)}٪</span><b>${money(cur.renewal)}</b></li>
         <li><span>تكاليف ثابتة (رواتب وصيانة)</span><b>${money(cur.fixed)}</b></li>
         <li class="tot"><span>ربح الفكرة قبل مصاريف النادي العامة</span><b class="${cur.op < 0 ? 'neg' : ''}">${money(cur.op)}</b></li>

@@ -8,12 +8,21 @@
   function driverValue(d, scn) { return d.q[scn] * d.p[scn] * PERIODS[d.per](d); }
 
   // steady-state yearly P&L of one idea, before club overhead and membership
+  // a driver may carry its own direct cost: a cost per unit sold (cu) or a share of its revenue (v);
+  // the idea's varPct covers the drivers that carry neither
+  function driverCost(d, scn) {
+    if (!d.cost) return null;
+    const cu = d.cost.cu === undefined ? null : Array.isArray(d.cost.cu) ? d.cost.cu[scn === 'opt' ? 1 : 0] : d.cost.cu;
+    return cu !== null ? d.q[scn] * cu * PERIODS[d.per](d) : driverValue(d, scn) * d.cost.v;
+  }
   function ideaPL(idea, scn, A) {
     const lines = idea.rev.map(d => ({ label: d.label, value: driverValue(d, scn) }));
     const gross = lines.reduce((s, l) => s + l.value, 0);
     const tax = idea.salesTax ? gross - gross / (1 + idea.salesTax) : 0;   // menu prices include sales tax
     const rev = gross - tax;
-    const variable = rev * idea.varPct;
+    const costs = idea.rev.map(d => d.cost && { label: d.cost.n, value: driverCost(d, scn) }).filter(Boolean);
+    const plain = idea.rev.reduce((s, d) => s + (d.cost ? 0 : driverValue(d, scn)), 0) * (gross ? rev / gross : 0);
+    const variable = costs.reduce((s, c) => s + c.value, 0) + plain * idea.varPct;
     const renewal = idea.rev.length ? rev * A.renewalPct : 0;               // equipment replacement reserve
     const fixed = idea.fixed * (scn === 'opt' ? A.optFixed : 1);           // busier venues need more staff
     const op = rev - variable - renewal - fixed;
@@ -21,7 +30,7 @@
     const design = hard * A.designPct;
     const contingency = (hard + design) * A.contingency;
     const capex = hard + design + contingency;
-    return { lines, gross, tax, rev, variable, renewal, fixed, op, hard, design, contingency, capex,
+    return { lines, gross, tax, rev, costs, plainVar: plain * idea.varPct, variable, renewal, fixed, op, hard, design, contingency, capex,
              margin: rev ? op / rev : 0, payback: op > 0 ? capex / op : Infinity };
   }
 

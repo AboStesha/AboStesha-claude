@@ -101,7 +101,7 @@
     $('#advice').innerHTML = `
       <div class="card"><h3>الأسرع استرداداً</h3><p class="sub">تعيد كلفتها في ثلاث سنوات أو أقل (السيناريو ${SCN[scn]})</p><ul class="list">${strong.map(li).join('')}</ul></div>
       <div class="card"><h3>الأضعف مالياً</h3><p class="sub">أكثر من سبع سنوات؛ قيمتها في الصورة والجذب أكثر من الربح</p><ul class="list">${weak.map(li).join('')}</ul></div>
-      <div class="card"><h3>نسخة مركّزة: بدون ${names}</h3><p class="sub">المرحلة السادسة تحتاج أرضاً إضافية وتكاد لا تربح</p>
+      <div class="card"><h3>نسخة مركّزة: بدون ${names}</h3><p class="sub">المرحلة السادسة تحتاج أرضاً إضافية، وربحها قليل في السيناريو المتوسط</p>
         <ul class="list">
           <li><span>كلفة البناء</span><b>${money(foc.capex)} <s>${money(full.capex)}</s></b></li>
           <li><span>ربح النادي السنوي</span><b>${money(foc.op)} <s>${money(full.op)}</s></b></li>
@@ -159,7 +159,8 @@
         ${cur.tax ? `<li><span>ضريبة المبيعات ${nf(it.salesTax * 100)}٪ ضمن الأسعار</span><b>−${money(cur.tax)}</b></li>` : ''}
         <li class="tot"><span>صافي الإيراد</span><b>${money(cur.rev)}</b></li></ul>` : '<p>لا إيراد مباشر.</p>'}</div>
       <div><h4>التكاليف والربح، السيناريو ${SCN[s]}</h4>${it.rev.length ? `<ul>
-        <li><span>تكاليف متغيرة (${nf(it.varPct * 100)}٪ من الإيراد)</span><b>${money(cur.variable)}</b></li>
+        ${cur.costs.map(c => `<li><span>${c.label}</span><b>${money(c.value)}</b></li>`).join('')}
+        <li><span>${cur.costs.length ? 'تكاليف متغيرة أخرى' : 'تكاليف متغيرة'} (${nf(it.varPct * 100)}٪ من ${cur.costs.length ? 'باقي ' : ''}الإيراد)</span><b>${money(cur.plainVar)}</b></li>
         <li><span>احتياطي تجديد المعدات ${nf(A.renewalPct * 100)}٪</span><b>${money(cur.renewal)}</b></li>
         <li><span>تكاليف ثابتة (رواتب وصيانة)</span><b>${money(cur.fixed)}</b></li>
         <li class="tot"><span>ربح الفكرة قبل مصاريف النادي العامة</span><b class="${cur.op < 0 ? 'neg' : ''}">${money(cur.op)}</b></li>
