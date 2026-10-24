@@ -4,6 +4,8 @@
 Slides are data (src/content.py); this file renders them, inlines the font, CSS, JS and the
 WebP renders that are actually used, and writes:
   index.html            standalone page (works offline, from a USB stick or a browser)
+  live/index.html       light page for phones on GitHub Pages: pictures stay as files in assets/
+                        and download only when a slide needs them
   dist/artifact.html    the same page without the document skeleton, for the Artifact host
 """
 import base64, html, io, json, pathlib, re, sys
@@ -179,8 +181,12 @@ def main():
                   '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
                   + out[:head_end] + '\n</head>\n<body>\n' + out[head_end:] + '\n</body>\n</html>\n')
     (ROOT / 'index.html').write_text(standalone, encoding='utf-8')
+    light = standalone.replace(json.dumps(imgs), json.dumps({k: f'../assets/{k}.webp' for k in imgs}))
+    (ROOT / 'live').mkdir(exist_ok=True)
+    (ROOT / 'live' / 'index.html').write_text(light, encoding='utf-8')
     unused = sorted(p.stem for p in (ROOT / 'assets').glob('*.webp') if p.stem not in used)
-    print(f"index.html {len(standalone.encode()) / 1e6:.2f} MB, {len(C.SLIDES)} slides, {len(imgs)} images; unused: {unused}")
+    print(f"index.html {len(standalone.encode()) / 1e6:.2f} MB, live/index.html {len(light.encode()) / 1e6:.2f} MB, "
+          f"{len(C.SLIDES)} slides, {len(imgs)} images; unused: {unused}")
 
 if __name__ == '__main__':
     main()
