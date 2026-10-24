@@ -141,6 +141,10 @@ body[data-dir="back"] [data-a] { transform: translate3d(0, -20px, 0); }
 .mosaic.m3 .tile:first-child { grid-row: span 2; }
 .mosaic.m2 { grid-template-columns: 1fr 1fr; }
 .mosaic.m4 { grid-template-columns: repeat(4, 1fr); }
+.mosaic.m5 { grid-template-columns: 1.25fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+.mosaic.m5 .tile:first-child { grid-row: span 2; }
+.mosaic.m5 .tile:not(:first-child) .cap b { font-size: 20px; }
+.mosaic.m5 .tile:not(:first-child) .cap span { font-size: 13.5px; }
 
 /* Audience */
 .aud { display: grid; grid-template-columns: repeat(var(--n, 2), 1fr); gap: 18px; height: 450px; margin-top: auto; }
@@ -295,8 +299,8 @@ body.is-scroll .t-tabs .frame { display: none; }
 body.is-scroll .pillars { flex-direction: column; height: auto; }
 body.is-scroll .pillars .tile, body.is-scroll .aud .tile, body.is-scroll .mosaic .tile, body.is-scroll .tiles .tile, body.is-scroll .ws .tile { aspect-ratio: 16 / 10; flex: none; }
 body.is-scroll .pillars .tile .cap span { max-height: none; opacity: 1; }
-body.is-scroll .aud, body.is-scroll .mosaic, body.is-scroll .mosaic.m3, body.is-scroll .mosaic.m2, body.is-scroll .mosaic.m4, body.is-scroll .tiles.c4, body.is-scroll .tiles.c3, body.is-scroll .tiles.c2, body.is-scroll .ws, body.is-scroll .ecogrid { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
-body.is-scroll .mosaic.m3 .tile:first-child { grid-row: auto; }
+body.is-scroll .aud, body.is-scroll .mosaic, body.is-scroll .mosaic.m3, body.is-scroll .mosaic.m2, body.is-scroll .mosaic.m4, body.is-scroll .mosaic.m5, body.is-scroll .tiles.c4, body.is-scroll .tiles.c3, body.is-scroll .tiles.c2, body.is-scroll .ws, body.is-scroll .ecogrid { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+body.is-scroll .mosaic.m3 .tile:first-child, body.is-scroll .mosaic.m5 .tile:first-child { grid-row: auto; }
 body.is-scroll .cards.c4, body.is-scroll .cards.c3, body.is-scroll .ws-list, body.is-scroll .eco .cards, body.is-scroll .eco-pics { grid-template-columns: 1fr 1fr; }
 body.is-scroll .eco-pics .tile { aspect-ratio: 4 / 3; }
 body.is-scroll .ecogrid { grid-template-columns: 1fr 1fr; gap: 10px; }
