@@ -31,10 +31,10 @@
 
   function setScrollBgs(on) {
     slides.forEach(s => {
-      const k = s.dataset.bg;
+      // a tabs slide shows the view that is currently selected
+      const sel = $('.frame .view.is-on img', s), k = sel ? sel.dataset.img : s.dataset.bg;
       let sb = $(':scope > .sbg', s);
-      // slides whose own frame swaps images (Vortex tabs) show that frame instead of a static cover
-      if (on && k && IMG[k] && !sb && !$('.frame', s)) {
+      if (on && k && IMG[k] && !sb) {
         sb = document.createElement('div'); sb.className = 'sbg';
         const im = new Image(); im.src = IMG[k]; im.alt = ''; im.loading = 'lazy'; sb.appendChild(im);
         s.prepend(sb);
@@ -236,6 +236,9 @@
       btns.forEach(x => x.setAttribute('aria-selected', x === b ? 'true' : 'false'));
       $$('.view', frame).forEach(v => v.classList.toggle('is-on', v.dataset.k === b.dataset.k));
       const host = group.closest('.slide');
+      // on phones the frame is hidden and the cover image above the title swaps instead
+      const pic = $(`.view[data-k="${b.dataset.k}"] img`, frame), cover = $(':scope > .sbg img', host);
+      if (pic && cover) cover.src = pic.src;
       $$('[data-pane]', host).forEach(p => p.classList.toggle('is-on', p.dataset.pane === b.dataset.k));
     }
     btns.forEach(b => b.addEventListener('click', () => { user = true; show(b); }));
