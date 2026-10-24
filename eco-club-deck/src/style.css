@@ -290,7 +290,7 @@ body.is-scroll .h-m { font-size: 30px; }
 body.is-scroll .line { font-size: 17px; }
 body.is-scroll .copy { max-width: none; gap: 14px; margin: 0 !important; }
 body.is-scroll .split, body.is-scroll .split.flip, body.is-scroll .plan-wrap, body.is-scroll .eco { grid-template-columns: 1fr; display: grid; gap: 16px; }
-body.is-scroll .frame { aspect-ratio: 16 / 10; transform: none; }
+body.is-scroll .frame { aspect-ratio: 16 / 10; transform: none; order: -1; margin: 0 calc(-1 * max(18px, env(safe-area-inset-right, 0px))) 6px calc(-1 * max(18px, env(safe-area-inset-left, 0px))); border-radius: 0; border: 0; }
 body.is-scroll .pillars { flex-direction: column; height: auto; }
 body.is-scroll .pillars .tile, body.is-scroll .aud .tile, body.is-scroll .mosaic .tile, body.is-scroll .tiles .tile, body.is-scroll .ws .tile { aspect-ratio: 16 / 10; flex: none; }
 body.is-scroll .pillars .tile .cap span { max-height: none; opacity: 1; }

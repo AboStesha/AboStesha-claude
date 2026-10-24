@@ -33,7 +33,8 @@
     slides.forEach(s => {
       const k = s.dataset.bg;
       let sb = $(':scope > .sbg', s);
-      if (on && k && IMG[k] && !sb) {
+      // slides whose own frame swaps images (Vortex tabs) show that frame instead of a static cover
+      if (on && k && IMG[k] && !sb && !$('.frame', s)) {
         sb = document.createElement('div'); sb.className = 'sbg';
         const im = new Image(); im.src = IMG[k]; im.alt = ''; im.loading = 'lazy'; sb.appendChild(im);
         s.prepend(sb);

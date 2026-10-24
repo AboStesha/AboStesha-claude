@@ -111,12 +111,10 @@ SLIDES = [
          kicker='شارع الفود ترك', lat='Food trucks', title='عربات طعام<br><em>وسهرة مفتوحة</em>',
          line='عربات طعام ومقهى مختص حول ساحة مفتوحة، بنكهات تتجدد كل موسم.', chips=['عربات متجددة', 'قهوة مختصة', 'جلسات تحت الأضواء']),
 
-    dict(id='gallery', type='mosaic', chapter='الثقافة', short='صنع في اليد', bg=None, grid='m3', tone='amber',
-         kicker='صنع في اليد', lat='Made by hand', title='معرضٌ حديث للفن العراقي',
+    dict(id='gallery', type='full', chapter='الثقافة', short='صنع في اليد', bg='gallery', veil='side', tone='amber',
+         kicker='صنع في اليد', lat='Made by hand', title='معرضٌ حديث<br><em>للفن العراقي</em>',
          line='أعمال فنانين وحرفيين شباب في قاعة بمستوى المتاحف. تشاهد القطعة، ثم تصنع مثلها في الورشة.',
-         items=[dict(img='gallery', title='قاعة العرض', sub='لوحات ونحت وخزف وحُلي'),
-                dict(img='painting', title='من المرسم إلى الجدار', sub='أعمال الورش تُعرض وتُباع'),
-                dict(img='pottery', title='خزف وأختام سومرية', sub='قطع تُصنع أمامك')]),
+         chips=['لوحات ونحت وخزف وحُلي', 'فنانون وحرفيون شباب', 'أعمال تُعرض وتُباع']),
 
     dict(id='workshops', type='workshops', chapter='الثقافة', short='الورش الفنية', bg=None, tone='amber',
          kicker='الورش الفنية', lat='Workshops', title='اصنعها بيدك',
@@ -190,7 +188,7 @@ SLIDES = [
                dict(day='الخميس', en='THU', peak=True, items=['حفل نجم في بابل أرينا', 'عشاء الشموع في إريدو', 'سهرة شارع الفود ترك']),
                dict(day='الجمعة', en='FRI', items=['ركضة دجلة صباحاً', 'سوق بالة فِست', 'لعبة الحبار · نسخة بغداد'])]),
 
-    dict(id='members', type='members', chapter='الفعاليات', short='البطاقة الخضراء', bg='foodstation', veil='deep',
+    dict(id='members', type='members', chapter='الفعاليات', short='البطاقة الخضراء', bg='trees', veil='deep',
          kicker='العضوية', lat='Membership', title='البطاقة الخضراء',
          line='عضوية بالهوية ورمز QR: دخول آمن وتجربة أوسع.',
          items=[dict(name='البطاقة الخضراء', who='كل الأعضاء', perks=['دخول سريع برمز QR', 'نقاط مقابل كل قنينة', 'دعوات لفعاليات البيئة']),
