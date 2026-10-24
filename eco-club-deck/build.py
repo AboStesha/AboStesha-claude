@@ -41,9 +41,10 @@ def frame_tabs(s):
     btns = ''.join(f'<button type="button" data-k="{v["k"]}" aria-selected="{"true" if i == 0 else "false"}">{v["label"]}</button>'
                    for i, v in enumerate(s['views']))
     panes = ''.join(f'<p class="line pane{" is-on" if i == 0 else ""}" data-pane="{v["k"]}">{v["text"]}</p>' for i, v in enumerate(s['views']))
+    note = f'<p class="note" data-a style="--d:4">{s["note"]}</p>' if s.get('note') else ''
     frame = f'<div class="frame" id="{fid}" data-depth=".6" data-a style="--d:2">{views}</div>'
     copy = (f'<div class="copy">{kicker(s)}<h2 class="h-l" data-a style="--d:1">{s["title"]}</h2>'
-            f'<div class="tabs" data-tabs="{fid}" data-a style="--d:2">{btns}</div><div data-a style="--d:3">{panes}</div>{chips(s.get("chips", []))}</div>')
+            f'<div class="tabs" data-tabs="{fid}" data-a style="--d:2">{btns}</div><div data-a style="--d:3">{panes}</div>{note}{chips(s.get("chips", []), 5)}</div>')
     return f'<div class="split{" flip" if s.get("flip") else ""}">{copy}{frame}</div>'
 
 def render(s):
@@ -70,7 +71,7 @@ def render(s):
     elif t == 'audience':
         tiles = ''.join(f'<div class="tile" data-tilt data-a style="--d:{3 + i}"><img data-img="{p["img"]}" alt="{esc(p["who"])}">'
                         f'<div class="cap"><b>{p["age"]}</b><span class="who">{p["who"]}</span><span>{p["sub"]}</span></div></div>' for i, p in enumerate(s['items']))
-        body = copy_block(s, 'h-m') + f'<div class="aud">{tiles}</div>'
+        body = copy_block(s, 'h-m') + f'<div class="aud" style="--n:{len(s["items"])}">{tiles}</div>'
     elif t == 'plan':
         pins = ''.join(f'<button type="button" class="pin" data-z="{z["n"]}" style="right:{100 - z["x"]}%;top:{z["y"]}%;--zc:{z["c"]}" aria-label="{esc(z["name"])}">{ar(z["n"])}</button>' for z in s['zones'])
         rows = ''.join(f'<button type="button" class="zone-row" data-z="{z["n"]}" data-name="{esc(z["name"])}" data-note="{esc(z["note"])}" style="--zc:{z["c"]}"><i>{ar(z["n"])}</i><span>{z["name"]}</span></button>' for z in s['zones'])
@@ -92,6 +93,10 @@ def render(s):
         cards = ''.join(f'<div class="card" data-tilt data-a style="--d:{3 + i // 2}"><b>{w["title"]}</b><span>{w["line"]}</span></div>' for i, w in enumerate(s['list']))
         body = (f'<div class="copy" style="max-width:none">{kicker(s)}<h2 class="h-m" data-a style="--d:1">{s["title"]}</h2></div>'
                 f'<div class="eco" style="margin-top:26px"><div class="eco-pics">{pics}</div><div class="cards">{cards}</div></div>')
+    elif t == 'ecogrid':
+        tiles = ''.join(tile(p['img'], p['title'], p['line'], '', 2 + i // 2) for i, p in enumerate(s['items']))
+        body = (f'<div class="copy" style="max-width:none">{kicker(s)}<h2 class="h-m" data-a style="--d:1">{s["title"]}</h2></div>'
+                f'<div class="ecogrid">{tiles}</div>')
     elif t == 'week':
         days = ''.join(f'<div class="day{" peak" if d.get("peak") else ""}" data-a style="--d:{3 + i}"><h4>{d["day"]}<small>{d["en"]}</small></h4>' + ''.join(f'<p>{x}</p>' for x in d['items']) + '</div>' for i, d in enumerate(s['days']))
         body = copy_block(s, 'h-m') + f'<div class="week">{days}</div>'
