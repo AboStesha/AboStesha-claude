@@ -1,0 +1,79 @@
+<title>جدوى نادي البيئة الثقافي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+{FONTS}
+{CSS}
+</style>
+<header class="bar"><div class="wrap">
+  <h1>جدوى نادي البيئة الثقافي</h1>
+  <nav aria-label="الأقسام"><a href="#summary">الخلاصة</a><a href="#ideas">كل فكرة</a><a href="#phases">المراحل</a><a href="#all">دفعة واحدة</a><a href="#assumptions">الافتراضات</a></nav>
+  <div class="seg" role="group" aria-label="السيناريو"><button type="button" data-scn="mid" aria-pressed="true">سيناريو متوسط</button><button type="button" data-scn="opt" aria-pressed="false">سيناريو متفائل</button></div>
+</div></header>
+<main class="wrap">
+  <section class="hero" id="summary">
+    <span class="k">دراسة جدوى أولية، بالدولار الأمريكي</span>
+    <h2>طريقان لبناء النادي: <em>على مراحل</em> أو <em>دفعة واحدة</em></h2>
+    <p class="lead">كل رقم هنا محسوب من افتراضات معلنة في آخر الصفحة: كلفة كل فكرة، وإيرادها، ومدة تنفيذها، ثم محاكاة شهرية للنقد على مدى ١٥ سنة. بدّل بين السيناريو المتوسط والمتفائل من الأعلى.</p>
+    <div class="duo"><div class="card" id="sumPhased"></div><div class="card" id="sumAll"></div></div>
+    <p class="verdict" id="verdict"></p>
+    <div class="advice" id="advice"></div>
+  </section>
+
+  <section id="ideas">
+    <span class="k">كل فكرة على حدة</span>
+    <h2>الكلفة والإيراد والربح <em>لكل فكرة</em></h2>
+    <p class="lead">كل رقم بسطرين: الأزرق للسيناريو المتوسط والأخضر للمتفائل. ربح الفكرة هنا قبل مصاريف النادي العامة والضريبة، والكلفة بأسعار اليوم مع التصميم والطوارئ. اضغط على أي فكرة لترى تفصيلها.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>الفكرة</th><th>المرحلة</th><th>الكلفة</th><th>مدة التنفيذ</th><th>الإيراد السنوي</th><th>ربح الفكرة السنوي</th><th>الاسترداد</th></tr></thead>
+      <tbody id="ideasBody"></tbody>
+      <tfoot id="ideasFoot"></tfoot>
+    </table></div>
+  </section>
+
+  <section id="phases">
+    <span class="k">خطة المراحل</span>
+    <h2>نبدأ بـ<em>٢ مليون دولار</em>، والباقي من أرباح النادي</h2>
+    <p class="lead" id="phLead"></p>
+    <div class="tools"><span class="small">تمويل ما بعد المرحلة الأولى</span><div class="seg" role="group" aria-label="تمويل ما بعد المرحلة الأولى"><button type="button" data-fund="self" aria-pressed="true">من أرباح النادي فقط</button><button type="button" data-fund="second" aria-pressed="false">مع دفعة ثانية بعد سنة</button></div></div>
+    <div class="kpis stats" id="phStats"></div>
+    <div class="card start"><h3>كيف نبدأ: المرحلة الأولى شهراً بشهر</h3><ol class="steps" id="startPlan"></ol></div>
+    <div class="phases" id="phaseCards"></div>
+    <div class="chart"><h3>رصيد صندوق النادي شهراً بشهر</h3>
+      <div class="legend" id="cashLegend"></div>
+      <div id="cashChart"></div></div>
+  </section>
+
+  <section id="all">
+    <span class="k">كل الأفكار معاً</span>
+    <h2>إذا بنينا كل شيء <em>دفعة واحدة</em></h2>
+    <p class="lead" id="allLead"></p>
+    <div class="card"><h3>مدة تنفيذ كل فكرة</h3><div class="legend g-legend"><span><i class="g-k"></i>التنفيذ</span><span><i class="g-k wait"></i>جاهزة، بانتظار البنية</span><span><i class="g-k pre"></i>الموافقات</span></div><div class="gantt" id="gantt"></div></div>
+    <div class="tbl-wrap years"><table>
+      <thead><tr><th>السنة</th><th>الإيرادات</th><th>التكاليف التشغيلية</th><th>الربح التشغيلي</th><th>صرف على البناء</th><th>الرصيد التراكمي</th></tr></thead>
+      <tbody id="allYears"></tbody></table></div>
+    <div class="chart"><h3>صافي النقد التراكمي للمستثمر: المراحل مقابل دفعة واحدة</h3>
+      <div class="legend" id="cmpLegend"></div>
+      <div id="cmpChart"></div></div>
+  </section>
+
+  <section id="assumptions">
+    <span class="k">الافتراضات والمخاطر</span>
+    <h2>على ماذا بُنيت <em>الأرقام</em></h2>
+    <div class="cols">
+      <div class="card"><h3>الافتراضات الرئيسية</h3><ul class="list" id="assume" style="margin-top:12px"></ul></div>
+      <div class="card"><h3>مصاريف النادي العامة السنوية</h3><ul class="list" id="overhead" style="margin-top:12px"></ul></div>
+    </div>
+    <div class="card" style="margin-top:16px"><h3>المخاطر التي قد تغيّر النتيجة</h3><ul class="risks" id="risks" style="margin-top:12px"></ul></div>
+    <div class="card" style="margin-top:16px"><h3>مصادر الأسعار المرجعية</h3><ol class="src" id="sources" style="margin-top:12px"></ol></div>
+  </section>
+  <footer>الأرقام تقديرية لدراسة أولية، وتحتاج عروض أسعار مكتوبة من المورّدين ودراسة سوق ميدانية قبل القرار النهائي.</footer>
+</main>
+<script>
+{DATA}
+</script>
+<script>
+{MODEL}
+</script>
+<script>
+{PAGE}
+</script>

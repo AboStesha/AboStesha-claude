@@ -1,0 +1,1022 @@
+{
+ "attractions": {
+  "items": [
+   {
+    "key": "airsoft_rifle_aeg",
+    "item": "Airsoft replica rifle (electric AEG, rental-grade) incl. battery + magazine",
+    "unit": "USD per unit",
+    "low": 110,
+    "mid": 230,
+    "high": 480,
+    "notes": "Retail 2025-26: CYMA entry AEGs GBP 40-80 (~USD 52-104) in the UK; Specna Arms CORE about USD 159, EDGE about USD 470. Mid-range models (Specna CORE/EDGE, G&G) suit a rental fleet that sees heavy use. Bulk buying can cut 35-55%, but freight and Iraqi customs add 20-35%. Values approximate landed cost in Baghdad. A 20-30 player arena needs a fleet of about 25-40 rifles plus 20% spares. LEGAL RISK: importing replica firearms into Iraq probably needs Ministry of Interior approval and may be blocked outright. Gel blasters or laser tag are fallbacks.",
+    "source": "https://www.airsoftworld.net/manufacturers/cyma?fps=863 ; https://www.redwolfairsoft.com/brand/spenca-arms.html ; https://foxairsoft.com/blogs/post/how-to-start-an-airsoft-field"
+   },
+   {
+    "key": "airsoft_protective_gear_set",
+    "item": "Airsoft protective gear set (ANSI full-face mask + vest + gloves + neck guard)",
+    "unit": "USD per player set",
+    "low": 60,
+    "mid": 110,
+    "high": 200,
+    "notes": "US retail 2025-26: Valken MI-7 ANSI full-face thermal mask USD 59.95; Valken Kilo 2G mesh half mask USD 14.95; tactical vests USD 33-116; gloves about USD 10-20. Masks need replacing every 1-2 years under rental use, plus hygiene supplies (anti-fog, sanitiser). Budget 1.2 sets per rifle.",
+    "source": "https://www.evike.com/products/48443/Evike-Annex-MI-7-ANSI-Rated-Full-Face-Mask-with-Thermal-Lens-by-Valken-Color-Multicam/ ; https://www.evike.com/products/86245/Valken-Kilo-2G-Mesh-Half-Face-Mask-Color-Black/ ; https://www.ebay.com/p/2254506495"
+   },
+   {
+    "key": "airsoft_chronograph",
+    "item": "Airsoft chronograph (Xcortech X3200 MK3) for FPS/safety checks",
+    "unit": "USD per unit",
+    "low": 55,
+    "mid": 70,
+    "high": 100,
+    "notes": "2025-26 retail: Evike USD 54.99 (MAP), Redwolf USD 65.99, Airsoft GI USD 69, Badlands USD 99.99. Buy 2 (one spare). Shipping and duties to Iraq not included.",
+    "source": "https://www.evike.com/products/60352/Xcortech-X3200-MK3-Handheld-Computer-Airsoft-Chronograph/ ; https://badlandspaintball.com/xcortech-x3200-mk3-chronograph"
+   },
+   {
+    "key": "shipping_container_obstacle",
+    "item": "Used 20ft shipping container for arena cover/obstacles (delivered)",
+    "unit": "USD per container",
+    "low": 1800,
+    "mid": 3000,
+    "high": 4900,
+    "notes": "US 2026 used-20ft average USD 1,786, retail range USD 999-4,900. No verified Iraq price was found. Used containers are common in Basra and Baghdad yards; mid assumes local purchase plus crane delivery and cutting doors/windows. An airsoft arena typically uses 6-10 containers.",
+    "source": "https://www.eveoncontainers.com/en-US/news/market-insights/how-much-does-a-shipping-container-cost"
+   },
+   {
+    "key": "airsoft_arena_fitout",
+    "item": "Airsoft arena fit-out package (containers, barricades, perimeter BB netting, safe zone, lighting, signage), excl. land and guns",
+    "unit": "USD per arena (~1,500-2,500 m2)",
+    "low": 20000,
+    "mid": 45000,
+    "high": 90000,
+    "notes": "Estimate. A US operator guide says a lean outdoor field with pallets, hay bales and containers costs 'a few thousand dollars' for buildout and 'well under twenty thousand' in total, while a polished field with rentals and a pro shop is 'a six figure undertaking'. Baghdad adds shade structures, night lighting and high perimeter netting near the polo and skeet land.",
+    "source": "https://foxairsoft.com/blogs/post/how-to-start-an-airsoft-field ; estimate"
+   },
+   {
+    "key": "sim_racing_static_rig",
+    "item": "Kart/racing simulator, static seat (direct-drive wheel + pedals + cockpit + PC + triple monitors or 49in screen)",
+    "unit": "USD per seat",
+    "low": 4500,
+    "mid": 7500,
+    "high": 13000,
+    "notes": "MOZA Club DD Value Kit from EUR 2,499 hardware-only / EUR 2,799 assembled (~USD 2,800-3,100). Add a gaming PC (USD 1,500-2,500), screens (USD 500-1,500) and venue software and licences. High end is a Wahlap Storm Racer G DX static arcade cabinet, from EUR 11,495 ex VAT (~USD 12,900). Prices are 2025-26 EU reseller figures. A 4-seat linked pod is typical.",
+    "source": "https://apex-elite-launch.lovable.app/commercial ; https://apex-elite-launch.lovable.app/products"
+   },
+   {
+    "key": "sim_racing_motion_rig",
+    "item": "Racing simulator with motion platform (commercial grade)",
+    "unit": "USD per seat",
+    "low": 15000,
+    "mid": 30000,
+    "high": 55000,
+    "notes": "Wahlap Storm Racer 2 (85in 4K, pneumatic motion) from EUR 13,995 ex VAT (~USD 15,700). Vesaro commercial motion rig GBP 23,444 (~USD 30,000). Motion Simulation Company 200 Series GBP 36,995 and TL Series GBP 44,995 ex VAT (~USD 48,000-58,000), aimed at simulation centres. Freight to Iraq and installation not included. Motion units need more maintenance.",
+    "source": "https://apex-elite-launch.lovable.app/commercial ; https://bsimracing.com/?p=68888 ; https://bsimracing.com/?p=67372"
+   },
+   {
+    "key": "led_video_wall_4player",
+    "item": "Indoor LED video wall for 4-player gaming (~4m x 2.25m, P2.5-P3.9) incl. controller, structure, install",
+    "unit": "USD per system (~9-12 m2)",
+    "low": 10000,
+    "mid": 20000,
+    "high": 40000,
+    "notes": "Per-m2 benchmarks 2026: Chinese factory P2.9-P3.91 cabinets about USD 410-800/m2 FOB. UK supply-only P2.5-P3.9 is GBP 1,200-2,200/m2 (~USD 1,560-2,860). A complete UK-installed 3x2m P2.5 wall costs GBP 18,000-35,000. US installed P2.5 runs about USD 900-1,600/sq ft, a premium integrator rate. Low assumes China-sourced hardware plus local install; high assumes a European integrator.",
+    "source": "https://dynamo-led-displays.co.uk/led-video-wall-cost-uk/ ; https://m.made-in-china.com/hot-china-products/LED_Module_Price-5.html ; https://www.crowntv-us.com/blog/led-video-wall-cost/"
+   },
+   {
+    "key": "interactive_led_floor_per_m2",
+    "item": "Interactive pressure-sensitive LED floor tiles (P3.91, game-grade), hardware only",
+    "unit": "USD per m2",
+    "low": 600,
+    "mid": 1800,
+    "high": 3750,
+    "notes": "Global Sources 2025-26 China listings: P3.91 LED dance floor about USD 595/m2. Interactive P3.91 floor for theme parks USD 2,000/m2 (USD 1,975 at 50 m2+). Interactive floor tile USD 3,750/m2 at 1-9 m2. A B2B aggregator gives USD 850-2,400/m2 and says interactive floors cost 25-40% more than non-interactive. Excludes game software, sensors, freight and install.",
+    "source": "https://www.globalsources.com/Indoor-LED/Interactive-Floor-LED-1238313617p.htm ; https://www.accio.com/business/trending-led-dance-floor-magnetic"
+   },
+   {
+    "key": "interactive_game_room_activate_style",
+    "item": "Walk-in interactive game room (Pac-Man / grid / laser-maze style: LED floor + wall targets + sensors + software), turnkey",
+    "unit": "USD per room (~20-40 m2)",
+    "low": 35000,
+    "mid": 80000,
+    "high": 180000,
+    "notes": "Estimate; vendors such as Activate, Pixel Games and Hado publish no prices. Low is a Chinese turnkey clone: about 25 m2 LED floor at roughly USD 800/m2 plus walls, sensors and software. High is a premium Western licensed system with custom content. Activate sites run 9-12 rooms in 8,700-14,800 sq ft. A licensed Pac-Man live attraction in Manchester charges GBP 35 per person per 60 min. Software licences and content updates are often recurring.",
+    "source": "estimate ; https://retail-insider.com/retail-insider/2025/10/activate-games-expands-globally-from-winnipeg-to-55-locations/ ; https://www.blackpoolgazette.co.uk/news/live-action-iconic-pac-man-game-is-coming-to-manchester-this-is-what-you-need-to-know-5008695 ; https://www.globalsources.com/Indoor-LED/Interactive-Floor-LED-1238313617p.htm"
+   },
+   {
+    "key": "interactive_floor_projection",
+    "item": "Interactive floor/wall projection system (projector + motion sensor + game library), budget alternative to LED floors",
+    "unit": "USD per system",
+    "low": 2900,
+    "mid": 5800,
+    "high": 13300,
+    "notes": "Vendor prices checked June 2026: Infinity Projectors USD 2,889-4,389; EyeClick complete system from USD 5,796 (incl. year-1 software); ActiveFloor EUR 3,700-11,900 ex VAT plus licence from EUR 1,020/yr; Magic Carpet mobile unit GBP 8,495. Good for a kids' area. Excludes shipping, install and tax. The source is a vendor (EyeClick) blog.",
+    "source": "https://eyeclick.com/resources/blog/how-much-is-interactive-floor-projector"
+   },
+   {
+    "key": "robot_goalkeeper",
+    "item": "Robot/animatronic goalkeeper penalty-shootout system",
+    "unit": "USD per unit",
+    "low": 12000,
+    "mid": 27000,
+    "high": 120000,
+    "notes": "Mid: ICE/SEGA World Football Pro penalty cabinet with a moving animatronic goalkeeper, GBP 24,995 incl. VAT (GBP 20,829 ex VAT, ~USD 27,000) at Liberty Games UK. RoboKeeper (Fraunhofer IML, camera-tracked, about 100 km/h saves) is mainly offered for hire. Its high figure is an estimate for buying a custom full-size system. Low is an estimate for a smaller Chinese arcade penalty machine. Renting a RoboKeeper only for the opening event may make more sense.",
+    "source": "https://www.libertygames.co.uk/store/video_arcade_machines/latest/world-football/ ; https://newatlas.com/robokeeper/14322 ; estimate"
+   },
+   {
+    "key": "interactive_football_target_wall",
+    "item": "Interactive football target wall (illuminated impact-sensing targets, speed measurement, e.g. Lappset Sutu / Footbot / SKILLZ-type)",
+    "unit": "USD per unit",
+    "low": 12000,
+    "mid": 35000,
+    "high": 65000,
+    "notes": "Only verified purchase price found: the city of Bethany, Oklahoma paid USD 60,000 for a Lappset SUTU wall (16 targets, outdoor-rated), c. 2019. Footbot, SKILLZ and Helix are quote-only. Low and mid are estimates for Chinese LED target walls and indoor-only versions. Event hire in the UK runs from GBP 1,295 per day.",
+    "source": "https://www.news9.com/story/39956591/bethany-park-upgrades-inspire-residents-to-get-more-active ; https://www.redlynchleisure.co.uk/product/sutu/ ; https://www.juliacharleseventmanagement.co.uk/entertainment/football-entertainment/interactive-football-shootout/"
+   },
+   {
+    "key": "bubble_football_suit",
+    "item": "Bubble/bumper football suit, 1.5m, 0.8-1.0mm PVC or TPU (commercial)",
+    "unit": "USD per suit",
+    "low": 85,
+    "mid": 150,
+    "high": 220,
+    "notes": "Walmart 1.5m 0.8mm PVC about USD 84 (2025-26). Chinese supplier quotes USD 95-200 with MOQ 1 for 0.6mm TPU/PVC. eBay Shanghai seller GBP 142 plus GBP 39 shipping. TPU lasts longer and costs more. A game set is 10-12 suits plus an electric blower (about USD 50-150). Expect a 1-3 year life under commercial use; Baghdad heat speeds up wear.",
+    "source": "https://www.walmart.com/ip/BENTISM-1-5M-Inflatable-Bumper-Bubble-Balls-Body-Zorb-Ball-Soccer-Bumper-Football-5ft-1-5-M-PVC/2455344862 ; https://china.org.ru/product/752701938 ; https://www.ebay.de/itm/257059244264"
+   },
+   {
+    "key": "reverse_vending_machine",
+    "item": "Reverse vending machine for PET bottles/cans (caps via separate bin) with thermal coupon printer",
+    "unit": "USD per unit",
+    "low": 5500,
+    "mid": 15000,
+    "high": 35000,
+    "notes": "A Sensoneo guide puts typical RVMs at USD 20,000-35,000; an older version said about USD 12,000 average and TOMRA USD 10,000-25,000. An Indian PET-only unit lists at INR 4,75,000 (~USD 5,500). TOMRA quotes per site, and printers, loyalty integration and custom wraps add cost. Mid is an estimate for a Chinese AI-recognition unit with compaction and a printer. Coupon value is an operating cost: comparable schemes pay roughly USD 0.04-0.05 per container in vouchers.",
+    "source": "https://sensoneo.com/waste-library/reverse-vending-machine/ ; https://www.aajjo.com/product/pet-reverse-vending-machine ; https://www.tomra.com/reverse-vending/our-offering/reverse-vending-machine-price"
+   },
+   {
+    "key": "smart_strength_machine",
+    "item": "Connected/gamified strength machine with screen (EGYM Smart Strength / milon circuit station)",
+    "unit": "USD per machine",
+    "low": 8000,
+    "mid": 13000,
+    "high": 18000,
+    "notes": "No public per-machine price. A UK trade article (undated, probably older) prices an EGYM circuit at GBP 70,000-90,000; EGYM US says a circuit has about 8 machines, so roughly GBP 9-11k (~USD 11-15k) per machine. The same article gives milon at GBP 49,653 for 6 cardio pieces and GBP 124,752 for 12 strength pieces (~USD 13.5k per station). Software subscription and RFID wristbands are extra; members are often charged about USD 6/month for access.",
+    "source": "https://www.healthclubmanagement.co.uk/health-club-management-features/Circuits-Virtuous-circle/34180 ; https://us.egym.com/en-us/node/1241 ; https://www.ymcashr.org/node/16011"
+   },
+   {
+    "key": "connected_cardio_technogym",
+    "item": "Connected cardio unit with console/apps (Technogym Excite/Skillrun class treadmill)",
+    "unit": "USD per unit",
+    "low": 3600,
+    "mid": 9000,
+    "high": 16000,
+    "notes": "Remanufactured Technogym Excite+ Run 500 USD 3,599 and Excite Unity Run 1000 USD 4,599 (US reseller). Skillrun about USD 13,000-16,000 new (UK from GBP 15,500). Technogym Run MSRP USD 11,850. Mid is an estimate for a new commercial connected treadmill bought through a Gulf distributor. Freight and duties not included.",
+    "source": "https://fitnesssuperstore.com/Technogym-EXC-Run-500-Treadmill-p/technogym500.htm ; https://www.treadmillreviewguru.com/technogym-skillrun-tx-500-treadmill-review/ ; https://www.techradar.com/health-fitness/technogym-run-review"
+   },
+   {
+    "key": "energy_generating_bike",
+    "item": "Energy-generating exercise bike (SportsArt ECO-POWR indoor/upright cycle, grid-tie)",
+    "unit": "USD per bike",
+    "low": 2800,
+    "mid": 4400,
+    "high": 6600,
+    "notes": "G516 ECO-POWR indoor cycle USD 4,395 and G576U upright USD 6,295 at a US dealer. An older IEEE Spectrum article gives the G510 at about USD 1,700 discounted (USD 2,795 list), with ECO-POWR list prices of USD 2,795-7,395. REALISM: a rider sustains about 50-150 W, so one hour yields about 0.05-0.15 kWh, worth about 1 US cent of electricity. The value is marketing and gamification, not energy savings.",
+    "source": "https://selectfitness.com/products/sportsart-g516-status-eco-powr-indoor-cycling-bike ; https://selectfitness.com/products/sportsart-g576u-status-eco-powr-upright-cycle ; https://spectrum.ieee.org/bikes-that-generate-electricity-are-making-a-comeback"
+   },
+   {
+    "key": "smart_bike_trainer_station",
+    "item": "Smart bike trainer station (Wahoo KICKR Core 2 + road bike + 50-55in screen/tablet), Zwift-style",
+    "unit": "USD per station",
+    "low": 1300,
+    "mid": 2200,
+    "high": 3500,
+    "notes": "Wahoo KICKR Core 2 list USD 549.99 (2026), discounted to USD 399-450. Add a bike (USD 500-1,500), a screen or tablet (USD 300-800) and mounts. Zwift-type subscriptions run about USD 20 per month per station (estimate). Bike, screen and subscription figures are estimates.",
+    "source": "https://cyclingarchives.com/wahoo-kickr-core-review-2026-kickr-core-2-smart-trainer-tested-187-hours-1400-miles/ ; https://slickdeals.net/f/19238338-wahoo-kickr-core-v2-smart-trainer-399 ; estimate"
+   },
+   {
+    "key": "connected_rowing_machine",
+    "item": "Connected rowing machine (Concept2 RowErg + tablet, or Hydrow)",
+    "unit": "USD per unit",
+    "low": 1100,
+    "mid": 2200,
+    "high": 3000,
+    "notes": "Concept2 RowErg about USD 990 in the US (2026); the PM5 connects to apps, plus a tablet. Hydrow Origin USD 2,195 and Arc USD 2,295, with membership USD 38-50 per month; Hydrow is mostly home-grade. Concept2 is the commercial standard and needs no subscription. Shipping to Iraq not included.",
+    "source": "https://row-360.com/best-rowing-machines-2026-home-training-guide ; https://hydrow.com/blog/how-much-does-a-hydrow-cost/"
+   },
+   {
+    "key": "interactive_climbing_wall",
+    "item": "Interactive/augmented climbing wall (ValoClimb-type: projector + tracking + software + wall panels, holds, auto-belays, mats)",
+    "unit": "USD per installation (single wall, ~20-25 m2 floor)",
+    "low": 30000,
+    "mid": 50000,
+    "high": 90000,
+    "notes": "No published ValoClimb price. Eldorado Climbing Walls' owner estimated the system at about USD 30,000 (older, prototype-era figure). The wall itself, auto-belays (several thousand USD each) and safety flooring are extra, giving the mid and high figures. Valo needs 20-25 m2 for one wall, 36-45 m2 for two, and a ceiling of at least 3.5 m. The vendor claims a 9.8-month average ROI for pay-per-play sites.",
+    "source": "https://businessden.com/?p=25914 ; https://valomotion.com/valoclimb"
+   },
+   {
+    "key": "palm_tree_planted_iraq",
+    "item": "Date palm offshoot planted in Baghdad (offshoot + pit, soil amendment, drip emitter, labour, first-year care)",
+    "unit": "USD per palm",
+    "low": 25,
+    "mid": 230,
+    "high": 800,
+    "notes": "Iraq classifieds 2026: a natural Barhi offshoot 1.5-2 m tall listed at 275,000 IQD (~USD 180-190) in Abu Al-Khasib, Basra (May 2026). A lot of 17 small Barhi offshoots listed at 150,000 IQD (~USD 6 each, very young) in Basra. Planting and drip are estimated at USD 20-50 per palm. High is an estimate for a mature landscape palm with a trunk, moved by crane. Ministry of Agriculture tissue-culture offshoots may be subsidised, but no price was found. Converted at about 1,450-1,550 IQD/USD.",
+    "source": "https://iq.opensooq.com/ar/search/283067094 ; https://iq.opensooq.com/ar/search/283074764 ; estimate"
+   },
+   {
+    "key": "compost_tumbler",
+    "item": "Insulated compost tumbler (Joraform JK270/JK400) for café/garden organic waste",
+    "unit": "USD per unit",
+    "low": 600,
+    "mid": 1000,
+    "high": 1300,
+    "notes": "Eartheasy (US) JK270 USD 589, JK400 USD 999; Ireland JK270 EUR 625; Australia AUD 875. High includes freight. Handles small volumes, about tens of litres per week each. Durability complaint: rust after about 2 years in one review.",
+    "source": "https://eartheasy.com/yard-garden/composting ; https://www.quickcrop.ie/product/joraform-compost-tumbler-jk400"
+   },
+   {
+    "key": "in_vessel_composter",
+    "item": "Commercial in-vessel composter (~50 kg food waste/day: Jora 5100, Big Hanna, Rocket class)",
+    "unit": "USD per unit",
+    "low": 3000,
+    "mid": 15000,
+    "high": 35000,
+    "notes": "A UK source says powered composters (Rocket, Big Hanna, Jora 5100 rated about 50 kg/day) start from GBP 10,000 (~USD 13,000); larger units and macerators cost more. A 2010 Ridan in-vessel unit cost GBP 2,250 (about 150 L/week). Electricity, bulking agent (sawdust) and staff time are recurring costs. Needed only if restaurants generate significant food waste.",
+    "source": "https://resourcemedia.eco/article/small-scale-solutions-6554 ; https://www.thecaterer.com/products/in-vessel-wiggly-composter-from-ridan ; https://calrecycle.ca.gov/organics/commercial/"
+   },
+   {
+    "key": "sewing_upcycling_workshop",
+    "item": "Sewing / clothes-renewal workshop setup (6 industrial lockstitch + 2 overlockers + domestic machines, cutting tables, steam irons, mannequins, storage)",
+    "unit": "USD per workshop",
+    "low": 6000,
+    "mid": 12000,
+    "high": 22000,
+    "notes": "Juki DDL-8700 with table and servo USD 889-1,004 new (US, 2025-26). In Baghdad, used machines list at 200,000-250,000 IQD (~USD 130-170) and household machines at about 100,000 IQD. Overlockers about USD 800-1,500 (estimate). Low uses used or Chinese machines; high uses new Juki/Brother plus an embroidery machine. Room fit-out not included.",
+    "source": "https://ebay.com/itm/144622082419 ; https://www.walmart.com/c/kp/juki-ddl-table ; https://iq.opensooq.com/ar/%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF/%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%B5%D9%86%D8%A7%D8%B9%D9%8A%D8%A9/%D9%85%D8%B9%D8%AF%D8%A7%D8%AA-%D9%88%D9%85%D8%B3%D8%AA%D9%84%D8%B2%D9%85%D8%A7%D8%AA-%D8%AE%D9%8A%D8%A7%D8%B7%D8%A9"
+   }
+  ],
+  "caveats": "1) Many key vendors publish no prices and quote per project: Activate, Hado/meleap, Pixel Games, Valo Motion, EGYM, TOMRA, RoboKeeper, Footbot/SKILLZ/Helix. For those items the figures are triangulated from older articles, single municipal purchases (Sutu USD 60k), competitor or reseller prices, or labelled estimates. Get at least 2-3 written quotes, preferably from Gulf/Turkey distributors, before committing.\n2) Unless a note says 'landed', prices are supplier or retail prices in the US, UK, EU or China. For Baghdad, add roughly 15-35% for sea/land freight via Umm Qasr or Dubai, Iraqi customs and taxes, clearance agents, local installation and commissioning. Also add 5-10% of equipment cost per year for spares and maintenance (more for motion rigs, robots and bubble suits).\n3) Recurring software costs are not in the capex figures: EGYM, ValoClimb and interactive-floor content licences (e.g. ActiveFloor from EUR 1,020/yr), Zwift and Hydrow subscriptions, RVM telemetry. RVM coupon payouts are also an operating cost.\n4) Currency: official CBI rate 1,310 IQD/USD. The Baghdad parallel market was about 1,556 IQD/USD in early Sept 2026 (iraqinews.com, Sept 7 2026), above the 1,310-1,500 band in the brief. Iraqi classified prices were converted at about 1,450-1,550. GBP converted at about 1.30, EUR at about 1.12.\n5) Iraq-specific price data was scarce. The palm and sewing figures rest on individual OpenSooq listings, not market averages; confirm with Baghdad nurseries or the Ministry of Agriculture palm centre.\n6) Regulatory risk: importing airsoft replica rifles into Iraq probably needs Ministry of Interior permission and could be refused or seized at customs. Have a fallback (laser tag or gel blasters) before budgeting the arena.\n7) Climate and power: Baghdad summers reach 48-50°C, so LED floors and walls, sim rigs, RVMs and connected gym kit must be indoors or in shaded, air-conditioned space. LED walls, floors and motion rigs draw several kW, which affects solar sizing. Energy-generating bikes produce only about 0.05-0.15 kWh per rider-hour, so treat them as a marketing feature, not a power source.\n8) Several sources are vendor marketing (EyeClick, Valo ROI claims, EGYM churn claims) or undated trade articles (EGYM/milon circuit prices, the IEEE ECO-POWR G510 price, the Sutu municipal purchase c. 2019). Prices may have risen since."
+ },
+ "construction": {
+  "items": [
+   {
+    "key": "light_steel_hall_enclosed",
+    "item": "Enclosed light-steel or pre-engineered hall, clubhouse or multipurpose hall (insulated sandwich panel or sustainable cladding, RC slab and foundations, A/C, MEP, fire systems, mid-level finishes)",
+    "unit": "USD per m2 GFA",
+    "low": 400,
+    "mid": 650,
+    "high": 1000,
+    "notes": "Baghdad, 2025-26. A bare PEB shell in Iraq (frame, panels, slab, footings) runs about $180-300/m2. A/C sized for 50C summers adds about $80-150/m2, MEP and fire about $60-120, finishes $80-250. Double glazing, timber/GRC screens or a green-certified envelope push toward the high value. Cross-checks: a Baghdad contractor quoted turnkey building at 400,000-1,000,000 IQD/m2 (Shafaq, Jan 2025), which is about $264-660 at 1,515 IQD/USD. US installed PEB is about $270-540/m2. The Riyadh average of $3,112/m2 (T&T 2025) is a Gulf ceiling and does not apply to Baghdad. Baghdad 2024 retail prices (COSIT): rebar 1,128k IQD/t (~$757), sulphate-resistant cement 140k IQD/t (~$94). Excludes FF&E, AV and land.",
+    "source": "https://shafaq.com/ar/تقارير-وتحليلات/العراق-حم-ى-ال-سعار-تشعل-سوق-العقارات-وتكوي-الحالمين-بالسكن ; https://cosit.gov.iq/documents/buildings/Employees wages/2024/اسعار المواد الانشائية واجور العاملين 2024.pdf ; https://www.247pro.com/blog/the-ultimate-guide-to-steel-building-cost-estimation-from-initial-quote-to-grand-projects ; https://www.arabianbusiness.com/abnews/middle-east-construction-saudi-arabias-building-boom-faces-rising-costs-and-labour-crunch"
+   },
+   {
+    "key": "open_pavilion_shade",
+    "item": "Open-sided pavilion, pergola or tensile shade structure (steel or glulam frame, PVC/PTFE membrane or timber slats, lighting, fans or misting; not enclosed, no A/C)",
+    "unit": "USD per m2 covered",
+    "low": 90,
+    "mid": 180,
+    "high": 350,
+    "notes": "Estimate for Baghdad. Low = local steel frame with PVC membrane or sheet roof. COSIT 2024 lists layered steel gable roofing at about 32k IQD/m2 for material only, roughly $22. High = PTFE membrane or architectural timber. A vendor (BDiR) claims tensile structures cost 1/3-1/2 less than conventional roofs. No published Iraqi unit rate was found.",
+    "source": "estimate; https://cosit.gov.iq/documents/buildings/Employees wages/2024/اسعار المواد الانشائية واجور العاملين 2024.pdf ; https://www.bdir.com/news/what-are-the-structural-forms-of-fabric-roof-in-the-uae"
+   },
+   {
+    "key": "restaurant_fitout_kitchen",
+    "item": "Restaurant fit-out including commercial kitchen (hood, exhaust and make-up air, fire suppression, grease trap, gas, walk-in cold rooms, cooking line, dining finishes, F&B furniture)",
+    "unit": "USD per m2 of restaurant GFA (dining + kitchen)",
+    "low": 600,
+    "mid": 1000,
+    "high": 1800,
+    "notes": "Sits on top of the base-building shell. Dubai 2025 benchmarks: cafe/QSR AED 450-750/sqft (~$1,320-2,200/m2), full-service AED 800-1,500+/sqft (~$2,350-4,400/m2). Iraq is put at about 35-50% of Dubai because labour is cheap (Baghdad skilled labour 75,000 IQD/day), but imported kitchen equipment costs about the same. The kitchen equipment package for a 150-250 seat restaurant is typically $80k-250k of this.",
+    "source": "https://westgatedubai.com/commercial-fit%E2%80%91out-costs-in-dubai-office-retail-fb-and-warehouse-benchmarks/ ; https://cosit.gov.iq/documents/buildings/Employees wages/2024/اسعار المواد الانشائية واجور العاملين 2024.pdf"
+   },
+   {
+    "key": "landscape_softscape",
+    "item": "Softscape (soil improvement, drought-tolerant turf or groundcover, native trees, palms, shrubs)",
+    "unit": "USD per m2",
+    "low": 12,
+    "mid": 25,
+    "high": 50,
+    "notes": "Dubai: soft landscaping AED 50-300/m2 (~$14-82), real grass AED 10-15/m2 for material. Baghdad labour is much cheaper. Mature palms or specimen trees drive the high value. Native xeriscape fits the eco brief and cuts water use.",
+    "source": "https://www.bayut.com/mybayut/garden-landscaping-cost-dubai/ ; https://uaefreezonefinder.com/uae-swimming-pool-landscaping-guide-2026/"
+   },
+   {
+    "key": "landscape_hardscape",
+    "item": "Hardscape (interlock pavers, stone or brick paths, plazas, kerbs, site furniture)",
+    "unit": "USD per m2",
+    "low": 25,
+    "mid": 45,
+    "high": 90,
+    "notes": "Dubai hard landscaping AED 150-500/m2 (~$41-136). Low = 6-8 cm concrete interlock on a sand and base course, made locally. High = natural stone and built-in seating. No published Baghdad unit rate was found.",
+    "source": "https://uaefreezonefinder.com/uae-swimming-pool-landscaping-guide-2026/ ; estimate"
+   },
+   {
+    "key": "irrigation",
+    "item": "Irrigation system (drip, bubbler and spray, smart controllers, filtration, pumps, storage tank)",
+    "unit": "USD per m2 irrigated area",
+    "low": 4,
+    "mid": 8,
+    "high": 15,
+    "notes": "UAE contractor guide: AED 18-55/m2 irrigated (~$5-15), with smart soil-moisture controllers at the top. Excludes greywater treatment (separate item).",
+    "source": "https://uaefreezonefinder.com/uae-swimming-pool-landscaping-guide-2026/"
+   },
+   {
+    "key": "greywater_stp",
+    "item": "Package wastewater/greywater treatment plant (MBR with tertiary treatment, 50-150 m3/day) to reuse water for irrigation",
+    "unit": "USD lump sum",
+    "low": 50000,
+    "mid": 110000,
+    "high": 200000,
+    "notes": "Estimate. This is optional, but it matters for the 'eco' positioning and for Baghdad water scarcity. It cuts the irrigation water bill, which matters if polo turf is added later.",
+    "source": "estimate"
+   },
+   {
+    "key": "site_works_utilities",
+    "item": "Site works and utilities (clearing and grading, internal roads and fire access, storm drainage, sewer connection, water network and tanks, site lighting, LV and data ducts)",
+    "unit": "USD per m2 of developed site area",
+    "low": 20,
+    "mid": 40,
+    "high": 70,
+    "notes": "For a 12,500 m2 plot this comes to about $250k-875k. Excludes landscaping, parking, the power substation and the perimeter wall. UK benchmarks: external works add about 7.5-12.5% to building cost on low-coverage sites with landscaping and fencing (VOA); site external works about 9.7% plus drainage about 7.3% of total cost (ICN, Mar 2025). Scaled down to Iraqi material and labour prices.",
+    "source": "https://www.gov.uk/guidance/rating-manual-section-4-valuation-methods/part-3-practice-note-2-revaluation-2010-the-contractor-s-basis ; https://innovationchainnorth.co.uk/wp-content/uploads/2025/04/ICN-benchmarking-March-25.pdf"
+   },
+   {
+    "key": "power_substation_genset",
+    "item": "Power infrastructure (MV grid connection, 1,000-1,600 kVA transformer, RMU and LV switchgear, plus a 1,000 kVA prime-rated diesel backup generator with fuel tank)",
+    "unit": "USD lump sum",
+    "low": 150000,
+    "mid": 280000,
+    "high": 450000,
+    "notes": "Baghdad's grid is unreliable, so a backup generator is needed even with solar and batteries. Reference: a UK dealer lists an enclosed 1,000 kVA prime Perkins set from GBP 87,450 (~$115k). Chinese-assembled sets cost less. The rest of the range is an estimate.",
+    "source": "https://yorpower.com/product/1000kva-silent-perkins-generator/ ; estimate"
+   },
+   {
+    "key": "solar_pv_kwp",
+    "item": "Solar PV, rooftop or ground-mount, installed (modules, hybrid/grid-tie inverters, mounting, DC/AC cabling, EPC margin; no batteries)",
+    "unit": "USD per kWp",
+    "low": 450,
+    "mid": 650,
+    "high": 900,
+    "notes": "Iraq, 2025-26. Reuters/Arab News (Aug 2025): a 5-6 kW system costs about 5M IQD, roughly $590-700/kW at 1,417 IQD/USD. In March 2026 Iraq cut customs duty on panels, inverters and lithium batteries from 33% to 5%, which pushes prices down. IRENA puts 2024 global installed utility PV at $691/kW. Karbala 300 MW is $360m (~$1.2/W, utility scale including grid connection). Expected yield in Iraq is 1,514-1,745 kWh/kWp/yr. Heat derating and dust cleaning cut real output by about 10-15%.",
+    "source": "https://www.arabnews.com/node/2610691/middle-east ; https://www.pv-magazine.com/2026/03/04/iraq-slashes-solar-import-tariffs-to-5/ ; https://www.irena.org/publications/2025/Jul/Renewable-Power-Generation-Costs-in-2024 ; https://guest.meed.com/iraq-opens-first-phase-of-karbala-solar-project/ ; https://journals.ntu.edu.iq/index.php/NTU-JRE/article/view/1842"
+   },
+   {
+    "key": "solar_carport_space",
+    "item": "Parking space with solar carport (steel canopy with about 2.5 kWp PV, asphalt or interlock bay plus aisle share of about 25 m2, markings, lighting)",
+    "unit": "USD per parking space",
+    "low": 2500,
+    "mid": 3800,
+    "high": 5500,
+    "notes": "SurgePV (2026): EUR 1,200-2,500 per space in the EU, $1,800-3,200 in the US, EUR 550-1,100/kWp. Carports cost 2-3x rooftop PV per kWp, at 1.8-2.7 kWp per space. For Iraq: carport about $900-1,400/kWp x 2.5 kWp, plus paving at $400-900 per space, plus lighting. A 150-space lot comes to about $0.4-0.8M and yields about 375 kWp.",
+    "source": "https://www.surgepv.com/hub/commercial-solar/solar-carports"
+   },
+   {
+    "key": "battery_storage_kwh",
+    "item": "Battery storage installed (LFP C&I cabinets, BMS, share of PCS/hybrid inverter, installation, import at 5% duty)",
+    "unit": "USD per kWh usable",
+    "low": 180,
+    "mid": 260,
+    "high": 380,
+    "notes": "BNEF: stationary battery packs averaged $70/kWh in 2025. Turnkey BESS averaged $165/kWh in 2024 globally, $101 in China, $236 in the US and $275 in Europe. Ember: about $125/kWh for utility scale outside China and the US (Oct 2025). Small C&I systems in Iraq carry freight, integrator margin and inverter cost, which explains the higher range. Plan for replacement after about 10-15 years.",
+    "source": "https://about.bnef.com/insights/clean-energy/new-record-lows-for-battery-prices/ ; https://www.energy-storage.news/?p=91801 ; https://www.ess-news.com/2025/12/19/energy-storage-in-2025-year-in-review-part-1/"
+   },
+   {
+    "key": "perimeter_wall",
+    "item": "Perimeter security wall, 2.5-3 m high (RC strip footing and columns, 20 cm concrete block, plaster and paint or stone cladding, anti-climb top)",
+    "unit": "USD per linear m",
+    "low": 70,
+    "mid": 120,
+    "high": 220,
+    "notes": "Bottom-up estimate from COSIT 2024 Baghdad prices: large block 756 IQD each (~$0.51), cement 140k IQD/t, rebar 1,128k IQD/t, skilled labour 75k IQD/day. A mid-spec 3 m wall works out to about $110-140/m. High = precast or decorative stone-clad. A mesh fence for adjacent polo or skeet land would cost about $25-50/m. The 12,500 m2 plot has roughly 450-500 m of perimeter.",
+    "source": "https://cosit.gov.iq/documents/buildings/Employees wages/2024/اسعار المواد الانشائية واجور العاملين 2024.pdf ; estimate"
+   },
+   {
+    "key": "cctv_per_camera",
+    "item": "IP CCTV installed (2-8 MP Hikvision/Dahua-class cameras, PoE switches, NVR with 30-day storage, cabling, VMS)",
+    "unit": "USD per camera",
+    "low": 250,
+    "mid": 450,
+    "high": 900,
+    "notes": "US commercial installs run $250-600 per camera where cabling is easy and $700-1,500 for enterprise; PTZ is $1,000-2,000+. Iraq is cheaper because labour is cheap and Chinese brands dominate. A club of this size needs about 60-100 cameras, i.e. about $15k-90k, plus a control room at about $20-50k.",
+    "source": "https://getsafeandsound.com/blog/cctv-camera-installation-cost/ ; https://www.btigroup.com/post/professional-security-camera-installation-costs/"
+   },
+   {
+    "key": "access_qr_lane",
+    "item": "QR, RFID or face-recognition access lane (speed gate or full-height turnstile with reader and controller, integrated with membership software)",
+    "unit": "USD per lane installed",
+    "low": 2000,
+    "mid": 5000,
+    "high": 12000,
+    "notes": "Chinese B2B listings: full-height turnstile with RFID, QR and fingerprint $1,750-1,880; tripod $495-600. Premium European speed gates run $8-15k. Not included: membership/booking software integration (about $10-40k lump sum) and vehicle barrier with ANPR (about $5-15k per lane). A club needs about 4-8 pedestrian lanes.",
+    "source": "https://electronics.alibaba.com/product/security-barcode-scanner-gate ; https://m.indiamart.com/daccess/turnstile-gates.html ; estimate"
+   },
+   {
+    "key": "led_wall_indoor",
+    "item": "Indoor fine-pitch LED video wall, P1.9-P2.6, installed (modules, cabinets, processor, power, mounting, freight, 5% duty, commissioning)",
+    "unit": "USD per m2",
+    "low": 550,
+    "mid": 1000,
+    "high": 2000,
+    "notes": "China FOB listings for P2.6 indoor: $398-999/m2. UK supply-only P2.5-P3.9: GBP 1,200-2,200/m2. P1.9 costs 60-80% more per m2 than P2.5. High = tier-1 brand (Absen, Unilumin, Leyard, Samsung) at P1.5-1.9.",
+    "source": "https://dynamo-led-displays.co.uk/how-much-led-display-cost/ ; https://m.made-in-china.com/hot-china-products/LED_Display_Module_Factory-307.html"
+   },
+   {
+    "key": "led_wall_outdoor",
+    "item": "Outdoor LED video wall, P3.9-P6, IP65, at least 5,500 nits, front service, installed including steel support structure",
+    "unit": "USD per m2",
+    "low": 550,
+    "mid": 950,
+    "high": 1800,
+    "notes": "China FOB listings for P4/P5 outdoor: about $380-1,100/m2. UK supply-only P3.9-P5: GBP 2,500-4,000/m2. An Iraqi used P5 listing works out to about 1.2M IQD/m2 (~$850). Baghdad heat above 50C and dust call for better thermal design, so avoid the cheapest modules. A 40-60 m2 stage screen comes to about $40-90k.",
+    "source": "https://m.made-in-china.com/hot-china-products/LED_Display_Module_Factory-4.html ; https://dynamo-led-displays.co.uk/how-much-led-display-cost/ ; https://iq.opensooq.com/ar/search/282140296"
+   },
+   {
+    "key": "amphitheatre_seat",
+    "item": "Open-air terraced amphitheatre seating (earth berm with in-situ or precast RC terraces, HDPE or timber-composite seats or benches, aisles, handrails, step lights, drainage; about 0.5-0.6 m2 per seat)",
+    "unit": "USD per seat",
+    "low": 120,
+    "mid": 250,
+    "high": 550,
+    "notes": "US anchors: Clayton State, 120 seats on 6 concrete tiers for $115k (~$950/seat, 2008). Vendor guides give $250-900/seat for small venues. Iraqi material and labour costs (COSIT) put this at the lower end. Excludes shade: a canopy over 3,000 seats (~1,800-2,000 m2 at $150-350/m2) adds about $0.3-0.7M and is close to essential in Baghdad summers. 3,000 seats come to about $0.36-1.65M.",
+    "source": "https://www.clayton.edu/facilities/minor-projects/amphitheater ; https://new.risingsunartscentre.org/news/small-outdoor-amphitheater-cost-guide-2026.html ; https://cosit.gov.iq/documents/buildings/Employees wages/2024/اسعار المواد الانشائية واجور العاملين 2024.pdf"
+   },
+   {
+    "key": "stage_and_roof_truss",
+    "item": "Main open-air stage (RC platform about 18x12 m) with roof truss or canopy, rigging points and wind bracing",
+    "unit": "USD lump sum",
+    "low": 70000,
+    "mid": 180000,
+    "high": 450000,
+    "notes": "A 12.5x10x8 m aluminium two-slope stage roof is listed at 287,517 lei including VAT (~$55-65k). A UK Global Truss 8x6 m arch roof is GBP 38,635. Low = imported ground-supported aluminium roof on a concrete platform. High = permanent steel frame with PTFE membrane canopy. Backstage and green rooms are counted under the building rate.",
+    "source": "https://www.audiovision.ro/produs/srd40m1210-two-slope-roof-125x10x8-m/ ; https://www.simplysoundandlighting.co.uk/collections/stage-equipment?page=113"
+   },
+   {
+    "key": "av_hall_1000",
+    "item": "Pro sound and lighting for a 1,000-person multipurpose hall (L/R line array or point source with subs, DSP, digital console, wireless mics, 24-40 LED moving heads and washes, DMX control, rigging, installation)",
+    "unit": "USD lump sum",
+    "low": 70000,
+    "mid": 160000,
+    "high": 350000,
+    "notes": "Estimate. Low = Chinese or Turkish brands. Mid = RCF, DAS or Martin Audio with Chauvet/Robe-class lighting. High = d&b, L-Acoustics or Meyer with Robe/Martin and a grandMA console. A UK guide puts professional line arrays from under GBP 10k to over GBP 500k.",
+    "source": "https://www.10kused.com/?p=721700 ; https://jblpro.com/en-US/case_studies/mount-faber-peak-ballroom-singapore ; estimate"
+   },
+   {
+    "key": "av_outdoor_3000",
+    "item": "Pro sound and lighting for a 3,000-seat open-air venue (weatherized L/R line array hangs, front and delay fills, subs, FOH and monitor consoles, amp racks, 40-80 lighting fixtures, power distribution, installation)",
+    "unit": "USD lump sum",
+    "low": 180000,
+    "mid": 420000,
+    "high": 900000,
+    "notes": "Anchor: Cobb County, US (2019) awarded $253,587 for the sound system alone, supplied, installed and cabled, at the Mable House Barnes Amphitheater. In phase 1, renting touring rigs per event is a cheaper alternative to owning.",
+    "source": "https://ajc.com/news/local/mableton-amphitheater-receive-new-sound-system/V2Z59W4yQA39RwLMeA39vN ; estimate"
+   },
+   {
+    "key": "design_engineering_permits_pct",
+    "item": "Design, engineering, PM and supervision, surveys, green certification, permits and investment licence",
+    "unit": "% of construction capex",
+    "low": 6,
+    "mid": 9,
+    "high": 12,
+    "notes": "UAE full-scope architecture and engineering fees are 5-8% of construction value. Add PM and site supervision (2-3%), geotech and survey, EDGE/LEED certification (0.3-0.8%), and permits plus state-land investment licence fees (0.5-1.5%). Local Iraqi design offices charge less (about 2-4%), but a flagship sustainable club usually needs international-grade design, about 7-10% in total.",
+    "source": "https://uaefreezonefinder.com/uae-architectural-design-consultancy-guide-2026/ ; estimate"
+   },
+   {
+    "key": "contingency_pct",
+    "item": "Construction contingency at feasibility stage",
+    "unit": "% of construction capex",
+    "low": 10,
+    "mid": 15,
+    "high": 25,
+    "notes": "AACE accuracy ranges: Class 5 (concept) -20% to -50% / +30% to +100%; Class 4 (feasibility) -15% to -30% / +20% to +50%. Iraq-specific risks: FX swings (Baghdad market rate 1,515 IQD/USD in Jan 2025, 1,417 in Oct 2025), customs and clearance delays, fuel-driven material price jumps (Sep 2026: cement up 40k IQD/t, steel up about 6% in Kurdistan), and state-land approvals. Use 15% and add escalation separately.",
+    "source": "https://canadabuys.canada.ca/documents/pub/att/2021/10/28/2305b22cf3ce2931a9ca532a8274cba4/appendix_e_-_annex_7.2_-_classification_system_cost_estimate_matrix.pdf ; https://cosit.gov.iq/documents/indices/CPI/DOLLAR/2025/10- تقرير شهر تشرين الاول دولار كامل2025.pdf ; https://shafaq.com/en/Kurdistan/Fuel-costs-raise-cement-and-steel-prices-across-Iraq"
+   },
+   {
+    "key": "construction_escalation",
+    "item": "Annual construction cost escalation, for later phases funded from operating cash flow",
+    "unit": "% per year",
+    "low": 3,
+    "mid": 5,
+    "high": 8,
+    "notes": "Apply to phase 2 and phase 3 capex that starts 2-4 years out. Turner & Townsend forecast 5% inflation for Riyadh and Dubai in 2024. Iraqi rebar was $580-700/t EXW in 2025. The 2026 fuel subsidy cut raised cement and steel prices.",
+    "source": "https://www.agbi.com/analysis/construction/2024/06/building-construction-costs-dubai-riyadh-doha-abu-dhabi/ ; https://www.steelradar.com/en/price-fluctuations-in-the-iraqi-construction-sector/ ; https://shafaq.com/en/Kurdistan/Fuel-costs-raise-cement-and-steel-prices-across-Iraq"
+   },
+   {
+    "key": "labour_day_rate_baghdad",
+    "item": "Skilled construction labour day rate, Baghdad (reference input)",
+    "unit": "USD per worker-day",
+    "low": 40,
+    "mid": 50,
+    "high": 70,
+    "notes": "COSIT 2024 Baghdad daily wages: skilled 75,000 IQD (~$50), semi-skilled 35,833 (~$24), unskilled 25,000 (~$17), engineers 79,583 (~$53), guards 20,000. The national skilled average is 63,056 IQD. High = specialist steel erectors and MEP technicians. Because labour is cheap, Iraqi costs are driven mostly by imported materials and equipment.",
+    "source": "https://cosit.gov.iq/documents/buildings/Employees wages/2024/اسعار المواد الانشائية واجور العاملين 2024.pdf"
+   }
+  ],
+  "caveats": "1) Very few Iraq-specific unit rates are published. The hard Iraqi data points are: COSIT 2024 material and wage bulletin (Baghdad rebar 1,128k IQD/t, sulphate-resistant cement 140k IQD/t, large block 756 IQD, skilled labour 75k IQD/day); a Baghdad contractor quoting 400k-1M IQD/m2 turnkey (Shafaq, Jan 2025); 5-6 kW solar systems at about 5M IQD (Reuters, Aug 2025); and the solar import duty cut from 33% to 5% (Mar 2026). Everything else is triangulated from Gulf, UK, US or China benchmarks and scaled to Iraqi prices. Items with source 'estimate' are reasoned judgement. Treat the whole set as an AACE Class 5 estimate (roughly -30%/+50%) and replace it with at least 3 Baghdad contractor quotes before committing money.\n2) FX: the COSIT Baghdad market rate averaged 1,417 IQD/USD in Oct 2025 (1,515 in Jan 2025). The official rate is about 1,310. IQD prices were converted at the market rate of the same period.\n3) Prices are 2025-26 USD. They exclude land (state land, investment licence), FF&E except where stated, operator pre-opening costs, financing, and VAT/sales tax. Pre-opening costs and financing belong in the parent model.\n4) Baghdad climate (50C+ summers, dust storms) raises A/C, shading, LED thermal design and PV derating costs. Do not size PV or seating comfort on European assumptions. Shade over the amphitheatre is close to mandatory, at about $0.3-0.7M extra for 3,000 seats.\n5) Sources disagree widely on AV, LED and amphitheatre costs, so the low/mid/high spreads are deliberately wide. Low = Chinese or Turkish equipment and local contractors; high = tier-1 brands and international contractors.\n6) For phasing: apply contingency (mid 15%) and design/PM (mid 9%) on top of hard costs, and escalate phase 2/3 capex at about 5%/yr. Under a $2M phase-1 cap, about 25% goes to these soft costs, which leaves about $1.6M of hard construction.\n7) Polo and skeet field costs (turf, irrigation at scale, safety berms, traps) are not covered here and need their own benchmarks."
+ },
+ "iraq_market": {
+  "items": [
+   {
+    "key": "paintball_session_pp",
+    "item": "Paintball/airsoft session price per person (about 1-2 hours, gear plus about 200 balls)",
+    "unit": "USD per person per session",
+    "low": 14,
+    "mid": 22,
+    "high": 35,
+    "notes": "I found no published price for any paintball or airsoft field in Baghdad or Iraq. This is an estimate from three anchors. (1) Iraqi experiential pricing: a Mosul escape room charges 12,500-17,500 IQD per person. (2) A Kuwait MILSIM field charged KD15 for the day plus KD10 per 500 balls (older figure). (3) US walk-on rates in Oct 2026 were $42-57 with 500 balls. Baghdad purchasing power is much lower than the Gulf's, so 20k-50k IQD per person is plausible (mid 30k IQD at 1,400 IQD/USD). Extra paint would sell at about 10-15k IQD per 100 balls. Imported balls are a real cost, so margins depend on how much paint each player buys.",
+    "source": "estimate; benchmarks: https://248am.com/?p=13136 ; https://paintballvitals.com/how-much-does-it-cost-to-go-paintballing/ ; https://escaperooms-mosul.com/booking/41"
+   },
+   {
+    "key": "escape_room_pp",
+    "item": "Escape room price per person (60 min)",
+    "unit": "USD per person",
+    "low": 7.1,
+    "mid": 10.7,
+    "high": 17.9,
+    "notes": "Real Iraqi price list from Escape Rooms Mosul ('Prison Escape', 60 min): 2 players 35,000 IQD, 3 players 45,000, 4 players 50,000, 6 players 60,000, 8 players 80,000. That is 10,000-17,500 IQD per person. Baghdad has at least one operator ('Escape Room Iraq', listed on Tripadvisor), but its prices were not found. For a premium Baghdad venue I assume 10k-25k IQD per person. Converted at about 1,400 IQD/USD.",
+    "source": "https://escaperooms-mosul.com/booking/41 ; https://ar.tripadvisor.com/HotelsNear-g294001-d27772899-Escape_Room_Iraq-Baghdad_Baghdad_Province.html"
+   },
+   {
+    "key": "vr_arcade_per_game",
+    "item": "VR arcade / VR experience price per game",
+    "unit": "USD per game/experience",
+    "low": 3.6,
+    "mid": 5.7,
+    "high": 10.7,
+    "notes": "I found no Baghdad VR arcade price list. Estimate: 5,000-15,000 IQD per experience (mid 8,000), priced between a cinema ticket (10k IQD) and an escape room (12.5-17.5k IQD per person). For reference, a mall VR arcade in Brunei charges BN$2-4 per game, and Dubai VR parks charge much more. Iraqi mall arcades usually sell prepaid play cards. Families describe these card costs as a burden (Shafaq 2026), which puts a ceiling on prices.",
+    "source": "estimate; https://www.intergameonline.com/coin-op/news/bruneis-first-vr-arcade-opens ; https://elcinema.com/theater/3101419/"
+   },
+   {
+    "key": "cinema_ticket",
+    "item": "Cinema ticket in Baghdad (standard to VIP)",
+    "unit": "USD per ticket",
+    "low": 7.1,
+    "mid": 10.7,
+    "high": 15.7,
+    "notes": "IC Dream City Mall cinema, Baghdad, schedule for the week of 24 Oct 2026: Standard 10,000 IQD, 3D 12,000, MAX/Atmos 12,000, VIP 20,000, VIP 3D 22,000. Monday is buy-one-get-one. Numbeo's Baghdad average, updated Oct 2026, is 15,000 IQD. IraqiCinema runs screens in the Mansour, Zayoona, Baghdad, Dream City and Babylon malls. Converted at 1,400 IQD/USD.",
+    "source": "https://elcinema.com/theater/3101419/ ; https://www.numbeo.com/cost-of-living/in/Baghdad"
+   },
+   {
+    "key": "gym_monthly_membership",
+    "item": "Gym membership per month, Baghdad (average to premium)",
+    "unit": "USD per person per month",
+    "low": 43,
+    "mid": 71,
+    "high": 115,
+    "notes": "Numbeo's Baghdad average fitness-club fee is 60,302 IQD/month (Oct 2026, 40 contributors). Expatistan gives 56,934 IQD for the business district (Jun 2026, only 7 data points). A Numbeo mirror shows a range of $22.9-115, average $45. No hotel or luxury gym in Mansour or Jadriya publishes its rates. I estimate premium gyms at 100k-160k IQD/month. Low = city average. Converted at 1,400 IQD/USD.",
+    "source": "https://www.numbeo.com/cost-of-living/in/Baghdad ; https://expatistan.com/price/gym/baghdad ; https://almurakib.com/living-cost/city/baghdad/"
+   },
+   {
+    "key": "elite_club_joining_fee",
+    "item": "Joining fee at an elite Baghdad social/sports club (Iraqi Hunting Club benchmark)",
+    "unit": "USD per membership (one-time)",
+    "low": 2857,
+    "mid": 7143,
+    "high": 7634,
+    "notes": "The Iraqi Hunting Club (Mansour, founded 1969, 7,000+ members) held a general assembly vote, in roughly 2026, that raised its membership fee from 4 million to 10 million IQD. The vote was reported on the club's Telegram channel and in a TikTok news clip. Conditions apply for families. Low = old 4M fee. Mid = 10M at 1,400. High = 10M at the official 1,310 rate. No official fee schedule was found. The club opened 2027 annual renewals in Oct 2026 but did not post the amount. Alwiyah Club for comparison: about $850 one-time plus $85-100/yr with 4,000 members (2009). Its 2002 bylaws set 100,000 IQD entry and 4,000 IQD a year, which is long obsolete. This shows the elite segment will pay several thousand dollars to join.",
+    "source": "https://t.me/s/ihciraq ; https://www.tiktok.com/discover/%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83-%D9%81%D9%8A-%D9%86%D8%A7%D8%AF%D9%8A-%D8%A7%D9%84%D8%B5%D9%8A%D8%AF-%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A ; https://ar.wikipedia.org/wiki/%D9%86%D8%A7%D8%AF%D9%8A_%D8%A7%D9%84%D8%B5%D9%8A%D8%AF_%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A ; https://www.washingtonpost.com/archive/national/2009/11/22/in-quieter-baghdad-elite-social-club-roars-back-to-life/d9e9ce1f-0e7e-43c1-934a-526649ca5642/ ; https://wiki.dorar-aliraq.net/iraqilaws/law/15846.html"
+   },
+   {
+    "key": "social_club_annual_dues",
+    "item": "Annual dues at an existing Baghdad social/sports club (excluding joining fee)",
+    "unit": "USD per member/family per year",
+    "low": 150,
+    "mid": 600,
+    "high": 1200,
+    "notes": "Mostly an estimate. Data points: Alwiyah Club charged $85-100/yr in 2009. An unofficial page says Iraqi hunters'-association ID membership costs 250,000 IQD/yr plus 75,000 IQD/month, about 1.15M IQD (about $820) a year. Hunting Club 2027 renewals opened in Oct 2026 with no amount published. Legacy clubs keep low annual dues and earn from high joining fees and F&B. A new members-only club with polo, skeet and sports facilities could charge more, but existing low-dues clubs set what members expect to pay.",
+    "source": "estimate; https://www.washingtonpost.com/archive/national/2009/11/22/in-quieter-baghdad-elite-social-club-roars-back-to-life/d9e9ce1f-0e7e-43c1-934a-526649ca5642/ ; https://www.tiktok.com/discover/%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83-%D9%81%D9%8A-%D9%86%D8%A7%D8%AF%D9%8A-%D8%A7%D9%84%D8%B5%D9%8A%D8%AF-%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82%D9%8A ; https://t.me/s/ihciraq"
+   },
+   {
+    "key": "upscale_restaurant_spend_pp",
+    "item": "Average spend per person at upscale restaurants (Mansour, Abu Nawas/Karrada, Jadriya)",
+    "unit": "USD per person per visit",
+    "low": 17.9,
+    "mid": 28.6,
+    "high": 39.3,
+    "notes": "Restaurant Guru average bills per person: Bestoon Samad (Mansour) 30-50k IQD, Mazaya (Mansour) 35-55k IQD, Al-Baghdadi (Abu Nawas) 25-50k IQD. Numbeo (Oct 2026): mid-range meal for two (three courses, no drinks) 40,000 IQD, i.e. 20k per person; inexpensive meal 7,000 IQD. Tripadvisor rates Jadriya riverside venues such as the Floating Restaurant at $$-$$$. Low 25k, mid 40k, high 55k IQD at 1,400 IQD/USD. Excludes alcohol, which is restricted or rarely served.",
+    "source": "https://restaurantguru.com/guides/travel-guide-baghdad,-iraq ; https://www.numbeo.com/cost-of-living/in/Baghdad ; https://www.tripadvisor.com/Restaurant_Review-g294001-d17764818-Reviews-Floating_Restaurant_Jadiriyah-Baghdad_Baghdad_Province.html"
+   },
+   {
+    "key": "upscale_cafe_spend_pp",
+    "item": "Average spend per person at an upscale cafe (coffee/juice, dessert, often shisha)",
+    "unit": "USD per person per visit",
+    "low": 5,
+    "mid": 8.9,
+    "high": 15.7,
+    "notes": "Anchors: Numbeo cappuccino 4,173 IQD (Oct 2026); Expatistan cappuccino in an expat area 4,420 IQD (Feb 2026). A typical upscale visit is two drinks plus a dessert or shisha. I estimate 7k-22k IQD per person (mid 12.5k). No published shisha prices were found. Converted at 1,400 IQD/USD.",
+    "source": "https://www.numbeo.com/cost-of-living/in/Baghdad ; https://expatistan.com/price/capuccino/baghdad"
+   },
+   {
+    "key": "commercial_rent_mansour",
+    "item": "Cafe/restaurant-grade retail rent in Mansour",
+    "unit": "USD per m2 per month",
+    "low": 6,
+    "mid": 10,
+    "high": 15,
+    "notes": "Listing: 350 m2 shop on 14 Ramadan Street, Mansour, $3,500/month (negotiable), marketed as suitable for a coffee shop. That is about $10/m2/month. Paya shows other Mansour commercial listings around $2,000/month (type unclear). Main streets and mall frontage cost more; side streets less. These are asking rents, not closed deals. The club itself is on state land, so this is a benchmark for leasing out F&B space or for what tenants would compare against.",
+    "source": "https://aiqarat.com/property/%D9%85%D8%AD%D9%84-%D9%84%D9%84%D8%A5%D9%8A%D8%AC%D8%A7%D8%B1-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D9%AC%D8%B4%D8%A7%D8%B1%D8%B9-%D9%A1%D9%A4-%D8%B1%D9%85%D8%B6%D8%A7%D9%86%D9%A3/ ; https://paya-realestate.com/ar/search/properties/for-rent/%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF/%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1"
+   },
+   {
+    "key": "food_truck_pitch_rent",
+    "item": "Food truck / kiosk pitch rent inside a Baghdad entertainment venue",
+    "unit": "USD per truck per month",
+    "low": 300,
+    "mid": 600,
+    "high": 1200,
+    "notes": "No Baghdad food-truck pitch rents are published. Estimate: a fixed fee of $300-1,200/month, or 10-20% of the truck's revenue, depending on footfall. For scale, small shops (24-26 m2) and commercial units in Harthiya list at about 870k IQD/month and up, and a prime Mansour shop is about $10/m2. A members-only club has lower footfall than a public mall or park, so expect the low-to-mid range unless the club runs public event nights.",
+    "source": "estimate; https://iq.opensooq.com/en/baghdad/property/shops-for-rent ; https://aiqarat.com/property/%D9%85%D8%AD%D9%84-%D9%84%D9%84%D8%A5%D9%8A%D8%AC%D8%A7%D8%B1-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D9%AC%D8%B4%D8%A7%D8%B1%D8%B9-%D9%A1%D9%A4-%D8%B1%D9%85%D8%B6%D8%A7%D9%86%D9%A3/"
+   },
+   {
+    "key": "concert_ticket_baghdad",
+    "item": "Concert ticket price in Baghdad (cheapest tier to VIP)",
+    "unit": "USD per ticket",
+    "low": 10.7,
+    "mid": 50,
+    "high": 121,
+    "notes": "Wael Jassar New Year's Eve 2025, Al-Nakheel Complex hall, Baghdad: Silver 100k, Platinum 130k, Golden 140k, VIP 170k IQD. Big Sam, Eid al-Adha concert, 27 May 2026, Nakheel Baghdad Mall: Silver 55k, Gold 70k, Platinum 90k, VIP 100-150k IQD. Ticket Zone lists Iraqi concerts from about 15k to 100k IQD. Wegz's Baghdad VIP tickets sold out. Erbil for reference: Elissa (2021) $200 regular to $400 VIP; Maher Zain (2019) 30-60k IQD, with complaints about price and low turnout. Low 15k, mid 70k, high 170k IQD at 1,400.",
+    "source": "https://964media.com/635666/ ; https://www.almasryingulf.com/iraq-eid-events-2026/ ; https://ticket.zone/concerts ; https://www.kurdistan24.net/en/story/384839 ; https://rudaw.net/english/culture/31082019"
+   },
+   {
+    "key": "mall_footfall_per_day",
+    "item": "Daily visitors at major Baghdad malls (demand proxy)",
+    "unit": "visitors per day",
+    "low": 6800,
+    "mid": 8200,
+    "high": 11400,
+    "notes": "Getoccupi models Baghdad Mall at about 3.0M visitors/yr (about 8,200/day) and Babylon Mall at about 2.5M/yr (about 6,800/day). Media.co.uk (Nov 2025, updated Jul 2026) cites more than 80,000/week at peak for Baghdad Mall (about 11,400/day). It also reports about 60% female visitors, 2.3-hour average stays, and visitors mainly from Mansour, Karrada and Jadriya, whose household incomes it puts 40-60% above the national average. All are modelled, directional figures. Older park data: Zawraa Park claimed 3M visitors over Eid 2007 (unverified). Mass demand is for free or low-price leisure.",
+    "source": "https://getoccupi.com/malls/baghdad-mall ; https://getoccupi.com/malls/babylon ; https://www.media.co.uk/blogs/blog/baghdad-mall-shopping-center-advertising-iraq ; https://www.nbcnews.com/id/wbna33984902"
+   },
+   {
+    "key": "household_income",
+    "item": "Average household income: Iraq average to affluent Baghdad districts",
+    "unit": "USD per household per month",
+    "low": 792,
+    "mid": 1100,
+    "high": 1360,
+    "notes": "Ministry of Planning Social and Economic Family Survey, with World Bank support (reported Feb 2025): average household income 1.188M IQD/month (about $792), spending 1.467M IQD, income per person 201,300 IQD, poverty rate 17.5%. Numbeo's average net salary in Baghdad is 790,928 IQD/month (Oct 2026). The private-sector minimum wage is 350,000 IQD. Mid is my Baghdad estimate: CSIS says the central region was least affected by the income decline. High = affluent districts at +60% (Media.co.uk claim). The average household cannot afford premium club fees.",
+    "source": "https://en.964media.com/33010/ ; https://www.numbeo.com/cost-of-living/in/Baghdad ; https://playroll.com/minimum-wage/iraq ; https://www.csis.org/analysis/iraqi-stability-and-its-free-falling-middle-class"
+   },
+   {
+    "key": "affluent_households_baghdad",
+    "item": "Size of the Baghdad target market: households able to pay premium club fees",
+    "unit": "households",
+    "low": 16000,
+    "mid": 50000,
+    "high": 160000,
+    "notes": "Baghdad governorate had 9.78M people in the 2024 census (Wikipedia infobox; Iraq total 46.1M). At about 6 persons per household, that is about 1.6M households. CSIS (2020) puts Iraq's 'upper class' (more than $10 per person per day, about $1,800+/month per household) at 10%, about 160k Baghdad households (high). Households able to pay $1,000+/yr dues plus thousands in joining fees are probably 1-3% (16k-50k). This is an estimate. No reliable income-distribution data exists for Baghdad. Public-sector salaries and oil-linked budgets drive demand, so it is exposed to oil-price and payroll delays.",
+    "source": "estimate; https://en.wikipedia.org/wiki/Baghdad_Governorate ; https://shafaq.com/en/society/Iraq-s-final-national-census-Population-reaches-46-1M ; https://www.csis.org/analysis/iraqi-stability-and-its-free-falling-middle-class"
+   },
+   {
+    "key": "waiter_salary",
+    "item": "Waiter / service staff salary, Baghdad",
+    "unit": "USD per month",
+    "low": 357,
+    "mid": 429,
+    "high": 643,
+    "notes": "Baghdad job ads, 2025-2026: hall and kitchen staff from 500k IQD (Rusafa); waiters and restaurant staff from 600k; fast-food evening shift from 700k; a fast-food restaurant fixed salary of 900k IQD with housing for staff from other provinces; hotel/restaurant packages from 650k plus free housing and 3 meals (Sep 2026). Shifts are often 10-12 hours. Minimum wage is 350k IQD. Add about 10-15% for social security and meals. Converted at 1,400 IQD/USD.",
+    "source": "https://www.almasryingulf.com/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF-%D8%A8%D8%B1%D8%A7%D8%AA%D8%A8-%D9%8A%D8%A8%D8%AF%D8%A3-%D9%85%D9%86-650-%D8%A3%D9%84%D9%81/ ; https://www.jobs-arab.com/iq/jobs/10050/ ; https://baghdad-jobs.com/jobs/2359 ; https://rasediraqi.com/jobs?category=28"
+   },
+   {
+    "key": "line_cook_salary",
+    "item": "Cook / assistant cook salary, Baghdad",
+    "unit": "USD per month",
+    "low": 429,
+    "mid": 571,
+    "high": 786,
+    "notes": "Ads: assistant cook from 600k IQD for a 12-hour shift; kitchen staff at a Palestine Street restaurant-cafe 600k IQD; experienced line cooks estimated at 800k-1.1M IQD. WorldSalaries gives higher national figures (line/chef averages about 1.35M IQD/month gross) and probably overstates small local restaurants. Converted at 1,400 IQD/USD.",
+    "source": "https://baghdad-jobs.com/jobs/2616 ; https://rasediraqi.com/jobs?category=28 ; https://worldsalaries.com/average-line-cook-salary-in-iraq/"
+   },
+   {
+    "key": "head_chef_salary",
+    "item": "Head chef salary (local to expat), Baghdad",
+    "unit": "USD per month",
+    "low": 857,
+    "mid": 1286,
+    "high": 2500,
+    "notes": "WorldSalaries Iraq: chef average about 16.2M IQD/yr (about 1.35M/month), range 8.4-24.8M/yr. Demi chef in Baghdad about 17.8M IQD/yr (about 1.48M/month). Low = 1.2M IQD, mid = 1.8M IQD for an experienced local head chef. High = an expat or Lebanese/Turkish executive chef, often paid in USD with housing (estimate). No Baghdad head-chef ads with salaries were found.",
+    "source": "https://worldsalaries.com/average-chef-salary-in-iraq/ ; https://worldsalaries.com/average-demi-chef-salary-in-iraq/ ; https://worldsalaries.com/average-executive-chef-salary-in-iraq/"
+   },
+   {
+    "key": "security_guard_salary",
+    "item": "Security guard salary, Baghdad (private, unarmed)",
+    "unit": "USD per month",
+    "low": 321,
+    "mid": 429,
+    "high": 571,
+    "notes": "No direct Baghdad guard ads with pay were found. A Sep 2026 Baghdad jobs roundup includes security and guard roles in packages starting at 650k IQD with housing and meals. Minimum wage is 350k IQD. Estimate 450k-800k IQD. A licensed security company contract, or armed guards for the skeet range and weapons storage, would cost more (about $700-1,200 per post per month, my estimate).",
+    "source": "https://www.almasryingulf.com/%D9%88%D8%B8%D8%A7%D8%A6%D9%81-%D8%A8%D8%BA%D8%AF%D8%A7%D8%AF-%D8%A8%D8%B1%D8%A7%D8%AA%D8%A8-%D9%8A%D8%A8%D8%AF%D8%A3-%D9%85%D9%86-650-%D8%A3%D9%84%D9%81/ ; https://playroll.com/minimum-wage/iraq"
+   },
+   {
+    "key": "sports_coach_salary",
+    "item": "Sports coach / instructor salary (gym trainer, swim, shooting, riding), local hire",
+    "unit": "USD per month",
+    "low": 429,
+    "mid": 714,
+    "high": 1429,
+    "notes": "Estimate; no Baghdad coach ads with salaries were found. Local gym trainers likely earn 600k-1M IQD plus personal-training commission. Certified specialists (shooting range officer, riding instructor) about 1-2M IQD. Expat polo or skeet professionals would cost $2,500-4,000/month plus housing, which is above this range. Gulf comparisons: Riyadh personal trainer SAR 10-13k; Abu Dhabi gym trainer AED 2,500 plus commission.",
+    "source": "estimate; https://sabbar.com/ar/jobs/r-مدرب-شخصي ; https://ae.opensooq.com/ar/search/282364618"
+   },
+   {
+    "key": "manager_salary",
+    "item": "Department / F&B / operations manager salary, Baghdad",
+    "unit": "USD per month",
+    "low": 1071,
+    "mid": 1429,
+    "high": 2500,
+    "notes": "A Baghdad company (Royal) advertised HR and accounts manager roles at 1.5-2.0M IQD/month, with at least 3 years' experience. A Baghdad cashier is 700-750k IQD. WorldSalaries puts the Iraq restaurant-manager average at about 2.56M IQD/month gross (30.7M/yr; range 16.6-46.3M), used here as a ceiling. A club general manager with hospitality experience would sit at the high end or above ($3,000-5,000 for an expat, my estimate).",
+    "source": "https://www.jobs-arab.com/iq/jobs/9855/ ; https://worldsalaries.com/average-restaurant-manager-salary-in-iraq/"
+   },
+   {
+    "key": "wedding_venue_package",
+    "item": "Wedding/event hall all-inclusive package, Baghdad (250-500 guests)",
+    "unit": "USD per event",
+    "low": 3929,
+    "mid": 6250,
+    "high": 10000,
+    "notes": "Layali Hall, Qadisiya, Baghdad (bookings shown Nov 2026 to Jun 2027). Silver: 5.5M IQD, up to 250 guests, 5 hours, buffet, DJ. Golden: 8.75M IQD, up to 350 guests, 6 hours, grills, LED, full photo/video. Royal: 14M IQD, up to 500 guests, all night, live band, drone. Extra guests 22,000 IQD each. Thu/Fri +10%. 25% deposit. That works out to about $16-20 per guest including food. Many halls (150-650 capacity) compete on qa3at.com. Converted at 1,400 IQD/USD.",
+    "source": "https://pagaty.com/layali-hall/ ; https://qa3at.com/iq/baghdad/"
+   },
+   {
+    "key": "corporate_event_pp",
+    "item": "Corporate event / day-delegate package (hall, coffee breaks, lunch buffet)",
+    "unit": "USD per person per day",
+    "low": 25,
+    "mid": 40,
+    "high": 70,
+    "notes": "Estimate. No published day rates were found. UN and NGO RFQs in Baghdad (2024-2025) specify hotel halls for 25-70 people with open coffee-break buffets and grill lunches but do not show prices. Five-star room rates in Baghdad run about $297-372/night, e.g. Cristal Grand Ishtar (550 m2 largest room), so hotel packages sit at the upper end. An outdoor club offering team-building (paintball, archery, skeet) could charge $40-80 per person including activity.",
+    "source": "estimate; https://www.iraq-businessnews.com/wp-content/uploads/2025/07/Annex-B-Final-LPI-Workshop-BoQ.pdf ; https://www.amimagazine.global/Meeting-Event-Venues/Baghdad-Iraq/Convention-Hotel/Cristal-Grand-Ishtar-Hotel-p57971695"
+   },
+   {
+    "key": "kids_entertainment_visit",
+    "item": "Kids/family entertainment spend per child per visit (amusement park to mall play centre)",
+    "unit": "USD per child per visit",
+    "low": 2.1,
+    "mid": 7.1,
+    "high": 14.3,
+    "notes": "Baghdad Land amusement park (Eid 2026): entry about 3,000-5,000 IQD, rides charged separately, some free activities. Baghdad Mall outdoor areas free. Shafaq (Jul 2026): families say private play centres and mall games are too expensive for public-employee incomes. One father said loading play cards can take a quarter of his monthly salary. A summer school costs 250,000 IQD/month per child. Numbeo preschool is about 219,792 IQD/month. Low 3k, mid 10k, high 20k IQD. Families are price-sensitive outside the affluent segment.",
+    "source": "https://www.almasryingulf.com/iraq-eid-events-2026/ ; https://www.shafaq.com/ar/تقارير-وتحليلات/بغداد-تحاصر-طفالها-ين-يلعبون ; https://www.numbeo.com/cost-of-living/in/Baghdad"
+   },
+   {
+    "key": "sports_court_rental_hour",
+    "item": "Sports court rental (tennis/padel/5-a-side) per hour",
+    "unit": "USD per court per hour",
+    "low": 14.3,
+    "mid": 20.3,
+    "high": 35.7,
+    "notes": "Numbeo Baghdad (Oct 2026): weekend tennis court rental 28,358 IQD per hour (mid). Low 20k IQD for off-peak or public courts. High 50k IQD for a premium padel or floodlit court (estimate; no Baghdad padel price found). Useful for pay-per-use revenue from non-members. Converted at 1,400 IQD/USD.",
+    "source": "https://www.numbeo.com/cost-of-living/in/Baghdad"
+   }
+  ],
+  "caveats": "1) Exchange rate: IQD prices are converted at about 1,400 IQD/USD unless noted (official rate about 1,305-1,310, market rate higher). Use 1,310 and the dollar figures rise about 7%; use 1,500 and they fall about 7%. 2) Search budget: the shared web-search limit ran out near the end. Paintball and VR prices could not be benchmarked against Jordan or Saudi Arabia, and no Baghdad price was found for paintball, VR arcades, food-truck pitches, corporate day rates or coach salaries. Those items are labelled 'estimate' with the reasoning in the notes. A follow-up search could tighten them. 3) Data quality: many figures come from job ads, classifieds, venue pages, TikTok or Telegram posts, or crowdsourced sites (Numbeo, Expatistan, WorldSalaries). Ads show starting pay and asking rents, not averages. WorldSalaries seems to overstate local pay. Mall footfall comes from modelled marketing estimates. 4) Club fees: the Hunting Club's 4M to 10M IQD increase is reported by unofficial channels without a dated official notice. Alwiyah figures are from 2002 and 2009. Check both with the clubs before using them in the model. 5) Demand caveats: average household income is only about $790/month. Shafaq (Jul 2026) reports that even mass-market play centres strain families, and Statista describes Iraqi physical entertainment as flat to mildly declining. Paying demand for a members-only club is a thin affluent segment, roughly 16k-50k Baghdad households (my estimate), not the mall-going mass market. Free or cheap malls, Baghdad Land, Zawraa Park and existing clubs with low annual dues are direct substitutes. 6) Seasonality and risk: Baghdad summers above 45C cut outdoor use by day. Spending peaks at Eid, New Year and weekends (Thu-Fri). Demand depends on oil-funded public salaries, so payroll delays or a drop in oil prices would hit memberships and event bookings."
+ },
+ "equestrian_skeet": {
+  "items": [
+   {
+    "key": "polo_field_construction",
+    "item": "Full-size grass polo field (about 275 x 146 m, about 4 ha): laser grading, drainage, automatic irrigation, warm-season turf (paspalum/bermuda)",
+    "unit": "USD per field",
+    "low": 400000,
+    "mid": 750000,
+    "high": 1300000,
+    "notes": "Benchmarks: a UK contractor built a full-size polo field, stick-and-ball area, exercise track and irrigation reservoir for GBP 905k (about USD 1.15M). That job moved 69,000 m3 of subsoil and laid 13 km of drainage and 900 m of irrigation pipe. An Indian government polo ground at Drass (Ladakh), with a stadium, cost Rs 6.84 crore (about USD 820k) in 2023. US natural-grass sports fields cost USD 1.5-3/sqft on native soil and USD 7-10/sqft sand-based, which is USD 650k-1.3M (native) or USD 3M+ (sand-based) at 40,000 m2. Baghdad: flat alluvial land means cheaper earthworks and labour, but pumps, filtration and pop-up irrigation are imported. Excludes land, spectator stands, lighting and water source. NOTE: the playing field alone is about 16 Iraqi dunums (22+ with safety margins), more than three times the 5-dunum club plot, so it must go on the adjacent land.",
+    "source": "https://www.whitehorsecontractors.co.uk/case-studies/equestrian-facilities/polo-field-and-exercise-track-construction/ ; https://ladakh.gov.in/?p=25029 ; https://www.npsk.org/cms/lib/MA01907678/Centricity/Domain/1356/COMPARATIVECOSTS%20Turf%20vs.%20Grass.pdf"
+   },
+   {
+    "key": "polo_field_annual_maintenance",
+    "item": "Annual maintenance of a grass polo field (water, pumping, fertilizer, mowing, divot repair, groundsmen, equipment)",
+    "unit": "USD per year",
+    "low": 60000,
+    "mid": 110000,
+    "high": 200000,
+    "notes": "STMA puts annual upkeep of one football-size grass field (about 0.5 ha) at USD 13-30k, and one municipal benchmark is about USD 1,500 per acre. A polo field is about 10 acres. Baghdad's reference evapotranspiration is about 2,000+ mm/yr, so the turf needs roughly 60,000-100,000 m3 of irrigation water a year. Water rights and quality on state land are a key risk, and solar pumping lowers running cost. Includes 3-5 groundsmen at Iraqi wages (about USD 500-700/month each), a mower/tractor fleet, sand and fertilizer. Iraqi figures are estimates scaled from the US benchmarks.",
+    "source": "https://sportsvenuecalculator.com/knowledge/sports-turf-irrigation/sports-field-irrigation-sprinkler-system-cost/ ; estimate"
+   },
+   {
+    "key": "arena_polo_construction",
+    "item": "Arena polo / riding arena (about 90-100 x 45-50 m, about 4,500 m2) with sand footing, sub-base drainage and perimeter boards",
+    "unit": "USD per arena",
+    "low": 120000,
+    "mid": 220000,
+    "high": 400000,
+    "notes": "US riding-arena guides put the cost at USD 4.5-12/sqft, or about USD 50-130/m2 including footing and subgrade, which is about USD 220-580k for 4,500 m2 in the US. Footing alone is USD 1.5-6/sqft. Lower Iraqi labour brings the low/mid down. The high case adds LED floodlighting, which is essential for evening play in the Baghdad summer. Arena polo needs only 3 players a side and fewer horses, and fits a much smaller footprint. The arena doubles as the riding-school ring, so it is the realistic Phase-1 polo option. Sources are low-authority cost guides, so get local contractor quotes.",
+    "source": "https://www.supermoney.com/cost-build-outdoor-riding-arena ; https://www.horseandhound.co.uk/archives/building-an-arena-36135 ; estimate"
+   },
+   {
+    "key": "stable_cost_per_box",
+    "item": "Stable construction per horse box (insulated roof, concrete floor, rubber mats, fans/misting, share of aisle)",
+    "unit": "USD per box",
+    "low": 6000,
+    "mid": 9000,
+    "high": 15000,
+    "notes": "US 2026 guides: USD 6k-25k per stall (average about 12k) as part of a new barn. Stall fronts, doors and mats alone cost USD 2-10k. UK: GBP 3k-20k per stable unit. Iraqi build with a steel frame, sandwich-panel or compressed-earth walls and local labour is cheaper. Heat mitigation (insulation, fans, misting, solar water heaters) is mandatory for Baghdad summers of 45-50 C. Many sources are low-authority content sites.",
+    "source": "https://www.mybuilder.com/extensions/price-guides/horse-stable-cost ; https://new.risingsunartscentre.org/news/stable-construction-cost-guide-2026.html"
+   },
+   {
+    "key": "stable_complex_25_horses",
+    "item": "Complete stable complex for 20-30 horses (boxes, tack room, feed store, wash bays, vet/treatment room, groom quarters, hot walker, paddocks, manure handling)",
+    "unit": "USD per complex (25 boxes)",
+    "low": 200000,
+    "mid": 330000,
+    "high": 550000,
+    "notes": "Built up as 25 boxes x USD 6-15k, plus 30-50% for ancillaries: tack/feed/vet rooms USD 40-80k, groom housing USD 20-40k, hot walker USD 15-30k, fencing/paddocks USD 20-50k. The US small-barn reference is USD 70-140k for 6 stalls. Solar PV and rainwater/greywater reuse fit the eco concept. Excludes horse purchase.",
+    "source": "https://www.mybuilder.com/extensions/price-guides/horse-stable-cost ; estimate"
+   },
+   {
+    "key": "polo_pony_landed_price",
+    "item": "Made polo pony, imported (mainly Argentine), landed in Baghdad incl. air freight, quarantine, vet tests and permits",
+    "unit": "USD per horse",
+    "low": 12000,
+    "mid": 20000,
+    "high": 40000,
+    "notes": "Argentina's average horse export FOB price was USD 8,596 in 2024 and about USD 7,125 in Jan-Nov 2025 (76% polo horses, so the average covers all grades). The UAE took 128 horses. Gulf News: ponies imported to the UAE from Argentina average about USD 25k each including shipping. The National: ponies cost USD 5k-200k, and transport from Argentina to the UAE costs up to USD 14k per horse. Air freight is generally USD 10-30k per horse, and sharing a pallet of 3 cuts the per-horse cost. A cheaper route is retired or second-string ponies from the UAE, Jordan or Pakistan at USD 5-12k, at the cost of quality. A low-goal club needs 4-6 ponies per active player.",
+    "source": "https://bichosdecampo.com/cuanto-valen-los-cotizados-caballos-de-polo-que-exporta-la-argentina-para-empezar-mucho-menos-de-lo-que-se-cree-y-de-lo-que-el-gobierno-dice/ ; https://gulfnews.com/amp/story/uae%2Feducation%2Fabu-dhabi-polo-player-on-the-game-of-kings-1.739296 ; https://thenationalnews.com/business/dr-as-cure-for-all-ills-playing-polo-in-dubai-1.307732 ; https://cowboystatedaily.com/2024/06/08/for-the-right-price-horses-can-fly-first-class-but-not-directly-to-wyoming"
+   },
+   {
+    "key": "riding_school_horse_price",
+    "item": "Riding-school / trail horse (quiet, trained, local or regional Arabian or crossbred)",
+    "unit": "USD per horse",
+    "low": 1500,
+    "mid": 4000,
+    "high": 10000,
+    "notes": "UAE (Dec 2025): older beginner-safe horse AED 3,000-5,000 (USD 800-1,400), reliable middle-aged horse AED 15,000 (about USD 4,100), well-trained AED 20,000-25,000 (USD 5,400-6,800). Jordan OpenSooq listings: a registered 3-year-old Arabian ready to ride at JOD 8,500 (about USD 12k), and unregistered riding horses from JOD 430 (about USD 600). No published Iraqi prices were found; local school horses are probably at the low-mid end. A school string of 10-15 horses is needed for lessons and trail rides.",
+    "source": "https://sandytimes.ae/articles/3791/owning-a-horse-in-the-uae-what-does-it-actually-cost ; https://jo.opensooq.com/ar/%D8%AD%D9%8A%D9%88%D8%A7%D9%86%D8%A7%D8%AA-%D9%84%D9%84%D8%A8%D9%8A%D8%B9/%D8%AE%D9%8A%D9%84"
+   },
+   {
+    "key": "annual_upkeep_per_horse",
+    "item": "Annual upkeep per horse in Baghdad (feed and hay, bedding, farrier, vet/vaccines/dental, grooms, supplements, insurance)",
+    "unit": "USD per horse per year",
+    "low": 4000,
+    "mid": 6000,
+    "high": 9000,
+    "notes": "Benchmarks: Argentina about USD 6,000/yr per polo horse (board, feed, vet, farrier, conditioning). UAE full livery AED 3,000-5,500/month (USD 9.8k-18k/yr), farrier AED 400-600/month, routine vet about AED 1,000/yr. Saudi: groom salary SAR 1,500/month plus housing (about USD 400), and stall board SAR 1,000/month. Iraq estimate per month: feed/hay USD 150-250, bedding USD 30-60, farrier USD 40-80, vet and dental USD 40-80, groom share (1 groom per 3-4 horses at USD 450-700) USD 120-200. Polo ponies sit at the high end (more shoeing, conditioning and supplements). 25 horses x USD 6k = about USD 150k/yr fixed cost.",
+    "source": "https://poloschoolargentina.com/tpost/z377el9p61-how-much-does-polo-cost-in-2026-a-real-w ; https://sandytimes.ae/articles/3791/owning-a-horse-in-the-uae-what-does-it-actually-cost ; https://www.engelvoelkers.com/ae/en/resources/dubai-horse-stables-guide"
+   },
+   {
+    "key": "riding_lesson_price_uae",
+    "item": "Horse riding lesson price, UAE benchmark (45 min)",
+    "unit": "USD per lesson",
+    "low": 27,
+    "mid": 68,
+    "high": 163,
+    "notes": "Engel & Voelkers (Dec 2025): group AED 100-150/45 min, private AED 300-600/45 min. Al Habtoor Polo Club: group AED 250, private AED 500. Sandytimes (Dec 2025): private AED 300-500, group AED 150-200. Emirates Equestrian Centre AED 165 per lesson, or AED 775 for 5. Rate used: 3.6725 AED/USD. No published lesson prices were found for Jordan (Amman) or Iraq.",
+    "source": "https://www.engelvoelkers.com/ae/en/resources/dubai-horse-stables-guide ; https://www.bayut.com/mybayut/horse-riding-lessons-dubai ; https://sandytimes.ae/articles/3791/owning-a-horse-in-the-uae-what-does-it-actually-cost"
+   },
+   {
+    "key": "riding_lesson_price_baghdad",
+    "item": "Horse riding lesson price, realistic Baghdad pricing (45-60 min)",
+    "unit": "USD per lesson",
+    "low": 15,
+    "mid": 30,
+    "high": 60,
+    "notes": "Estimate: group lesson about 20,000-40,000 IQD, private about 50,000-90,000 IQD, at 1,310-1,500 IQD/USD. Riding is reviving in Baghdad, especially among women and youth (Shafaq News, Jan 2025), and existing schools include the Iraqi Central School of Equestrianism, Alelm School and the Baghdad Equestrian Club. A premium members-only venue can charge above these schools but well below the Gulf. A monthly package of 8 lessons at about 250,000-450,000 IQD (USD 170-340) is a sensible structure. No published Iraqi price list was found.",
+    "source": "https://shafaq.com/en/Report/Equestrianism-A-rising-passion-among-Baghdad-s-women ; estimate"
+   },
+   {
+    "key": "trail_ride_price",
+    "item": "Trail / leisure ride price per person (about 1 hour; regional tourist benchmark at the high end)",
+    "unit": "USD per person per ride",
+    "low": 15,
+    "mid": 30,
+    "high": 100,
+    "notes": "Wadi Rum (Jordan): a 2-hour horse tour sells for about CHF 80 (about USD 100) per adult on Expedia/ebookers. Dubai desert stables: AED 160-200 per hour (Al Jiyad, USD 44-54). A Baghdad riverside or adjacent-land ride for members and families is realistic at USD 15-40 (estimate). Riders are limited to the cooler months and evenings.",
+    "source": "https://www.ebookers.ch/things-to-do/a.a2697525.activity-details ; https://www.bayut.com/mybayut/horse-riding-lessons-dubai ; estimate"
+   },
+   {
+    "key": "polo_lesson_chukka_price",
+    "item": "Polo lesson / chukka with horse hire",
+    "unit": "USD per lesson or chukka",
+    "low": 50,
+    "mid": 120,
+    "high": 300,
+    "notes": "Polo School Argentina 2026: horse hire per chukka USD 50-180 (Argentina), USD 160-400 (England), USD 150-350 (US); practice sessions USD 100-300 (Argentina), up to USD 600 in the US. Baghdad realistic price: USD 60-150 per polo lesson including a pony. The market is very small and novel; no Iraqi polo activity was found in searches.",
+    "source": "https://poloschoolargentina.com/tpost/z377el9p61-how-much-does-polo-cost-in-2026-a-real-w"
+   },
+   {
+    "key": "polo_playing_membership",
+    "item": "Annual polo playing membership (excluding horse livery or hire)",
+    "unit": "USD per member per year",
+    "low": 2000,
+    "mid": 5000,
+    "high": 12000,
+    "notes": "England: GBP 2,000-8,500 at prestigious clubs (about USD 2.5-11k). Major US clubs: above USD 15k. Recreational beginner budgets: USD 3-8k (Argentina), USD 8-20k (England). In Baghdad, expect perhaps 10-30 playing members at first, so membership revenue is small next to horse livery and hire. The values here are realistic for Baghdad, with the high end taken from the England benchmark.",
+    "source": "https://poloschoolargentina.com/tpost/z377el9p61-how-much-does-polo-cost-in-2026-a-real-w ; estimate"
+   },
+   {
+    "key": "polo_tournament_ticket",
+    "item": "Polo tournament spectator ticket (Baghdad general admission at the low end, Gulf hospitality/VIP at the high end)",
+    "unit": "USD per ticket",
+    "low": 10,
+    "mid": 40,
+    "high": 400,
+    "notes": "Dubai Polo Gold Cup 2025: VIP Garden AED 1,500 per person (about USD 408), Gold Lounge AED 5,000 per table of 10, picnic gazebo AED 1,350 (4 people) or AED 2,800 (8 people); earlier general admission AED 150 (USD 41). AlUla Desert Polo tickets from SAR 150 (USD 40); Winter at Tantora packages SAR 2,500-3,500. Egypt's Kings Polo Gold Cup had free entry. Baghdad realistic: free or USD 10-25 general admission, USD 100-300 VIP hospitality. Most revenue comes from sponsors and hospitality, not ticketing.",
+    "source": "https://dubai.platinumlist.net/event-tickets/gold-cup ; https://dubai.platinumlist.net/event-tickets/9479/gold-cup-series-played-under-the-patronage-of-sheikh-maktoum-bin-mohammed-bin-rashid-al-mak ; https://www.arabnews.pk/node/1613811 ; https://cairoscene.com/Buzz/Inaugural-Edition-of-Kings-Polo-Gold-Cup-to-Take-Place-This-Weekend-and-You-Can-Attend-for-Free"
+   },
+   {
+    "key": "polo_tournament_sponsorship",
+    "item": "Total sponsorship revenue for one polo tournament (title plus associate sponsors)",
+    "unit": "USD per tournament",
+    "low": 25000,
+    "mid": 100000,
+    "high": 300000,
+    "notes": "No published sponsorship rate cards were found. Gulf events have luxury and finance title sponsors (Richard Mille at AlUla Desert Polo, Julius Baer at the Dubai Gold Cup). The Emirates Polo Championship offered a USD 100,000 cash prize. Egypt's El Gouna Beach Polo had Mercedes-Benz, Orange and Banque du Caire. Baghdad estimate: title sponsor USD 30-150k (banks, telecoms such as Zain/Asiacell, car dealers, real-estate developers), plus 3-6 associates at USD 5-25k. For a first-ever Iraqi polo event, plan on the low case.",
+    "source": "https://curlytales.com/dates-for-richard-mille-alula-desert-polo-are-now-out-so-mark-your-calendars-right-away/amp/ ; https://www.pressreader.com/nigeria/daily-trust-sunday/20191215/282514365422649 ; https://horsetimesegypt.com/pdf/articles/EL_GOUNA_BEACH_POLO_SILVER_CUP_2018_56.pdf ; estimate"
+   },
+   {
+    "key": "foreign_pro_player_cost",
+    "item": "Cost to bring one foreign low-goal professional (about 2-5 goals) for a tournament: fee, flights, hotel, security, per diem",
+    "unit": "USD per pro per tournament",
+    "low": 5000,
+    "mid": 12000,
+    "high": 30000,
+    "notes": "Florida Trend: a 5-goal pro with his own horses might clear about USD 10k/month from a patron. At the top level (2001 data), sponsors paid each pro USD 50k+ per tournament, and 10-goalers earn USD 200-600k a season. Egypt allows Argentine pros of up to 5 goals in local tournaments. For Baghdad, add a security and insurance premium and business-class travel. A 4-team event with 1-2 pros per team needs 4-8 pros, or USD 50-100k in total.",
+    "source": "https://www.floridatrend.com/article/11725/horse-play ; https://thedailyrecord.com/2001/09/19/polo-anyone/ ; https://polohub.net/mohamed-elshamyegypt-is-focusing-on-improving-the-horse-related-sports-in-general/ ; estimate"
+   },
+   {
+    "key": "polo_tournament_hosting_cost",
+    "item": "Total cost to host one 4-team low-goal polo tournament in Baghdad (pros, pony hire/logistics, production, security, hospitality, marketing, prizes)",
+    "unit": "USD per tournament",
+    "low": 80000,
+    "mid": 200000,
+    "high": 500000,
+    "notes": "Estimate: foreign pros USD 50-100k, pony hire/transport USD 20-80k, event production/stands/tents/AV USD 30-120k, security USD 10-40k, hospitality/F&B USD 20-80k, marketing USD 10-50k, prizes and trophies USD 5-30k. KEY CONSTRAINT: field polo needs about 4-6 ponies per player, so 64-96 ponies for 4 teams of 4, far more than a 20-30-horse club string. Arena polo (3 a side, fewer chukkas) cuts this to about 25-40 ponies. Without a strong sponsor, expect a net loss in the first editions; treat it as marketing.",
+    "source": "estimate"
+   },
+   {
+    "key": "skeet_machine_set",
+    "item": "Skeet machine set (high house + low house throwers), landed in Iraq incl. freight and duties",
+    "unit": "USD per field set",
+    "low": 4500,
+    "mid": 9000,
+    "high": 14000,
+    "notes": "US dealer prices (R&R Trap Machines): Laporte Skeet 6-column USD 6,399, 8-column USD 7,599; Lincoln Infinity Skeet USD 7,095-7,295; Atlas Skeet AT-250 USD 3,297, AT-300 Commercial USD 5,296. Other single traps: Laporte DTL USD 5,099, wobble USD 2.3-7.3k. Used Beomat sets sell for USD 3.5-6k. Add about 25-40% for shipping, Iraqi duties and import handling. A voice-release/scoring system adds about USD 3-8k (estimate).",
+    "source": "https://rrtraps.com/index.php/trap-machines/ ; http://www.howelltraps.com/consignments.html"
+   },
+   {
+    "key": "skeet_field_total_setup",
+    "item": "Complete skeet field setup: machines, shot-proof high and low houses, 8 concrete stations and walkways, voice release, safety fencing and signage, lighting, shaded shooter shelter",
+    "unit": "USD per field",
+    "low": 60000,
+    "mid": 120000,
+    "high": 250000,
+    "notes": "Estimate: machines USD 5-14k, houses (masonry or steel, shot-proof, high house about 3 m) USD 8-25k, pads and walkways USD 5-15k, voice release USD 3-8k, lighting USD 15-60k, fencing, berms and baffles USD 10-40k, shelter and gun racks USD 10-50k. US references: a club built a sporting course plus skeet, trap and 5-stand with used gear for USD 100-120k excluding land. Univ. of Tennessee Lone Oaks spent USD 3.5M on 4 fields plus a 4,000 sqft building; the South Carolina state range cost USD 6.4M. LAND IS THE BINDING CONSTRAINT: shot falls up to 300 yards (274 m) away, and NSSF-cited guidance is about 30 acres (about 12 ha, about 48 Iraqi dunums) for one combined skeet/trap field, plus 140 ft of width per extra field. The fall zone must be clear of homes, roads and water.",
+    "source": "https://rrtraps.com/index.php/trap-machines/ ; https://utia.tennessee.edu/wp-content/uploads/2020/07/The-Clays-at-Lone-Oaks-Farm-Overview.pdf ; https://scdailygazette.com/2025/09/19/sc-opens-new-state-owned-skeet-and-trap-shooting-range/ ; https://gwf.org/wp-content/uploads/2024/05/Public-Shooting-Ranges-in-Georgia.pdf"
+   },
+   {
+    "key": "rental_shotgun_fleet",
+    "item": "Rental shotgun for range fleet (O/U or semi-auto 12-gauge), landed with licensing",
+    "unit": "USD per shotgun",
+    "low": 700,
+    "mid": 2000,
+    "high": 4500,
+    "notes": "Estimate: Turkish-made O/U and semi-autos are widely sold in the region at about USD 600-1,500. Beretta 686/Silver Pigeon-class guns cost about USD 2,000-3,500 retail in the US, more once imported. A fleet of 6-12 guns plus a licensed armoury safe is needed. Every gun must be licensed with the Ministry of Interior under Weapons Law 51/2017. No search source; based on general market knowledge.",
+    "source": "estimate"
+   },
+   {
+    "key": "clay_target_cost",
+    "item": "Clay target (standard 108 mm), landed in Iraq",
+    "unit": "USD per target",
+    "low": 0.15,
+    "mid": 0.25,
+    "high": 0.4,
+    "notes": "US dealer: White Flyer 135-count case USD 18.33 (about USD 0.136/target), 63 cases per pallet. NZ retail: 150 Laporte targets NZD 69.95 (about USD 0.25/target). Clays are bulky and fragile, so sea freight plus duties roughly double the per-target cost in Iraq. A round uses 25 targets, so about USD 4-10 in clays. Biodegradable or eco clays, which suit the eco brand, cost about 20-40% more (estimate).",
+    "source": "https://www.grafs.com/catalog/product/productId/70898 ; https://www.deltamike.co.nz/product/laporte-usa-high-dome-full-108mm-x150-orange/"
+   },
+   {
+    "key": "shotgun_cartridge_cost",
+    "item": "12-gauge target cartridge, cost to club in Iraq",
+    "unit": "USD per cartridge",
+    "low": 0.4,
+    "mid": 0.7,
+    "high": 1.2,
+    "notes": "US 2025 prices: 250-round cases of Fiocchi or Federal target loads cost USD 85-92 (USD 0.34-0.37 per shell); premium Winchester AA costs USD 208 per 250 (USD 0.83). Iraqi ammunition imports and sales are licensed and restricted, so the landed price is materially higher. No published Iraqi price was found, so the values are estimates. A round of 25 shells costs about USD 10-30. Lead shot conflicts with the eco positioning; steel shot costs about 20-50% more (estimate).",
+    "source": "https://www.ammoland.com/2025/11/fiocchi-shooting-dynamics-12-ga-shotshells/ ; https://www.ammoland.com/2024/05/federal-top-gun-12-gauge-8-shot-shotshells/ ; https://blackstoneshooting.com/ammo/calibers/12-gauge/?page=16"
+   },
+   {
+    "key": "skeet_round_price_region",
+    "item": "Price per shooter for a 25-target skeet/trap round incl. gun hire, cartridges and clays (Gulf benchmarks)",
+    "unit": "USD per round of 25",
+    "low": 23,
+    "mid": 49,
+    "high": 82,
+    "notes": "Al Ain Equestrian, Shooting & Golf Club (Abu Dhabi): AED 84 member / AED 147 non-member (USD 23 / 40) per 25-clay round; extra 25 clays AED 31.5-42. JA Shooting Club Dubai: non-member AED 230 for the first round and AED 180 after (USD 63 / 49); members AED 150 / 100; premium guns AED 260-300 (up to USD 82); membership AED 4,200 to join and AED 2,625 a year. Lusail (Qatar): 2-hour private experience USD 171. Realistic Baghdad price: USD 25-45 per round, with members discounted. No Iraqi or Jordanian published prices were found.",
+    "source": "https://www.propertyfinder.ae/blog/al-ain-equestrian-shooting-golf-club/ ; https://www.bayut.com/mybayut/all-about-jebel-ali-shooting-club/ ; https://www.expedia.com/things-to-do/doha-shooting-range-private-experience.a49625515.activity-details"
+   },
+   {
+    "key": "skeet_variable_cost_per_round",
+    "item": "Club variable cost per 25-target round (clays, cartridges, machine wear, range officer time)",
+    "unit": "USD per round",
+    "low": 14,
+    "mid": 27,
+    "high": 45,
+    "notes": "Calculated: 25 clays x USD 0.15-0.40 plus 25 cartridges x USD 0.40-1.20 plus about USD 0-3 for labour, maintenance and gun wear. At a Baghdad price of USD 30-45, the gross margin per round is thin, about USD 5-20, so skeet profitability depends on membership fees, events, corporate days, F&B and members bringing their own licensed cartridges. Volume assumption: 1 field can run about 6-8 squads (5 shooters each) per 4-hour session.",
+    "source": "estimate (derived from clay_target_cost and shotgun_cartridge_cost items)"
+   },
+   {
+    "key": "shooting_range_licensing_iraq",
+    "item": "Licensing and permitting for a shotgun range in Baghdad (legal, consultancy, safety study, environmental and land-use approvals)",
+    "unit": "USD one-off",
+    "low": 10000,
+    "mid": 30000,
+    "high": 75000,
+    "notes": "Iraq Weapons Law No. 51 of 2017 (Official Gazette, 20 March 2017) gives the Minister of Interior authority to issue possession, carry and trade licences. Applicants must be 25 or older with a clean record, pass a medical exam and a technical test. No specific shooting-club or range licensing provision was found in searches. Expect approvals from: Ministry of Interior / Higher Committee for Arms Regulation (730 offices; 125k licence applications by Sept 2025), affiliation with the Iraqi Shooting Federation / Ministry of Youth & Sports, the Baghdad municipality and governorate for land use, Civil Defence, and environmental clearance for lead deposition. Licensed armoury storage is needed for club guns and ammunition. Timeline is likely 6-18 months, and political and security sensitivity around firearms near Baghdad is high. Costs are estimates.",
+    "source": "https://www.mohamah.net/law/?p=78112 ; https://shafaq.com/en/Security/Interior-Ministry-125-000-apply-for-firearm-licenses ; estimate"
+   }
+  ],
+  "caveats": "1) The shared web-search budget (200 calls per turn) ran out partway through this task. Polo sponsorship rate cards, arena-polo player pricing, Iraqi feed, cartridge and horse prices, and Jordanian lesson and skeet prices therefore could not be researched further. Several items are marked \"estimate\", and the user can send a follow-up to continue searching. 2) No published Iraqi prices were found for riding lessons, horses, feed, ammunition or clays. Iraqi values are derived from UAE, Saudi, Jordanian, Argentine and US benchmarks, converted at about 1,310-1,500 IQD/USD and 3.6725 AED/USD. Many US construction \"cost guides\" are low-authority SEO sites, so treat them as order-of-magnitude only and get local contractor bids. 3) LAND IS THE BIGGEST FEASIBILITY ISSUE. A regulation polo field (about 275 x 146 m) is about 16 Iraqi dunums before safety margins, more than three times the 5-dunum club plot. A skeet/trap field needs a shot-fall zone of about 274 m (300 yd), roughly 12 ha (about 48 dunums) per combined field, fully clear of homes, roads and water. Near urban Baghdad this may be impossible or unlicensable. Arena polo (about 4,500 m2, which doubles as the riding-school arena) is the realistic Phase-1 equestrian option. Skeet should be confirmed only after a site safety study and Ministry of Interior consultation. 4) Water: a grass polo field in Baghdad likely needs about 60,000-100,000 m3/yr of irrigation, which is a sustainability and permitting risk for an \"eco\" club. 5) Horse numbers: field polo tournaments need 4-6 ponies per player (64-96 for 4 teams), far beyond a 20-30-horse string. Tournaments will need hired horses or the arena format, and early editions will probably lose money unless a strong title sponsor is secured. No organised polo activity in Iraq was found, so demand is unproven and the playing-member base is likely to start at 10-30 people. 6) Skeet unit economics are thin: the variable cost per round is about USD 14-45 against a realistic Baghdad price of USD 25-45. Profit must come from memberships, corporate events and F&B. 7) Lead shot and non-biodegradable clays conflict with the eco branding. Steel shot and biodegradable clays add roughly 20-50% to consumables (estimate). 8) Security, insurance and visa premiums for foreign pros and imported horses in Baghdad are not well documented and could push costs to the high case. Summer heat of 45-50 C limits outdoor polo and riding to roughly October-May, plus lit evenings."
+ }
+}
