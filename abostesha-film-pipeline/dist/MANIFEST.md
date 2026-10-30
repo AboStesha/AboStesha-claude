@@ -10,7 +10,7 @@ Built 2026-10-30 from `skill/abostesha-film-pipeline/references/COMPANIONS.md` (
 
 | Zip | Entry | Source @ commit | Licence | Files | Size | SHA-256 |
 |---|---|---|---|---|---|---|
-| `abostesha-film-pipeline.zip` | (this pipeline) | AboStesha-claude repo, branch claude/great-goodall-vy6MO (same commit as this manifest) | AboStesha's own | 27 | 360,340 B | `262e5a45f0905806d0b0834864e27c61d5d9a1c61d26a0bbc98a0422d3d49c09` |
+| `abostesha-film-pipeline.zip` | (this pipeline) | AboStesha-claude repo, branch claude/great-goodall-vy6MO (same commit as this manifest) | AboStesha's own | 27 | 360,878 B | `b063af9c51d48d71a25afc7d2486328e4f75bfab4c369d450da8ce8bdc1d541b` |
 | `companions/extract-visual-style-2.zip` | 2 | [ajinnaaa/extract-visual-style-2](https://github.com/ajinnaaa/extract-visual-style-2) @ `7b7d2c2` | MIT (c) 2026 ajinnaaa | 6 | 17,541 B | `50133b63f673f56e4066512c4938b5798fc519051331020313a5970f99948d9a` |
 | `companions/higgsfield.zip` | 3 | [OSideMedia/higgsfield-ai-prompt-skill](https://github.com/OSideMedia/higgsfield-ai-prompt-skill) @ `6a6a5dd` | MIT (c) 2026 O-Side Media | 99 | 797,221 B | `02631ff2acf7280f4c50d7a299293626524b51461b50a1caec16570da1123a73` |
 | `companions/scenario-blender-expert.zip` | 5 | [scenario-labs/skills](https://github.com/scenario-labs/skills) @ `5d68b48` | MIT (c) 2026 Scenario Inc. | 4 | 47,510 B | `5878b5a0dc0e8d7a4f46db8aaf33c9e2c20742de886628f36a13fb70b915d147` |
@@ -45,7 +45,7 @@ Also not packaged by design: the other ElevenLabs skills (incl. `update-skills-f
 - **Source:** `skill/abostesha-film-pipeline/` in this repo, working tree on 2026-10-30; git HEAD `ac27949b6d91a458902e86c3b0e869176166f04f` with uncommitted edits to the skill folder (the zip holds the working-tree versions).
 - **Excluded:** `__pycache__/` and `*.pyc`.
 - **Validation:** valid (name=abostesha-film-pipeline, description 979 chars, keys=['description', 'name'])
-- **SHA-256:** `262e5a45f0905806d0b0834864e27c61d5d9a1c61d26a0bbc98a0422d3d49c09` (357,321 bytes, 27 files)
+- **SHA-256:** `b063af9c51d48d71a25afc7d2486328e4f75bfab4c369d450da8ce8bdc1d541b` (357,321 bytes, 27 files)
 - **Files:** `SKILL.md`, `references/00-award-brief-and-calendar.md`, `references/01-script-and-dialogue.md`, `references/02-style-prefix.md`, `references/03-assets-images.md`, `references/04-blender-blocking.md`, `references/05-seedance-production.md`, `references/05b-acting-direction.md`, `references/06-music-and-sfx.md`, `references/07-edit-mix-finish.md`, `references/08-judge-panel.md`, `references/09-release-and-festivals.md`, `references/COMPANIONS.md`, `references/CREDITS.md`, `references/ledger-continuity-physics.md`, `scripts/measure_frames.py`, `scripts/seedance_byteplus.py`, `scripts/sfx_forge.py`, `scripts/share_report.py`, `scripts/srt_check.py`, `scripts/sun_position.py`, `templates/ai-disclosure-ledger.csv`, `templates/continuity-bible.md`, `templates/music-cues.csv`, `templates/physics-bible.md`, `templates/sfx-list.csv`, `templates/shot-list.csv`
 
 ## extract-visual-style-2.zip
