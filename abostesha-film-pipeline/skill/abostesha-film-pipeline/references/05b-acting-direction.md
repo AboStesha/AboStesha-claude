@@ -33,7 +33,7 @@ If T2 has not run, write dialogue shots as `[UNVERIFIED ROUTE]` and do not spend
 4. **One job per generation.** Physics and action go in one generation; eyes, breath and micro-performance in another. "The fight gets softer, the faces get flatter" when one prompt carries both (OSideMedia 2.5 notes, MIT). Dialogue and action are split the same way.
 5. **States, not transitions.** Describe the character already *in* the state ("mid-reach, hand on the door handle"), not the process of getting there. Describe stillness as held tension; "nobody moves" freezes the frame.
 6. **Age-blind and G-rated.** No age words in any performance text (the content filter tightens on them). No drinking, smoking, chewing tobacco, pills, self-harm gestures, or hitting a person in the business you give a character; rage plays as held or redirected force (a slammed palm on a table, never a blow). When the user's script keeps a flagged beat, the G-safe form comes from `01` §1.1.9; you direct only that form.
-7. **The user is the director.** You draft; he approves or rewrites every bible and scene read. Log his changes in the authorship log of `01` (origin `H`/`C`), because the disclosure and any authorship question will ask who shaped the performances.
+7. **The user is the director.** You draft; they approve or rewrite every bible and scene read. Log their changes in the authorship log of `01` (origin `H`/`C`), because the disclosure and any authorship question will ask who shaped the performances.
 
 ---
 
@@ -48,7 +48,7 @@ Do this per scene, in order. Show the result to the user as the Scene Read card 
 3. **Given and previous circumstances.** Where is the body (seated, standing, on a moving walkway)? What happened in the last ten minutes? How many hours since sleep? What is in the hands? Previous circumstances set breath, tempo and eye state at frame 1.
 4. **Per character:** super-objective (the whole film), scene objective as a verb aimed at a partner ("make her stop worrying", never "be sad"), obstacle, stakes ("what happens if I fail?" must frighten them), a tactic verb per beat (reassure, joke, bargain, deflect, plead, provoke, stall), 2-4 visible beat turns per scene, status in and out, business (what the hands are doing), distance to the partner in metres.
 5. **Private sentence and inner object.** One line of unspoken inner monologue per beat (it guides you, never the prompt), and one concrete image the character sees in their head (the mother's hospital bed, the 6,300 figure). The inner object gives the eyes a place to go: a fixed defocus low and to one side while it is "seen".
-6. **Cross-check with `01`.** Each line's Intent (gerund) must equal the tactic you wrote for that beat. If they differ, tell the user in Arabic and let him decide; do not re-tag lines yourself.
+6. **Cross-check with `01`.** Each line's Intent (gerund) must equal the tactic you wrote for that beat. If they differ, tell the user in Arabic and let them decide; do not re-tag lines yourself.
 
 Mini-example, S11 (Miraj's room, night; the call). Provisional until the user confirms:
 
@@ -75,7 +75,7 @@ Write one bible card per character who appears in 2+ shots or has a close-up (te
 - **Arc checkpoints:** the baseline at the film's start, after the turn, at the end (5b.7). The body changes slowly; never reset it between scenes.
 - **Forbidden:** behaviours that break the character or the G rating.
 
-Worked master profile, MIRAJ (draft for the user; he approves or rewrites):
+Worked master profile, MIRAJ (draft for the user; they approve or rewrite):
 
 ```text
 Character acting as MIRAJ. A lean, underfed body that has spent years standing in queues and on

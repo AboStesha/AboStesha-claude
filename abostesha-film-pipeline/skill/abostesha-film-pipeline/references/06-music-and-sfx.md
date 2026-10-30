@@ -4,7 +4,7 @@
 **Output.** An approved spotting table and motif plan; per cue, a Suno package, an ElevenLabs composition plan and a conformed 48 kHz/24-bit WAV; an approved SFX gap list; procedural and fallback SFX mastered to −1 dBTP at 48 kHz/24-bit; zero-aligned stems and logs handed to 07-edit-mix-finish.md.
 **Rule.** The picture sets the timing; prompts only approximate it. Claude cannot hear, so no sound counts as approved until the user has listened to it. Calendar (00-award-brief-and-calendar.md §0.7): music direction on the assembly D8–D11, spotting v1 on the rough cut D12, SFX analysis and spotting v2 on the fine cut D14, conform at picture lock D15, hand-off to 07 on D16.
 
-Talk to the user in Arabic (address him as أبوستيشا). Write every prompt, Style box, composition plan, SFX prompt and file name in English.
+Talk to the user in Arabic (address them as أبوستيشا). Write every prompt, Style box, composition plan, SFX prompt and file name in English.
 
 ---
 
@@ -30,7 +30,7 @@ Talk to the user in Arabic (address him as أبوستيشا). Write every prompt
 2. **Instrumental only.** No lyrics, vocals, choir, humming or chant. This keeps the score clear of the G rating and of language issues. Never generate or imitate Qur'an recitation, the adhan or hymns, in the score or as SFX. If the story needs a prayer call, ask the user: it can only be a cleared real recording placed with cultural review, never AI or code.
 3. **Describe traits, never names.** No composers, artists, songs, films or franchises. Suno rewrites artist names, and ElevenLabs rejects them (`bad_prompt`, or `bad_composition_plan` for a plan). Never upload a copyrighted temp track to any generator.
 4. **Licence before use.**
-   - ElevenLabs Music: the Eleven Music Model-Specific Terms (updated 09 Oct 2026, read 30 Oct 2026) exclude "film, TV, radio, and Studio Games" on Free, Starter, Creator, Pro, Scale, Business **and Enterprise Music Lite**. Only **Enterprise Music** reads "All online and offline commercial use permitted".
+   - ElevenLabs Music: the Eleven Music Model-Specific Terms (updated 09 Oct 2026, read 30 Oct 2026) exclude "film, TV, radio, and Studio Games" on Free, Starter, Creator, Pro, Scale, Business **and Enterprise Music Lite**. Only **Enterprise Music** reads "All online and offline commercial use permitted". The user has bought an ElevenLabs Enterprise contract (BRIEF, confirmed 30 Oct 2026); it covers the film only if it is the full **Enterprise Music** tier, so file the contract or written confirmation naming that tier in `evidence/licences/` and record it in the ledger.
    - Suno: commercial use needs a permitted download on a paid plan. Trial downloads are never eligible.
 5. **Holdback (00).**
    - Suno songs are Link Only by default, and anyone with the link can open them. Never make one Public, never add one to a public playlist or album, and never share a link.
@@ -97,7 +97,7 @@ Define each motif by interval shape, rhythm, timbre and where it must **not** ap
 
 Suno v6's handling of microtonal maqam is untested, so test one sketch before committing.
 
-**Human authorship.** Ask the user to hum, sing or play each motif into his phone, 4–8 notes, without words. Store it as `SLA_06_MOTIF-<NAME>_USR_v01.wav` in `evidence/authorship/`. That recording is the human seed (6.1.6) and the evidence for 00 §0.11.
+**Human authorship.** Ask the user to hum, sing or play each motif into their phone, 4–8 notes, without words. Store it as `SLA_06_MOTIF-<NAME>_USR_v01.wav` in `evidence/authorship/`. That recording is the human seed (6.1.6) and the evidence for 00 §0.11.
 
 #### 6.1.3 Bar math: pick a tempo that lands the hits
 

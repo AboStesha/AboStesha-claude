@@ -4,7 +4,7 @@
 **How.** Use the Higgsfield connector's Premiere tools (`pr_*`) when they are connected. Work read-only by default, and change the cut only with explicit permission. When the tools are missing, give the user exact manual steps.
 **Gates.** You run G3 Picture lock (D15) and the technical half of G4 Delivery (D18) from 00-award-brief-and-calendar.md here. 08-judge-panel.md sits between them on D17.
 
-Talk to the user in Arabic (MSA, addressing him as أبوستيشا). Write every generation prompt in English, including Seedance edit prompts and ElevenLabs SFX or voice direction. **You cannot hear.** Every audio judgement must be a measurement or the user's ear, never your guess.
+Talk to the user in Arabic (MSA, addressing them as أبوستيشا). Write every generation prompt in English, including Seedance edit prompts and ElevenLabs SFX or voice direction. **You cannot hear.** Every audio judgement must be a measurement or the user's ear, never your guess.
 
 Evidence tags used below:
 - `[DOC]` documented, with source and date
@@ -34,7 +34,7 @@ Working folder: `films/<id>/07-finish/` with `snapshots/ review/ qc/vNN/ notes/ 
 ## Ground rules
 
 1. **Permission ladder.** L0, the default: read the timeline, export references and frames, measure. L1: add markers or comments (ask once per session). L2: add new audio clips on empty tracks only (ask per batch). L3: change the cut by trimming, moving, replacing, deleting, retiming or applying clip effects (ask per item ID; the user approves in writing, "موافق على C03"). Silence is not approval.
-2. **Never touch the user's sequence.** All writes go into a duplicate sequence the user has made: `SLA_FINE_vNN_CLAUDE`. The user merges it, or he keeps working in his own.
+2. **Never touch the user's sequence.** All writes go into a duplicate sequence the user has made: `SLA_FINE_vNN_CLAUDE`. The user merges it, or they keep working in their own.
 3. **Holdback (00 H1).** Never upload the film anywhere except the private or unlisted submission link. The `watch` skill's Gemini engine uploads the whole film to Google. Use it only with the user's explicit, per-film consent; default to local frames.
 4. **Provenance (00 D5).** Never crop, blur, cover or scale away a watermark or credential. Never remux or re-tag a file that carries Content Credentials: fix the export and re-export. T4 decides which export chain keeps them.
 5. **Seedance share.** Every fix route has a share cost (7.5). Prefer routes that keep Seedance pixels. Recompute the share at G3 and G4.
@@ -67,7 +67,7 @@ Day plan (00 calendar):
 
 ### 7.1 Snapshot, safety copy and reference export (D15 morning)
 
-1. Ask the user to run *File > Save a Copy* as `SLA_edit_vNN_preclaude.prproj` (not *Save As*, which would switch his open project to the copy), then duplicate the sequence to `SLA_FINE_vNN_CLAUDE`.
+1. Ask the user to run *File > Save a Copy* as `SLA_edit_vNN_preclaude.prproj` (not *Save As*, which would switch their open project to the copy), then duplicate the sequence to `SLA_FINE_vNN_CLAUDE`.
 2. **Snapshot** to `07-finish/snapshots/<YYYYMMDD-HHMM>.json`:
    - sequence settings (expect 1920×1080, 24 fps, square pixels, 48 kHz);
    - every track and clip: name, source path, source in/out, sequence start/end, enabled, scale, volume;
@@ -163,7 +163,7 @@ Severity (adapted from Leonxlnx/cinetic, MIT): **P0** is visible on a key beat o
 
 1. Show the notes sorted by severity. For each note the user picks:
    - (a) Claude applies it via `pr_*`;
-   - (b) he applies it himself (manual card);
+   - (b) they apply it themself (manual card);
    - (c) regenerate (05-seedance-production.md);
    - (d) won't fix (keep the reason).
 2. **L3 protocol for each approved item:**
@@ -321,7 +321,7 @@ ffmpeg -hide_banner -nostats -i PM.wav -af "aselect='between(t,1.20,3.85)+betwee
 ```
 - **Static gain, not loudnorm.** Gain = target − measured. Apply it only if measured true peak + gain stays under the ceiling; otherwise the limiter takes the rest. ffmpeg `loudnorm` in linear mode silently switches to dynamic compression when the target is out of reach, so do not use it on the film (bianbianzhu procedural-sfx, MIT, paraphrased).
 - **In Premiere:** Loudness Meter on the Mix track for live reading (presets include EBU R128 and ATSC A/85 plus platform presets `[DOC Adobe help, via search]`). For the web pass, Hard Limiter on the Mix track with the ceiling at −2.0 dB. It is not documented as a true-peak limiter, so leave margin and measure the encoded file.
-- **The Summit intro is never re-levelled.** Measure it, and if it differs from the film by more than 3 LU, tell the user and let him decide.
+- **The Summit intro is never re-levelled.** Measure it, and if it differs from the film by more than 3 LU, tell the user and let them decide.
 
 ### 7.10 Subtitles: English (mandatory) and the Arabic track (D16)
 
@@ -361,7 +361,7 @@ Use `cuts.txt` for the shot changes.
 know I'm proud of you.</i>
 ```
 - As written in 01: "If I don't get to see you… / know I'm proud of you." = 48 characters in 2.75 s = 17.5 cps. FAIL at 17.
-- Condensed: 41 characters in 2.75 s = 14.9 cps. PASS. The user approves every condensation, because it changes his words.
+- Condensed: 41 characters in 2.75 s = 14.9 cps. PASS. The user approves every condensation, because it changes their words.
 - Arabic cue 9, no italics: `إذا لم أستطع أن أراك…` / `فاعلم أنني فخورة بك.` (41 characters, 14.9 cps).
 
 **Validator** `[TESTED]`: `scripts/srt_check.py` (original code, standard library only). It checks lines, characters (tags, `{\an8}` overrides, bidi marks and diacritics do not count), cps, duration, gaps, frame alignment and `...`; with `--lang ar` also italics and a BOM. Exit code 1 means fix or get the user's waiver.
@@ -422,7 +422,7 @@ File names follow `<project>_<deliverable>_<locale>_<aspect>_<duration>_<spec>_<
 | 5 | `SLA_printmaster_stereo_48k24_…wav`, `SLA_web-master_…wav`, `SLA_stem-DX/MX/FX_…wav`, `SLA_ME_…wav` | 48 kHz/24-bit, same start and length, null-tested | — |
 | 6 | `SLA_subs_en_…srt`, `SLA_subs_ar_…srt` (+ `.vtt` if a host wants it) | UTF-8, validated | — |
 | 7 | `qc/`, `manifest-sha256.txt`, `delivery-sheet.csv` | 7.13 | — |
-| — | DCP | later, from #3 plus an LCR or 5.1 mix; a stereo L/R mix alone does not meet the Academy rule. Owned by 09-release-and-festivals.md | — |
+| — | DCP | later, from #3 plus the mix each festival or screening asks for (09 plans an LCR or 5.1 mix). Background only: a stereo L/R mix alone would not meet the Academy rule, which matters only if the Oscars ever become a target. Owned by 09-release-and-festivals.md | — |
 
 **Premiere export (manual card).**
 - Export mode: Format H.264 or QuickTime (Apple ProRes 422 HQ); Match Source; 24 fps; Use Maximum Render Quality; Render at Maximum Depth for ProRes.
@@ -485,7 +485,7 @@ Mix: Loudness Meter (always) · Hard Limiter (WEB pass only, bypassed for stems)
 4. صدّر مرجعًا جديدًا وأرسل لي اسمه.
 النتيجة المتوقعة: بداية الصوت متأخرة إطارين عن الآن، ولا يتحرك أي شيء آخر.
 ```
-Verify the shortcut on his OS and keymap before sending it (default "nudge clip one frame": Alt+arrow on Windows, Cmd+arrow on macOS `[UNVERIFIED for 26.x]`). Take clip names from the snapshot, never from memory.
+Verify the shortcut on the user's OS and keymap before sending it (default "nudge clip one frame": Alt+arrow on Windows, Cmd+arrow on macOS `[UNVERIFIED for 26.x]`). Take clip names from the snapshot, never from memory.
 
 **5. End credits** (names from the user only; tool versions from the ledger):
 ```text
@@ -522,7 +522,7 @@ Open   none   ·   Waivers   none
 - the note list closed: every P0 fixed; every P1 fixed or waived with a reason;
 - 00 §0.10 G3: runtime, Seedance picture share ≥ 90% (80–90% only with the 7.4 waiver), G1 re-run on the cut as watched, brand and text sweep, ledger continuity closed, holdback intact;
 - the EDL and XML saved to evidence;
-- the statement «هذه النسخة هي القص النهائي للقمة والمهرجانات».
+- the statement «هذه النسخة هي القص النهائي للقمة». The cut is locked for the Summit; after 10 Jan 2027 (end of the holdback, Terms cl. 8.4) a festival or "Episode 0" re-edit is allowed (00 §0.11); Academy eligibility would be affected only if the Oscars ever become a target. The submitted cut stays one complete standalone story and is never called a pilot or an episode.
 
 **Hand-off to 08 (end of D16).** Deliver the reference export with mix, EN subtitles, titles, credits and intro, plus the measurement pack. 08 sees only the review pack.
 

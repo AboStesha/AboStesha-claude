@@ -3,9 +3,9 @@
 **Purpose.** Turn the AI Film Award 2027 rules into a pass/fail plan before any script, image or video is touched.
 **Output.** A locked brief per film: theme, runtime budget, Seedance-share targets, a dated calendar with daily gates, four compliance gates, and a light human-authorship evidence plan.
 **Rule.** Nothing in 01-script-and-dialogue.md or later starts until the Step 0 Gate (end of this file) is approved by the user.
-**Priority (BRIEF.md).** Winning the AI Film Award 2027 with film 01 comes first. Film 2 happens only if it costs film 01 nothing. The Oscars are background, not a target. After 10 Jan 2027 the film goes to festivals and is pitched as "Episode 0" of a 7-episode series, but the film itself must stand alone (F8).
+**Priority (BRIEF.md, updated 2026-10-30).** Winning the AI Film Award 2027 is the only target. Finish film 01 completely before film 2; film 2 happens only if time remains. The Oscars are not a target (short background only, 0.11). After 10 Jan 2027 (end of the holdback, cl. 8.4) the film goes to other competitions and festivals and is pitched to international production companies and platforms as "Episode 0" of a 7-episode "Second Life" mini-series: the user keeps ownership (cl. 7.1), and the Organizer's licence is non-exclusive, so the user may monetise after the Award closes (cl. 8.2–8.3). The submission itself stays one complete standalone story and is never called a pilot or an episode (F8).
 
-Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوستيشا, as in his earlier pipeline). Write every generation prompt, and the Organizer email, in English.
+Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا, as in their earlier pipeline). Write every generation prompt, and the Organizer email, in English.
 
 ---
 
@@ -38,7 +38,7 @@ Snapshot verified 2026-10-30 against the official page and the Terms (last updat
 
 | # | Requirement | Clause | Pass test | Evidence to keep |
 |---|---|---|---|---|
-| E1 | Applicant is a natural person who created or directed the film, aged 18+ on submission day | 4.1(a), 4.2 | AboStesha submits in his own name | ID scan ready for verification |
+| E1 | Applicant is a natural person who created or directed the film, aged 18+ on submission day | 4.1(a), 4.2 | AboStesha submits in their own name | ID scan ready for verification |
 | E2 | Not staff, contractor or agent of the Organizer, its Affiliates or Partners (BytePlus, TikTok), not a juror or a juror's relative, not sanctioned | 4.3, 4.4 | user confirms in writing | note in `00-brief/eligibility.md` |
 | F1 | Original film made for this award, never publicly released, broadcast, published, or submitted to or awarded by any other competition | 5.3(b); warranties repeated at every stage, 6.1 | no festival entry, no public post, ever, before the Summit outcome | dated project history |
 | F2 | Runtime 5–7 min excluding opening titles and closing credits, which must be "reasonable in length"; the page also says "up to 7 minutes in total duration" | 5.3(a), page | story 5:30–6:34 at lock (script target 6:00–6:30, 01) **and** titles + story + credits ≤ 7:00 (Summit intro not counted, unconfirmed) | timecode report at lock |
@@ -76,7 +76,7 @@ Scoring (page): AI Integration 30, Storytelling 30, Creativity & Aesthetic 20, T
 ### 0.3 Lock the theme and map it to the rubric
 
 1. Read the user's draft and list which of the five themes it can carry: Society, Community & Humanitarian Issues · Truth, Fake News & Misinformation · Humans & AI · Climate, Nature & Our Changing Planet · Human Relationships.
-2. Offer the user two candidates with one line each on why. Never pick for him.
+2. Offer the user two candidates with one line each on why. Never pick for them.
 3. Fill the rubric map. Each row names one concrete, checkable choice, not an aspiration.
 
 ```
@@ -142,7 +142,7 @@ Seedance 2.5 clips run 4–30 s per generation at 24 fps (third-party mirror of 
 
 ### 0.6 One film or two
 
-Default: one film at maximum quality (BRIEF.md: finish film 1 completely first; film 2 only if time remains). Raise a second film only when the user asks, and tell him plainly that 21 days leave no room for film 2 after film 1, so film 2 can only run in parallel and must never move a film 1 date. If he still wants it, apply all of this:
+Default: one film at maximum quality (BRIEF.md: finish film 1 completely first; film 2 only if time remains). Raise a second film only when the user asks, and tell them plainly that 21 days leave no room for film 2 after film 1, so film 2 can only run in parallel and must never move a film 1 date. If they still want it, apply all of this:
 
 | Rule | Detail |
 |---|---|
@@ -175,7 +175,7 @@ Single film, Blender collaborator on greybox. D0 is today. Lock dates are hard; 
 | D12 | Wed 11 Nov | **BUFFER 1**: failed renders, moderation rejects, expired drafts; rough cut; quick judge pass on rough (08) | rough-cut notes | — | rough cut reviewed |
 | D13 | Thu 12 Nov | last new drafts; finals; rough cut v2 | approves | — | no new drafts after today |
 | D14 | Fri 13 Nov | all finals in; fine cut support; SFX analysis (06) | fine cut in Premiere | — | all finals downloaded |
-| D15 | Sat 14 Nov | **PICTURE LOCK + G3 gate**; test screening plan | 5–10 real viewers watch before he signs (08 §8.8, screening A); locks picture | — | G3 report signed |
+| D15 | Sat 14 Nov | **PICTURE LOCK + G3 gate**; test screening plan | 5–10 real viewers watch before AboStesha signs (08 §8.8, screening A); locks picture | — | G3 report signed |
 | D16 | Sun 15 Nov | sound design, mix notes, grade, cleanup, subtitles EN (+AR) (07); fills submission form draft | mix/grade in Premiere | — | form draft saved |
 | D17 | Mon 16 Nov | judge panel (08); fix list limited to non-story fixes | applies fixes | — | fix list closed |
 | D18 | Tue 17 Nov | master QC; **G4 Delivery gate**; disclosure pack; rules re-check | exports masters; uploads private link | — | G4 report signed |
@@ -211,7 +211,7 @@ Two films in parallel (Film A follows the table above exactly; Film B uses only 
 
 | Failure | Response | Time reserved |
 |---|---|---|
-| Render failed or timed out | a local timeout is not a failure: `poll` the task ID, never resubmit a running task (05 §5.9). A task with status `failed` (not billed) may be resubmitted once unchanged with his yes; a moderation block needs a content change first; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
+| Render failed or timed out | a local timeout is not a failure: `poll` the task ID, never resubmit a running task (05 §5.9). A task with status `failed` (not billed) may be resubmitted once unchanged with the user's yes; a moderation block needs a content change first; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
 | Input image rejected for a realistic face (`InputImageSensitiveContentDetected.PrivacyInformation`, third-party reports) | register the character in the ModelArk private virtual-portrait asset library and reference `asset://<id>`, or use the same-account trusted-output fallback (03-assets-images.md §3.3–3.4, 05-seedance-production.md); never retry an unchanged request or alter the face to slip past the check | T1 on D1 decides the route |
 | Prompt or audio rejected by content checks | change the content, not the wording trick; re-run the G1 check on that beat; log it | Buffer 1 (D12) |
 | Final differs from the approved draft (it is a new render) | re-review every final; re-draft if identity or action changed | inside reserve |
@@ -237,7 +237,7 @@ Record the Seedance `watermark` setting used (the parameter defaults to false in
 
 ### 0.9 Ask the Organizer in writing
 
-The user sends it from his own email account to `hello@1billionsummit.com` (address on the official page). Entries go only through the website form (cl. 5.1); this email is for questions. Do not wait for the answer: plan to R1 + R2 and keep R3 feasible. Save the reply as PDF in `evidence/organizer-correspondence/`.
+The user sends it from their own email account to `hello@1billionsummit.com` (address on the official page). Entries go only through the website form (cl. 5.1); this email is for questions. Do not wait for the answer: plan to R1 + R2 and keep R3 feasible. Save the reply as PDF in `evidence/organizer-correspondence/`.
 
 ```
 To: hello@1billionsummit.com
@@ -315,7 +315,7 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 - [ ] Frame-by-frame brand and text sweep; no real-person likeness drift in any shot.
 - [ ] Continuity and physics notes closed (ledger-continuity-physics.md).
 - [ ] Holdback intact: nothing posted; test viewers asked not to share (8.4).
-- [ ] This cut is the final cut for the Summit, festivals and any later Oscar attempt (0.11); no "Episode 0" or pilot wording anywhere in it (F8).
+- [ ] This cut is locked for the Summit (0.11); a festival or "Episode 0" re-edit is allowed only after 10 Jan 2027; no "Episode 0" or pilot wording anywhere in the Summit cut (F8).
 
 **G4 — Delivery gate** (D18, in 07-edit-mix-finish.md and 09-release-and-festivals.md)
 - [ ] File: 16:9, ≥ 1920×1080, MOV or MP4; Summit intro prepended unaltered; English subtitles burned in; textless master kept.
@@ -328,7 +328,7 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 - [ ] Private or unlisted link plays logged-out, at full resolution, with subtitles; the file behind it is never replaced or trimmed until the Award closes (5.8).
 - [ ] Holdback reminder set until the winner announcement on 10 Jan 2027 or a non-finalist notice.
 
-Worked example — G1 flags on `draft-v0-abostesha.md` (show the user; he decides each one in Step 1):
+Worked example — G1 flags on `draft-v0-abostesha.md` (show the user; they decide each one in Step 1):
 
 | Draft v0 element | Rule hit | G-safe options to offer |
 |---|---|---|
@@ -352,26 +352,22 @@ Worked example — G1 flags on `draft-v0-abostesha.md` (show the user; he decide
 | Noah and Kabir paraphrase the Qur'an | 9.2(e), UAE std 1 | exact wording from a recognised translation; human reviewer; consider whether a robot should quote scripture |
 | "Made in UAE" label on the robot arm | UAE std 2 if an official emblem is used | plain text only, no state emblem or government logo |
 
-### 0.11 Oscar path: Animated Short (100th Academy Awards) — background only
+### 0.11 Summit cut, later re-edits and the authorship record (Oscars: background only)
 
-BRIEF.md: the Oscars are not a target now. Spend no production time on them. Keep only the decisions below, which cost nothing and also protect the festival run and the series pitch.
+BRIEF.md: winning the AI Film Award 2027 is the only target; the Oscars are not a target. Spend no production time on them.
 
-Facts (verified 2026-10-30 against the 99th Rule Eight and Rule Seventeen PDFs on oscars.org):
-- Live Action is closed to this film: Live Action requires imagery and sound created primarily through practical photography of physical actors, props, sets and locations (Rule 17, I.C).
-- Animated (Rule 8, I.C): movement is created "by any human means"; at least 75% of running time, without credits, must include animation of the primary subjects; filmmakers must show how the film qualifies; the Animation Branch Executive Committee decides (II.C). A photoreal, 70%+ Seedance film is an untested fit.
-- Excluded: "alternate or re-edited versions" of shorts already publicly exhibited (I.B.2), and works originally created as episodic television, which "may include pilots" or material from a limited series (I.B.4). So the film is a standalone short; "Episode 0" belongs only in the later series pitch. The submitted film must be identical in content and length to the version that qualified, with commercial theatrical clearances; festival clearances are not enough (III.C).
-- Routes (within two years of the film's completion, II.A): a festival award on the Short Film Qualifying Festival List, "regardless of any prior public exhibition" (II.A.2), or a 7-day paid theatrical run in one of six US metros with no prior non-theatrical exhibition beyond 15% (II.A.1, II.B). The Organizer's licence to stream (Summit cl. 8.1) makes the festival route the practical one.
-- English captions or subtitles required (III.A, III.D). At most two nominees: the credited director plus one key creative (IV.A).
-- The 99th cycle is closed. The 100th rules and festival list are **not published** (normally spring); the eligibility window is assumed to be 1 Oct 2026 – 30 Sep 2027 by past pattern (unconfirmed). The Summit award is not on the 99th qualifying list.
-- The Academy weighs "the degree to which a human was at the heart of the creative authorship" and may ask for details (Rule Two, para 7; research snapshot, not re-fetched today).
+Oscar background only (verified 2026-10-30 against the 99th Rule Eight and Rule Seventeen PDFs on oscars.org; not a plan):
+- Live Action requires practical photography of physical actors, props, sets and locations, so it is closed to this film (Rule 17, I.C).
+- Animated Short needs movement created "by any human means" over at least 75% of the running time without credits; the Animation Branch decides (Rule 8, I.C, II.C). A photoreal, 70%+ Seedance film is an untested fit.
+- The Academy excludes "alternate or re-edited versions" of shorts already publicly exhibited (I.B.2) and works created as episodic television, which "may include pilots" (I.B.4). It weighs "the degree to which a human was at the heart of the creative authorship" (Rule Two, para 7; research snapshot, not re-fetched today).
+- The Summit award is not on the 99th qualifying festival list; the 100th rules are not published.
 
 Decisions to record at Step 0:
-1. The Summit cut is the final cut. No director's cut or longer version later.
-2. No festival submission before the Summit outcome (cl. 5.3(b), 6.1, 8.4). Festival planning lives in 09-release-and-festivals.md.
-3. Designated nominees: AboStesha (director) plus, optionally, one key creative. Credit both exactly.
-4. Clearances for commercial theatrical use from the start: Suno paid tier active at generation time; ElevenLabs Enterprise plan (confirmed by the user 2026-10-30; record the contract and plan in the licence log before the first Eleven Music cue, 06-music-and-sfx.md); font licences.
+1. The Summit cut is locked for the Summit: never replace, trim or re-upload the file behind the submitted link until the Award closes (cl. 5.8). After 10 Jan 2027 (end of the holdback, cl. 8.4) a festival re-edit or an "Episode 0" re-edit for the series pitch is allowed. It would affect Academy eligibility (I.B.2, I.B.4) only if the Oscars ever become a target.
+2. No festival submission before the Summit outcome (cl. 5.3(b), 6.1, 8.4). After 10 Jan 2027 the film goes to other competitions and festivals and is pitched to international production companies and platforms as "Episode 0" of the 7-episode "Second Life" mini-series; the user keeps ownership (cl. 7.1) and may monetise after the Award closes (cl. 8.2–8.3). Festival and pitch planning lives in 09-release-and-festivals.md.
+3. Licences that cover festival, streaming and commercial use from the start, so the festival run and the series pitch need no re-clearing (R3): Suno paid tier active at generation time; the user's ElevenLabs Enterprise contract (confirmed by the user 2026-10-30; for film use it must be the full Enterprise Music tier, not Enterprise Music Lite; record the contract and tier in the licence log before the first Eleven Music cue, 06-music-and-sfx.md); font licences.
 
-Human-authorship dossier, filled daily in `evidence/authorship/`:
+Human-authorship dossier, filled daily in `evidence/authorship/` (supports the AI Disclosure and cl. 5.5(b), 6.1(b); reused for festivals and the series pitch):
 
 | Evidence | What to keep | Step |
 |---|---|---|
@@ -380,7 +376,7 @@ Human-authorship dossier, filled daily in `evidence/authorship/`:
 | Human-made motion | Blender files with hand-set keyframes by the collaborator and the user; playblast beside the Seedance result for each shot | 04, 05 |
 | Direction | per-shot performance notes, selects and rejects with reasons | 05b |
 | Edit and sound | Premiere project versions, cut notes, mix decisions | 07 |
-| Statement | a one-page "how this film qualifies as animated": human keyframed blocking drives the primary subjects' movement; generation is the rendering step | 09 |
+| Statement | a one-page authorship statement: the user's script and direction and the human keyframed blocking of the primary subjects' movement drive the film; generation is the rendering step | 09 |
 
 ---
 
@@ -395,7 +391,7 @@ Human-authorship dossier, filled daily in `evidence/authorship/`:
 • نسبة Seedance: هدف الصورة ≥ 90%. الصوت: ننتظر رد المنظمين (الرسالة جاهزة).
 • مخاطر اليوم الأول: الوجوه الواقعية، مزامنة الشفاه، الفرق بين المسودة والنسخة النهائية، بيانات المصدر.
 • ملاحظات الامتثال على المسودة: <عدد> نقطة (الجدول مرفق) — نقرر كل نقطة في الخطوة 1.
-• الأوسكار: ليس هدفاً الآن. نكتفي بقرارات مجانية: نسخة القمة هي النسخة النهائية، والفيلم قصة مستقلة لا تُسمّى "الحلقة 0".
+• الأوسكار: ليس هدفاً الآن. نسخة القمة مقفلة للقمة، وبعد 10 يناير 2027 يُسمح بنسخة معدّلة للمهرجانات أو بنسخة "الحلقة 0"؛ أما الفيلم المقدَّم فقصة مستقلة كاملة لا تُسمّى حلقة ولا حلقة تجريبية.
 ```
 
 **Calendar** — the 0.7 table with Arabic headers (اليوم · التاريخ · Claude · أبوستيشا · صديق Blender · بوابة نهاية اليوم), dates filled, lock days in bold.
@@ -433,7 +429,7 @@ ASK 1 — <سؤال للمنظمين أو لمراجع بشري>
 6. The G1 flag table on the draft: acknowledged (decisions happen in 01).
 7. The D1 risk-test plan and its spend.
 8. Collaborator agreement: rights assignment and credit signed; named for the AI Disclosure (cl. 6.1(b)).
-9. Acknowledgement of the holdback and the Organizer's perpetual licence (cl. 8.1, 8.4), that the Summit cut is the final cut for every later use, and that no series pitch, screener or option happens before the holdback ends.
+9. Acknowledgement of the holdback and the Organizer's perpetual licence (cl. 8.1, 8.4), that the Summit cut is locked for the Summit (a festival or "Episode 0" re-edit only after 10 Jan 2027), and that no series pitch, screener or option happens before the holdback ends.
 
 Do not assume approval from silence or partial agreement. Wait for an explicit "اعتمد" or equivalent.
 
@@ -454,9 +450,9 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 | Two films sharing a world or characters | "Substantially similar" can disqualify both (cl. 5.2) |
 | Posting a teaser or BTS clip | Holdback breach disqualifies (cl. 8.4, 13.1(g)) |
 | Entering a festival "just to test" | Breaks cl. 5.3(b); festivals only after the Summit outcome |
-| Re-cutting after the Summit for festivals | Academy excludes re-edited versions of publicly shown shorts |
-| Eleven Music cue with no licence record | Enterprise plan confirmed 2026-10-30; log the contract and plan before the first cue |
-| Calling the film "Episode 0" or a pilot | Risks the "complete story" rule (F8) and invites the Academy's episodic exclusion (I.B.4); series wording only in the pitch, after 10 Jan |
+| Re-cutting the Summit cut before the holdback ends | The Summit cut stays locked and the linked file unaltered (cl. 5.8, 8.4); a festival or "Episode 0" re-edit only after 10 Jan 2027 (Academy eligibility would be affected only if the Oscars ever become a target) |
+| Eleven Music cue with no licence record | The user's Enterprise contract was confirmed 2026-10-30; it must be the full Enterprise Music tier (Lite excludes film); log the contract and tier before the first cue |
+| Calling the film "Episode 0" or a pilot | Risks the "complete story" rule (F8); the submission stays one complete standalone story; series wording only in the pitch, after 10 Jan |
 | Swapping the file behind the submitted link | Cl. 5.8: the link stays live and unaltered until the Award closes |
 | Fonts missing from the licence log | Fonts are named in cl. 5.5(c) |
 | Exporting in a way that strips content credentials | T4 on D1; keep raw finals untouched |

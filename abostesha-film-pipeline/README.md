@@ -74,15 +74,11 @@ abostesha-film-pipeline/
 
 ## رفع السكيل إلى claude.ai
 
-1. **أنشئ ملف الضغط من جذر المستودع** (`AboStesha-claude/`). يجب أن يحتوي الملف المضغوط على مجلد `abostesha-film-pipeline/` وفي داخله `SKILL.md` مباشرة:
+1. **الملف المضغوط جاهز** في المستودع: `abostesha-film-pipeline/dist/abostesha-film-pipeline.zip`، والسكيلات المرافقة في `dist/companions/` (تفاصيل كل ملف ومصدره ورخصته في `dist/MANIFEST.md`). عند أي تعديل على السكيل أعد إنشاءه من داخل `abostesha-film-pipeline/skill`:
    ```bash
-   mkdir -p dist
-   cd abostesha-film-pipeline/skill
-   zip -r ../../dist/abostesha-film-pipeline.zip abostesha-film-pipeline -x '*/__pycache__/*' '*.pyc' '*.DS_Store'
-   cd ../..
-   unzip -l dist/abostesha-film-pipeline.zip | head   # تأكد أن أول مسار هو abostesha-film-pipeline/SKILL.md
+   zip -r ../dist/abostesha-film-pipeline.zip abostesha-film-pipeline -x '*/__pycache__/*' '*.pyc' '*.DS_Store'
+   unzip -l ../dist/abostesha-film-pipeline.zip | head   # تأكد أن أول مسار هو abostesha-film-pipeline/SKILL.md
    ```
-   مجلد `dist/` مستثنى من git أصلاً.
 2. **في claude.ai** افتح الإعدادات (Settings)، ثم Capabilities، وتأكد أن **Code execution and file creation** مفعّل.
 3. **في قسم Skills** اضغط **Upload skill** واختر `abostesha-film-pipeline.zip`. إن تغيّر اسم القائمة في واجهتك، ابحث عن "Skills" في الإعدادات.
 4. **فعّل السكيل** وجرّبه برسالة «نكمل الفيلم». يجب أن يرد Claude بالعربية ويذكر الخطوة الحالية.

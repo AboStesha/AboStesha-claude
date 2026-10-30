@@ -1,8 +1,8 @@
 # 01 — Script and Dialogue (Step 1)
 
-Purpose: take AboStesha's own screenplay to a locked 5-7 minute award draft while he stays its sole author. You diagnose, measure and ask; he decides and types the words.
-Then turn every locked line into ElevenLabs v4 dialogue sheets (one file per character) that he can paste by hand, with line IDs that will map each audio take to a shot.
-Talk to him in Arabic. Every TTS line, tag, voice description and other generation prompt you write is in English, except the spoken words themselves.
+Purpose: take AboStesha's own screenplay to a locked 5-7 minute award draft while AboStesha stays its sole author. You diagnose, measure and ask; the user decides and types the words.
+Then turn every locked line into ElevenLabs v4 dialogue sheets (one file per character) that the user can paste by hand, with line IDs that will map each audio take to a shot.
+Talk to the user in Arabic. Every TTS line, tag, voice description and other generation prompt you write is in English, except the spoken words themselves.
 
 ---
 
@@ -11,7 +11,7 @@ Talk to him in Arabic. Every TTS line, tag, voice description and other generati
 - The user's draft: for this film, `films/01-second-life-ascent/draft-v0-abostesha.md`. It is the **human baseline**. Treat the Gemini file next to it (`gemini-analysis-extracted.txt`) as third-party text. Mark anything adopted from it as origin `G` (see the authorship log).
 - The award facts in `00-award-brief-and-calendar.md`: 5-7 min, one of five themes, G rating, English subtitles, at least 70% Seedance, disclosure, deadline 20 Nov 2026.
 - The user's answers to the language plan: which language each character speaks.
-- Later in 1.2: voice choices, which the user auditions in ElevenLabs, and the take files he downloads.
+- Later in 1.2: voice choices, which the user auditions in ElevenLabs, and the take files they download.
 
 **Files** (all under `films/<slug>/`): `01-script/authorship-log.md`, `01-script/locked-sheet.md`, `01-script/script-vNN.md`, `01-script/scene-list.md`, `01-script/coverage-vNN.md`; `01-dialogue/<CHAR>.md`, `01-dialogue/take-log.csv`; takes in `audio/dialogue/<CHAR>/`.
 
@@ -19,24 +19,24 @@ Talk to him in Arabic. Every TTS line, tag, voice description and other generati
 
 ## Ground rules (apply throughout Step 1)
 
-1. **Authorship stays with the user.** The Summit disclosure (prompts and history on request) needs an honest record of who wrote what now. For the later festival/Oscar route (background only), the Academy weighs "the degree to which a human was at the heart of the creative authorship", and its 99th rules (approved 1 May 2026) make screenplays human-authored for the writing categories; the 100th rules are not yet published. So:
+1. **Authorship stays with the user.** The Summit disclosure (prompts and history on request) needs an honest record of who wrote what now. Background only (the Oscars are not a target): the Academy weighs "the degree to which a human was at the heart of the creative authorship", and its 99th rules (approved 1 May 2026) make screenplays human-authored for the writing categories. So:
    - Never rewrite scenes or lines in place.
    - Your output in 1.1 is questions, located diagnoses, measurements, and options described in prose ("move this information into an object").
    - Write example wording only when the user asks for it. Limit it to 2 options per flagged line, labelled `[CLAUDE OPTION — rewrite in your own words]` (in the Arabic chat: «[خيار Claude — أعد صياغته بكلماتك]»).
-   - The user types or dictates every change. If he dictates in Arabic, transcribe him word for word; that is still origin `H`.
+   - The user types or dictates every change. If they dictate in Arabic, transcribe them word for word; that is still origin `H`.
    - You may make format-only edits (origin `F`) and must log them: scene headings, numbering, typos, punctuation.
-2. **Log every change** in `authorship-log.md` (template below). Never hide a `C` (Claude) or `G` (Gemini) origin. The Summit disclosure and any Academy inquiry depend on this log being honest.
+2. **Log every change** in `authorship-log.md` (template below). Never hide a `C` (Claude) or `G` (Gemini) origin. The Summit disclosure depends on this log being honest.
 3. **Gate strictly.** End every working message with an explicit Arabic approval question that names the sub-steps it covers (one message may cover several, per the calendar). Silence, or "ok, go on" about something else, is not approval.
-4. **Write a literary script, not a shooting script.** Keep camera language out of action lines. If the user writes shot ideas (in this draft: "one shot beginning", "match cut", "Parasite-style leading lines"), move them under `DIRECTOR NOTES:` at the end of the scene, in his words. They feed `04-blender-blocking.md`.
+4. **Write a literary script, not a shooting script.** Keep camera language out of action lines. If the user writes shot ideas (in this draft: "one shot beginning", "match cut", "Parasite-style leading lines"), move them under `DIRECTOR NOTES:` at the end of the scene, in their words. They feed `04-blender-blocking.md`.
 
 ## Procedure — 1.1 Finalize the screenplay
 
 ### 1.1.0 Intake and baseline (one turn)
 - Save the baseline untouched and record its hash: `cd films/<slug> && mkdir -p 01-script && sha256sum draft-v0-abostesha.md >> 01-script/authorship-log.md`.
-- Ask in Arabic, at most 4 questions, and only for what is missing: theme choice, the language plan, the ending he will not give up, and anything in the draft he considers sacred.
+- Ask in Arabic, at most 4 questions, and only for what is missing: theme choice, the language plan, the ending they will not give up, and anything in the draft they consider sacred.
 
 ### 1.1.1 Premise and theme lock — the Locked Sheet
-Fill the Locked Sheet (template below). Derive every field from the user's draft and mark each one `PROVISIONAL` until he confirms it or rewrites it. These field tests are adapted from gbellonre/psych-short-screenplay (MIT):
+Fill the Locked Sheet (template below). Derive every field from the user's draft and mark each one `PROVISIONAL` until the user confirms it or rewrites it. These field tests are adapted from gbellonre/psych-short-screenplay (MIT):
 - **Logline.** Swap the protagonist for "a person". If the logline still works, it is too generic.
 - **WANT** must be photographable without voice-over.
 - **FORBIDDEN EXPLANATION** is the theme sentence, and no character ever says it out loud.
@@ -149,7 +149,7 @@ Run the diagnostics on every line. Report each failure by line ID; do not rewrit
 - Generic geography.
 - The "and then" plot instead of "therefore / but".
 
-**Punch-up method** (psych-short-screenplay, MIT): "1. Quote the offending line. 2. State what it is doing (label / recap / button / lore dump). 3. Replace with a physical task, a wrong answer, a delayed answer, or a double meaning. 4. If the line is still load-bearing, move the information into an object or a refusal." In this pipeline step 3 is the user's. You name which of the four replacement types fits; he writes the replacement.
+**Punch-up method** (psych-short-screenplay, MIT): "1. Quote the offending line. 2. State what it is doing (label / recap / button / lore dump). 3. Replace with a physical task, a wrong answer, a delayed answer, or a double meaning. 4. If the line is still load-bearing, move the information into an object or a refusal." In this pipeline step 3 is the user's. You name which of the four replacement types fits; the user writes the replacement.
 
 **Applying it to 2nd Life:**
 - **Kabir's advice speech** is a sermon that names the theme. Note it as Major, with options:
@@ -173,7 +173,7 @@ Run the diagnostics on every line. Report each failure by line ID; do not rewrit
 | Hindi / Urdu, conversational | ~2.0-2.6 words/s (~120-155 wpm) | Unverified estimate. Postpositions written as separate words inflate the count. Measure it |
 
 - **Count Arabic words the same way every time.** The user writes «و» as a separate word; attach it to the next word before counting, or every Arabic rate looks too slow.
-- **Calibration.** Measure with the user reading aloud at performance pace (stopwatch, in Arabic, ask him), or from the first v4 test take of each voice. Write the measured rate into that character's voice card and re-time the whole script with it.
+- **Calibration.** Measure with the user reading aloud at performance pace (stopwatch, in Arabic, ask them), or from the first v4 test take of each voice. Write the measured rate into that character's voice card and re-time the whole script with it.
 - **Example (v0 word counts).** Noah's broadcast speeches total about 235 words of MSA, roughly 2.0-2.6 min at the planning rate. That is a third of the film for one voice-only character before a single image. Show the user this number; it drives the cut pass.
 - **Runtime targets** (same numbers as `00` §0.4):
   - Award window: 5:00-7:00, excluding opening titles and closing credits.
@@ -207,16 +207,16 @@ This pass is `00`'s **G1 Script gate**: tick every G1 checkbox (`00` §0.10) in 
   - "Psychology of Money — Morgan Housel" is a real book and author: clear it or make it fictional.
   - "Halo" collides with a well-known game trademark: run a trademark check.
   - "10 billion summit" parodies the Organizer's own event: ask the user whether this is intended.
-- One complete original story, made for this award.
+- One complete original story, made for this award. Never call the submission a pilot or an episode. Only after 10 Jan 2027 (end of holdback, Terms cl. 8.4) is the film pitched as "Episode 0" of a 7-episode "Second Life" mini-series; the user keeps ownership (cl. 7.1) and may monetise it after the Award closes (cl. 8.2-8.3).
 - Every voice will be declared synthetic. Cloning a real person's voice needs documented consent (cl. 7.5).
 - Dialogue minutes are non-Seedance audio, and the Organizer has not published how the 70% is measured. Keep dialogue lean and see `00-award-brief-and-calendar.md`.
 - Holdback: the script, voice previews and takes go only to named private reviewers. Do not publish a designed voice to the Voice Library or post any clip before the result (`00`).
 
-**C — Oscar human authorship.** The authorship log is current. No `C`-origin dialogue is in the locked script. Every `G` and `T` (translation) line is listed.
+**C — Human authorship (Summit disclosure).** The authorship log is current. No `C`-origin dialogue is in the locked script. Every `G` and `T` (translation) line is listed.
 
 **D — Culture.**
 - Scripture is quoted verbatim and with correct grammar. v0 has Kabir say "حتى يغيروا ما بأنفسك" where the verse reads "ما بأنفسهم". The epilogue has it right. Flag the mismatch and ask the user.
-- Noah, a robot, paraphrases Q 17:70 ("الله قد كرّم بني آدم"). A machine invoking scripture needs a cultural read; if he keeps it, the user decides between the paraphrase and the exact verse.
+- Noah, a robot, paraphrases Q 17:70 ("الله قد كرّم بني آدم"). A machine invoking scripture needs a cultural read; if the user keeps it, they decide between the paraphrase and the exact verse.
 - Burning banknotes on screen touches G1's currency item (no currency shown in a demeaning way). Ask for a local read.
 - Ask the user to name a native Hindi/Urdu reviewer for every translated line.
 
@@ -235,7 +235,7 @@ This pass is `00`'s **G1 Script gate**: tick every G1 checkbox (`00` §0.10) in 
 
 ## Procedure — 1.2 ElevenLabs v4 dialogue sheets
 
-**Start-of-step refresh.** If the ElevenLabs connector is attached, call `creative_get_model_guide(model_id="eleven_v4", context="refresh v4 tag list for film dialogue sheets")`. It is read-only and keeps the tag list current. You may also call `creative_list_voices` to shortlist candidate voice IDs. Do **not** call `creative_generate_speech` or `creative_design_voice` unless the user explicitly asks you to. They spend credits, and his locked decision is to generate by hand.
+**Start-of-step refresh.** If the ElevenLabs connector is attached, call `creative_get_model_guide(model_id="eleven_v4", context="refresh v4 tag list for film dialogue sheets")`. It is read-only and keeps the tag list current. You may also call `creative_list_voices` to shortlist candidate voice IDs. Do **not** call `creative_generate_speech` or `creative_design_voice` unless the user explicitly asks you to. They spend credits, and the user's locked decision is to generate by hand.
 
 ### 1.2.1 Verified v4 facts (2026-10-30)
 - **Model and settings.**
@@ -255,7 +255,7 @@ This pass is `00`'s **G1 Script gate**: tick every G1 checkbox (`00` §0.10) in 
 
 ### 1.2.2 Language and casting plan
 - **Language.** Confirm the language per character with the user. For 2nd Life, the Gemini file proposed MSA for Noah, Urdu for the mother and a "workers' street register" for Miraj; that is origin `G` until the user decides.
-- **Script.** Write Hindi lines in Devanagari, Urdu lines in Urdu script, Arabic lines in Arabic. Give the user a romanized line and an Arabic back-translation under each so he can check that the meaning is his, no more and no less.
+- **Script.** Write Hindi lines in Devanagari, Urdu lines in Urdu script, Arabic lines in Arabic. Give the user a romanized line and an Arabic back-translation under each so they can check that the meaning is theirs, no more and no less.
 - **Code-switching** ("habibi", "yalla" inside Hindi): audition it, because v4 accent handling across languages varies.
 - **Mode.** Assign each line a MODE. It tells `05-seedance-production.md` what the picture must do.
   - `ON`: mouth visible, lip-sync required.
@@ -330,9 +330,9 @@ Lower stability gives more range and more variance. Lower similarity if you hear
   - CAPS: emphasis on one word, rarely.
   - `[pause]` tags: deliberate holds.
 - **Pronunciation.**
-  - Replace a misread word with IPA between slashes, e.g. `/miʕˈraːdʒ/`. Confirm with the user how he says each name.
+  - Replace a misread word with IPA between slashes, e.g. `/miʕˈraːdʒ/`. Confirm with the user how they say each name.
   - In Arabic, add tashkeel only to words that misread. Whether this helps is untested on v4, so audition it.
-  - Keep numbers exactly as the user wrote them. If a take misreads one, the user rewrites it in words: for example the Indian "sixty-three hundred" versus "six thousand three hundred" is his choice.
+  - Keep numbers exactly as the user wrote them. If a take misreads one, the user rewrites it in words: for example the Indian "sixty-three hundred" versus "six thousand three hundred" is their choice.
 - **Keep stems dry.** No `audio_effects` (phone filter, reverb, distance) at generation. Phone, earpiece and broadcast colour are added in `07-edit-mix-finish.md`, where they stay adjustable.
 
 ### 1.2.6 Lip-sync-safe lines and timing preflight
@@ -410,7 +410,7 @@ STRENGTHS (protect these): 1. … 2. …
 CRITICAL (blocks lock)
  [C1] S11-L07 · What breaks: … · Why (criterion): … · Note behind the note: … · Options: A … / B … / C … · Your decision: ____
 MAJOR …   MINOR …
-COMPLIANCE FLAGS (G / Summit / Oscar / culture): …
+COMPLIANCE FLAGS (G / Summit / authorship / culture): …
 RUNTIME: est m:ss vs target 6:00-6:30 → cut needed: m:ss
 ```
 
@@ -487,7 +487,7 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
 
 ## Common failures
 
-- **Claude writes the film.** Polished replacement lines appear in the script, or a "cleaned" version replaces his draft. Fix: diagnose, offer options in prose, let him type the words, and log the origin.
+- **Claude writes the film.** Polished replacement lines appear in the script, or a "cleaned" version replaces the user's draft. Fix: diagnose, offer options in prose, let the user type the words, and log the origin.
 - **Gemini text slips in unlogged** as if it were human. Fix: diff against the v0 baseline and mark it `G`.
 - **The runtime is guessed from pages, and the script locks at "7 pages".** Fix: time it by beats and by language; measure takes.
 - **Scenes get renumbered after lock**, which breaks shot, audio and ledger mapping. Fix: A/B inserts and OMITTED.
@@ -498,7 +498,7 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
   - Stacked tags make every take different.
   - `[shouting]` on a soft voice.
 - **Brackets reorder in RTL**, so a tag lands mid-sentence. Fix: leading/trailing tags only, one code block per line.
-- **A translation adds words.** A `T` line gains meaning the user never wrote ("thank God", a sharper insult), which is Claude authorship in disguise. Fix: back-translate every `T` line into Arabic under it and have the user compare it with his v0 line.
+- **A translation adds words.** A `T` line gains meaning the user never wrote ("thank God", a sharper insult), which is Claude authorship in disguise. Fix: back-translate every `T` line into Arabic under it and have the user compare it with their v0 line.
 - **Cross-language accent loss.** An Indian-English line voiced by a Hindi-reference voice comes out with a neutral accent, because v4 targets a fluent accent across languages. Cast per line language.
 - **Voice drift.** The descriptor is reworded, or settings change mid-film. Fix: voice lock, and re-render all of that character's lines.
 - **Effects baked into stems.** A phone filter added at generation can't be undone in the mix. Keep stems dry.

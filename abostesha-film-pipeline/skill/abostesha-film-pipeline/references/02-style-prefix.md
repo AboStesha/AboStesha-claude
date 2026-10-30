@@ -1,10 +1,10 @@
 # 02 — Style Prefix: Lock the Film Look (Step 2)
 
-**Purpose.** Turn the user's reference film title and/or frames into a verified, measured look for his own film: real production facts, observed evidence, and per-sequence variants (reality vs the 2nd Life dream).
+**Purpose.** Turn the user's reference film title and/or frames into a verified, measured look for their own film: real production facts, observed evidence, and per-sequence variants (reality vs the 2nd Life dream).
 **Output.** One locked master prefix (`LOOK vX.Y`), mechanical adapters for GPT Image 2.5, Nano Banana Pro / 2.1, Midjourney V8.2 and Seedance 2.5, approved look frames, a Seedance look test and a style-lock card.
 **Rule.** No asset in 03-assets-images.md and no prompt in 05-seedance-production.md is written before the Step 2 Gate passes. The only exception is the D1 route tests (00 §0.8, 03 §3.4), which test routes, not the look, and are never reused as look references. Calendar slot: exploration on D2, lock on D3 (00-award-brief-and-calendar.md §0.7).
 
-Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوستيشا). Write every prefix, adapter and prompt in English.
+Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا). Write every prefix, adapter and prompt in English.
 
 ---
 
@@ -40,12 +40,12 @@ Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوست
 
 ### 2.1 Intake (D2, first hour)
 
-1. Ask in Arabic: which film or films, and what exactly he loves in each (light, colour, camera movement, texture, composition, a specific scene's mood). Also ask which part of his film it is for: reality, dream, or both.
-2. Ask for 6–12 stills per reference film, taken from his own legally obtained copy, or one short clip. Name the variety you need: day exterior, night exterior, day interior, night interior, a wide, a close-up with skin, a practical-lit shot, and a moving shot if a clip is available.
+1. Ask in Arabic: which film or films, and what exactly they love in each (light, colour, camera movement, texture, composition, a specific scene's mood). Also ask which part of their film it is for: reality, dream, or both.
+2. Ask for 6–12 stills per reference film, taken from their own legally obtained copy, or one short clip. Name the variety you need: day exterior, night exterior, day interior, night interior, a wide, a close-up with skin, a practical-lit shot, and a moving shot if a clip is available.
 3. Pull the sequence list from the locked script (01). For each sequence record world (reality / dream / broadcast), location, time of day, and emotional function.
 4. Copy the production locks from 00. Ask whether a scope matte is wanted. Recommend **full-frame 16:9 with no matte**: a 2.39:1 matte inside 1920×1080 leaves about 1920×804 active picture, which is a needless risk against the "≥1080p" rule (00 F4). Seedance ratio for every shot: `16:9`.
 5. Create `films/<id>/02-style/` with `reference-frames/` (git-ignored), `look-frames/`, `prefix/` and `look-bible.md`.
-6. **If he gives no reference at all:** build three PROPOSED directions from the rubric map. Each gets one paragraph and one look frame (2.8). He picks one, then continue from 2.4.
+6. **If the user gives no reference at all:** build three PROPOSED directions from the rubric map. Each gets one paragraph and one look frame (2.8). The user picks one, then continue from 2.4.
 
 ### 2.2 Research the real production facts (when a title is given)
 

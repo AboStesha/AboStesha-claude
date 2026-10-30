@@ -4,7 +4,7 @@
 **Output.** The shot-by-shot blocking table, an animatic for the whole film, and per BLOCK shot a clean playblast that Seedance 2.5 accepts as `@Video1`, plus stills, a dialogue track and a hand-off sheet, all versioned on Google Drive.
 **Rule.** The blockout owns camera, timing, layout and motion. It never owns look. Playblasts are references only and never appear in the film. Calendar: shot list on D3–D4, greybox batches on D4–D5, playblasts and animatic v1 on D6, **animatic lock on D7** (00-award-brief-and-calendar.md §0.7).
 
-Talk to the user in Arabic (addressing him as أبوستيشا). Write the friend's brief, hand-off sheets and every prompt clause in English, unless the user says his friend prefers Arabic. Blender UI terms stay in English either way.
+Talk to the user in Arabic (addressing them as أبوستيشا). Write the friend's brief, hand-off sheets and every prompt clause in English, unless the user says their friend prefers Arabic. Blender UI terms stay in English either way.
 
 ---
 
@@ -200,9 +200,9 @@ Seedance copies whatever moves in the clip, limbs included. Choose per character
 1. Ask once: «بأي لغة تفضّل أن أكتب ملف التعليمات لصديقك: الإنجليزية أم العربية؟»
 2. Send the friend brief (T2) and the colour legend. Put both in Drive `_brief/`. Share the `04-blocking` folder with the friend as Editor, but only after the collaborator agreement is signed (00 R4) and the user says yes.
 3. **D2:** the friend builds the generic stand-in kit `SLA_KIT_STANDINS_v01.blend`: capsules in the six palette colours, extras and vehicle blocks. Heroes get their legend colours and features when 03's sheets land (D4). Location sets start once the shot list names them (D3–D4).
-4. **D4–D5:** per batch, he uploads files to the shot folders (4.11), sets the log status to REVIEW, and messages the user.
+4. **D4–D5:** per batch, the friend uploads files to the shot folders (4.11), sets the log status to REVIEW, and messages the user.
 5. Claude reviews each upload (4.10) and returns notes by shot ID and frame number. A rejected version is never overwritten: the friend saves v+1.
-6. **Optional accelerator.** scenario-labs `bx_blockout.py` and `bx_kits.py` (MIT, pure bpy, tested on Blender 5.2.1) build featured capsules, rails, cut markers and numeric audits. They are third-party code, so recommend them only after Claude has read the exact copy that will run. The friend can copy them from the repository's `scenario-blender-blockout/scripts/`. On a machine with Claude Code, and only after his yes for that install (COMPANIONS.md §5), `DISABLE_TELEMETRY=1 npx skills add scenario-labs/skills --skill scenario-blender-expert scenario-blender-blockout -a claude-code` installs the skills.
+6. **Optional accelerator.** scenario-labs `bx_blockout.py` and `bx_kits.py` (MIT, pure bpy, tested on Blender 5.2.1) build featured capsules, rails, cut markers and numeric audits. They are third-party code, so recommend them only after Claude has read the exact copy that will run. The friend can copy them from the repository's `scenario-blender-blockout/scripts/`. On a machine with Claude Code, and only after the user's yes for that install (COMPANIONS.md §5), `DISABLE_TELEMETRY=1 npx skills add scenario-labs/skills --skill scenario-blender-expert scenario-blender-blockout -a claude-code` installs the skills.
 
 ### 4.8 Mode B: Claude drives Blender through an MCP
 

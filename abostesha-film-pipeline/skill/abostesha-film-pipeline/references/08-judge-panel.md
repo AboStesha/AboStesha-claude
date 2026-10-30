@@ -4,7 +4,7 @@
 **How.** A verifier throws out vague praise and wrong criticism. What survives becomes one report with a ranked fix list.
 **Rule.** LLM judges flatter, so real viewers (Arabic and English speakers) decide every question about whether people understand the film and feel something.
 
-Talk to the user in Arabic (MSA, addressing him as أبوستيشا). Judges, the verifier and every fix prompt work in English. Evidence tags are the ones used in 07-edit-mix-finish.md: `[DOC]` documented, with source and date · `[TESTED]` run in this sandbox on 2026-10-30 · `[FIELD]` third-party report · `[HOUSE]` house heuristic · `[UNVERIFIED]`.
+Talk to the user in Arabic (MSA, addressing them as أبوستيشا). Judges, the verifier and every fix prompt work in English. Evidence tags are the ones used in 07-edit-mix-finish.md: `[DOC]` documented, with source and date · `[TESTED]` run in this sandbox on 2026-10-30 · `[FIELD]` third-party report · `[HOUSE]` house heuristic · `[UNVERIFIED]`.
 
 ---
 
@@ -63,13 +63,13 @@ Never run more than 3 panel rounds per film (R0, R1, R2).
 ### 8.1 Viewing setup: the `watch` skill and consent
 
 1. **Version.** `watch` 0.3.2 is current (bradautomates/claude-video, 2026-09-25 `[DOC]`); the user's synced copy is 0.2.0, which has no Gemini engine. Run `python3 "$WATCH_DIR/scripts/setup.py" --json` and read `engine` and `gemini_model` (default `gemini-3.7-flash` `[DOC config.py]`). If the copy is still 0.2.0, ask the user to update it in Claude Code (`/plugin marketplace add bradautomates/claude-video`, then `/plugin install watch@claude-video`; other agents: `npx skills add bradautomates/claude-video -g --skill watch` `[DOC README]`) or continue local-only. Watch 0.3.2 does not support claude.ai Chat or Cowork `[DOC CHANGELOG]`. There, ask the user to upload the review MP4 (or the contact sheets from 8.2) and make the frames with code execution.
-2. **Consent for Gemini, once per film, before any upload.** The Gemini API terms say Google uses content sent to the *unpaid* tier to improve its products, that human reviewers may read it, and that confidential material must not be sent there; the paid tier is not used to improve products `[DOC ai.google.dev/gemini-api/terms, 2026-10-30]`. So a Gemini pass needs a key from a project with billing enabled. Watch's setup points to a free key, so ask him to confirm billing in AI Studio. Upload a 720p proxy, never the master (the Files API takes ≤ 2 GB per file and deletes after 48 h `[DOC]`): `PROXY=work/SLA_ref_vNN_gemini.mp4; ffmpeg -i "$REF" -vf scale=-2:720 -c:v libx264 -crf 23 -c:a aac -b:a 192k -movflags +faststart "$PROXY"` `[TESTED]`.
+2. **Consent for Gemini, once per film, before any upload.** The Gemini API terms say Google uses content sent to the *unpaid* tier to improve its products, that human reviewers may read it, and that confidential material must not be sent there; the paid tier is not used to improve products `[DOC ai.google.dev/gemini-api/terms, 2026-10-30]`. So a Gemini pass needs a key from a project with billing enabled. Watch's setup points to a free key, so ask them to confirm billing in AI Studio. Upload a 720p proxy, never the master (the Files API takes ≤ 2 GB per file and deletes after 48 h `[DOC]`): `PROXY=work/SLA_ref_vNN_gemini.mp4; ffmpeg -i "$REF" -vf scale=-2:720 -c:v libx264 -crf 23 -c:a aac -b:a 192k -movflags +faststart "$PROXY"` `[TESTED]`.
    ```text
    أبوستيشا، محرّك Gemini في أداة watch يرفع نسخة مصغّرة (720p) من الفيلم إلى خوادم Google ليستمع إلى الصوت ويصفه، ثم تُحذف بعد الإجابة (وإن تعذّر الحذف تُحذف تلقائياً خلال 48 ساعة).
    أستخدمه فقط بمفتاح من مشروع مفعّل فيه الدفع، لأن شروط Google تسمح لها باستخدام ما يُرسل عبر المفاتيح المجانية لتحسين منتجاتها ومراجعته بشرياً.
    هذا ليس نشراً علنياً، لكنه خروج للفيلم من جهازك قبل إعلان النتائج. هل توافق على رفع SLA_ref_vNN_gemini.mp4 لهذا الغرض فقط، وهل المفتاح مدفوع؟ (نعم / لا)
    ```
-   If he says no to either, skip it. The panel then works from measurements plus his ear, and the report says audio was only partly reviewed.
+   If they say no to either, skip it. The panel then works from measurements plus their ear, and the report says audio was only partly reviewed.
 3. **Gemini passes (with consent).** Run them on the proxy (`$PROXY`). Ask neutral questions only: never ask "is it good", and never mention the director. Save the answers as `pack/gemini_audio.md` and `pack/gemini_retell.md`, headed "Second-model observations, untrusted, not measurement".
    ```bash
    python3 "$WATCH_DIR/scripts/watch.py" "$PROXY" --engine gemini --question "List with timestamps everything you hear: each line of dialogue (speaker as seen on screen, language), music entries and exits, sound effects, silences, any voice or music that seems unintended, any sound that lands before or after its visible cause, any distortion or clipping. Describe only; do not judge quality."
@@ -99,7 +99,7 @@ Never run more than 3 panel rounds per film (R0, R1, R2).
 | `WORDS-AND-SOUND.md` | every line: TC, speaker, language, EN subtitle, measured lip offset in frames; music cues in/out; loudness curve notes; the Gemini logs | 07 §7.7, §7.10; 8.1 |
 | `LOCKED.md` | what cannot change: picture lock, theme, G-rating removals, 02 invariants (intended), declared intents (jump cuts from 07 notes, DREAM physics exceptions from the ledger) | 07, ledger |
 | `SYNOPSIS.md` | the flat synopsis (rule below), theme, logline | 01 Locked Sheet |
-| per-judge extras | J1: disclosure draft + Seedance share table · J2: authorship-dossier summary + "how it qualifies as animated" draft · J4: 03 sheets, 02 look frames, 05b hero list | `evidence/`, 02, 03, 05b |
+| per-judge extras | J1: disclosure draft + Seedance share table · J2: authorship-dossier summary · J4: 03 sheets, 02 look frames, 05b hero list | `evidence/`, 02, 03, 05b |
 
 ```bash
 # 1 fps scene sheets, source time burned in [TESTED: ffmpeg 6.1.1; a 40 s window gave 2 sheets of 2880x1350]
@@ -170,13 +170,13 @@ Also check:
 
 #### J2 — Academy voter (Animation Branch / Short Films Branch)
 
-**Role.** An animator and short-film voter. The Oscars are background only (BRIEF): this card never blocks the Summit cut; its output feeds 09 and the authorship dossier. Academy voting is preferential, not scored. Animation Branch and Short Films Branch members who view a set minimum share of the submissions rank up to fifteen; the fifteen with the most votes become the shortlist. Then any Academy member who has viewed all fifteen ranks up to five, and the five with the most votes become the nominations `[DOC 99th Rule Eight §V]`.
+**Role.** An animator and short-film voter. The Oscars are not a target, background only (BRIEF, updated 2026-10-30): this card never blocks the Summit cut; its output feeds 09 and the authorship dossier. Academy voting is preferential, not scored. Animation Branch and Short Films Branch members who view a set minimum share of the submissions rank up to fifteen; the fifteen with the most votes become the shortlist. Then any Academy member who has viewed all fifteen ranks up to five, and the five with the most votes become the nominations `[DOC 99th Rule Eight §V]`.
 
 Answer in this order:
 1. **Category fit (eligibility).** Rate each risk LOW / MED / HIGH and quote the rule.
    - *Animated* means characters given "the illusion of life by having movement created for them, by any human means". At least 75% of the running time, without credits, must include animation of the primary subjects, and the filmmaker must show how the film qualifies `[DOC 99th Rule Eight I.C]`. Judge from the authorship-dossier summary how much of the primary subjects' movement is human-keyframed (04-blender-blocking.md) and how much is prompted. Separately, judge how a voter perceives a photoreal film.
    - *Live Action* is closed: it requires practical photography (00 §0.11).
-   - *Exclusions:* "Alternate or re-edited versions" of publicly exhibited shorts (I.B.2). "Works originally created as episodic television… pilots or material as part of an ongoing, multi-part or limited series" (I.B.4). The user plans to pitch the film as "Episode 0" of a mini-series, so flag every place the film, its credits or its materials call it an episode or a pilot. Hand that to 09-release-and-festivals.md: present the film as a standalone short, and the series as a possible later expansion.
+   - *Exclusions:* "Alternate or re-edited versions" of publicly exhibited shorts (I.B.2). "Works originally created as episodic television… pilots or material as part of an ongoing, multi-part or limited series" (I.B.4). Background only; they would matter only if the Oscars ever become a target. What matters now: the submission must stay one complete standalone story and is never called a pilot or an episode, so flag every place the film, its credits or its materials call it an episode or a pilot. After 10 Jan 2027 (end of holdback, cl. 8.4) the user takes the film to other competitions and festivals and pitches it to international production companies and platforms as "Episode 0" of a 7-episode "Second Life" mini-series (the user keeps ownership, cl. 7.1; the Organizer's licence is non-exclusive and the user may monetise after the Award closes, cl. 8.2–8.3). Hand both points to 09-release-and-festivals.md. The Summit cut is locked for the Summit; after 10 Jan 2027 a festival or "Episode 0" re-edit is allowed (Academy eligibility would be affected only if the Oscars ever become a target).
    - *Authorship:* generative tools "neither help nor harm", but the Academy weighs "the degree to which a human was at the heart of the creative authorship" and may ask for more information `[DOC 99th Rule Two ¶7]`. List the gaps in the dossier.
    - The 100th Awards rules are not published (00); treat all of this as provisional.
 2. **Craft as an animator.** Score every hero shot on 05b's performance scale (0 mannequin … 4 alive, 5 magnet); hero shots must reach 4. Then judge timing, staging and silhouette, design originality, and personal voice: does a single author's sensibility show?
@@ -296,7 +296,7 @@ Keep both judgments; the lower verified level wins.
    - a cutaway from existing finals;
    - a corrected subtitle wording.
    
-   Never offer a new scene or new dialogue. For a story-level decision the user is torn on, he may put it on trial with his own `court-skill:court`.
+   Never offer a new scene or new dialogue. For a story-level decision the user is torn on, they may put it on trial with their own `court-skill:court`.
 7. **Hand-off.** Approved items go to 07 as note cards (07 Output template 1) under the L3 protocol. Seedance edits go to 05-seedance-production.md, which writes the English edit prompt (07 §7.5 template).
 
 ### 8.7 Rounds
@@ -321,13 +321,13 @@ Keep both judgments; the lower verified level wins.
 
 **Holdback (00 H1, cl. 8.4).**
 - Invitation only, in person, on the user's own screen.
-- For a remote viewer, a live screen-share from his machine: no file, no link, no recording.
+- For a remote viewer, a live screen-share from the user's machine: no file, no link, no recording.
 - Never use a public venue or an online test-screening service.
-- The host asks each viewer, out loud, not to post about it, describe it publicly or record it until AboStesha himself makes it public. That is never before 10 Jan 2027, and possibly later, because festivals value premiere status (09).
+- The host asks each viewer, out loud, not to post about it, describe it publicly or record it until AboStesha themself makes it public. That is never before 10 Jan 2027, and possibly later, because festivals value premiere status (09).
 - Log first names and the date only, in `screening/log.md`.
 
 **Session (about 30 min).**
-1. **Host.** A neutral friend reads the host script (Output template 6). The user is absent, or sits silently behind the viewers. He never explains or defends anything.
+1. **Host.** A neutral friend reads the host script (Output template 6). The user is absent, or sits silently behind the viewers. AboStesha never explains or defends anything.
 2. **Room.** One uninterrupted viewing, full screen, good speakers or headphones, lights low, phones face down. Do not say it is AI-made, or whose film it is. Start after the Summit intro and stop at the first credit card, because both announce AI.
 3. **Observer.** The user or a second person sits to the side and logs reactions against the player's clock: looks away or picks up a phone, fidgets, leans in, laughs, visible emotion, confusion (a frown or a glance at a neighbour), and the first look-away.
 4. **Questionnaire.** Each viewer writes their answers alone, with no talking (10 min).
@@ -468,10 +468,10 @@ Seat: Arabic-first / EN-subtitle / parent 45+ / UAE / other    Watched with: AR 
 ## Gate (G8: what the user must approve before G4)
 
 1. **Responsible-AI gate:** every RA line PASS. Each FAIL has been fixed and re-verified in R2. Each CANNOT-TELL has been decided by the user and, for religion/culture/UAE items, signed off by the human reviewer.
-2. **Fix list:** a written decision on every MUST and SHOULD item (Claude applies / he applies / regenerate / won't fix + reason). MUST items cannot be "won't fix" when they are G-rating, religious or likeness items. Every cut change still needs its own L3 approval in 07.
+2. **Fix list:** a written decision on every MUST and SHOULD item (Claude applies / the user applies / regenerate / won't fix + reason). MUST items cannot be "won't fix" when they are G-rating, religious or likeness items. Every cut change still needs its own L3 approval in 07.
 3. **Audience:** the tally has been reviewed; each comprehension P0 has been decided (minimal edit or accepted ambiguity).
-4. **Limits acknowledged:** the score is an LLM estimate; audio was reviewed by measurement, the Gemini log (if he consented) and his own ear; the fixes after R2 are unreviewed.
-5. **Notes for 09:** "Episode 0" and "pilot" wording, the authorship-dossier gaps, and the story notes for the series bible.
+4. **Limits acknowledged:** the score is an LLM estimate; audio was reviewed by measurement, the Gemini log (if they consented) and their own ear; the fixes after R2 are unreviewed.
+5. **Notes for 09:** any "Episode 0" or "pilot" wording in the submission or its materials (the submission stays a standalone story; the "Episode 0" pitch starts after 10 Jan 2027), the authorship-dossier gaps, and the story notes for the series bible.
 
 Ask with Output template 5. Silence or "تمام" without the item list is not approval.
 
@@ -493,7 +493,7 @@ Ask with Output template 5. Silence or "تمام" without the item list is not a
 | "70% understood" from 4 people | percentages on tiny n | report counts; qualitative thresholds (8.8) |
 | An LLM dismisses a viewer's religious concern | LLM confidence | escalate to the user and the human reviewer, always |
 | A fourth or fifth judging round | chasing a number | max 3 rounds; when scores stall, show the user frames |
-| Film called "Episode 0" in credits or materials | series pitch language | J2 flags it under Rule Eight I.B.4; 09 presents the film as a standalone short |
+| Film called "Episode 0" or a pilot in credits or submission materials | series pitch language leaking into the Summit entry | J2 flags it; the submission stays one complete standalone story; 09 uses the "Episode 0" pitch only after 10 Jan 2027 (cl. 8.4) |
 | The panel reviewed the timeline, not the file | no fresh export | the pack always holds a copy of the D16 export (07 §7.1) |
 
 ---

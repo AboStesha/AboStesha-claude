@@ -66,7 +66,7 @@ Module keys: 00 award brief · 01 script and dialogue · 02 style prefix · 03 a
 ## 3. Rules and legal texts (facts and short clause quotes)
 
 - **AI Film Award 2027** (1 Billion Followers Summit): official page https://www.1billionsummit.com/ai-award-2027 ; Terms and Conditions, last updated 12/10/2026, https://www.1billionsummit.com/ai-award-2027/terms-and-conditions ; submission form https://www.1billionsummit.com/ai-award-2027/submit (field labels read from the site's form code as text). All rights reserved; paraphrased with clause numbers. Used in 00, 01, 05, 07, 08, 09, L.
-- **Academy of Motion Picture Arts and Sciences:** 99th Rule Eight (Animated Short) and Rule Seventeen (Live Action Short) PDFs; 99th complete rules (Rule Two ¶7); 99th Short Films Qualifying Festival List (10 Apr 2026); the 1 May 2026 rules announcement. © AMPAS; paraphrased. Used in 00, 01, 08, 09. The 100th rules are unpublished.
+- **Academy of Motion Picture Arts and Sciences:** 99th Rule Eight (Animated Short) and Rule Seventeen (Live Action Short) PDFs; 99th complete rules (Rule Two ¶7); 99th Short Films Qualifying Festival List (10 Apr 2026); the 1 May 2026 rules announcement. © AMPAS; paraphrased; background only (the Oscars are not a target). Used in 00, 01, 08, 09. The 100th rules are unpublished.
 - **UAE Media Council 20 content standards** (Federal Decree-Law No. 55 of 2023), via a Gulf News summary (June 2025) — secondary source. Used in 00.
 - **"Second Life" trademark:** National Arbitration Forum UDRP decision 1089130 (adrforum.com) and Linden Lab brand FAQ. Used in 00, 09.
 - **ElevenLabs Eleven Music Model-Specific Terms** (updated 09 Oct 2026): film use only on Enterprise Music. Used in 06, 09.
@@ -118,14 +118,14 @@ Module keys: 00 award brief · 01 script and dialogue · 02 style prefix · 03 a
 
 ## 7. AboStesha's own material
 
-- **Old skills** (read-only, `/root/.claude/skills/synced/…/`; his own work, no licence file needed):
+- **Old skills** (read-only, `/root/.claude/skills/synced/…/`; AboStesha's own work, no licence file needed):
   - cinematic-pipeline (SKILL.md, SCRIPT_FORMAT, STYLE_PREFIX_GUIDE, MIDJOURNEY_RULES, CHARACTER_SHEET_RULES, SHOTLIST_RULES): strict gating with Arabic lock prompts, no approval from silence, Arabic address, heading table, "no emotions in action lines", 12-pillar style skeleton, drift-flag prompt, failure codes, physics and continuity prefix lines, consolidated hand-off card — 00–09, L.
-  - seedance-2-5-prompts (his transcription of ByteDance's Dreamina Seedance 2.5 Prompt Guide, 31 Jul 2026; kept): formula, "The visuals feature …" slot, bracket channels, per-reference binding, edit and audio-edit templates, audio-reference limits — 01, 02, 03, 04, 05, 05b, 06, 07.
+  - seedance-2-5-prompts (AboStesha's transcription of ByteDance's Dreamina Seedance 2.5 Prompt Guide, 31 Jul 2026; kept): formula, "The visuals feature …" slot, bracket channels, per-reference binding, edit and audio-edit templates, audio-reference limits — 01, 02, 03, 04, 05, 05b, 06, 07.
   - seedance-director: anti-slop list, ≤ 3 tracked characters, no reflections or exit/re-entry, micro-expressions as physics, age-blind rule, off-screen and exit-frame rules — 05, 05b, L.
   - higgsfield-generate: quality first, Higgsfield audio-reference flag and job retrospection, Virality Predictor note — 00, 05, 08, 09.
   - midjourney-prompt-expert: aspect-ratio-per-use idea only — 09. suno-ai-mastery: "dynamic journey" and iterating in passes — 06.
   - idea-council (MIT): sealed sequential passes in chat — 08. court-skill: referenced for contested story decisions — 08.
-- **Film material:** `films/01-second-life-ascent/draft-v0-abostesha.md` (his draft, the human baseline), `gemini-analysis-extracted.txt` (third-party Gemini text, origin G), `script-review-v1.md` — worked examples in 00, 01, 03, 04, 05, L.
+- **Film material:** `films/01-second-life-ascent/draft-v0-abostesha.md` (AboStesha's draft, the human baseline), `gemini-analysis-extracted.txt` (third-party Gemini text, origin G), `script-review-v1.md` — worked examples in 00, 01, 03, 04, 05, L.
 - **Project files:** `BRIEF.md` (locked decisions), `RESEARCH-2026-10-30.md`, and the raw research JSON of 2026-10-30 (candidate rankings, verify notes, rules snapshot, tool landscape).
 
 ## 8. Original code and templates (written for this pipeline)
@@ -143,5 +143,5 @@ Module keys: 00 award brief · 01 script and dialogue · 02 style prefix · 03 a
 ## 9. Redistribution notes for this package
 
 - The package may include only its own text, its own code and the open-licence material credited above. Keep the attribution lines in the modules, including the CC BY 4.0 credit to Serge Shima.
-- Companion skills are **not** bundled. See `COMPANIONS.md` for which ones may be zipped with their LICENSE and which he must install from source.
+- Companion skills are **not** bundled. See `COMPANIONS.md` for which ones may be zipped with their LICENSE and which the user must install from source.
 - Official rules, vendor documentation and third-party reports are cited as facts; none of their text is redistributed beyond short clause quotes and functional prompt syntax.

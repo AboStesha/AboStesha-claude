@@ -1,9 +1,9 @@
 # 09 — Submission, Holdback, Press Kit, Public Vote and the 2027 Festival Route (Step 9)
 
-**Purpose.** Get the signed masters from 07-edit-mix-finish.md through the Summit form and the raw-clip verification without a single disqualifying slip. Then protect the film until 10 Jan 2027, run a clean public-vote campaign if it is shortlisted, and send the same final cut into 2027 festivals and the "Episode 0" series pitch.
+**Purpose.** Get the signed masters from 07-edit-mix-finish.md through the Summit form and the raw-clip verification without a single disqualifying slip. Then protect the film until 10 Jan 2027, run a clean public-vote campaign if it is shortlisted. Winning the AI Film Award 2027 is the only target (BRIEF). After 10 Jan 2027, send the film into other 2027 competitions and festivals and pitch it to international production companies and platforms as "Episode 0" of a 7-episode "Second Life" mini-series.
 **Rule.** Claude prepares every text, file and checklist. The user types into the form, uploads, sends emails and posts. Claude never submits, never posts, and never tells the user something is "cleared" unless a filed document shows the basis.
 
-Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوستيشا). Write form answers, press materials, Organizer emails and every image prompt in English. Make Arabic versions of the press texts only when 9.11 asks for them, and have a native reader check them.
+Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا). Write form answers, press materials, Organizer emails and every image prompt in English. Make Arabic versions of the press texts only when 9.11 asks for them, and have a native reader check them.
 
 Evidence labels used below: `[DOC]` official source with its date, `[3P]` a third-party listing, `[INFER]` inferred from the previous edition, `[HOUSE]` a production heuristic.
 
@@ -39,10 +39,10 @@ The form has four steps: About you → Your film → AI & rights → Review & su
 
 | Step | Field (live label) | Limit / rule | What goes in |
 |---|---|---|---|
-| 1 | First name, Last name | required | exactly as on his ID; the prize is paid only to an account in his own name (cl. 11.4(f), 12.2) |
-| 1 | Email address | required | an inbox he checks daily, spam folder included (cl. 11.1: notice counts "when sent"), until at least Feb 2027. The raw-clip link, evidence requests (7-day clock, cl. 5.5, 11.2, 13.3) and the shortlist news all arrive by email |
+| 1 | First name, Last name | required | exactly as on their ID; the prize is paid only to an account in their own name (cl. 11.4(f), 12.2) |
+| 1 | Email address | required | an inbox they check daily, spam folder included (cl. 11.1: notice counts "when sent"), until at least Feb 2027. The raw-clip link, evidence requests (7-day clock, cl. 5.5, 11.2, 13.3) and the shortlist news all arrive by email |
 | 1 | Country of residence, Nationality, Mobile number | required, international format (+971…) | — |
-| 1 | Portfolio or social media profile | required URL ("website, YouTube, TikTok, Instagram or IMDb") | a profile with **no** film material on it; the Organizer may use his handles (cl. 8.1(g)) |
+| 1 | Portfolio or social media profile | required URL ("website, YouTube, TikTok, Instagram or IMDb") | a profile with **no** film material on it; the Organizer may use their handles (cl. 8.1(g)) |
 | 2 | Film title | required | the title that passed 00's trademark check |
 | 2 | Theme | one of: Society, Community & Humanitarian Issues · Truth, Fake News & Misinformation · Humans & AI · Climate, Nature & Our Changing Planet · Human Relationships | the theme locked in 00 §0.3 |
 | 2 | Synopsis | **≤ 150 words**, counted on spaces; help text "What happens, who it is about and why it matters" | the jury version, 9.7 (S150-J) |
@@ -75,7 +75,7 @@ Video: Dreamina Seedance 2.5 (dreamina-seedance-2-5-260628) via BytePlus ModelAr
 primary tool, <93.4>% of picture; every moving shot, draft then 1080p final. Images, used only as
 Seedance references, never shown as shots: GPT Image 2.5 Sunburst, Nano Banana Pro, Nano Banana 2.1,
 Midjourney V8.2. Voices: ElevenLabs Eleven v4, fully synthetic designed voices, no real-person clones;
-lip-sync rendered by Seedance. Music: Suno v6 (<plan>) and ElevenLabs Music v2.5 (Enterprise licence).
+lip-sync rendered by Seedance. Music: Suno v6 (<plan>) and ElevenLabs Music v2.5 (Enterprise Music licence).
 Sound effects: Seedance native audio, code-synthesised effects (non-AI) and ElevenLabs SFX v2.
 Post: Adobe Premiere Pro (human edit, grade, mix, subtitles). Blocking: Blender <5.1> greybox, keyframed
 by hand, used only as motion reference, never on screen. Writing support: Claude (Anthropic) gave
@@ -140,7 +140,7 @@ The live form says: "Upload the raw Seedance clips you used — the original fil
 
 ### 9.5 Process-evidence archive and the 7-day drill (cl. 5.5(b))
 
-The Organizer may ask for "prompts, project files, timelines, shot logs, image or video generation history" and edit files. Failure to supply them "within 7 days of request may lead to disqualification", and they must be kept "for 24 months after the Award closes" `[DOC Terms 12/10/2026]`. The Terms define the Award Period as ending at the winner announcement (cl. 1), so take the Award as closing on 10 Jan 2027 `[INFER]` and keep everything until at least 10 Jan 2029. In practice keep it permanently: the Academy may ask about human authorship (9.13), and series buyers will ask for chain of title (9.12).
+The Organizer may ask for "prompts, project files, timelines, shot logs, image or video generation history" and edit files. Failure to supply them "within 7 days of request may lead to disqualification", and they must be kept "for 24 months after the Award closes" `[DOC Terms 12/10/2026]`. The Terms define the Award Period as ending at the winner announcement (cl. 1), so take the Award as closing on 10 Jan 2027 `[INFER]` and keep everything until at least 10 Jan 2029. In practice keep it permanently: festivals may ask about human authorship (9.13), and series buyers will ask for chain of title (9.12).
 
 ```text
 films/01-second-life-ascent/evidence/
@@ -172,19 +172,19 @@ Clause 8.4 [DOC]: unless the Organizer agrees in writing, until the Winner is pu
 | Never, without the Organizer's written OK | Allowed |
 |---|---|
 | The film, any clip, trailer, teaser, still, frame, poster or key art in public, including "Close Friends", Discord servers, group chats with strangers, portfolios and showreels | Private test screenings for named viewers who have been asked not to share (00 §0.7, D15) |
-| The score, the dialogue or any sound from the film; saying publicly that he has entered (cl. 14.1 makes the application's status confidential: ask with E2 first) | Telling named private-screening viewers that the film is for the award |
+| The score, the dialogue or any sound from the film; saying publicly that they have entered (cl. 14.1 makes the application's status confidential: ask with E2 first) | Telling named private-screening viewers that the film is for the award |
 | BTS that shows film frames or sound, or side-by-sides of Blender and Seedance | General AI-filmmaking posts that contain nothing from this film's world, characters or look |
 | Saying "Top 10", "shortlisted" or "finalist" before written permission, or "Top 5"/"winner" before the Organizer announces it | Building the press kit, DCP, festival plan and pitch deck privately |
 | Entering **any** festival or competition, including ones that only screen after January (warranties are repeated at every stage, cl. 5.3(b), 6.1). Example: Stuttgart ITFS 2027 shorts closed 15 Nov 2026 `[3P]`; it is lost to this film. | Researching festivals, filling FilmFreeway/Shortfilmdepot profiles as drafts without submitting |
 | Exclusive deals, options or distribution agreements (cl. 6.1(h)) | Pitch conversations about the series idea that show nothing from the film |
-| Generating with Midjourney without Stealth; online frame grabbers or converters; public "community" feeds of any tool | Private tools under the user's accounts; uploading to Gemini (watch 0.3.x, 08) only with his explicit consent |
+| Generating with Midjourney without Stealth; online frame grabbers or converters; public "community" feeds of any tool | Private tools under the user's accounts; uploading to Gemini (watch 0.3.x, 08) only with their explicit consent |
 | Making the YouTube link public, or sharing it beyond the Organizer and private test viewers | Keeping the link unlisted and live |
 
 When in doubt, the answer is "not yet", and the question goes to the Organizer in writing (template E2 below).
 
 ### 9.7 Press kit (written D19–14 Dec; nothing public before the holdback ends)
 
-The core texts are written for the user, from his own words, and logged in the authorship log (origin H or H/C, 01). Every claim must match the disclosure.
+The core texts are written for the user, from their own words, and logged in the authorship log (origin H or H/C, 01). Every claim must match the disclosure.
 
 | ID | Item | Spec | Notes |
 |---|---|---|---|
@@ -223,7 +223,7 @@ Avoid any phrasing that makes the robot, or anyone, the ruler of Dubai or the UA
 4. لماذا الذكاء الاصطناعي بالذات لهذه القصة؟ ما الذي لا تستطيع الكاميرا التقليدية فعله هنا؟
 5. ما الذي فعلته أنت بيدك في كل مرحلة (الكتابة، الحركة في Blender، اختيار اللقطات، المونتاج)؟
 6. ماذا تريد أن يشعر به المشاهد عند آخر لقطة؟
-Draft the English from his answers: paragraph 1 from Q1–2, paragraph 2 from Q3–5, paragraph 3 from Q6. He edits it, and the authorship log records the origin.
+Draft the English from their answers: paragraph 1 from Q1–2, paragraph 2 from Q3–5, paragraph 3 from Q6. AboStesha edits it, and the authorship log records the origin.
 
 **K1 key still** (Summit form):
 - Take it from the graded clean master (07 #3), never the burned-subtitle master. It is a real Seedance frame, so nothing new needs disclosing.
@@ -283,8 +283,8 @@ The award page says only that the Top 10 and public voting begin on 15 Dec 2026 
    A full-width variant (`scale=1080:-2`, `pad=1080:1920:0:581`) is bigger, but the action rail covers its right 120 px below y ≈ 840. Use it only when nothing important sits at the picture's right edge.
    Add the Arabic and English text in Premiere, not ffmpeg (Arabic shaping), inside the same safe band.
    - Turn on the platform's AI-generated label on every post that shows film material. TikTok requires labels on realistic AI content (calesthio citing TikTok Support, verified 2026-07-10).
-4. **Integrity rules.** The applicant warrants that he has not "offered, given, or received anything of value to influence the judging" (cl. 6.1(j)). The Organizer may also disqualify for "manipulation of the judging" (cl. 13.1(d)) or conduct that brings it into disrepute (cl. 13.1(f)). Treat the public vote as part of the judging `[INFER]`: no bought votes, bots, vote-exchange groups, multiple accounts, or giveaways and prizes for votes; no paid ads unless the Organizer approves; no attacks on other finalists.
-5. **Audience** (show the user, he chooses): Arabic and English AI-film communities, Dubai and UAE residents, South Asian worker communities approached with respect (the film is about them, not at them), and his existing followers. Each post gives one emotional line from the film's theme and the official link.
+4. **Integrity rules.** The applicant warrants that they have not "offered, given, or received anything of value to influence the judging" (cl. 6.1(j)). The Organizer may also disqualify for "manipulation of the judging" (cl. 13.1(d)) or conduct that brings it into disrepute (cl. 13.1(f)). Treat the public vote as part of the judging `[INFER]`: no bought votes, bots, vote-exchange groups, multiple accounts, or giveaways and prizes for votes; no paid ads unless the Organizer approves; no attacks on other finalists.
+5. **Audience** (show the user; they choose): Arabic and English AI-film communities, Dubai and UAE residents, South Asian worker communities approached with respect (the film is about them, not at them), and their existing followers. Each post gives one emotional line from the film's theme and the official link.
 6. **Rhythm:** one post on announcement day, one mid-week, one 48 hours before voting closes (date per the Organizer), and a thank-you. If 25 Dec brings Top 5 news privately, say nothing until the Organizer announces (cl. 11.7).
 
 ### 9.9 Finalist and Summit obligations (25 Dec – 10 Jan)
@@ -292,13 +292,13 @@ The award page says only that the Top 10 and public voting begin on 15 Dec 2026 
 - **7-day replies.** Answer every finalist or winner notice, and return the documents it asks for, within 7 days, or the Organizer may disqualify and replace (cl. 11.2). Verification can ask for ID, a signed declaration, the AI Disclosure, process materials, project files and the master files (cl. 11.4): send them from the 9.5 archive.
 - **Screening file** "in the format required" (cl. 11.3(a)). Ask the spec in E1. Have ready: ProRes 422 HQ with intro and burned EN (07 #2), the clean ProRes (#3), and a tested SMPTE DCP (9.11). Carry them on two drives plus a cloud copy.
 - **Availability** for promotion, interviews and the Summit, "subject to travel and visa arrangements" (cl. 11.3(b)). Check visa needs for Dubai, 8–10 Jan 2027, now. Travel is paid only if agreed in advance in writing (cl. 11.8).
-- **Talking points** (Arabic + English, 60 s each): what the film is about, what he did by hand, what Seedance made possible, and the figures from 9.2C exactly. No claim the disclosure cannot back. Never disparage the Organizer (cl. 11.8).
+- **Talking points** (Arabic + English, 60 s each): what the film is about, what they did by hand, what Seedance made possible, and the figures from 9.2C exactly. No claim the disclosure cannot back. Never disparage the Organizer (cl. 11.8).
 - **Winner:** publicity on reasonable request for up to 12 months (cl. 11.8). Verification, bank and tax details within 30 days of request, or the prize is forfeited (cl. 12.6). The Organizer can claw the prize back for 24 months after payment, and at any time for misrepresentation (cl. 13.5), so the disclosure must stay true.
-- **After the announcement**, finalists and the winner must "include the credit and Award mark the Organizer provides, in the form the Organizer requests" on later distribution (cl. 8.4). Propose a separate card before the film's first frame, so the film itself stays identical (Academy rule, 9.10). Get that form approved in writing.
+- **After the announcement**, finalists and the winner must "include the credit and Award mark the Organizer provides, in the form the Organizer requests" on later distribution (cl. 8.4). Propose a separate card before the film's first frame, so the locked Summit cut itself stays unchanged (9.10). Get that form approved in writing.
 
 ### 9.10 After the holdback: choose the premiere branch
 
-The holdback ends at the winner announcement (10 Jan 2027) or, for a non-selected film, when the Organizer **notifies** him. If the Top 10 is announced without his film and no notice arrives, send template E3 and wait for a written answer before anything goes public.
+The holdback ends at the winner announcement (10 Jan 2027) or, for a non-selected film, when the Organizer **notifies** them. If the Top 10 is announced without their film and no notice arrives, send template E3 and wait for a written answer before anything goes public.
 
 | Branch | Situation on 10 Jan | Premiere status | Strategy |
 |---|---|---|---|
@@ -306,11 +306,11 @@ The holdback ends at the winner announcement (10 Jan 2027) or, for a non-selecte
 | B | Top 10; film shown online for the vote | world premiere spent online | Target festivals without premiere or online rules (Annecy's 2026 terms had none; check each). Ask the Organizer where the film is public and for how long, and request unlisting after 10 Jan (E1 item 5). |
 | C | Top 5 or winner; screened at the Summit, 9 Jan | spent (online vote, then the Summit screening). The award page says the Top 5 "premiere at the Summit"; write "World premiere: 1 Billion Followers Summit, Dubai" only if the film was not public online before 9 Jan (E1 item 5) | Use the award as the credential. Award card per 9.9. Then the B list, plus regional premieres (Cairo, Beirut) where those festivals value them. |
 
-**Same cut, always.** The Academy excludes "alternate or re-edited versions" of shorts already shown publicly, and the qualifying version must be identical in content and length (00 §0.11). Festivals get the Summit cut, minus the Summit intro, plus the Award card where required. Never make a longer cut or a "director's cut".
+**Which cut.** The Summit cut is locked for the Summit: no change while the Award runs. After 10 Jan 2027 (end of the holdback, cl. 8.4) a festival re-edit or an "Episode 0" re-edit is allowed. By default, festivals get the Summit cut, minus the Summit intro, plus the Award card where required. Oscar background only: the Academy excludes "alternate or re-edited versions" of shorts already shown publicly (00 §0.11), so a re-edit would affect Academy eligibility, which matters only if the Oscars ever become a target.
 
 ### 9.11 The 2027 festival route (decide on 10 Jan; re-verify every row then)
 
-The Oscars are background, not the target (BRIEF). The route serves visibility and the series pitch and keeps the Animated Short door open. A festival award on the Short Films Qualifying Festival List qualifies "regardless of any prior public exhibition" (00 §0.11). The 100th window is assumed to run 1 Oct 2026 – 30 Sep 2027 `[INFER]`; later awards count toward the 101st. The 99th list (updated 10 Apr 2026) `[DOC]` is the only one published. The Summit, Red Sea, El Gouna and any UAE festival are not on it.
+Winning the AI Film Award 2027 is the only target; the Oscars are not a target (BRIEF). After 10 Jan 2027 the route serves visibility, further competition wins and the "Episode 0" series pitch. The "99th-list qualifying award" column is Oscar background only: it records which awards are on the Academy's Short Films Qualifying Festival List (99th list, updated 10 Apr 2026 `[DOC]`). The Summit, Red Sea, El Gouna and any UAE festival are not on it.
 
 | Festival | 2027 dates | Deadline (status) | 99th-list qualifying award | Premiere / online / AI rules | Fit |
 |---|---|---|---|---|---|
@@ -321,8 +321,8 @@ The Oscars are background, not the target (BRIEF). The route serves visibility a
 | Seattle IFF | May `[INFER]` | check | Grand Jury Prize for Animated Short Film | check | A, B |
 | Melbourne IFF | Aug `[INFER]` | check | Best Animation Short Film | check | B, C |
 | Ottawa (OIAF) | Sept `[INFER]` | ~31 May 2027 `[INFER: 2026 closed 31 May]` | Grand Prize for Best Short Animated Film | check AI policy | B, C |
-| Clermont-Ferrand 2028 | late Jan 2028 | 2027 edition closed 24 Sep 2026. If 2027 rules repeat: films completed after 1 Oct 2026, entry ~Jul–Sep 2027 `[INFER]` | Grand Prix (International), category-neutral | 2027 rules `[DOC]`: no premiere status required; AI use disclosed at submission; no simulated real person without consent; films with entirely AI-generated images limited to one per person; DCP with non-burned XML/MXF English subtitles | all (101st window) |
-| Cairo IFF | Nov `[INFER]` | check | Youssef Chahine Award for Best Short Film | check regional premiere | C (101st window) |
+| Clermont-Ferrand 2028 | late Jan 2028 | 2027 edition closed 24 Sep 2026. If 2027 rules repeat: films completed after 1 Oct 2026, entry ~Jul–Sep 2027 `[INFER]` | Grand Prix (International), category-neutral | 2027 rules `[DOC]`: no premiere status required; AI use disclosed at submission; no simulated real person without consent; films with entirely AI-generated images limited to one per person; DCP with non-burned XML/MXF English subtitles | all |
+| Cairo IFF | Nov `[INFER]` | check | Youssef Chahine Award for Best Short Film | check regional premiere | C |
 | Beirut Shorts | check | check | Best Short Animation; Best Short Live Action (Fiction) | check | C |
 | WAIFF Cannes (AI) | final 6–7 Apr `[3P]` | direct 15 Feb 2027; WAIFF LA 20 Jan 2027 `[3P]` | not qualifying | AI showcase; screening spends premiere in branch A | B, C |
 | AI for Good Film Festival (ITU/UN) | Geneva, June `[3P]` | 1 May 2027; completed 1 Sep 2026 – 1 May 2027; 1–10 min `[3P]` | not qualifying | fits a 2026 completion | B, C |
@@ -333,7 +333,7 @@ Never submit anywhere before the holdback ends, even when a deadline falls earli
 ### 9.12 Festival deliverables, and the Episode 0 pitch
 
 **DCP** (build in the quiet weeks, 21 Nov – 14 Dec; DCP-o-matic stable 2.18.51, 16 Oct 2026 `[DOC dcpomatic.com]`):
-- Source: the clean master (07 #3), no intro and no burned subtitles, plus a 5.1 or at least L/C/R mix. A stereo L/R mix does not meet the Academy rule (07). Derive the 5.1 from the stems `[HOUSE]`: DX to C; MX to L/R with a little in Ls/Rs; FX panned by screen position; ambience to Ls/Rs; LFE only for designed lows. Check it in a calibrated room.
+- Source: the clean master (07 #3), no intro and no burned subtitles, plus a 5.1 or at least L/C/R mix (Oscar background only: a stereo L/R mix would not meet the Academy rule, 07). Derive the 5.1 from the stems `[HOUSE]`: DX to C; MX to L/R with a little in Ls/Rs; FX panned by screen position; ambience to Ls/Rs; LFE only for designed lows. Check it in a calibrated room.
 - Settings: Standard **SMPTE** (Academy: SMPTE ST 429-2; RDD 52/Bv2.1 recommended). Container **Flat 1998×1080**; the 16:9 picture sits pillarboxed inside. 24 fps, 48 kHz/24-bit audio, **unencrypted** (festivals want no KDM).
 - Subtitles: English SRT added as a separate subtitle asset with "burn into image" off (Clermont requires non-burned XML/MXF); add FR/AR tracks when a festival asks.
 - Naming: DCP-o-matic's ISDCF name generator with content type SHR.
@@ -343,8 +343,9 @@ Never submit anywhere before the holdback ends, even when a deadline falls earli
 - One private link per festival, so each can be revoked later. Downloadable when the festival requires it (Annecy 2026 did).
 - No intro, burned English subtitles, Award card per 9.9 when applicable. File it as `SLA_screener_en-burned_16x9_<dur>_h264-1080p24_vNN_<date>.mp4` (07 naming).
 
-**Episode 0 pitch** (only after the holdback ends; for a private meeting before then, ask the Organizer first):
-- "Episode 0" is pitch language only. The film stays a standalone short: never retitle it, and never put "Episode 0", "pilot" or a series name in its credits, screeners or festival entries. The Academy excludes works created as episodic material, pilots included (00 F8, §0.11 I.B.4).
+**Episode 0 pitch** (only after the holdback ends, 10 Jan 2027, cl. 8.4; for a private meeting before then, ask the Organizer first). Pitch to international production companies and platforms: the film is "Episode 0" of a 7-episode "Second Life" mini-series.
+- The submission itself stays one complete standalone story: never retitle the submitted film, and never call it a pilot or an episode, or put "Episode 0", "pilot" or a series name in the Summit form, its credits or any Summit material. "Episode 0" is pitch language for after the holdback; a separate "Episode 0" re-edit is allowed then (9.10).
+- Rights: the user keeps ownership of the film (cl. 7.1); the Organizer's licence is non-exclusive, and the user may monetise the film after the Award closes (cl. 8.2–8.3).
 - One-pager: series logline and seven one-line episodes.
 - Pitch deck, 12–15 slides: world rules (2nd Life minutes, Mamo city, Noah), characters, tone, the film as proof of concept, pipeline speed and cost per finished minute, team.
 - The film on a private link, the director's statement, and the press kit.
@@ -354,20 +355,20 @@ Never submit anywhere before the holdback ends, even when a deadline falls earli
   - the Organizer's perpetual non-exclusive licence (cl. 8.1, 8.2), which buyers must be told about. Any exclusive deal must carve it out.
 - **Title:** "Second Life" is a Linden Research trademark (00 §0.10). Clear it, or rename the series, before pitching.
 
-### 9.13 Human-authorship archive (Oscar-ready dossier)
+### 9.13 Human-authorship archive
 
-The Academy weighs "the degree to which a human was at the heart of the creative authorship" and may request details (Rule Two ¶7). Animated Short needs movement created "by any human means" over at least 75% of the running time, and the filmmaker must show how the film qualifies (Rule 8; 00 §0.11). The category is an untested fit, so the evidence must be overwhelming. Close the dossier on D18 and add to it after every festival.
+The Organizer may ask for process evidence (cl. 5.5(b), 9.5), and festivals and series buyers will ask what humans decided; every press claim (9.7) must rest on this dossier. Oscar background only: the Academy weighs "the degree to which a human was at the heart of the creative authorship" (Rule Two ¶7; 00 §0.11). Close the dossier on D18 and add to it after every festival.
 
 | Claim | Evidence (path) | Measure |
 |---|---|---|
 | Screenplay human-written | `authorship/` v0 hash, drafts, `authorship-log.md` | C-origin dialogue lines = 0 |
-| Human-made motion drives the primary subjects | `.blend` files with hand-set keyframes (04); playblast beside its Seedance final, one per shot; `side-by-side.mp4` | blocked shots ÷ all shots; seconds driven by keyframed blocking ÷ story runtime (target ≥ 75%) |
+| Human-made motion drives the primary subjects | `.blend` files with hand-set keyframes (04); playblast beside its Seedance final, one per shot; `side-by-side.mp4` | blocked shots ÷ all shots; seconds driven by keyframed blocking ÷ story runtime |
 | Human performance direction | 05b take logs, notes and selects | takes reviewed / approved |
 | Human design choices | 02/03 selection boards with rejected options and sign-off | options per approved asset |
 | Human edit, sound and grade | `.prproj` versions, EDL/XML, mix and grade notes (07) | versions, dated |
 | Human music seed | hummed motifs (06) | files, dated |
 
-The statement (`authorship/SLA_human-authorship-statement_vNN.pdf`, one page) covers the same six points, in his words, with the figures. It ends: "Generative tools rendered images, motion and sound under these decisions; see the AI Disclosure." Never overstate: if a shot was not blocked, it does not count.
+The statement (`authorship/SLA_human-authorship-statement_vNN.pdf`, one page) covers the same six points, in their words, with the figures. It ends: "Generative tools rendered images, motion and sound under these decisions; see the AI Disclosure." Never overstate: if a shot was not blocked, it does not count.
 
 ---
 
@@ -394,7 +395,7 @@ The statement (`authorship/SLA_human-authorship-statement_vNN.pdf`, one page) co
 
 **T3 — Festival plan** (Arabic headers: المهرجان · التواريخ · آخر موعد · الجائزة المؤهِّلة · شروط العرض الأول/الإنترنت/AI · المسار A/B/C · الأولوية · الحالة). The rows come from 9.11, re-verified on the day.
 
-**Organizer emails** (the user sends them from his own address to `hello@1billionsummit.com`; save the replies as PDF):
+**Organizer emails** (the user sends them from their own address to `hello@1billionsummit.com`; save the replies as PDF):
 ```text
 E1  Subject: AI Film Award 2027 – <title> (ref <ref>) – publicity during public voting
 Dear AI Film Award team, thank you for including <title> in the Top 10. Before I post anything,
@@ -456,7 +457,8 @@ Silence or partial agreement is not approval.
 | Raw clips renamed or re-exported after hashing, or a `.mov` left out by an `*.mp4` glob | ledger names kept; `upload/*`; hash check against the ledger |
 | Entering a festival whose deadline falls before 10 Jan | the film cannot be in any other competition; that edition is lost |
 | AI-festival screening spends the world premiere before a top-tier answer (branch A) | premiere order first |
-| Festival "director's cut" | the Academy excludes re-edited versions; same cut everywhere |
+| Changing the Summit cut before 10 Jan 2027 | the Summit cut is locked for the Summit; a festival or "Episode 0" re-edit only after the holdback (9.10) |
+| Calling the submitted film a pilot or an episode | one complete standalone story; "Episode 0" is pitch language after 10 Jan 2027 (9.12) |
 | Stereo-only, encrypted or burned-subtitle DCP | 5.1/LCR, no KDM, subtitles as a separate asset |
 | Press claims like "100% AI", "no human touched it" or "fully cleared" | the numbers in 9.2C and the documents in 9.3 only |
 | Evidence on one drive; request found in spam on day 6 | three copies; daily inbox check; the 2-hour drill |
@@ -490,4 +492,4 @@ Silence or partial agreement is not approval.
 - higgsfield-generate: model routing superseded by 03; its virality predictor is not used, since it would upload the unreleased film.
 - seedance-2-5-prompts, seedance-director, suno-ai-mastery: nothing for this step.
 
-**Unverified, re-check on the day:** every 2027 festival date and deadline marked `[INFER]` or `[3P]`; the 100th Oscars window and festival list (not published); the Summit's voting platform, rules and the Summit-intro counting; the raw-clip upload closing date.
+**Unverified, re-check on the day:** every 2027 festival date and deadline marked `[INFER]` or `[3P]`; the Summit's voting platform, rules and the Summit-intro counting; the raw-clip upload closing date.

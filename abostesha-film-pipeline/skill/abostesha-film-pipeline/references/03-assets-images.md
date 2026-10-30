@@ -11,8 +11,8 @@ Talk to the user in Arabic. Write every generation prompt in English. Nothing le
 - **From `01-script-and-dialogue.md`:** the locked script, the Locked Sheet and the scene list. Each scene names its characters, location, time of day and reality layer (REAL / DREAM / SCREEN).
 - **From `02-style-prefix.md`:** the locked prefix in its variants: the stable core (prose for GPT/Nano Banana), the Midjourney compression plus moodboard or `--sref` source, the sequence overrides (dream layer, night), and `prefix/plate-safe.txt` (`{{PREFIX_PLATE}}` below). 02 §2.6 always saves `prefix/plate-safe.txt`. If it is missing, stop and ask for the 02 lock files rather than deriving one: a plate-safe text keeps only the medium anchor and texture clauses and never any light, lens, grade, grain or palette-cast clause.
 - **The shot list, when it exists (`04-blender-blocking.md`).** Prop views and location angles are planned from it. Before it exists, plan from the script and revise once it lands.
-- **The user's own prompt templates (optional slots):** `films/<id>/03-assets/user-templates/CHR_TEMPLATE.md` and `LOC_TEMPLATE.md`, or text he pastes. See 3.1.2.
-- **Internet reference images he uploads (3.2).**
+- **The user's own prompt templates (optional slots):** `films/<id>/03-assets/user-templates/CHR_TEMPLATE.md` and `LOC_TEMPLATE.md`, or text they paste. See 3.1.2.
+- **Internet reference images the user uploads (3.2).**
 - **Tool status:** the Higgsfield MCP (`generate_image` visible or not), the ElevenLabs connector, and the BytePlus ModelArk console and key.
 - **The ledger and physics data in `ledger-continuity-physics.md`:** sun position per scene, scale and continuity schema.
 
@@ -24,8 +24,8 @@ Talk to the user in Arabic. Write every generation prompt in English. Nothing le
 4. **A sheet is not a menu.** Anything visible on a sheet will be rendered: an open hatch, a glowing ring, a wet shirt. Non-default states get their own sheets, attached only to the shots in that state.
 5. **The untouched base.** The approved face plate is never passed through a model again. Make each fix as an edit on a copy, then mask only the changed region back onto the original pixels. Never chain output to output. Every variant anchors to the approved base.
 6. **Synthetic people only.** No lookalike of a real or famous person, no real photo as an identity reference, no real brand, logo, trade dress, product or book cover (Terms 6.1(d)/(f), 7.5, 9.2(j)). Arabic text is never generated in-image: leave a blank surface and composite it in `07-edit-mix-finish.md`. Latin text only for short fictional words, quoted exactly.
-7. **Provenance and holdback.** Never strip metadata, SynthID or C2PA. Log tool, model, variant, quality, resolution, account, plan, job ID and date for every kept image (Terms 5.5). Midjourney needs Stealth: without it every image is public on midjourney.com, which can breach the Summit holdback. Stealth comes with the Pro and Mega plans; check his plan page. The `films/` folder sits inside the GitHub repo: before the first job, add one `.gitignore` line each for `films/*/03-assets/**/*.png`, `*.jpg`, `*.jpeg` and `*.webp` under the same path, plus `films/*/03-assets/internet-refs/` (gitignore has no `{a,b}` braces). No asset image or internet reference ever goes to GitHub.
-8. **Human authorship.** The user picks every winner by candidate ID. Record the pick and his words in the bible. This is evidence for the Oscar route.
+7. **Provenance and holdback.** Never strip metadata, SynthID or C2PA. Log tool, model, variant, quality, resolution, account, plan, job ID and date for every kept image (Terms 5.5). Midjourney needs Stealth: without it every image is public on midjourney.com, which can breach the Summit holdback. Stealth comes with the Pro and Mega plans; check their plan page. The `films/` folder sits inside the GitHub repo: before the first job, add one `.gitignore` line each for `films/*/03-assets/**/*.png`, `*.jpg`, `*.jpeg` and `*.webp` under the same path, plus `films/*/03-assets/internet-refs/` (gitignore has no `{a,b}` braces). No asset image or internet reference ever goes to GitHub.
+8. **Human authorship.** The user picks every winner by candidate ID. Record the pick and their words in the bible. This is authorship evidence for the Summit's disclosure requests and for the user's ownership of the film (Terms cl. 7.1).
 9. **Reference only.** No image from this step is cut into the film. Final picture is Seedance: the Summit requires at least 70%, and 00 sets the house target. These stills only steer Seedance.
 
 ---
@@ -55,12 +55,12 @@ Facts from vendor documentation:
 
 ## 3.1 Generate characters, locations and props
 
-### 3.1.0 Entry: he names one asset («خلينا نبدأ الخطوة 3 للشخصية معراج»)
+### 3.1.0 Entry: the user names one asset («خلينا نبدأ الخطوة 3 للشخصية معراج»)
 
 1. **Resolve the ID.** Map the Arabic name to its asset ID through the cast list in the script or draft (draft v0: معراج = MIRAJ, ريان = RAYAN, كبير = KABIR, نوح = NOAH) and the continuity bible: معراج → `CHR_MIRAJ`. No match, or two matches: ask in one Arabic line. Never invent an ID from a guessed transliteration.
 2. **Check the state** in `PROJECT.md` (SKILL.md §2): Gate 1A (script lock) and the style lock (`LOOK v1.0`, `prefix/plate-safe.txt`). Then pick one of two paths and say which in Arabic:
-   - **Both locked (D4 onward):** full Step 3 for this asset. Show its breakdown row (the full breakdown table follows before G2), then the Character Brief (3.1.3) as PROPOSED and wait for his approval. Then the face-lock generation card (3.1.4) with the job count and cost, and wait for his yes. Then run the bake-off batch (3.1.8), show the selection board and ask the board question. One step per turn; never chain past an open question.
-   - **Not locked yet (D0–D3):** the only allowed partial release is the **provisional** asset for the D1 route test (3.4; 00 §0.8 T1). Draft the Brief from the draft and `script-review-v1.md`, marked `PROVISIONAL (pre-Gate 1A)`. On his yes, generate `face`, `body` and `turn3` in GPT Image 2.5 Sunburst with the plate block and **no** `{{PREFIX_PLATE}}` (there is no look yet). Name the files `v00` and give them the ledger purpose `T1 route test`. They never become `_APPROVED` production assets: after the locks, the asset is made again from v01. Say plainly which gates are still open (SKILL.md §3, jumping ahead).
+   - **Both locked (D4 onward):** full Step 3 for this asset. Show its breakdown row (the full breakdown table follows before G2), then the Character Brief (3.1.3) as PROPOSED and wait for their approval. Then the face-lock generation card (3.1.4) with the job count and cost, and wait for their yes. Then run the bake-off batch (3.1.8), show the selection board and ask the board question. One step per turn; never chain past an open question.
+   - **Not locked yet (D0–D3):** the only allowed partial release is the **provisional** asset for the D1 route test (3.4; 00 §0.8 T1). Draft the Brief from the draft and `script-review-v1.md`, marked `PROVISIONAL (pre-Gate 1A)`. On their yes, generate `face`, `body` and `turn3` in GPT Image 2.5 Sunburst with the plate block and **no** `{{PREFIX_PLATE}}` (there is no look yet). Name the files `v00` and give them the ledger purpose `T1 route test`. They never become `_APPROVED` production assets: after the locks, the asset is made again from v01. Say plainly which gates are still open (SKILL.md §3, jumping ahead).
 3. **Whatever path:** the generation route comes from 3.0 (Higgsfield or the ElevenLabs connector, whichever is live today). Log every job in the ledger in the same turn, and close with the module's Arabic question for the item shown.
 
 ### 3.1.1 Asset breakdown and naming
@@ -85,13 +85,13 @@ One-shot extras and crowds get shot-level description only. Voice-only roles get
 
 ### 3.1.2 The user's own templates (slots that take priority)
 
-When `CHR_TEMPLATE.md` or `LOC_TEMPLATE.md` exists, or he pastes a template:
-1. **His template replaces your default body for that asset class.** Fill only its variables. Mark them `{{LIKE_THIS}}`. If his text has no marked variables, ask once in Arabic which words are fixed and which change per asset. Record the answer at the top of the file.
-2. **Never rephrase his fixed text.** You may append only two things:
+When `CHR_TEMPLATE.md` or `LOC_TEMPLATE.md` exists, or the user pastes a template:
+1. **The user's template replaces your default body for that asset class.** Fill only its variables. Mark them `{{LIKE_THIS}}`. If their text has no marked variables, ask once in Arabic which words are fixed and which change per asset. Record the answer at the top of the file.
+2. **Never rephrase their fixed text.** You may append only two things:
    - the reference-role line (which image carries what);
-   - the pinned plate block, if his template lacks it.
-3. **Conflicts:** if his template bakes lighting, uses a white background or puts several faces on a Seedance-facing sheet, name the conflict in one Arabic sentence and offer to run both his version and the plate-law version in the bake-off. He decides.
-4. **One target model only:** if his template was written for one model, use it unchanged there. Show any adaptation for the other model as a diff he approves.
+   - the pinned plate block, if their template lacks it.
+3. **Conflicts:** if their template bakes lighting, uses a white background or puts several faces on a Seedance-facing sheet, name the conflict in one Arabic sentence and offer to run both their version and the plate-law version in the bake-off. The user decides.
+4. **One target model only:** if their template was written for one model, use it unchanged there. Show any adaptation for the other model as a diff they approve.
 5. **Authorship log:** record the template as origin `H` in the log from `01-script-and-dialogue.md`.
 
 ### 3.1.3 Character Brief (one per character, before any prompt)
@@ -364,12 +364,12 @@ Worked mini-example: the user uploads a photo of a well-known humanoid robot for
 2. **Register before D7 (route 1b).** One asset group per character, named after its asset ID. Register the approved `face`, one `body` per look and one `turn3` per look and state, unedited. If a PNG is over 30 MB, register a maximum-quality JPEG copy and keep the PNG as the evidence master. A new version is registered again. Record each asset ID and the time it became Active in the bible. Count the quota: about 3 assets per look per character must fit the Entry tier's 50.
 3. **Minors.** If a character reads as a minor (Miraj's younger brother; any child extra), test him or her on day 1. On a hard stop, propose story-safe options: heard but unseen, seen only on the mother's phone screen from behind, or cast as a young adult. The user decides; it is a script change in 01.
 4. **Robots and non-human characters** go through the same day-1 test. A human-like face can still trip the filter.
-5. **If route 1c wins,** the trusted image must be a Seedream 5.0 text-to-image output on his account, so the face is whatever Seedream draws from the Brief. Image-to-image outputs are not on the trusted list. Generate each `turn3` in one text-to-image call, because separate calls draw different faces. Keep it untouched in TOS and write the end of its 30-day trust window into the bible. The GPT and Nano Banana sheets then serve only the bible, Midjourney and keyframes; tell him in Arabic before he approves faces.
+5. **If route 1c wins,** the trusted image must be a Seedream 5.0 text-to-image output on their account, so the face is whatever Seedream draws from the Brief. Image-to-image outputs are not on the trusted list. Generate each `turn3` in one text-to-image call, because separate calls draw different faces. Keep it untouched in TOS and write the end of its 30-day trust window into the bible. The GPT and Nano Banana sheets then serve only the bible, Midjourney and keyframes; tell them in Arabic before they approve faces.
 
 ## 3.4 Day-1 test (T1 in `00-award-brief-and-calendar.md`): will Seedance take our sheets?
 
 Run it on D1 with a provisional Miraj, made in GPT Image 2.5 Sunburst (`face`, `body`, `turn3`), before the style prefix is locked. The test is about the route, not the look.
-- **Account check first (start on D0; BytePlus publishes no review time):** is his BytePlus account enterprise-verified, and is an Advanced Creation Rights tier active (Entry is free)? If he has no company to verify, route 1b is closed: say so in Arabic and weigh 1c and 1d.
+- **Account check first (start on D0; BytePlus publishes no review time):** is their BytePlus account enterprise-verified, and is an Advanced Creation Rights tier active (Entry is free)? If they have no company to verify, route 1b is closed: say so in Arabic and weigh 1c and 1d.
 - **Seedance settings:** `draft: true` (drafts are always 480p), 5 s, one simple action: "he blinks, breathes, turns his head slowly toward frame left".
 - **Draft cost:** ModelArk lists $0.514 for a 5 s 480p 16:9 clip without video input, about $0.10/s; a draft bills like a normal 480p clip (official pricing page, 2026-10-30).
 
@@ -377,8 +377,8 @@ Run it on D1 with a provisional Miraj, made in GPT Image 2.5 Sunburst (`face`, `
 |---|---|---|
 | 1a | BytePlus API, `turn3` uploaded directly as `reference_image` | accepted (expected: `PrivacyInformation`; log it) |
 | 1b | Private virtual portrait group with `face` + `body` + `turn3`; wait for Active; reference `asset://<ID>` | review passes, accepted, identity holds |
-| 1c | Trusted output: Seedream 5.0 pro text-to-image on his ModelArk account draws a `turn3` from the Brief text alone; feed the untouched original from TOS | accepted, and he accepts that face as the character |
-| 1d | Higgsfield Seedance 2.5 with the same `turn3` (once he has reconnected the connector) | accepted, and identity holds |
+| 1c | Trusted output: Seedream 5.0 pro text-to-image on their ModelArk account draws a `turn3` from the Brief text alone; feed the untouched original from TOS | accepted, and the user accepts that face as the character |
+| 1d | Higgsfield Seedance 2.5 with the same `turn3` (once the user has reconnected the connector) | accepted, and identity holds |
 | 1e | A/B on the working route: `face` + `body` vs `turn3` alone vs `face` alone vs `face` + `heads5` | best identity hold, including a profile moment |
 | 1f | Minor and robot checks (younger brother; Noah; the delivery robot) | a route exists, or a story fallback is chosen |
 
@@ -420,7 +420,7 @@ COST   <quoted credits or $>   ->  waiting for your yes
 
 **Selection board** (after each batch):
 - Show the gallery: Higgsfield `show_generation_by_ids`, or the ElevenLabs flow URL.
-- Under it, show this table. Recommend one take but never pick for him.
+- Under it, show this table. Recommend one take but never pick for the user.
 
 | Candidate | Model | Identity vs base | Plate laws (grey / flat / one face) | Hardest axis | Defects | Claude's note |
 |---|---|---|---|---|---|---|
@@ -433,7 +433,7 @@ Close with the Arabic question: «أي مرشح تعتمد لـ CHR_MIRAJ_base_t
 
 ```yaml
 character: CHR_MIRAJ
-status: PROPOSED                     # CONFIRMED once he approves; his words go to decisions.md
+status: PROPOSED                     # CONFIRMED once the user approves; their words go to decisions.md
 canonical_description: "<build, face, skin + undertone, hair, hands: from the approved Brief>"
 identity_anchors: [long oval face, deep-set brown eyes, mole 1 cm below left mouth corner,
                    short untrimmed beard thinner on cheeks, bump on nose bridge]
@@ -450,7 +450,7 @@ locked_reference_assets:
     template: default                # or "USER CHR_TEMPLATE" (origin H)
     prompt_file: prompts/CHR_MIRAJ_base_turn3_v02.txt
     picked_by: AboStesha
-    words: "<his words>"
+    words: "<their words>"
 seedance_asset_ids:
   - uri: "asset://<ID>"
     file: CHR_MIRAJ_base_face_v03_G25S_t2_APPROVED.png
@@ -475,7 +475,7 @@ approval_required_for: [face regeneration, wardrobe redesign]
 
 ## Gate (G2 Assets, end of D5): the user must approve before Step 4
 
-- [ ] The asset breakdown is approved. Every listed asset has an `_APPROVED` file picked by the user by candidate ID, with his words logged.
+- [ ] The asset breakdown is approved. Every listed asset has an `_APPROVED` file picked by the user by candidate ID, with their words logged.
 - [ ] Characters: `face`, plus `body` and `turn3` for every look and state; `heads5`, `expr6` and `lips2` for speaking or close-up roles; one wardrobe sheet per look; a scale frame where subjects share frames.
 - [ ] Locations: a master for every script time of day; a reverse plate for dialogue scenes; plates normalised to the master; the affordance check passed against every beat.
 - [ ] Props: views planned from the shot list, one sheet per state, dimensions logged.
@@ -483,7 +483,7 @@ approval_required_for: [face regeneration, wardrobe redesign]
 - [ ] The G2 compliance list in `00-award-brief-and-calendar.md` passes: synthetic faces, no lookalikes, no brands, Gulf wardrobe confirmed by the user, children shown with dignity.
 - [ ] 3.2 assets: the ledger is filed, nothing from a Leave list is visible, and reverse search is done or declined.
 - [ ] A continuity bible entry exists for every approved asset. Provenance fields are complete. Metadata is untouched.
-- [ ] Midjourney cards are delivered; his kept Midjourney images are logged with job IDs; Stealth is confirmed.
+- [ ] Midjourney cards are delivered; their kept Midjourney images are logged with job IDs; Stealth is confirmed.
 
 Ask in Arabic: «هل تعتمد كل الأصول في لوحة G2 كما هي، وننتقل إلى الخطوة 4: البلوكنغ في Blender؟» Silence or a change of subject is not approval.
 

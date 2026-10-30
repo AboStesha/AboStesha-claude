@@ -5,7 +5,7 @@ draft  -> create a 480p Draft task (draft=true) with prompt + role-tagged refere
           (--direct-1080p: edit/extend only, when 05-T9 shows those cannot be drafted)
 final  -> create the 1080p final from an approved Draft task ID (content type draft_task)
 poll   -> poll a task; on success download video (+ last frame) at once, hash, log a ledger row
-review -> write the user's verdict into the review cells of one ledger row (APPROVED needs his words)
+review -> write the user's verdict into the review cells of one ledger row (APPROVED needs the user's own words)
 list   -> list recent tasks (recovery when an ID was lost; 1 QPS limit)
 cancel -> cancel a task that is still QUEUED (refuses any other status)
 

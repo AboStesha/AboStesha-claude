@@ -89,7 +89,7 @@ Rules:
 - **Label colours** `[HOUSE]`:
   - Forest = `SD`; Mango = `SD+TXT` / `SD-COMP`; Rose = `AI-OTHER`; Yellow = `NONAI` / `GFX`.
   - Cerulean = DX; Caribbean = MX; Lavender = FX/BG.
-  - A glance at the timeline then shows the share. If the user prefers other colours, record his choice in `decisions.md`.
+  - A glance at the timeline then shows the share. If the user prefers other colours, record their choice in `decisions.md`.
 - **Sequences:**
   - Names: `SLA_ASSEMBLY_vNN` → `SLA_ROUGH_vNN` → `SLA_FINE_vNN` (+ 07's `SLA_FINE_vNN_CLAUDE`) → `SLA_LOCK_vNN`.
   - The Summit intro lives only in `SLA_MASTER_SUMMIT_vNN`, which nests the lock.
@@ -242,7 +242,7 @@ Entries follow calesthio's shape (MIT): canonical description, locked references
 
    Log the result in T3 and in the shot row.
 
-**Worked catches from draft v0** (PROVISIONAL until 01 locks; show them to the user, he decides):
+**Worked catches from draft v0** (PROVISIONAL until 01 locks; show them to the user, they decide):
 | # | Draft beat | Continuity problem | Fix to offer |
 |---|---|---|---|
 | C1 | He removes the earpiece (magnet) and the Halo lens before sleeping; later he "opens his hand and sees his brother" | with the lens out, the call cannot be in-eye AR | the call is a **palm projection from the ring** (L.7.8), or he puts the lens back on screen first |
@@ -450,7 +450,7 @@ train 85 m @ 12 m/s = 7.1 s full pass · contact f133 · devices: lens HUD off �
 | Tool | Model / version | Route | Account | Used for | Share of film |
 |---|---|---|---|---|---|
 | Dreamina Seedance | dreamina-seedance-2-5-260628 | BytePlus ModelArk API | <ModelArk account/project> | all final picture, native SFX | picture 95.1% · FX audio 61% |
-| ElevenLabs | eleven_v4 (dialogue), music_v2_5 | ElevenCreative (Enterprise) | <org> | dialogue, score cue M02 | DX 100% · MX 40% |
+| ElevenLabs | eleven_v4 (dialogue), music_v2_5 | ElevenCreative (Enterprise contract, Enterprise Music tier) | <org> | dialogue, score cue M02 | DX 100% · MX 40% |
 | … one row per tool, including support tools (GPT Image 2.5 Sunburst references, any upscale or cleanup model from 07 §7.5) with "share: 0 s on screen, used for references" | | | | | |
 
 Then the non-AI elements with source and licence (fonts, procedural SFX code, the Summit intro), and every face and voice declared synthetic or real (cl. 5.5(c), (d)).

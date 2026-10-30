@@ -2,7 +2,7 @@
 
 **Purpose.** Turn every approved shot into final picture with Seedance 2.5 alone. Each shot gets one prompt built to ByteDance's official contract, its Blender playblast as the motion reference, the 03 sheets as identity references, the locked 02 style prefix, SFX-only sound and, on dialogue shots, lips bound to the user's ElevenLabs take.
 **Method.** Make a 480p draft first; the user approves one take; then make the 1080p final from that draft's task ID. Download every output the moment it exists, log it in the ledger, QC it, and iterate one variable at a time.
-**Rule.** Talk to AboStesha in Arabic. Every prompt, file name, ledger cell (except his verbatim approval words) and QC note is in English. This module owns the assembled prompt, handle spelling, API fields, music and subtitle suppression wording, the draft and final runs, and `scripts/seedance_byteplus.py`. `05b-acting-direction.md` owns the PERFORMANCE and DIALOGUE blocks inside the prompt.
+**Rule.** Talk to AboStesha in Arabic. Every prompt, file name, ledger cell (except their verbatim approval words) and QC note is in English. This module owns the assembled prompt, handle spelling, API fields, music and subtitle suppression wording, the draft and final runs, and `scripts/seedance_byteplus.py`. `05b-acting-direction.md` owns the PERFORMANCE and DIALOGUE blocks inside the prompt.
 
 Tags: `[OFFICIAL]` BytePlus ModelArk docs, read as Markdown on 2026-10-30 · `[FIELD]` a practitioner skill's tested rule · `[HOUSE]` our default · `[UNVERIFIED]` confirm on the first live call · `[TESTED]` run in this session (mock server only; no live key).
 
@@ -24,7 +24,7 @@ Tags: `[OFFICIAL]` BytePlus ModelArk docs, read as Markdown on 2026-10-30 · `[F
 ## Hard rules
 
 1. **Seedance 2.5 only** for final picture: `dreamina-seedance-2-5-260628`, pinned in `version-pins.md` (ledger L.3). Never mix in 2.0 shots without the user's yes. The official FAQ warns that 2.0 and 2.5 have visibly different aesthetics `[OFFICIAL]`.
-2. **Draft first, always.** A final exists only as `draft_task` → 1080p from a draft the user approved in his own words. Never re-run an approved prompt at 1080p: that is a new take, not the approved one `[FIELD: scenario-labs]`.
+2. **Draft first, always.** A final exists only as `draft_task` → 1080p from a draft the user approved in their own words. Never re-run an approved prompt at 1080p: that is a new take, not the approved one `[FIELD: scenario-labs]`.
 3. **One job per generation.** Each generation has one primary task (reference generation, edit or extension), one shot with one camera and no internal cuts, and one speaking face. 04 already gives every shot its own camera. Multi-shot generations land planned cuts poorly: in one community benchmark only about 73% of 16 cut boundaries fell within ±0.6 s (04 research).
 4. **No parameters in prose.** Ratio, duration, resolution, fps and the sound switch go in the API body only `[OFFICIAL: sd25-pe]`. The script warns on `16:9`, `1080p`, `fps` and similar words.
 5. **Never resubmit a task that is still running or that timed out locally.** Poll it by ID. A second submit bills a second video `[FIELD: arkcli-gen, Apache-2.0]`.
@@ -69,7 +69,7 @@ Tags: `[OFFICIAL]` BytePlus ModelArk docs, read as Markdown on 2026-10-30 · `[F
 
 The cost formula reproduces the official examples exactly ($0.514 for 5 s at 480p; $2.843 for 5 s at 1080p) `[TESTED]`. Typical shot, G = 7 s with a 7 s playblast: draft **$0.86**, final **$4.76**. Without video input: $0.72 and $3.98.
 
-**Account checklist** (D0–D1; the user does the console steps, Claude walks him through them in Arabic):
+**Account checklist** (D0–D1; the user does the console steps, Claude walks AboStesha through them in Arabic):
 1. Activate Seedance 2.5 with one of: balance above USD 30, a USD 30+ AI Savings Plan, or a Seedance resource pack. Create the API key in the **AP region** (keys are region-bound). Export it as `ARK_API_KEY` in the shell only.
 2. Create a private TOS bucket in `ap-southeast-1`. Turn on **TOS data subscription** so outputs land there untouched; originals are what keep same-account trust (5.8).
 3. Enterprise verification lifts concurrency from 3 to 10 and is also what 03's private portrait library needs. Start it on D0.
@@ -89,11 +89,11 @@ The cost formula reproduces the official examples exactly ($0.514 for 5 s at 480
 
 ### 5.1 Build the shot packet
 
-**Entry: he asks for one shot's prompt** («سوي لي برومبت سيدانس للمشهد 4 لقطة 2»).
-1. **Resolve the ID.** «المشهد 4 لقطة 2» means scene `S04`, shot `SH02`, so `S04-SH02` (the frozen scene IDs from 01 §1.1.3, zero-padded). Confirm the row in `ledger/SLA_SHOTS.csv` or 04's shot list. If it is missing, or S04 was renumbered, show the S04 rows and ask which shot he means.
+**Entry: AboStesha asks for one shot's prompt** («سوي لي برومبت سيدانس للمشهد 4 لقطة 2»).
+1. **Resolve the ID.** «المشهد 4 لقطة 2» means scene `S04`, shot `SH02`, so `S04-SH02` (the frozen scene IDs from 01 §1.1.3, zero-padded). Confirm the row in `ledger/SLA_SHOTS.csv` or 04's shot list. If it is missing, or S04 was renumbered, show the S04 rows and ask which shot they mean.
 2. **Check the inputs** in the table above and show them as a ✓/✗ list in Arabic: 04 hand-off row and `_PB_` (or the STILL/TEXT triage), 03 approved references and the T1 route, `prefix/seedance.txt` and the shot's variant, 05b's approved bible (G5b-A) and the S04 scene read (G5b-B) with the beat map, and for dialogue the 01 line IDs, the selected takes and the T2 result.
-3. **All present:** build the packet (below), write the prompt (5.2, plus 5.3 for dialogue) and show the T1 packet card. Ask the G5-P question. Nothing is submitted and nothing is billed before his yes.
-4. **Something missing:** say what is missing and which earlier gate owns it (SKILL.md §3, jumping ahead). If he still wants to see the prompt now, write it as a **PREVIEW**: every missing input stays a visible slot such as `{{MISSING: 02 prefix/seedance.txt R-DAY}}` or `{{MISSING: 05b PERFORMANCE block, S04 scene read not approved}}`. Never fill a slot from memory or invention: not the 02 look text, the 04 blockout clause, 05b blocks, asset handles or line text. A PREVIEW is saved as `prompt_v00_PREVIEW.txt`, it is never submitted, it gets no ledger row, and the script must never be pointed at it.
+3. **All present:** build the packet (below), write the prompt (5.2, plus 5.3 for dialogue) and show the T1 packet card. Ask the G5-P question. Nothing is submitted and nothing is billed before their yes.
+4. **Something missing:** say what is missing and which earlier gate owns it (SKILL.md §3, jumping ahead). If they still want to see the prompt now, write it as a **PREVIEW**: every missing input stays a visible slot such as `{{MISSING: 02 prefix/seedance.txt R-DAY}}` or `{{MISSING: 05b PERFORMANCE block, S04 scene read not approved}}`. Never fill a slot from memory or invention: not the 02 look text, the 04 blockout clause, 05b blocks, asset handles or line text. A PREVIEW is saved as `prompt_v00_PREVIEW.txt`, it is never submitted, it gets no ledger row, and the script must never be pointed at it.
 5. The 05b blocks (PERFORMANCE / DIALOGUE) come from 05b §5b.3 and its snippets A–G; 05 only places them in the slot.
 
 **Folder** (mirrors 04; git tracks `.txt`, `.md`, `.csv`; binaries are git-ignored and kept on Drive and TOS):
@@ -382,7 +382,7 @@ The hstack comparison is scenario-labs' review sheet (MIT). Watch every take at 
 **Verdict per take:** `APPROVE` · `ITERATE` (name the one variable) · `REBLOCK` (send back to 04 with the defect and timecode) · `CUT` (talk to the user about the shot).
 
 Show the T2 review card. When the user approves, run:
-`python3 -I $SB review --task-id <draft id> --status APPROVED --words "«...his words...»" --ledger ledger/SLA_LEDGER.csv`.
+`python3 -I $SB review --task-id <draft id> --status APPROVED --words "«...their words...»" --ledger ledger/SLA_LEDGER.csv`.
 This sets the shot's status to DRAFT-APPROVED (L.4). The 05b take gate G5b-C must also pass.
 
 ### 5.6 Iteration discipline
@@ -518,7 +518,7 @@ S03-SH02,v04,2,"event script: contact moved from 5 s to 5.5 s (playblast f133)",
 
 - **G5-P, per shot, before the first draft:** the T1 packet (prompt, references, parameters, cost). Ask: «هل أرسل مسودتين بهذه الحزمة؟»
 - **G5-D, per shot, before any final:** one draft take approved in the user's own words, logged with the `review` command, with 05b's G5b-C passed. Silence or a change of subject is not approval (old cinematic-pipeline rule).
-- **G5-F, per shot, before 07 imports it:** the final passes Q1–Q20 and the user approves it in his words.
+- **G5-F, per shot, before 07 imports it:** the final passes Q1–Q20 and the user approves it in their words.
 - **G5-ALL (D14):** every shot in the locked animatic is FINAL-APPROVED, CUT by the user, or explicitly assigned to a TEXT/post route. The ledger has no blank cells and no files missing from it. Every fallback (F2–F5) and every watermark or output-format decision is in `decisions.md`. Ask: «كل اللقطات النهائية جاهزة ومسجّلة. هل نعتمد تسليمها للمونتاج (07)؟»
 
 ## Common failures
