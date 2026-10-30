@@ -137,7 +137,7 @@ Check tools at session start. Never call a tool name from memory when the module
 |---|---|---|---|
 | Rules, festivals, tool facts | web fetch of official pages | ask them to paste the page; mark the fact `[UNVERIFIED]` | 00, 09 |
 | v4 tag list, voice shortlist | ElevenLabs connector `creative_get_model_guide("eleven_v4")`, `creative_list_voices` (read-only) | ElevenLabs docs | 01 |
-| Dialogue audio | **AboStesha** generates by hand in ElevenLabs (`eleven_v4`, Stability + Similarity only); never call `creative_generate_speech` or `creative_design_voice` unless they ask | — | 01 |
+| Dialogue audio | **AboStesha** generates by hand in ElevenLabs (`eleven_v4`, Stability + Similarity only); never call `creative_generate_speech` or `creative_design_voice` unless they ask | human voice actors per character: H2 recorded performance → ElevenLabs Voice Changer (default), or H1 raw voice; signed release first (01 §1.2.9) | 01 |
 | Hero sheets, look frames | **GPT Image 2.5 Sunburst**: Higgsfield `generate_image` model `gpt_image_2_5`, `variant: sunburst`, quality `max`, resolution `4k` (set every field) | ElevenLabs connector `creative_generate_image` with `gpt-image-2.5-sunburst` (read `creative_get_model_schema` first) | 02, 03 |
 | Edits, consistency | **Nano Banana Pro** (`nano_banana_pro` / `gemini-3-pro-image`) and **Nano Banana 2.1** (`gemini-nano-banana-2.1`; resolve the Higgsfield id with `models_explore`; never the MCP's `nano_banana_2`, which is the deprecated NB2) | the other connector | 03 |
 | Midjourney V8.2 | prompt cards; **AboStesha** runs them on the web with Stealth (`--v 8.2 --raw`; Edit Model for identity; no `--q`, `--cref`, `--oref`) | — | 02, 03 |

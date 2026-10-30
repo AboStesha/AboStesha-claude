@@ -372,6 +372,29 @@ Rules from the Netflix English Timed Text Style Guide:
 - **Measure.** Use `python3 -I -c "import wave,sys;w=wave.open(sys.argv[1]);print(round(w.getnframes()/w.getframerate(),2))" <file.wav>`, or `ffprobe -v error -show_entries format=duration -of csv=p=0 <file>` for non-PCM files. The figure includes ElevenLabs' head and tail silence; if the user trims a copy before upload, measure that copy. Write the seconds of the selected take into the sheet and re-run the preflight.
 - **Disclosure.** Log model, voice_id, settings, the ElevenLabs history item ID and the date in the take log for the AI disclosure (prompts and history may be requested within 7 days and must be kept for 24 months).
 
+### 1.2.9 Human voice actors (per character, when no ElevenLabs voice meets the standard)
+The user may cast real people for any role whose v4 voice is not good enough. The Terms allow it (cl. 5.5(c)–(d), 7.5) with consent, declaration and licence. Decide per character at Gate 1B and record it on the voice card.
+
+**Two routes. Recommend H2 by default:**
+| Route | What reaches the film | Seedance-share effect (cl. 5.4 "visual and audio") | Declare as |
+|---|---|---|---|
+| **H2 performance → Voice Changer** | The actor's recorded performance converted with ElevenLabs Voice Changer (speech-to-speech) into a designed or library voice. Timing, breath and emotion stay human; the timbre is generated | AI-generated audio, so the dialogue counts as generative AI. Strongest human-authorship evidence | "synthetic voice (ElevenLabs Voice Changer) driven by a consented human performance by <name>" |
+| **H1 raw human voice** | The recording itself | Non-AI audio. Lowers the share if the Organizer counts audio. Use only if the Organizer's reply (`00` §0.9) says dialogue audio is not counted, or the share report (`ledger-continuity-physics.md` L.5) still clears the floor | "real voice of <name>, recorded <date>, consent on file" |
+
+Check the current Voice Changer model and settings in the ElevenLabs docs or with `creative_get_model_schema` before the first conversion; log the model id per take. Never convert to a voice that imitates a real or famous person.
+
+**Before any recording (blocking):**
+- **Signed release** in `evidence/consents/<CHAR>_<name>.pdf`, signed before the session. It grants, worldwide, perpetually, sublicensable and transferable, every use the Summit licence covers (cl. 8.1: judging, screening, festivals, streaming, social, trailers, marketing, archive), plus later festivals, distribution and the "Episode 0" series pitch. It covers recording, editing and AI voice conversion of their performance, waives claims on the film, states the fee (or none) and confirms the actor is not staff or a contractor of the Organizer, BytePlus or TikTok, nor a juror or relative of one (cl. 4.3). Under 18: no.
+- **Native speakers** for Hindi/Urdu, Arabic Fusha and English as the language plan (1.2.2) requires. The script stays the user's; the actor does not rewrite lines (authorship log entries for any ad-lib the user keeps).
+
+**Recording spec** (the same file rules as 1.2.8 so 05 and 07 do not change):
+- 48 kHz / 24-bit mono WAV, dry, close mic, treated quiet room, no music; 30 s of room tone per session.
+- Record to the locked animatic timing (`04`), one line per file, at least 3 takes per line: faithful timing, performance priority, clean diction.
+- Names: `<FILM>_<LINEID>_<CHAR>_H<NN>.wav` for raw human takes and `<FILM>_<LINEID>_<CHAR>_T<NN>.wav` for the converted (H2) takes; never overwrite a raw take.
+- Run the timing preflight (1.2.6) on the selected take; lip-sync follows `05-seedance-production.md` exactly as for ElevenLabs takes.
+
+**Ledger and credits:** one ledger row per raw recording (`tool: human recording`, `synthetic_or_real: real+consent`, `consent_ref`) and one per conversion (tool, model, voice_id, history item ID). End credits name the voice performers (`07`); the disclosure tables in `09` §9.3 list the route per character.
+
 ---
 
 ## Output templates (what you show the user)
