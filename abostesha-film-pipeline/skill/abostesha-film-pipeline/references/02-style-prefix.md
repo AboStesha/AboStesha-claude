@@ -12,7 +12,7 @@ Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوست
 
 | Input | Where | Required |
 |---|---|---|
-| Locked script and its sequence list | output of 01-script-and-dialogue.md | yes; variants follow sequences |
+| Script sequence list | 01-script-and-dialogue.md: script v1 for exploration on D2, the locked script before the D3 Gate | yes; variants follow sequences |
 | Rubric map, "Creativity & Aesthetic" line | 00-award-brief-and-calendar.md §0.3 (film 01: real world = handheld, harsh noon light; dream = locked-off, impossible geometry) | yes |
 | Reference film title(s) | the user | a title, frames, or both |
 | Reference frames or clips (6–12 varied stills per film) | the user's upload → `films/<id>/02-style/reference-frames/` (git-ignored, never uploaded anywhere) | strongly recommended |
