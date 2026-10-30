@@ -13,22 +13,26 @@ Talk to him in Arabic. Every TTS line, tag, voice description and other generati
 - The user's answers to the language plan: which language each character speaks.
 - Later in 1.2: voice choices, which the user auditions in ElevenLabs, and the take files he downloads.
 
+**Files** (all under `films/<slug>/`): `01-script/authorship-log.md`, `01-script/locked-sheet.md`, `01-script/script-vNN.md`, `01-script/scene-list.md`, `01-script/coverage-vNN.md`; `01-dialogue/<CHAR>.md`, `01-dialogue/take-log.csv`; takes in `audio/dialogue/<CHAR>/`.
+
+**Calendar** (`00` §0.7): D1 31 Oct: 1.1.0-1.1.2 (Locked Sheet, beat spine). D2 1 Nov: script v1 with 1.1.3-1.1.10 in one coverage message; the compliance pass is `00`'s G1. D3 2 Nov: revision, Gate 1A, then 1.2 sheets and the user's takes. Gate 1B by D4 at the latest: `04` starts the shot list on D3 but needs measured takes to set shot durations. If a Critical flag is still open on D3, tell the user in Arabic what slips in the calendar; do not lock around it.
+
 ## Ground rules (apply throughout Step 1)
 
-1. **Authorship stays with the user.** The Academy weighs "the degree to which a human was at the heart of the creative authorship". The Academy's May-2026 announcement for the 99th Awards says screenplays must be human-authored; the 100th rules are not yet published. So:
+1. **Authorship stays with the user.** The Summit disclosure (prompts and history on request) needs an honest record of who wrote what now. For the later festival/Oscar route (background only), the Academy weighs "the degree to which a human was at the heart of the creative authorship", and its 99th rules (approved 1 May 2026) make screenplays human-authored for the writing categories; the 100th rules are not yet published. So:
    - Never rewrite scenes or lines in place.
    - Your output in 1.1 is questions, located diagnoses, measurements, and options described in prose ("move this information into an object").
-   - Write example wording only when the user asks for it. Limit it to 2 options per flagged line, labelled `[CLAUDE OPTION — rewrite in your own words]`.
+   - Write example wording only when the user asks for it. Limit it to 2 options per flagged line, labelled `[CLAUDE OPTION — rewrite in your own words]` (in the Arabic chat: «[خيار Claude — أعد صياغته بكلماتك]»).
    - The user types or dictates every change. If he dictates in Arabic, transcribe him word for word; that is still origin `H`.
    - You may make format-only edits (origin `F`) and must log them: scene headings, numbering, typos, punctuation.
 2. **Log every change** in `authorship-log.md` (template below). Never hide a `C` (Claude) or `G` (Gemini) origin. The Summit disclosure and any Academy inquiry depend on this log being honest.
-3. **Gate strictly.** End each sub-step with an explicit Arabic approval question. Silence, or "ok, go on" about something else, is not approval.
+3. **Gate strictly.** End every working message with an explicit Arabic approval question that names the sub-steps it covers (one message may cover several, per the calendar). Silence, or "ok, go on" about something else, is not approval.
 4. **Write a literary script, not a shooting script.** Keep camera language out of action lines. If the user writes shot ideas (in this draft: "one shot beginning", "match cut", "Parasite-style leading lines"), move them under `DIRECTOR NOTES:` at the end of the scene, in his words. They feed `04-blender-blocking.md`.
 
 ## Procedure — 1.1 Finalize the screenplay
 
 ### 1.1.0 Intake and baseline (one turn)
-- Save the baseline untouched and record its hash: `sha256sum draft-v0-abostesha.md >> authorship-log.md`.
+- Save the baseline untouched and record its hash: `cd films/<slug> && mkdir -p 01-script && sha256sum draft-v0-abostesha.md >> 01-script/authorship-log.md`.
 - Ask in Arabic, at most 4 questions, and only for what is missing: theme choice, the language plan, the ending he will not give up, and anything in the draft he considers sacred.
 
 ### 1.1.1 Premise and theme lock — the Locked Sheet
@@ -164,17 +168,17 @@ Run the diagnostics on every line. Report each failure by line ID; do not rewrit
 | Language / register | Planning rate (calibrate!) | Basis |
 |---|---|---|
 | English, conversational drama | 2.3-2.7 words/s (~140-160 wpm). Weighted or emotional: 1.8-2.2 | Common industry planning figure, not measured for this film |
-| MSA, formal (Noah) | ~1.5-1.9 words/s (~90-115 wpm) | ~4.5 syllables/s judged "normal" for synthetic MSA (Aldholmi et al., Interspeech 2021) × an assumed 2.5-3 syllables per written word. Estimate only |
+| MSA, formal (Noah) | ~1.5-1.9 words/s (~90-115 wpm); conservative (over-estimates time) | Google TTS default MSA rate, ~4.5 syllables/s, which Arabic listeners rated as *slow* (Aldholmi et al., Interspeech 2021), ÷ an assumed 2.5-3 syllables per written word. Natural speech runs faster. Estimate only |
 | Gulf / colloquial Arabic | Faster than MSA. Measure it | No reliable published figure found: unverified |
 | Hindi / Urdu, conversational | ~2.0-2.6 words/s (~120-155 wpm) | Unverified estimate. Postpositions written as separate words inflate the count. Measure it |
 
+- **Count Arabic words the same way every time.** The user writes «و» as a separate word; attach it to the next word before counting, or every Arabic rate looks too slow.
 - **Calibration.** Measure with the user reading aloud at performance pace (stopwatch, in Arabic, ask him), or from the first v4 test take of each voice. Write the measured rate into that character's voice card and re-time the whole script with it.
 - **Example (v0 word counts).** Noah's broadcast speeches total about 235 words of MSA, roughly 2.0-2.6 min at the planning rate. That is a third of the film for one voice-only character before a single image. Show the user this number; it drives the cut pass.
-- **Runtime targets.**
+- **Runtime targets** (same numbers as `00` §0.4):
   - Award window: 5:00-7:00, excluding opening titles and closing credits.
-  - Lock the script at an estimated **6:00-6:30** of film body.
-  - Never lock under 5:30 or over 6:45.
-  - Budget titles plus credits so the whole file, credits included, stays at or under 7:00, as the brief says to keep it.
+  - Lock the script at an estimated **6:00-6:30** of story.
+  - Never lock under 5:30 or over 6:34. The ceiling is 7:00 minus `00`'s budget of 6 s main title and 20 s end credits, because the whole file must stay at or under 7:00.
 
 ### 1.1.8 Cut pass
 - **Order.** Cut structurally first, then line by line:
@@ -183,12 +187,12 @@ Run the diagnostics on every line. Report each failure by line ID; do not rewrit
   3. Characters outside the production box.
   4. Duplicate exposition.
   5. Line trims.
-- **Cut ratio.** psych-short-screenplay's 70-85% cut assumes a draft already near length. v0 estimates at about 13 min (roughly 30+ events plus about 235 words of Noah), so the structural cut has to keep roughly 45-50%.
+- **Cut ratio.** psych-short-screenplay's 70-85% cut assumes a draft already near length. v0 is far over: about 9-10 min in `films/01-second-life-ascent/script-review-v1.md`, up to about 13 min if every one of its 30+ events gets full shot length, with about 235 words of Noah. So the structural cut keeps roughly 50-65% of the events, not 70-85%. Re-time from the beat spine before quoting a figure.
 - **Rule:** cuts add no new plot (psych-short-screenplay). Print before/after runtime and a line count per character.
 - **Who decides.** You propose the cut list with seconds saved per item. The user marks each one KEEP / CUT / MERGE.
 
 ### 1.1.9 Compliance pass
-Run all four checks. Every flag is a decision for the user, with options; none is a silent edit.
+This pass is `00`'s **G1 Script gate**: tick every G1 checkbox (`00` §0.10) in the report, then add the film-specific flags below. Every flag is a decision for the user, with options; none is a silent edit.
 
 **A — G rating / suitable for all ages** (Terms cl. 5.3(f), 9.1). "It's only a dream" is not an exemption. Flags from v0:
 - Suicide jump in the dream, and "I want to disappear forever / no right to end this nightmare". Self-harm and suicidal ideation: Critical.
@@ -206,13 +210,14 @@ Run all four checks. Every flag is a decision for the user, with options; none i
 - One complete original story, made for this award.
 - Every voice will be declared synthetic. Cloning a real person's voice needs documented consent (cl. 7.5).
 - Dialogue minutes are non-Seedance audio, and the Organizer has not published how the 70% is measured. Keep dialogue lean and see `00-award-brief-and-calendar.md`.
+- Holdback: the script, voice previews and takes go only to named private reviewers. Do not publish a designed voice to the Voice Library or post any clip before the result (`00`).
 
 **C — Oscar human authorship.** The authorship log is current. No `C`-origin dialogue is in the locked script. Every `G` and `T` (translation) line is listed.
 
 **D — Culture.**
 - Scripture is quoted verbatim and with correct grammar. v0 has Kabir say "حتى يغيروا ما بأنفسك" where the verse reads "ما بأنفسهم". The epilogue has it right. Flag the mismatch and ask the user.
-- Noah, a robot, quotes "ولقد كرمنا بني آدم". Ask for a cultural read.
-- Burning banknotes on screen in a UAE film: unverified legal or cultural sensitivity. Ask for a local read.
+- Noah, a robot, paraphrases Q 17:70 ("الله قد كرّم بني آدم"). A machine invoking scripture needs a cultural read; if he keeps it, the user decides between the paraphrase and the exact verse.
+- Burning banknotes on screen touches G1's currency item (no currency shown in a demeaning way). Ask for a local read.
 - Ask the user to name a native Hindi/Urdu reviewer for every translated line.
 
 ### 1.1.10 Coverage notes and lock
@@ -230,7 +235,7 @@ Run all four checks. Every flag is a decision for the user, with options; none i
 
 ## Procedure — 1.2 ElevenLabs v4 dialogue sheets
 
-**Start-of-step refresh.** If the ElevenLabs connector is attached, call `creative_get_model_guide(model_id="eleven_v4")`. It is read-only and keeps the tag list current. You may also call `creative_list_voices` to shortlist candidate voice IDs. Do **not** call `creative_generate_speech` or `creative_design_voice` unless the user explicitly asks you to. They spend credits, and his locked decision is to generate by hand.
+**Start-of-step refresh.** If the ElevenLabs connector is attached, call `creative_get_model_guide(model_id="eleven_v4", context="refresh v4 tag list for film dialogue sheets")`. It is read-only and keeps the tag list current. You may also call `creative_list_voices` to shortlist candidate voice IDs. Do **not** call `creative_generate_speech` or `creative_design_voice` unless the user explicitly asks you to. They spend credits, and his locked decision is to generate by hand.
 
 ### 1.2.1 Verified v4 facts (2026-10-30)
 - **Model and settings.**
@@ -240,38 +245,39 @@ Run all four checks. Every flag is a decision for the user, with options; none i
   - **No Style, no Speed, no SSML `<break>`.** Pace with tags and punctuation.
 - **API names**, if the user or `07` ever uses the API:
   - TTS uses `voice_settings.similarity_boost`, and its `model_id` defaults to `eleven_multilingual_v2`. Text to Dialogue uses `settings.similarity`, and its `model_id` defaults to `eleven_v3`. **So always set `model_id: "eleven_v4"` explicitly.**
-  - Text to Dialogue allows at most 10 voices and at most 2,000 characters in total per request.
+  - Text to Dialogue allows at most 10 unique voices per request. Keep the total text at or under 2,000 characters: longer requests can end early or fail validation.
   - `seed` takes 0-4294967295, best effort only.
   - `language_code` is ISO 639-1: `ar`, `hi`, `ur`, `en`.
   - Both endpoints offer `wav_48000` and `pcm_48000`.
 - **Accent.** Same-language generation keeps the reference voice's accent. Cross-language generation deliberately gives a fluent target-language accent. **So cast a voice whose own recordings are in the same language and accent as the line.**
-- **Voice types.** Voice Design voices work on v4 but "may not be as performative". IVC is "more accurate than ever", and PVC is fully supported. Prefer Voice Library or consented clone voices for lead roles, and Voice Design for non-human roles such as Noah.
+- **Voice types.** Voice Design voices work on v4 but "may not be as performative". IVC accuracy is noticeably improved, and PVC is "fully supported" (fine-tunable on v4). Prefer Voice Library or consented clone voices for lead roles, and Voice Design for non-human roles such as Noah.
+- **Disclosure per voice** (Summit cl. 5.5(d), 7.5). A Voice Design voice is fully synthetic. A Voice Library voice is cloned from a real speaker who shared it: declare it "synthetic, cloned from a consenting Voice Library speaker" and record the voice name, its library ID and the library terms on the voice card. If the user wants certainty that this is enough consent proof, add the question to the Organizer email (`00` §0.9). A clone of anyone the user knows needs a signed consent file.
 
 ### 1.2.2 Language and casting plan
 - **Language.** Confirm the language per character with the user. For 2nd Life, the Gemini file proposed MSA for Noah, Urdu for the mother and a "workers' street register" for Miraj; that is origin `G` until the user decides.
-- **Script.** Write Hindi lines in Devanagari, Urdu lines in Urdu script, Arabic lines in Arabic. Give the user a romanized line and an Arabic gloss under each so he can approve meaning.
+- **Script.** Write Hindi lines in Devanagari, Urdu lines in Urdu script, Arabic lines in Arabic. Give the user a romanized line and an Arabic back-translation under each so he can check that the meaning is his, no more and no less.
 - **Code-switching** ("habibi", "yalla" inside Hindi): audition it, because v4 accent handling across languages varies.
 - **Mode.** Assign each line a MODE. It tells `05-seedance-production.md` what the picture must do.
   - `ON`: mouth visible, lip-sync required.
   - `ON-WIDE`: mouth small or far, approximate sync acceptable.
   - `OFF`: speaker in the scene but mouth hidden (back, shadow, out of frame).
   - `VO`: speaker not in the scene (Noah's broadcast audio, Halo in the earpiece).
-  - `PHONE`: remote voice through a device.
+  - `PHONE`: remote voice through a device, face not seen. A face visible on a video call or the palm screen is `ON` or `ON-WIDE`, not `PHONE`.
 - **Design for few lip-sync lines.** Move every line you can to OFF, VO or PHONE. A robot without a mouth, or with a light-bar mouth, removes Noah's lip-sync entirely; suggest it to the user and to `03-assets-images.md`.
 
 ### 1.2.3 Voice card per character
 Make one file per character: `films/<slug>/01-dialogue/<CHAR>.md`. Character names are ALL CAPS, ASCII, and spelled one way everywhere (MIRAJ, not Meraj or Miraaj).
 
 **Voice Design description** (English). Use this structure, from the ElevenLabs Voice Design guide:
-- "Native <Language, regional variety>. <Gender>, <age range>. <Quality: studio-quality recording>." Then one persona and emotion line, then 1-2 sentences on timbre, pacing and delivery.
+- "Native <Language, regional variety>. <Gender>, <age range>. <Quality level, e.g. Studio quality>." Then "Persona: <2-5 words>. Emotion: <2-3 adjectives>.", then 1-2 sentences on timbre, pacing and delivery.
 - Use "thick" rather than "strong" for accent prominence.
 - Never use FX words (reverb, echo, phone, tape), "foreign" or "exotic", or "accent" when you mean intonation.
 - Preview text: 100-1,000 characters, in the character's language, and consistent with the description. Longer previews are more stable.
-- Each UI generation returns 3 options. Raise guidance when accent accuracy matters. The API takes model `eleven_ttv_v3` or `eleven_multilingual_ttv_v2`.
+- Each UI generation returns 3 options. Raise guidance when accent accuracy matters. The API (`/v1/text-to-voice/design`) takes `eleven_ttv_v3` or `eleven_multilingual_ttv_v2` and defaults to the latter, so name the model explicitly.
 
-**Voice lock.** After the audition, freeze voice_id, model, settings, the descriptor and the allowed tags. Paste the descriptor verbatim forever and never "improve" it: swapping "warm" for "rich" moves the voice (OSideMedia, MIT). Changing any locked field means re-rendering every line of that character.
+**Voice lock.** After the audition, freeze voice_id, model, settings, the descriptor and the allowed tags. The saved voice_id is the real lock in ElevenLabs. Wherever the descriptor is reused (a redesign, or a voice description in a Seedance prompt), paste it verbatim and never "improve" it: swapping "warm" for "rich" moves the voice (OSideMedia, MIT). Changing any locked field means re-rendering every line of that character.
 
-**Settings, starting points** from the official elevenlabs/skills presets; audition before locking:
+**Settings, starting points.** Official elevenlabs/skills presets for v4 are Drama 0.3/0.8, Conversational 0.4/0.75, Narration 0.7/0.5 and News 0.8/0.6 (stability/similarity). The rows below adapt them; audition before locking:
 
 | Role type | Stability | Similarity |
 |---|---|---|
@@ -289,7 +295,7 @@ Lower stability gives more range and more variance. Lower similarity if you hear
 - **Intent column.** Give every line an `Intent (gerund)`: the action from diagnostic 1 in 1.1.6. `05b-acting-direction.md` builds the face and body performance from it, so the voice and the face play the same action.
 - **Three text versions per line.** Keep them in sync:
   1. **TTS TEXT**: what the user pastes, with tags and pacing punctuation.
-  2. **SPOKEN**: the same words with no tags. It goes into Seedance's `{ }` dialogue block (`05`) and into transcripts.
+  2. **SPOKEN**: the same words with no tags, and IPA respellings turned back into the written word. It goes into Seedance's `{ }` dialogue block (`05`) and into transcripts.
   3. **EN SUB**: the English subtitle.
 
 ### 1.2.5 Tagging rules (v4)
@@ -298,7 +304,7 @@ Lower stability gives more range and more variance. Lower similarity if you hear
 - **Placement.**
   - Put a tag immediately before the words it colors, or put a non-verbal right after its clause: `This is hard. [sighs]`.
   - A tag holds until the next tag, so add a new tag only where the delivery changes.
-  - In Arabic or Urdu lines the tag must be the **first characters of the string in logical order**. RTL editors can visually reorder brackets, so paste each line from its own code block.
+  - In Arabic or Urdu lines, RTL editors visually reorder brackets, so a tag can land mid-sentence without anyone seeing it. Use only a leading tag (the **first characters of the string in logical order**) and, if needed, a trailing non-verbal (the last characters). If the delivery must change mid-line, split the line into two IDs. Paste each line from its own code block.
   - Tags stay in English inside non-English lines. This is a house rule; audition the first takes.
 - **Current tag palette**, from ElevenLabs' own guide. Tags are free-form; these are proven:
   - Emotion: `[excited] [happy] [sad] [angry] [nervous] [curious] [sarcastic] [surprised] [tired] [warmly]`
@@ -307,7 +313,7 @@ Lower stability gives more range and more variance. Lower similarity if you hear
   - Non-verbal: `[laughs] [laughs harder] [chuckles] [giggles] [sighs] [exhales] [gasps] [clears throat] [crying] [snorts]`
   - Pauses: `[short pause] [pause] [long pause]`
   - Timing: `[interrupting] [jumping in] [overlapping]`. Use these only for VO/OFF exchanges; ON lines are single-speaker files.
-  - Multi-word descriptive tags work on v4: `[low, gravelly voice]`, `[under his breath]`. Phrase them as voice qualities, because v4 can misread an ambiguous tag as a sound effect.
+  - Multi-word descriptive tags work on v4: `[low, gravelly voice]`, `[under his breath]`. Phrase them as voice qualities ("describe how the line is spoken, not what the speaker does": ElevenLabs guide); community tests report that an ambiguous tag can come out as a sound effect.
 - **Never in a dialogue stem:**
   - SFX tags (`[gunshot] [explosion] [applause] [clapping] [swallows] [gulps]`). SFX belong to Seedance and `06-music-and-sfx.md`.
   - Stage directions (`[grinning] [pacing] [standing]`). They are not performed.
@@ -336,7 +342,7 @@ Lower stability gives more range and more variance. Lower similarity if you hear
   - The clip is 3-8 s, one speaker per file.
   - Leave room for at least 0.5-1 s of held reaction after the line, because a clipped last word is the most common failure.
 - **Seedance audio-reference limits**, from the owned seedance-2-5-prompts skill (ByteDance spec): up to 10 clips and at most 30 s combined per generation. A Dreamina-guide snapshot adds 2-30 s per clip and WAV/MP3. This is not yet verified on the BytePlus API; `05-seedance-production.md` confirms it.
-- **Preflight.** Once takes exist, compare the measured selected-take duration with the shot budget and label the line:
+- **Preflight.** Once takes exist, compare the measured selected-take duration with the budget and label the line. At Gate 1B the budget is the line's planned seconds from the 1.1.7 timing table (and, for ON lines, the 3-8 s window minus the held reaction). `04` then sets shot durations from the measured takes and re-runs this preflight against the real shot length.
   - `FITS`;
   - `REBALANCE`: split across shots, or move to OFF/VO;
   - `IMPOSSIBLE`: needs a script change by the user.
@@ -349,22 +355,22 @@ Rules from the Netflix English Timed Text Style Guide:
 - Reading speed: target **at most 17 cps**, because the film must suit all ages (Netflix's children's limit), with a hard ceiling of 20 cps (adult).
 - Each event lasts at least 20 frames.
 - Use the single-character ellipsis `…`.
-- Two speakers in one event: a leading hyphen, one speaker per line.
+- Two speakers in one event: a hyphen with no space before each line, one speaker per line.
 - *Italics* only when the speaker is not in the scene (Halo, Noah's broadcast, a phone voice).
 - Numbers 0-10 are written as words; above 10 as numerals ("6,300").
 
 **Budget per line:** max characters = measured seconds × 17. When a translation overflows, condense the subtitle, never the performance. Subtitle text is a translation (origin `T`); a native speaker reviews it. `07` builds the SRT from these cells.
 
 ### 1.2.8 Takes: generation, naming, selection
-- **Takes per line.** Ask for at least 3 per line, per calesthio dialogue-editing-adr (MIT): a faithful-timing take, a performance-priority take and a cleaner-diction take. v4 tag following is "not perfect yet", so variants matter. Record the seed if the UI shows it.
+- **Takes per line.** Ask for at least 3 generations per line and pick, per calesthio dialogue-editing-adr (MIT), the best faithful-timing take, performance-priority take and cleaner-diction take. v4 tag following is "not perfect yet", so variants matter. Record the seed if the UI shows it.
 - **Format.** Download the highest WAV/PCM the plan offers, 48 kHz preferred, mono, dry.
 - **Folder:** `films/<slug>/audio/dialogue/<CHAR>/`.
 - **File names:**
   - Raw take: `<FILM>_<LINEID>_<CHAR>_T<NN>.wav`, e.g. `SLA_S07-L03_MOTHER_T02.wav`. Use the film code the user approves; SLA is a suggestion.
   - After shot lock, the per-shot upload copy: `<FILM>_<SHOTID>_<LINEID>_<CHAR>_T<NN>.wav`, e.g. `SLA_S07-SH04_S07-L03_MOTHER_T02.wav`.
-  - Never rename the raw take; copy it.
-- **Measure.** Use `python3 -I -c "import wave,sys;w=wave.open(sys.argv[1]);print(round(w.getnframes()/w.getframerate(),2))" <file.wav>`. Write the seconds of the selected take into the sheet and re-run the preflight.
-- **Disclosure.** Log model, voice_id, settings and the date in the take log for the AI disclosure (prompts and history may be requested within 7 days and must be kept for 24 months).
+  - Never rename, re-encode or strip metadata from the raw take; copy it. Trims and fixes happen on copies (`07`).
+- **Measure.** Use `python3 -I -c "import wave,sys;w=wave.open(sys.argv[1]);print(round(w.getnframes()/w.getframerate(),2))" <file.wav>`, or `ffprobe -v error -show_entries format=duration -of csv=p=0 <file>` for non-PCM files. The figure includes ElevenLabs' head and tail silence; if the user trims a copy before upload, measure that copy. Write the seconds of the selected take into the sheet and re-run the preflight.
+- **Disclosure.** Log model, voice_id, settings, the ElevenLabs history item ID and the date in the take log for the AI disclosure (prompts and history may be requested within 7 days and must be kept for 24 months).
 
 ---
 
@@ -373,7 +379,7 @@ Rules from the Netflix English Timed Text Style Guide:
 ### Locked Sheet
 ```text
 TITLE: 2nd Life: Ascent — الحياة الثانية: معراج          DRAFT: vNN   DATE:
-OFFICIAL THEME: [one of five]                             RUNTIME TARGET: 6:00-6:30 body
+OFFICIAL THEME: [one of five]                             RUNTIME TARGET: 6:00-6:30 story
 LOGLINE: [protagonist] must [concrete action] before [clock] or [cost], but [personal hook].
 PREMISE (Egri): [trait] → [conflict] → [outcome]
 CONTROLLING IDEA (McKee): [value] [wins/loses] because [cause]
@@ -422,12 +428,13 @@ LOCKED: vNN  sha256: …  date: …  C-origin dialogue lines: 0
 VOICE CARD — MOTHER                                   status: AUDITION / LOCKED
 Language: Urdu (confirm) · script: Urdu · language_code: ur · Mode mix: PHONE
 Source: Voice Library / Voice Design / IVC / PVC · voice_id: ______ (from the user or creative_list_voices)
-Declared: synthetic voice · real-person basis: none (if any → consent file: ____)
+Declared: synthetic voice · real-person basis: none / Voice Library speaker (name, library ID) / consented clone (consent file: ____)
 Model: eleven_v4 · Stability 0.35 · Similarity 0.80 · Clone strength: n/a
 Voice Design description (paste verbatim, never paraphrase):
-  "Native Urdu, North Indian variety. Female, late fifties. Studio-quality recording.
-   A tired village mother who hides worry behind warmth. Soft, slightly husky timbre,
-   unhurried pacing, gentle falling intonation, breath audible between phrases."
+  "Native Urdu, Lucknow variety. Female, late fifties. Studio quality.
+   Persona: tired village mother. Emotion: warm, guarded, worried.
+   Soft, slightly husky timbre, unhurried pacing, gentle falling intonation."
+  (region is a placeholder: the user names her origin before any audition)
 Preview text: [100-1000 chars of Urdu in her register — user-approved]
 Allowed tags: [warmly] [softly] [tired] [sighs] [pause] · Forbidden: [shouting] [laughs harder] SFX tags
 Measured rate: __ words/s (from takes)
@@ -436,10 +443,10 @@ S11-L04 | SHOT: TBD | MODE: PHONE | LANG: ur | budget: __ s | measured: __ s | p
 Intent (gerund): reassuring him / hiding the diagnosis
 TTS TEXT:
 ```
-[warmly] <Urdu: "Everything is fine, thank God." — the user's line, translated, origin T>
+[warmly] <Urdu rendering of the user's «كلا، الامور كلها بخير» — origin T, adds nothing>
 ```
 SPOKEN: <same words, no tags>
-EN SUB (≤17 cps): Everything's fine, thank God.
+EN SUB (≤17 cps): No, everything's fine.        (22 chars → needs ≥1.3 s)
 TAKES: T01 __ s · T02 __ s · T03 __ s · SELECTED: __ · seed: __
 
 S11-L09 | SHOT: TBD | MODE: PHONE | LANG: ur | budget: __ s | measured: __ s
@@ -455,25 +462,25 @@ Show the Arabic original under every translated line, from the user's v0: «اذ
 
 ### Take log line (append-only, `01-dialogue/take-log.csv`)
 ```text
-line_id,char,take,file,seconds,voice_id,model,stability,similarity,seed,tags,date,selected,shot_id
-S11-L04,MOTHER,T02,SLA_S11-L04_MOTHER_T02.wav,2.41,xxxx,eleven_v4,0.35,0.80,,[warmly],2026-11-02,Y,S11-SH03
+line_id,char,take,file,seconds,voice_id,model,stability,similarity,seed,history_id,tags,date,selected,shot_id
+S11-L04,MOTHER,T02,SLA_S11-L04_MOTHER_T02.wav,2.41,xxxx,eleven_v4,0.35,0.80,,<history item id>,"[warmly]",2026-11-02,Y,S11-SH03
 ```
 
 ---
 
 ## Gate
 
-**Gate 1A: script lock.** It is required before `02-style-prefix.md`, and before line tagging starts. Ask in Arabic: «هل تعتمد النسخة vNN كنسخة مقفلة؟ بعد القفل تُجمَّد أرقام المشاهد والسطور». The user approves:
+**Gate 1A: script lock.** It is required before the `02-style-prefix.md` gate (02 may explore from script v1 on D2) and before line tagging starts. Ask in Arabic: «هل تعتمد النسخة vNN كنسخة مقفلة؟ بعد القفل تُجمَّد أرقام المشاهد والسطور». The user approves:
 1. The Locked Sheet, with every field CONFIRMED and the official theme named.
 2. The locked screenplay vNN, with its hash, frozen scene IDs and DIRECTOR NOTES kept separate.
-3. A runtime estimate of 6:00-6:30 body, with the timing table.
+3. A runtime estimate of 6:00-6:30 story, with the timing table.
 4. A compliance pass with zero open Critical flags. Each remaining Major or Minor flag is either fixed or carries a written decision.
 5. The authorship log, with 0 C-origin dialogue lines and every G/T line listed.
 
 **Gate 1B: dialogue lock.** It is required before `04-blender-blocking.md` sets shot durations and before any lip-sync generation in `05-seedance-production.md`. The user approves:
 1. A LOCKED voice card per speaking character.
 2. Every line with its MODE, TTS TEXT, SPOKEN and EN SUB, and a native review of the translations.
-3. A selected take per line, measured, with its preflight status. No `IMPOSSIBLE` lines remain.
+3. A selected take per line, measured, with its preflight status against the planned seconds. No `IMPOSSIBLE` lines remain.
 4. A complete take log.
 
 Ask: «هل نعتمد أوراق الحوار والتسجيلات المختارة وننتقل إلى البلوكنغ؟»
@@ -490,7 +497,8 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
   - Stage directions or SFX tags in the TTS text are spoken, ignored, or turned into effects.
   - Stacked tags make every take different.
   - `[shouting]` on a soft voice.
-- **Brackets reorder in RTL**, so a tag lands mid-sentence. Fix: logical-order check, one code block per line.
+- **Brackets reorder in RTL**, so a tag lands mid-sentence. Fix: leading/trailing tags only, one code block per line.
+- **A translation adds words.** A `T` line gains meaning the user never wrote ("thank God", a sharper insult), which is Claude authorship in disguise. Fix: back-translate every `T` line into Arabic under it and have the user compare it with his v0 line.
 - **Cross-language accent loss.** An Indian-English line voiced by a Hindi-reference voice comes out with a neutral accent, because v4 targets a fluent accent across languages. Cast per line language.
 - **Voice drift.** The descriptor is reworded, or settings change mid-film. Fix: voice lock, and re-render all of that character's lines.
 - **Effects baked into stems.** A phone filter added at generation can't be undone in the mix. Keep stems dry.
@@ -508,10 +516,11 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
   - gbellonre/psych-short-screenplay (© 2026 gbellonre): Locked Sheet tests, beat format, scene footer, punch-up method, cut rule.
   - omkarpalika/filmcraft (© 2026 Omkar Palika): AI-screenwriting tells, notes discipline.
   - OSideMedia/higgsfield-ai-prompt-skill (© 2026 O-Side Media): lip-sync rules, voice lock.
-  - calesthio/generative-media-skills (© 2026 contributors): take types, voice timing locked before the face.
+  - calesthio/generative-media-skills (© 2026 generative-media-skills contributors): take types, voice timing locked before the face.
   - elevenlabs/skills (© 2024 ElevenLabs): v4 settings and presets.
+  - bflandev/script-doctor `script-coverage` (© 2026 Script Doctor Contributors): the Critical / Major / Minor / Strengths coverage format.
 - **Paraphrased:**
-  - jtydhr88/screenwriting-skills (MIT for its original structure; its book quotations are not relicensed, so none are reproduced): sw-dialogue, sw-scene-craft, sw-story-structure, sw-premise-theme, sw-format-adaptation, chekhov-dramaturgy. The craft is from McKee, Egri, Walter, Hicks, Lu Jun and Chekhov.
+  - jtydhr88/screenwriting-skills (© 2026 Terry Jia; MIT for its original structure; its book quotations are not relicensed, so none are reproduced): sw-dialogue, sw-scene-craft, sw-story-structure, sw-premise-theme, sw-format-adaptation, chekhov-dramaturgy. The craft is from McKee, Egri, Walter, Hicks, Lu Jun and Chekhov.
 - **Inspiration only, paraphrased:**
   - jordangaston/claude-plugins `elevenlabs-tts-prompting` (no licence).
   - badgids/story-film-skills dialogue-timing-preflight (idea only).
@@ -520,7 +529,7 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
   - The ElevenLabs hosted MCP model guide (`eleven_v4`).
   - Netflix English Timed Text Style Guide and Subtitle Timing Guidelines.
   - Aldholmi et al., Interspeech 2021, on Arabic speech rate.
-  - AI Film Award 2027 Terms, and the Academy 99th Rules, both via `00-award-brief-and-calendar.md`.
+  - AI Film Award 2027 Terms, and the Academy 99th Rules, both via `00-award-brief-and-calendar.md`; the Academy's 1 May 2026 rules announcement (human-authored screenplays, writing categories).
 - **Carried over from the user's old skills:**
   - cinematic-pipeline: gating, the Arabic/English heading table, the "no emotions in action lines" rule.
   - seedance-2-5-prompts: audio-reference limits and the `{ }` dialogue syntax used by `05`.

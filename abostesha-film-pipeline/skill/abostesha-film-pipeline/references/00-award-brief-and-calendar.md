@@ -1,8 +1,9 @@
 # 00 — Award Brief, Compliance Gates and 21-Day Calendar (Step 0)
 
 **Purpose.** Turn the AI Film Award 2027 rules into a pass/fail plan before any script, image or video is touched.
-**Output.** A locked brief per film: theme, runtime budget, Seedance-share targets, a dated calendar with daily gates, four compliance gates, and an Oscar evidence plan.
+**Output.** A locked brief per film: theme, runtime budget, Seedance-share targets, a dated calendar with daily gates, four compliance gates, and a light human-authorship evidence plan.
 **Rule.** Nothing in 01-script-and-dialogue.md or later starts until the Step 0 Gate (end of this file) is approved by the user.
+**Priority (BRIEF.md).** Winning the AI Film Award 2027 with film 01 comes first. Film 2 happens only if it costs film 01 nothing. The Oscars are background, not a target. After 10 Jan 2027 the film goes to festivals and is pitched as "Episode 0" of a 7-episode series, but the film itself must stand alone (F8).
 
 Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوستيشا, as in his earlier pipeline). Write every generation prompt, and the Organizer email, in English.
 
@@ -40,17 +41,17 @@ Snapshot verified 2026-10-30 against the official page and the Terms (last updat
 | E1 | Applicant is a natural person who created or directed the film, aged 18+ on submission day | 4.1(a), 4.2 | AboStesha submits in his own name | ID scan ready for verification |
 | E2 | Not staff, contractor or agent of the Organizer, its Affiliates or Partners (BytePlus, TikTok), not a juror or a juror's relative, not sanctioned | 4.3, 4.4 | user confirms in writing | note in `00-brief/eligibility.md` |
 | F1 | Original film made for this award, never publicly released, broadcast, published, or submitted to or awarded by any other competition | 5.3(b); warranties repeated at every stage, 6.1 | no festival entry, no public post, ever, before the Summit outcome | dated project history |
-| F2 | Runtime 5–7 min excluding opening titles and closing credits; the page also says "up to 7 minutes in total duration" | 5.3(a), page | story 5:30–6:40 **and** titles + story + credits ≤ 7:00 (Summit intro not counted, unconfirmed) | timecode report at lock |
+| F2 | Runtime 5–7 min excluding opening titles and closing credits, which must be "reasonable in length"; the page also says "up to 7 minutes in total duration" | 5.3(a), page | story 5:30–6:34 at lock (script target 6:00–6:30, 01) **and** titles + story + credits ≤ 7:00 (Summit intro not counted, unconfirmed) | timecode report at lock |
 | F3 | English subtitles, embedded or supplied, any spoken language | 5.3(c) | burned-in English subtitles on the Summit master, plus a textless master | SRT + burned master |
-| F4 | 16:9, minimum 1080p, MOV or MP4 | 5.3(d) | 1920×1080 or larger, 16:9 container | ffprobe report |
+| F4 | 16:9, minimum 1080p, MOV or MP4, plus any file-size or delivery rules published on the Website | 5.3(d) | 1920×1080 or larger, 16:9 container; Website re-checked on D18 | ffprobe report |
 | F5 | Addresses one of the five 2027 themes | 5.3(e), page | theme named in the form and visible in the story | theme statement |
-| F6 | Suitable for a General Audience (rated G) | 5.3(f), 9.1 | passes gates G1–G4 below | gate reports |
+| F6 | Suitable for a General Audience (rated G); UAE screenings follow the Media Council's age-rating system | 5.3(f), 9.1, 9.4; UAE std 19 | passes gates G1–G4 below | gate reports |
 | F7 | Official Summit intro placed before the film | page | intro prepended, untouched | master timeline |
-| F8 | One original, complete, connected story | page | single story, no anthology | logline |
+| F8 | One original, complete, connected story, made for this award | 5.3(b), page | single story, no anthology; never called "Episode 0", a pilot or part of a series on screen, in credits or in the form (the series pitch waits for the holdback) | logline |
 | A1 | Seedance is the primary video tool; at least 70% of the final film generated with Seedance | page FAQ; 5.4 says "visual and audio content", "measured in the manner the Organizer specifies" | ledger meets the targets in 0.4 | Seedance ledger (ledger-continuity-physics.md) |
-| A2 | Third-party platforms allowed only if "the generation is carried out through Seedance" | 5.4 | every Seedance job via BytePlus ModelArk or a platform that runs Seedance (Higgsfield), logged | job IDs, platform, account |
+| A2 | Third-party platforms allowed only if "the generation is carried out through Seedance" | 5.4 | every Seedance job via BytePlus ModelArk or a platform that runs Seedance (Higgsfield; the ElevenLabs connector's Seedance 2.5), logged with the Seedance version that platform reports | job IDs, platform, account |
 | A3 | Comply with every tool's terms, acceptable-use policy and licence | 5.4, 6.1(e), 7.3 | plan tier recorded per tool on the day of generation | plan screenshots, receipts |
-| D1 | Written AI Disclosure: every model, tool, platform and version, the account used, the share each generated, the Seedance version on any third-party platform | 5.5(a) | disclosure table complete | `evidence/disclosure.md` |
+| D1 | Written AI Disclosure: every model, tool, platform and version, the account used, the share each generated, the Seedance version on any third-party platform; all application materials in English | 5.5(a), 20.8 | disclosure table complete, in English | `evidence/disclosure.md` |
 | D2 | On request, within 7 days: prompts, project files, timelines, shot logs, generation history, edit files; keep them 24 months after the Award closes | 5.5(b) | evidence folders filled daily, backed up twice | evidence archive |
 | D3 | Source and licence of every non-AI element: music, SFX, voice, fonts, stock | 5.5(c) | licence log has no blank row; fonts included | `evidence/licences/` |
 | D4 | Each voice, face, likeness and performance declared synthetic or real; signed consent for any real person | 5.5(d), 7.5 | every character and voice declared | consent forms |
@@ -60,14 +61,15 @@ Snapshot verified 2026-10-30 against the official page and the Terms (last updat
 | R2 | No celebrity, public figure or brand suggesting endorsement; no third-party advertising or product placement; no trademark or trade-dress infringement; no Organizer, Summit or Partner marks without permission | 7.5, 9.2(j), 6.1(d), 7.6 | brand sweep at G2 and G3 is clean | sweep notes |
 | R3 | Written licences for any third-party material, covering every use in cl. 8 | 7.4 | licences cover worldwide, perpetual use | licence log |
 | R4 | Applicant is sole creator/director; creative work delegated only to tools and personnel named in the disclosure | 6.1(b), 6.1(c) | Blender collaborator named in the disclosure; written rights assignment signed | collaborator agreement |
-| R5 | No exclusive licence, option or distribution deal that conflicts with the Terms | 6.1(h) | nothing signed with any distributor or festival | — |
-| H1 | Holdback: no public release, stream, screening, clips, or shortlist reveal until the winner announcement or a non-finalist notice; breach disqualifies | 8.4, 13.1(g) | no BTS, teasers or stills posted publicly | calendar reminder to 10 Jan 2027 |
-| H2 | Organizer gets a perpetual, non-exclusive licence including festivals and streaming | 8.1 | user acknowledged it at Step 0 | Gate record |
-| S1 | Submit only through the website form, 30 Sep–20 Nov 2026, times in GST; no closing hour is published | 5.1, 1.1, 20.10 | submitted by D19 (18 Nov) | confirmation screenshot |
+| R5 | No exclusive licence, option or distribution deal that conflicts with the Terms | 6.1(h) | nothing signed with any distributor, festival or production company; no series option or screener before the holdback ends | — |
+| H1 | Holdback: no public release, stream, screening, distribution, clips, or shortlist reveal until the winner announcement or a non-finalist notice; breach disqualifies. Application status stays confidential | 8.4, 13.1(g), 14.1 | no BTS, teasers or stills posted publicly | calendar reminder to 10 Jan 2027 |
+| H2 | Organizer gets a perpetual, non-exclusive licence including festivals and streaming; the user keeps ownership and may monetise after the Award closes; a Finalist or Winner must carry the Organizer's credit and Award mark on later distribution | 8.1–8.4, 7.1 | user acknowledged it at Step 0 | Gate record |
+| S1 | Submit only through the website form, 30 Sep–20 Nov 2026, times in GST; no closing hour is published. The form saves progress on the device used, so draft and submit on the same browser | 5.1, 1.1, 20.10, page FAQ | submitted by D19 (18 Nov) | confirmation screenshot |
 | S2 | Multiple films allowed, each a separate application meeting every requirement on its own; duplicate or "substantially similar" entries can disqualify all of them | 5.2 | two-film rules in 0.6 | — |
 | S3 | Content standards: lawful under UAE law and media content standards; no hate, no incitement, no self-harm or suicide, no mocking religion or national symbols, no drugs/alcohol/tobacco/gambling promotion, no political content, no misleading deepfakes, no unapproved advertising, nothing that harms the Organizer's reputation | 9.2(a)–(k) | gates G1–G4 | gate reports |
 | S4 | Organizer decides compliance with final effect and may blur, mute or cut; UAE screenings need classification approval | 9.3, 9.4 | aim for clear G, not borderline | — |
-| S5 | Finalists must supply the film in the screening format required | 11.3(a) | keep the highest-quality master and the project | master archive |
+| S5 | Finalists must supply the film in the screening format required and answer any notice within 7 days | 11.2, 11.3(a) | keep the highest-quality master and the project; inbox and spam folder checked daily until 10 Jan | master archive |
+| S6 | The submitted link stays accessible and unaltered until the Award closes | 5.8 | never replace, re-upload or trim the file behind the link; host account paid up to Feb 2027 | upload receipt, file checksum |
 
 Scoring (page): AI Integration 30, Storytelling 30, Creativity & Aesthetic 20, Technical Execution 20. Responsible and ethical AI use is a pass/fail eligibility gate and is not scored. The Top 10 committee also names storytelling, originality, character development, structure, visual creativity and use of Seedance. Timeline: Top 10 and public vote 15 Dec 2026; Top 5 25 Dec; Top 5 premiere 9 Jan 2027; winner 10 Jan 2027. Prize USD 1,000,000 (cl. 12.1).
 
@@ -104,11 +106,12 @@ Runtime budget (per film):
 ```
 Summit intro            not counted (unconfirmed — in the Organizer email)
 Main title              ≤ 6 s, over a Seedance plate
-Story                   5:30 – 6:40   (hard window 5:00 – 7:00 per cl. 5.3(a))
+Story                   script target 6:00 – 6:30 (01); at picture lock 5:30 – 6:34
+                        (6:34 = 7:00 − 26 s of titles and credits; rule window 5:00 – 7:00, cl. 5.3(a))
 End credits             ≤ 20 s, over a Seedance plate
 TOTAL (titles+story+credits) ≤ 7:00  — design target 6:45
 ```
-Estimate the draft's length now: count beats, assign seconds per beat (dialogue ≈ 2.5 words per second in Arabic or English, plus reaction time), and report the estimate. If it exceeds 6:40, list cut candidates for 01-script-and-dialogue.md.
+Estimate the draft's length now: count beats, assign seconds per beat (dialogue rates per language are in 01-script-and-dialogue.md §1.1.7: roughly 2.5 words/s for English, slower for formal Arabic; plus reaction time), and report the estimate. If it exceeds 6:30, list cut candidates for 01-script-and-dialogue.md.
 
 Seedance share (internal metric until the Organizer specifies one, cl. 5.4). Let T = seconds of titles + story + credits.
 - **Picture share** = seconds whose moving image comes from a Seedance generation ÷ T. Graded, cleaned, upscaled or re-timed Seedance frames still count. Black frames, text on black, stills, Blender renders, other video models and composites dominated by non-Seedance elements do not.
@@ -139,7 +142,7 @@ Seedance 2.5 clips run 4–30 s per generation at 24 fps (third-party mirror of 
 
 ### 0.6 One film or two
 
-Default: one film at maximum quality. Offer a second film only when the user asks. If he does, apply all of this:
+Default: one film at maximum quality (BRIEF.md: finish film 1 completely first; film 2 only if time remains). Raise a second film only when the user asks, and tell him plainly that 21 days leave no room for film 2 after film 1, so film 2 can only run in parallel and must never move a film 1 date. If he still wants it, apply all of this:
 
 | Rule | Detail |
 |---|---|
@@ -148,7 +151,7 @@ Default: one film at maximum quality. Offer a second film only when the user ask
 | May share | pipeline, prompt templates, checklists, Blender rigs and greybox kit (never seen on screen), procedural-SFX code, LUT workflow, disclosure templates |
 | Must not share | any shot, character, voice, location look, music cue, recognisable SFX bed, title card design |
 | Stagger | Film B starts 3 days after Film A and is smaller: story 5:15–5:45, ≤ 2 speaking roles, ≤ 3 locations, ≤ 30 final shots |
-| Priority | Film A wins every resource conflict (user review time, collaborator time, generation queue) |
+| Priority | Film A wins every resource conflict (user review time, collaborator time, generation queue). Film A keeps the single-film calendar unchanged; Film B slips or stops instead |
 | Go/no-go 1 (D6) | Film A animatic on track **and** Film B script passed G1 → continue; else pause Film B |
 | Go/no-go 2 (D10) | Film A ≥ 50% finals approved **and** Film B animatic locked → continue; else pause Film B |
 
@@ -163,8 +166,8 @@ Single film, Blender collaborator on greybox. D0 is today. Lock dates are hard; 
 | D0 | Fri 30 Oct | Step 0: rules check, checklist, rubric map, runtime estimate, calendar, Organizer email draft, evidence folders, D1 test plan | approves Step 0; sends email; downloads intro; signs collaborator agreement | confirms days and shots/day | **Step 0 Gate** |
 | D1 | Sat 31 Oct | runs risk tests T1–T6 (0.8); premise and beat sheet (01) | records 2 test lines in ElevenLabs v4 | installs Blender 5.1+, sets units/fps 24 | tests reported; go/no-go on routes |
 | D2 | Sun 1 Nov | script v1 + **G1 Script gate**; style exploration (02) | reviews script and G1 flags | builds generic greybox kit | G1 report |
-| D3 | Mon 2 Nov | script v2, dialogue tagged for ElevenLabs v4; style prefix (02) | **script lock**; generates final dialogue lines | — | script locked |
-| D4 | Tue 3 Nov | shot list; hero character and location sheets (03) | runs Midjourney prompts | greybox of hard shots, batch 1 | — |
+| D3 | Mon 2 Nov | script v2, dialogue tagged for ElevenLabs v4; style prefix lock (02); shot list starts (04) | **script lock**; generates final dialogue lines | — | script locked |
+| D4 | Tue 3 Nov | shot list done; hero character and location sheets (03) | runs Midjourney prompts | greybox of hard shots, batch 1 | — |
 | D5 | Wed 4 Nov | remaining assets; asset-library registration; **G2 Assets gate** | approves assets | greybox batch 2 | G2 report |
 | D6 | Thu 5 Nov | animatic v1 (boards + playblasts + final voice lines); runtime check | notes on animatic | playblasts to spec (04) | runtime within budget |
 | D7 | Fri 6 Nov | **animatic lock**; first Seedance drafts, hardest shots first (05, 05b) | approves drafts | re-blocks on request | — |
@@ -172,7 +175,7 @@ Single film, Blender collaborator on greybox. D0 is today. Lock dates are hard; 
 | D12 | Wed 11 Nov | **BUFFER 1**: failed renders, moderation rejects, expired drafts; rough cut; quick judge pass on rough (08) | rough-cut notes | — | rough cut reviewed |
 | D13 | Thu 12 Nov | last new drafts; finals; rough cut v2 | approves | — | no new drafts after today |
 | D14 | Fri 13 Nov | all finals in; fine cut support; SFX analysis (06) | fine cut in Premiere | — | all finals downloaded |
-| D15 | Sat 14 Nov | **PICTURE LOCK + G3 gate**; test screening plan | locks picture; 3–5 real viewers watch | — | G3 report signed |
+| D15 | Sat 14 Nov | **PICTURE LOCK + G3 gate**; test screening plan | 5–10 real viewers watch before he signs (08 §8.8, screening A); locks picture | — | G3 report signed |
 | D16 | Sun 15 Nov | sound design, mix notes, grade, cleanup, subtitles EN (+AR) (07); fills submission form draft | mix/grade in Premiere | — | form draft saved |
 | D17 | Mon 16 Nov | judge panel (08); fix list limited to non-story fixes | applies fixes | — | fix list closed |
 | D18 | Tue 17 Nov | master QC; **G4 Delivery gate**; disclosure pack; rules re-check | exports masters; uploads private link | — | G4 report signed |
@@ -180,26 +183,25 @@ Single film, Blender collaborator on greybox. D0 is today. Lock dates are hard; 
 | D20 | Thu 19 Nov | **BUFFER 2**: fallback submission day | — | — | — |
 | D21 | Fri 20 Nov | **BUFFER 3**: deadline day, emergencies only; closing hour unknown, never plan to submit today | — | — | — |
 
-Two films in parallel (deltas from the table above; Film A follows it unless noted):
+Two films in parallel (Film A follows the table above exactly; Film B uses only what is left):
 
 | Day | Film A | Film B | Blender friend |
 |---|---|---|---|
 | D3–D5 | as above | premise, script v1, G1 (D5) | A greybox |
 | D6 | as above | **go/no-go 1**; script lock | A playblasts |
-| D7–D8 | Seedance drafts | assets, G2 (D8) | B greybox |
-| D9 | Seedance | animatic | B playblasts |
-| D10 | Seedance; rules re-check | animatic lock; **go/no-go 2** | re-blocks A and B |
-| D11–D13 | finals | Seedance drafts and finals | re-blocks |
-| D14 | **picture lock A + G3** (one day earlier) | finals | — |
-| D15 | finishing A | last finals | — |
-| D16 | finishing A; G4 draft | **picture lock B + G3** | — |
-| D17 | judge panel A; fixes | finishing B; judge panel B | — |
-| D18 | G4 A | G4 B | — |
-| D19 | submit A | submit B (separate application) | — |
+| D7–D8 | as above | assets, G2 (D8) | B greybox |
+| D9 | as above | animatic | B playblasts |
+| D10 | as above | animatic lock; **go/no-go 2** | re-blocks A first, then B |
+| D11–D14 | as above | Seedance drafts and finals; last new B drafts D14 | re-blocks |
+| D15 | **picture lock A + G3** (unchanged) | last finals | — |
+| D16 | as above | **picture lock B + G3**; if not ready, stop Film B | — |
+| D17 | as above | finishing B; judge panel B | — |
+| D18 | as above | G4 B | — |
+| D19 | submit A first | submit B (separate application) | — |
 
 **Daily close** (Claude runs it at the end of every production day and shows the result):
 1. Every Seedance output downloaded and checksummed. Output URLs expire after 24 h (third-party docs; verify).
-2. Every approved draft finalized, or killed, before it is 5 days old. Draft task IDs stay valid for **7 days** per the Comfy mirror of the BytePlus schema and several integrators; BRIEF.md says 14. Plan to 7 until BytePlus confirms otherwise.
+2. Every approved draft finalized, or killed, before it is 5 days old. Draft task IDs created after 2026-10-28 10:00 UTC+8 stay valid for **14 days** (BytePlus Seedance 2.5 tutorial, read as Markdown in 05-seedance-production.md §5.0; matches BRIEF.md). Third-party mirrors (Comfy, Oxen, APIYI) still say 7. The 5-day house rule is safe under both readings, and `scripts/seedance_byteplus.py` writes the official expiry into the ledger.
 3. Ledger updated: shot, tool, version, account, job IDs, seconds, approval status.
 4. Moderation log updated: what was rejected, error text, what was changed.
 5. Tomorrow's queue written, hardest shots first.
@@ -209,8 +211,8 @@ Two films in parallel (deltas from the table above; Film A follows it unless not
 
 | Failure | Response | Time reserved |
 |---|---|---|
-| Render failed or timed out | retry once unchanged; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
-| Input image rejected for a realistic face (`InputImageSensitiveContentDetected.PrivacyInformation`, third-party reports) | register the character in the ModelArk private virtual-portrait asset library and reference `asset://<id>` (03-assets-images.md, 05-seedance-production.md); never retry an unchanged request | T1 on D1 decides the route |
+| Render failed or timed out | a local timeout is not a failure: `poll` the task ID, never resubmit a running task (05 §5.9). A task with status `failed` (not billed) may be resubmitted once unchanged with his yes; a moderation block needs a content change first; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
+| Input image rejected for a realistic face (`InputImageSensitiveContentDetected.PrivacyInformation`, third-party reports) | register the character in the ModelArk private virtual-portrait asset library and reference `asset://<id>`, or use the same-account trusted-output fallback (03-assets-images.md §3.3–3.4, 05-seedance-production.md); never retry an unchanged request or alter the face to slip past the check | T1 on D1 decides the route |
 | Prompt or audio rejected by content checks | change the content, not the wording trick; re-run the G1 check on that beat; log it | Buffer 1 (D12) |
 | Final differs from the approved draft (it is a new render) | re-review every final; re-draft if identity or action changed | inside reserve |
 | Draft expired | re-draft; the final cannot be made from an expired draft | Buffer 1 |
@@ -224,12 +226,12 @@ Each test answers one question that would otherwise break the calendar. Report r
 
 | Test | Question | Method | Pass |
 |---|---|---|---|
-| T1 Faces | Will Seedance accept our photoreal character references? | one GPT Image 2.5 Sunburst hero still → Seedance reference via BytePlus; on rejection, register it as a private virtual portrait, wait for Active, reference `asset://<id>`; repeat via Higgsfield | a working route for every human character |
-| T2 Lip-sync | Does Seedance sync to the supplied ElevenLabs v4 file, and does it keep the voice or re-voice it? | one Arabic line and one English line as audio references, `generate_audio` on; measure mouth offset in frames; compare the output voice to the input | offset ≤ 2 frames on a close-up; voice usable or a documented fallback |
+| T1 Faces | Will Seedance accept our photoreal character references? | one GPT Image 2.5 Sunburst hero still → Seedance reference via BytePlus; on rejection, register it as a private virtual portrait, wait for Active, reference `asset://<id>` (03 §3.4); repeat via Higgsfield once the user has reconnected that connector (BRIEF.md: it currently exposes no generate tools) | a working route for every human character |
+| T2 Lip-sync | Does Seedance sync to the supplied ElevenLabs v4 file, and does it keep the voice or re-voice it? | one Arabic line and one English line as audio references, `generate_audio` on (set it on the draft; the final inherits it); measure mouth offset in frames; compare the output voice to the input | offset ≤ 2 frames on a close-up; voice usable or a documented fallback |
 | T3 Draft → final | How far does the 1080p final drift from the 480p draft? | one draft, then its final; compare identity, action, timing | drift acceptable, or review rule tightened |
 | T4 Provenance | Does our export chain keep watermarks and content credentials? | inspect metadata of the raw final, the Premiere export and the uploaded file (exiftool; c2patool if available) | nothing applied by a tool is lost (cl. 5.6) |
 | T5 Intro | What is the official intro's spec? | download; ffprobe: duration, fps, resolution, audio layout | conform plan for 24 fps film + intro |
-| T6 Throughput | How many minutes per draft and per final, per route? | time T1–T3 jobs | daily queue sized to measured numbers |
+| T6 Throughput | How many minutes per draft and per final, per route, and what is the longest clip accepted? | time T1–T3 jobs; send one 30 s draft | daily queue and maximum shot length set from measured numbers |
 
 Record the Seedance `watermark` setting used (the parameter defaults to false in the Comfy mirror of the schema; verify) and disclose it.
 
@@ -263,8 +265,9 @@ with Seedance?
 
 [Optional — include only the points still unresolved on the day of sending]
 3. Is Dreamina Seedance 2.5 (model dreamina-seedance-2-5-260628) used through
-   the BytePlus ModelArk API, and through Higgsfield, an accepted version and
-   route under clauses 1.1 and 5.4?
+   the BytePlus ModelArk API, and through third-party platforms such as
+   Higgsfield or ElevenLabs, an accepted version and route under clauses 1.1
+   and 5.4?
 4. Are AI image models (GPT Image 2.5, Nano Banana, Midjourney) acceptable as
    reference inputs to Seedance, if fully disclosed?
 5. Is there a closing hour on 20 November 2026 (GST) and a maximum length for
@@ -284,11 +287,12 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 **G1 — Script gate** (end of D2; re-run on any rewrite, in 01-script-and-dialogue.md)
 - [ ] Theme named and visible in at least two scenes (5.3(e)).
 - [ ] No strong or offensive language; no nudity or sexual content; violence and disturbing imagery mild at most (9.1).
-- [ ] No depiction of drug, alcohol, tobacco or gambling use (9.1, 9.2(f); UAE std 11).
-- [ ] No self-harm or suicide, shown, attempted, planned or idealised, including inside dreams (9.2(d)).
+- [ ] No depiction of drug, alcohol, tobacco or gambling use (9.1, 9.2(f); UAE std 11, 12).
+- [ ] No sexual references, even spoken ones; romance stays modest (9.1; UAE std 8, 12).
+- [ ] No self-harm or suicide, shown, attempted, planned or idealised, including inside dreams (9.1, 9.2(d)).
 - [ ] Religion: scripture quoted accurately and respectfully; no line that mocks or rejects God, Islam or any faith (9.2(e); UAE std 1). Flag every religious line for a human Muslim/Emirati reviewer.
-- [ ] Nationalities, races, body types and classes portrayed with dignity; no stereotype played for laughs (9.2(c); UAE std 6, 8).
-- [ ] No government, ruler, national symbol, currency or institution shown in a demeaning way (9.2(e); UAE std 2, 14).
+- [ ] Nationalities, races, body types and classes portrayed with dignity; no stereotype played for laughs (9.2(c); UAE std 6, 7).
+- [ ] No government, ruler, national symbol, currency or institution shown in a demeaning way; hardship in Dubai is personal, never an exposé of the country (9.2(e), 9.2(k): "Affiliates" include any government entity or media office that supports the Summit, cl. 1.1; UAE std 2, 5, 14).
 - [ ] No political or propaganda content; nothing that could harm the UAE's foreign relations (9.2(g); UAE std 3, 4).
 - [ ] No real person, celebrity, real company, real product or real book written into the story (6.1(f), 7.5, 9.2(j)).
 - [ ] Title and in-world names searched for trademarks (6.1(d)).
@@ -305,13 +309,13 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 - [ ] Tool, model, version, account and plan logged for every asset (5.5(a)).
 
 **G3 — Picture-lock gate** (D15, in 07-edit-mix-finish.md)
-- [ ] Runtime: story 5:30–6:40; titles + story + credits ≤ 7:00.
+- [ ] Runtime: story 5:30–6:34; titles + story + credits ≤ 7:00.
 - [ ] Seedance picture share ≥ 90%; audio shares recorded per stem (0.4).
 - [ ] Re-run G1 on the cut as watched: violence, peril and fear stay mild; no drug, alcohol or tobacco objects in frame.
 - [ ] Frame-by-frame brand and text sweep; no real-person likeness drift in any shot.
 - [ ] Continuity and physics notes closed (ledger-continuity-physics.md).
 - [ ] Holdback intact: nothing posted; test viewers asked not to share (8.4).
-- [ ] This cut is the final cut for the Summit, festivals and the Oscars (0.11).
+- [ ] This cut is the final cut for the Summit, festivals and any later Oscar attempt (0.11); no "Episode 0" or pilot wording anywhere in it (F8).
 
 **G4 — Delivery gate** (D18, in 07-edit-mix-finish.md and 09-release-and-festivals.md)
 - [ ] File: 16:9, ≥ 1920×1080, MOV or MP4; Summit intro prepended unaltered; English subtitles burned in; textless master kept.
@@ -321,35 +325,42 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 - [ ] Provenance intact; no watermark or credential removed (5.6).
 - [ ] Evidence archive complete and backed up in two places for 24 months (5.5(b)).
 - [ ] Credits name the human roles (written and directed by, Blender blocking by, edited by) and the AI tools.
-- [ ] Private or unlisted link plays logged-out, at full resolution, with subtitles.
+- [ ] Private or unlisted link plays logged-out, at full resolution, with subtitles; the file behind it is never replaced or trimmed until the Award closes (5.8).
 - [ ] Holdback reminder set until the winner announcement on 10 Jan 2027 or a non-finalist notice.
 
 Worked example — G1 flags on `draft-v0-abostesha.md` (show the user; he decides each one in Step 1):
 
 | Draft v0 element | Rule hit | G-safe options to offer |
 |---|---|---|
+| Opening dream: HALO offers a million to whoever throws the weak cleaner Kabir into the pool; Rayan and two others do it; the girl's face turns monstrous | 9.1 (threatening or disturbing imagery), 9.2(d) | the crowd surges but the dream ruptures before anyone touches him; the face change becomes a glitch or freeze, not a horror mask |
 | Miraj puts khaini (chewing tobacco) in his lip; later bins the tin | 9.1, 9.2(f), UAE std 11 | a non-substance habit (chewing fennel seeds, worrying a cracked phone-ring); keep religious objects out of nervous habits; or make the 2nd Life minutes themselves the addiction he quits |
 | Drinks desi daru from the bottle | 9.1, 9.2(f) | counting dream-minute tokens under the bed; staring at the booth receipt |
 | Booth operator gives him a sedative "dose" | 9.1, UAE std 11 | a sleep tone through the ear device; a cold neural-crown click |
+| Noah: 2nd Life allows anything "except dreaming of murder or sex outside marriage" | 9.1 (sexual content, violence) | "anything, except harming another person"; keep the rule, drop the words |
 | Nuclear blast in the opening dream | 9.1 (disturbing imagery), 9.2(d) | a non-weapon rupture: the pool water rises into the sky, the sun switches off, the city folds |
 | Dream suicide jump from a future tower | 9.2(d) self-harm/suicide | cut it; an unintended dream fall with no intent, or the dream glitching him out |
 | "I don't want life, or heaven or hell, I want to disappear forever" | 9.2(d), 9.2(e), UAE std 1 | exhaustion without rejecting faith or wishing to die; human religious reviewer signs off |
 | Beats Kabir brutally in a ring | 9.1 violence | catharsis without impact: he shouts into an empty arena; cut on the swing |
 | Burns money in a fireplace | UAE std 14 if dirhams | fictional Mamo coin notes only |
-| Passenger singled out by race and body | 9.2(c), UAE std 6, 8 | crowding shown through heat, sweat and lack of space, nobody singled out |
+| Passenger singled out by race and body | 9.2(c), UAE std 6, 7 | crowding shown through heat, sweat and lack of space, nobody singled out |
+| Squalid workers' housing, the crowded workers' bus and filthy toilets; Miraj reads "Made in UAE" and says "land of opportunities!!!" sarcastically | 9.2(e) national identity, 9.2(k), 5.10; UAE std 5 | hardship shown as his personal low point with dignity, not a verdict on the country; Kabir's "land of opportunity" line and the Food+ payoff make the phrase sincere by the end |
 | "The Psychology of Money" by Morgan Housel | 7.5, 9.2(j), 6.1(d) | a fictional book title and cover |
-| "2nd Life" dream booths and title | 6.1(d): "Second Life" is a Linden Research trademark for a virtual world (USPTO reg. 2,832,935 per a UDRP decision; current status not checked) | trademark search before script lock; alternative in-world name kept ready |
+| His first car, the airport arrival, a famous Dubai street | 9.2(j), 6.1(d) | no car badge or model, no airline or airport branding, landmarks in the background only, never the subject |
+| Swims with the blonde girl; romance montage | 9.1, UAE std 8, 12 | modest wardrobe, no swimwear close-ups, or a different shared joy (a beach walk at dusk); the wedding carries the romance |
+| "2nd Life" dream booths and title (also the planned series title, BRIEF.md) | 6.1(d): "Second Life" is a Linden Research trademark for a virtual world (USPTO reg. 2,832,935, registered 13 Apr 2004, per a UDRP decision; current status not checked) | trademark search before script lock; alternative in-world and series name kept ready; the user decides, ideally with a trademark lawyer before the series pitch |
 | HALO assistant brand; "10 Billion Summit" | 6.1(d); 7.6 and 9.2(k) (echo of the Organizer's own summit) | trademark search for HALO; keep the fictional summit visually distinct, respectful, no Summit marks |
 | Noah and Kabir paraphrase the Qur'an | 9.2(e), UAE std 1 | exact wording from a recognised translation; human reviewer; consider whether a robot should quote scripture |
 | "Made in UAE" label on the robot arm | UAE std 2 if an official emblem is used | plain text only, no state emblem or government logo |
 
-### 0.11 Oscar path: Animated Short (100th Academy Awards)
+### 0.11 Oscar path: Animated Short (100th Academy Awards) — background only
+
+BRIEF.md: the Oscars are not a target now. Spend no production time on them. Keep only the decisions below, which cost nothing and also protect the festival run and the series pitch.
 
 Facts (verified 2026-10-30 against the 99th Rule Eight and Rule Seventeen PDFs on oscars.org):
 - Live Action is closed to this film: Live Action requires imagery and sound created primarily through practical photography of physical actors, props, sets and locations (Rule 17, I.C).
 - Animated (Rule 8, I.C): movement is created "by any human means"; at least 75% of running time, without credits, must include animation of the primary subjects; filmmakers must show how the film qualifies; the Animation Branch Executive Committee decides (II.C). A photoreal, 70%+ Seedance film is an untested fit.
-- Excluded: "alternate or re-edited versions" of shorts already publicly exhibited (I.B.2). The submitted film must be identical in content and length to the version that qualified, with commercial theatrical clearances; festival clearances are not enough (III.C).
-- Routes: a festival award on the Short Film Qualifying Festival List, "regardless of any prior public exhibition" (II.A.2), or a 7-day paid theatrical run in one of six US metros with no prior non-theatrical exhibition beyond 15% (II.A.1, II.B). The Organizer's licence to stream (Summit cl. 8.1) makes the festival route the practical one.
+- Excluded: "alternate or re-edited versions" of shorts already publicly exhibited (I.B.2), and works originally created as episodic television, which "may include pilots" or material from a limited series (I.B.4). So the film is a standalone short; "Episode 0" belongs only in the later series pitch. The submitted film must be identical in content and length to the version that qualified, with commercial theatrical clearances; festival clearances are not enough (III.C).
+- Routes (within two years of the film's completion, II.A): a festival award on the Short Film Qualifying Festival List, "regardless of any prior public exhibition" (II.A.2), or a 7-day paid theatrical run in one of six US metros with no prior non-theatrical exhibition beyond 15% (II.A.1, II.B). The Organizer's licence to stream (Summit cl. 8.1) makes the festival route the practical one.
 - English captions or subtitles required (III.A, III.D). At most two nominees: the credited director plus one key creative (IV.A).
 - The 99th cycle is closed. The 100th rules and festival list are **not published** (normally spring); the eligibility window is assumed to be 1 Oct 2026 – 30 Sep 2027 by past pattern (unconfirmed). The Summit award is not on the 99th qualifying list.
 - The Academy weighs "the degree to which a human was at the heart of the creative authorship" and may ask for details (Rule Two, para 7; research snapshot, not re-fetched today).
@@ -358,7 +369,7 @@ Decisions to record at Step 0:
 1. The Summit cut is the final cut. No director's cut or longer version later.
 2. No festival submission before the Summit outcome (cl. 5.3(b), 6.1, 8.4). Festival planning lives in 09-release-and-festivals.md.
 3. Designated nominees: AboStesha (director) plus, optionally, one key creative. Credit both exactly.
-4. Clearances bought for commercial theatrical use from the start: Suno paid tier at generation time; ElevenLabs Music needs an Enterprise licence for film use per BRIEF.md (06-music-and-sfx.md); font licences.
+4. Clearances for commercial theatrical use from the start: Suno paid tier active at generation time; ElevenLabs Enterprise plan (confirmed by the user 2026-10-30; record the contract and plan in the licence log before the first Eleven Music cue, 06-music-and-sfx.md); font licences.
 
 Human-authorship dossier, filled daily in `evidence/authorship/`:
 
@@ -380,11 +391,11 @@ Human-authorship dossier, filled daily in `evidence/authorship/`:
 أبوستيشا، هذا ملخص الخطوة 0 — <اسم الفيلم>
 • الموعد النهائي: الجمعة 20 نوفمبر 2026 (توقيت الخليج) — نخطط للتسليم الأربعاء 18 نوفمبر.
 • المحور المقترح: <خيار 1> أو <خيار 2> — القرار لك.
-• المدة: القصة 5:30–6:40، والمجموع مع العنوان والتترات ≤ 7:00. تقديرنا للمسودة الحالية: <م:ث>.
+• المدة: القصة 6:00–6:30 عند اعتماد السيناريو (وحدّها الأقصى عند تثبيت المونتاج 6:34)، والمجموع مع العنوان والتترات ≤ 7:00. تقديرنا للمسودة الحالية: <م:ث>.
 • نسبة Seedance: هدف الصورة ≥ 90%. الصوت: ننتظر رد المنظمين (الرسالة جاهزة).
 • مخاطر اليوم الأول: الوجوه الواقعية، مزامنة الشفاه، الفرق بين المسودة والنسخة النهائية، بيانات المصدر.
 • ملاحظات الامتثال على المسودة: <عدد> نقطة (الجدول مرفق) — نقرر كل نقطة في الخطوة 1.
-• الأوسكار: فئة الرسوم المتحركة فقط، ونسخة القمة هي النسخة النهائية.
+• الأوسكار: ليس هدفاً الآن. نكتفي بقرارات مجانية: نسخة القمة هي النسخة النهائية، والفيلم قصة مستقلة لا تُسمّى "الحلقة 0".
 ```
 
 **Calendar** — the 0.7 table with Arabic headers (اليوم · التاريخ · Claude · أبوستيشا · صديق Blender · بوابة نهاية اليوم), dates filled, lock days in bold.
@@ -417,12 +428,12 @@ ASK 1 — <سؤال للمنظمين أو لمراجع بشري>
 1. One film or two; if two, the stagger and both go/no-go dates.
 2. Theme per film, and the rubric map.
 3. Runtime budget and the current length estimate with cut candidates.
-4. The calendar, including the collaborator's confirmed days and the three lock dates: script D3, animatic D7, picture D15 (D14/D16 in two-film mode).
+4. The calendar, including the collaborator's confirmed days and the three lock dates: script D3, animatic D7, picture D15 (Film B, if any: D6, D10, D16).
 5. The Organizer email: sent by the user, with the date logged.
 6. The G1 flag table on the draft: acknowledged (decisions happen in 01).
 7. The D1 risk-test plan and its spend.
 8. Collaborator agreement: rights assignment and credit signed; named for the AI Disclosure (cl. 6.1(b)).
-9. Acknowledgement of the holdback and the Organizer's perpetual licence (cl. 8.1, 8.4), and that the Summit cut is the Oscar cut.
+9. Acknowledgement of the holdback and the Organizer's perpetual licence (cl. 8.1, 8.4), that the Summit cut is the final cut for every later use, and that no series pitch, screener or option happens before the holdback ends.
 
 Do not assume approval from silence or partial agreement. Wait for an explicit "اعتمد" or equivalent.
 
@@ -433,10 +444,10 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 | Failure | Prevention |
 |---|---|
 | Planning to submit on 20 Nov | No closing hour is published; submit D19, keep D20–D21 empty |
-| Treating "max 7 min" as the only limit | 5:00 minimum too; story 5:30–6:40, total ≤ 7:00 |
+| Treating "max 7 min" as the only limit | 5:00 minimum too; story 5:30–6:34, total ≤ 7:00 |
 | Assuming the 70% is picture-only | The Terms say visual and audio; plan to R1+R2, keep R3 feasible, ask in writing |
 | Title cards and credits on black | They eat the non-Seedance allowance; put them over Seedance plates |
-| Drafts left to expire | Finalize or kill every approved draft before day 5 of its 7-day life |
+| Drafts left to expire | Finalize or kill every approved draft before it is 5 days old (official life 14 days, mirrors say 7) |
 | Losing outputs | URLs expire after 24 h; download in the same hour |
 | Discovering the face block on D7 | T1 on D1; register every character before D7 |
 | Fixing a moderation reject by rewording the same content | Change the content; re-run G1 on that beat |
@@ -444,7 +455,9 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 | Posting a teaser or BTS clip | Holdback breach disqualifies (cl. 8.4, 13.1(g)) |
 | Entering a festival "just to test" | Breaks cl. 5.3(b); festivals only after the Summit outcome |
 | Re-cutting after the Summit for festivals | Academy excludes re-edited versions of publicly shown shorts |
-| ElevenLabs Music on a self-serve plan | Film use needs an Enterprise licence per BRIEF.md; decide on D0–D2 |
+| Eleven Music cue with no licence record | Enterprise plan confirmed 2026-10-30; log the contract and plan before the first cue |
+| Calling the film "Episode 0" or a pilot | Risks the "complete story" rule (F8) and invites the Academy's episodic exclusion (I.B.4); series wording only in the pitch, after 10 Jan |
+| Swapping the file behind the submitted link | Cl. 5.8: the link stays live and unaltered until the Award closes |
 | Fonts missing from the licence log | Fonts are named in cl. 5.5(c) |
 | Exporting in a way that strips content credentials | T4 on D1; keep raw finals untouched |
 | Collaborator not named or not assigned rights | Breaks cl. 6.1(b), 6.1(c); sign on D0 |
@@ -455,10 +468,10 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 
 ## Verification stamp and sources (checked 2026-10-30)
 
-- Award page and Terms (last updated 12/10/2026): https://www.1billionsummit.com/ai-award-2027 and https://www.1billionsummit.com/ai-award-2027/terms-and-conditions — fetched today; clauses 1.1, 2.2, 4–9, 11.3, 13.1, 20.10 as cited.
-- Oscars 99th Rule Eight (Animated Short) and Rule Seventeen (Live Action Short): https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf, https://www.oscars.org/sites/oscars/files/2026-05/99th%20Live%20Action%20Short%20Rules.pdf — read today. 100th rules: not published (search today).
-- UAE Media Council 20 content standards: Gulf News summary (June 2025), https://gulfnews.com/uae/uae-media-law-media-must-follow-20-key-standards-to-avoid-fines-of-up-to-dh1m-1.500157204 — secondary source.
-- Seedance 2.5 draft (7-day draft validity, 480p draft, 1080p-only final), 24 h URLs, `watermark` default, 4–30 s at 24 fps: Comfy mirror of the BytePlus schema, https://docs.comfy.org/development/comfy-router/models/byteplus/dreamina-seedance-2-5-260628/code — third-party; BytePlus docs did not render. Conflicts with BRIEF.md (14 days): unresolved.
-- Real-face rejection and asset library route: third-party guides (laozhang.ai, apiyi); verify in the BytePlus console.
-- "Second Life" trademark: UDRP decision https://www.adrforum.com/DomainDecisions/1089130.htm and https://secondlife.com/corporate/brand-faq — current registration status not checked.
+- Award page and Terms (last updated 12/10/2026): https://www.1billionsummit.com/ai-award-2027 and https://www.1billionsummit.com/ai-award-2027/terms-and-conditions — fetched today; clauses 1.1, 2.2, 4–9, 11.2–11.3, 13.1, 14.1, 20.8, 20.10 as cited. Intro download: the Google Drive folder linked from "Download the intro" on the page.
+- Oscars 99th Rule Eight (Animated Short) and Rule Seventeen (Live Action Short): https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf, https://www.oscars.org/sites/oscars/files/2026-05/99th%20Live%20Action%20Short%20Rules.pdf — read today (I.B.2, I.B.4, I.C, II.A–C, III.C–D, IV.A). 100th rules: not published (search today).
+- UAE Media Council 20 content standards: Gulf News summary (June 2025), https://gulfnews.com/uae/uae-media-law-media-must-follow-20-key-standards-to-avoid-fines-of-up-to-dh1m-1.500157204 — secondary source; the standard numbers used here follow its list (re-checked today).
+- Seedance 2.5 draft (7-day draft validity, 480p draft, 1080p-only final), 24 h URLs, `watermark` default, 4–30 s at 24 fps: Comfy mirror of the BytePlus schema, https://docs.comfy.org/development/comfy-router/models/byteplus/dreamina-seedance-2-5-260628/code — third-party; BytePlus docs did not render. The 7-day draft life is also stated by Oxen and APIYI docs (re-checked today). The official BytePlus tutorial, read as Markdown later the same day for 05-seedance-production.md, gives 14 days for drafts created after 2026-10-28 10:00 UTC+8 (other task IDs 7 days), which matches BRIEF.md; the 5-day house rule covers both. The Comfy page's own duration ranges conflict (4–30, 2–30, 3–12 s); T6 measures the real limit. `generate_audio` defaults to true and a final inherits it from its draft (same page).
+- Real-face rejection and asset library route: third-party guides (laozhang.ai, apiyi) plus the BytePlus pages cited in 03-assets-images.md §3.3; verify in the BytePlus console.
+- "Second Life" trademark: UDRP decision https://www.adrforum.com/DomainDecisions/1089130.htm and https://secondlife.com/corporate/brand-faq — registration of 13 Apr 2004 confirmed in the decision; current status not checked.
 - Carried over from the user's own earlier skills (cinematic-pipeline: explicit lock prompts, no approval from silence, Arabic address; higgsfield-generate: quality first, no cost optimisation unless asked), paraphrased.
