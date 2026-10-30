@@ -2,8 +2,10 @@
 
 Date: 2026-10-30. Owner: AboStesha (AI filmmaker, Arabic speaker).
 
-## Goal
-Make 1 (maybe 2) world-class, ultra-realistic, physically plausible AI short films for the **AI Film Award 2027** at the 1 Billion Followers Summit (Dubai), then pursue the **100th Oscars** (Animated Short route via a 2027 Oscar-qualifying festival win). Budget is open: always choose the highest-quality option, not the cheapest.
+## Goal (updated 2026-10-30)
+Priority #1 is winning the **AI Film Award 2027** at the 1 Billion Followers Summit (Dubai) with one world-class, ultra-realistic, physically plausible AI short. Finish film 1 completely first; film 2 only if time remains. The Oscars are NOT a target for now. After 10 Jan 2027 (end of holdback) the film goes to other competitions/festivals and is pitched as **"Episode 0" of a 7-episode "Second Life" mini-series** to international production companies and platforms (the user owns the IP — Terms cl. 7.1; non-exclusive licence to the Organizer — cl. 8.2/8.3). Budget is open: always choose the highest-quality option, not the cheapest.
+
+Content Standards (Terms cl. 5.3(f), 6.1(g), 9.1–9.3, 13.1(e)): rated G for all ages without parental guidance; no strong/offensive language, nudity or sexual content; violence or threatening/disturbing imagery only if mild; no depiction of drug, alcohol, tobacco or gambling use; nothing hateful/discriminatory (race, religion, nationality…); nothing promoting/glorifying self-harm or suicide; nothing disrespecting Islam, other religions or religious practices, or offending UAE public morality, national identity, rulers, government, institutions or symbols. The Organizer decides compliance at its sole discretion — when in doubt, cut.
 
 ## User decisions (locked)
 - Chat with the user in **Arabic**; every generation prompt (image, video, music, SFX, TTS direction) in **English**.
@@ -28,7 +30,7 @@ Make 1 (maybe 2) world-class, ultra-realistic, physically plausible AI short fil
 - Film must not be previously released or entered in any other competition; holdback — no public release, clips, or shortlist reveal until the winner announcement / non-finalist notice. Organizer gets a perpetual non-exclusive licence incl. festivals & streaming. Celebrity/brand use implying endorsement is prohibited.
 - 2026 winner "Lily" (Tunisia): small human story of guilt/confession; jury praised that it used tools to serve a moving narrative, not to show off. All 2026 Top 5 were intimate, small-cast, emotional/moral arcs.
 
-## Oscar facts
+## Oscar facts (background only — not a current target)
 - 99th closed. Target 100th (2028). Live Action needs practical photography → ineligible. Animated Short (≥75% animation, "human means", Animation Branch decides) is the only path and untested for photoreal AI → document human authorship at every step. Summit award is not Oscar-qualifying; route = win a qualifying festival award in 2027 (list: Clermont-Ferrand, Annecy, Palm Springs, Tampere, Cairo IFF, Beirut Shorts…; no UAE/Saudi festival). The Summit cut must be the final cut (re-edited versions of publicly shown shorts are excluded). Theatrical DCP needed later.
 
 ## Tool facts (Oct 2026)

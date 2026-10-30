@@ -1,0 +1,432 @@
+# 02 — Style Prefix: Lock the Film Look (Step 2)
+
+**Purpose.** Turn the user's reference film title and/or frames into a verified, measured look for his own film: real production facts, observed evidence, and per-sequence variants (reality vs the 2nd Life dream).
+**Output.** One locked master prefix (`LOOK vX.Y`), mechanical adapters for GPT Image 2.5, Nano Banana Pro / 2.1, Midjourney V8.2 and Seedance 2.5, approved look frames, a Seedance look test and a style-lock card.
+**Rule.** No asset in 03-assets-images.md and no prompt in 05-seedance-production.md is written before the Step 2 Gate passes. Calendar slot: exploration on D2, lock on D3 (00-award-brief-and-calendar.md §0.7).
+
+Talk to the user in Arabic (Modern Standard Arabic, addressing him as أبوستيشا). Write every prefix, adapter and prompt in English.
+
+---
+
+## Inputs
+
+| Input | Where | Required |
+|---|---|---|
+| Locked script and its sequence list | output of 01-script-and-dialogue.md | yes; variants follow sequences |
+| Rubric map, "Creativity & Aesthetic" line | 00-award-brief-and-calendar.md §0.3 (film 01: real world = handheld, harsh noon light; dream = locked-off, impossible geometry) | yes |
+| Reference film title(s) | the user | a title, frames, or both |
+| Reference frames or clips (6–12 varied stills per film) | the user's upload → `films/<id>/02-style/reference-frames/` (git-ignored, never uploaded anywhere) | strongly recommended |
+| The user's own words about the look | chat, in Arabic | optional |
+| Production locks | 00: 16:9 container, ≥1920×1080, Seedance 2.5 primary (24 fps output), G-rated | yes |
+| Generator access | Higgsfield MCP (BRIEF: must be reconnected; today it exposes no generate_* tools), ElevenLabs MCP image models, Midjourney web (manual), BytePlus ModelArk key | check on D2 morning |
+
+---
+
+## Hard rules (every sub-step)
+
+1. **Reference frames are evidence, never inputs.** Never upload a frame, still, poster, trailer or clip from the reference film, or any image the user does not own, to any generator. That covers `--sref`, Midjourney image prompts and Edit-model references, GPT Image / Nano Banana references, and Seedance `@Image` / `@Video`. Claude views them for analysis only. Add `films/*/02-style/reference-frames/` to `.gitignore` before the first upload.
+2. **No names in prompts.** Never put the reference film's title, its director, DP, actors, characters, or any camera, lens or stock brand or model in a generation prompt. Those names belong in the Look Bible only (2.4). Why: Terms cl. 6.1(d), 7.5 and 9.2(j) (00 R2); Higgsfield's official rule for Seedance block prompts bans director, signature-work and equipment names; and Midjourney is a defendant in studio copyright suits.
+3. **No real people.** No actor's face as a reference, no "looks like <person>", no lookalike (00 R1, G2).
+4. **Transfer mechanisms, not identity.** Take the light logic, colour roles, lens tendency and texture. Leave out signature production design, costumes, logos, iconic compositions and shot-for-shot recreations.
+5. **Evidence discipline.** Quoted from ajinnaaa/extract-visual-style-2 (MIT):
+   > "Never infer a specific camera, lens model, sensor, stock, LUT, software, or production method from appearance alone. Verify production facts or describe only the visible effect."
+6. **Parameters are job settings.** Aspect ratio, resolution, duration, frame rate and quality never appear in prompt prose. "8K", "IMAX", "16:9" and "24fps" written in the text set nothing.
+7. **Declarations, not blacklists.** Every line states the state that must hold. Short lock tails inside a declaration ("photographed, never rendered"; "No music. No subtitles.") are fine. `negative:` lists are not: Seedance has no negative-embedding channel and parses them as scene content.
+8. **Seedance bracket channels.** In Seedance 2.5, `()` is music, `<>` is SFX, `{}` is dialogue and `【】` is subtitles (official guide, as transcribed in the user's seedance-2-5-prompts skill). The Seedance style block contains none of these characters, so "47° (50mm)" becomes "about a 47-degree field of view".
+
+---
+
+## Procedure
+
+### 2.1 Intake (D2, first hour)
+
+1. Ask in Arabic: which film or films, and what exactly he loves in each (light, colour, camera movement, texture, composition, a specific scene's mood). Also ask which part of his film it is for: reality, dream, or both.
+2. Ask for 6–12 stills per reference film, taken from his own legally obtained copy, or one short clip. Name the variety you need: day exterior, night exterior, day interior, night interior, a wide, a close-up with skin, a practical-lit shot, and a moving shot if a clip is available.
+3. Pull the sequence list from the locked script (01). For each sequence record world (reality / dream / broadcast), location, time of day, and emotional function.
+4. Copy the production locks from 00. Ask whether a scope matte is wanted. Recommend **full-frame 16:9 with no matte**: a 2.39:1 matte inside 1920×1080 leaves about 1920×804 active picture, which is a needless risk against the "≥1080p" rule (00 F4). Seedance ratio for every shot: `16:9`.
+5. Create `films/<id>/02-style/` with `reference-frames/` (git-ignored), `look-frames/`, `prefix/` and `look-bible.md`.
+6. **If he gives no reference at all:** build three PROPOSED directions from the rubric map. Each gets one paragraph and one look frame (2.8). He picks one, then continue from 2.4.
+
+### 2.2 Research the real production facts (when a title is given)
+
+Never fill a gear field from memory. LLM gear tables are demonstrably wrong: one popular skill lists Blade Runner 2049 as "Venice 2 + Canon K-35", but ARRI's own news page credits ALEXA XT Studio cameras and Master Prime lenses.
+
+**Source ladder** (search in this order, and label every field with the tier it came from):
+
+| Tier | Sources | Label |
+|---|---|---|
+| 1 | DP or colorist in American Cinematographer / theasc.com, British Cinematographer, ICG Magazine; manufacturer case studies (ARRI, Sony, RED, Panavision, Zeiss, Cooke); official production notes | VERIFIED |
+| 2 | Trade-press interviews quoting the DP or colorist (Filmmaker Magazine, IndieWire craft, postPerspective, No Film School) | VERIFIED if quoted directly, else REPORTED |
+| 3 | IMDb technical specs, shotonwhat, colour-analysis blogs, single unsourced sites | REPORTED |
+| — | Claude's memory, other skills' tables | never a source |
+
+**Queries** (WebSearch first; WebFetch the best hits):
+```
+"<TITLE>" <DP NAME> American Cinematographer camera lenses
+site:theasc.com "<TITLE>"
+"<TITLE>" ARRI OR Sony OR RED OR Panavision cinematographer
+"<TITLE>" colorist grade LUT interview
+"<TITLE>" aspect ratio spherical OR anamorphic
+```
+theasc.com, britishcinematographer.co.uk and imdb.com often return 403 or an empty page to WebFetch (seen 2026-10-30). When that happens, use the search snippets plus a manufacturer page, and label the field honestly.
+
+**Tech sheet** (written into `look-bible.md`, never into a prompt):
+```
+TECH SHEET — <TITLE> (<YEAR>) — DP <NAME> — colorist <NAME | UNKNOWN>
+Field                          | Value | Label    | Source + date checked
+Camera body / sensor format    |       |          |
+Lens family; spherical/anamorphic (squeeze) |  |  |
+Focal-length habits            |       |          |
+Aspect ratio (theatrical/alt)  |       |          |
+Capture (raw digital / film stock) |   |          |
+Lighting approach (DP's words) |       |          |
+Grade / LUT / print emulation  |       |          |
+Filtration / diffusion         |       |          |
+Camera-movement habits         |       |          |
+```
+
+**Worked example**, using a film the user's draft itself names for its leading-line class compositions ("مثل فيلم باراسايت"):
+```
+TECH SHEET — Parasite (2019) — DP Hong Kyung-pyo — colorist UNKNOWN
+Camera body / sensor format | ARRI ALEXA 65, 65mm-class sensor  | VERIFIED | arri.com news page (checked 2026-10-30)
+Lens family                 | ARRI Rental Prime DNA             | VERIFIED | same page
+Extra Hasselblad lenses     | claimed by one blog               | REPORTED | single source; do not use
+Aspect ratio                | 2.39:1 spherical                  | REPORTED | colour-analysis site only
+Why large format            | wider, encompassing frames without an ultra-wide lens | REPORTED | PremiumBeat paraphrase
+```
+Transferable mechanism, written as an effect: "wide field of view with natural, undistorted perspective; architectural lines stay straight; space and level differences separate characters." What stays out of every prompt: the title, the house design, the staircase layouts, the cast.
+
+### 2.3 Audit and measure the frames
+
+1. **Adequacy label** (from ajinnaaa): 1 still = provisional; 2–5 varied stills = tentative; 6+ stills covering different subjects, light conditions and shot sizes = series-level evidence. Print the label next to every conclusion it limits.
+2. **From a clip:** extract one frame per distinct shot, for analysis only:
+   `ffmpeg -i ref.mp4 -vf "select='gt(scene,0.3)',scale=960:-1" -fps_mode vfr reference-frames/f_%03d.png`
+   Claims about camera movement or cutting rhythm are OBSERVED only from clips, never from stills.
+3. **Measure.** Write this to the scratchpad and run it with `python3 -I measure_frames.py reference-frames/*.png > measurements.txt`. It needs Pillow and numpy and was tested on 2026-10-30.
+```python
+import sys
+from PIL import Image
+import numpy as np
+for p in sys.argv[1:]:
+    im = Image.open(p).convert("RGB"); im.thumbnail((640, 640))
+    a = np.asarray(im, dtype=np.float32) / 255
+    y = a @ np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)   # luma on display-encoded values
+    p1, p50, p99 = np.percentile(y, [1, 50, 99])
+    clip, crush = (y > 0.98).mean() * 100, (y < 0.02).mean() * 100
+    sat = np.asarray(im.convert("HSV"), dtype=np.float32)[..., 1].mean() / 255
+    tint = lambda m: '#%02x%02x%02x' % tuple(int(v * 255) for v in a[m].mean(0))
+    shadow, high = tint(y <= np.percentile(y, 15)), tint(y >= np.percentile(y, 85))
+    q = im.quantize(colors=6, method=Image.Quantize.MEDIANCUT); pal = q.getpalette(); n = im.width * im.height
+    sw = ['#%02x%02x%02x %d%%' % (*pal[i*3:i*3+3], round(c * 100 / n)) for c, i in sorted(q.getcolors(), reverse=True)]
+    print(f"{p}\n  luma p1/p50/p99 {p1:.2f}/{p50:.2f}/{p99:.2f}  clipped {clip:.1f}%  crushed {crush:.1f}%  mean sat {sat:.2f}"
+          f"\n  shadow tint {shadow}  highlight tint {high}\n  6 clusters: {', '.join(sw)}")
+```
+   How to read it: p1 near 0.00 with crush above 3% means crushed blacks; p1 at 0.04–0.08 means lifted, milky blacks. Clipped above 1% means hard highlight clipping. A shadow tint bluer than the highlight tint means a warm/cool split. Clusters are MEASURED values, but a cluster may be production-design colour (a painted wall) rather than grade, so assign each one an owner in step 5.
+4. **Observe per system** (ajinnaaa film.md order): lens and composition (shot sizes, camera height, focal tendency, depth of field, symmetry, negative space); exposure and lighting (key/fill relationship, source direction and motivation, practicals, haze, highlight roll-off, black density); colour pipeline (environment, costume, skin, accent, shadow hue, contrast curve); materials; texture and finishing (grain size and structure, halation, diffusion, sharpening). Halation is a thin warm fringe only where a genuinely bright highlight meets a dark area; it is not a global glow. Digital noise is not film grain unless its structure shows it.
+5. **Separate four kinds of information** (ajinnaaa): *content* (identities, objects, places, story), *transferable style*, *production locks* (16:9, Seedance, G rating), *scene locks* (one shot only). Only transferable style may enter the prefix.
+6. **Reference ledger** (adapted from calesthio/generative-media-skills):
+
+| # | Observed evidence (frame IDs) | Transferable mechanism | Exclude (identity-bearing) | Label · confidence |
+|---|---|---|---|---|
+| 1 | f_002, f_007: daylight enters only through windows; faces about one stop under the window | "every light has a visible source; faces sit about one stop under the brightest background" | the house's window design | OBSERVED · high (6 frames) |
+| 2 | f_004: low camera, stairs rising out of frame between two people | "level differences separate characters of different status" | the staircase design | OBSERVED · medium (2 frames) |
+| 3 | measured shadow tint #1d2329 vs highlight #e6d3b8 | "cool shadows, warm highlights, restrained split" | — | MEASURED · high |
+
+### 2.4 Write the Look Bible (documentation only, never pasted into prompts)
+
+`look-bible.md` holds the tech sheet (2.2), the measurements and ledger (2.3), DP and film names, and the systems below. It keeps the user's old 12-pillar skeleton, corrected:
+
+| Old pillar | Keep as | Correction |
+|---|---|---|
+| Style: "8K IMAX" | MEDIUM | resolution and format words removed; one medium anchor, e.g. "photographed live-action, never rendered" |
+| Cinematography: DP × DP | Bible only | names translated into observable laws: light law, contrast curve, roll-off, lens tendency |
+| Lighting + "forbidden" list | LIGHT LAW + per-variant LIGHT | positive law; white balance in Kelvin, fixed per scene; haze in % or metres; left/right from camera |
+| Color 60:30:10 | COLOR | 4–6 hex swatches by role (shadow, midtone, highlight, skin, accent), each attached to a surface or light source; ratios are flexible ranges; one saturated accent reserved for the story |
+| Camera: "physical cine lens" | CAPTURE + lens ladder | sensor-format feel, spherical/anamorphic rendering, angle-of-view intent, depth-of-field policy, shutter feel, texture |
+| Skin | TEXTURE | pores, vellus hair, sweat or oil by condition, fabric weave, wear |
+| Acting | PERFORMANCE (one line) | detail owned by 05b-acting-direction.md |
+| Physics | PHYSICS | dream exceptions declared per shot in ledger-continuity-physics.md |
+| Composition | COMPOSITION (optional line) | only if it is a true invariant |
+| Continuity | CONTINUITY | always the second-to-last line |
+| Technical: "24 fps" | removed | a job setting (Seedance outputs 24 fps; there is no fps field) |
+| Audio | AUDIO | always the last line; BRIEF: Seedance renders SFX only, never music |
+
+Lens rule (calesthio, MIT): record "angle-of-view intent, subject distance, and sensor assumption—not a millimeter number alone." Keep a **lens ladder** in full-frame-equivalent mm with the diagonal-FOV anchors used in Seedance text: 24mm ≈ 84°, 35mm ≈ 63°, 50mm ≈ 47°, 85mm ≈ 29°, 135mm ≈ 18°. That degrees-beat-millimetres behaviour is a field claim (A0339x, OSideMedia), not a measured one. 04-blender-blocking.md builds Blender cameras with a 36 mm sensor width, sensor fit Horizontal, and these focal lengths.
+
+**Project invariants:** write 3–7. Each must be visible in a frame, reusable across different scenes, testable by another person, and independent of any named character or place. They become the acceptance checklist in 2.8 and 08-judge-panel.md.
+
+### 2.5 Per-sequence variants and the colour script
+
+The stable core holds across the whole film. A **variant** may replace only the LIGHT, COLOR and CAMERA lines, plus a PHYSICS EXCEPTION line in the dream. Build variants by visual condition and world, not by story location. Do not average reality and dream into one look. A coherent film needs the same governing logic, not identical brightness.
+
+**The dream must differ from reality on at least two axes** (camera behaviour plus light quality), so the audience reads every world switch without a title card. This serves the Creativity & Aesthetic score (20) and the AI Integration idea in 00 §0.3.
+
+Film 01 starting variants. All values are PROPOSED until the reference research or the user changes them:
+
+| ID | Covers | LIGHT | COLOR | CAMERA |
+|---|---|---|---|---|
+| R-DAY | streets, bus, metro walkway, workshop, Kabir | hard high sun at 5600K from above and behind camera left; short crisp shadows; dust haze visible at 30 metres; heat shimmer over asphalt | sun-bleached; saturation held low except skin and the reserved green | handheld, gentle breathing drift, operator at body height |
+| R-INT | shared room, washrooms, booth shop | one cool overhead fluorescent tube at 4000K plus one warm 3200K practical in frame; fast falloff to the walls; haze 10% | cool greenish walls, warm pool around the practical; deep shadows keep detail | handheld, close, slower drift |
+| DREAM | every 2nd Life sequence | soft, shadowless light at 6500K from no visible source; every surface evenly exposed; air perfectly clear | richer saturation, pure whites, spotless polished surfaces; slightly too perfect | locked-off frames or perfectly smooth glides; exact symmetry |
+| BROADCAST | Noah's stage feed seen in the lens HUD | bright, even, high-key stage light at 5600K; soft frontal key, clean rim | neutral whites, glossy dark stage floor | locked-off broadcast framing, slow motorised push-ins |
+| FINALE | Food+ montage → mother's arrival → wedding | low warm sun at 3500K behind the subjects, long shadows, soft natural flare | warm golden highlights; saturation one step above R-DAY | steadied handheld, calmer than R-DAY |
+
+DREAM also carries `PHYSICS EXCEPTION: only [the scripted impossible event] breaks physics; everything else keeps real weight.` Name the event per shot and log it in ledger-continuity-physics.md.
+
+**Reserved looks.** One saturated accent belongs to one story element: here, the assistant ring-light green #3BD16F, seen only on assistant devices. Golden hour is reserved for FINALE: no earlier sequence uses low warm sun. Write these reservations in the Bible; the prompt only describes what is present.
+
+**Colour script.** Fill from the locked script (01); this is the draft v0 order:
+
+| Seq | Content (neutral summary) | Variant | Kelvin | Saturation | Contrast | Camera |
+|---|---|---|---|---|---|---|
+| 1 | opening dream around the pool | DREAM | 6500 | high | soft | locked / glide |
+| 2 | wake in the booth, out into the noon sun | R-INT → R-DAY | 4000/3200 → 5600 | low | high | handheld |
+| 3 | bus, walkway, metro, Noah in the lens | R-DAY + BROADCAST inside HUD | 5600 | low | high | handheld |
+| 4 | room, call with mother | R-INT | 4000/3200 | low | medium-high | handheld close |
+| 5 | 2nd Life dream sequence (content per G1 fixes) | DREAM | 6500 | high | soft | locked / glide |
+| 6 | Kabir, work, the Food+ idea | R-DAY | 5600 | low → medium | high | handheld |
+| 7 | Food+ montage, mother arrives, "Alhamdulillah" | FINALE | 3500 | medium-high | soft | steadied |
+
+**Fold rule** (OSideMedia): if the same line is overridden in three or more shots, it belongs in a variant (or a new variant), not in per-shot edits. Fold it, version the look, and re-render what changed.
+
+### 2.6 Compile the master prefix (the ONE locked text)
+
+Shape, from OSideMedia's 13-project harvest (MIT), quoted: "one axis per clause, each a hard positive rule, always ending on continuity/no-drift + audio policy."
+
+```
+LOOK v<X.Y> — <FILM> — STABLE CORE
+MEDIUM: [one medium anchor + 1–2 supporting tokens].
+CAPTURE: [sensor-format feel], [spherical|anamorphic rendering], [angle-of-view tendency as visible effect], [depth-of-field policy], [shutter feel], [texture policy].
+LIGHT LAW: [motivation rule]; [highlight roll-off]; [black density]; [face-to-background exposure relationship].
+COLOR: [swatch role + hex attached to a surface or light] ×3–5; [reserved accent + its only owner].
+TEXTURE: [skin], [fabric], [metal/glass] — each a visible behaviour.
+PHYSICS: [gravity, weight, contact rule].
+PERFORMANCE: [one-line register from 05b].
+CONTINUITY: [identity lock].
+AUDIO: [diegetic policy]. No music, no background music, no score. No subtitles.
+--- VARIANT [ID] (adds to the core; replaces nothing above) ---
+LIGHT: [source, direction from camera, Kelvin, shadow quality, haze % or metres].
+COLOR: [shift from core].
+CAMERA: [movement behaviour].
+```
+Compile rules:
+- Each line is a declaration. No "cinematic", "masterpiece", "8K", "IMAX", "hyperrealistic". One style anchor plus one or two supporting tokens beats a long adjective list.
+- No numbers that are job settings. Numbers that describe the world are wanted: Kelvin, haze %, metres, stops.
+- No names of films, people or gear. No `()`, `<>`, `{}`, `【】` anywhere.
+- Hex values are never a bare list. Attach each to a surface or light source.
+- Budget (house guidance, not a model limit): the master core may run to about 230 words because it is the full record. Compiled adapters are shorter: the Seedance "visuals feature" paragraph, core plus variant, stays at or under about 130 words, the Midjourney string at 30–50 words, and each variant at 30–50 words. The shot's own content keeps most of the prompt.
+
+**Worked example: film 01, LOOK v0.1 (PROPOSED, before any reference research)**
+```
+LOOK v0.1 — 2nd Life: Ascent — STABLE CORE
+MEDIUM: Photographed live-action drama with real optics and real materials; every frame reads as filmed on location, never rendered.
+CAPTURE: Large-sensor feel with spherical lenses; wide, undistorted perspective with straight architectural verticals; moderate depth of field that keeps the room readable behind faces; 180-degree shutter motion blur; clean capture with fine, even sensor texture.
+LIGHT LAW: Every light has a visible or implied source: sun, sky, windows, screens, practical fixtures. Highlights roll off softly and never clip on skin; blacks are dense but keep detail; faces sit about one stop under the brightest part of the background.
+COLOR: Pale ochre dust and concrete #C9B79C fill the world; shadows fall to cool slate #2E3640; skin keeps its natural warm brown; the assistant ring-light green #3BD16F is the only saturated colour and appears only on assistant devices.
+TEXTURE: Skin shows pores, fine vellus hair and heat sweat; cotton shows weave, fading and wear; metal shows fine scratches; glass carries true reflections.
+PHYSICS: Gravity and inertia respected; every object has real weight and a contact shadow.
+PERFORMANCE: Naturalistic and restrained; eyes always working on a target; breath visible in the chest.
+CONTINUITY: Characters, wardrobe, props and environments stay identical to their references across every cut; no identity drift.
+AUDIO: Diegetic sound effects and ambience; dialogue only where the shot scripts it. No music, no background music, no score. No subtitles.
+```
+Save as `prefix/master.txt`, and each variant as `prefix/variant-<ID>.txt`.
+
+### 2.7 Model adapters (compiled mechanically from master.txt; never re-worded per shot)
+
+**Verified parameter snapshot (2026-10-30).** Re-check anything older than 14 days before quoting it.
+
+| Model | Ids / params used here | Status |
+|---|---|---|
+| GPT Image 2.5 | `gpt-image-2.5-sunburst` (precision, hero) / `gpt-image-2.5-flare` (fast); quality `low·medium·high·xhigh·max·auto`; size: edges multiples of 16, max edge 3840, ratio 1:3–3:1, 655,360–8,294,400 px, above 2560×1440 "experimental"; background `opaque` | VERIFIED, OpenAI image-generation guide |
+| Nano Banana 2.1 | `gemini-nano-banana-2.1` (stable); `image_size` `1K·2K·4K` (uppercase; lowercase is rejected); up to 14 references, at most 4 characters and 10 objects; no style-reference slot listed; thinking `minimal·medium·high` | VERIFIED, ai.google.dev (updated 2026-10-29) |
+| Nano Banana Pro | `gemini-3-pro-image`; up to 6 objects, 5 characters and **3 style references** (14 total) | VERIFIED, ai.google.dev |
+| Midjourney V8.2 | default model; Edit Model replaces Omni Reference with up to 4 image references; `--cref`/`--oref` do not run on V8.2 | VERIFIED, updates.midjourney.com (27 Aug 2026) |
+| Midjourney params | `--sref` (URLs or codes; must have a text prompt), `--sw 0–1000` (default 100), `--raw`, `--s 0–1000`, `--ar` whole numbers only, `--no`; omit `--q` and `--sv` | third-party V8.2 guide; official docs returned 403 → confirm in the web UI |
+| Seedance 2.5 | `dreamina-seedance-2-5-260628`; ratio `16:9·4:3·1:1·3:4·9:16·21:9·9:21·adaptive` (first-frame modes accept only `adaptive`); 480p/720p/1080p; 24 fps, no fps field; `draft` = 480p | BytePlus schema via the Comfy mirror (BytePlus pages render empty to WebFetch) |
+| Higgsfield ids | e.g. `gpt_image_2_5` (variant, quality, resolution `1k·2k·4k`, aspect) | snapshot 2026-09-26 (OSideMedia); verify live with `models_explore` |
+
+**A. GPT Image 2.5** (look frames, location keyframes). Route: Higgsfield `generate_image` once reconnected, or the ElevenLabs MCP `creative_generate_image` (check `creative_get_model_schema` first).
+```
+Intended use: look-development still for a live-action short film. It becomes the style reference for every later image, so light, colour and texture must be exact.
+Scene: [SCENE CONTENT: place, time, weather, what is in frame]
+Subject: [synthetic people only, or "no people"]
+Look: [master CAPTURE, LIGHT LAW, COLOR, TEXTURE lines] [variant LIGHT, COLOR lines] [variant CAMERA line as a still: e.g. "slightly off-level handheld framing"]
+Constraints: one single photographic frame; no text, no logos, no watermark, no borders.
+```
+Settings: hero frames use `sunburst`, quality `max`, size `3840x2160` (in the experimental band; fall back to `2560x1440` if it fails); exploration uses `flare`, quality `high`, `2560x1440`. "Real photograph" phrasing follows the OpenAI cookbook. A field report says the word "photorealistic" makes faces plastic, so A/B both phrasings on the first face frame and keep the winner in the master notes. Edits: "Change only: X. Preserve: everything else, identical." Repeat the preserve list every turn.
+
+**B. Nano Banana Pro / 2.1** (consistency edits, alternatives). Write natural prose, not labelled lines. Describe lens effects in words, because third-party tests report that Nano Banana ignores mm and f-numbers (smixs/visual-skills).
+```
+A photographed live-action film frame: [SCENE CONTENT]. [variant LIGHT as one sentence]. Wide, undistorted perspective with straight verticals; the background softly out of focus but readable. [COLOR line as one sentence, colours attached to surfaces]. [TEXTURE line]. Natural contrast with soft highlight roll-off and dense, detailed blacks, no HDR look. A single composition with no text.
+```
+Pro only: attach 1–3 approved look frames, labelled "Images 1–2 are style references: take only their light quality, colour palette and surface texture; ignore their objects, people and layout." For 2.1, pass the same frame as a reference with that role sentence, or rely on text alone. Settings: aspect `16:9`, `image_size` `"2K"` for exploration and `"4K"` for heroes; thinking `high` on 2.1 for complex frames. Never strip SynthID or C2PA data (Terms 5.6).
+
+**C. Midjourney V8.2** (the user runs these by hand). Condense the master into one sentence-style string of 30–50 words, subject first, look after it, and parameters last with nothing after them.
+```
+Photographed live-action film still. [SCENE CONTENT]. Hard high sun from above and behind camera left, short crisp shadows, dust haze in the far distance, pale ochre concrete, cool slate shadows, natural warm brown skin with pores and sweat, wide undistorted perspective with straight verticals, moderate depth of field, fine even sensor texture --ar 16:9 --raw --s 75 --sref [R-DAY hero frame URL] --sw 125 --v 8.2
+```
+`--sref` rules for this project:
+1. Source: only the project's own approved hero look frame (a GPT Image, Nano Banana or Midjourney output uploaded to Midjourney), or a numeric code found with `--draft --sref random` exploration. Never a reference-film still, poster or any image the user does not own.
+2. One sref per variant. The R-DAY sref never goes on a DREAM prompt: an sref carries palette and light quality strongly, so a night sref darkens a day prompt.
+3. `--sw`: start at 100; the working range is 50–250 (PROPOSED). Above that, the sref starts overriding scene content.
+4. `--sref` carries look only, never identity. Characters, props and locations go through Edit Model references (up to 4) in 03-assets-images.md.
+5. Keep Personalization off (the web toggle silently adds `--p`) unless its profile code is logged. A third-party note says moodboards cannot be combined with `--sw`; treat it as unverified.
+6. When editing or inpainting a frame, reuse the same `--sref` so inserted elements keep the look.
+7. Use `--no` only for concrete objects; its words are parsed one by one. Use `--hd` only on approved frames.
+8. Log the sref URL or code, `--sw`, `--s`, version and seed in the ledger.
+
+**D. Seedance 2.5** (final picture). 05-seedance-production.md uses ByteDance's formula (Subject + Action + Scene → Visual style → Camera → Audio). This module supplies three fixed blocks:
+```
+[SCENE PARAGRAPH from 05]
+The visuals feature [MEDIUM] [CAPTURE] [LIGHT LAW] [COLOR] [TEXTURE] [PHYSICS] [PERFORMANCE] [variant LIGHT] [variant COLOR].
+[CAMERA from 05: shot size, angle, movement, field of view as "about a 47-degree field of view"; variant CAMERA behaviour appended]
+Audio includes [shot SFX from 05]. [AUDIO line]
+[CONTINUITY line]
+```
+Labels such as "MEDIUM:" are dropped and each line becomes a sentence. Every `[SLOT]` is replaced before submission. The per-shot field of view lives only in the camera sentence.
+Worked example (R-DAY):
+```
+Miraj, [his locked one-line description from 03-assets-images.md], in a sweat-darkened grey work shirt, edges down the crowded bus aisle and grips the overhead rail as the bus brakes.
+The visuals feature photographed live-action drama with real optics and real materials; every frame reads as filmed on location, never rendered. Large-sensor feel with spherical lenses, wide undistorted perspective, moderate depth of field, 180-degree shutter motion blur, clean capture with fine, even sensor texture. Every light has a visible source; highlights roll off softly and never clip on skin; blacks are dense but keep detail. Pale ochre dust and concrete #C9B79C, shadows in cool slate #2E3640, natural warm brown skin. Skin shows pores and heat sweat; cotton shows weave and wear. Gravity and inertia respected. Naturalistic, restrained performance. Hard high sun at 5600K enters the windows from camera left; short crisp shadows; dust haze in the air. Sun-bleached, saturation held low except skin.
+Use a handheld medium shot from behind Miraj at about a 47-degree field of view, with gentle breathing drift.
+Audio includes the diesel idle, a brake hiss and passengers murmuring. Diegetic sound effects and ambience; dialogue only where the shot scripts it. No music, no background music, no score. No subtitles.
+Characters, wardrobe, props and environments stay identical to their references across every cut; no identity drift.
+```
+Rules: set ratio `16:9` and resolution as job parameters, never in prose. Optional, only if drafts drift: one face-free look frame as a style reference, written as "@Image N defines only the colour grade, light quality and surface texture. Do not use its objects, layout or people." Never put a face in it: Seedance rejects reference images with real or photoreal faces unless they are trusted same-account assets (BRIEF; 05). Check the first drafts for hex codes or labels rendered as on-screen text. If any appear, drop the hex values from the Seedance block only and keep the colour words.
+
+### 2.8 Look frames, Seedance look test and calibration (D2 afternoon → D3)
+
+1. **Quote cost first.** Higgsfield has no spend cap (05). Per the research snapshot, a BytePlus Seedance 2.5 draft is about $1 per 10 s at 480p; re-check the price page before quoting.
+2. **Look frames:** per variant, 2 frames in GPT Image 2.5 sunburst and 2 in Nano Banana Pro, plus a Midjourney prompt the user runs. Use face-free or back-of-head compositions where possible: characters are not locked until 03. Save each with a sidecar `<name>.json`: model, version, params, full prompt, LOOK version, route and account.
+3. **Seedance look test:** one 8–10 s draft (`draft: true`, 480p) for R-DAY and one for DREAM, with environment or back-of-head figures only. This is the only proof that the look survives in the final medium. An untested prefix is never called locked (ajinnaaa).
+4. **Score every frame** against the acceptance checklist: every invariant visible; the variant matches its condition; light motivated and shadows consistent with one key direction; the reserved green only on its owner; skin natural (not plastic, not orange: at most two warm cues together); reads as photographed, not CGI; no text, logo, brand or real-person likeness.
+5. **Calibrate** (ajinnaaa loop), one fix per round, at most three rounds before the D3 lock:
+
+| Visible mismatch | Owning system | Faulty or missing rule | Replacement rule | Layer | Removed |
+|---|---|---|---|---|---|
+| dream frames show hard shadows | LIGHT (DREAM) | "soft light" too weak | "shadowless light from no visible source; every surface evenly exposed" | variant | "soft light" |
+
+   Replace rules; never pile on negatives. Repair locally when the governing system is right and the failure is isolated. Regenerate when lighting logic, geometry or several systems are wrong.
+6. Pick **one hero frame per variant**. These feed the Midjourney `--sref`, Nano Banana Pro style references and the show-LUT match in 07-edit-mix-finish.md.
+
+### 2.9 Decisions to record before the lock
+
+- **Grain and halation:** PROPOSED default is to add them in post (07), uniformly, so drafts, 1080p finals and every model stay consistent. Prompts keep "clean capture with fine, even sensor texture". Halation, if used, is a post effect on true highlight edges only.
+- **Matte:** none (2.1 step 4), unless the user decides otherwise in writing.
+- **Grade intent for 07:** per variant, one line plus the hero frame. AI clips are display-referred Rec.709; never apply a log-to-709 LUT to them (calesthio). The show LUT is matched from hero frames in 07.
+- **Reserved accent and reserved looks:** owner named.
+- **Dream physics exceptions:** listed per sequence.
+
+### 2.10 Lock, save and log
+
+Save `prefix/master.txt`, `prefix/variant-*.txt`, `prefix/seedance.txt`, `prefix/gpt-image.txt`, `prefix/nano-banana.txt`, `prefix/midjourney.txt`, `style-lock-card.md` and `look-frames/`. Write the decisions and every rejected option, with the user's sign-off, to `evidence/authorship/02-style-decisions.md` (00 §0.11). Log every look-frame generation (tool, model, version, account, plan) for the AI Disclosure (00 D1).
+
+### 2.11 Injection contract (every later step)
+
+| Step | Receives | How it is injected |
+|---|---|---|
+| 03-assets-images.md | adapters A–C, hero frames, `--sref` per variant | location plates and keyframes carry core + variant verbatim. **Character, prop and costume reference sheets do not**: they use neutral flat light on mid-grey so the grade is not baked into identity assets; the look comes back in the scene prompt |
+| 04-blender-blocking.md | lens ladder (36 mm sensor width, focal lengths), camera behaviour per variant, 24 fps | camera and movement only; playblast look is excluded in Seedance by the blockout clause |
+| 05-seedance-production.md | `prefix/seedance.txt` + variant ID per shot | verbatim in the visual-style slot; AUDIO and CONTINUITY lines verbatim; shot overrides replace one line only |
+| 05b-acting-direction.md | PERFORMANCE line | 05b expands it per beat; it never contradicts the line |
+| 06-music-and-sfx.md | AUDIO policy, colour-script sequence boundaries | no music in any Seedance prompt; cue map follows the colour script |
+| 07-edit-mix-finish.md | grade intent, hero frames, palette, grain/halation and matte decisions | hero-shot match per scene, then show LUT, then grain |
+| 08-judge-panel.md | invariants and colour script | Creativity & Aesthetic and Technical critique are checked against them |
+| ledger-continuity-physics.md | LOOK version, variant ID, sref codes, model params per asset | one row per asset and shot |
+
+Every prompt Claude writes after the lock opens with an internal check: LOOK version correct, variant ID matches the colour script, core text byte-identical to `prefix/*.txt`.
+
+### 2.12 Change control
+
+- **Per-shot override:** replace one line in that prompt only, and log it. Apply the fold rule (2.5).
+- **Change to the core or a variant:** bump the version (v1.0 → v1.1), list every asset and shot made under the old version, and ask the user which to regenerate.
+- When the user asks for something that breaks the lock, say (carried over from the old pipeline): «ملاحظة: هذا التعديل يخالف الستايل المعتمد LOOK v1.0. هل نحدّث المرجع (نسخة جديدة) أم نطبّق التعديل على هذه اللقطة فقط؟»
+- After the first approved 1080p final, change the core only with the user's explicit approval and a re-render impact list.
+- Step-8 judge notes come back through the calibration loop (2.8 step 5), never as appended adjectives.
+
+---
+
+## Output templates (what Claude shows the user)
+
+**A. Research findings card** (end of 2.2–2.3):
+```
+أبوستيشا، هذه نتائج البحث عن المرجع: <العنوان>
+موثّق (VERIFIED): <الحقل — القيمة — المصدر>
+منقول (REPORTED): <…> — لن نعتمد عليه في القرارات
+ملاحَظ في الإطارات (OBSERVED، <عدد> إطارات، الحكم: <مبدئي/أولي/قوي>): <…>
+مقيس (MEASURED): السواد <…> · الإضاءات العالية <…> · الظلال <hex> · الإضاءات <hex>
+ما سننقله إلى فيلمك (آليات): 1… 2… 3…
+ما سنستبعده (هوية العمل الأصلي): <…>
+سؤال: أيّ هذه الآليات تريدها للواقع، وأيّها للحلم؟
+```
+**B. Look-frames review** (2.8): show the frames inline, grouped by variant, each captioned in Arabic with its model, the checklist result and one line on what to fix. Show swatches as coloured blocks if the surface can render them (an HTML preview or artifact); otherwise give hex plus an Arabic name.
+
+**C. Style-lock card** (`style-lock-card.md`, shown in full before the Gate):
+```
+بطاقة قفل الستايل — <الفيلم> — LOOK v<X.Y> — <التاريخ>
+المرجع والأدلة: <العنوان/الإطارات> — مستوى الدليل: <…>
+الثوابت (3–7): 1… 2… 3…
+المتغيرات وخريطة الألوان: <جدول 2.5>
+لوحة الألوان: <hex — الدور — السطح/المصدر>
+اللون المحجوز: <اللون> لـ<العنصر> فقط · الإضاءة المحجوزة: <…>
+القرارات: الحبيبات والهالة <في المونتاج/في التوليد> · القناع <لا شيء/…> · فيزياء الحلم <…>
+الإطارات البطلة: <ملف لكل متغير> · اختبار Seedance: <task IDs + النتيجة>
+النصوص المقفلة (English): master · Seedance · GPT Image · Nano Banana · Midjourney
+```
+Lock prompt:
+> «أبوستيشا، هذه بطاقة الستايل LOOK v1.0. هل نقفلها للفيلم كاملاً وننتقل إلى الخطوة 3: الأصول والصور؟ بعد القفل يُلصق هذا البلوك حرفياً في كل برومبت صور وفيديو، وأي تعديل لاحق يصبح نسخة جديدة.»
+
+Accept only a clear yes («اعتمد»، «اقفل»، «كمّل»). Silence or partial agreement is not approval.
+
+---
+
+## Gate (the user approves all of this before 03-assets-images.md starts)
+
+- [ ] Tech sheet: every field labelled VERIFIED / REPORTED / UNKNOWN with a source; no field taken from memory.
+- [ ] Evidence adequacy stated; OBSERVED claims cite frame IDs; motion claims come from clips only.
+- [ ] Reference ledger: mechanisms to transfer and identity details excluded, both agreed.
+- [ ] 3–7 invariants, each testable.
+- [ ] Variants and colour script cover every sequence of the locked script; dream differs from reality on at least two axes; reserved accent and reserved looks named.
+- [ ] Master prefix: no names, no gear brands, no job parameters, no bracket characters, hex attached to owners, ends on CONTINUITY then AUDIO.
+- [ ] Four adapters compiled from the master; parameter snapshot re-checked within 14 days.
+- [ ] At least one approved hero look frame per variant, and Seedance draft look tests for R-DAY and DREAM passed.
+- [ ] Decisions recorded: grain/halation, matte, grade intent, dream physics exceptions.
+- [ ] IP check: no reference-film frame uploaded anywhere; reference frames git-ignored; no real-person likeness in any look frame (00 G2).
+- [ ] Files saved, authorship and disclosure logs written.
+- [ ] The user said «اعتمد» to LOOK v1.0.
+
+---
+
+## Common failures
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Prompt says "8K, 16:9, 24fps" and nothing changes | job settings written as prose | delete; set ratio, resolution and duration on the job |
+| Gear "facts" that turn out wrong | taken from memory or another skill's table | source ladder (2.2); label UNKNOWN when unsure |
+| Midjourney or GPT output resembles the reference film too closely | film title, DP name or a reference still used as `--sref` | strip names; `--sref` only from our own hero frame |
+| A painted wall colour applied to the whole grade | production-design colour taken for grade | give each measured cluster an owner (2.3 step 5) |
+| Day and night shots look averaged and flat | one universal lighting block | variants (2.5); the core never holds a time of day |
+| Seedance adds music or burns in captions | `(…)`, `【…】` or a parenthesised "(50mm)" inside the style block | bracket-free block; AUDIO line verbatim; "No subtitles." |
+| Seedance returns HTTP 400 on a look frame | a photoreal face in the reference | face-free look frames; characters only as trusted assets (05) |
+| Shot action ignored and the frame looks generic | prefix crowds the prompt or stacks adjectives | word budget; one anchor plus 1–2 tokens; remove "cinematic" |
+| Hex palette ignored or colours random | bare hex list | attach each hex to a surface or light; one reserved accent |
+| Skin plastic or orange | "photorealistic" on faces; three or more warm cues | A/B "real photograph" phrasing; at most two warm cues |
+| Character sheets fight later lighting | look grade baked into identity sheets | neutral sheets (2.11, 03) |
+| 1080p final looks different from the approved draft | the final is a new render | compare to the hero frame; fix in grade (07) or redo the draft |
+| Dream is not readable as the dream | only colour differs | change camera behaviour and light quality too |
+| The reserved green appears on random props | owner not stated | "appears only on assistant devices"; sweep at G2/G3 |
+| Negatives keep growing after each review | patching instead of calibrating | the 2.8 calibration loop: replace the rule, delete the obsolete negative |
+| "Locked" look falls apart in video | never tested in Seedance | draft look test before the Gate |
+
+---
+
+## Sources and credits
+
+- ajinnaaa/extract-visual-style-2 (MIT; commit cloned 2026-10-30): evidence discipline, adequacy labels, four kinds of information, stable/conditional/scene layers, calibration loop. One rule quoted verbatim; the rest paraphrased.
+- OSideMedia/higgsfield-ai-prompt-skill (MIT): global-style-prefix shape (one line quoted), per-scene override and fold rule, reserved accent, measurable-language rules, FOV anchors.
+- calesthio/generative-media-skills, visual-style-direction and color-grading-finishing (MIT): reference ledger, lens-intent rule (quoted), display-referred grading.
+- A0339x/ai-film-pipeline (MIT): palette by role attached to surfaces; FOV-degree lens ladder (unmeasured field claim). Paraphrased.
+- smixs/visual-skills by Serge Shima — github.com/smixs/visual-skills (CC BY 4.0): Nano Banana / GPT Image adapter notes (lens numbers ignored, HDR over-cooking), paraphrased.
+- n1ko724/kodak-2383-film-look (MIT) and scenario-labs/skills scenario-video-color-grade (MIT): halation definition and show-LUT idea, via the research summary; paraphrased.
+- The user's own skills: cinematic-pipeline STYLE_PREFIX_GUIDE (12-pillar skeleton, lock and drift prompts) and seedance-2-5-prompts (ByteDance's formula and bracket channels).
+- Official sources checked 2026-10-30: OpenAI image-generation guide; ai.google.dev Nano Banana 2.1 and image-generation pages; updates.midjourney.com Edit Model post; ARRI news pages (Blade Runner 2049, Parasite). Comfy mirror of the BytePlus Seedance 2.5 schema.
