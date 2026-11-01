@@ -44,3 +44,8 @@ Content Standards (Terms cl. 5.3(f), 6.1(g), 9.1–9.3, 13.1(e)): rated G for al
 - Full raw research JSON: /tmp/claude-0/-home-user-AboStesha-claude/9f2b96f8-7817-5b10-b249-0720bc5d0d3c/scratchpad/research/raw-research.json (`result.categories[].research.key_craft_knowledge`, candidates, verify; `result.rules.verified`; `result.landscape.tools`; `result.audit.skills`; `result.critic.gaps`).
 - Human summary: /home/user/AboStesha-claude/abostesha-film-pipeline/RESEARCH-2026-10-30.md
 - Old skills (read-only): /root/.claude/skills/synced/1eacde9f-45d1-4992-a692-9137ffc3c4e1_1f1246b1-c8ef-43cf-b367-7bb14e03c7c7/<name>/
+
+## Update 2026-11-01
+- The Summit entry will be a **new idea and new script** (still for the AI Film Award 2027). "2nd Life: Ascent" (films/01-second-life-ascent/) is parked for the "Second Life" series; its script review stays as reference. The new film gets its own folder and PROJECT.md when the idea arrives.
+- The user will share several complete Higgsfield projects (films with all prompts and assets) plus YouTube tutorials and their own character-sheet prompts. Study them (watch the films, read every prompt via the Higgsfield MCP project tools), extract the patterns, and propose edits to the pipeline (mainly 03 assets, 02 style, 05 Seedance) for approval before applying.
+- Seedance 2.5 through Higgsfield (MCP or web, same account and project) is an accepted full route for the 70% (cl. 5.4); keep one route per character.
