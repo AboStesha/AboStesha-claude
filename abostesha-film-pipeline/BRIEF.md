@@ -49,3 +49,8 @@ Content Standards (Terms cl. 5.3(f), 6.1(g), 9.1–9.3, 13.1(e)): rated G for al
 - The Summit entry will be a **new idea and new script** (still for the AI Film Award 2027). "2nd Life: Ascent" (films/01-second-life-ascent/) is parked for the "Second Life" series; its script review stays as reference. The new film gets its own folder and PROJECT.md when the idea arrives.
 - The user will share several complete Higgsfield projects (films with all prompts and assets) plus YouTube tutorials and their own character-sheet prompts. Study them (watch the films, read every prompt via the Higgsfield MCP project tools), extract the patterns, and propose edits to the pipeline (mainly 03 assets, 02 style, 05 Seedance) for approval before applying.
 - Seedance 2.5 through Higgsfield (MCP or web, same account and project) is an accepted full route for the 70% (cl. 5.4); keep one route per character.
+
+## Update 2026-11-01 (b) — locked
+- **All generation runs in Higgsfield** (Seedance 2.5 via the Higgsfield MCP: draft 480p → same take finalized at 1080p; images GPT Image 2.5 Sunburst / Nano Banana Pro / 2.1 via Higgsfield). No BytePlus API, no Dreamina, no ElevenLabs-connector generation for picture.
+- Storage: Higgsfield project (generation) → Google Drive master archive, mirrored to the user's PC with Google Drive for desktop in Mirror mode → GitHub (private) for text only. Claude organizes the folder tree (ledger L.0b).
+- GitHub keeps `prompt-library/`: every approved prompt, instructive failure and external study, distilled into skill updates after approval (SKILL §7b).
