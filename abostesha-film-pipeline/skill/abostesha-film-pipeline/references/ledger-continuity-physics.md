@@ -58,6 +58,38 @@ films/01-second-life-ascent/ledger/
 3. Backups: sync the `ledger/` folder to the 04 Drive folder, keep a local copy, and write `reports/SLA_checksums_<date>.sha256` each evening (00 D2: two places, 24 months).
 4. Holdback: `films/` sits in the GitHub repo. Before the first download add `.gitignore` lines `films/**/*.mp4`, `films/**/*.mov`, `films/**/*.wav`, `films/**/*.mp3` and `films/*/ledger/raw/` (03 already covers images). No clip or audio file goes to GitHub, and the repo stays private until the holdback ends.
 
+### L.0b Storage roles and the folder tree (decided 2026-11-01; Claude builds and maintains it)
+
+**One tree, same names everywhere.** Claude creates it at Step 0 (Higgsfield via `create_project` + `create_folder`; Drive via the connector or exact steps for the user) and files every new item the moment it exists.
+```text
+<CODE>_<film-slug>/
+  00_STYLE/                    look frames, style-lock card
+  01_CHARACTERS/CHR_<NAME>/    face, turnaround, expressions, wardrobe; approved/
+  02_LOCATIONS/LOC_<NAME>/     plates per time of day; approved/
+  03_PROPS/PRP_<NAME>/         hero sheets; approved/
+  04_SCENES/S01_<slug>/        one folder per scene, numbered as in the script
+     refs/                     copies of the approved CHR/LOC/PRP this scene uses (Higgsfield: copy_project_asset; Drive: shortcuts)
+     blocking/                 playblasts from Blender (PB/REV/STILL)
+     drafts/                   SD25-DRF
+     finals/                   SD25-FIN (approved takes only)
+  05_AUDIO/DX · MX · FX        dialogue takes, score cues, SFX
+  06_EDIT/                     Premiere project, review exports, FCP XML
+  07_DELIVERY/                 masters, subtitles, Summit intro, posters
+  08_EVIDENCE/                 RAW_SEEDANCE/ (byte-identical originals for the upload page), ledger exports, consents, licences, Organizer mail
+  99_TESTS/                    D1 route tests, cost probes
+```
+Higgsfield holds 00–04 and 99 (where generation happens). Drive and the PC hold the whole tree.
+
+**Where things live:**
+| Place | Role | Holds |
+|---|---|---|
+| Higgsfield project | workspace + generation history (evidence) | every generation in its folder; never the only copy |
+| Google Drive | master archive and the shared space with the Blender collaborator | every approved asset, every Seedance original downloaded the moment it finishes (byte-identical), audio, edit exports, 08_EVIDENCE; keep 24 months after the Award |
+| The user's PC (Google Drive for desktop sync) + one external drive | fast working copy for Premiere, plus an offline backup | the same tree; Premiere links to the PC copy |
+| GitHub (private repo only) | text and memory | PROJECT.md, script, dialogue sheets, prompts, ledger CSVs, decisions; never images, video or audio (`.gitignore` in SKILL §4) |
+
+Rules: the Seedance original is downloaded and hashed before anything else touches it; RAW_SEEDANCE is never edited, renamed or re-exported; the Drive tree is the one the competition evidence comes from.
+
 ### L.1 Naming convention that matches Premiere
 
 Premiere names a clip after its file. So the file name is the shot database key, and the timeline can be audited from the names alone.

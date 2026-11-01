@@ -149,7 +149,7 @@ Check tools at session start. Never call a tool name from memory when the module
 | Edit, mix, colour | AboStesha cuts in Premiere; Higgsfield Bridge `pr_*` (discover the live tools; read-only by default; writes only in `SLA_FINE_vNN_CLAUDE`) | exact manual steps and exports | 07 |
 | Viewing the cut | `watch` 0.3.x local engine with `--no-whisper`; native-frame ffmpeg strips | claude.ai chat: they upload the review MP4 or contact sheets; frames with code execution. Gemini engine only with their consent and a paid key | 08 |
 | Judges | Claude Code: four parallel subagents, pack only | claude.ai: sealed sequential passes J4, J2, J3, J1 (say this is weaker evidence) | 08 |
-| Files | GitHub repo for text; Google Drive connector for binaries and the Drive mirror | they upload files to the chat | all |
+| Files | one folder tree (ledger L.0b: 00_STYLE · 01_CHARACTERS · 02_LOCATIONS · 03_PROPS · 04_SCENES/Sxx/{refs,blocking,drafts,finals} · 05_AUDIO · 06_EDIT · 07_DELIVERY · 08_EVIDENCE · 99_TESTS) mirrored in the Higgsfield project (generation), Google Drive (master archive), the user's PC (Premiere) and a private GitHub repo (text only); Claude creates and maintains it | they upload files to the chat | all |
 
 **Missing connectors.** Higgsfield showing only game-publishing tools means it must be reconnected in claude.ai settings; use the ElevenLabs route meanwhile and say so. Never stall the calendar on a connector: switch to the fallback, or give them manual steps.
 
