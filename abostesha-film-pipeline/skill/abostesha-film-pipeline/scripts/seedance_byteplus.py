@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """seedance_byteplus.py - Seedance 2.5 on BytePlus ModelArk, stdlib only.
 
+NOT USED (decision 2026-11-01): every Seedance job runs in Higgsfield (05). Kept only in case
+AboStesha later chooses the BytePlus API; never run it without their explicit decision to switch route.
+
 draft  -> create a 480p Draft task (draft=true) with prompt + role-tagged references
           (--direct-1080p: edit/extend only, when 05-T9 shows those cannot be drafted)
 final  -> create the 1080p final from an approved Draft task ID (content type draft_task)

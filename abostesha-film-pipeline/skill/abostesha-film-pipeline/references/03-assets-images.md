@@ -1,8 +1,9 @@
 # 03 — Assets: Characters, Locations, Props (Step 3)
 
 Purpose: turn every character, location and prop in the locked script into approved, versioned reference images that Seedance 2.5 will accept and that hold identity across 40-100 shots.
-Each asset is generated in GPT Image 2.5 Sunburst at max quality and in Nano Banana Pro / 2.1, with a parallel Midjourney V8.2 prompt the user runs by hand. The user picks every winner from a selection board.
-Talk to the user in Arabic. Write every generation prompt in English. Nothing leaves this step without a continuity-bible entry and a proven Seedance reference route.
+Each asset is generated inside Higgsfield in GPT Image 2.5 Sunburst at max quality and in Nano Banana Pro / 2.1, with a parallel Midjourney V8.2 prompt the user runs by hand. The user picks every winner from a selection board.
+Talk to the user in Arabic. Write every generation prompt in English. Nothing leaves this step without a continuity-bible entry and a proven Seedance reference route on Higgsfield (3.4).
+Route (decision 2026-11-01): every image and every Seedance 2.5 job runs in Higgsfield, through the MCP or by the user's hand in the Higgsfield web app inside the same project (3.0).
 
 ---
 
@@ -13,18 +14,18 @@ Talk to the user in Arabic. Write every generation prompt in English. Nothing le
 - **The shot list, when it exists (`04-blender-blocking.md`).** Prop views and location angles are planned from it. Before it exists, plan from the script and revise once it lands.
 - **The user's own prompt templates (optional slots):** `films/<id>/03-assets/user-templates/CHR_TEMPLATE.md` and `LOC_TEMPLATE.md`, or text they paste. See 3.1.2.
 - **Internet reference images the user uploads (3.2).**
-- **Tool status:** the Higgsfield MCP (`generate_image` visible or not), the ElevenLabs connector, and the BytePlus ModelArk console and key.
+- **Tool status:** the Higgsfield MCP (`generate_image`, `generate_video` and the project tools visible or not), and the film's Higgsfield project with its folders from ledger L.0b (`01_CHARACTERS/CHR_<NAME>`, `02_LOCATIONS/LOC_<NAME>`, `03_PROPS/PRP_<NAME>`, `99_TESTS`).
 - **The ledger and physics data in `ledger-continuity-physics.md`:** sun position per scene, scale and continuity schema.
 
 ## Ground rules
 
 1. **Verify versions at session start (3.0).** Never quote a parameter from memory.
-2. **Quote cost, then spend.** Higgsfield MCP has no spend cap. State the job count per batch and get a yes. On the ElevenLabs connector, never repeat a generation call to "retry": each call starts and bills a new run.
+2. **Quote cost, then spend.** Higgsfield MCP has no spend cap. Preflight every distinct request with `get_cost: true` on `generate_image` (a `generate_image_batch` item cannot preflight, so price one item and multiply), state the job count and credits per batch and get a yes. Never repeat a generation call to "retry": each call starts and bills a new job, and after a transport timeout the outcome is unknown, so reuse the returned job ID and check it with `jobs_wait` first.
 3. **Plate laws for every Seedance-facing sheet** (OSideMedia ad-asset-prep, banana-pro-director, MIT): one flat neutral grey field pinned for this project at `#8A8A8A` (never white or black: high-contrast edges halo in video); flat shadowless light with no cast or contact shadow; one readable face per sheet; one state per sheet; no baked look (no grade, grain or bokeh). The scene prompt does the lighting later.
 4. **A sheet is not a menu.** Anything visible on a sheet will be rendered: an open hatch, a glowing ring, a wet shirt. Non-default states get their own sheets, attached only to the shots in that state.
 5. **The untouched base.** The approved face plate is never passed through a model again. Make each fix as an edit on a copy, then mask only the changed region back onto the original pixels. Never chain output to output. Every variant anchors to the approved base.
 6. **Synthetic people only.** No lookalike of a real or famous person, no real photo as an identity reference, no real brand, logo, trade dress, product or book cover (Terms 6.1(d)/(f), 7.5, 9.2(j)). Arabic text is never generated in-image: leave a blank surface and composite it in `07-edit-mix-finish.md`. Latin text only for short fictional words, quoted exactly.
-7. **Provenance and holdback.** Never strip metadata, SynthID or C2PA. Log tool, model, variant, quality, resolution, account, plan, job ID and date for every kept image (Terms 5.5). Midjourney needs Stealth: without it every image is public on midjourney.com, which can breach the Summit holdback. Stealth comes with the Pro and Mega plans; check their plan page. The `films/` folder sits inside the GitHub repo: before the first job, add one `.gitignore` line each for `films/*/03-assets/**/*.png`, `*.jpg`, `*.jpeg` and `*.webp` under the same path, plus `films/*/03-assets/internet-refs/` (gitignore has no `{a,b}` braces). No asset image or internet reference ever goes to GitHub.
+7. **Provenance and holdback.** Never strip metadata, SynthID or C2PA. Log tool, model, variant, quality, resolution, account, plan, Higgsfield job ID, Higgsfield folder, date and the SHA-256 of the downloaded original for every kept image (Terms 5.5). Midjourney needs Stealth: without it every image is public on midjourney.com, which can breach the Summit holdback. Stealth comes with the Pro and Mega plans; check their plan page. The `films/` folder sits inside the GitHub repo: before the first job, add one `.gitignore` line each for `films/*/03-assets/**/*.png`, `*.jpg`, `*.jpeg` and `*.webp` under the same path, plus `films/*/03-assets/internet-refs/` (gitignore has no `{a,b}` braces). No asset image or internet reference ever goes to GitHub.
 8. **Human authorship.** The user picks every winner by candidate ID. Record the pick and their words in the bible. This is authorship evidence for the Summit's disclosure requests and for the user's ownership of the film (Terms cl. 7.1).
 9. **Reference only.** No image from this step is cut into the film. Final picture is Seedance: the Summit requires at least 70%, and 00 sets the house target. These stills only steer Seedance.
 
@@ -33,21 +34,22 @@ Talk to the user in Arabic. Write every generation prompt in English. Nothing le
 ## 3.0 Session start: tools and verified parameters
 
 Run once per session; report in two Arabic lines.
-1. **Higgsfield:** call `models_explore` for image models and confirm the ids below. If only game-publishing tools appear, tell the user to reconnect the Higgsfield connector in claude.ai settings and use the ElevenLabs route meanwhile. Uploads go `media_upload` → PUT the bytes → `media_confirm` (chat attachments do not reach Higgsfield). For several jobs: batch, `jobs_wait`, then one `show_generation_by_ids` for the board.
-2. **ElevenLabs connector:** one flow per asset (`creative_create_flow`, pass its `flow_id` everywhere); generate with `creative_generate_image`, poll `creative_get_flow_run_status`; pin the user's pick with `creative_add_flow_asset_node`; attach references with `creative_attach_reference_file` (URL) or the asset-upload calls. One call already returns several variations: leave `generations_count` at its default and count the variations as the takes.
+1. **Higgsfield MCP:** call `models_explore` (`action: get` per model id) and confirm the ids below. If only game-publishing tools appear, tell the user to reconnect the Higgsfield connector in claude.ai settings; meanwhile they may run the generation cards by hand in the Higgsfield web app (item 3), otherwise wait. Never move to another connector without their yes. Uploads go `media_upload` → PUT the bytes → `media_confirm` (chat attachments do not reach Higgsfield); a `medias[].value` is a `media_id` or the `job_id` of an earlier Higgsfield generation, never a URL. For several jobs: `generate_image_batch` (≤ 12 per call), `jobs_wait` (≤ 12 per call), then one `show_generation_by_ids` for the board.
+2. **Folders:** every job carries `folder_id` = the asset's folder in the film's Higgsfield project (`01_CHARACTERS/CHR_<NAME>`, `02_LOCATIONS/LOC_<NAME>`, `03_PROPS/PRP_<NAME>`; D1 tests in `99_TESTS`). Claude makes missing folders with `create_folder` (not idempotent: never re-run it after a timeout; check first). Never invent a folder ID. Download each kept original the moment it finishes (result URL from `jobs_wait`, or `get_project_asset_source`), hash it with SHA-256, and file it in the Drive tree (ledger L.0b) before anything else touches it.
+3. **Jobs the user runs by hand in the Higgsfield web app** (same account, same project): read them back with `list_project_assets` (`workspace_id`, `project_id`, `folder_id`, `output_kinds: ["image"]`), then `get_project_asset_prompt` (`placement_id`) for the exact prompt and `get_project_asset_source` for the file. Log each one as a ledger row with route `Higgsfield-web (user)`, prompt origin from 01's codes (`H` if they wrote it, `H/C` if it came from Claude's card), the job ID (`item_id`), model, folder and the SHA-256 of the download.
 
-Verified parameters:
+Verified parameters (`models_explore get`, 2026-11-01):
 
-| Model | Higgsfield MCP | ElevenLabs connector (schema read 2026-10-30) | Settings for this step |
-|---|---|---|---|
-| GPT Image 2.5 Sunburst | `gpt_image_2_5` + `variant: sunburst`. Higgsfield snapshot 2026-09-26: quality low…max, resolution 1k/2k/4k, 15 ratios incl. 21:9, `image_references` | `gpt-image-2.5-sunburst`: quality low…max (default high), resolution 1K/2K/4K (default 1K), ratios to 21:9 plus 1:3/3:1, custom size 64-3840 px | quality `max`, resolution `4k` for hero sheets. A bare Higgsfield call runs flare/low/1k, a draft, so set every field |
-| Nano Banana Pro | `nano_banana_pro` (1k/2k/4k) | `gemini-3-pro-image` (1K/2K/4K, ratios to 21:9) | 4K |
-| Nano Banana 2.1 | not in the 2026-09-26 snapshot; research reports it added on Higgsfield 6 Oct (Higgsfield has an NB 2.1 page). Resolve the id with `models_explore`. MCP `nano_banana_2` is the older NB2, deprecated: never pick it. On the Higgsfield CLI, `nano_banana_2` means Pro | `gemini-nano-banana-2.1` (1K/2K/4K; adds 1:4, 4:1, 1:8, 8:1) | 4K, for edits and consistency passes |
-| Seedream 5.0 | `seedream_v5_pro` (1k/1.5k/2k) | `bytedance-seedream-5-pro` (caps at 2K) | not in the bake-off. Only text-to-image on the user's own ModelArk account (`dola-seedream-5-0-pro-260628`, `dola-seedream-5-0-flash-260915`, `seedream-5-0-lite-260128`) serves route 1c (3.3). The Higgsfield and ElevenLabs copies are other platforms and are never trusted |
-| Midjourney V8.2 | manual (web/Discord) | — | default model since 24 Jul 2026; Edit Model since 27 Aug 2026; newest release note is 8 Oct 2026 (RSS checked 2026-10-30) |
+| Model | Higgsfield MCP | Settings for this step |
+|---|---|---|
+| GPT Image 2.5 Sunburst | `gpt_image_2_5` + `variant: sunburst` (default `flare`); quality low/medium/high/xhigh/max (default low); resolution 1k/2k/4k (default 1k); `background` auto/opaque/transparent (omit); ratios auto, 1:1, 3:2, 2:3, 4:3, 3:4, 16:9, 9:16, 21:9, 27:16, 16:27, 9:8, 8:9, 4:5, 5:4; media role `image_references` | quality `max`, resolution `4k` for hero sheets. A bare call runs flare/low/1k, a draft, so set every field |
+| Nano Banana Pro | `nano_banana_pro`: resolution 1k/2k/4k (default 2k); ratios 1:1 to 21:9 (no `auto`); media role `image_references` | `4k` |
+| Nano Banana 2.1 | `nano_banana_2_1`: resolution 1k/2k/4k (default 1k); `thinking_level` minimal/medium/high; `is_inpaint` with a `mask` image; `seed`; media roles `image_references`, `mask`, `video_references`; ratios add 4:1, 1:4, 8:1, 1:8. MCP `nano_banana_2` is the older NB2, deprecated: never pick it | `4k`, for edits and consistency passes |
+| Seedream 5.0 Pro | `seedream_v5_pro`: 1k/1.5k/2k (caps at 2K) | not in the bake-off |
+| Midjourney V8.2 | manual (web/Discord) | default model since 24 Jul 2026; Edit Model since 27 Aug 2026; newest release note is 8 Oct 2026 (RSS checked 2026-10-30) |
 
 Facts from vendor documentation:
-- **OpenAI.** Sunburst is "for workflows where editing precision matters most". Custom sizes: each edge a multiple of 16 and at most 3840 px; ratio 1:3 to 3:1; 655,360 to 8,294,400 pixels; output above 2560×1440 is labelled experimental. So if a 4K Sunburst take shows artefacts, re-run at 2K and upscale with Higgsfield `upscale_image`. Masks need an alpha channel, apply to the first image only, and are prompt-guided, not pixel-exact.
+- **OpenAI.** Sunburst is "for workflows where editing precision matters most". Custom sizes: each edge a multiple of 16 and at most 3840 px; ratio 1:3 to 3:1; 655,360 to 8,294,400 pixels; output above 2560×1440 is labelled experimental. So if a 4K Sunburst take shows artefacts, re-run at 2K and upscale with Higgsfield `upscale_image` (`image_id` = the job ID, plus the source `width` and `height`; `get_cost: true` first). Masks need an alpha channel, apply to the first image only, and are prompt-guided, not pixel-exact.
 - **Google.** Nano Banana 2.1 is stable, with 1K/2K/4K output. It takes up to 14 references: 4 characters plus 10 objects, and has no style-reference slot. Thinking runs at minimal, medium (the default) or high. Nano Banana Pro takes ≤ 6 object, ≤ 5 character and ≤ 3 style references (Google model page and image-generation guide, both fetched 2026-10-30).
 - **Prompt dialect.** The GPT Image 2.5 dialect is not field-documented. Format advice below comes from GPT Image 2.0 practice plus OpenAI's guide. Treat it as a starting point and judge on output.
 
@@ -60,8 +62,8 @@ Facts from vendor documentation:
 1. **Resolve the ID.** Map the Arabic name to its asset ID through the cast list in the script or draft (draft v0: معراج = MIRAJ, ريان = RAYAN, كبير = KABIR, نوح = NOAH) and the continuity bible: معراج → `CHR_MIRAJ`. No match, or two matches: ask in one Arabic line. Never invent an ID from a guessed transliteration.
 2. **Check the state** in `PROJECT.md` (SKILL.md §2): Gate 1A (script lock) and the style lock (`LOOK v1.0`, `prefix/plate-safe.txt`). Then pick one of two paths and say which in Arabic:
    - **Both locked (D4 onward):** full Step 3 for this asset. Show its breakdown row (the full breakdown table follows before G2), then the Character Brief (3.1.3) as PROPOSED and wait for their approval. Then the face-lock generation card (3.1.4) with the job count and cost, and wait for their yes. Then run the bake-off batch (3.1.8), show the selection board and ask the board question. One step per turn; never chain past an open question.
-   - **Not locked yet (D0–D3):** the only allowed partial release is the **provisional** asset for the D1 route test (3.4; 00 §0.8 T1). Draft the Brief from the draft and `script-review-v1.md`, marked `PROVISIONAL (pre-Gate 1A)`. On their yes, generate `face`, `body` and `turn3` in GPT Image 2.5 Sunburst with the plate block and **no** `{{PREFIX_PLATE}}` (there is no look yet). Name the files `v00` and give them the ledger purpose `T1 route test`. They never become `_APPROVED` production assets: after the locks, the asset is made again from v01. Say plainly which gates are still open (SKILL.md §3, jumping ahead).
-3. **Whatever path:** the generation route comes from 3.0 (Higgsfield or the ElevenLabs connector, whichever is live today). Log every job in the ledger in the same turn, and close with the module's Arabic question for the item shown.
+   - **Not locked yet (D0–D3):** the only allowed partial release is the **provisional** asset for the D1 route test (3.4; 00 §0.8 T1). Draft the Brief from the draft and `script-review-v1.md`, marked `PROVISIONAL (pre-Gate 1A)`. On their yes, generate `face`, `body` and `turn3` in GPT Image 2.5 Sunburst on Higgsfield, into the `99_TESTS` folder, with the plate block and **no** `{{PREFIX_PLATE}}` (there is no look yet). Name the files `v00` and give them the ledger purpose `T1 route test`. They never become `_APPROVED` production assets: after the locks, the asset is made again from v01. Say plainly which gates are still open (SKILL.md §3, jumping ahead).
+3. **Whatever path:** the generation route is Higgsfield (3.0): the MCP, or the user by hand in the web app inside the same project. Log every job in the ledger in the same turn (Higgsfield job ID, model, folder, SHA-256 of the downloaded original), and close with the module's Arabic question for the item shown. When the user picks a winner, append its prompt-library entry in the same turn (SKILL §7b: `prompt-library/characters.md`, `locations.md` or `props.md`; model and settings, the exact prompt, references and roles, their words, what made it work, what failed before it); an instructive rejected take goes in with `verdict: rejected`.
 
 ### 3.1.1 Asset breakdown and naming
 
@@ -81,7 +83,7 @@ One-shot extras and crowds get shot-level description only. Voice-only roles get
 - `v` bumps whenever the prompt or references change; `t` is the take within a run; edits append `_e01`, `_e02` and record their parent.
 - The approved file is copied to `approved/<same name>_APPROVED.png`; its SHA-256 goes into the bible. A new state is a new asset name, never an overwrite; an approved file is never edited in place.
 
-**Folders:** `films/<id>/03-assets/{CHR,LOC,PRP}/<ASSET>/{prompts,candidates,approved}/`, with shared `user-templates/`, `internet-refs/` (private, never published), `selection/` and `midjourney/` beside them.
+**Folders:** `films/<id>/03-assets/{CHR,LOC,PRP}/<ASSET>/{prompts,candidates,approved}/`, with shared `user-templates/`, `internet-refs/` (private, never published), `selection/` and `midjourney/` beside them. Images live in the Higgsfield project and the Drive tree (ledger L.0b: `01_CHARACTERS/CHR_<NAME>/`, `02_LOCATIONS/LOC_<NAME>/`, `03_PROPS/PRP_<NAME>/`, each with `approved/`); the repo keeps only the text (prompts, cards, bible).
 
 ### 3.1.2 The user's own templates (slots that take priority)
 
@@ -165,7 +167,7 @@ along the jaw, thinner on the cheeks.
 
 ### 3.1.5 Character pass 2: the sheets
 
-**body: vertical full-body front.** One 2:3 image: the same person, head included, top of head to shoes, front view, arms relaxed, weight even, wearing {{LOOK item list}}, with Image 1 (the approved `face`) carrying face, skin and hair, plus the plate block. Together with `face`, this is the pair BytePlus recommends for one virtual-portrait asset group: a vertical full-body frontal image plus a vertical face close-up. Make one per look.
+**body: vertical full-body front.** One 2:3 image: the same person, head included, top of head to shoes, front view, arms relaxed, weight even, wearing {{LOOK item list}}, with Image 1 (the approved `face`) carrying face, skin and hair, plus the plate block. Together with `face`, this is the pair ByteDance's Seedance portrait guide recommends per character: a vertical full-body frontal image plus a vertical face close-up. On Higgsfield it is the `face` + `body` pair tested in 3.4. Make one per look.
 
 **turn3: 3-panel turnaround.** The Seedance identity sheet for direct references: one 16:9 image with LEFT full body front headless, CENTER full body rear with head, RIGHT tight chest-up face. Three panels give the face roughly twice the pixels of a 6-panel grid, and the headless front leaves exactly one readable face (banana-pro-director 3.0 Mode 2A, MIT; OSideMedia one-face law, MIT).
 
@@ -271,12 +273,12 @@ Worked use, `PRP_HALO-LENSCASE`: `closed` gets front, back, side, top and bottom
 
 ### 3.1.8 The bake-off: every asset in both models, plus Midjourney
 
-1. **Higgsfield or ElevenLabs.** For each asset, run the same core prompt in GPT Image 2.5 Sunburst (quality `max`, `4k`, `background` omitted) and in Nano Banana Pro at 4K, 2-4 takes each.
+1. **Higgsfield.** For each asset, run the same core prompt in GPT Image 2.5 Sunburst (quality `max`, `4k`, `background` omitted) and in Nano Banana Pro at 4K, 2-4 takes each: takes of one prompt as `generate_image` with `count` 2-4, independent prompts as `generate_image_batch`, all with the asset's `folder_id`.
 2. **Nano Banana 2.1** is the edit and consistency engine: one-line fixes, time-of-day edits, exposure matching, state derivations.
 3. **If a GPT sheet reads flat or 2D,** rerun the identical prompt in Nano Banana Pro before rewriting anything.
 4. **Judge on the hardest axis for that asset.** For Miraj it is skin under fatigue. For Noah it is panel seams and joints. For the lens case it is the clarity of the fluid.
 5. **Nano Banana Pro defaults to a 4-view sheet** when asked for a character. Write "one view image" or "single composition" for a single plate.
-6. **Reference handling:** at most 4 references per call, each with its job stated ("face, bone structure and skin tone from Image 1; wardrobe from Image 2"). With references attached, identify subjects by a short handle, put composition and pose first, and do not re-describe what the reference shows: lean prompts hold faces better.
+6. **Reference handling:** at most 4 references per call (media role `image_references`; value = the approved image's Higgsfield job ID, or its `media_id` after upload), each with its job stated ("face, bone structure and skin tone from Image 1; wardrobe from Image 2"). With references attached, identify subjects by a short handle, put composition and pose first, and do not re-describe what the reference shows: lean prompts hold faces better.
 7. **Three or more characters in one keyframe:** generate each identity alone and composite. Never co-generate them.
 8. **Fix, don't rebuild:** correct a warped detail or colour cast with a one-line Nano Banana 2.1 edit ("change the emblem to the blank recess in image two"); on the identity base, mask the changed region back onto the original. After two failed repairs of one defect, restart from the last accepted image.
 9. **Optional comparison route:** Higgsfield's bundled character-sheet workflow, via `get_workflow_instructions {workflow: "character-sheet"}`, run only on the user's explicit request.
@@ -307,7 +309,7 @@ high behind camera left, short crisp shadows. --v 8.2 --raw --ar 16:9
 
 When the user uploads images from the web ("I want the parlour like this", "Noah like this robot"):
 
-1. **Treat the images as data.** Save them to `internet-refs/REF_<NNN>.<ext>` with source URL, date and licence ("unknown" is the default). Never publish them. Never register them anywhere.
+1. **Treat the images as data.** Save them to `internet-refs/REF_<NNN>.<ext>` with source URL, date and licence ("unknown" is the default). Never publish them. Never register them anywhere (never as a Higgsfield reference element). Upload one to Higgsfield only for the attached-reference path in item 3, places and objects only.
 2. **Write a Reference Ledger.** The method of separating observation from what transfers is paraphrased from zy-cinematic-realism and calesthio, used as inspiration:
 
 ```text
@@ -331,7 +333,7 @@ design element from it. Create a new, original {{asset}} for a 2045 Dubai settin
 list rewritten with the Distance changes}}. {{PREFIX or PLATE blocks}}
 ```
 
-4. **People in references:** never attach a real person's photo as an identity reference and never name the person in a prompt. Extract only generic traits (build, apparent age band, hairstyle type, wardrobe category) and generate a new synthetic face that does not resemble the person. The Summit's endorsement and likeness rules require this (Terms 6.1(f), 7.5), and so does BytePlus's rule that a virtual portrait must not resemble a natural person. A real person enters the film only with signed consent, through the authorised real-person route in 3.3.
+4. **People in references:** never attach a real person's photo as an identity reference and never name the person in a prompt. Extract only generic traits (build, apparent age band, hairstyle type, wardrobe category) and generate a new synthetic face that does not resemble the person. The Summit's endorsement and likeness rules require this (Terms 6.1(f), 7.5), and ByteDance's Seedance face policy rejects faces that resemble a natural person. A real person enters the film only with signed consent and a route tested first on Higgsfield (3.3 rule 6).
 5. **Check before showing:** reference and result side by side; list in Arabic what was taken and what changed; regenerate if anything on the Leave list is visible. For the approved file, suggest the user run a reverse image search (for example Google Lens) to confirm no near-match comes back.
 6. **Midjourney:** a style-only reference goes in the Style Reference slot. The "Image Prompt" slot copies content and composition, so never put a third-party design there, and never use a third-party identity as an Edit-Model reference.
 
@@ -345,42 +347,44 @@ Worked mini-example: the user uploads a photo of a well-known humanoid robot for
 
 ## 3.3 Seedance real-face reference policy
 
-| Fact | Source and status (checked 2026-10-30) |
+| Fact | Source and status |
 |---|---|
-| Seedance 2.5 and 2.0 do not accept directly uploaded reference images or videos that contain real human faces | BytePlus portrait-asset guide (official, read as markdown). Comfy.org's Seedance 2.0 node docs: an AI portrait that matches no natural person is classified on upload and can pass; a flagged one errors. Field reports: photoreal AI faces are often flagged |
-| Rejection: HTTP 400 `InputImageSensitiveContentDetected.PrivacyInformation`, "may contain real person" (video: `InputVideoSensitiveContentDetected.PrivacyInformation`). Copyright hits return `...SensitiveContentDetected.PolicyViolation` | BytePlus error-codes page (official) |
-| Private virtual portrait library: upload your own virtual portraits into an asset group (`GroupType` AIGC). Each must not resemble any natural person and must carry no unauthorised trademark or logo. ModelArk runs a security review; an asset is usable only at status `Active` (`Failed` = rejected). Pass `asset://<Asset_Id>` in `content.image_url.url` with role `reference_image`; in the prompt say "Image N", never the ID. Assets belong to a Project: generate from an endpoint in the same Project. Console: Model Playground → My assets → Virtual Portrait → Manage assets | BytePlus "Private virtual portrait library" guide (page 2333565, updated 13 Oct 2026; official) |
-| Best practice per character: several assets in one group, including a vertical full-body frontal image and a vertical face close-up (frontal, no expression, above the shoulders, face about two-thirds of the frame) | same guide |
-| Prerequisites: virtual-portrait upload needs an Advanced Creation Rights tier. Entry is free (50 assets, 50 groups, 3 uploads per minute); the next tier is $1,400/month. Tiers require BytePlus enterprise verification and organisation real-name authentication (corporate registration certificate) and the Commitment Letter for virtual-avatar uploads. The first asset group asks for a signed authorisation letter in the console. The Assets API signs with AK/SK, not the ARK API key | BytePlus Advanced Creation Rights purchase guide (official) |
-| Trusted outputs: original face-containing outputs from the same ModelArk account, used within 30 days of generation, pass as inputs. This covers Seedance 2.5/2.0 videos, their last-frame images, and Seedream 5.0 lite/pro/flash **text-to-image** images. Other platforms, other accounts, and edited, compressed or forwarded files lose trust; save originals straight to BytePlus TOS | BytePlus portrait-asset guide (official) |
-| Digital character library: preset virtual humans with `asset://` IDs | official (not used for our cast) |
-| Authorised real person: one liveness verification per person; console upload on the free tier, API upload on Advanced tiers | official (real-person asset guide + purchase guide) |
+| ByteDance's Seedance 2.5 and 2.0 do not accept reference images or videos that contain real human faces; an AI portrait that matches no natural person can pass; photoreal AI faces are often flagged | BytePlus portrait-asset guide (official, read 2026-10-30); Comfy.org Seedance 2.0 node docs; field reports. Whether Higgsfield's `seedance_2_5` applies the same filter, and how it words a refusal: **unknown; T1 tests it** |
+| Best practice per character: a vertical full-body frontal image plus a vertical face close-up (frontal, no expression, above the shoulders, face about two-thirds of the frame) | same BytePlus guide; craft rule, used here for `face` + `body` |
+| Higgsfield `seedance_2_5`: modes `t2v`, `omni_reference`, `video_edit`, `video_extension`; 4-30 s; 480p/720p/1080p; `generate_audio`; `bitrate_mode` standard/high; `draft: true` gives a 480p draft that can be finalized at 1080p with `draft_job_id` **within 7 days**; media roles `start_image`, `end_image`, `image_references`, `video_references`, `audio_references`; ratios auto, 21:9, 16:9, 4:3, 1:1, 3:4, 9:16 | `models_explore get seedance_2_5` (2026-11-01) |
+| A reference's `medias[].value` is a `media_id` (`media_upload` → PUT → `media_confirm`) or the `job_id` of an earlier Higgsfield generation; an approved sheet made in Higgsfield goes in by its job ID, untouched | `generate_video` tool description (2026-11-01) |
+| Higgsfield reference elements: `manage_reference_elements` `action: create` from one clear image (`medias[]` with `id`, `url`, `type` `media_input` or `image_job`); used by writing `<<<element_id>>>` in `params.prompt` (the backend injects the image and rewrites it to `@<element-name>`; never put the ID in `medias`); usable only at `status: completed` (`processing`, `ip_checking`, `failed`, `nsfw` are not). Its supported video list names `seedance_2_0`, `kling3_0` and Cinema Studio, **not `seedance_2_5`**, and "other models ignore the placeholder" | tool description (2026-11-01); whether `seedance_2_5` honours an element: **unknown; T1 tests it** |
+| Cost on the user's account: `seedance_2_5` draft 3 credits/s, 1080p 16 credits/s; references and `bitrate_mode` do not change the price | `get_cost`, measured (05) |
 | "May contain a minor" is a hard stop with no verification route | third-party; unverified |
-| Image limits (Seedance 2.5 and the asset library): W/H 0.4-2.5, 300-6000 px per edge, < 30 MB per image, request body ≤ 64 MB | Seedance 2.5 API reference (official). 16:9, 21:9, 2:3 and 3:4 fit; 3:1, 1:4, 4:1, 1:8 and 8:1 never do |
-| Same filter on the Higgsfield Seedance route | unknown; test |
+| Image limits for Seedance 2.5 inputs: W/H 0.4-2.5, 300-6000 px per edge, < 30 MB per image | ByteDance's Seedance 2.5 API reference (official); Higgsfield publishes none, so keep to these. 16:9, 21:9, 2:3 and 3:4 fit; 3:1, 1:4, 4:1, 1:8 and 8:1 never do |
+
+The BytePlus API offers a private virtual-portrait library (`asset://`) and same-account trusted originals; that route exists but is not used (decision 2026-11-01).
 
 **Rules:**
-1. **Never evade the filter.** No cropping, blurring, noise, stylising or partial faces to sneak through. Change the route, not the pixels. Leave an asset's `Moderation` pre-filter at its default (on); never set `Strategy: Skip`. Log every rejection with its error text.
-2. **Register before D7 (route 1b).** One asset group per character, named after its asset ID. Register the approved `face`, one `body` per look and one `turn3` per look and state, unedited. If a PNG is over 30 MB, register a maximum-quality JPEG copy and keep the PNG as the evidence master. A new version is registered again. Record each asset ID and the time it became Active in the bible. Count the quota: about 3 assets per look per character must fit the Entry tier's 50.
+1. **Never evade the filter.** No cropping, blurring, noise, stylising or partial faces to sneak through. Change the route, not the pixels. Never re-send an unchanged refused request. Log every refusal with its exact error text, the job ID and the credit movement.
+2. **Set the T1 route up before D7.** For every human character, the approved `face`, one `body` per look and one `turn3` per look and state are ready, unedited. Sheets made in Higgsfield are referenced by their job IDs; anything made elsewhere (a Midjourney still the user approved) is uploaded once with `media_upload` → PUT → `media_confirm`. If a PNG is over 30 MB, upload a maximum-quality JPEG copy and keep the PNG as the evidence master. If the element route wins (1c), create one element per character and state from the approved image, named after the asset ID (≤ 32 characters, e.g. `CHR_MIRAJ-base`), and wait for `completed`. A new version gets a new upload or a new element. Record every job ID, `media_id` and `element_id` in the bible.
 3. **Minors.** If a character reads as a minor (Miraj's younger brother; any child extra), test him or her on day 1. On a hard stop, propose story-safe options: heard but unseen, seen only on the mother's phone screen from behind, or cast as a young adult. The user decides; it is a script change in 01.
 4. **Robots and non-human characters** go through the same day-1 test. A human-like face can still trip the filter.
-5. **If route 1c wins,** the trusted image must be a Seedream 5.0 text-to-image output on their account, so the face is whatever Seedream draws from the Brief. Image-to-image outputs are not on the trusted list. Generate each `turn3` in one text-to-image call, because separate calls draw different faces. Keep it untouched in TOS and write the end of its 30-day trust window into the bible. The GPT and Nano Banana sheets then serve only the bible, Midjourney and keyframes; tell them in Arabic before they approve faces.
+5. **If only a first frame works (route 1d),** each shot's first frame is generated inside Higgsfield (GPT Image 2.5 Sunburst or Nano Banana Pro, the approved sheets as `image_references`, the scene's prefix and location plate) and passed to `seedance_2_5` as `start_image` by its job ID. The first frame gets its own ledger row and the user's approval before the video job. The sheets then steer the first frames, the bible, Midjourney and keyframes; tell them in Arabic before they approve faces.
+6. **Real people** (only with signed consent): Higgsfield's handling is untested. Test the route on D1 before anyone is cast; if it fails, the user decides with the full picture.
 
 ## 3.4 Day-1 test (T1 in `00-award-brief-and-calendar.md`): will Seedance take our sheets?
 
-Run it on D1 with a provisional Miraj, made in GPT Image 2.5 Sunburst (`face`, `body`, `turn3`), before the style prefix is locked. The test is about the route, not the look.
-- **Account check first (start on D0; BytePlus publishes no review time):** is their BytePlus account enterprise-verified, and is an Advanced Creation Rights tier active (Entry is free)? If they have no company to verify, route 1b is closed: say so in Arabic and weigh 1c and 1d.
-- **Seedance settings:** `draft: true` (drafts are always 480p), 5 s, one simple action: "he blinks, breathes, turns his head slowly toward frame left".
-- **Draft cost:** ModelArk lists $0.514 for a 5 s 480p 16:9 clip without video input, about $0.10/s; a draft bills like a normal 480p clip (official pricing page, 2026-10-30).
+Run it on D1 with a provisional Miraj, made in GPT Image 2.5 Sunburst on Higgsfield (`face`, `body`, `turn3`), before the style prefix is locked. The test is about the route, not the look. Every job goes to the project's `99_TESTS` folder.
+- **Check first:** the Higgsfield connector shows `generate_video` (not only game-publishing tools); the film project and `99_TESTS` exist; the credits cover the quoted test.
+- **Seedance settings:** `generate_video`, `model: seedance_2_5`, `mode: omni_reference` when references are attached (apply any `adjustments` the tool returns and log the mode the job reports), `draft: true` (480p), `duration: 5`, `aspect_ratio: "16:9"`, one simple action: "he blinks, breathes, turns his head slowly toward frame left". T1 drafts are tests and are never finalized; a Higgsfield draft can only be finalized within 7 days, so log `draft_expires_utc` anyway.
+- **Draft cost:** 3 credits/s, so 15 credits per 5 s draft (references do not change the price). Preflight the whole set with `get_cost: true` and get one yes.
 
-| # | Route | Pass if |
+| # | Route on Higgsfield `seedance_2_5` | Pass if |
 |---|---|---|
-| 1a | BytePlus API, `turn3` uploaded directly as `reference_image` | accepted (expected: `PrivacyInformation`; log it) |
-| 1b | Private virtual portrait group with `face` + `body` + `turn3`; wait for Active; reference `asset://<ID>` | review passes, accepted, identity holds |
-| 1c | Trusted output: Seedream 5.0 pro text-to-image on their ModelArk account draws a `turn3` from the Brief text alone; feed the untouched original from TOS | accepted, and the user accepts that face as the character |
-| 1d | Higgsfield Seedance 2.5 with the same `turn3` (once the user has reconnected the connector) | accepted, and identity holds |
+| 1a | `turn3` as `image_references`, by job ID | accepted, and identity holds |
+| 1b | `face` as `start_image` | accepted (acceptance only: a sheet is never a production first frame, the clip would open on the grey plate) |
+| 1c | Reference element made from `face` (`manage_reference_elements` `create`, wait for `completed`), `<<<element_id>>>` in the prompt, no `medias` | the element completes and the job visibly uses it (the tool lists elements for `seedance_2_0`, not `seedance_2_5`; an ignored placeholder is a fail, never a reason to switch to Seedance 2.0, which is not the competition model) |
+| 1d | First frame generated inside Higgsfield: GPT Image 2.5 Sunburst (or Nano Banana Pro) draws Miraj in a neutral setting from the sheets as `image_references`; that frame's job ID goes in as `start_image` | accepted, and identity holds |
 | 1e | A/B on the working route: `face` + `body` vs `turn3` alone vs `face` alone vs `face` + `heads5` | best identity hold, including a profile moment |
 | 1f | Minor and robot checks (younger brother; Noah; the delivery robot) | a route exists, or a story fallback is chosen |
+
+Order: 1a and 1b first; 1c and 1d only if faces are refused or identity does not hold. Each job is a ledger row (Higgsfield job ID, model, folder `99_TESTS`, references by job ID, refusal text or the SHA-256 of the downloaded draft).
 
 **Judging:** sweep every draft at about 2 frames per second against the `face` plate, because first and last frames hide mid-clip drift (scenario-labs, MIT). Check the output does not copy the grey field or the panel grid. Report a table plus one Arabic recommendation; the working route becomes the rule in `05-seedance-production.md`.
 
@@ -390,6 +394,8 @@ Run it on D1 with a provisional Miraj, made in GPT Image 2.5 Sunburst (`face`, `
 <MIRAJ> corresponds to @Image1. @Image1 defines his facial features, hairstyle and clothing.
 Use only the appearance; do not use the grey background or the panel layout.
 ```
+
+On the element route (1c), write `<<<element_id>>>` where the line says `@Image1`; the backend rewrites it to `@<element-name>`. Never type the `@name` form of an element in a tool call.
 
 ---
 
@@ -408,18 +414,19 @@ Chat labels are in Arabic. Prompts and file names stay in English.
 **Generation card** (one per asset and sheet; saved to `prompts/`):
 
 ```text
-ASSET  CHR_MIRAJ_base_turn3  v02        ROUTE  Higgsfield | ElevenLabs
+ASSET  CHR_MIRAJ_base_turn3  v02        ROUTE  Higgsfield MCP | Higgsfield web (user)
+FOLDER 01_CHARACTERS/CHR_MIRAJ  (folder_id <uuid>)
 MODEL  gpt_image_2_5  variant=sunburst  quality=max  resolution=4k  aspect=16:9   takes=3
 MODEL  nano_banana_pro  resolution=4k  aspect=16:9                                 takes=3
-REFS   Image 1 = CHR_MIRAJ_base_face_v03_G25S_t2_APPROVED (face, bone structure, skin, hair)
+REFS   Image 1 = CHR_MIRAJ_base_face_v03_G25S_t2_APPROVED, job <id> (face, bone structure, skin, hair)
 TEMPLATE  default | USER CHR_TEMPLATE (slots filled: ...)
 PROMPT
 <full English prompt>
-COST   <quoted credits or $>   ->  waiting for your yes
+COST   <get_cost credits per job x jobs = total>   ->  waiting for your yes
 ```
 
 **Selection board** (after each batch):
-- Show the gallery: Higgsfield `show_generation_by_ids`, or the ElevenLabs flow URL.
+- Show the gallery: one Higgsfield `show_generation_by_ids` call for the batch; for takes the user ran in the web app, `job_display` per named candidate (`id` = `item_id` from `list_project_assets`, with its `folder_id`).
 - Under it, show this table. Recommend one take but never pick for the user.
 
 | Candidate | Model | Identity vs base | Plate laws (grey / flat / one face) | Hardest axis | Defects | Claude's note |
@@ -439,24 +446,25 @@ identity_anchors: [long oval face, deep-set brown eyes, mole 1 cm below left mou
                    short untrimmed beard thinner on cheeks, bump on nose bridge]
 locked_reference_assets:
   - file: approved/CHR_MIRAJ_base_turn3_v02_G25S_t2_APPROVED.png
-    sha256: "<hash>"
-    model: gpt-image-2.5-sunburst
+    sha256: "<hash of the downloaded original>"
+    model: gpt_image_2_5            # Higgsfield model id
     params: "variant=sunburst;quality=max;resolution=4k;aspect=16:9"
-    route: Higgsfield
+    route: Higgsfield-MCP           # or Higgsfield-web (user)
     account: "<account + plan>"
-    job_id: "<id>"
+    job_id: "<Higgsfield job id>"
+    folder: 01_CHARACTERS/CHR_MIRAJ
     date: 2026-11-03
     parent: CHR_MIRAJ_base_face_v03_G25S_t2_APPROVED.png
     template: default                # or "USER CHR_TEMPLATE" (origin H)
     prompt_file: prompts/CHR_MIRAJ_base_turn3_v02.txt
     picked_by: AboStesha
     words: "<their words>"
-seedance_asset_ids:
-  - uri: "asset://<ID>"
-    file: CHR_MIRAJ_base_face_v03_G25S_t2_APPROVED.png
-    group: CHR_MIRAJ
-    active: "2026-11-04 10:20"
-    route: private-virtual-portrait  # the day-1 winner; for 1c add trust_expires
+seedance_asset_ids:                  # L.6 key; on Higgsfield it holds the T1-route references
+  - route: image_references          # the day-1 winner: image_references | element | first_frame
+    value: "<Higgsfield job id or media_id>"
+    file: CHR_MIRAJ_base_turn3_v02_G25S_t2_APPROVED.png
+    element_id: "<uuid; element route only, status completed>"
+    tested: "T1 <date>, seedance_2_5 job <id>"
 role_line: "<MIRAJ> corresponds to @Image1. @Image1 defines his facial features, hairstyle and clothing."
 hands: "smart ring on the right ring finger"
 looks:
@@ -479,10 +487,11 @@ approval_required_for: [face regeneration, wardrobe redesign]
 - [ ] Characters: `face`, plus `body` and `turn3` for every look and state; `heads5`, `expr6` and `lips2` for speaking or close-up roles; one wardrobe sheet per look; a scale frame where subjects share frames.
 - [ ] Locations: a master for every script time of day; a reverse plate for dialogue scenes; plates normalised to the master; the affordance check passed against every beat.
 - [ ] Props: views planned from the shot list, one sheet per state, dimensions logged.
-- [ ] The day-1 route is proven, and every human character is set up on it before D7: asset IDs Active (1b), or untouched trusted originals in TOS with their trust end date logged (1c). Minor and robot outcomes are decided.
+- [ ] The day-1 route on Higgsfield `seedance_2_5` is proven, and every human character is set up on it before D7: approved sheets referenced by job ID or `media_id` (1a), elements at `completed` (1c), or the first-frame recipe approved (1d), all logged in the bible. Minor and robot outcomes are decided.
 - [ ] The G2 compliance list in `00-award-brief-and-calendar.md` passes: synthetic faces, no lookalikes, no brands, Gulf wardrobe confirmed by the user, children shown with dignity.
 - [ ] 3.2 assets: the ledger is filed, nothing from a Leave list is visible, and reverse search is done or declined.
 - [ ] A continuity bible entry exists for every approved asset. Provenance fields are complete. Metadata is untouched.
+- [ ] Every approved asset (and the T1 route result) has its `prompt-library/` entry (SKILL §7b).
 - [ ] Midjourney cards are delivered; their kept Midjourney images are logged with job IDs; Stealth is confirmed.
 
 Ask in Arabic: «هل تعتمد كل الأصول في لوحة G2 كما هي، وننتقل إلى الخطوة 4: البلوكنغ في Blender؟» Silence or a change of subject is not approval.
@@ -506,11 +515,12 @@ Ask in Arabic: «هل تعتمد كل الأصول في لوحة G2 كما هي�
 | Garbled Arabic or brand-like text on signs | text generated in-image | blank surfaces; composite in 07 |
 | Midjourney prompt errors or drifts to V7 | `--q`, `--cref`, `--oref`, `2.39:1`, `::` | the 3.1.8 suffix rules |
 | Midjourney images public during the holdback | no Stealth | Pro/Mega plan with Stealth on before the first job |
-| `PrivacyInformation` 400 from Seedance | real-looking face uploaded directly | route 1b or 1c; never re-send the unchanged request or alter the face to evade |
-| `PolicyViolation` 400 (copyright) | an asset too close to a third-party design (3.2) | widen the Distance list and rebuild the asset; never alter pixels to slip through |
-| Virtual portrait stuck or `Failed` | review rejected it, or the asset sits in another Project than the endpoint | check the Project; on `Failed`, rebuild further from any lookalike or logo, never re-upload unchanged |
-| Trusted output rejected in route 1c | edited, re-encoded, downloaded and re-uploaded, image-to-image, or older than 30 days | feed the untouched TOS original of a text-to-image output |
-| Expensive retries on ElevenLabs | repeated generate calls | one call; read the variations; pin the pick |
+| `seedance_2_5` on Higgsfield refuses a face reference | a real-looking face in the reference | switch to the T1 fallback (element 1c or Higgsfield-made first frame 1d); log the exact text; never re-send the unchanged request or alter the face to evade |
+| Copyright or policy refusal | an asset too close to a third-party design (3.2) | widen the Distance list and rebuild the asset; never alter pixels to slip through |
+| Element stuck in `processing` / `ip_checking`, or `failed` / `nsfw` | review rejected it | rebuild further from any lookalike or logo; never re-create it unchanged |
+| Element placeholder ignored in the video | the elements tool lists `seedance_2_0`, not `seedance_2_5` | `image_references` or a Higgsfield-made first frame; never move the shot to Seedance 2.0 |
+| Double charge on Higgsfield | a generate call re-sent after a timeout | reuse the returned job ID and check it with `jobs_wait`; resubmit only once the first outcome is known |
+| A web-app take is missing from the ledger | the user generated by hand | `list_project_assets` on the folder, then `get_project_asset_prompt`; log it the same day |
 | 4K Sunburst artefacts | above 2560×1440 is experimental (OpenAI) | 2K max, then `upscale_image` |
 
 ## Sources and credits
@@ -528,7 +538,7 @@ Paraphrased as inspiration only:
 - avienor/midjourney-prompts: no licence file; Midjourney facts re-checked against official release notes.
 - popopo-99/zy-cinematic-realism: CC BY-NC 4.0; continuity bible fields, reference ledger, Midjourney adapter cautions.
 
-Official and vendor sources: OpenAI image-generation guide, Google `gemini-nano-banana-2.1` model page and Gemini image-generation guide (all fetched 2026-10-30); Midjourney release notes ("Version 8.2" 24 Jul, "Edit Model for V8" 27 Aug, "Alpha Changelog 10/7/26" and "Testing Thinking Mode" 8 Oct 2026); BytePlus ModelArk docs read as markdown on 2026-10-30 (`seedance-portrait-asset-guide`, `private-virtual-avatar-library-guide-preview` = page 2333565, `seedance-2-0-purchase-guide`, `error-codes`, model pricing, Seedance 2.5 API reference); ElevenLabs connector model schemas (read 2026-10-30).
+Official and vendor sources: OpenAI image-generation guide, Google `gemini-nano-banana-2.1` model page and Gemini image-generation guide (all fetched 2026-10-30); Midjourney release notes ("Version 8.2" 24 Jul, "Edit Model for V8" 27 Aug, "Alpha Changelog 10/7/26" and "Testing Thinking Mode" 8 Oct 2026); BytePlus ModelArk docs read as markdown on 2026-10-30 (`seedance-portrait-asset-guide`, Seedance 2.5 API reference; the virtual-portrait, purchase and error-code pages served the unused BytePlus route); Higgsfield MCP tool descriptions (`generate_image`, `generate_image_batch`, `generate_video`, `manage_reference_elements`, `media_upload`, `list_project_assets`, `get_project_asset_prompt`, `get_project_asset_source`, `jobs_wait`, `create_folder`, `upscale_image`) and `models_explore get` for `seedance_2_5`, `gpt_image_2_5`, `nano_banana_pro`, `nano_banana_2_1`, `seedream_v5_pro` (read 2026-11-01).
 
 Third-party, marked unverified where used: laozhang.ai Seedance real-person guide (22 Oct 2026, the minor hard stop); Comfy.org Seedance 2.0 partner-node docs (AI-portrait classification).
 

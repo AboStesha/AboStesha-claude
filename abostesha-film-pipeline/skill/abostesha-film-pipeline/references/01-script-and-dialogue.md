@@ -341,7 +341,7 @@ Lower stability gives more range and more variance. Lower similarity if you hear
   - English about 5-10 words, or the same breath length in other languages.
   - The clip is 3-8 s, one speaker per file.
   - Leave room for at least 0.5-1 s of held reaction after the line, because a clipped last word is the most common failure.
-- **Seedance audio-reference limits**, from the owned seedance-2-5-prompts skill (ByteDance spec): up to 10 clips and at most 30 s combined per generation. A Dreamina-guide snapshot adds 2-30 s per clip and WAV/MP3. This is not yet verified on the BytePlus API; `05-seedance-production.md` confirms it.
+- **Seedance audio-reference limits**, from the owned seedance-2-5-prompts skill and ByteDance's official API reference (`05` model-limits row): up to 10 clips, WAV/MP3, 2-30 s each, at most 30 s combined and 15 MB each per generation. Every Seedance job runs in Higgsfield (`generate_video`, model `seedance_2_5`), where the take enters as an `audio_references` media. Higgsfield publishes no audio limits of its own (`models_explore get seedance_2_5`, read 2026-11-01), so stay inside ByteDance's; `05-seedance-production.md` confirms them on the first live job. (The BytePlus ModelArk API route exists but is not used: decision 2026-11-01.)
 - **Preflight.** Once takes exist, compare the measured selected-take duration with the budget and label the line. At Gate 1B the budget is the line's planned seconds from the 1.1.7 timing table (and, for ON lines, the 3-8 s window minus the held reaction). `04` then sets shot durations from the measured takes and re-runs this preflight against the real shot length.
   - `FITS`;
   - `REBALANCE`: split across shots, or move to OFF/VO;
@@ -367,7 +367,7 @@ Rules from the Netflix English Timed Text Style Guide:
 - **Folder:** `films/<slug>/audio/dialogue/<CHAR>/`.
 - **File names:**
   - Raw take: `<FILM>_<LINEID>_<CHAR>_T<NN>.wav`, e.g. `SLA_S07-L03_MOTHER_T02.wav`. Use the film code the user approves; SLA is a suggestion.
-  - After shot lock, the per-shot upload copy: `<FILM>_<SHOTID>_<LINEID>_<CHAR>_T<NN>.wav`, e.g. `SLA_S07-SH04_S07-L03_MOTHER_T02.wav`.
+  - After shot lock, the per-shot upload copy: `<FILM>_<SHOTID>_<LINEID>_<CHAR>_T<NN>.wav`, e.g. `SLA_S07-SH04_S07-L03_MOTHER_T02.wav`. `05` pads it to `_PAD.wav` and uploads it to Higgsfield (`media_upload` → PUT → `media_confirm`) as an `audio_references` media; its `media_id` is logged in that Seedance job's ledger row (`references`), not in the take log.
   - Never rename, re-encode or strip metadata from the raw take; copy it. Trims and fixes happen on copies (`07`).
 - **Measure.** Use `python3 -I -c "import wave,sys;w=wave.open(sys.argv[1]);print(round(w.getnframes()/w.getframerate(),2))" <file.wav>`, or `ffprobe -v error -show_entries format=duration -of csv=p=0 <file>` for non-PCM files. The figure includes ElevenLabs' head and tail silence; if the user trims a copy before upload, measure that copy. Write the seconds of the selected take into the sheet and re-run the preflight.
 - **Disclosure.** Log model, voice_id, settings, the ElevenLabs history item ID and the date in the take log for the AI disclosure (prompts and history may be requested within 7 days and must be kept for 24 months).
@@ -550,6 +550,7 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
 - **Facts from official pages**, checked 2026-10-30:
   - ElevenLabs docs: Eleven v4 overview, models page, v4 prompting best practices, Text-to-Dialogue and TTS API references, Voice Design guide and API.
   - The ElevenLabs hosted MCP model guide (`eleven_v4`).
+  - Higgsfield MCP `models_explore get seedance_2_5` and the `generate_video` / `media_upload` tool descriptions, read 2026-11-01: the `audio_references` media role; no published audio limits.
   - Netflix English Timed Text Style Guide and Subtitle Timing Guidelines.
   - Aldholmi et al., Interspeech 2021, on Arabic speech rate.
   - AI Film Award 2027 Terms, and the Academy 99th Rules, both via `00-award-brief-and-calendar.md`; the Academy's 1 May 2026 rules announcement (human-authored screenplays, writing categories).
@@ -559,6 +560,6 @@ Ask: «هل نعتمد أوراق الحوار والتسجيلات المختا
 - **Unverified, so test or measure:**
   - Arabic, Hindi and Urdu words-per-minute figures.
   - English tags inside Arabic or Urdu text, and the effect of tashkeel on v4.
-  - The Seedance 2.5 per-clip audio limits on BytePlus.
+  - The Seedance 2.5 audio-reference limits on Higgsfield `seedance_2_5` (Higgsfield publishes none).
   - The lip-sync word budgets (from Seedance 2.0 data).
   - Whether the ElevenLabs UI shows seeds.

@@ -456,7 +456,7 @@ EDITMAP: src_in,src_out,tl_in,tl_out,fade_in_ms,fade_out_ms,gain_db,note
 ## Gate (what the user must approve)
 
 - **G6-A, spotting:** T1 and the motif plan are approved; motif instruments are chosen; the user's motif recording is filed; the ElevenLabs Enterprise Music evidence is filed, or Eleven is marked temp-only. Ask: «هل تعتمد جدول الـ spotting وخطة اللحن لأبدأ كتابة طلبات الموسيقى؟» No generation before this.
-- **G6-B, per cue:** the take is chosen by ear on picture; HARD syncs are within one frame; the conformed file is 48 kHz/24-bit with true peak ≤ −1 dBTP; the cue-log row is complete. Ask: «هل تعتمد النسخة tN من المقطع Mnn بعد الاستماع عليها مع الصورة؟»
+- **G6-B, per cue:** the take is chosen by ear on picture; HARD syncs are within one frame; the conformed file is 48 kHz/24-bit with true peak ≤ −1 dBTP; the cue-log row is complete; the cue's Suno or Eleven Music prompt and the user's verdict are entered in `prompt-library/music.md` (approved SFX recipes or prompts go in `sfx.md`; SKILL §7b). Ask: «هل تعتمد النسخة tN من المقطع Mnn بعد الاستماع عليها مع الصورة؟»
 - **G6-C, SFX list:** T4 is approved (priorities and sources) before any SFX generation.
 - **G6-D, per SFX:** every P1 and P2 row is EAR-APPROVED. Nothing marked NOT EAR-APPROVED goes to 07.
 - **G6-E, hand-off:** stems are zero-aligned, of equal duration and checksummed; logs and licences are filed; audio-share totals are in the ledger. This feeds G4 in 00 §0.10.

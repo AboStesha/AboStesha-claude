@@ -1,7 +1,7 @@
 # 07 — Edit Review, Mix, Colour, Subtitles and Masters (Step 7)
 
 **Purpose.** Take the user's Premiere fine cut to a set of signed masters: review the edit, place and level the sound, match colour between Seedance shots, add subtitles, titles, credits and the Summit intro, then export and QC every deliverable.
-**How.** Use the Higgsfield connector's Premiere tools (`pr_*`) when they are connected. Work read-only by default, and change the cut only with explicit permission. When the tools are missing, give the user exact manual steps.
+**How.** Use the Higgsfield connector's Premiere tools (`pr_*`) when they are connected. Work read-only by default, and change the cut only with explicit permission. When the tools are missing, give the user exact manual steps. Every regeneration this step asks for (7.5 routes 3–5) runs in Higgsfield: `generate_video`, model `seedance_2_5`, as 05 §5.8 sets out. The BytePlus ModelArk API route exists but is not used (decision 2026-11-01).
 **Gates.** You run G3 Picture lock (D15) and the technical half of G4 Delivery (D18) from 00-award-brief-and-calendar.md here. 08-judge-panel.md sits between them on D17.
 
 Talk to the user in Arabic (MSA, addressing them as أبوستيشا). Write every generation prompt in English, including Seedance edit prompts and ElevenLabs SFX or voice direction. **You cannot hear.** Every audio judgement must be a measurement or the user's ear, never your guess.
@@ -20,12 +20,13 @@ Evidence tags used below:
 | Input | Where | Needed for |
 |---|---|---|
 | User's Premiere project and fine-cut sequence | user's machine, via `pr_*` or exports | everything |
-| Downloaded Seedance originals and the ledger (job IDs, shot IDs, origins) | `films/<id>/` · ledger-continuity-physics.md | source check, Seedance share, VFX routes |
+| Downloaded Seedance originals (Higgsfield `seedance_2_5` finals, byte-identical) and the ledger (Higgsfield job IDs, folder, `file_sha256` of each original, shot IDs, origins) | `films/<id>/` · Drive `08_EVIDENCE/RAW_SEEDANCE/` · ledger-continuity-physics.md (L.0b, L.2) | source check, Seedance share, VFX routes |
 | Locked dialogue sheet: line IDs, SPOKEN, EN SUB, selected takes `SLA_<SHOT>_<LINE>_<CHAR>_T<NN>.wav` | 01-script-and-dialogue.md | dialogue lay-in, subtitles |
 | Beat maps and lip-sync framing rules | 05b-acting-direction.md | lip-sync review |
 | Hero frames per look variant (R-DAY, DREAM…), grade intent, grain/halation and matte decisions, `measure_frames.py` (§2.3) | 02-style-prefix.md | colour |
 | Spotting list, SFX files, music cues with edit points | 06-music-and-sfx.md | sound placement and mix |
-| Runtime budget, Seedance-share targets, G3/G4 lists, T2/T4/T5 test results | 00-award-brief-and-calendar.md | gates, provenance, intro conform |
+| Runtime budget, Seedance-share targets, G3/G4 lists, T1/T2/T3/T4/T5 test results (T1 = the face route proven on D1, recorded in `PROJECT.md`) | 00-award-brief-and-calendar.md | gates, provenance, intro conform, face fixes |
+| 05-T7 codec baseline of a Higgsfield 1080p final; 05-T9 (can edit tasks be drafted) | 05-seedance-production.md | source check, 7.5 routes 3–4 |
 | Official Summit intro file (downloaded on D0) | official award page → Google Drive "Download the intro" | Summit master |
 | Names for credits, font licences, music/SFX licences | the user; `evidence/licences/` | credits, D3 |
 
@@ -73,7 +74,8 @@ Day plan (00 calendar):
    - every track and clip: name, source path, source in/out, sequence start/end, enabled, scale, volume;
    - every marker.
 3. **Source check** with ffprobe on every picture source:
-   - Each picture source must be a downloaded Seedance original, never a review export. At 1080p, Seedance 2.5 delivers 10-bit H.265 by default, or H.264 4:4:4 + PCM in `.mov` when `output_format: mov` is requested `[FIELD: BytePlus schema via research; confirm with ffprobe]`.
+   - Each picture source must be a downloaded Seedance original (or the logged ProRes derivative 05-T7 allowed), never a review export. Match it to its ledger row: the file's SHA-256 equals `file_sha256` of a Higgsfield `seedance_2_5` row (derivatives through `parent_gen_id`).
+   - Higgsfield has no `output_format` field and does not publish the codec of a `seedance_2_5` final. Compare each source with the 05-T7 baseline (codec, pix_fmt, bit depth, fps, audio channels) and flag any that differ `[UNVERIFIED until 05-T7]`.
    - Flag any clip not 1920×1080, not 24/1 fps, or scaled above 100%. Above about 110% the softening is visible `[HOUSE]`.
 4. **Reference export.** Export through `pr_*`, or ask the user to:
    - H.264 1920×1080, 24 fps, high bitrate: `07-finish/review/SLA_ref_vNN.mp4`;
@@ -140,7 +142,7 @@ Then work through the four checks below. Every finding becomes a note card (Outp
 - When continuity fails, choose one (calesthio): hide it (cutaway, crop ≤ 110%, a reaction), motivate it (time jump, dream logic), separate it (sound bridge), or regenerate it (7.5).
 
 **c. AI artifacts** (paraphrased from Gregory-Esman video-qa, MIT, and calesthio). Compare the first, middle and last frame of each clip, and the locked sheets from 03:
-- identity drift inside a clip and between the draft and the 1080p final (the final is a new render);
+- identity drift inside a clip and between the 480p draft and the 1080p final finalized from it with `draft_job_id` (T3 measured how far a final can drift; never assume it equals the draft);
 - hands and finger count; the contact frame of the robot fist bump against the frame logged in the ledger;
 - garbled glyphs, logos or text on signage, screens and the Halo HUD (brand sweep, G3);
 - plastic skin, helmet hair, glassy eyes, missing blinks; banding in Dubai sky and haze gradients;
@@ -174,7 +176,8 @@ Severity (adapted from Leonxlnx/cinetic, MIT): **P0** is visible on a key beat o
    - log the change: item ID, before/after in/out, tool call.
 
    Never ripple. Never save the project unless the user asks.
-3. **Seedance picture share.** From the final snapshot, sum the seconds of picture clips whose source path matches a Seedance job in the ledger, and divide by T (titles + story + credits; the intro is excluded).
+3. **Seedance picture share.** From the final snapshot, sum the seconds of picture clips whose source file matches a Higgsfield `seedance_2_5` row in the ledger (job ID in `task_id`, file SHA-256 = `file_sha256`), and divide by T (titles + story + credits; the intro is excluded).
+   - Takes the user made by hand in the Higgsfield web app (same project) count once they have their row: read them back with `list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source` (ledger L.2).
    - Titles and credits over Seedance plates count.
    - A composite counts when the Seedance plate dominates (00 0.4).
    - Any clip not in the ledger counts as non-Seedance until proven otherwise.
@@ -189,13 +192,21 @@ Severity (adapted from Leonxlnx/cinetic, MIT): **P0** is visible on a key beat o
 |---|---|---|---|
 | 1 | Trim or slip into the 12-frame handles | head/tail wobble, a bad blink, a short morph | none |
 | 2 | Reframe ≤ 110% | edge garbage, a stray limb at the frame edge, never a watermark | none; slight softening |
-| 3 | **Seedance edit task** (05 routes it; request `output_format: mov`) | local fix: a hand, a prop, a light colour, a background element | stays Seedance |
-| 4 | Seedance bridge (transition) or forward/backward extension | a broken match cut, a clip too short for the beat | stays Seedance |
-| 5 | Re-draft and re-finalise the shot (05) | identity, action or physics wrong across the clip; 4 of 4 takes failing the same way means the prompt is missing a variable | stays Seedance; costs calendar |
+| 3 | **Seedance edit task** (05 §5.8: `generate_video`, `seedance_2_5`, `mode: video_edit`, the original final as `video_references` by its Higgsfield job ID) | local fix: a hand, a prop, a light colour, a background element | stays Seedance |
+| 4 | Seedance extension (`mode: video_extension`, `extension_mode` `forward` or `backward`, 05 §5.8) or a bridge shot (`start_image` = the outgoing clip's last frame, `end_image` = the incoming clip's first frame, both extracted from the downloaded originals as derivative rows; whether the pair is accepted is `[UNVERIFIED]`: try it on a draft) | a broken match cut, a clip too short for the beat | stays Seedance |
+| 5 | Re-draft and re-finalise the shot (05): a new `draft: true` take, finalized with `draft_job_id` at 1080p | identity, action or physics wrong across the clip; 4 of 4 takes failing the same way means the prompt is missing a variable | stays Seedance; costs calendar |
 | 6 | Paint or composite in Premiere or After Effects (Higgsfield `ae_*`; load `ae_get_skill` first) | Arabic signage, small text cleanup, sky fix | counts only while the plate dominates |
 | 7 | Other generative tools: Higgsfield Premiere plugin Reframe/Upscale/Edit Video/Draw-to-edit, Premiere Generative Extend | last resort | **non-Seedance** unless the tool runs Seedance; log the model, disclose it, never on faces |
 
-**Seedance edit prompt** (adapted from the user's seedance-2-5-prompts skill, sections General editing / Audio editing). Duration is inherited (±0.3 s) and the aspect ratio is locked, so re-conform sound and subtitles after the swap.
+**Running routes 3–5 in Higgsfield** (05 §5.7–5.8 own the details):
+- **Cost and yes.** `get_cost: true` on every job of the batch, then quote the job count and credits and wait for the user's yes (measured: 3 credits/s draft, 16 credits/s at 1080p; a `video_edit` is billed by the source clip's duration; references and `bitrate_mode` do not change the price).
+- **Draft, then final.** `draft: true` (480p) first; the user approves the take in their own words; finalize that same take with `draft_job_id`, `resolution: "1080p"`, `bitrate_mode: "high"`. A Higgsfield draft can be finalized only within 7 days of its creation (house rule: before day 5). If 05-T9 showed edit or extension jobs cannot be drafted, run the job once at 1080p after the user's yes.
+- **Folder.** `folder_id` = the shot's scene folder: drafts in `04_SCENES/Sxx_<slug>/drafts`, the finalized take in `finals/` (ledger L.0b).
+- **Faces.** If the fix needs a face reference (a re-drafted shot, a new angle, a bridge with a face in frame), use the face route T1 proved on D1 (in `PROJECT.md`): the approved sheets as `image_references` (or `start_image`). If T1 showed faces are refused, use its fallback: a Higgsfield reference element (`manage_reference_elements`, `<<<element_id>>>` in the prompt; only if T1 showed `seedance_2_5` honours it) or a first frame generated inside Higgsfield and passed as `start_image`. Never another platform without the user's yes.
+- **Download and log in the same turn.** Download the original the moment the job finishes, hash it, and write its ledger row: Higgsfield job ID (`task_id`), model `seedance_2_5` and `mode`, `folder_id` and the folder path, `parent_gen_id` = the source final's row, and the downloaded original's `file_sha256`. Failed and filtered jobs get rows too. A timed-out call is never resubmitted: `jobs_wait` on its job ID, or look for it in the scene folder with `list_project_assets`.
+- **Hand-made fixes.** If the user makes the fix by hand in the Higgsfield web app (same project, same scene folder), read it back with `list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source` and log it the same way.
+
+**Seedance edit prompt** (adapted from the user's seedance-2-5-prompts skill, sections General editing / Audio editing). Duration is inherited (±0.3 s; 05 §5.8 allows up to 0.4 s shorter) and the aspect ratio is locked (Higgsfield ignores `duration` and `aspect_ratio` in `mode: video_edit`), so re-conform sound and subtitles after the swap.
 ```text
 [Edit Goal] Edit @Video1. Only from {{t1}} to {{t2}} seconds, {{add/remove/replace/adjust}} {{object or region}}.
 [Source Video Role] @Video1 is the sole editing master. It defines the characters, scene, actions, composition,
@@ -218,6 +229,8 @@ finger count.
 contact frame, the camera move, the noon light and the ambience from @Video1.
 ⚠️ Watch: finger count on the contact frame; Miraj's hand changing skin tone; the contact moving off its logged frame.
 ```
+Settings for this example: `model: seedance_2_5`, `mode: video_edit`, `medias`: the S03-SH02 final's Higgsfield job ID as `video_references` (@Video1) and the CHR_ROBOT sheet's job ID as `image_references` (@Image1), `draft: true`, `folder_id` = the S03 `drafts` folder.
+
 For an audio-only Seedance edit (for example removing hallucinated music), use three clauses: name the ONE channel with "only", list every channel that stays, and freeze the visuals, camera treatment and editing rhythm explicitly.
 
 **Arabic signage** (03 never generates Arabic text):
@@ -255,7 +268,7 @@ Order (the 02 contract): correct → match each scene to its hero shot → show 
 
 ### 7.7 Dialogue: lay in, sync, clean, futz (D16)
 
-1. **Lay in.** Put the selected ElevenLabs takes on the DX tracks under each ON shot (track layout: Output template 3). Seedance's native track mixes its own voice with its effects. Keep it on `FX-SD` only where it carries no speech. Under ON lines, cut it out and let `FX-BG` room tone fill, or ask 05 for a Seedance audio edit that removes only the dialogue (three-clause rule, 7.5). If T2 showed that Seedance's own voice is usable and syncs better, the user may choose it. Record the origin in the ledger, because it moves the audio share.
+1. **Lay in.** Put the selected ElevenLabs takes on the DX tracks under each ON shot (track layout: Output template 3). Seedance's native track mixes its own voice with its effects. Keep it on `FX-SD` only where it carries no speech. Under ON lines, cut it out and let `FX-BG` room tone fill, or ask 05 for a Seedance audio edit that removes only the dialogue (`mode: video_edit` on Higgsfield, three-clause rule, 7.5). If T2 showed that Seedance's own voice is usable and syncs better, the user may choose it. Record the origin in the ledger, because it moves the audio share.
 2. **Lip-sync check, per ON line.**
    - Make a strip (7.2 E) at the audio onset, which comes from the clip start or from `silencedetect` on the DX stem.
    - Find the first frame where the lips form the first phoneme. Bilabials (p, b, m) are the clearest.
@@ -430,7 +443,7 @@ File names follow `<project>_<deliverable>_<locale>_<aspect>_<duration>_<spec>_<
 - **Content Credentials** section (below the output preview in Export mode) on, per T4. Media Encoder 26.2 (April 2026) documents it in Export Settings; the Premiere help page documents it in Export mode; supported formats are not confirmed for ProRes `[DOC Adobe help, via search 2026-10-30]`, so T4 decides.
 - No timecode or image overlays.
 
-Make the checksums after the files are in place: `sha256sum masters/* audio/* subs/* > manifest-sha256.txt`. Back everything up in two places (00 D2).
+Make the checksums after the files are in place: `sha256sum masters/* audio/* subs/* > manifest-sha256.txt`. Back everything up in two places (00 D2): the Google Drive master archive (`07_DELIVERY/`, mirrored to the user's PC) and the external drive (ledger L.0b). GitHub (private) takes text only: never a master, clip or audio file (SKILL §4 `.gitignore`).
 
 ### 7.13 Final QC (technical half of G4, D18)
 
@@ -492,8 +505,8 @@ Verify the shortcut on the user's OS and keymap before sending it (default "nudg
 2nd Life: Ascent | الحياة الثانية: معراج
 Written and Directed by — <full name> (AboStesha)
 Edited by — <name>          3D Blocking (Blender) — <collaborator>
-Video generated with Dreamina Seedance 2.5 (dreamina-seedance-2-5-260628) via <BytePlus ModelArk / Higgsfield>
-Character and location design — GPT Image 2.5, Nano Banana Pro / 2.1, Midjourney V8.2
+Video generated with ByteDance Seedance 2.5 via Higgsfield
+Character and location design — GPT Image 2.5 and Nano Banana Pro / 2.1 via Higgsfield, Midjourney V8.2
 Voices — synthetic voices, ElevenLabs Eleven v4 (<per 01 voice cards: Voice Design / Voice Library speaker, used under the library terms / consented clone>). All faces are synthetic.
 Music — <Suno v6 / Eleven Music v2.5>, <plan>, edited by <name>
 Sound — Seedance native sound; procedural SFX (code) by <name>; ElevenLabs SFX v2
@@ -547,6 +560,9 @@ Open   none   ·   Waivers   none
 | Grade jump at a cut inside one scene | each shot graded alone | match to the hero shot first, then the shared look layer |
 | LUT made the AI clips crunchy | log-to-709 LUT on display-referred clips | remove it; Rec.709 throughout |
 | Seedance share fell below 90% after fixes | generative extend, upscalers, or AE paint used freely | route ranking in 7.5; recompute at G3/G4 |
+| A clip in the cut has no ledger row | the user made it by hand in the Higgsfield web app, or a file was renamed | read it back (`list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source`), match it by SHA-256, add the row before G3 |
+| A fix draft cannot be finalized | the Higgsfield draft is older than 7 days | finalize fix drafts before day 5; otherwise re-draft (route 5) |
+| A fix was billed twice | a timed-out `generate_video` call was repeated | `jobs_wait` on the job ID or look in the scene folder first; never resubmit |
 | Provenance lost on the final | ffmpeg remux or re-tag of a credentialed export | re-export from Premiere with Content Credentials; never remux it |
 | Intro looks or sounds different | intro retimed, graded or re-levelled | intro untouched, Frame Sampling only, report the loudness gap |
 
@@ -561,8 +577,9 @@ Cloned 2026-10-30 into `scratchpad/clones2/m07/`, text read only, no code run. A
 - **stefanwebb/premiere-ai-skills** @c3d4cfa (**CC-BY-SA-4.0**): Premiere tick rate and frame-snapping finding. Paraphrased only; listed as inspiration.
 - **Own code:** `scripts/srt_check.py` (validator and SRT shift, written for this pipeline, tested 2026-10-30); `scripts/measure_frames.py` (02).
 - **User's own skills (read-only):** seedance-2-5-prompts (General editing, Audio editing, Seamless transitions, parameter locks) for the 7.5 template; cinematic-pipeline (Arabic MSA address, "⚠️ Watch:" failure lines, the Premiere hand-off step). seedance-director, midjourney-prompt-expert, suno-ai-mastery and higgsfield-generate had nothing current for this step.
+- **Higgsfield MCP (read 2026-11-01):** `models_explore get seedance_2_5` (modes `video_edit` and `video_extension`, `extension_mode`, `draft` within seven days, `draft_job_id`, media roles) and the tool descriptions of `generate_video`, `manage_reference_elements`, `list_project_assets`, `get_project_asset_prompt`, `get_project_asset_source`, `jobs_wait`, `create_folder`. No generation was run.
 - **Fetched 2026-10-30:**
   - Netflix EN-US and Arabic Timed Text Style Guides, General Requirements, Subtitle Timing Guidelines (partnerhelp.netflixstudios.com);
   - official AI Film Award 2027 page (intro, 16:9 1080p MOV/MP4, English subtitles, private/unlisted link; no audio-track or textless requirement stated);
   - via search: Adobe help on Lumetri Color Match and Loudness Meter presets; Premiere 26.x release history and 26.2 Content Credentials export; Adobe community reports on caption burn-in and Arabic RTL captions; iZotope Insight 2 Netflix target; ITU-R BT.1359 lip-sync thresholds; DCP-o-matic 2.18.x (for 09).
-- **Not verified:** every `pr_*` tool name and behaviour; Premiere 26.x menu paths for colour interpretation and keyboard nudge; captions inside nested sequences; Content Credentials on ProRes exports; SMPTE RP 200 values (standard calibration practice, not fetched); the small-room 79–82 dB figure (heuristic).
+- **Not verified:** every `pr_*` tool name and behaviour; the codec and container of a Higgsfield `seedance_2_5` final (05-T7); whether `seedance_2_5` accepts a `start_image` + `end_image` bridge; Premiere 26.x menu paths for colour interpretation and keyboard nudge; captions inside nested sequences; Content Credentials on ProRes exports; SMPTE RP 200 values (standard calibration practice, not fetched); the small-room 79–82 dB figure (heuristic).

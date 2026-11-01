@@ -3,6 +3,7 @@
 **Purpose.** Turn the user's reference film title and/or frames into a verified, measured look for their own film: real production facts, observed evidence, and per-sequence variants (reality vs the 2nd Life dream).
 **Output.** One locked master prefix (`LOOK vX.Y`), mechanical adapters for GPT Image 2.5, Nano Banana Pro / 2.1, Midjourney V8.2 and Seedance 2.5, approved look frames, a Seedance look test and a style-lock card.
 **Rule.** No asset in 03-assets-images.md and no prompt in 05-seedance-production.md is written before the Step 2 Gate passes. The only exception is the D1 route tests (00 §0.8, 03 §3.4), which test routes, not the look, and are never reused as look references. Calendar slot: exploration on D2, lock on D3 (00-award-brief-and-calendar.md §0.7).
+**Route (decision 2026-11-01).** Every look frame (GPT Image 2.5, Nano Banana Pro / 2.1) and every Seedance 2.5 look test runs in Higgsfield: through the MCP, or by the user's hand in the Higgsfield web app inside the film's project (2.8). Midjourney stays a manual card the user runs.
 
 Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا). Write every prefix, adapter and prompt in English.
 
@@ -18,13 +19,13 @@ Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوس�
 | Reference frames or clips (6–12 varied stills per film) | the user's upload → `films/<id>/02-style/reference-frames/` (git-ignored, never uploaded anywhere) | strongly recommended |
 | The user's own words about the look | chat, in Arabic | optional |
 | Production locks | 00: 16:9 container, ≥1920×1080, Seedance 2.5 primary (24 fps output), G-rated | yes |
-| Generator access | Higgsfield MCP (BRIEF: must be reconnected; today it exposes no generate_* tools), ElevenLabs MCP image models, Midjourney web (manual), BytePlus ModelArk key | check on D2 morning |
+| Generator access | Higgsfield MCP with `generate_image`, `generate_video` and the project tools visible (if only game-publishing tools appear, the user reconnects the connector in claude.ai settings; meanwhile they may run the cards by hand in the Higgsfield web app, otherwise wait); the film's Higgsfield project with its `00_STYLE` folder (ledger L.0b); Midjourney web (manual) | check on D2 morning |
 
 ---
 
 ## Hard rules (every sub-step)
 
-1. **Reference frames are evidence, never inputs.** Never upload a frame, still, poster, trailer or clip from the reference film, or any image the user does not own, to any generator. That covers `--sref`, Midjourney image prompts and Edit-model references, GPT Image / Nano Banana references, and Seedance `@Image` / `@Video`. Claude views them for analysis only. Add `films/*/02-style/reference-frames/` to `.gitignore` before the first upload.
+1. **Reference frames are evidence, never inputs.** Never upload a frame, still, poster, trailer or clip from the reference film, or any image the user does not own, to any generator. That covers `--sref`, Midjourney image prompts and Edit-model references, GPT Image / Nano Banana references and any Higgsfield upload (`media_upload`, reference elements), and Seedance `@Image` / `@Video`. Claude views them for analysis only. Add `films/*/02-style/reference-frames/` to `.gitignore` before the first upload.
 2. **No names in prompts.** Never put the reference film's title, its director, DP, actors, characters, or any camera, lens or stock brand or model in a generation prompt. Those names belong in the Look Bible only (2.4). Why: Terms cl. 6.1(d), 7.5 and 9.2(j) (00 R2); Higgsfield's official rule for Seedance block prompts bans director, signature-work and equipment names; and Midjourney is a defendant in studio copyright suits.
 3. **No real people.** No actor's face as a reference, no "looks like <person>", no lookalike (00 R1, G2).
 4. **Transfer mechanisms, not identity.** Take the light logic, colour roles, lens tendency and texture. Leave out signature production design, costumes, logos, iconic compositions and shot-for-shot recreations.
@@ -43,8 +44,8 @@ Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوس�
 1. Ask in Arabic: which film or films, and what exactly they love in each (light, colour, camera movement, texture, composition, a specific scene's mood). Also ask which part of their film it is for: reality, dream, or both.
 2. Ask for 6–12 stills per reference film, taken from their own legally obtained copy, or one short clip. Name the variety you need: day exterior, night exterior, day interior, night interior, a wide, a close-up with skin, a practical-lit shot, and a moving shot if a clip is available.
 3. Pull the sequence list from the locked script (01). For each sequence record world (reality / dream / broadcast), location, time of day, and emotional function.
-4. Copy the production locks from 00. Ask whether a scope matte is wanted. Recommend **full-frame 16:9 with no matte**: a 2.39:1 matte inside 1920×1080 leaves about 1920×804 active picture, which is a needless risk against the "≥1080p" rule (00 F4). Seedance ratio for every shot: `16:9`.
-5. Create `films/<id>/02-style/` with `reference-frames/` (git-ignored), `look-frames/`, `prefix/` and `look-bible.md`.
+4. Copy the production locks from 00. Ask whether a scope matte is wanted. Recommend **full-frame 16:9 with no matte**: a 2.39:1 matte inside 1920×1080 leaves about 1920×804 active picture, which is a needless risk against the "≥1080p" rule (00 F4). Seedance ratio for every shot: `aspect_ratio: "16:9"`.
+5. Create `films/<id>/02-style/` with `reference-frames/` (git-ignored), `look-frames/` (sidecar text only), `prefix/` and `look-bible.md`. The look-frame images themselves live in the Higgsfield project's `00_STYLE` folder and the Drive `00_STYLE/` (ledger L.0b), never in the repo. If `00_STYLE` is missing in Higgsfield, create it with `create_folder` after the user's yes (not idempotent: never re-run it after a timeout; check first, never invent a folder ID).
 6. **If the user gives no reference at all:** build three PROPOSED directions from the rubric map. Each gets one paragraph and one look frame (2.8). The user picks one, then continue from 2.4.
 
 ### 2.2 Research the real production facts (when a title is given)
@@ -224,19 +225,19 @@ Save as `prefix/master.txt`, and each variant as `prefix/variant-<ID>.txt` (its 
 
 ### 2.7 Model adapters (compiled mechanically from master.txt; never re-worded per shot)
 
-**Verified parameter snapshot (2026-10-30).** Re-check anything older than 14 days before quoting it.
+**Verified parameter snapshot** (Higgsfield `models_explore` `action: get`, 2026-11-01; vendor facts 2026-10-30). Re-check anything older than 14 days before quoting it. Every job runs in Higgsfield (decision 2026-11-01); the BytePlus ModelArk API route exists but is not used.
 
-| Model | Ids / params used here | Status |
+| Model | Higgsfield id and params used here | Status |
 |---|---|---|
-| GPT Image 2.5 | `gpt-image-2.5-sunburst` (precision, hero) / `gpt-image-2.5-flare` (fast); quality `low·medium·high·xhigh·max·auto`; size: edges multiples of 16, max edge 3840, ratio 1:3–3:1, 655,360–8,294,400 px, above 2560×1440 "experimental"; background `opaque` | VERIFIED, OpenAI image-generation guide |
-| Nano Banana 2.1 | `gemini-nano-banana-2.1` (stable); `image_size` `1K·2K·4K` (uppercase; lowercase is rejected); up to 14 references, at most 4 characters and 10 objects; no style-reference slot listed; thinking `minimal·medium·high` | VERIFIED, ai.google.dev (updated 2026-10-29) |
-| Nano Banana Pro | `gemini-3-pro-image`; up to 6 objects, 5 characters and **3 style references** (14 total) | VERIFIED, ai.google.dev |
+| GPT Image 2.5 | `gpt_image_2_5`; `variant` `flare` (fast, default) · `sunburst` (precision, hero); `quality` `low·medium·high·xhigh·max` (default `low`); `resolution` `1k·2k·4k` (default `1k`); `background` `auto·opaque·transparent` (omit); `aspect_ratio` includes `16:9` and `21:9`; media role `image_references`. A bare call runs flare/low/1k, so set every field. Vendor fact: output above 2560×1440 is "experimental" | VERIFIED, `models_explore` 2026-11-01; OpenAI image-generation guide |
+| Nano Banana 2.1 | `nano_banana_2_1`; `resolution` `1k·2k·4k` (default `1k`); `thinking_level` `minimal·medium·high`; `seed`; `is_inpaint` with a `mask` image; media roles `image_references`, `mask`, `video_references`. Vendor: up to 14 references, at most 4 characters and 10 objects; no style-reference slot. Never the MCP's `nano_banana_2` (the deprecated NB2) | VERIFIED, `models_explore` 2026-11-01; ai.google.dev (updated 2026-10-29) |
+| Nano Banana Pro | `nano_banana_pro`; `resolution` `1k·2k·4k` (default `2k`); ratios `1:1`…`21:9`, no `auto`; media role `image_references` only. Vendor: up to 6 objects, 5 characters and **3 style references** (14 total); on Higgsfield a style reference is an `image_references` item whose job the prompt states (adapter B) | VERIFIED, `models_explore` 2026-11-01; ai.google.dev |
 | Midjourney V8.2 | default model; Edit Model replaces Omni Reference with up to 4 image references; `--cref`/`--oref` do not run on V8.2 | VERIFIED, updates.midjourney.com (27 Aug 2026) |
 | Midjourney params | `--sref` (URLs or codes; must have a text prompt), `--sw 0–1000` (default 100), `--raw`, `--s 0–1000` (default 100), `--ar` whole numbers only, `--no`, `--hd` (2K, more GPU time). Leave `--sv` (V8.2 accepts only 6) at default; never emit `--q` (house rule shared with 03) | third-party V8.2 guides (Evolink API manual, tech-insider, 2026-10-30); official docs returned 403 → confirm in the web UI |
-| Seedance 2.5 | `dreamina-seedance-2-5-260628`; ratio `16:9·4:3·1:1·3:4·9:16·21:9·9:21·adaptive` (first-frame modes accept only `adaptive`); 480p/720p/1080p; 24 fps, no fps field; `draft` = 480p | BytePlus schema via the Comfy mirror (BytePlus pages render empty to WebFetch) |
-| Higgsfield ids | e.g. `gpt_image_2_5` (variant, quality, resolution `1k·2k·4k`, aspect) | snapshot 2026-09-26 (OSideMedia); verify live with `models_explore` |
+| Seedance 2.5 | `seedance_2_5` via `generate_video`; `mode` `t2v·omni_reference·video_edit·video_extension`; `duration` 4–30 whole seconds; `resolution` `480p·720p·1080p` (default `720p`); `aspect_ratio` `auto·21:9·16:9·4:3·1:1·3:4·9:16`; `generate_audio` (default true); `bitrate_mode` `standard·high`; `draft: true` = a 480p draft, finalized at 1080p with `draft_job_id` within 7 days; media roles `start_image`, `end_image`, `image_references`, `video_references`, `audio_references`; `folder_id`; no fps field (output 24 fps per ByteDance docs; 05 confirms on the first file) | VERIFIED, `models_explore` 2026-11-01 |
+| Cost | `get_cost: true` returns credits and submits nothing (`generate_image`, `generate_video`; not inside a batch). Seedance 2.5 on the user's account: draft 3 credits/s, 1080p 16 credits/s; references and `bitrate_mode` do not change the price | TESTED with `get_cost` (05) |
 
-**A. GPT Image 2.5** (look frames, location keyframes). Route: Higgsfield `generate_image` once reconnected, or the ElevenLabs MCP `creative_generate_image` (check `creative_get_model_schema` first).
+**A. GPT Image 2.5** (look frames, location keyframes). Route: Higgsfield `generate_image`, `model: "gpt_image_2_5"`, `folder_id` = the `00_STYLE` folder; or the user runs the card by hand in the Higgsfield web app inside the same project (2.8 step 2).
 ```
 Intended use: look-development still for a live-action short film. It becomes the style reference for every later image, so light, colour and texture must be exact.
 Scene: [SCENE CONTENT: place, time, weather, what is in frame]
@@ -244,13 +245,13 @@ Subject: [synthetic people only, or "no people"]
 Look: [master CAPTURE, LIGHT LAW, COLOR, TEXTURE lines] [variant LIGHT, COLOR, TEXTURE lines] [variant CAMERA line as a still: e.g. "slightly off-level handheld framing"]
 Constraints: one single photographic frame; no text, no logos, no watermark, no borders.
 ```
-Settings: hero frames use `sunburst`, quality `max`, size `3840x2160` (in the experimental band; fall back to `2560x1440` if it fails); exploration uses `flare`, quality `high`, `2560x1440`. "Real photograph" phrasing follows the OpenAI cookbook. A field report says the word "photorealistic" makes faces plastic, so A/B both phrasings on the first face frame and keep the winner in the master notes. Edits: "Change only: X. Preserve: everything else, identical." Repeat the preserve list every turn.
+Settings: hero frames use `variant: "sunburst"`, `quality: "max"`, `resolution: "4k"`, `aspect_ratio: "16:9"` (4K sits in OpenAI's experimental band; fall back to `"2k"` if a take shows artefacts); exploration uses `flare`, quality `high`, `"2k"`. Set every field on every call. "Real photograph" phrasing follows the OpenAI cookbook. A field report says the word "photorealistic" makes faces plastic, so A/B both phrasings on the first face frame and keep the winner in the master notes. Edits: the frame to edit goes in as `image_references` by its Higgsfield job ID; "Change only: X. Preserve: everything else, identical." Repeat the preserve list every turn.
 
 **B. Nano Banana Pro / 2.1** (consistency edits, alternatives). Write natural prose, not labelled lines. Describe lens effects in words, because third-party tests report that Nano Banana ignores mm and f-numbers (smixs/visual-skills).
 ```
 A photographed live-action film frame: [SCENE CONTENT]. [variant LIGHT as one sentence]. Wide, undistorted perspective with straight verticals; the background softly out of focus but readable. [COLOR line as one sentence, colours attached to surfaces]. [TEXTURE line]. Natural contrast with soft highlight roll-off and dense, detailed blacks, no HDR look. A single composition with no text.
 ```
-Pro only: attach 1–3 approved look frames of the same variant, labelled "Images 1–N are style references: take only their light quality, colour palette and surface texture; ignore their objects, people and layout." 2.1 has no style slot, so a look frame there counts as an object reference and its layout can leak: prefer text alone, and test one frame with that role sentence only if text drifts. Settings: aspect `16:9`, `image_size` `"2K"` for exploration and `"4K"` for heroes; thinking `high` on 2.1 for complex frames. Never strip SynthID or C2PA data (Terms 5.6).
+Pro only: attach 1–3 approved look frames of the same variant as `image_references` by their Higgsfield job IDs, labelled "Images 1–N are style references: take only their light quality, colour palette and surface texture; ignore their objects, people and layout." 2.1 has no style slot, so a look frame there counts as an object reference and its layout can leak: prefer text alone, and test one frame with that role sentence only if text drifts. Settings: `model: "nano_banana_pro"` or `"nano_banana_2_1"`, `aspect_ratio: "16:9"`, `resolution: "2k"` for exploration and `"4k"` for heroes; `thinking_level: "high"` on 2.1 for complex frames. Never strip SynthID or C2PA data (Terms 5.6).
 
 **C. Midjourney V8.2** (the user runs these by hand). Condense the master into one sentence-style string of 30–50 words, subject first, look after it, and parameters last with nothing after them.
 ```
@@ -286,13 +287,13 @@ Use a handheld medium shot from behind Miraj at about a 47-degree field of view,
 Characters, wardrobe, props and environments stay identical to their references across every cut; no identity drift.
 Audio includes the diesel idle, a brake hiss and passengers murmuring. Diegetic sound effects and ambience; dialogue only where the shot scripts it. No music, no background music, no score. No subtitles.
 ```
-Rules: set ratio `16:9` and resolution as job parameters, never in prose. Look frames are not Seedance references by default (03 §3.1.6 step 6). Only if two calibration rounds (2.8) fail to hold the look in drafts, and with the user's OK, test one face-free hero frame on a single draft as "@Image N defines only the colour grade, light quality and surface texture. Do not use its objects, layout or people." Log it, and keep it only if the draft improves. Never put a face in it: Seedance rejects reference images with real or photoreal faces unless they are trusted same-account assets (BRIEF; 05). Check the first drafts for hex codes or labels rendered as on-screen text. If any appear, drop the hex values from the Seedance block only and keep the colour words.
+Rules: set `aspect_ratio: "16:9"`, `resolution` (or `draft: true`) and `duration` as job parameters on Higgsfield `generate_video`, never in prose. Look frames are not Seedance references by default (03 §3.1.6 step 6). Only if two calibration rounds (2.8) fail to hold the look in drafts, and with the user's OK, test one face-free hero frame on a single draft (`mode: "omni_reference"`, the frame's Higgsfield job ID as `image_references`; same credits as without it) as "@Image N defines only the colour grade, light quality and surface texture. Do not use its objects, layout or people." Log it, and keep it only if the draft improves. Never put a face in it: ByteDance's Seedance filter rejects realistic faces in references, and faces enter only through the route T1 proved on Higgsfield (03 §3.3–3.4; 05). Check the first drafts for hex codes or labels rendered as on-screen text. If any appear, drop the hex values from the Seedance block only and keep the colour words.
 
 ### 2.8 Look frames, Seedance look test and calibration (D2 afternoon → D3)
 
-1. **Quote cost first.** Higgsfield has no spend cap (05). Per the research snapshot, a BytePlus Seedance 2.5 draft is about $1 per 10 s at 480p; re-check the price page before quoting.
-2. **Look frames:** per variant, 2 frames in GPT Image 2.5 sunburst and 2 in Nano Banana Pro, plus a Midjourney prompt the user runs. Use face-free or back-of-head compositions where possible: characters are not locked until 03. Save each with a sidecar `<name>.json`: model, version, params, full prompt, LOOK version, route and account.
-3. **Seedance look test:** one 8–10 s draft (`draft: true`, 480p) for R-DAY and one for DREAM, with environment or back-of-head figures only. This is the only proof that the look survives in the final medium. An untested prefix is never called locked (ajinnaaa).
+1. **Quote cost first.** Higgsfield has no spend cap (05). Preflight each distinct request with `get_cost: true` (nothing is submitted; a batch item cannot preflight, so price one item and multiply), state the job count and credits, and get the user's yes per batch. Seedance look-test drafts cost 3 credits/s on the user's account: 24–30 credits for 8–10 s (≈ $1.07–1.50). Leave `use_unlim` unset; if the tool returns `unlim_choice`, ask the user which balance pays. Never repeat a call to "retry": after a timeout, check the returned job ID with `jobs_wait` first.
+2. **Look frames:** per variant, 2 frames in GPT Image 2.5 sunburst (`generate_image` with `count: 2`) and 2 in Nano Banana Pro, all with `folder_id` = `00_STYLE`; or independent prompts in one `generate_image_batch` (≤ 12), then `jobs_wait` and one `show_generation_by_ids` for the board. Plus a Midjourney prompt the user runs. Use face-free or back-of-head compositions where possible: characters are not locked until 03. Download each kept original the moment it finishes, hash it with SHA-256 and file it in Drive `00_STYLE/`. Save each with a sidecar `<name>.json`: Higgsfield job ID, model, params, full prompt, LOOK version, route (`higgsfield-mcp` or `higgsfield-web`), account, folder and the SHA-256 of the downloaded original. **Frames the user makes by hand in the Higgsfield web app** (same project): read them back with `list_project_assets` (`workspace_id`, `project_id`, `folder_id`, `output_kinds: ["image"]`), `get_project_asset_prompt` (`placement_id`) for the exact prompt and `get_project_asset_source` for the file, and log them the same way.
+3. **Seedance look test:** one 8–10 s draft for R-DAY and one for DREAM, with environment or back-of-head figures only: Higgsfield `generate_video`, `model: "seedance_2_5"`, `mode: "t2v"`, `draft: true` (480p), `aspect_ratio: "16:9"`, `generate_audio: true`, `folder_id` = `00_STYLE`. Download, hash and log each draft in the same turn: Higgsfield keeps a draft finalizable only for 7 days and is never the only copy. This is the only proof that the look survives in the final medium. An untested prefix is never called locked (ajinnaaa).
 4. **Score every frame** against the acceptance checklist: every invariant visible; the variant matches its condition; in reality variants, light motivated and shadows consistent with one key direction (DREAM: shadowless, no visible source); the reserved green only on its owner; skin natural (not plastic, not orange: at most two warm cues together); reads as photographed, not CGI; no text, logo, brand or real-person likeness.
 5. **Calibrate** (ajinnaaa loop), one fix per round, at most three rounds before the D3 lock:
 
@@ -313,7 +314,7 @@ Rules: set ratio `16:9` and resolution as job parameters, never in prose. Look f
 
 ### 2.10 Lock, save and log
 
-Save `prefix/master.txt`, `prefix/variant-*.txt`, `prefix/plate-safe.txt`, `prefix/seedance.txt`, `prefix/gpt-image.txt`, `prefix/nano-banana.txt`, `prefix/midjourney.txt`, `style-lock-card.md` and `look-frames/`. Write the decisions and every rejected option, with the user's sign-off, to `evidence/authorship/02-style-decisions.md` (00 §0.11). Log every look-frame generation (tool, model, version, account, plan) for the AI Disclosure (00 D1).
+Save `prefix/master.txt`, `prefix/variant-*.txt`, `prefix/plate-safe.txt`, `prefix/seedance.txt`, `prefix/gpt-image.txt`, `prefix/nano-banana.txt`, `prefix/midjourney.txt`, `style-lock-card.md` and `look-frames/`. Write the decisions and every rejected option, with the user's sign-off, to `evidence/authorship/02-style-decisions.md` (00 §0.11). Log every look-frame and look-test generation for the AI Disclosure (00 D1) as a ledger row: tool `Higgsfield`, model id, route, account, plan, Higgsfield job ID, folder, credits and the SHA-256 of the downloaded original. The look-frame images go to Higgsfield and Drive `00_STYLE/`; the repo keeps the text files only.
 
 ### 2.11 Injection contract (every later step)
 
@@ -326,7 +327,7 @@ Save `prefix/master.txt`, `prefix/variant-*.txt`, `prefix/plate-safe.txt`, `pref
 | 06-music-and-sfx.md | AUDIO policy, colour-script sequence boundaries | no music in any Seedance prompt; cue map follows the colour script |
 | 07-edit-mix-finish.md | grade intent, hero frames, palette, grain/halation and matte decisions, `scripts/measure_frames.py` | hero-shot match per scene, then show LUT, then grain |
 | 08-judge-panel.md | invariants and colour script | Creativity & Aesthetic and Technical critique are checked against them |
-| ledger-continuity-physics.md | LOOK version, variant ID, sref codes, model params per asset | one row per asset and shot |
+| ledger-continuity-physics.md | LOOK version, variant ID, sref codes, model params, Higgsfield job ID and folder per asset | one row per asset and shot |
 
 Every prompt Claude writes after the lock opens with an internal check: LOOK version correct, variant ID matches the colour script, core text byte-identical to `prefix/*.txt`.
 
@@ -364,7 +365,7 @@ Every prompt Claude writes after the lock opens with an internal check: LOOK ver
 لوحة الألوان: <hex — الدور — السطح/المصدر>
 اللون المحجوز: <اللون> لـ<العنصر> فقط · الإضاءة المحجوزة: <…>
 القرارات: الحبيبات والهالة <في المونتاج/في التوليد> · القناع <لا شيء/…> · فيزياء الحلم <…>
-الإطارات البطلة: <ملف لكل متغير> · اختبار Seedance: <task IDs + النتيجة>
+الإطارات البطلة: <ملف لكل متغير> · اختبار Seedance: <Higgsfield job IDs + النتيجة>
 النصوص المقفلة (English): master · Seedance · GPT Image · Nano Banana · Midjourney
 ```
 Lock prompt:
@@ -386,7 +387,7 @@ Accept only a clear yes («اعتمد»، «اقفل»، «كمّل»). Silence 
 - [ ] At least one approved hero look frame per variant, and Seedance draft look tests for R-DAY and DREAM passed.
 - [ ] Decisions recorded: grain/halation, matte, grade intent, dream physics exceptions.
 - [ ] IP check: no reference-film frame uploaded anywhere; reference frames git-ignored; no real-person likeness in any look frame (00 G2).
-- [ ] Files saved, authorship and disclosure logs written.
+- [ ] Files saved, authorship and disclosure logs written; the locked prefix, each approved look frame and the instructive rejects are entered in `prompt-library/style.md` (SKILL §7b).
 - [ ] The user said «اعتمد» to LOOK v1.0.
 
 ---
@@ -401,7 +402,7 @@ Accept only a clear yes («اعتمد»، «اقفل»، «كمّل»). Silence 
 | A painted wall colour applied to the whole grade | production-design colour taken for grade | give each measured cluster an owner (2.3 step 5) |
 | Day and night shots look averaged and flat | one universal lighting block | variants (2.5); the core never holds a time of day |
 | Seedance adds music or burns in captions | `(…)`, `【…】` or a parenthesised "(50mm)" inside the style block | bracket-free block; AUDIO line verbatim; "No subtitles." |
-| Seedance returns HTTP 400 on a look frame | a photoreal face in the reference | face-free look frames; characters only as trusted assets (05) |
+| Seedance refuses a look frame used as a reference | a photoreal face in the reference | face-free look frames; faces only through the route T1 proved on Higgsfield (03 §3.4; 05) |
 | Shot action ignored and the frame looks generic | prefix crowds the prompt or stacks adjectives | word budget; one anchor plus 1–2 tokens; remove "cinematic" |
 | Hex palette ignored or colours random | bare hex list | attach each hex to a surface or light; one reserved accent |
 | Skin plastic or orange | "photorealistic" on faces; three or more warm cues | A/B "real photograph" phrasing; at most two warm cues |
@@ -424,5 +425,5 @@ Accept only a clear yes («اعتمد»، «اقفل»، «كمّل»). Silence 
 - smixs/visual-skills by Serge Shima — github.com/smixs/visual-skills (CC BY 4.0): Nano Banana / GPT Image adapter notes (lens numbers ignored, HDR over-cooking), paraphrased.
 - n1ko724/kodak-2383-film-look (MIT) and scenario-labs/skills scenario-video-color-grade (MIT): halation definition and show-LUT idea, via the research summary; paraphrased.
 - The user's own skills: cinematic-pipeline STYLE_PREFIX_GUIDE (12-pillar skeleton, lock and drift prompts) and seedance-2-5-prompts (ByteDance's formula and bracket channels).
-- Official sources checked 2026-10-30: OpenAI image-generation guide (developers.openai.com); ai.google.dev image-generation page (Nano Banana 2.1 / Pro ids, reference limits, `image_size` casing, 2.1 thinking levels); updates.midjourney.com and docs.midjourney.com Edit Model (up to 4 references, V8.1/8.2); ARRI news pages (Blade Runner 2049, Parasite). Comfy mirror of the BytePlus Seedance 2.5 schema. Third-party, flagged in the table: Evolink V8.2 API manual and tech-insider V8.2 guide (Midjourney parameters); BytePlus token price ÷ duration as reported by resellers (~$0.10/s at 480p).
+- Official sources checked 2026-10-30: OpenAI image-generation guide (developers.openai.com); ai.google.dev image-generation page (Nano Banana 2.1 / Pro reference limits, 2.1 thinking levels); updates.midjourney.com and docs.midjourney.com Edit Model (up to 4 references, V8.1/8.2); ARRI news pages (Blade Runner 2049, Parasite). Higgsfield MCP, read 2026-11-01: `models_explore get` for `seedance_2_5`, `gpt_image_2_5`, `nano_banana_pro` and `nano_banana_2_1`, and the `generate_image`, `generate_video`, project and job tool descriptions; Seedance credit rates measured with `get_cost` (05). Third-party, flagged in the table: Evolink V8.2 API manual and tech-insider V8.2 guide (Midjourney parameters).
 - `scripts/measure_frames.py`: original code for this pipeline.

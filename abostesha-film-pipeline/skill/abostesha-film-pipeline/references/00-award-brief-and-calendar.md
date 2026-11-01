@@ -4,6 +4,7 @@
 **Output.** A locked brief per film: theme, runtime budget, Seedance-share targets, a dated calendar with daily gates, four compliance gates, and a light human-authorship evidence plan.
 **Rule.** Nothing in 01-script-and-dialogue.md or later starts until the Step 0 Gate (end of this file) is approved by the user.
 **Priority (BRIEF.md, updated 2026-10-30).** Winning the AI Film Award 2027 is the only target. Finish film 01 completely before film 2; film 2 happens only if time remains. The Oscars are not a target (short background only, 0.11). After 10 Jan 2027 (end of the holdback, cl. 8.4) the film goes to other competitions and festivals and is pitched to international production companies and platforms as "Episode 0" of a 7-episode "Second Life" mini-series: the user keeps ownership (cl. 7.1), and the Organizer's licence is non-exclusive, so the user may monetise after the Award closes (cl. 8.2–8.3). The submission itself stays one complete standalone story and is never called a pilot or an episode (F8).
+**Route (BRIEF.md, decision 2026-11-01, locked).** Every generation runs in Higgsfield, in the film's Higgsfield project: Seedance 2.5 only through the Higgsfield MCP (`generate_video`, model `seedance_2_5`: `draft: true` at 480p, then the same take finalized at 1080p with `draft_job_id` within 7 days; outputs into the scene folder with `folder_id`; `get_cost: true` and the user's yes before every batch); images through Higgsfield `generate_image` (GPT Image 2.5 Sunburst, Nano Banana Pro / 2.1). The user may also generate by hand in the Higgsfield web app inside the same project; Claude reads those jobs back (`list_project_assets`, `get_project_asset_prompt`) and logs them. Measured cost: 3 credits/s for a draft, 16 credits/s for a 1080p final; references and `bitrate_mode` do not change the price. The BytePlus ModelArk API route exists but is not used (decision 2026-11-01).
 
 Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا, as in their earlier pipeline). Write every generation prompt, and the Organizer email, in English.
 
@@ -19,6 +20,7 @@ Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوس�
 | One film or two | ask the user | yes |
 | Blender collaborator's availability | ask the user: days available, realistic greybox shots per day | yes |
 | Official Summit intro file | Google Drive link on the official award page | download on D0 |
+| The film's Higgsfield project | the user's Higgsfield account and workspace; scene folders (ledger L.0b) made with `create_folder` after their yes | by D1 (T1–T6 run in its `99_TESTS` folder) |
 | Organizer replies | `films/<id>/evidence/organizer-correspondence/` | when they arrive |
 
 ---
@@ -49,7 +51,7 @@ Snapshot verified 2026-10-30 against the official page and the Terms (last updat
 | F7 | Official Summit intro placed before the film | page | intro prepended, untouched | master timeline |
 | F8 | One original, complete, connected story, made for this award | 5.3(b), page | single story, no anthology; never called "Episode 0", a pilot or part of a series on screen, in credits or in the form (the series pitch waits for the holdback) | logline |
 | A1 | Seedance is the primary video tool; at least 70% of the final film generated with Seedance | page FAQ; 5.4 says "visual and audio content", "measured in the manner the Organizer specifies" | ledger meets the targets in 0.4 | Seedance ledger (ledger-continuity-physics.md) |
-| A2 | Third-party platforms allowed only if "the generation is carried out through Seedance" | 5.4 | every Seedance job via BytePlus ModelArk or a platform that runs Seedance (Higgsfield; the ElevenLabs connector's Seedance 2.5), logged with the Seedance version that platform reports | job IDs, platform, account |
+| A2 | Third-party platforms allowed only if "the generation is carried out through Seedance" | 5.4 | every Seedance job runs on Higgsfield (MCP `generate_video` model `seedance_2_5`, or the Higgsfield web app in the same account and project), logged with the Seedance version Higgsfield reports (`models_explore` get `seedance_2_5`) | Higgsfield job IDs, model, project folder, account, plan |
 | A3 | Comply with every tool's terms, acceptable-use policy and licence | 5.4, 6.1(e), 7.3 | plan tier recorded per tool on the day of generation | plan screenshots, receipts |
 | D1 | Written AI Disclosure: every model, tool, platform and version, the account used, the share each generated, the Seedance version on any third-party platform; all application materials in English | 5.5(a), 20.8 | disclosure table complete, in English | `evidence/disclosure.md` |
 | D2 | On request, within 7 days: prompts, project files, timelines, shot logs, generation history, edit files; keep them 24 months after the Award closes | 5.5(b) | evidence folders filled daily, backed up twice | evidence archive |
@@ -138,7 +140,7 @@ planned final shots (from beat estimate)       = <N>
 re-generation reserve                          = 25% of N
 PASS if N × 1.25 ≤ capacity; else cut scope in 01 (fewer shots, longer one-take shots up to 30 s)
 ```
-Seedance 2.5 clips run 4–30 s per generation at 24 fps (third-party mirror of the BytePlus schema; verify with a live key). Longer one-take shots reduce shot count and are a story-level choice for 01.
+Seedance 2.5 on Higgsfield takes 4–30 s per generation, whole seconds (`duration` in `models_explore` get `seedance_2_5`, read 2026-11-01); the output frame rate is not listed there, so T6 measures it (24 fps expected). Cost per final shot ≈ shot seconds × (3 credits/s for each draft + 16 credits/s for the 1080p final); confirm with `get_cost: true` before each batch. Longer one-take shots reduce shot count and are a story-level choice for 01.
 
 ### 0.6 One film or two
 
@@ -163,12 +165,12 @@ Single film, Blender collaborator on greybox. D0 is today. Lock dates are hard; 
 
 | Day | Date | Claude | AboStesha | Blender friend | Gate at day end |
 |---|---|---|---|---|---|
-| D0 | Fri 30 Oct | Step 0: rules check, checklist, rubric map, runtime estimate, calendar, Organizer email draft, evidence folders, D1 test plan | approves Step 0; sends email; downloads intro; signs collaborator agreement | confirms days and shots/day | **Step 0 Gate** |
+| D0 | Fri 30 Oct | Step 0: rules check, checklist, rubric map, runtime estimate, calendar, Organizer email draft, evidence folders and the Higgsfield project folder tree (ledger L.0b), D1 test plan with its `get_cost` quote | approves Step 0; sends email; downloads intro; signs collaborator agreement | confirms days and shots/day | **Step 0 Gate** |
 | D1 | Sat 31 Oct | runs risk tests T1–T6 (0.8); premise and beat sheet (01) | records 2 test lines in ElevenLabs v4 | installs Blender 5.1+, sets units/fps 24 | tests reported; go/no-go on routes |
 | D2 | Sun 1 Nov | script v1 + **G1 Script gate**; style exploration (02) | reviews script and G1 flags | builds generic greybox kit | G1 report |
 | D3 | Mon 2 Nov | script v2, dialogue tagged for ElevenLabs v4; style prefix lock (02); shot list starts (04) | **script lock**; generates final dialogue lines | — | script locked |
 | D4 | Tue 3 Nov | shot list done; hero character and location sheets (03) | runs Midjourney prompts | greybox of hard shots, batch 1 | — |
-| D5 | Wed 4 Nov | remaining assets; asset-library registration; **G2 Assets gate** | approves assets | greybox batch 2 | G2 report |
+| D5 | Wed 4 Nov | remaining assets; Higgsfield face route set up for every character (T1 route); **G2 Assets gate** | approves assets | greybox batch 2 | G2 report |
 | D6 | Thu 5 Nov | animatic v1 (boards + playblasts + final voice lines); runtime check | notes on animatic | playblasts to spec (04) | runtime within budget |
 | D7 | Fri 6 Nov | **animatic lock**; first Seedance drafts, hardest shots first (05, 05b) | approves drafts | re-blocks on request | — |
 | D8–D11 | Sat 7 – Tue 10 Nov | drafts → approvals → finals; download every output the same hour; assembly edit; music direction (06) | reviews twice a day; music generation | re-blocks | daily close (below) |
@@ -200,22 +202,23 @@ Two films in parallel (Film A follows the table above exactly; Film B uses only 
 | D19 | submit A first | submit B (separate application) | — |
 
 **Daily close** (Claude runs it at the end of every production day and shows the result):
-1. Every Seedance output downloaded and checksummed. Output URLs expire after 24 h (third-party docs; verify).
-2. Every approved draft finalized, or killed, before it is 5 days old. Draft task IDs created after 2026-10-28 10:00 UTC+8 stay valid for **14 days** (BytePlus Seedance 2.5 tutorial, read as Markdown in 05-seedance-production.md §5.0; matches BRIEF.md). Third-party mirrors (Comfy, Oxen, APIYI) still say 7. The 5-day house rule is safe under both readings, and `scripts/seedance_byteplus.py` writes the official expiry into the ledger.
-3. Ledger updated: shot, tool, version, account, job IDs, seconds, approval status.
-4. Moderation log updated: what was rejected, error text, what was changed.
-5. Tomorrow's queue written, hardest shots first.
-6. Status vs calendar: on track / 1 day behind / more than 1 day behind. More than one day behind: propose scope cuts (shots, not quality) and get the user's choice the same day.
+1. Every Seedance output downloaded the same hour from its Higgsfield result URL (`jobs_wait` with the job ID), byte-identical, and its sha256 logged; the original goes to the Drive master archive. The Higgsfield project is where takes are generated, not the archive.
+2. Jobs the user made by hand in the Higgsfield web app read back from the project (`list_project_assets` on the scene folders, then `get_project_asset_prompt` per placement) and logged like Claude's own.
+3. Every approved draft finalized, or killed, before it is 5 days old. A Higgsfield `seedance_2_5` draft can be finalized at 1080p (`draft_job_id`) only within **7 days** of its creation (`models_explore`, 2026-11-01); the 5-day house rule keeps 2 days of margin. The ledger stores each draft's creation time and its expiry (creation + 7 days).
+4. Ledger updated: shot, tool, model (`seedance_2_5`), version, account, Higgsfield job ID (draft and final), project folder, seconds, credits, sha256 of the downloaded original, approval status.
+5. Moderation log updated: what was rejected, error text, what was changed.
+6. Tomorrow's queue written, hardest shots first.
+7. Status vs calendar: on track / 1 day behind / more than 1 day behind. More than one day behind: propose scope cuts (shots, not quality) and get the user's choice the same day.
 
 **Buffers and failure handling:**
 
 | Failure | Response | Time reserved |
 |---|---|---|
-| Render failed or timed out | a local timeout is not a failure: `poll` the task ID, never resubmit a running task (05 §5.9). A task with status `failed` (not billed) may be resubmitted once unchanged with the user's yes; a moderation block needs a content change first; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
-| Input image rejected for a realistic face (`InputImageSensitiveContentDetected.PrivacyInformation`, third-party reports) | register the character in the ModelArk private virtual-portrait asset library and reference `asset://<id>`, or use the same-account trusted-output fallback (03-assets-images.md §3.3–3.4, 05-seedance-production.md); never retry an unchanged request or alter the face to slip past the check | T1 on D1 decides the route |
+| Render failed or timed out | a timeout is not a failure: the submission outcome is unknown, so check the job (`jobs_wait` with the returned job ID, or `list_project_assets` on the scene folder) and never resubmit until the outcome is known (05 §5.9). A job with status `failed` may be resubmitted once unchanged with the user's yes (log whether credits were charged); a moderation block needs a content change first; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
+| Character sheet refused by `seedance_2_5` for a realistic face (log the exact refusal text) | switch to the next Higgsfield route proven in T1: a Higgsfield reference element (`manage_reference_elements`, `<<<element_id>>>` in the prompt) or a first frame generated inside Higgsfield from the approved sheet, passed as `start_image` (03-assets-images.md §3.3–3.4, 05-seedance-production.md); never retry an unchanged request or alter the face to slip past the check | T1 on D1 decides the route |
 | Prompt or audio rejected by content checks | change the content, not the wording trick; re-run the G1 check on that beat; log it | Buffer 1 (D12) |
 | Final differs from the approved draft (it is a new render) | re-review every final; re-draft if identity or action changed | inside reserve |
-| Draft expired | re-draft; the final cannot be made from an expired draft | Buffer 1 |
+| Draft expired (older than 7 days on Higgsfield) | re-draft; the final cannot be made from an expired draft | Buffer 1 |
 | Collaborator unavailable | Claude blocks the shot via Higgsfield Bridge `bl_*` or Blender MCP (04-blender-blocking.md) | — |
 | Upload or link failure | second host ready; test the link logged-out on another device | Buffers 2–3 |
 | Organizer changes rules mid-production | re-check on D10/D18, re-plan the same day | — |
@@ -226,14 +229,14 @@ Each test answers one question that would otherwise break the calendar. Report r
 
 | Test | Question | Method | Pass |
 |---|---|---|---|
-| T1 Faces | Will Seedance accept our photoreal character references? | one GPT Image 2.5 Sunburst hero still → Seedance reference via BytePlus; on rejection, register it as a private virtual portrait, wait for Active, reference `asset://<id>` (03 §3.4); repeat via Higgsfield once the user has reconnected that connector (BRIEF.md: it currently exposes no generate tools) | a working route for every human character |
-| T2 Lip-sync | Does Seedance sync to the supplied ElevenLabs v4 file, and does it keep the voice or re-voice it? | one Arabic line and one English line as audio references, `generate_audio` on (set it on the draft; the final inherits it); measure mouth offset in frames; compare the output voice to the input | offset ≤ 2 frames on a close-up; voice usable or a documented fallback |
-| T3 Draft → final | How far does the 1080p final drift from the 480p draft? | one draft, then its final; compare identity, action, timing | drift acceptable, or review rule tightened |
-| T4 Provenance | Does our export chain keep watermarks and content credentials? | inspect metadata of the raw final, the Premiere export and the uploaded file (exiftool; c2patool if available) | nothing applied by a tool is lost (cl. 5.6) |
+| T1 Faces | Will Higgsfield `seedance_2_5` accept our approved photoreal character sheets? | one GPT Image 2.5 Sunburst hero sheet made in Higgsfield (`generate_image`) → `generate_video` model `seedance_2_5`, mode `omni_reference`, `draft: true`, the sheet's job ID in `medias` with role `image_references`; a second draft with it as `start_image`. If faces are refused: (a) a Higgsfield reference element (`manage_reference_elements` action `create`, then `<<<element_id>>>` in the prompt; the tool lists `seedance_2_0`, not `seedance_2_5`, among its video models as read 2026-11-01, so T1 checks whether 2.5 honours it); (b) a first frame generated inside Higgsfield from the approved sheet, passed as `start_image` (03 §3.4) | a working Higgsfield route for every human character, written into `PROJECT.md` (Routes proven on D1) |
+| T2 Lip-sync | Does Seedance sync to the supplied ElevenLabs v4 file, and does it keep the voice or re-voice it? | one Arabic line and one English line uploaded to Higgsfield (`media_upload` → PUT → `media_confirm`) and passed with role `audio_references` in `omni_reference` mode, `generate_audio: true` on the draft (T3 checks the 1080p final keeps the audio); measure mouth offset in frames; compare the output voice to the input | offset ≤ 2 frames on a close-up; voice usable or a documented fallback |
+| T3 Draft → final | How far does the 1080p final drift from the 480p draft? | one `draft: true` 480p job, then its final (`draft_job_id`, `resolution: "1080p"`, `bitrate_mode: "high"`); compare identity, action, timing, audio | drift acceptable, or review rule tightened |
+| T4 Provenance | Does our export chain keep watermarks and content credentials? | inspect metadata of the original downloaded from Higgsfield, the Premiere export and the uploaded file (exiftool; c2patool if available) | nothing applied by a tool is lost (cl. 5.6) |
 | T5 Intro | What is the official intro's spec? | download; ffprobe: duration, fps, resolution, audio layout | conform plan for 24 fps film + intro |
-| T6 Throughput | How many minutes per draft and per final, per route, and what is the longest clip accepted? | time T1–T3 jobs; send one 30 s draft | daily queue and maximum shot length set from measured numbers |
+| T6 Throughput | How many minutes per draft and per final on Higgsfield, what frame rate comes out, and what is the longest clip accepted? | time T1–T3 jobs; send one 30 s draft; ffprobe the outputs; compare the measured cost (3 credits/s draft, 16 credits/s 1080p) with `get_cost: true` | daily queue, maximum shot length and credit budget set from measured numbers |
 
-Record the Seedance `watermark` setting used (the parameter defaults to false in the Comfy mirror of the schema; verify) and disclose it.
+Higgsfield's `seedance_2_5` exposes no `watermark` parameter (`models_explore`, 2026-11-01): record in T4 what the downloaded original carries (visible mark, C2PA, metadata) and disclose it.
 
 ### 0.9 Ask the Organizer in writing
 
@@ -264,10 +267,9 @@ with Seedance?
       they "support" elements to be declared under clause 5.5(c)?
 
 [Optional — include only the points still unresolved on the day of sending]
-3. Is Dreamina Seedance 2.5 (model dreamina-seedance-2-5-260628) used through
-   the BytePlus ModelArk API, and through third-party platforms such as
-   Higgsfield or ElevenLabs, an accepted version and route under clauses 1.1
-   and 5.4?
+3. Is Seedance 2.5 used through the third-party platform Higgsfield (listed
+   there as "Seedance 2.5" by ByteDance; 480p drafts finalized at 1080p) an
+   accepted version and route under clauses 1.1 and 5.4?
 4. Are AI image models (GPT Image 2.5, Nano Banana, Midjourney) acceptable as
    reference inputs to Seedance, if fully disclosed?
 5. Is there a closing hour on 20 November 2026 (GST) and a maximum length for
@@ -305,7 +307,7 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 - [ ] No logos, brand marks, trade dress, readable real brand names, or garbled text that resembles a brand (6.1(d), 9.2(j)).
 - [ ] Wardrobe and settings culturally accurate (kandura, abaya, ghutra worn correctly; mosque and prayer details respectful) (UAE std 5).
 - [ ] Children portrayed safely and with dignity (9.2(b); UAE std 20).
-- [ ] Every human character registered for Seedance (T1 route) before D7.
+- [ ] Every human character has a working Higgsfield Seedance face route (T1: sheet as `image_references` or `start_image`, reference element, or a first frame generated inside Higgsfield) before D7.
 - [ ] Tool, model, version, account and plan logged for every asset (5.5(a)).
 
 **G3 — Picture-lock gate** (D15, in 07-edit-mix-finish.md)
@@ -319,7 +321,7 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 
 **G4 — Delivery gate** (D18, in 07-edit-mix-finish.md and 09-release-and-festivals.md)
 - [ ] File: 16:9, ≥ 1920×1080, MOV or MP4; Summit intro prepended unaltered; English subtitles burned in; textless master kept.
-- [ ] AI Disclosure: every tool, model, version, platform, account and share, including Seedance version and route (5.5(a)).
+- [ ] AI Disclosure: every tool, model, version, platform, account and share, including the Seedance version and route (Higgsfield, `seedance_2_5`, account and project) (5.5(a)).
 - [ ] Non-AI elements: source and licence for music, SFX (including procedural code), voices, fonts, stock (5.5(c)).
 - [ ] Each voice and face declared synthetic or real; consents attached (5.5(d)).
 - [ ] Provenance intact; no watermark or credential removed (5.6).
@@ -443,9 +445,10 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 | Treating "max 7 min" as the only limit | 5:00 minimum too; story 5:30–6:34, total ≤ 7:00 |
 | Assuming the 70% is picture-only | The Terms say visual and audio; plan to R1+R2, keep R3 feasible, ask in writing |
 | Title cards and credits on black | They eat the non-Seedance allowance; put them over Seedance plates |
-| Drafts left to expire | Finalize or kill every approved draft before it is 5 days old (official life 14 days, mirrors say 7) |
-| Losing outputs | URLs expire after 24 h; download in the same hour |
-| Discovering the face block on D7 | T1 on D1; register every character before D7 |
+| Drafts left to expire | Finalize or kill every approved draft before it is 5 days old (Higgsfield finalizes a draft only within 7 days) |
+| Losing outputs | Download every original from Higgsfield in the same hour, log its sha256, archive it on Drive; the Higgsfield project is not the archive |
+| Hand-made web-app jobs missing from the ledger | Read the project back every daily close (`list_project_assets`, `get_project_asset_prompt`) |
+| Discovering the face block on D7 | T1 on D1; prove a Higgsfield face route for every character before D7 |
 | Fixing a moderation reject by rewording the same content | Change the content; re-run G1 on that beat |
 | Two films sharing a world or characters | "Substantially similar" can disqualify both (cl. 5.2) |
 | Posting a teaser or BTS clip | Holdback breach disqualifies (cl. 8.4, 13.1(g)) |
@@ -462,12 +465,12 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 
 ---
 
-## Verification stamp and sources (checked 2026-10-30)
+## Verification stamp and sources (checked 2026-10-30; Higgsfield route facts 2026-11-01)
 
 - Award page and Terms (last updated 12/10/2026): https://www.1billionsummit.com/ai-award-2027 and https://www.1billionsummit.com/ai-award-2027/terms-and-conditions — fetched today; clauses 1.1, 2.2, 4–9, 11.2–11.3, 13.1, 14.1, 20.8, 20.10 as cited. Intro download: the Google Drive folder linked from "Download the intro" on the page.
 - Oscars 99th Rule Eight (Animated Short) and Rule Seventeen (Live Action Short): https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf, https://www.oscars.org/sites/oscars/files/2026-05/99th%20Live%20Action%20Short%20Rules.pdf — read today (I.B.2, I.B.4, I.C, II.A–C, III.C–D, IV.A). 100th rules: not published (search today).
 - UAE Media Council 20 content standards: Gulf News summary (June 2025), https://gulfnews.com/uae/uae-media-law-media-must-follow-20-key-standards-to-avoid-fines-of-up-to-dh1m-1.500157204 — secondary source; the standard numbers used here follow its list (re-checked today).
-- Seedance 2.5 draft (7-day draft validity, 480p draft, 1080p-only final), 24 h URLs, `watermark` default, 4–30 s at 24 fps: Comfy mirror of the BytePlus schema, https://docs.comfy.org/development/comfy-router/models/byteplus/dreamina-seedance-2-5-260628/code — third-party; BytePlus docs did not render. The 7-day draft life is also stated by Oxen and APIYI docs (re-checked today). The official BytePlus tutorial, read as Markdown later the same day for 05-seedance-production.md, gives 14 days for drafts created after 2026-10-28 10:00 UTC+8 (other task IDs 7 days), which matches BRIEF.md; the 5-day house rule covers both. The Comfy page's own duration ranges conflict (4–30, 2–30, 3–12 s); T6 measures the real limit. `generate_audio` defaults to true and a final inherits it from its draft (same page).
-- Real-face rejection and asset library route: third-party guides (laozhang.ai, apiyi) plus the BytePlus pages cited in 03-assets-images.md §3.3; verify in the BytePlus console.
+- Seedance 2.5 on Higgsfield (checked 2026-11-01): `models_explore` get `seedance_2_5` lists mode `t2v` / `omni_reference` / `video_edit` / `video_extension`, duration 4–30 s (whole seconds), resolution 480p / 720p / 1080p, `generate_audio` (default true), `bitrate_mode` standard / high, `draft` (a 480p draft that can be finalized within seven days), `draft_job_id` (finalize a completed draft at 1080p), media roles `start_image`, `end_image`, `image_references`, `video_references`, `audio_references`; no `watermark` parameter and no frame rate listed (T4, T6). Cost measured on Higgsfield: 3 credits/s draft, 16 credits/s 1080p final; references and `bitrate_mode` do not change the price (re-check with `get_cost: true` before each batch). A transport timeout leaves the outcome unknown: never resubmit until it is known (`generate_video` tool description).
+- Face route: the `manage_reference_elements` tool description (read 2026-11-01) lists `seedance_2_0`, not `seedance_2_5`, among the video models that honour `<<<element_id>>>`; T1 tests sheet as `image_references`, sheet as `start_image`, reference element, and a first frame generated inside Higgsfield, in that order (03-assets-images.md §3.3–3.4).
 - "Second Life" trademark: UDRP decision https://www.adrforum.com/DomainDecisions/1089130.htm and https://secondlife.com/corporate/brand-faq — registration of 13 Apr 2004 confirmed in the decision; current status not checked.
 - Carried over from the user's own earlier skills (cinematic-pipeline: explicit lock prompts, no approval from silence, Arabic address; higgsfield-generate: quality first, no cost optimisation unless asked), paraphrased.

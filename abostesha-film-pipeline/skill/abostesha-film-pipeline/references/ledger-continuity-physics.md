@@ -15,9 +15,9 @@ Tags: `[OFFICIAL]` vendor or Organizer docs · `[DOC-3P]` third-party mirror of 
 | Film code (`SLA`), film folder, Seedance-share targets, readings R1–R3, definition of T | `00-award-brief-and-calendar.md` §0.4 | L.0, L.5 |
 | Scene list (S##, LAYER, FLAGS), line IDs, authorship log origin codes (H, H/C, C, G, T, F) | `01-script-and-dialogue.md` | L.2, L.4, L.6 |
 | LOOK version, variants (R-DAY, R-INT, DREAM, BROADCAST, FINALE), reserved green `#3BD16F`, golden hour reserved for FINALE | `02-style-prefix.md` §2.5 | L.6, L.7 |
-| Asset IDs, approved files and SHA-256, Seedance `asset://` IDs, continuity entries | `03-assets-images.md` | L.2, L.6 |
+| Asset IDs, approved files and SHA-256, Higgsfield job IDs of the approved sheets (and reference-element IDs if the face route uses them, L.3), continuity entries | `03-assets-images.md` | L.2, L.6 |
 | Blocking table, hand-off sheets (lens heading, camera-relative sun, contact frames, speeds) | `04-blender-blocking.md` | L.4, L.7 |
-| Every Seedance request, task JSON and download | `05-seedance-production.md` | L.2, L.3 |
+| Every Seedance job (Higgsfield MCP or the user's hand-made web job in the same project), its response JSON and download | `05-seedance-production.md` | L.2, L.3 |
 | Performance IN/OUT per shot and character | `05b-acting-direction.md` §5b.7 | L.6 |
 | Cue log, SFX gap list, stems and their origins | `06-music-and-sfx.md` §6.4 | L.2, L.5 |
 | Premiere FCP XML of the locked sequence; snapshots | `07-edit-mix-finish.md` §7.1, §7.4 | L.5 |
@@ -28,9 +28,9 @@ Tags: `[OFFICIAL]` vendor or Organizer docs · `[DOC-3P]` third-party mirror of 
 1. **One source of truth.** `SLA_LEDGER.csv` holds one row for every file that can reach the film or that shaped something in it: reference, prompt run, draft, final, edit, take, cue, SFX, render, font, the Summit intro. The row exists before the file is used downstream. "Never manage continuity by memory, filenames alone, or chat history alone" (calesthio asset-continuity-management, MIT).
 2. **Append-only.** Rows are never deleted. After a row is written, only these cells may change: `review_status`, `approved_by`, `approved_utc`, `approval_words`, `post_edits`, `in_final`, `seconds_in_final`, `share_of_film_pct`, `notes`. Every other cell records a fact about the generation and is frozen. Fix a mistake with a new row whose `notes` say `corrects G05-0142`.
 3. **Explicit unknowns.** Write `not_provided`, `unknown` or `n/a`, never a blank. A strong manifest "favors explicit unknowns over blank cells" (calesthio, MIT).
-4. **Download now.** BytePlus clears Seedance output URLs 24 h after the task, and on 2.5 caps a URL at 100 downloads `[DOC-3P: Comfy mirror of the BytePlus schema]`. Download, hash and log in the same turn the task succeeds.
+4. **Download now.** Higgsfield does not publish how long a result URL lives `[UNVERIFIED]`, and the Higgsfield project is never the only copy (L.0b). Download the original, hash it and log it in the same turn the job completes.
 5. **Never touch provenance.** Never crop, blur or cover a watermark; never strip metadata; never remux a credentialed file (Terms cl. 5.6; 07 rule 4). Record what each file carries.
-6. **No secrets.** `account` holds a login, organisation or project name. Never write an API key or token anywhere in this folder.
+6. **No secrets.** `account` holds a login, workspace or project name (for Higgsfield: workspace and project). Never write an API key or token anywhere in this folder.
 7. **File names are IDs.** The name carries shot, tool and version, so Premiere's clip name equals the ledger key. Never rename a logged file. Copy it to a new name and add a derivative row.
 8. **Physics is the default.** Every REAL shot obeys L.7. A DREAM shot breaks physics only in the one way declared in the register (L.7.10; 02 §2.5). Sci-fi devices follow the device rules (L.7.8).
 
@@ -48,14 +48,14 @@ films/01-second-life-ascent/ledger/
   physics-bible.md        ← templates/physics-bible.md
   version-pins.md         (L.3)            decisions.md (append-only: date · decision · who · words)
   prompts/<gen_id>.txt    (only when the step has no prompt file of its own)
-  raw/<gen_id>.json       (API/MCP response for every task: generation history evidence)
+  raw/<gen_id>.json       (Higgsfield MCP response for every job, or its project read-back: generation history evidence)
   reports/                (share reports, ffprobe, c2patool output, cut-pair and physics cards)
 06-audio/logs/SLA_06_cue-log.csv   ← templates/music-cues.csv   (06 owns it; columns 1–22 = 06 T3)
 06-audio/spotting/SLA_06_SFX-GAPS_vNN.csv ← templates/sfx-list.csv (06 owns it; columns 1–12 = 06 T4, TC split in/out)
 ```
 1. Copy the templates, delete the `EXAMPLE` rows, keep the headers exactly. The two scripts this module uses live in the skill: `scripts/share_report.py` (L.5) and `scripts/sun_position.py` (L.7.1). Run them from the skill folder with `python3 -I`; they read files and write nothing.
 2. Ask in Arabic, one message: «أبوستيشا، قبل أن نبدأ: (1) رمز الفيلم في أسماء الملفات SLA، هل توافق؟ (2) ما تاريخ أحداث القصة (اليوم والشهر)؟ اقتراحي منتصف أبريل 2045 لأن ظل الظهيرة القصير في R-DAY لا يصح فيزيائياً إلا من أبريل إلى أغسطس. (3) قرارات العالم في القائمة L.7.9.»
-3. Backups: sync the `ledger/` folder to the 04 Drive folder, keep a local copy, and write `reports/SLA_checksums_<date>.sha256` each evening (00 D2: two places, 24 months).
+3. Backups: the `ledger/` folder lives in the repo (text); export a copy to Drive `08_EVIDENCE/` (L.0b) at every daily close, keep the PC mirror, and write `reports/SLA_checksums_<date>.sha256` each evening (00 D2: two places, 24 months).
 4. Holdback: `films/` sits in the GitHub repo. Before the first download add `.gitignore` lines `films/**/*.mp4`, `films/**/*.mov`, `films/**/*.wav`, `films/**/*.mp3` and `films/*/ledger/raw/` (03 already covers images). No clip or audio file goes to GitHub, and the repo stays private until the holdback ends.
 
 ### L.0b Storage roles and the folder tree (decided 2026-11-01; Claude builds and maintains it)
@@ -83,9 +83,9 @@ Higgsfield holds 00–04 and 99 (where generation happens). Drive and the PC hol
 **Where things live:**
 | Place | Role | Holds |
 |---|---|---|
-| Higgsfield project | workspace + generation history (evidence) | every generation in its folder; never the only copy |
+| Higgsfield project | workspace + generation history (evidence) | every generation in its folder (`folder_id` on every `generate_image` / `generate_video` call; the user's hand-made web-app jobs go in the same project and folder); never the only copy |
 | Google Drive | master archive and the shared space with the Blender collaborator | every approved asset, every Seedance original downloaded the moment it finishes (byte-identical), audio, edit exports, 08_EVIDENCE; keep 24 months after the Award |
-| The user's PC (Google Drive for desktop sync) + one external drive | fast working copy for Premiere, plus an offline backup | the same tree; Premiere links to the PC copy |
+| The user's PC (Google Drive for desktop in Mirror mode) + one external drive | fast working copy for Premiere, plus an offline backup | the same tree; Premiere links to the PC copy |
 | GitHub (private repo only) | text and memory | PROJECT.md, script, dialogue sheets, prompts, ledger CSVs, decisions; never images, video or audio (`.gitignore` in SKILL §4) |
 
 Rules: the Seedance original is downloaded and hashed before anything else touches it; RAW_SEEDANCE is never edited, renamed or re-exported; the Drive tree is the one the competition evidence comes from.
@@ -97,9 +97,9 @@ Premiere names a clip after its file. So the file name is the shot database key,
 | Kind | Pattern | Example |
 |---|---|---|
 | Seedance draft (480p; never imported into the edit) | `SLA_<SHOT>_SD25-DRF_v<NN>_t<K>.mp4` | `SLA_S03-SH02_SD25-DRF_v03_t2.mp4` |
-| Seedance final from that draft | `SLA_<SHOT>_SD25-FIN_v<NN>_t<K>[_f2].mp4` or `.mov` (extension = the `output_format` chosen in 05 §5.7; default mp4) | `SLA_S03-SH02_SD25-FIN_v03_t2.mp4` |
-| Seedance edit task / extension or bridge | `…_SD25-EDT_v<NN>_t<K>_e<NN>.mov` · `…_SD25-EXT_…` | `SLA_S03-SH07_SD25-EDT_v02_t1_e01.mov` |
-| Seedance last frame (`return_last_frame`) | `…_SD25-FIN_v<NN>_t<K>_LF.<ext>` (read the real format from the file; Comfy: do not infer it from the URL) | used as the next shot's first frame (05) |
+| Seedance final from that draft (`draft_job_id`, 1080p) | `SLA_<SHOT>_SD25-FIN_v<NN>_t<K>[_f2].mp4` (Higgsfield has no output-format field; keep the extension of the file it delivers, read from the file, never from the URL) | `SLA_S03-SH02_SD25-FIN_v03_t2.mp4` |
+| Seedance edit (`mode: video_edit`) / extension or bridge (`mode: video_extension`) | `…_SD25-EDT_v<NN>_t<K>_e<NN>.mp4` · `…_SD25-EXT_…` | `SLA_S03-SH07_SD25-EDT_v02_t1_e01.mp4` |
+| Last frame of a final (Higgsfield returns no last-frame file: extract it with `ffmpeg -sseof -0.05 -i <final> -frames:v 1` from the downloaded original; a derivative row with `parent_gen_id`) | `…_SD25-FIN_v<NN>_t<K>_LF.png` | uploaded (`media_upload` → `media_confirm`) as the next shot's `start_image` (05) |
 | Derivative render of any file | parent name + `_<OP>v<NN>` (OP: `TXT` text comp, `CLN` paint/cleanup, `UPS` upscale, `GRD` graded render) | `SLA_S06-SH01_SD25-FIN_v01_t1_TXTv01.mov` |
 | Other picture | `SLA_<SHOT>_<CODE>_v<NN>_t<K>.<ext>` | `SLA_S03-SH04_GFX_v01.mov` |
 | Image assets | 03's pattern `<ASSET>_<state>_<sheet>_v<NN>_<model>_t<N>.png`; 03's `approved/…_APPROVED.png` copy has the same SHA-256, so it goes in the same row's `notes`, not a new row | `CHR_MIRAJ_base_face_v03_G25S_t2.png` |
@@ -135,10 +135,10 @@ One row = one generation attempt, including failed, filtered and rejected ones (
 | Group | Columns | Format and rule |
 |---|---|---|
 | Identity | `gen_id, film, step, kind, shot_id, asset_id, line_or_cue_id, purpose` | `gen_id` = `G<step>-<NNNN>`, e.g. `G05-0151`, never reused. `kind` ∈ image, video, audio-dx, audio-mx, audio-fx, text, 3d, edit-render |
-| Tool | `tool, model_id, model_snapshot, mode, route, account, plan_tier` | exact strings from L.3. `mode` ∈ t2i, i2i-edit, t2v, i2v, ref2v, draft, final-from-draft, edit, extend, tts, music, sfx, procedural, manual-ui |
-| How | `params, prompt_file, prompt_sha256, prompt_origin, references, parent_gen_id` | `params` as `k=v;k=v` (`draft=true;resolution=480p;ratio=16:9;duration=7;generate_audio=true;watermark=false`). `prompt_origin` uses 01's codes. `references` lists IDs and roles: `@Image1=asset://<id>(CHR_MIRAJ);@Video1=SLA_S03-SH02_PB_v03.mp4` |
-| IDs and time | `task_id, draft_task_id, seed_returned, submitted_utc, completed_utc, downloaded_utc, url_expires_utc, draft_expires_utc` | ISO 8601 UTC with `Z`. GST = UTC+4, for display only |
-| Output | `file_name, file_sha256, tech, c2pa_status, watermark, cost` | `tech` = ffprobe summary. `c2pa_status` ∈ present-valid, present-invalid, absent, not_checked. `watermark` ∈ none, visible, invisible-claimed (e.g. SynthID) |
+| Tool | `tool, model_id, model_snapshot, mode, route, account, plan_tier` | exact strings from L.3. `tool` = `Higgsfield` for every picture generation; `model_id` = the Higgsfield id (`seedance_2_5`, `gpt_image_2_5`, `nano_banana_pro`, `nano_banana_2_1`); `route` ∈ `higgsfield-mcp`, `higgsfield-web` (the user generated by hand in the web app). `mode` ∈ t2i, i2i-edit, t2v, i2v, ref2v, draft, final-from-draft, edit, extend, tts, music, sfx, procedural, manual-ui (the Higgsfield `mode` value goes in `params`) |
+| How | `params, prompt_file, prompt_sha256, prompt_origin, references, parent_gen_id` | `params` as `k=v;k=v`, every field sent (`model=seedance_2_5;mode=omni_reference;draft=true;resolution=480p;aspect_ratio=16:9;duration=7;generate_audio=true;bitrate_mode=high;folder_id=<uuid>`; a final adds `draft_job_id=<uuid>;resolution=1080p`). `prompt_origin` uses 01's codes. `references` lists media roles, IDs and what they are: `image_references=<media_id or job_id>(CHR_MIRAJ_base_face_v03);video_references=<media_id>(SLA_S03-SH02_PB_v03.mp4)`; a reference element is `element=<element_id>(CHR_MIRAJ)` |
+| IDs and time | `task_id, draft_task_id, seed_returned, submitted_utc, completed_utc, downloaded_utc, url_expires_utc, draft_expires_utc` | `task_id` = the Higgsfield job ID; `draft_task_id` = the draft job a final was finalised from (`draft_job_id`). ISO 8601 UTC with `Z`. GST = UTC+4, for display only |
+| Output | `file_name, file_sha256, tech, c2pa_status, watermark, cost` | `file_sha256` = SHA-256 of the downloaded original, before anything else touches it. `tech` = ffprobe summary. `c2pa_status` ∈ present-valid, present-invalid, absent, not_checked. `watermark` ∈ none, visible, invisible-claimed (e.g. SynthID). `cost` = Higgsfield credits from `get_cost` (Seedance 2.5 measured 2026-11-01: 3 credits/s draft, 16 credits/s 1080p; references and `bitrate_mode` do not change the price) |
 | Review | `outcome, review_status, approved_by, approved_utc, approval_words` | `outcome` ∈ OK, FAILED, FILTERED, TIMEOUT. `review_status` ∈ CANDIDATE, APPROVED, REJECTED, SUPERSEDED. `approval_words` = the user's Arabic words, verbatim |
 | Authorship and rights | `human_contribution, post_edits, synthetic_or_real, consent_ref, licence_ref` | e.g. "AboStesha wrote beat text; picked t2 of 4". Every face and voice is `synthetic` or `real+consent` (cl. 5.5(d)) |
 | Final cut | `in_final, origin_class, seconds_in_final, share_of_film_pct, notes` | filled from L.5 at G3 and G4 |
@@ -147,41 +147,43 @@ One row = one generation attempt, including failed, filtered and rejected ones (
 
 | Event | Row or cells |
 |---|---|
-| A Seedance task finishes (any outcome), on any route | new row. While a task runs, keep its ID in `reports/inflight.md`. **Never resubmit a task that timed out while waiting**: that bills a second generation (research, BytePlus) |
-| Image, TTS, music or SFX generation through an MCP | new row with flow/job/generation IDs in `task_id` and the flow URL in `notes` |
+| A Seedance job finishes (any outcome) | new row: Higgsfield job ID, model, `folder_id` in `params` and the folder path (`04_SCENES/S03_<slug>/drafts`) in `notes`, the original's SHA-256. While a job runs, keep its ID in `reports/inflight.md` and wait with `jobs_wait` on that ID. **Never repeat a `generate_video` call that timed out**: the job may already exist and a second call bills a second generation; look for it first (`show_generations` with `only_completed: false`, or `list_project_assets` on the folder) |
+| Image generation (Higgsfield `generate_image`) | new row with the Higgsfield job ID in `task_id`, the folder as above |
+| TTS, music or SFX generation through an MCP | new row with flow/job/generation IDs in `task_id` and the flow URL in `notes` |
+| The user generated by hand in the Higgsfield web app (same project) | read it back, no paste needed: `list_project_assets` (filter `folder_id`, `model_ids`), then `get_project_asset_prompt` for the prompt and settings and `get_project_asset_source` for the download; `route=higgsfield-web`, `mode=manual-ui`; save both responses as `raw/<gen_id>.json`. Sweep every scene folder at the daily close so no hand-made job is missing |
 | Manual tool (Midjourney, Suno web, ElevenCreative) | the user pastes the job ID or link (Arabic: «الصق رابط أو رقم المهمة من فضلك»), then you write the row. Midjourney rows note Stealth on (03) |
 | The user approves or rejects | update the review cells only |
 | A derivative is rendered (text comp, paint, upscale) | new row: `parent_gen_id` = source; the tool that made the change; the class from L.5 |
 | A non-AI element enters (font, user recording, procedural SFX, Summit intro) | new row: `tool` = the source (e.g. `font: <family> (<licence>)`, `scripts/sfx_forge.py@<git sha>`); `licence_ref` is mandatory (cl. 5.5(c)) |
 | Picture lock (G3) and submission (G4) | `in_final`, `seconds_in_final` and `share_of_film_pct` from the L.5 report |
 
-**Seedance download routine** (run the moment `status` is succeeded; 05 submits, this module logs):
+**Seedance download routine** (run the moment the job is completed; 05 submits, this module logs). The URL is the result URL `jobs_wait` returns, or the download URL `get_project_asset_source` gives for the job's placement:
 ```bash
 F=SLA_S03-SH02_SD25-FIN_v03_t2.mp4
-curl -sS -L --fail -o "$F" "$VIDEO_URL"            # URL lives 24 h from task creation
+curl -sS -L --fail -o "$F" "$VIDEO_URL"            # Higgsfield URL lifetime not published: download now
 sha256sum "$F" >> reports/SLA_checksums_$(date +%F).sha256
 ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate,pix_fmt:format=duration \
   -of compact=p=0 "$F" > reports/$F.ffprobe.txt     # expect 1920x1080, 24/1
 c2patool "$F" --info > reports/$F.c2pa.txt 2>&1 || echo "c2patool missing or no manifest" >> reports/$F.c2pa.txt
 ```
-- Save the full task response as `raw/<gen_id>.json`. Field names come from 05 and stay `[UNVERIFIED]` until the first live call.
-- Set `url_expires_utc` = task creation + 24 h.
-- Set `draft_expires_utc` = creation + **14 days** for drafts created after 2026-10-28 10:00 UTC+8, else 7 days. That is the official BytePlus tutorial (05 §5.0, read as Markdown 2026-10-30), and `scripts/seedance_byteplus.py` writes it this way. The Comfy, fal.ai and APIYI pages still say 7, so the house rule stays stricter than both: finalise or kill every approved draft before it is 5 days old (00 §0.7). Finalise a draft on the same route and account that made it: fal.ai says a draft ID works only for its original caller.
+- Save the full Higgsfield response (the `generate_video` return and the completed `jobs_wait` entry; for web-made jobs the project read-back) as `raw/<gen_id>.json`. Field names stay `[UNVERIFIED]` until the first live job.
+- Set `url_expires_utc` = `unknown` (Higgsfield does not state it); the same-turn download makes it irrelevant.
+- Set `draft_expires_utc` = draft `submitted_utc` + **7 days** (Higgsfield `seedance_2_5` `draft` field: "a 480p draft that can be finalized within seven days"; `models_explore`, read 2026-11-01). House rule: finalise or kill every approved draft before it is 5 days old (00 §0.7). Finalise in the same Higgsfield workspace with `draft_job_id`, into the scene's `finals/` folder; a draft job from another account cannot be assumed to work `[UNVERIFIED]`.
 - `c2patool` (contentauth/c2patool, MIT/Apache-2.0; CHANGELOG top 0.26.72, 13 Jul 2026) reads mp4, mov, wav, png and jpg (c2pa-rs supported formats). The first results become 00's T4 provenance test.
-- **Third-party routes.**
-  - Higgsfield: record the model label exactly as `models_explore` shows it, plus the job ID.
-  - ElevenLabs MCP: `bytedance-seedance-v2.5` (no draft flag seen `[UNVERIFIED]`) plus the flow and generation IDs.
-  - Write the underlying BytePlus model ID only if the route states it; otherwise write `not_provided` and add it to the Organizer email (00 §0.9). The disclosure must name the Seedance version used through any third-party platform (cl. 5.5(a)).
+- **Model cells (Higgsfield is a third-party platform).**
+  - `model_id` = the Higgsfield id and `notes` = the label exactly as `models_explore` shows it (`seedance_2_5`, "Seedance 2.5", provider Bytedance), plus the job ID.
+  - `model_snapshot` = the underlying ByteDance model ID only if Higgsfield states it; otherwise `not_provided`, and the question goes in the Organizer email (00 §0.9). The disclosure must name the Seedance version used through any third-party platform (cl. 5.5(a)).
 
 ### L.3 Version pinning (`version-pins.md`)
 
 A pin = model ID or snapshot + route + plan tier + default parameters + date verified + how verified. Every ledger row copies `model_id` and `model_snapshot` from the pin.
 
-| Job class | Pin (verified 2026-10-30) | Status |
+| Job class | Pin (verified 2026-11-01 unless noted) | Status |
 |---|---|---|
-| Final picture | `dreamina-seedance-2-5-260628`, draft 480p → final-from-draft 1080p; edit and extend on the same ID | `[OFFICIAL]` BytePlus ModelArk docs read as Markdown in 05 §5.0 (tutorial updated 2026-10-28), cross-checked with the Comfy mirror; 4K is enterprise-only |
-| Hero sheets | `gpt-image-2.5-sunburst`, pinned to snapshot `gpt-image-2.5-sunburst-2026-09-08` where the route accepts it; quality `max`, resolution `4k` (03) | `[OFFICIAL]` OpenAI model page (snapshot and quality list). Higgsfield may expose only the alias: record what it shows |
-| Edits and consistency | `gemini-3-pro-image` (Nano Banana Pro), `gemini-nano-banana-2.1` | `[OFFICIAL]` ai.google.dev model page and image-generation guide (fetched 2026-10-30 in 02 §2.7 and 03 §3.0) |
+| Final picture | Higgsfield `seedance_2_5` ("Seedance 2.5", provider Bytedance), MCP `generate_video` or the web app in the same project: `draft: true` (480p) → finalise the same take with `draft_job_id` at `1080p` within 7 days, `bitrate_mode: high`; modes `t2v` · `omni_reference` · `video_edit` · `video_extension`; duration 4–30 s; media roles `start_image`, `end_image`, `image_references`, `video_references`, `audio_references`; no seed field. Cost 3 credits/s draft, 16 credits/s 1080p | `[TESTED]` `models_explore` get and `get_cost` (5 s draft = 15 credits, 5 s 1080p = 80), 2026-11-01. For reference only, ByteDance's own API names Seedance 2.5 `dreamina-seedance-2-5-260628`; Higgsfield does not expose that snapshot, so `model_snapshot` = `not_provided` (rule 5). The BytePlus ModelArk API route exists but is not used (decision 2026-11-01: everything in Higgsfield) |
+| Seedance face route | proven on D1 (T1) and recorded here: (a) the approved sheets as `image_references` (or `start_image`) for `seedance_2_5`; (b) if faces are refused, a Higgsfield reference element (`manage_reference_elements` create, `<<<element_id>>>` in the prompt); (c) else a first frame generated inside Higgsfield from the sheets (`generate_image`) used as `start_image` | `[UNVERIFIED]` until T1. The reference-element tool lists `seedance_2_0`, not `seedance_2_5`, among its video models (read 2026-11-01), so (b) needs its own T1 take. Every route change is a major change (rule 1) |
+| Hero sheets | Higgsfield `gpt_image_2_5`, `variant: sunburst`, `quality: max`, `resolution: 4k` (03); set every field (defaults are flare, low, 1k) | `[TESTED]` `models_explore` get, 2026-11-01. Higgsfield exposes no OpenAI snapshot: record `model_snapshot` = `not_provided` |
+| Edits and consistency | Higgsfield `nano_banana_pro` (Nano Banana Pro) and `nano_banana_2_1` (Nano Banana 2.1); never `nano_banana_2` (the deprecated NB2) | `[TESTED]` `models_explore` get/search, 2026-11-01 |
 | Look-dev (manual) | Midjourney `--v 8.2` (+ V8.2 Edit Model) | BRIEF |
 | Dialogue, music, SFX | `eleven_v4` · `music_v2_5` (MCP `eleven_music_v2_5`) · `eleven_text_to_sound_v2` · Suno `v6` (record the UI label: v6 / v6-wild / v6-mini) | ElevenLabs model docs (localised pages); Suno per BRIEF |
 | Tools that shape frames | Blender version + MCP server and version; Premiere Pro version (Help ▸ About); `scripts/sfx_forge.py` git SHA; `c2patool -V` | record on D1 |
@@ -189,18 +191,17 @@ A pin = model ID or snapshot + route + plan tier + default parameters + date ver
 Rules:
 1. **One pin per job class for the whole film.** A model or route change is a major change (calesthio's `v2.0` rule): bump `v`, and never mix two models inside one scene without the user's yes.
 2. **Daily check, before the first job.** List the live models and diff them against the pins:
-   - Higgsfield: `models_explore`;
-   - ElevenLabs: `creative_get_flow_node_types`;
-   - BytePlus: the model list, or a GET on a non-existent task as a free key check (research).
+   - Higgsfield (all picture): `models_explore` get for each pinned id (`seedance_2_5`, `gpt_image_2_5`, `nano_banana_pro`, `nano_banana_2_1`): name, parameters, options and media roles;
+   - ElevenLabs (audio only): `creative_get_flow_node_types`.
 
    On any difference, stop that job class and show T6.
-3. **Canary.** Keep one approved 5 s Seedance draft per variant (R-DAY, DREAM) with its prompt and references frozen. After any pin change, re-run it at 480p and compare side by side with the approved one before production continues. Log it as `purpose=canary`.
-4. **Seeds are not continuity.** Sources disagree on whether 2.5 accepts a seed: BRIEF says no; the Comfy mirror lists `seed` and returns the seed it used. Record `seed_returned` as a fact only. A draft and its final share settings by construction.
-5. **Labels without versions.** Disclose as: Seedance (as labelled by <route>: "<label>", accessed <date>), plus the BytePlus model ID if the route confirms it.
+3. **Canary.** Keep one approved 5 s Seedance draft per variant (R-DAY, DREAM) with its prompt and references frozen. After any pin change, re-run it as a Higgsfield draft (480p, 15 credits) in `99_TESTS/` and compare side by side with the approved one before production continues. Log it as `purpose=canary`.
+4. **Seeds are not continuity.** Higgsfield's `seedance_2_5` has no seed field (`models_explore`, 2026-11-01). Record `seed_returned` only if a response carries one, else `n/a`. A draft and its final share settings by construction.
+5. **Labels without versions.** Disclose as: Seedance 2.5 (as labelled by Higgsfield: "Seedance 2.5", model id `seedance_2_5`, accessed <date>), plus the ByteDance model ID only if Higgsfield or the Organizer confirms it.
 
 ### L.4 Shot database (`SLA_SHOTS.csv`)
 
-- **One row per shot.** The header is a superset of 04's blocking keys (`shot_id,line_ids,mode,variant,size,lens_mm,cam_height_m,move_rig,edit_s,gen_s,frames,cast,beats,screen_dir,physics,owner,status`) and of 08's `SHOTS.csv` (`tc_in, tc_out, frames, scene, world, hero, tool+route, draft_job, final_job`), so both modules export from it without retyping. 08's names map as: scene = `scene_id`, world = `layer`, tool+route = `origin_class` + `route`, draft_job = `draft_task_id`, final_job = `final_task_id`.
+- **One row per shot.** The header is a superset of 04's blocking keys (`shot_id,line_ids,mode,variant,size,lens_mm,cam_height_m,move_rig,edit_s,gen_s,frames,cast,beats,screen_dir,physics,owner,status`) and of 08's `SHOTS.csv` (`tc_in, tc_out, frames, scene, world, hero, tool+route, draft_job, final_job`), so both modules export from it without retyping. 08's names map as: scene = `scene_id`, world = `layer`, tool+route = `origin_class` + `route`, draft_job = `draft_task_id`, final_job = `final_task_id` (both hold Higgsfield job IDs).
 - **Lifecycle:** PROPOSED → BLOCKED (04 approved) → DRAFTING → DRAFT-APPROVED (05b G5b-C) → FINAL-APPROVED → IN-CUT → LOCKED. A cut shot stays in the table as OMITTED; never renumber (01).
 - **Who fills what:**
   - 01: `scene_id`, `line_ids`, `layer`.
@@ -462,7 +463,7 @@ Grade each failure P0, P1 or P2 with 07 §7.3's definitions. Fix routes and thei
 ```text
 سجلّ الإنتاج — 2nd Life: Ascent — 2026-11-09 (GST)
 Rows today: 23 (05: 17 · 06: 4 · 03: 2) · FAILED/FILTERED: 3 · in-flight: 0
-URLs expiring < 6 h, not downloaded: none · drafts expiring < 48 h: S05-SH03 (G05-0122) → finalise or drop?
+Completed jobs not yet downloaded: none · web-app jobs not yet in the ledger: none · drafts expiring < 48 h (7-day Higgsfield life): S05-SH03 (G05-0122) → finalise or drop?
 Blank required cells: 0 · UNLEDGERED files in the edit: 0 · version pins: unchanged (checked 08:55 GST)
 قراراتك: ____
 ```
@@ -481,9 +482,9 @@ train 85 m @ 12 m/s = 7.1 s full pass · contact f133 · devices: lens HUD off �
 **T5 — AI disclosure draft** (Terms cl. 5.5(a), from the ledger only):
 | Tool | Model / version | Route | Account | Used for | Share of film |
 |---|---|---|---|---|---|
-| Dreamina Seedance | dreamina-seedance-2-5-260628 | BytePlus ModelArk API | <ModelArk account/project> | all final picture, native SFX | picture 95.1% · FX audio 61% |
+| Seedance 2.5 (ByteDance) | as labelled by Higgsfield: "Seedance 2.5" (`seedance_2_5`), accessed <date>; ByteDance model ID only if confirmed (L.3 rule 5) | Higgsfield (MCP and web app, one workspace and project) | <Higgsfield workspace / project> | all final picture, native SFX | picture 95.1% · FX audio 61% |
 | ElevenLabs | eleven_v4 (dialogue), music_v2_5 | ElevenCreative (Enterprise contract, Enterprise Music tier) | <org> | dialogue, score cue M02 | DX 100% · MX 40% |
-| … one row per tool, including support tools (GPT Image 2.5 Sunburst references, any upscale or cleanup model from 07 §7.5) with "share: 0 s on screen, used for references" | | | | | |
+| … one row per tool, including support tools (GPT Image 2.5 Sunburst and Nano Banana references made in Higgsfield, any upscale or cleanup model from 07 §7.5) with "share: 0 s on screen, used for references" | | | | | |
 
 Then the non-AI elements with source and licence (fonts, procedural SFX code, the Summit intro), and every face and voice declared synthetic or real (cl. 5.5(c), (d)).
 **T6 — Version change alert:** «تنبيه: تغيّر <model/route> منذ آخر تحقق (<old> → <new>). أوقفت توليد <job class>. اقترح تشغيل لقطة الاختبار canary بدقة 480p ومقارنتها قبل المتابعة. هل توافق؟»
@@ -510,10 +511,11 @@ Silence or a change of subject is not approval.
 
 | Failure | Cause | Fix |
 |---|---|---|
-| A Seedance final is lost | URL died after 24 h or 100 downloads | download in the same turn (L.2); keep `inflight.md` |
-| A draft can't be finalised | the draft ID expired (official 14 days; house rule finalise before day 5) | the T1 card warns at 48 h; finalise or drop |
+| A Seedance final is lost | the original was not downloaded when the job completed, or the Higgsfield project was the only copy | download and hash in the same turn (L.2); keep `inflight.md`; Drive holds RAW_SEEDANCE (L.0b) |
+| A draft can't be finalised | the Higgsfield draft passed 7 days (house rule: finalise before day 5) | the T1 card warns at 48 h; finalise with `draft_job_id` or drop |
 | The share is low at lock | UNLEDGERED clips counted as non-Seedance; HUD over black | ledger every file; put graphics over Seedance plates (`SD+TXT`) |
-| Double billing | a timed-out task was resubmitted | poll the same task ID; never resubmit |
+| Double billing | a timed-out `generate_video` call was repeated | `jobs_wait` on the returned job ID; with no ID, look in `show_generations` (`only_completed: false`) or the scene folder before anything else; never resubmit |
+| A hand-made web-app job is missing from the ledger | the user generated in the Higgsfield web app | daily `list_project_assets` sweep per folder, then `get_project_asset_prompt` → new row (L.2) |
 | The disclosure says "Seedance" with no version | a third-party route label was logged without a date | follow L.3 rule 5; ask the route; add the question to the Organizer email |
 | A model drifted mid-film | a provider update or route switch | daily pin diff, canary, major version bump |
 | The prop resets between cuts | its state machine was not consulted | L.6 rule 1; cut-pair check |
@@ -533,7 +535,7 @@ Silence or a change of subject is not approval.
 - Facts, not quoted:
   - NOAA solar-calculator equations (Meeus), implemented in our own code;
   - Weidmann 1993 parameters via arXiv 0901.0170;
-  - Comfy mirror of the BytePlus Seedance 2.5 schema (draft, URL expiry and 100-download cap, `watermark` default false, `output_format`, `return_last_frame`); fal.ai and APIYI pages (7-day draft life, re-checked 2026-10-30; superseded by the official 14-day figure read in 05);
+  - Higgsfield MCP tool descriptions and `models_explore` get for `seedance_2_5`, `gpt_image_2_5`, `nano_banana_pro`, `nano_banana_2_1`, plus `get_cost` probes (read 2026-11-01): modes, durations, media roles, 7-day draft finalisation, credit rates, reference-element model list;
   - the OpenAI model page (`gpt-image-2.5-sunburst-2026-09-08`);
   - Adobe Help (Project panel List View columns);
   - Dubai Metro facts (Wikipedia, railway-technology, Alstom, Gulf News).

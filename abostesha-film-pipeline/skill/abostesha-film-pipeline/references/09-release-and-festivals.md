@@ -14,8 +14,8 @@ Evidence labels used below: `[DOC]` official source with its date, `[3P]` a thir
 | Input | Where | Needed by |
 |---|---|---|
 | Signed masters, QC report, manifest, subtitles | `films/<id>/07-finish/masters/`, `qc/`, `subs/` (07 §7.12–7.13) | D18 |
-| Shot ledger: shot, source tool, job ID, raw file, seconds in the cut | ledger-continuity-physics.md | D16 |
-| Licence files (Suno plan, ElevenLabs Enterprise Music contract, font licences) | `evidence/licences/` (06, 07) | D16 |
+| Shot ledger: shot, source tool, Higgsfield job ID, model, Higgsfield folder, raw file and the sha256 of the downloaded original, seconds in the cut | ledger-continuity-physics.md | D16 |
+| Licence files (Higgsfield plan and terms on the generation dates, Suno plan, ElevenLabs Enterprise Music contract, font licences) | `evidence/licences/` (06, 07) | D16 |
 | Authorship log, style decisions, Blender files, take logs | `evidence/authorship/`, 01, 02, 04, 05b | D16 |
 | Collaborator agreement, any real-person consent | `evidence/consents/` (00 Gate item 8) | D16 |
 | Organizer replies (the 70% email, 00 §0.9) | `evidence/organizer-correspondence/` | whenever they arrive |
@@ -69,12 +69,12 @@ After "Submit Your Film" the page shows a **Submission reference** and sends a c
 
 The form gives 150 words; cl. 5.5(a) asks for every model, tool, platform and version, the accounts used and each tool's share. Do both:
 
-**A. Form text (≤ 150 words).** Worked example for film 01 (130 words; fill the bracketed facts from the ledger and licences, then count with `wc -w`):
+**A. Form text (≤ 150 words).** Worked example for film 01 (138 words; fill the bracketed facts from the ledger and licences, then count with `wc -w`):
 ```text
-Video: Dreamina Seedance 2.5 (dreamina-seedance-2-5-260628) via BytePlus ModelArk and Higgsfield,
-primary tool, <93.4>% of picture; every moving shot, draft then 1080p final. Images, used only as
-Seedance references, never shown as shots: GPT Image 2.5 Sunburst, Nano Banana Pro, Nano Banana 2.1,
-Midjourney V8.2. Voices: ElevenLabs Eleven v4, fully synthetic designed voices, no real-person clones;
+Video: Seedance 2.5 by ByteDance via Higgsfield (model seedance_2_5), primary tool, <93.4>% of
+picture; every moving shot, 480p draft then the same take finalized at 1080p. Images, used only as
+Seedance references, never shown as shots: GPT Image 2.5 Sunburst, Nano Banana Pro and Nano Banana 2.1
+via Higgsfield; Midjourney V8.2. Voices: ElevenLabs Eleven v4, fully synthetic designed voices, no real-person clones;
 lip-sync rendered by Seedance. Music: Suno v6 (<plan>) and ElevenLabs Music v2.5 (Enterprise Music licence).
 Sound effects: Seedance native audio, code-synthesised effects (non-AI) and ElevenLabs SFX v2.
 Post: Adobe Premiere Pro (human edit, grade, mix, subtitles). Blocking: Blender <5.1> greybox, keyframed
@@ -82,14 +82,14 @@ by hand, used only as motion reference, never on screen. Writing support: Claude
 script notes; the screenplay is human-written. Full per-tool table with versions, accounts, shares
 and job IDs is ready on request.
 ```
-Every clause must be literally true for this cut. If an upscaler, a cleanup model (07 §7.5) or Higgsfield `upscale_image` touched a frame, name it. Also name Claude if it drafted subtitle translations. If no Higgsfield job reached the cut, drop "and Higgsfield". For every third-party route (Higgsfield, the ElevenLabs connector), record in table B the Seedance version string that platform showed, because cl. 5.5(a) asks for "the version of Seedance accessed through it".
+Every clause must be literally true for this cut. If an upscaler, a cleanup model (07 §7.5) or Higgsfield `upscale_image` touched a frame, name it. Also name Claude if it drafted subtitle translations. Every Seedance and image generation runs in Higgsfield (decision 2026-11-01: MCP or the user's hand-made jobs in the web app, same project), so Higgsfield is the third-party platform cl. 5.5(a) asks about, with "the version of Seedance accessed through it". Higgsfield's model card shows the name, provider and id ("Seedance 2.5", Bytedance, `seedance_2_5`) but no dated snapshot `[TESTED models_explore get, 2026-11-01]`. Write in table B exactly what the pinned card showed on the generation dates (ledger L.3 rule 5), and add the ByteDance model ID only if Higgsfield or the Organizer confirms it in writing (file it in `evidence/disclosure/`). A BytePlus API route to Seedance exists but is not used for this film (decision 2026-11-01); never name BytePlus or Dreamina as a route unless a job in the cut actually ran there.
 
 **B. Full disclosure table** (`disclosure/SLA_disclosure_full_vNN.md` → PDF, kept ready to send within hours):
 
 | # | Used for | Tool | Exact model / version | Route / platform | Account (ID or masked email) | Plan / licence file | Dates used | In the final film as | Share |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | final picture | Dreamina Seedance 2.5 | `dreamina-seedance-2-5-260628`, draft → 1080p final | BytePlus ModelArk API | <BytePlus account ID> | <plan>, `licences/byteplus.pdf` | 6–13 Nov 2026 | every moving shot | 93.4% picture |
-| 2 | reference images | GPT Image 2.5 | `gpt-image-2.5-sunburst`, quality max, 4k | Higgsfield / ElevenLabs connector | <account> | <plan> | … | references only | 0% picture |
+| 1 | final picture | Seedance 2.5 (ByteDance) | Higgsfield `seedance_2_5` (label as pinned, ledger L.3; snapshot `not_provided`), `draft: true` 480p → same take finalized at 1080p with `draft_job_id`, `bitrate_mode` high | Higgsfield MCP `generate_video` + Higgsfield web app, project <name>, one folder per scene | <Higgsfield workspace ID or masked email> | <Higgsfield plan>, `licences/higgsfield-terms-<date>.pdf` | 6–13 Nov 2026 | every moving shot | 93.4% picture |
+| 2 | reference images | GPT Image 2.5 Sunburst | Higgsfield `gpt_image_2_5`, variant sunburst, quality max, 4k | Higgsfield `generate_image` | <Higgsfield workspace ID or masked email> | <Higgsfield plan> | … | references only | 0% picture |
 | … | voices · music · SFX · upscale · edit · writing notes | … | … | … | … | … | … | … | per stem |
 
 **C. Share figures** (from the ledger; the Organizer's method is unpublished, cl. 5.4):
@@ -113,16 +113,18 @@ One row per non-AI or third-party element and one row per voice and face. Adapte
 
 | Character / voice | Face | Voice | Real-person basis | Consent file |
 |---|---|---|---|---|
-| Miraj | synthetic (GPT Image 2.5 → Seedance) | synthetic (ElevenLabs Voice Design) | none | — |
+| Miraj | synthetic (GPT Image 2.5 Sunburst sheet → Seedance 2.5, both in Higgsfield; face route <1a/1c/1d> from T1) | synthetic (ElevenLabs Voice Design) | none | — |
 | Noah | synthetic robot | synthetic | none | — |
 
 Any row with a real-person basis needs signed consent, or the shot is cut. That includes the user's own face or voice, and the collaborator's.
+
+**Face route per character** (proven on D1, test T1; 03 §3.3–3.4, ledger L.3). T1 tests whether `seedance_2_5` accepts the approved sheets as `image_references` (1a) or `start_image` (1b, acceptance only). If the faces are refused or identity does not hold: a Higgsfield reference element made from the sheet with `manage_reference_elements` (1c), or a first frame generated inside Higgsfield from the sheets and used as `start_image` (1d). One route per character. Write the route in the Face cell with the sheet's job ID and, for 1c or 1d, the element ID or first-frame job ID: the Organizer, festivals and buyers will ask how a synthetic face reached the picture.
 
 ### 9.4 Raw Seedance clip upload ("Step 2 of 2"), the same day as submission
 
 The live form says: "Upload the raw Seedance clips you used — the original files, before editing, colour grading or effects", the "raw clips behind at least 70% of your film". It accepts MP4 and MOV only, and warns: "once you do, you cannot add or remove any" `[DOC form code 2026-10-30]`. The page is also reached from an emailed link, which can expire: always use the newest email. Its closing date is shown only once the page is open ("Uploads closed on…"), so upload within hours of submitting.
 
-1. **Select.** Take every Seedance clip whose frames appear in the cut, as the 1080p files originally downloaded (05, ledger download routine). This includes the plates under titles and credits, and the outputs of Seedance edit, bridge and extension tasks (07 §7.5). Leave out rejected takes and unused drafts. Copy them with `cp -p` into `evidence/raw-seedance/upload/`. Keep the ledger file names: they already carry the shot ID (ledger L.1), so do not rename anything.
+1. **Select.** Take every Seedance clip whose frames appear in the cut, as the 1080p finals originally downloaded from Higgsfield: the finalized job, never its 480p draft (05, ledger download routine). This includes the plates under titles and credits, and the outputs of Seedance edit, bridge and extension jobs (`seedance_2_5` modes `video_edit`, `video_extension`; 07 §7.5). Jobs the user made by hand in the Higgsfield web app count the same way once Claude has read them back from the project (`list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source`, 05 §5.4), downloaded the original and logged its sha256; a clip with no ledger row and hash does not go in. Leave out rejected takes and unused drafts. Copy them with `cp -p` into `evidence/raw-seedance/upload/`. Keep the ledger file names: they already carry the shot ID (ledger L.1), so do not rename anything.
 2. **Prove they are untouched.** Every file must be byte-identical to a download logged in the ledger's daily checksum files `[TESTED bash + ffprobe 6.1]`:
    ```bash
    cd films/01-second-life-ascent && mkdir -p evidence/manifests
@@ -134,7 +136,7 @@ The live form says: "Upload the raw Seedance clips you used — the original fil
    for f in upload/*; do printf '%s,' "$f"; ffprobe -v error -show_entries format=duration -of csv=p=0 "$f"; done > ../manifests/upload-durations.csv
    du -ch upload/* | tail -1                                  # total size → plan bandwidth
    ```
-3. **Map.** Keep `raw-clips-map.csv` (shot, file name, sha256, task ID, TC in/out in the cut, seconds used) ready to email.
+3. **Map.** Keep `raw-clips-map.csv` (shot, file name, sha256, Higgsfield job ID of the 1080p final and the `draft_job_id` it was finalized from, model, Higgsfield folder, TC in/out in the cut, seconds used) ready to email.
 4. **Coverage.** Sum of seconds used from the uploaded clips ÷ T ≥ 0.70. The plan target is the ledger's ~90%.
 5. **Upload.** Use a wired connection and keep the page open; press Retry on failures. Compare the page's count with the CSV, and only then press **Finish upload**. Screenshot "Your clips are in." into `evidence/submission/`.
 
@@ -147,9 +149,10 @@ films/01-second-life-ascent/evidence/
   00-INDEX.md                 one line per folder: what it proves, which clause, last updated
   disclosure/                 full table (9.2B), form text (9.2A), seedance-share.csv, audio-origin.csv
   raw-seedance/               byte-identical downloads + upload/ (9.4); never re-encoded
-  prompts/                    every prompt per tool, dated, with job/task ID (01–06 logs)
-  generation-history/         exports or screenshots of BytePlus task lists, Higgsfield, ElevenLabs,
-                              Suno libraries, Midjourney job IDs (Stealth on, 03)
+  prompts/                    every prompt per tool, dated, with its job ID (01–06 logs)
+  generation-history/         Higgsfield project listing per folder (list_project_assets: job ID, model,
+                              status) + the prompt of every job in the cut (get_project_asset_prompt);
+                              ElevenLabs history, Suno libraries, Midjourney job IDs (Stealth on, 03)
   project-files/              .blend versions, .prproj versions, EDL + FCP XML (07 §7.4)
   shot-logs/                  ledger exports (ledger-continuity-physics.md)
   licences/  consents/        9.3
@@ -159,7 +162,10 @@ films/01-second-life-ascent/evidence/
   manifests/                  manifest-sha256.txt for all of the above
 ```
 
-- **Backups:** three copies on two kinds of media, one off-site `[HOUSE]`. Example: the working drive, an external SSD, and a cloud folder that is not publicly shared. Run `sha256sum -c manifests/manifest-sha256.txt` after each copy and then every quarter.
+On Drive and the PC this tree is the film's `08_EVIDENCE/` (ledger L.0b); `raw-seedance/` there is `RAW_SEEDANCE/`.
+
+- **Higgsfield drafts expire after 7 days.** A 480p draft can be finalized only within 7 days (`draft_expires_utc` in the ledger, 05 §5.7), and Higgsfield is not an archive. The draft history the Organizer may ask for therefore lives in the ledger rows and `prompts/`, written in the same turn as each generation (Higgsfield job ID, model, folder, prompt, references, credits, the user's verdict, the sha256 of any downloaded file). Export the Higgsfield listing of each scene folder at every daily close in Step 5 and once more at picture lock, so no job, MCP or hand-made in the web app, is missing from `generation-history/`.
+- **Backups:** three copies on two kinds of media, one off-site `[HOUSE]`. With the house storage (ledger L.0b): the Google Drive master archive (off-site), the PC copy that Google Drive for desktop keeps in Mirror mode, and the external drive. Mirror mode syncs deletions and overwrites both ways, so the external drive is the only copy a mistake on the PC cannot reach: refresh it after every evidence change and keep it disconnected otherwise. The Higgsfield project is the generation record, not one of the three copies. Run `sha256sum -c manifests/manifest-sha256.txt` after each copy and then every quarter.
 - **Provenance:** run `c2patool <file>` (if installed) on three raw clips and the masters, and file the output (00 test T4). Never re-encode anything inside `raw-seedance/`.
 - **Prompt scan before sending** (adapted from video-qa, MIT): grep the prompt archive for real brand names, real people's names and music or lyric words. Edit nothing: evidence goes out as it is. The scan only tells the user what the Organizer will read.
 - **7-day drill on D18.** Pretend a request arrived. Build `SLA_evidence-pack_vNN.zip` from the index within 2 hours, verify its manifest, and time it. If it takes longer than one working day, fix the index now.
@@ -177,7 +183,7 @@ Clause 8.4 [DOC]: unless the Organizer agrees in writing, until the Winner is pu
 | Saying "Top 10", "shortlisted" or "finalist" before written permission, or "Top 5"/"winner" before the Organizer announces it | Building the press kit, DCP, festival plan and pitch deck privately |
 | Entering **any** festival or competition, including ones that only screen after January (warranties are repeated at every stage, cl. 5.3(b), 6.1). Example: Stuttgart ITFS 2027 shorts closed 15 Nov 2026 `[3P]`; it is lost to this film. | Researching festivals, filling FilmFreeway/Shortfilmdepot profiles as drafts without submitting |
 | Exclusive deals, options or distribution agreements (cl. 6.1(h)) | Pitch conversations about the series idea that show nothing from the film |
-| Generating with Midjourney without Stealth; online frame grabbers or converters; public "community" feeds of any tool | Private tools under the user's accounts; uploading to Gemini (watch 0.3.x, 08) only with their explicit consent |
+| Generating with Midjourney without Stealth; online frame grabbers or converters; public "community" feeds of any tool; publishing or sharing the Higgsfield project or any job in it (project publication, community feed, contests, posting to TikTok from Higgsfield) | Private tools under the user's accounts, including the private Higgsfield project where the film is generated; uploading to Gemini (watch 0.3.x, 08) only with their explicit consent |
 | Making the YouTube link public, or sharing it beyond the Organizer and private test viewers | Keeping the link unlisted and live |
 
 When in doubt, the answer is "not yet", and the question goes to the Organizer in writing (template E2 below).
@@ -238,12 +244,13 @@ ffmpeg -i SLA_keystill_16x9_v01.png -q:v 2 SLA_keystill_16x9_v01.jpg      # use 
 Inspect it at 200% for hand, text and face artefacts. Do no AI retouching. If a retouch is unavoidable, disclose it and keep the original.
 
 **K2 poster.** Make it from the film's world, never something the film does not contain.
-- Route A: extend a Seedance frame to 2:3 with a disclosed outpaint.
+- Route A: extend a Seedance frame to 2:3 with a disclosed outpaint: upload the key still to the private Higgsfield project, then `outpaint_image` with `aspect_ratio` `2:3` (`get_cost: true` first, the user's yes, then log the job like any generation).
 - Route B: build key art from the locked references (03), with the prompt card below. Set typography by hand (Photoshop or Express) with licensed fonts (log them, cl. 5.5(c)); never AI-rendered lettering.
 - Arabic title RTL, checked by a native reader.
-- Billing block in text only: "Written and directed by AboStesha · Blender blocking <name> · Made with Dreamina Seedance 2.5 · © 2026 <full name>". No Summit, Partner or tool logos without permission (00 R2).
+- Billing block in text only: "Written and directed by AboStesha · Blender blocking <name> · Made with Seedance 2.5 · © 2026 <full name>". No Summit, Partner or tool logos without permission (00 R2).
 ```text
 MODEL gpt_image_2_5  variant=sunburst  quality=max  resolution=4k  aspect=2:3  takes=3   (syntax: 03-assets-images.md)
+ROUTE Higgsfield generate_image · folder_id = the film's 07_DELIVERY folder (ledger L.0b) · get_cost: true, then the user's yes
 REFS  @MIRAJ_face_lock (03) · @LOC_booth_master (03) · SLA_keystill_16x9_v01.png
 [STYLE PREFIX: prefix/gpt-image.txt]
 Vertical film poster key art. No text, no letters, no numbers, no logos anywhere in the image.
@@ -261,7 +268,7 @@ AVOID: text, watermarks, logos, signage, extra fingers, plastic skin, flares, we
 Midjourney V8.2 alternative, for environment-only key art (Omni Reference is V7-only, so do not put a character face in it). The user runs it with Stealth on: `<prompt without the character> --v 8.2 --raw --ar 2:3` (03).
 
 **Stills (ST).** Choose 8–12 frames: two per act plus the strongest dream-world image, which shows AI Integration. Mark any frame that reveals the ending "jury only".
-- Caption: `Still from 2nd Life: Ascent (2026), dir. AboStesha. AI-generated image (Dreamina Seedance 2.5).`
+- Caption: `Still from 2nd Life: Ascent (2026), dir. AboStesha. AI-generated image (Seedance 2.5).`
 - Native 1920×1080. When a festival wants print-size stills, use a disclosed upscale (Higgsfield `upscale_image`, 03), not a fake "300 dpi" relabel.
 
 **Folder rule** (cinetic, MIT): "A client opens the folder before they open the film". Put the deliverables at the top of `presskit/`: PDF, poster, key still, stills, bio photo. Keep sources and working files in `presskit/_work/`. A short press check with 08-judge-panel.md's first-time-audience persona asks one question: would you press play after this logline?
@@ -351,7 +358,7 @@ Never submit anywhere before the holdback ends, even when a deadline falls earli
 - The film on a private link, the director's statement, and the press kit.
 - **Chain of title:**
   - authorship log and the collaborator's rights assignment;
-  - each tool's output-ownership terms on the generation dates;
+  - each tool's output-ownership terms on the generation dates (for every picture generation: the Higgsfield terms and plan in force then, filed in `licences/`);
   - the Organizer's perpetual non-exclusive licence (cl. 8.1, 8.2), which buyers must be told about. Any exclusive deal must carve it out.
 - **Title:** "Second Life" is a Linden Research trademark (00 §0.10). Clear it, or rename the series, before pitching.
 
@@ -449,6 +456,10 @@ Silence or partial agreement is not approval.
 | Public YouTube link, or the link replaced after submission | unlisted; never delete or re-upload; email the Organizer for fixes |
 | Raw clips graded, trimmed or re-encoded; "Finish" pressed early | byte-identical files, checksum OK, count matched before Finish |
 | Title plates' raw clips forgotten | include every Seedance clip visible in the cut |
+| A hand-made Higgsfield web-app take in the cut has no ledger row or hash | read it back from the project (`list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source`), download, hash and log it before the upload list is built |
+| A 480p draft, not its 1080p final, put in the upload list | upload only the finalized job's original; the map carries both job IDs |
+| Draft history lost when Higgsfield drafts expire after 7 days | ledger row and prompt in the same turn; folder listings exported at every daily close (9.5) |
+| Disclosure names BytePlus, ModelArk or Dreamina as a route | every job ran in Higgsfield (decision 2026-11-01); name the platform the ledger shows |
 | Poster with AI lettering, Partner logos or brand-like signage | hand-set type, text-only billing, artefact check at 200% |
 | BTS reel or teaser posted "because it's not the film" | anything containing film frames or sound is the film (9.6) |
 | Announcing the shortlist after the Organizer's post, without permission | cl. 8.4 still applies; E1 first |
@@ -473,6 +484,7 @@ Silence or partial agreement is not approval.
 - 1 Billion Followers Summit: award page https://www.1billionsummit.com/ai-award-2027; Terms (last updated 12/10/2026, re-fetched 2026-10-30) https://www.1billionsummit.com/ai-award-2027/terms-and-conditions (cl. 1, 5.5, 5.6, 5.8, 6.1, 8.1–8.4, 11.1–11.8, 12.2, 12.6, 13.1, 13.5, 14.1, quoted in short); submission form https://www.1billionsummit.com/ai-award-2027/submit. The field labels, limits, consents and the raw-clip "Step 2 of 2" copy were read from the site's own form code, as text only, on 2026-10-30.
 - Academy: 99th Short Films Qualifying Festival List (updated 10 Apr 2026), oscars.org PDF; Rules 8 and 17 and Rule Two via 00 §0.11.
 - Annecy 2026 Short Films Terms and Conditions (annecyfestival.com PDF); Clermont-Ferrand 2027 International Regulations (lecourt-clermont.org PDF); Tribeca 2027 dates press release (tribecafilm.com).
+- Higgsfield MCP (read 2026-11-01): `models_explore get seedance_2_5` (name "Seedance 2.5", provider Bytedance, modes, `draft` "can be finalized within seven days", `draft_job_id`, media roles; no dated snapshot) and the tool descriptions of `generate_video`, `generate_image`, `outpaint_image`, `upscale_image`, `manage_reference_elements`, `list_project_assets`, `get_project_asset_prompt`, `get_project_asset_source`, `publish_project`. No generation was run for this module.
 - YouTube AI labels, 27 May 2026: https://blog.youtube/news-and-events/improving-ai-labels-viewers-creators/. DCP-o-matic download page: 2.18.51, 16 Oct 2026.
 
 **Third-party, marked `[3P]`:**

@@ -26,13 +26,13 @@ Talk to the user in Arabic (addressing them as أبوستيشا). Write the frie
 
 1. **Reference only.** A playblast, Blender render or layout still never goes into the edit. It would count against the 70% Seedance share and break the photoreal look (00 §0.4).
 2. **The guide copies defects as faithfully as intent.** A bent pole came back as a snake, loose blocks as extra people, a car with no marked front driving in reverse, a hero keyed past a roof edge air-walking (scenario-labs; greybox-director). Fix identity and physics in geometry first and in prompt text second.
-3. **One BLOCK shot = one Seedance generation.** The playblast lasts exactly G whole seconds, 4 ≤ G ≤ 15. The clip length equals the requested duration. Seedance stretches a shorter reference, and the motion turns floaty (greybox-director). The 2.5 API accepts 4–30 s, but the 15 s cap is our house rule: clips of 10–15 s held layout and clips of 20–30 s drifted (scenario-labs audit of 28 renders).
+3. **One BLOCK shot = one Seedance generation.** The playblast lasts exactly G whole seconds, 4 ≤ G ≤ 15. The clip length equals the requested duration. Seedance stretches a shorter reference, and the motion turns floaty (greybox-director). Seedance 2.5 on Higgsfield accepts 4–30 s (`duration`, whole seconds), but the 15 s cap is our house rule: clips of 10–15 s held layout and clips of 20–30 s drifted (scenario-labs audit of 28 renders).
 4. **Colour carries identity.** One saturated colour per hero, a grey set, a dark world. Never deliver an all-grey playblast: one provider's input screen refused a bare grey mannequin clip, while saturated colours passed (scenario-labs).
-5. **The upload copy is clean:** no overlays, gizmos, path lines, empties, camera frustums, text, burn-ins or audio. BytePlus's own clay-model guidance asks for no trajectory lines, coordinate lines or camera cones. A video's audio track can be read as a reference, so the upload copy is silent.
+5. **The upload copy is clean:** no overlays, gizmos, path lines, empties, camera frustums, text, burn-ins or audio. The Seedance 2.5 prompt guide's clay-model advice asks for no trajectory lines, coordinate lines or camera cones. A video's audio track can be read as a reference, so the upload copy is silent.
 6. **Lens discipline.** Use only focal lengths from the 02 ladder. Never animate a lens jump. A cut changes lens only by changing camera.
 7. **IDs from 01, never renumbered.** Shots are `S07-SH03`; inserted shots are `S07-SH03A`; a cut shot stays in the table as `OMITTED`.
-8. **Holdback.** Drive folders are shared only with named people (the user, the friend). Never use "Anyone with the link". No playblast is posted anywhere (00, holdback).
-9. **No generation or imported assets in this step.** Do not use the Higgsfield add-on's Video, Scene builder or other paid tabs, ahujasid's `generate_3d`, `search_assets` or `import_asset`, or any `generate_*` call. Build with primitives only. Seedance runs only in 05-seedance-production.md, where it is logged.
+8. **Holdback.** Drive folders are shared only with named people (the user, the friend). Never use "Anyone with the link". No playblast is posted anywhere (00, holdback). The film's Higgsfield project stays private: never publish or share it, and never bring a playblast into Higgsfield from a public link.
+9. **No generation or imported assets in this step.** Do not use the Higgsfield add-on's Video, Scene builder or other paid tabs, ahujasid's `generate_3d`, `search_assets` or `import_asset`, or any `generate_*` call. Build with primitives only. Seedance runs only in 05-seedance-production.md (Higgsfield `generate_video`, model `seedance_2_5`), where it is logged.
 10. **Authorship is logged per shot.** Record who keyed it (friend, user, Claude) and who approved it. Human-keyed motion on the primary subjects is evidence for the authorship dossier (00 §0.11). Record the Blender version and the MCP server and version in the ledger's "Tools that shape frames" pin, so the disclosure (00 D1) can list Claude and the MCP as support tools with a 0% share of the final picture.
 11. **G-rated staging.** Block no violence beyond mild, and no drug, alcohol or tobacco props. Re-check any beat 01 flagged.
 
@@ -313,15 +313,19 @@ More 5.x traps:
 
 ### 4.9 Export: what Seedance accepts
 
-**BytePlus reference-video limits** (ai.byteplus.com Seedance 2.5 docs, checked 2026-10-30):
+**Route (decision 2026-11-01: all generation in Higgsfield).** The approved `_PB_` reaches Seedance 2.5 as a `video_references` media of Higgsfield `generate_video`, model `seedance_2_5`, `mode: omni_reference`; 05 builds the call. (The BytePlus API route exists but is not used.)
+
+**Reference limits.** Higgsfield `models_explore` (get `seedance_2_5`, read 2026-11-01) lists the modes `t2v`, `omni_reference`, `video_edit` and `video_extension`, `duration` 4–30 whole seconds, and the media roles `start_image`, `end_image`, `image_references`, `video_references` and `audio_references`. It lists no file limits. So the export spec keeps the underlying model's limits from the Seedance 2.5 docs (checked 2026-10-30), `[UNVERIFIED]` on Higgsfield until the first BLOCK draft in 05 goes through:
 - mp4 or mov, H.264 or H.265;
-- 2–30 s per clip (4–30 s for edit tasks); at most 10 clips and 30 s in total per request;
+- 2–30 s per clip; at most 10 clips and 30 s in total per request;
 - ≤ 200 MB per clip;
 - 24–60 fps;
 - width and height 300–6000 px, aspect 0.4–2.5, total pixels 407,696–8,295,044. 1920×1080 = 2,073,600 passes; 768×432 fails.
-- Input is by URL or asset ID only, so 05 decides hosting. A Drive share page is not a file URL. Use an asset ID or a private, expiring link, never a public listing (holdback).
-- Output duration is 4–30 s or −1 (auto). A prompt that reads as an edit (edit, add, remove, delete, replace, change, modify) or an extension (extend, continue) turns the task into a video edit or extension. An edit forces `duration −1` and works on the greybox itself. So 05 sets `omni_reference_task_type` to `reference`, and the T3 clause avoids those words.
-- Reference audio is wav or mp3, 2–30 s per clip, ≤ 30 s in total, ≤ 15 MB.
+- Reference audio (`audio_references`) is wav or mp3, 2–30 s per clip, ≤ 30 s in total, ≤ 15 MB.
+
+**Into Higgsfield.** `medias[].value` takes only a media ID or a job ID, never an https link, so a Drive share page cannot be passed. Upload the file itself (4.10 step 7): `media_upload` → PUT the bytes to the returned `upload_url` → `media_confirm` (`type: video`). Never use `media_import_url` on a Drive or public link (holdback).
+
+**Task type.** Always `mode: omni_reference`. `video_edit` and `video_extension` work on the greybox itself: an edit ignores `duration` and `aspect_ratio`, is billed by the reference's length, and keeps the grey world. A prompt that reads as an edit (edit, add, remove, delete, replace, change, modify) or an extension (extend, continue) can turn the task into one; the underlying model does this from the words alone, and whether Higgsfield's explicit `mode` prevents it is untested. So the T3 clause avoids those words.
 
 **Settings.**
 
@@ -354,7 +358,7 @@ Pass when:
 - there is no audio stream;
 - size ≤ 200 MB.
 
-**Stills.** Save PNG stills at frame 1, the middle, the last frame and every named beat: `_STILL_v03_f0001.png`. 05 may use them as beat-anchor keyframe images (greybox-director) or as first-frame sources. If an image model restyles a still, gate the result for surviving primitives, box heads above all. For STILL-mode shots, export `_LAYOUT_v##.png` for 03 and 05. 03 attaches it with "use only the geometry and camera; ignore the grey materials".
+**Stills.** Save PNG stills at frame 1, the middle, the last frame and every named beat: `_STILL_v03_f0001.png`. 05 may use them as beat-anchor keyframe images (greybox-director) or as first-frame sources (`start_image`). A restyle of a still runs inside Higgsfield (`generate_image`, GPT Image 2.5 Sunburst or Nano Banana Pro / 2.1, per 03) in the scene folder, and is logged like any generation: job ID, model, folder and the sha256 of the downloaded original. Gate the result for surviving primitives, box heads above all. For STILL-mode shots, export `_LAYOUT_v##.png` for 03 and 05. 03 attaches it with "use only the geometry and camera; ignore the grey materials".
 
 ### 4.10 Review gate per shot (Claude, before the user sees it)
 
@@ -381,6 +385,7 @@ Pass when:
 4. Play `_REV_` against the line markers. Lines land on the planned frames. The timing matches the animatic.
 5. Fill the hand-off sheet (T3) from the scene, never retyped from the brief. Compute the lens heading (`lens_heading`, at the middle frame) and the camera-relative sun (`sun_relative`) per shot. Write them into the shot database (`lens_heading_deg`, `sun_rel`) and ledger-continuity-physics.md; the ledger's `sun_position.py --cam <heading>` must agree within a few degrees. If the physical sun contradicts the 02 variant rule (for example, a reverse angle puts R-DAY's sun in front of the camera), stop. Ask the user to choose: keep physics, or cheat the sun for this shot. Log the decision.
 6. Show the review card (T4). The user approves, and the log row turns APPROVED. Only the APPROVED `_PB_` version may be used in 05.
+7. **Upload to Higgsfield** (Claude; only the APPROVED `_PB_`). Check that the local file's sha256 matches T3. Then `media_upload` (filename = the `_PB_` name) → PUT the bytes → `media_confirm` (`type: video`), and `attach_project_asset` places it in the scene's `blocking/` folder of the film's Higgsfield project (ledger L.0b). Write the media ID and folder into T3 and T5. A new version is a new upload; never reuse the old media ID for v+1. 05 uploads a `_DLG_` track itself when it sends one.
 
 ### 4.11 Google Drive: folders, names, log
 
@@ -400,6 +405,7 @@ AboStesha Films/SLA_01-second-life-ascent/04-blocking/
   SLA_04_blocking-log.csv
 ```
 - Mirror to `films/01-second-life-ascent/04-blocking/`. Git tracks `.md` and `.csv`; binaries are git-ignored.
+- The Higgsfield project holds only the uploaded APPROVED `_PB_` files, in each scene's `blocking/` folder (4.10 step 7). It is never the only copy.
 - PNG sequences stay local. Delete them after the encode passes verification.
 - Versions only go up. Never overwrite a version.
 - Keep everything 24 months (00 §0.2 rule D2: project files on request within 7 days).
@@ -456,6 +462,7 @@ Never: render passes for the film, lens jumps on a cut, all-grey figures, public
 ```markdown
 # S03-SH02 blocking hand-off v03 (APPROVED 2026-11-04 by AboStesha)
 Files: SLA_S03-SH02_PB_v03.mp4 (sha256 …) · REV · STILL f0001/f0084/f0121/f0168 · DLG — none
+Higgsfield: PB media ID … in 04_SCENES/S03_<slug>/blocking (pass as video_references, mode omni_reference)
 Format: 24 fps, 1920x1080, frames 1-168 = 7 s · edit window f13-f144 (handles 12 head, 24 tail)
 Camera: CAM_S03-SH02, 35 mm (about 63 degrees), height 1.55 m, backing rail, lead 3.5 m -> 2.4 m (FS -> MWS),
   lens heading 278 deg (west), handheld R-DAY budget, focus on Miraj's face, background soft.
@@ -489,7 +496,7 @@ robot keeps the jointed figure's stiff, mechanical steps and its left-leg limp. 
 @Video1 disagree about motion or position, @Video1 wins. No blocky placeholder geometry, no
 mannequin figures, no capsule-shaped bodies.
 ```
-Two passages are adapted from scenario-labs `cast.md` (MIT): the stand-in passage ("a colored capsule stand-in … natural human motion") and the gait passage ("walks naturally … glide or float"). They are rewritten here for one character with arms. Use them only for human characters on capsule stand-ins. A jointed robot gets one plain motion line instead. Keep edit and extension words out of the clause (4.9). 05 merges the clause with the 02 prefix, the asset role lines and the audio binding, then tests it on one shot. That test A/Bs the scenario-labs 2×2 style board against the greybox-director frame-0 restyle.
+Two passages are adapted from scenario-labs `cast.md` (MIT): the stand-in passage ("a colored capsule stand-in … natural human motion") and the gait passage ("walks naturally … glide or float"). They are rewritten here for one character with arms. Use them only for human characters on capsule stand-ins. A jointed robot gets one plain motion line instead. Identity handles follow the Higgsfield face route proven in T1 (00 §0.8; 03 §3.3–3.4): `@Image1` stays when the approved sheet passes as `image_references`; with a first frame generated inside Higgsfield (`start_image`), 05 maps the colour to the person in that frame; with a reference element, 05 writes `<<<element_id>>>` where the clause names the person and never puts the element in `medias`. The colour-to-name mapping itself never changes. Keep edit and extension words out of the clause (4.9). 05 merges the clause with the 02 prefix, the asset role lines and the audio binding, then tests it on one shot. That test A/Bs the scenario-labs 2×2 style board against the greybox-director frame-0 restyle.
 
 **T4 — Review card** (Arabic, one per shot)
 ```text
@@ -504,8 +511,8 @@ Two passages are adapted from scenario-labs `cast.md` (MIT): the stand-in passag
 
 **T5 — Blocking log row** (`SLA_04_blocking-log.csv`, append-only)
 ```text
-shot_id,version,mode,owner,channel,blend_file,pb_file,pb_sha256,gen_s,frames,status,approved_by,approved_date,notes
-S03-SH02,v03,BLOCK,friend,manual,SLA_S03-SH02_BLK_v03.blend,SLA_S03-SH02_PB_v03.mp4,<sha256>,7,1-168,APPROVED,AboStesha,2026-11-04,robot limp keyed by friend
+shot_id,version,mode,owner,channel,blend_file,pb_file,pb_sha256,gen_s,frames,status,approved_by,approved_date,notes,hf_media_id,hf_folder
+S03-SH02,v03,BLOCK,friend,manual,SLA_S03-SH02_BLK_v03.blend,SLA_S03-SH02_PB_v03.mp4,<sha256>,7,1-168,APPROVED,AboStesha,2026-11-04,robot limp keyed by friend,<media_id>,04_SCENES/S03_<slug>/blocking
 ```
 
 **Worked mini-example: dialogue shot (illustrative IDs; the real ones come from the locked script).**
@@ -530,11 +537,11 @@ Ask: «هل تعتمد جدول اللقطات والأنيماتيك v__ كنس
 The user approves:
 1. **The blocking table.** Every shot has an ID, mode (BLOCK / STILL / TEXT), size, lens, height, move, edit length and G. No PROPOSED cells remain.
 2. **The animatic.** Body runtime 6:00–6:30, total ≤ 7:00 including titles and credits. Every selected line is in place and sync is correct.
-3. **Every BLOCK shot.** An APPROVED `_PB_` version that passes the 4.9 ffprobe check and the 4.10 review, plus its hand-off sheet. STILL shots have their layout still.
+3. **Every BLOCK shot.** An APPROVED `_PB_` version that passes the 4.9 ffprobe check and the 4.10 review, plus its hand-off sheet and its Higgsfield media ID. STILL shots have their layout still.
 4. **The Drive folder** is complete and the log has no blank cells. Authorship is recorded per shot. Lens heading, camera-relative sun and contact frames are entered in the shot database and ledger-continuity-physics.md.
 5. **Open conflicts are decided:** sun cheats, any stand-in A/B result, Bridge-module conflicts.
 
-Partial release is allowed: approved BLOCK shots may enter 05 drafts before the full lock. That happens hardest-first on D7. Any later change to an approved shot creates v+1 and is flagged to 05.
+Partial release is allowed: approved BLOCK shots may enter 05 drafts before the full lock. That happens hardest-first on D7. Any later change to an approved shot creates v+1 and is flagged to 05. A draft made from the old version is never finalized for the new one: v+1 needs a new upload and a new draft, and Higgsfield drafts can be finalized only within 7 days, so late blocking changes cost draft time.
 
 ---
 
@@ -556,7 +563,8 @@ Partial release is allowed: approved BLOCK shots may enter 05 drafts before the 
 | Picture freezes, then jumps | camera turning > 3° per frame | lengthen the turn |
 | A collision or cut where the camera passes a wall | camera < 0.8 m from geometry | widen the path |
 | Floaty, slow motion | reference shorter than the requested duration | playblast exactly G s |
-| Output keeps the grey look, or a `TaskTypeConstraint` / `TaskTypeMismatch` error | the prompt read as an edit ("replace the capsules…"), so Seedance edited the greybox | no edit or extension words in the clause; `omni_reference_task_type: reference` (05) |
+| Output keeps the grey look, or the job fails on task type | `mode` set to `video_edit` or `video_extension`, or the prompt read as an edit ("replace the capsules…"), so Seedance edited the greybox | `mode: omni_reference` with the `_PB_` as `video_references` (05); no edit or extension words in the clause |
+| `generate_video` refuses the playblast in `medias` | an https or Drive link passed instead of an ID | `media_upload` → PUT → `media_confirm`; pass the media ID (4.10 step 7) |
 | Lost figures and invented close-ups | clip 20–30 s | split into ≤ 15 s shots |
 | Lens "pop" at the start of a shot | a lens key leaking across a cut | one camera per shot; lens keys only inside it |
 | Framing looser or tighter than planned | wrong sensor (24 mm height or fit Auto) | 36 mm, fit Horizontal, 20.25 mm height in the maths |
@@ -587,12 +595,15 @@ Partial release is allowed: approved BLOCK shots may enter 05 drafts before the 
 - **ahujasid/blender-mcp** README and pyproject (MIT, v2.2.6): tool list, telemetry default, `DISABLE_TELEMETRY`, port 9876. Facts only.
 - **Blender Lab MCP** (projects.blender.org/lab/blender_mcp readme, readme_tools.rst and add-on source; blender.org/lab/mcp-server): tool names, add-on architecture, v1.0.3, Blender 5.1+, default port 9876. Facts only.
 - **Official sources checked 2026-10-30:**
-  - BytePlus ModelArk Seedance 2.5 docs (reference video and audio limits, output duration 4–30 s, task types and `omni_reference_task_type`, draft retention; live page re-checked 2026-10-30) and the Seedance 2.5 prompt guide (3D clay-model reference: coarse primitives, state what to inherit, map colours to subjects, no trajectory lines or camera cones). Paraphrased; not open-licensed.
+  - BytePlus ModelArk Seedance 2.5 docs (the underlying model's reference video and audio limits, output duration 4–30 s, task types; live page re-checked 2026-10-30) and the Seedance 2.5 prompt guide (3D clay-model reference: coarse primitives, state what to inherit, map colours to subjects, no trajectory lines or camera cones). Paraphrased; not open-licensed. Used for model facts only (4.9).
   - blender.org/download (5.2.3 LTS, released 2026-10-22);
   - higgsfield.ai/plugins/blender (Blender 5.1+, Bridge URL) and the Higgsfield Bridge server instructions (`bl_get_skill` order, units, save rule);
   - extensions.blender.org Sun Position (v4.4.0).
+- **Higgsfield MCP tool descriptions, read 2026-11-01:** `models_explore` get `seedance_2_5` (modes, 4–30 s, media roles, a 480p draft finalized at 1080p within seven days); `generate_video` (`medias[].value` is a media or job ID, never an https URL; `get_cost`); `media_upload`, `media_confirm`, `attach_project_asset`; `manage_reference_elements` (lists `seedance_2_0`, not `seedance_2_5`, among the video models that honour `<<<element_id>>>`).
 - **The user's own skills:** cinematic-pipeline SHOTLIST_RULES (metres, frame thirds, camera height, eye-line spatial blocking; shot-type taxonomy) and seedance-2-5-prompts (a blockout video still needs the subjects, scene and style defined in the prompt).
 - **Not verified:**
   - the content of Higgsfield's `blender-*` modules and the Bridge preview tool names (read on first connect);
   - how the Higgsfield Video tab treats a viewport clip;
+  - Higgsfield's own file limits for `video_references` and `audio_references`, and whether its input screen accepts a Workbench playblast (the first BLOCK draft in 05 tells);
+  - whether Higgsfield's explicit `mode: omni_reference` stops edit words from turning the task into an edit;
   - whether the playblast's Workbench cavity or shadows help or hurt (A/B on one shot).
