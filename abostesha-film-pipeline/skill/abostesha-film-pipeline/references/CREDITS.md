@@ -62,6 +62,7 @@ Module keys: 00 award brief · 01 script and dialogue · 02 style prefix · 03 a
 | snowfrost/skill-movie `score-and-mix-picture` | no licence file | 06 | bar-length formulas, off-grid fix order, ±5% stretch cap, take-evaluation order |
 | stefanwebb/premiere-ai-skills | CC BY-SA 4.0 | 07 | Premiere tick rate and frame-snapping finding, paraphrased |
 | wkimball1/designwright | no licence file | 08 | the finding contract (class, bounded fix, must-not-change invariants) |
+| 12 public Higgsfield projects shared by AboStesha and studied on 2026-11-02 (prompts and job settings read through the Higgsfield MCP project tools; `prompt-library/studies/2026-11-02_*.md`, playbook `2026-11-02_CROSS-STUDY.md`): The Breach (`@sileent`), Fukushima (`@aist`), Kimti (`@ameerahmed`), SÉKOU (`@mauriziocibelli`), LEAK (`@creativemanifesto`), UNPROMPTED (`@shestak`), THREAD (`@pandaproduction`), TOKYO 4:17 (`@nicholastakeyama`), In Passing (`@julianmarshall`), CONTROL (`@pietromalegori`), HUNGER (`@sssacccade`), Buzkashi (`@sqr_studio`) | no licence; the creators' own films | SKILL, 00, 02, 03, 04, 05, 05b, 07, L | method only, credited in each module's Sources: image-model routing per asset job, prompt structures, reference-role wording, look freezing, continuity chains, pilot tests. Short functional phrases are quoted with credit; no character, face, design, location, line or story was reproduced |
 
 ## 3. Rules and legal texts (facts and short clause quotes)
 

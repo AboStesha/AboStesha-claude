@@ -1,8 +1,10 @@
 # 07 — Edit Review, Mix, Colour, Subtitles and Masters (Step 7)
 
 **Purpose.** Take the user's Premiere fine cut to a set of signed masters: review the edit, place and level the sound, match colour between Seedance shots, add subtitles, titles, credits and the Summit intro, then export and QC every deliverable.
-**How.** Use the Higgsfield connector's Premiere tools (`pr_*`) when they are connected. Work read-only by default, and change the cut only with explicit permission. When the tools are missing, give the user exact manual steps. Every regeneration this step asks for (7.5 routes 3–5) runs in Higgsfield: `generate_video`, model `seedance_2_5`, as 05 §5.8 sets out. The BytePlus ModelArk API route exists but is not used (decision 2026-11-01).
+**How.** Use the Higgsfield connector's Premiere tools (`pr_*`) when they are connected. Work read-only by default, and change the cut only with explicit permission. When the tools are missing, give the user exact manual steps. Every regeneration this step asks for (7.5 routes 3–5 and the pickups of 7.4) runs in Higgsfield: `generate_video`, model `seedance_2_5`, as 05 §5.8 sets out; so does the optional Topaz video upscale (7.12b). The BytePlus ModelArk API route exists but is not used (decision 2026-11-01).
 **Gates.** You run G3 Picture lock (D15) and the technical half of G4 Delivery (D18) from 00-award-brief-and-calendar.md here. 08-judge-panel.md sits between them on D17.
+**Pilot first (decision 2026-11-02).** After the script and the style are locked and the pilot scenes' assets pass G2-P (03 §3.5), 07 works on the two-scene pilot only: frame-match, rough assembly, rough dialogue and effects placement with 06, and the rough grade, all with this module's final method (7.14). The open finish test T-U runs there. When the user approves both pilot scenes (G5-PILOT, 05 §5.11), the finish settings used there are frozen in `07-finish/FINISH-RECIPE_v1.md`, and every other scene is finished on exactly that basis. "Pilot" names an internal production test only, never the film (00 F8).
+**Study update (2026-11-02).** The scope-matte option, frame-matching, one look over all clips, the black-and-white and archive recipes, the bridge list and the pickups below are the approved proposals P07-1 to P07-6 of the cross-study playbook (`prompt-library/studies/2026-11-02_CROSS-STUDY.md` §3C.3, §3C.5, §4.6; cards 2, 6 and 8). The optional Topaz video upscale applies the user's tool decision of 2026-11-02 (use each tool the studied films used for the job it did best). All of it was learned from 12 public Higgsfield films: method only, no characters, designs or stories (credits in Sources). "D-n" = the playbook's §4.0 decisions, applied with its recommended choice; "T-x" = a pilot test (7.14).
 
 Talk to the user in Arabic (MSA, addressing them as أبوستيشا). Write every generation prompt in English, including Seedance edit prompts and ElevenLabs SFX or voice direction. **You cannot hear.** Every audio judgement must be a measurement or the user's ear, never your guess.
 
@@ -10,6 +12,7 @@ Evidence tags used below:
 - `[DOC]` documented, with source and date
 - `[TESTED]` run in this sandbox on 2026-10-30 (ffmpeg 6.1.1, libass)
 - `[FIELD]` third-party field report
+- `[STUDY]` seen in the 12 Higgsfield films studied on 2026-11-02, with the film or the count of films (n/12)
 - `[HOUSE]` house heuristic: a starting point, not a rule
 - `[UNVERIFIED]` not confirmed; check before relying on it
 
@@ -29,8 +32,12 @@ Evidence tags used below:
 | 05-T7 codec baseline of a Higgsfield 1080p final; 05-T9 (can edit tasks be drafted) | 05-seedance-production.md | source check, 7.5 routes 3–4 |
 | Official Summit intro file (downloaded on D0) | official award page → Google Drive "Download the intro" | Summit master |
 | Names for credits, font licences, music/SFX licences | the user; `evidence/licences/` | credits, D3 |
+| The two pilot scenes: their 1080p finals, 04's pilot cut list (`SLA_PILOT-ANIMATIC_v##_cutlist.csv`), 06's rough effects and dialogue placement | 05 §5.11 · 04 §4.14 · 06 | 7.14 |
+| Frame decision D-9 (full 16:9, recommended, or a scope window cut inside the 16:9 master); the black-and-white sequences with their value words; the BROADCAST and archive shots | 02 §2.5, §2.9 · `evidence/authorship/02-style-decisions.md` | 7.6 steps 8–10, 7.12 |
+| Chain log: parent takes, siblings, extension links, edit passes | ledger L.4 (`SLA_SHOTS.csv`) | frame-match (7.1 step 5) |
+| After the pilot approval: `07-finish/FINISH-RECIPE_v1.md`; the T-U result | 7.14 | every scene after the pilot; 7.12b |
 
-Working folder: `films/<id>/07-finish/` with `snapshots/ review/ qc/vNN/ notes/ subs/ audio/ masters/`. Film 01 is `films/01-second-life-ascent/`, and its file code is `SLA`.
+Working folder: `films/<id>/07-finish/` with `snapshots/ review/ qc/vNN/ notes/ subs/ audio/ masters/ grade/ pilot/`. Film 01 is `films/01-second-life-ascent/`, and its file code is `SLA`.
 
 ## Ground rules
 
@@ -38,14 +45,17 @@ Working folder: `films/<id>/07-finish/` with `snapshots/ review/ qc/vNN/ notes/ 
 2. **Never touch the user's sequence.** All writes go into a duplicate sequence the user has made: `SLA_FINE_vNN_CLAUDE`. The user merges it, or they keep working in their own.
 3. **Holdback (00 H1).** Never upload the film anywhere except the private or unlisted submission link. The `watch` skill's Gemini engine uploads the whole film to Google. Use it only with the user's explicit, per-film consent; default to local frames.
 4. **Provenance (00 D5).** Never crop, blur, cover or scale away a watermark or credential. Never remux or re-tag a file that carries Content Credentials: fix the export and re-export. T4 decides which export chain keeps them.
-5. **Seedance share.** Every fix route has a share cost (7.5). Prefer routes that keep Seedance pixels. Recompute the share at G3 and G4.
+5. **Seedance share.** Every fix route has a share cost (7.5). Prefer routes that keep Seedance pixels. Recompute the share at G3 and G4. A held (frozen) frame counts as a still, not Seedance; a slowed or re-timed Seedance shot still counts (00 §0.4). A Topaz upscale of whole Seedance clips stays class SD (00 §0.4, ledger L.5) and is still disclosed as a support tool (7.12b).
 6. **Evidence (00 D2).** Save every snapshot, measurement, note, decision and export log under `07-finish/`. The Organizer may ask for them within 7 days and they must be kept for 24 months. Never rename an old file to look like a new export (calesthio media-qc-delivery, MIT).
+7. **Pilot first, then the same basis (decision 2026-11-02).** Before G5-PILOT, finish work covers only the two pilot scenes (7.14). After it, every scene follows `FINISH-RECIPE_v1.md`. A change to the recipe is a new version (v1.1), made only with the user's yes and a list of the scenes to re-grade.
 
 ---
 
 ## Procedure
 
 Day plan (00 calendar):
+- **Pilot (after the two pilot scenes' finals, before G5-PILOT):** 7.14, which runs 7.1–7.3, 7.6 and 7.7 on those two scenes only.
+- **First assembly of the whole film (D8–D12; rough cut D12):** frame-match (7.1 step 5) and the pickup list (7.4, Pickups); new pickup drafts by D13, the last day for new drafts.
 - **D15:** 7.0–7.4, then G3 Picture lock.
 - **D16:** 7.5–7.11, then hand-off to 08.
 - **D17:** 08 judge panel; apply the non-story fix list through 7.4 L3 rules.
@@ -66,7 +76,7 @@ Day plan (00 calendar):
    - The user edits in parallel. Re-snapshot before every batch and never reuse node IDs from an old snapshot.
 5. **Fallback.** If `pr_*` is missing or a capability fails, keep going. Ask for the exports listed in 7.1 and hand over manual steps (Output template 4). Never stall the calendar on the connector.
 
-### 7.1 Snapshot, safety copy and reference export (D15 morning)
+### 7.1 Snapshot, safety copy, reference export and frame-match (D15 morning; frame-match also on the pilot and the first assembly)
 
 1. Ask the user to run *File > Save a Copy* as `SLA_edit_vNN_preclaude.prproj` (not *Save As*, which would switch their open project to the copy), then duplicate the sequence to `SLA_FINE_vNN_CLAUDE`.
 2. **Snapshot** to `07-finish/snapshots/<YYYYMMDD-HHMM>.json`:
@@ -83,6 +93,15 @@ Day plan (00 calendar):
    - each submix soloed, once the 7.8 layout exists: `SLA_ref_vNN_DX.wav`, `_MX.wav`, `_FX.wav`.
 
    Judge exports, not timeline guesses.
+5. **Frame-match every picture clip (P07-2).** Identify each clip by its frames, never by thumbnail, file name or "the newest version". In Fukushima, In Passing and The Breach the take in the film was often not the newest version. In THREAD all 22 backward attempts of one pinned link start on the same first frame, so thumbnail matching picked siblings and only frame-level matching found the final `[STUDY]`.
+   1. **Candidates:** the file the snapshot names, plus every ledger sibling that shares its parent: other takes of the same draft, a second final (`_f2`), extension links, edit passes (chain log, ledger L.4).
+   2. **Three moments per clip:** 2 frames after its in-point, the middle, and 2 frames before its out-point. Extract each from the reference export at its sequence time, and from each candidate at source time = source in + offset. If the cut carries the scope matte (7.6 step 8), export the reference with the matte layer off.
+   3. **Score** each pair with SSIM on small greyscale frames, which a grade barely moves `[TESTED 2026-11-02 on synthetic clips]`:
+```bash
+ffmpeg -hide_banner -nostats -i ref_t.png -i cand_t.png -lavfi "[0]scale=480:-2,format=gray[a];[1]scale=480:-2,format=gray[b];[a][b]ssim" -f null - 2>&1 | grep -oE 'All:[0-9.]+'
+```
+   4. **Match** = the candidate with the highest mean over the three moments. Flag the clip when the best mean is below 0.90 or the top two are within 0.02 `[HOUSE]`: compare every 12th frame across the clip, then look at 100%.
+   5. **Log** the matched Higgsfield job ID, its `file_sha256` and the source in/out seconds in the snapshot and the chain log. The share (7.4 step 3), the raw-clip list (09) and every fix route use the matched take. A clip with no match is UNLEDGERED until it has its row.
 
 ### 7.2 Measurement pack (run before you form any opinion)
 
@@ -155,13 +174,31 @@ Then work through the four checks below. Every finding becomes a note card (Outp
 - a cutaway (an insert of the Halo case, Kabir's reaction);
 - a J/L sound bridge;
 - an alternate angle from 05;
-- a punch-in of no more than 110%.
+- a punch-in of no more than 110%;
+- a bridge from the list in e.
 
 Write intended jump cuts into the notes (for example Miraj's sleepless-night compression) so that 08 does not flag them.
+
+**e. Bridges for joins (P07-5).** When two takes do not cut cleanly (a broken match cut, a seam between links or takes of one scene, a jump between scenes), try the edit-only bridges first. They cost no credits. In order of preference:
+1. **A cut on motion:** the cut hides inside a move, a turn or a body crossing the lens.
+2. **A splice at natural darkness:** a blackout, a door or body filling the lens, a pan through shadow. Fukushima joined two takes of one scene at its blackout `[STUDY]`.
+3. **A held last frame**, 1–2 s under continuing sound; up to about 5 s only on a still subject (UNPROMPTED held about 4–5 s `[STUDY]`; the limits are `[HOUSE]`). A true freeze counts as a still, not Seedance (Ground rule 5). A slowed tail still counts: Kimti stretched a 2 s extension to about 6 s `[STUDY]`. Retime with Frame Sampling or Frame Blending; Optical Flow can warp faces `[HOUSE]`.
+4. **A motif or shape match:** the same prop, or the same shape in the same screen position, on both sides of the cut.
+5. **Door to door:** leave through one door, enter through the next one opening toward the camera.
+6. **An intercut of two takes of the same moment** at matching compositions (UNPROMPTED intercut rerolls of one transition `[STUDY]`).
+7. **A light burst of 0.4 s or less**, one per join. Check it at G3 for flicker: never more than three flashes in any one second `[HOUSE, after WCAG 2.2 SC 2.3.1, not re-fetched]`.
+
+Sound bridges (a J/L cut, pre-lapped ambience; 7.8) can carry any of them. When none works, the generated routes come next: an in-take wipe or medium written into a re-draft (05 §5.2 transition block: an occluder close to the lens, like THREAD's window frame or HUNGER's box `[STUDY]`), a Seedance bridge shot (7.5 route 4), or a frame-locked black-gap in-fill (05 §5.8; only after 05's pilot test T-C (b) is approved, because its source is an NLE export). UNPROMPTED is a Cinema Studio film, so only its editing method is taken. Write the bridge used on the note card.
 
 Severity (adapted from Leonxlnx/cinetic, MIT): **P0** is visible on a key beat or breaks the story; **P1** is noticeable on a normal viewing; **P2** is visible only on pause. Every note also gets a class: objective defect, likely defect, or opinion.
 
 ### 7.4 Apply cut changes (L3 only) and lock picture (G3, D15)
+
+**Pickups come first (P07-6).** On the first assembly (the pilot's rough cut in 7.14, then the whole film's assembly and rough cut on D8–D12), list the missing looks, inserts, reactions and joins. In Passing made Pickups 1–8 after its assembly (median 8 s), and TOKYO 4:17 filled joins with 5–8 s pickups `[STUDY]`.
+- Each pickup is a 3–8 s single-purpose Seedance shot with one job: one look, one insert, one reaction or one join.
+- It goes through 05's full method: a G5-P packet with the scene's references and look block, plus a frame grab from the neighbouring final as LAST APPROVED FRAME (05 §5.2 role line; the grab is extracted from the downloaded original and logged as a derivative row); `get_cost: true` and the user's yes per batch; `draft: true`, the user's approval, then the 1080p final from the draft with `draft_job_id`.
+- Folder `04_SCENES/PICKUPS_nn/` (ledger L.0b). A new shot ID in its scene, lettered when it sits between existing shots (`S05-SH03A`), never a renumber (ledger L.1).
+- Whole-film pickups are drafted by D13, the last day for new drafts. After G3, a pickup is possible only as an 08 fix through route 5 (7.5) and the buffer.
 
 1. Show the notes sorted by severity. For each note the user picks:
    - (a) Claude applies it via `pr_*`;
@@ -180,7 +217,8 @@ Severity (adapted from Leonxlnx/cinetic, MIT): **P0** is visible on a key beat o
    - Takes the user made by hand in the Higgsfield web app (same project) count once they have their row: read them back with `list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source` (ledger L.2).
    - Titles and credits over Seedance plates count.
    - A composite counts when the Seedance plate dominates (00 0.4).
-   - Any clip not in the ledger counts as non-Seedance until proven otherwise.
+   - Any clip not in the ledger counts as non-Seedance until proven otherwise. Each clip's source is the take frame-matching found (7.1 step 5).
+   - Held (frozen) frames count as stills; slowed or re-timed Seedance frames count (00 §0.4).
    - Target ≥ 90%. Between 80% and 90%, G3 passes only with the user's written waiver and the reason; below 80%, G3 fails. (The Summit minimum is 70%, cl. 5.4; the margin covers the unpublished measuring method.)
    - Also record audio stem-seconds by origin per DX/MX/FX: Seedance-native / other generative AI / non-AI.
 4. **Evidence export.** Ask the user for *File > Export > EDL* and *Final Cut Pro XML* of the locked sequence, saved to `evidence/edit/`.
@@ -193,10 +231,12 @@ Severity (adapted from Leonxlnx/cinetic, MIT): **P0** is visible on a key beat o
 | 1 | Trim or slip into the 12-frame handles | head/tail wobble, a bad blink, a short morph | none |
 | 2 | Reframe ≤ 110% | edge garbage, a stray limb at the frame edge, never a watermark | none; slight softening |
 | 3 | **Seedance edit task** (05 §5.8: `generate_video`, `seedance_2_5`, `mode: video_edit`, the original final as `video_references` by its Higgsfield job ID) | local fix: a hand, a prop, a light colour, a background element | stays Seedance |
-| 4 | Seedance extension (`mode: video_extension`, `extension_mode` `forward` or `backward`, 05 §5.8) or a bridge shot (`start_image` = the outgoing clip's last frame, `end_image` = the incoming clip's first frame, both extracted from the downloaded originals as derivative rows; whether the pair is accepted is `[UNVERIFIED]`: try it on a draft) | a broken match cut, a clip too short for the beat | stays Seedance |
+| 4 | After the edit-only bridges of 7.3 e: Seedance extension (`mode: video_extension`, `extension_mode` `forward` or `backward`, 05 §5.8) or a bridge shot (`start_image` = the outgoing clip's last frame, `end_image` = the incoming clip's first frame, both extracted from the downloaded originals as derivative rows; whether the pair is accepted is `[UNVERIFIED]`: try it on a draft) | a broken match cut, a clip too short for the beat | stays Seedance |
 | 5 | Re-draft and re-finalise the shot (05): a new `draft: true` take, finalized with `draft_job_id` at 1080p | identity, action or physics wrong across the clip; 4 of 4 takes failing the same way means the prompt is missing a variable | stays Seedance; costs calendar |
 | 6 | Paint or composite in Premiere or After Effects (Higgsfield `ae_*`; load `ae_get_skill` first) | Arabic signage, small text cleanup, sky fix | counts only while the plate dominates |
-| 7 | Other generative tools: Higgsfield Premiere plugin Reframe/Upscale/Edit Video/Draw-to-edit, Premiere Generative Extend | last resort | **non-Seedance** unless the tool runs Seedance; log the model, disclose it, never on faces |
+| 7 | Other generative tools: Higgsfield Premiere plugin Reframe/Edit Video/Draw-to-edit, Premiere Generative Extend | last resort | **non-Seedance** unless the tool runs Seedance; log the model, disclose it, never on faces |
+
+**A video upscale is not a fix route.** Topaz (Higgsfield `upscale_video`) never repairs content: it is the optional finishing pass after picture lock (7.12b), cleared by pilot test T-U.
 
 **Running routes 3–5 in Higgsfield** (05 §5.7–5.8 own the details):
 - **Cost and yes.** `get_cost: true` on every job of the batch, then quote the job count and credits and wait for the user's yes (measured: 3 credits/s draft, 16 credits/s at 1080p; a `video_edit` is billed by the source clip's duration; references and `bitrate_mode` do not change the price).
@@ -242,7 +282,7 @@ For an audio-only Seedance edit (for example removing hallucinated music), use t
 
 ### 7.6 Colour: correct, match, look, grain (D16)
 
-Order (the 02 contract): correct → match each scene to its hero shot → show look → grain/halation → re-check text readability.
+Order (the 02 contract): correct → match each scene to its hero shot → one show look per variant (a black-and-white sequence gets its conversion instead, step 9; archive shots get their treatment first, step 10) → grain/halation → the scope matte, only if D-9 chose it (step 8) → re-check text readability.
 
 1. **Colour management.** Seedance clips are display-referred Rec.709 SDR. Never apply a log-to-709 LUT (02, calesthio).
    - Keep the sequence in Rec.709 SDR.
@@ -253,18 +293,61 @@ Order (the 02 contract): correct → match each scene to its hero shot → show 
    - mean saturation differs by more than 0.05;
    - the shadow or highlight tints visibly disagree.
 
-   Confirm every flag by eye.
+   Confirm every flag by eye. On a matted cut, crop the bars off before measuring (`-vf crop=iw:804:0:138` at 2.39:1, `crop=iw:820:0:130` at 2.34:1), or they pull p1 to zero.
 3. **Match in Premiere** (Lumetri Color > Color Wheels & Match `[DOC Adobe help]`):
    - Turn on Comparison View, set the hero frame as Reference, and click Apply Match.
    - Leave Face Detection on when both frames contain faces; turn it off otherwise.
    - Fine-tune in Basic Correction. Match luminance and contrast before hue, and faces before backgrounds (calesthio).
-4. **Look.** Use one adjustment layer per variant (R-DAY, R-INT, DREAM, BROADCAST, FINALE: 02 §2.5) carrying the show look matched to 02's hero frames (Lumetri Creative > Look `.cube` + Intensity). Never bake the look into sources.
+4. **Look: one grade over all clips.** Use one adjustment layer per variant (R-DAY, R-INT, DREAM, BROADCAST, FINALE: 02 §2.5) carrying the show look matched to 02's hero frames (Lumetri Creative > Look `.cube` + Intensity). Never bake the look into sources.
+   - The Breach, Kimti, LEAK, CONTROL and Buzkashi each put one global grade over every clip, which glued clips from different engines, days and resolutions together (5/12 `[STUDY]`).
+   - The look lives only on the variant layer. A clip gets correction and match (steps 1–3), never a look of its own.
+   - A 1080p final that drifted from its approved draft is matched to the hero frame on the clip, never by changing the layer.
 5. **Protect** skin (no orange or green cast), the reserved accent colour (02) on its owner only, and Noah's neutral metal. Inspect sky gradients at 200%. If you see banding, it goes under grain, and the master is 10-bit ProRes.
-6. **Grain** (02 decided it is added in post, uniformly): one top adjustment layer above all picture and below titles and subtitles.
+6. **Grain** (02 decided it is added in post, uniformly): one top adjustment layer above all picture and below the scope matte (if any), titles and subtitles.
    - Use a licensed scanned-grain overlay at low opacity (Overlay or Soft Light) or a plugin the user owns, and log its licence (D3).
    - The same grain goes on every shot, which hides the difference between draft-era and final textures.
    - Halation, if 02 approved it, goes only on true highlight edges.
 7. **Flicker inside a clip.** A static grade will not fix it. Use route 3 or 5, or a deflicker plugin (log it).
+8. **Scope matte inside 16:9 (P07-1; only if D-9 chose it).** 02 records D-9 before D7 and recommends full 16:9 with no matte (02 §2.1 step 4). The Breach, Buzkashi and UNPROMPTED cut a scope window in post inside 16:9 renders, and TOKYO 4:17 cropped to 2.34:1 `[STUDY]`.
+   - **Size.** Every master stays 16:9 at 1920×1080; only the visible window changes. 2.39:1 = 1920×804 with 138 px bars; 2.34:1 = 1920×820 with 130 px bars `[ARITH]`. 02 notes the risk of an 804-line picture against "≥1080p" (00 F4).
+   - **Build.** One matte above grade and grain, below titles, subtitles and the intro: a Crop effect on a top adjustment layer (top and bottom 12.78% at 2.39:1, 12.04% at 2.34:1) `[FIELD; check a still: the bars must read 0]`.
+   - **Slide the picture, never the matte.** A clip's Motion > Position Y may move by up to ±138 px (2.39:1) or ±130 px (2.34:1) with no scale change, so no edge shows. Buzkashi slid its window per shot `[STUDY]`. Log each slide on the note card. Punch-ins stay at 110% or less (7.5 route 2; most of Buzkashi's were 8–16%).
+   - **Check the band.** 05 keeps faces and action in the central band (The Breach: "16:9 protecting a 2.39:1 crop"; TOKYO 4:17: "central approximately 74% of the image height" `[STUDY]`). On the 12-frame strips, no head, key hand or eyeline target sits under a bar. If a slide cannot save it, it is a P1 note.
+   - **Text.** Titles and credits sit inside the window. Subtitles follow one rule for the whole film: inside the picture at the bottom, or wholly inside the bottom bar if a two-line still shows they fit with margin; never across the matte edge.
+   - **Masters.** The matte is burned into every picture master (#1–#3) and the textless elements (#4); a 2160p pass doubles the bars (7.12b). Changing D-9 after production shots exist needs the user's yes and a check of every shot for heads under the bars.
+9. **Black-and-white sequences (P07-3; only the sequences 02 §2.5 lists).** Buzkashi rendered its whole film in colour and converted it in post with a measured curve; Kimti made its black-and-white bookends in post, which also absorbed clips from two eras of its project `[STUDY]`.
+   1. Correct and match in colour first (steps 1–3). The conversion is that sequence's look layer.
+   2. **Conversion** = the Rec.709 luminance mix plus the measured curve (input → output: 0 → 0.04, 0.15 → 0.12, 0.30 → 0.24, 0.45 → 0.36, 0.60 → 0.44, 0.75 → 0.54, 0.90 → 0.62, 1 → 0.72): a lifted toe, compressed mids and a long, soft shoulder. Build it once as a LUT, so every clip gets the exact conversion 02 previewed. Save the script below as `07-finish/grade/mk_bw_lut.py` (own code, numpy only) and run `python3 -I mk_bw_lut.py SLA_BW_v1.cube`. The LUT matches 02's ffmpeg preview chain within 2 code values in 8-bit `[TESTED 2026-11-02]`. Load it in Lumetri Creative > Look on the B&W variant layer at Intensity 100. Premiere's reading of the file is `[UNVERIFIED on 26.x]`: export one still and compare it with 02's preview of the same frame.
+```python
+import numpy as np, sys
+x=np.array([0,.15,.3,.45,.6,.75,.9,1]); y=np.array([.04,.12,.24,.36,.44,.54,.62,.72])
+h=np.diff(x); n=len(x); A=np.eye(n); d=np.zeros(n)
+for i in range(1,n-1): A[i,i-1:i+2]=[h[i-1],2*(h[i-1]+h[i]),h[i]]; d[i]=6*((y[i+1]-y[i])/h[i]-(y[i]-y[i-1])/h[i-1])
+M=np.linalg.solve(A,d)  # natural cubic spline, like ffmpeg curves
+def f(t):
+    i=np.clip(np.searchsorted(x,t,side='right')-1,0,n-2); a=x[i+1]-t; b=t-x[i]
+    return M[i]*a**3/(6*h[i])+M[i+1]*b**3/(6*h[i])+(y[i]/h[i]-M[i]*h[i]/6)*a+(y[i+1]/h[i]-M[i+1]*h[i]/6)*b
+g=np.linspace(0,1,33); B,G,R=np.meshgrid(g,g,g,indexing='ij')  # .cube order: red fastest
+v=np.clip(f((.2126*R+.7152*G+.0722*B).ravel()),0,1)
+with open(sys.argv[1],'w') as o:
+    o.write('LUT_3D_SIZE 33\n'); o.writelines(f'{a:.6f} {a:.6f} {a:.6f}\n' for a in v)
+```
+   3. **Vignette** about −0.25 stop: the corners about 16% darker than the centre (Buzkashi measured 15–18%) `[ARITH]`.
+   4. **Grain** once, on the grain layer (step 6); never in the LUT or the prompt.
+   5. **Grade shot by shot after the base:** on the clip, below the layer, judged through it. The curve is a mean: interiors run darker and storm skies brighter.
+   6. **Targets per shot**, measured with `measure_frames.py` on an exported frame (inside the window if matted): luma p1 0.03–0.05, p50 about 0.18, peak white 0.70–0.80. "Brilliant" black and white here means a dark, compressed frame in which the one or two shapes of 02's hierarchy sentence are clearly the brightest.
+   7. **Merged shapes.** When two story shapes land on one grey, the fix belongs in the still or the prompt (02: the costume value or the light). In post, only as a logged exception, a per-shot channel-weight change on that clip.
+   8. **Bit depth.** Masters #2 and #3 are 10-bit ProRes. Check sky and haze gradients at 200% in the 8-bit H.264 (#1); the grain dithers banding.
+10. **Archive and documentary ageing (P07-4; BROADCAST shots and any in-world recording 02 §2.5 lists).** The prompt stayed clean (02); the ageing happens here. The recipe is the CONTROL study's calibration on that film's found-archive frames, not CONTROL's own settings `[STUDY]`: an SD round trip, saturation ×0.65, contrast ×0.9, brightness +0.03 (ffmpeg `eq`; not a black-level lift), light temporal luma noise, and the source's own ratio inside the film frame.
+   - Render each archive clip as a derivative of its downloaded original with its handles, never of an export. Tested on a synthetic clip: ProRes 422 HQ 10-bit, BT.709 tags, frame count unchanged `[TESTED 2026-11-02]`:
+```bash
+# 4:3 archive window, pillarboxed in the 16:9 frame; move the crop with crop=1440:1080:X:0 if the action is off-centre
+ffmpeg -i SRC_original.mp4 -vf "crop=1440:1080,scale=720:540:flags=bicubic,scale=1440:1080:flags=bicubic,eq=saturation=0.65:contrast=0.9:brightness=0.03,noise=c0s=4:c0f=t,pad=1920:1080:240:0:black,setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv" -c:v prores_ks -profile:v 3 -pix_fmt yuv422p10le -color_primaries bt709 -color_trc bt709 -colorspace bt709 -c:a copy SRC_GRDv01.mov
+```
+   - Inside a 2.39:1 window, the 4:3 window is 1072×804: scale back to `1072:804` and pad with `pad=1920:1080:424:138:black` `[ARITH]`.
+   - A modern live feed (Noah's stage feed in the lens HUD) is not old footage. Start at half strength (saturation ×0.85, contrast ×0.95, no SD round trip, 16:9 kept) `[HOUSE]`; the user judges.
+   - No tape overlay, scan lines, fake timecode, VHS plugin or found-footage filter (CONTROL used none), and no real broadcaster identity (00 G2).
+   - Ledger: derivative name `_GRDv01` (ledger L.1), a derivative row with `parent_gen_id` = the original (L.2), class SD (graded Seedance frames count, 00 §0.4). The original stays byte-identical in the archive. The swap in the timeline follows the L3 protocol (7.4).
 
 ### 7.7 Dialogue: lay in, sync, clean, futz (D16)
 
@@ -445,6 +528,28 @@ File names follow `<project>_<deliverable>_<locale>_<aspect>_<duration>_<spec>_<
 
 Make the checksums after the files are in place: `sha256sum masters/* audio/* subs/* > manifest-sha256.txt`. Back everything up in two places (00 D2): the Google Drive master archive (`07_DELIVERY/`, mirrored to the user's PC) and the external drive (ledger L.0b). GitHub (private) takes text only: never a master, clip or audio file (SKILL §4 `.gitignore`).
 
+**Scope matte (if D-9 chose it).** Every master stays a 16:9 1920×1080 file with the bars burned in (7.6 step 8). No scope-only file unless a festival asks for one (09).
+
+### 7.12b Optional Topaz video upscale after picture lock (user decision 2026-11-02)
+
+**When.** Only after G3, only with the user's yes, and only once pilot test T-U (7.14) has passed. It is a finishing option, never a fix (7.5): the Summit masters #1–#3 are complete at 1080p without it. Uses: a 2160p festival or "Episode 0" master after 10 Jan 2027, or a 2160p Summit file if the user wants one (the Summit asks for ≥ 1080p; decide with the user and 09). THREAD took its whole cut to 4K with Topaz Video inside Higgsfield after a 2K test: 19 jobs, 428 credits, 20.1% of its credits `[STUDY]`.
+
+**Tool.** Higgsfield `upscale_video` with `provider: "topaz"`, `resolution: "2160p"`, `aspect_ratio: "16:9"`, and `video_id` = the clip's completed Higgsfield job ID (the original's own job: nothing is uploaded and the ledger parent is exact). The tool has no cost preflight `[HF, tool description read 2026-11-02]`. Quote an estimate from THREAD's figures (about 0.65–0.7 credits per input second on its account `[ARITH; credits are not comparable across accounts]`), get the user's yes for one clip, read its real cost in `transactions`, then quote the rest and get a yes per batch. The ByteDance provider of the same tool was used by no studied film; it is not used without the user's yes.
+
+**Route A (default): per clip.**
+1. Upscale every Seedance final in the locked cut whole, handles included; never an export.
+2. Download, hash and log each output at once: derivative name `_UPSv01` (ledger L.1), a derivative row with `parent_gen_id` = the original (L.2), tool "Topaz Video via Higgsfield", class SD (00 §0.4: upscaled Seedance frames count).
+3. Check each output:
+   - ffprobe: 3840×2160 and the same fps and frame count as its source: `ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames,r_frame_rate -of csv=p=0 FILE` `[TESTED 2026-11-02]`;
+   - frame-match against its source (7.1 step 5): mean SSIM 0.95 or more at the three moments `[HOUSE]`;
+   - faces at 100% beside the 1080p source scaled ×2, on 12-frame strips: the same identity; no pores, teeth or lashes invented; no waxy skin; no boil on hair or fabric; no new flicker.
+   A clip that fails keeps its 1080p source, scaled ×2 in the 2160p sequence, and is listed for the user.
+4. In Premiere: a 3840×2160, 24 fps duplicate of the locked sequence (`SLA_LOCK_vNN_2160`); each clip's media replaced by its upscale with the same in/out in frames (the user does it, or approves it under L3). The same grade layers; then grain re-applied at 2160 (grain never goes through Topaz); the matte doubled (276 px bars at 2.39:1); titles, credits and subtitles re-set for 2160. Check every cut with 12-frame strips against the 1080p lock: no frame shift.
+
+**Route B (THREAD's): ~35 s chunks** of a textless export with no grain and no matte, uploaded and upscaled. Only with the user's per-film consent for the upload (SKILL hard rule 7). Each chunk is a derivative of the cut and is logged as one.
+
+**Disclosure and provenance.** Name "Topaz Video via Higgsfield" (with the version Higgsfield reports) in the AI disclosure as a support tool for resolution only (09), on every master it touched, and in the credits (Output template 5). Check with `c2patool` whether the upscales carry Content Credentials `[UNVERIFIED]`; never strip what they carry. Masters are exported from Premiere as in 7.12, and 7.13 runs on every 2160p master too.
+
 ### 7.13 Final QC (technical half of G4, D18)
 
 Run on every exported file, not the timeline. Store `qc/v05/<file>.txt`.
@@ -457,7 +562,49 @@ Run on every exported file, not the timeline. Store `qc/v05/<file>.txt`.
 - [ ] Content Credentials present as T4 predicts (`c2patool` if installed); no watermark cropped or covered.
 - [ ] The user watches #1 in full, once on a large screen and once on a phone with headphones.
 - [ ] The private or unlisted link plays logged-out, on another device, at 1080p, with subtitles, and is not discoverable.
+- [ ] Every picture clip frame-matched to its original (job ID and source in/out logged, 7.1 step 5); no unmatched clip; held frames counted as stills.
+- [ ] Scope matte (only if D-9 chose it): bars exact (138 or 130 px), pure black (0 on a still), identical on every shot; nothing story-critical under them.
+- [ ] Black-and-white shots meet the 7.6 step 9 targets; archive shots carry no overlay and have their `_GRD` derivative rows.
+- [ ] 2160p master (only if 7.12b ran): T-U passed; every upscale logged with its parent; frame count equals the 1080p lock; Topaz Video named in the disclosure and the credits.
 - [ ] Seedance share and audio-origin table final; credits match the disclosure; delivery sheet and manifest done.
+
+### 7.14 The two-scene pilot: rough assembly, rough grade and the finish recipe (decision 2026-11-02)
+
+The two-scene pilot (SKILL.md; 02 §2.13; 03 §3.5; 04 §4.14; 05 §5.11) proves the whole method on two full scenes before the film is made: assets → blocking → Seedance drafts → 1080p finals → rough sound and grade. This module's part:
+
+1. **Inputs.** The pilot scenes' 1080p finals (05 §5.11), 04's pilot cut list, the selected dialogue takes, 06's rough effects (and any temporary cue 06 assigns), the LOOK version in use with its hero frames, and the D-9 decision.
+2. **Rough assembly with the final method.**
+   - **Route A (Premiere connected):** the user makes an empty sequence `SLA_PILOT_vNN_CLAUDE`, or approves Claude making it. Claude places the finals in cut order from 04's cut list on empty tracks, overwrite only, heads and tails trimmed per 7.3 a, under the permission ladder (L2 placements, L3 trims, each asked).
+   - **Route B (no `pr_*`):** Claude builds a review file with ffmpeg from the downloaded originals and the cut list (trims, concatenation, the variant's show LUT through `lut3d` as the rough grade, the laid dialogue and effects): `07-finish/pilot/SLA_PILOT_rough_vNN.mp4`. The user may re-cut it in Premiere; their cut wins.
+   - Then run on the two scenes: 7.1 (snapshot, source check, frame-match), 7.2 (measurement pack), 7.3 (review and bridges), 7.6 (correct, match to the hero frames, one look layer per variant; the scope matte, black-and-white conversion or archive treatment if the scenes need them; grain), 7.7 steps 1–2 (dialogue lay-in and the lip-sync check on every ON line), and a rough level pass with 06: dialogue clear over effects, no loudness master (7.9 waits for the lock). A temporary EN caption track from 01's EN SUB cells lets the user judge with the sound off.
+   - Pickups the rough cut shows are listed and made through 05 (7.4, Pickups).
+3. **Pilot test run by 07.** `upscale_video` has no preflight: quote the 7.12b estimate, run the first job after the user's yes, then quote the other two from its real cost and get one yes for them. Until the user approves the result, the current rule (column 3) stays in force.
+
+| Test | Question | Current rule until approved | Method in the pilot | Pass |
+|---|---|---|---|---|
+| T-U (user decision 2026-11-02: Topaz as a finishing option) | Does Higgsfield's Topaz Video upscale to 2160p keep identity, texture and timing on our finals? | no video upscaler; masters at 1080p from the finals | three pilot finals by job ID: the closest face, a wide with fine texture (hair, fabric, crowd or water) and a dark or hazy shot; `upscale_video`, topaz, 2160p, 16:9; the checks of 7.12b step 3; the user compares at 100% beside the ×2-scaled 1080p source | identity and texture unchanged, nothing invented on faces, no new flicker or boil, the same frame count and fps → 7.12b is cleared as an option after G3; otherwise the masters stay 1080p |
+
+   When a pilot scene has a join, 07 also supplies the NLE export for 05's pilot test T-C (b): the last ~2 s of A, a black gap and the first ~2 s of B, at 24 fps, ungraded and muted (05 §5.8).
+4. **Pilot checks on the applied rules.**
+   - Frame-match identifies every pilot clip; none is unmatched.
+   - Cut-pair measurements inside each scene pass (7.6 step 2) with one look layer per variant and no per-clip look.
+   - The 1080p finals sit with their approved drafts and the hero frames (02 §2.13 step 5).
+   - Every bridge used is on the note card and reads cleanly.
+   - The scope matte, if chosen, hides no head or key action; black-and-white or archive targets, if used, are met.
+   - The pilot's Seedance picture share is computed (ledger L.5), with held frames counted as stills.
+5. **Deliver** `07-finish/pilot/SLA_PILOT_rough_vNN.mp4` with its measurement pack and the pilot finish card (Output template 7). 05 then asks the G5-PILOT question.
+6. **Finish recipe lock at the pilot approval.** When the user approves both pilot scenes, Claude writes `07-finish/FINISH-RECIPE_v1.md` from the approved pilot:
+   - the look layer per variant: LUT file names and sha256, Intensity, every Lumetri value;
+   - the match procedure and its thresholds;
+   - the B&W LUT and targets and the archive chain, verbatim, if used;
+   - the frame: "full 16:9", or the scope ratio, bar size and slide limit;
+   - grain (file, licence, blend mode, opacity) and halation;
+   - the head and tail trim rule, the bridge order and the futz presets the user approved;
+   - the track layout (Output template 3) and the T-U result.
+
+   Every other scene is finished on it. A change makes `FINISH-RECIPE_v1.1` with the user's yes and a list of the scenes to re-grade (Ground rule 7). Ask: «هل نقفل وصفة التشطيب v1 (طبقة لون واحدة لكل متغيّر، المطابقة، الحبيبات، الإطار، ونتيجة اختبار T-U) كما استُخدمت في مشهدَي التجربة، ونشطّب بقية الفيلم على الأساس نفسه؟»
+7. **If the pilot is not approved,** the user names what failed. A finish failure is fixed here, one change per round, re-exported and shown again. A picture failure goes back to its layer (05 §5.6).
+8. **Name and holdback.** The pilot is an internal production test. Its name never appears in the film, the credits or the submission (00 F8), and its rough cut is never uploaded or shown outside the user's own review (Ground rule 3).
 
 ---
 
@@ -481,7 +628,7 @@ C12 — قصّ 8 إطارات من نهاية S05-SH02 (اهتزاز في الو
 
 **3. Track layout** (create once; submixes feed Mix):
 ```text
-V1 picture · V2 composites/signage · V3 grade adjustment layers (per variant) · V4 grain · V5 titles/credits · captions track
+V1 picture · V2 composites/signage · V3 grade adjustment layers (one per variant; the B&W LUT layer if any) · V4 grain · V5 scope matte (only if D-9) · V6 titles/credits · captions track
 A1 DX-ON · A2 DX-OFF/VO · A3 DX-FUTZ (phone, earpiece, broadcast) → submix DX
 A4 FX-SD (Seedance native) · A5 FX-HARD · A6 FX-FOLEY · A7 FX-BG/room tone · A8–A10 spare (L2 placements) → submix FX
 A11 MX-A · A12 MX-B → submix MX
@@ -506,7 +653,8 @@ Verify the shortcut on the user's OS and keymap before sending it (default "nudg
 Written and Directed by — <full name> (AboStesha)
 Edited by — <name>          3D Blocking (Blender) — <collaborator>
 Video generated with ByteDance Seedance 2.5 via Higgsfield
-Character and location design — GPT Image 2.5 and Nano Banana Pro / 2.1 via Higgsfield, Midjourney V8.2
+Character, location and prop design — <every image model in the ledger, e.g. Soul Cast, Soul Location, Soul Cinematic, Seedream 5.0 Pro, Nano Banana Pro, GPT Image 2 / 2.5> via Higgsfield<, Midjourney V8.2 only if the user ran the optional card>
+Finishing — <only if 7.12b ran: Topaz Video via Higgsfield (4K upscale)>
 Voices — synthetic voices, ElevenLabs Eleven v4 (<per 01 voice cards: Voice Design / Voice Library speaker, used under the library terms / consented clone>). All faces are synthetic.
 Music — <Suno v6 / Eleven Music v2.5>, <plan>, edited by <name>
 Sound — Seedance native sound; procedural SFX (code) by <name>; ElevenLabs SFX v2
@@ -527,19 +675,33 @@ Share  Seedance picture 93.4% · DX: ElevenLabs 100% · FX: SD 61% / code 22% / 
 Open   none   ·   Waivers   none
 ```
 
+**7. Pilot finish card** (7.14 step 5; Arabic, gender-neutral; the numbers are an example):
+```text
+مشهدا التجربة — النسخة الخام SLA_PILOT_rough_v01 (للمراجعة الخاصة فقط)
+المطبَّق: مطابقة كل لقطة بالإطارات (14 من 14) · طبقة لون واحدة لكل متغيّر (R-DAY، DREAM) · الحبيبات مرة واحدة · الإطار: 16:9 كامل (D-9)
+الصوت: الحوار المختار مثبّت، ومزامنة الشفاه مقيسة (أسوأ سطر: تأخّر إطار واحد) · مؤثرات 06 مبدئية · لا ماستر صوت بعد
+الجسور: S03→S04 قطع على الحركة · نهاية S04-SH05 مثبّتة 1.5 ث (تُحسب صورة ثابتة لا Seedance)
+اختبار T-U (Topaz 2160p على 3 لقطات): الوجوه ثابتة، لا تفاصيل مخترعة، عدد الإطارات مطابق ← ناجح
+حصة Seedance للصورة في المشهدين: 97.8%
+هل نعتمد تشطيب المشهدين؟ عند الاعتماد أكتب وصفة التشطيب FINISH-RECIPE_v1، ونشطّب بقية الفيلم على أساسها.
+```
+
 ---
 
 ## Gate
 
+**Pilot (G5-PILOT, owned by 05 §5.11).** 07's part: the pilot rough cut with rough sound and grade delivered (7.14 step 5), T-U reported, and, with the user's yes, the finish recipe locked (7.14 step 6) with its Arabic question. Nothing outside the pilot scenes is graded before then.
+
 **G3, Picture lock (D15).** The user approves in Arabic, item by item:
 - the note list closed: every P0 fixed; every P1 fixed or waived with a reason;
+- every picture clip frame-matched to its original (7.1 step 5), and the cut finished on `FINISH-RECIPE_v1` or a later version the user approved;
 - 00 §0.10 G3: runtime, Seedance picture share ≥ 90% (80–90% only with the 7.4 waiver), G1 re-run on the cut as watched, brand and text sweep, ledger continuity closed, holdback intact;
 - the EDL and XML saved to evidence;
 - the statement «هذه النسخة هي القص النهائي للقمة». The cut is locked for the Summit; after 10 Jan 2027 (end of the holdback, Terms cl. 8.4) a festival or "Episode 0" re-edit is allowed (00 §0.11); Academy eligibility would be affected only if the Oscars ever become a target. The submitted cut stays one complete standalone story and is never called a pilot or an episode.
 
 **Hand-off to 08 (end of D16).** Deliver the reference export with mix, EN subtitles, titles, credits and intro, plus the measurement pack. 08 sees only the review pack.
 
-**G4, Delivery, technical half (D18).** All 7.13 boxes PASS. The user has watched master #1 in full. The manifest is built and the link is tested. 09-release-and-festivals.md completes the disclosure and holdback half of G4.
+**G4, Delivery, technical half (D18).** All 7.13 boxes PASS. The user has watched master #1 in full. The manifest is built and the link is tested. A 2160p master exists only if T-U passed and the user said yes to 7.12b. 09-release-and-festivals.md completes the disclosure and holdback half of G4.
 
 ## Common failures
 
@@ -557,9 +719,17 @@ Open   none   ·   Waivers   none
 | Clean master has burned subtitles | caption export defaulted to burn | set Captions None; check a still before delivery |
 | Arabic subtitles: final period on the right, letters unjoined | base direction LTR; Latin text engine | `Encoding=-1` (libass) or RLM; Premiere Middle Eastern text engine; still check |
 | Subtitles flash on and off | 3–11 frame gaps | chain to 2 frames or open to ≥ 12 (validator) |
-| Grade jump at a cut inside one scene | each shot graded alone | match to the hero shot first, then the shared look layer |
+| Grade jump at a cut inside one scene | each shot graded alone, or a clip given its own look | match to the hero shot first, then the one shared look layer per variant (7.6 step 4) |
 | LUT made the AI clips crunchy | log-to-709 LUT on display-referred clips | remove it; Rec.709 throughout |
-| Seedance share fell below 90% after fixes | generative extend, upscalers, or AE paint used freely | route ranking in 7.5; recompute at G3/G4 |
+| Seedance share fell below 90% after fixes | generative extend, generative fills, long held frames or AE paint used freely | route ranking in 7.5; count holds as stills; a Topaz upscale of whole Seedance clips stays SD (00 §0.4); recompute at G3/G4 |
+| The ledger, the share or a fix points at the wrong take | the clip was identified by thumbnail, file name or "newest version"; pinned siblings share their first frames (THREAD) | frame-match every clip (7.1 step 5) |
+| A head or a key action sits under the scope bars | shot not composed for the central band, or the matte added late | slide the picture up to ±138 px (2.39:1); 05's crop-safe sentence; D-9 decided before D7 (7.6 step 8) |
+| B&W sequence turns flat grey, or two story shapes merge | a desaturate preset instead of the measured conversion; values not designed in the still | the B&W LUT and targets (7.6 step 9); fix values in the still (02), not in the grade |
+| Archive shots look like a plug-in filter | tape overlay, scan lines, fake timecode or heavy noise | the archive chain (7.6 step 10); no overlays |
+| A bridge reads as a freeze or a strobe | held frame too long; light burst over 0.4 s or repeated | hold 1–2 s under sound, or retime instead; one burst ≤ 0.4 s, at most three flashes per second (7.3 e) |
+| A pickup does not sit with its neighbours | made without the scene's references or a neighbouring frame grab | the 7.4 pickup packet: scene references + LAST APPROVED FRAME grab, 05's full method |
+| The Topaz master changed a face or made skin waxy | a generative upscale used on close-ups without the T-U check | keep that clip's 1080p source scaled ×2; 7.12b step 3 on every clip |
+| A later scene does not match the approved pilot | finish settings changed after the pilot | `FINISH-RECIPE_v1`; any change is v1.1 with the user's yes and a re-grade list (7.14 step 6) |
 | A clip in the cut has no ledger row | the user made it by hand in the Higgsfield web app, or a file was renamed | read it back (`list_project_assets` → `get_project_asset_prompt` → `get_project_asset_source`), match it by SHA-256, add the row before G3 |
 | A fix draft cannot be finalized | the Higgsfield draft is older than 7 days | finalize fix drafts before day 5; otherwise re-draft (route 5) |
 | A fix was billed twice | a timed-out `generate_video` call was repeated | `jobs_wait` on the job ID or look in the scene folder first; never resubmit |
@@ -575,11 +745,24 @@ Cloned 2026-10-30 into `scratchpad/clones2/m07/`, text read only, no code run. A
 - **Leonxlnx/cinetic** @ecfa660 (MIT): P0/P1/P2 severity (adapted) and the BT.709 ffmpeg tag chain (quoted).
 - **Gregory-Esman/ai-film-pipeline**, video-qa @560cfc1 (MIT): AI-artifact, continuity and photoreal checklists, frame extraction. Paraphrased.
 - **stefanwebb/premiere-ai-skills** @c3d4cfa (**CC-BY-SA-4.0**): Premiere tick rate and frame-snapping finding. Paraphrased only; listed as inspiration.
-- **Own code:** `scripts/srt_check.py` (validator and SRT shift, written for this pipeline, tested 2026-10-30); `scripts/measure_frames.py` (02).
+- **Own code:** `scripts/srt_check.py` (validator and SRT shift, written for this pipeline, tested 2026-10-30); `scripts/measure_frames.py` (02); the `mk_bw_lut.py` snippet in 7.6 step 9 (numpy only; compared with 02's ffmpeg preview chain on 2026-11-02: max difference 2 code values in 8-bit, PSNR 49.9 dB). Tested on synthetic clips in this sandbox on 2026-11-02 (ffmpeg 6.1.1): the SSIM frame-match command, the frame-count probe, the archive chain (ProRes 422 HQ 10-bit, BT.709 tags, frame count unchanged; 4:3 and 4:3-in-2.39 windows) and the matte geometry (bars read 0).
+- **Method learned from public Higgsfield projects** (studied 2026-11-02; the 12 studies and the cross-study playbook are in `prompt-library/studies/`; method only, no characters, designs, signature looks or stories copied; quotes are short and attributed):
+  - The Breach by `@sileent`: a scope window cut in post inside 16:9 renders, with prompts protecting the crop; one darker, colder global grade with vignette over every clip; finals not always the newest version.
+  - Buzkashi by `@sqr_studio`: colour renders converted to black and white in post with a measured curve (Rec.709 luminance, lifted toe, soft shoulder), vignette, grain once, a 10-bit master; the 2.34 window slid per shot; small punch-ins.
+  - CONTROL by `@pietromalegori`: archive footage prompted clean and degraded in post (the study's calibration); one global grade.
+  - THREAD by `@pandaproduction`: Topaz Video inside Higgsfield on ~35 s chunks, a 2K test then 4K; pinned extension siblings sharing first frames, which made frame-level matching necessary; the window-frame wipe.
+  - Fukushima by `@aist`: the splice at a blackout; finals often not the newest version.
+  - UNPROMPTED by `@shestak` (a Cinema Studio film; editing method only): held last frames, door-to-door bridges, motif matches, intercut rerolls, a light burst of 0.4 s or less.
+  - HUNGER by `@sssacccade`: the box-curtain wipe close to the lens at joins.
+  - In Passing by `@julianmarshall`: Pickups 1–8 made after the assembly (median 8 s); the keeper not always the newest variant.
+  - TOKYO 4:17 by `@nicholastakeyama`: a 2.34 centre crop with crop-safe prompts; 5–8 s single-purpose pickups for joins.
+  - Kimti by `@ameerahmed`: black-and-white bookends made in post that absorb clips from two eras; a short extension held to about 6 s; one global grade.
+  - LEAK by `@creativemanifesto`: one global grade in its NLE.
 - **User's own skills (read-only):** seedance-2-5-prompts (General editing, Audio editing, Seamless transitions, parameter locks) for the 7.5 template; cinematic-pipeline (Arabic MSA address, "⚠️ Watch:" failure lines, the Premiere hand-off step). seedance-director, midjourney-prompt-expert, suno-ai-mastery and higgsfield-generate had nothing current for this step.
 - **Higgsfield MCP (read 2026-11-01):** `models_explore get seedance_2_5` (modes `video_edit` and `video_extension`, `extension_mode`, `draft` within seven days, `draft_job_id`, media roles) and the tool descriptions of `generate_video`, `manage_reference_elements`, `list_project_assets`, `get_project_asset_prompt`, `get_project_asset_source`, `jobs_wait`, `create_folder`. No generation was run.
+- **Higgsfield MCP (read 2026-11-02):** the `upscale_video` tool description (providers `topaz` and `bytedance`; topaz takes `video_id` = a completed job ID or an uploaded media ID, `resolution` 1080p or 2160p, `aspect_ratio`; no cost preflight). No upscale was run.
 - **Fetched 2026-10-30:**
   - Netflix EN-US and Arabic Timed Text Style Guides, General Requirements, Subtitle Timing Guidelines (partnerhelp.netflixstudios.com);
   - official AI Film Award 2027 page (intro, 16:9 1080p MOV/MP4, English subtitles, private/unlisted link; no audio-track or textless requirement stated);
   - via search: Adobe help on Lumetri Color Match and Loudness Meter presets; Premiere 26.x release history and 26.2 Content Credentials export; Adobe community reports on caption burn-in and Arabic RTL captions; iZotope Insight 2 Netflix target; ITU-R BT.1359 lip-sync thresholds; DCP-o-matic 2.18.x (for 09).
-- **Not verified:** every `pr_*` tool name and behaviour; the codec and container of a Higgsfield `seedance_2_5` final (05-T7); whether `seedance_2_5` accepts a `start_image` + `end_image` bridge; Premiere 26.x menu paths for colour interpretation and keyboard nudge; captions inside nested sequences; Content Credentials on ProRes exports; SMPTE RP 200 values (standard calibration practice, not fetched); the small-room 79–82 dB figure (heuristic).
+- **Not verified:** every `pr_*` tool name and behaviour; the codec and container of a Higgsfield `seedance_2_5` final (05-T7); whether `seedance_2_5` accepts a `start_image` + `end_image` bridge; Premiere 26.x menu paths for colour interpretation and keyboard nudge; captions inside nested sequences; Content Credentials on ProRes exports; Premiere 26.x reading the B&W `.cube` and the Crop-on-adjustment-layer matte; whether Topaz outputs keep the source frame count, fps and Content Credentials (7.12b checks each); Topaz credits on this account (no preflight); the SSIM thresholds of 7.1 step 5 on real Seedance siblings; SMPTE RP 200 values (standard calibration practice, not fetched); the small-room 79–82 dB figure (heuristic).

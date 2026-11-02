@@ -1,12 +1,13 @@
 # 00 — Award Brief, Compliance Gates and 21-Day Calendar (Step 0)
 
 **Purpose.** Turn the AI Film Award 2027 rules into a pass/fail plan before any script, image or video is touched.
-**Output.** A locked brief per film: theme, runtime budget, Seedance-share targets, a dated calendar with daily gates, four compliance gates, and a light human-authorship evidence plan.
+**Output.** A locked brief per film: theme, runtime budget, Seedance-share targets, a dated calendar with daily gates and the two-scene pilot slot, four compliance gates, and a light human-authorship evidence plan.
 **Rule.** Nothing in 01-script-and-dialogue.md or later starts until the Step 0 Gate (end of this file) is approved by the user.
 **Priority (BRIEF.md, updated 2026-10-30).** Winning the AI Film Award 2027 is the only target. Finish film 01 completely before film 2; film 2 happens only if time remains. The Oscars are not a target (short background only, 0.11). After 10 Jan 2027 (end of the holdback, cl. 8.4) the film goes to other competitions and festivals and is pitched to international production companies and platforms as "Episode 0" of a 7-episode "Second Life" mini-series: the user keeps ownership (cl. 7.1), and the Organizer's licence is non-exclusive, so the user may monetise after the Award closes (cl. 8.2–8.3). The submission itself stays one complete standalone story and is never called a pilot or an episode (F8).
-**Route (BRIEF.md, decision 2026-11-01, locked).** Every generation runs in Higgsfield, in the film's Higgsfield project: Seedance 2.5 only through the Higgsfield MCP (`generate_video`, model `seedance_2_5`: `draft: true` at 480p, then the same take finalized at 1080p with `draft_job_id` within 7 days; outputs into the scene folder with `folder_id`; `get_cost: true` and the user's yes before every batch); images through Higgsfield `generate_image` (GPT Image 2.5 Sunburst, Nano Banana Pro / 2.1). The user may also generate by hand in the Higgsfield web app inside the same project; Claude reads those jobs back (`list_project_assets`, `get_project_asset_prompt`) and logs them. Measured cost: 3 credits/s for a draft, 16 credits/s for a 1080p final; references and `bitrate_mode` do not change the price. The BytePlus ModelArk API route exists but is not used (decision 2026-11-01).
+**Route (BRIEF.md, decision 2026-11-01, locked).** Every generation runs in Higgsfield, in the film's Higgsfield project: Seedance 2.5 only through the Higgsfield MCP (`generate_video`, model `seedance_2_5`: `draft: true` at 480p, then the same take finalized at 1080p with `draft_job_id` within 7 days; outputs into the scene folder with `folder_id`; `get_cost: true` and the user's yes before every batch); images through Higgsfield `generate_image`, routed per asset job to the model the studied films used best for it (03 §3.0.1: Soul Cast and Soul Cinematic, Seedream 5.0 Pro, GPT Image 2 and 2.5 Sunburst, Nano Banana Pro; Midjourney optional and run by the user). The user may also generate by hand in the Higgsfield web app inside the same project; Claude reads those jobs back (`list_project_assets`, `get_project_asset_prompt`) and logs them. Measured cost: 3 credits/s for a draft, 16 credits/s for a 1080p final; references and `bitrate_mode` do not change the price. The BytePlus ModelArk API route exists but is not used (decision 2026-11-01).
+**Two-scene pilot (user decision 2026-11-02).** After the script and the style are locked and the assets of two chosen scenes are approved (03 G2-P), Claude produces those two scenes end to end with the final method (assets → blocking → Seedance drafts → 1080p finals → rough sound and grade) and runs the open tests inside them (Step 4P, SKILL.md §3a). If the user approves both scenes, the whole film is produced on exactly the same basis. Calendar v02 (0.7) fits the pilot before the deadline.
 
-Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا, as in their earlier pipeline). Write every generation prompt, and the Organizer email, in English.
+Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوستيشا, as in their earlier pipeline), in gender-neutral wording: questions in the first-person plural («هل نعتمد…؟»). Write every generation prompt, and the Organizer email, in English.
 
 ---
 
@@ -20,7 +21,9 @@ Talk to the user in Arabic (Modern Standard Arabic, addressing them as أبوس�
 | One film or two | ask the user | yes |
 | Blender collaborator's availability | ask the user: days available, realistic greybox shots per day | yes |
 | Official Summit intro file | Google Drive link on the official award page | download on D0 |
-| The film's Higgsfield project | the user's Higgsfield account and workspace; scene folders (ledger L.0b) made with `create_folder` after their yes | by D1 (T1–T6 run in its `99_TESTS` folder) |
+| The film's Higgsfield project | the user's Higgsfield account and workspace; scene folders (ledger L.0b) made with `create_folder` after their yes | before the day-1 tests (T1–T6 run in its `99_TESTS` folder) |
+| The two pilot scenes: one dialogue/acting scene, one movement/visual scene | proposed by Claude from script v1, chosen by the user after Gate 1A (SKILL.md §3a) | by D5 (calendar v02) |
+| The cross-study playbook (method source for the pilot and the calendar economics) | `prompt-library/studies/2026-11-02_CROSS-STUDY.md` (§3C.6–3C.7 budgets, §4.0 decisions, §4.8 tests) | yes |
 | Organizer replies | `films/<id>/evidence/organizer-correspondence/` | when they arrive |
 
 ---
@@ -131,20 +134,22 @@ Targets: Seedance picture share ≥ 90% (hard floor 80%). Non-Seedance picture �
 
 ### 0.5 Size the production to the calendar
 
-Capacity check, written out for the user:
+Capacity check, written out for the user (calendar v02: the pilot's shots are made D7–D8, the rest after the Pilot Gate):
 ```
-production days for Seedance (D7–D14)          = 8
+Seedance days after the pilot (D10–D14; last new drafts D13) = 5
 approved finals the user can review per day    = <ask; default 8>
-capacity (finals)                              = 8 × 8 = 64
-planned final shots (from beat estimate)       = <N>
-re-generation reserve                          = 25% of N
-PASS if N × 1.25 ≤ capacity; else cut scope in 01 (fewer shots, longer one-take shots up to 30 s)
+capacity (finals after the pilot)              = 5 × 8 = 40
+planned final shots (from beat estimate)       = <N>, of which <P> in the two pilot scenes
+re-generation reserve                          = 25% of (N − P)
+PASS if (N − P) × 1.25 ≤ capacity; else cut scope in 01 (fewer shots; 15–25 s takes used whole or mined,
+the studies' lean spine, CROSS-STUDY §3C.7; one-takes up to 30 s)
 ```
+Budget in generated seconds, not shots (ledger L.5; CROSS-STUDY §3C.6): draft credits = R × T × 3 and final credits = H × T × 16, with T = story seconds, R = generated-to-story ratio for drafts (lean 3.5 · mid 8 · heavy 16; the 12 studied films ran from about 1:1 to 35:1) and H = finalized seconds ÷ T (about 1.3 for single-use takes, 2.2 for mined long takes). Example T = 360 s at R = 8, H = 1.5: 8,640 + 8,640 = 17,280 credits. The pilot replaces these defaults with measured numbers: at the Pilot Gate its `R_actual` and `H_actual` become the plan for the rest of the film (ledger L.8), and the capacity check above is re-run with them.
 Seedance 2.5 on Higgsfield takes 4–30 s per generation, whole seconds (`duration` in `models_explore` get `seedance_2_5`, read 2026-11-01); the output frame rate is not listed there, so T6 measures it (24 fps expected). Cost per final shot ≈ shot seconds × (3 credits/s for each draft + 16 credits/s for the 1080p final); confirm with `get_cost: true` before each batch. Longer one-take shots reduce shot count and are a story-level choice for 01.
 
 ### 0.6 One film or two
 
-Default: one film at maximum quality (BRIEF.md: finish film 1 completely first; film 2 only if time remains). Raise a second film only when the user asks, and tell them plainly that 21 days leave no room for film 2 after film 1, so film 2 can only run in parallel and must never move a film 1 date. If they still want it, apply all of this:
+Default: one film at maximum quality (BRIEF.md: finish film 1 completely first; film 2 only if time remains). Raise a second film only when the user asks, and tell them plainly that 21 days leave no room for film 2 after film 1, so film 2 can only run in parallel and must never move a film 1 date. Calendar v02 (new script from D3, pilot D6–D8) leaves no room in parallel either: the dated go/no-go rows below and the parallel table in 0.7 are calendar v01's. If they still want it, re-plan Film B's dates with them and apply all of this:
 
 | Rule | Detail |
 |---|---|
@@ -161,31 +166,39 @@ A paused Film B costs nothing: it was never submitted, so it stays eligible else
 
 ### 0.7 Build the calendar
 
-Single film, Blender collaborator on greybox. D0 is today. Lock dates are hard; buffer days carry no planned work.
+**Calendar v02 (re-planned Mon 2 Nov 2026 = D3, after the user's decisions of 2026-11-02).** The Summit entry is the new film (BRIEF update 2026-11-01; film 01 "2nd Life: Ascent" is parked for the series), and the two-scene pilot (Step 4P, SKILL.md §3a) now sits between the pilot scenes' asset approval and full production. Day numbers keep D0 = Fri 30 Oct, so module references to D13, D14, D15, D18 and D19 stay valid. Where a module still names a calendar v01 day (script lock D3, G2 at the end of D5, animatic lock and first drafts on D7, music from D8, Buffer 1 on D12), this table wins. Single film, Blender collaborator on greybox. Lock dates are hard; D20 is the only fallback day and D21 carries no planned work.
 
 | Day | Date | Claude | AboStesha | Blender friend | Gate at day end |
 |---|---|---|---|---|---|
-| D0 | Fri 30 Oct | Step 0: rules check, checklist, rubric map, runtime estimate, calendar, Organizer email draft, evidence folders and the Higgsfield project folder tree (ledger L.0b), D1 test plan with its `get_cost` quote | approves Step 0; sends email; downloads intro; signs collaborator agreement | confirms days and shots/day | **Step 0 Gate** |
-| D1 | Sat 31 Oct | runs risk tests T1–T6 (0.8); premise and beat sheet (01) | records 2 test lines in ElevenLabs v4 | installs Blender 5.1+, sets units/fps 24 | tests reported; go/no-go on routes |
-| D2 | Sun 1 Nov | script v1 + **G1 Script gate**; style exploration (02) | reviews script and G1 flags | builds generic greybox kit | G1 report |
-| D3 | Mon 2 Nov | script v2, dialogue tagged for ElevenLabs v4; style prefix lock (02); shot list starts (04) | **script lock**; generates final dialogue lines | — | script locked |
-| D4 | Tue 3 Nov | shot list done; hero character and location sheets (03) | runs Midjourney prompts | greybox of hard shots, batch 1 | — |
-| D5 | Wed 4 Nov | remaining assets; Higgsfield face route set up for every character (T1 route); **G2 Assets gate** | approves assets | greybox batch 2 | G2 report |
-| D6 | Thu 5 Nov | animatic v1 (boards + playblasts + final voice lines); runtime check | notes on animatic | playblasts to spec (04) | runtime within budget |
-| D7 | Fri 6 Nov | **animatic lock**; first Seedance drafts, hardest shots first (05, 05b) | approves drafts | re-blocks on request | — |
-| D8–D11 | Sat 7 – Tue 10 Nov | drafts → approvals → finals; download every output the same hour; assembly edit; music direction (06) | reviews twice a day; music generation | re-blocks | daily close (below) |
-| D12 | Wed 11 Nov | **BUFFER 1**: failed renders, moderation rejects, expired drafts; rough cut; quick judge pass on rough (08) | rough-cut notes | — | rough cut reviewed |
-| D13 | Thu 12 Nov | last new drafts; finals; rough cut v2 | approves | — | no new drafts after today |
-| D14 | Fri 13 Nov | all finals in; fine cut support; SFX analysis (06) | fine cut in Premiere | — | all finals downloaded |
+| D0–D2 | Fri 30 Oct – Sun 1 Nov | calendar v01 days: Step 0 work for film 01 and the Higgsfield-only route decisions; film 01 then parked for the series | — | installs Blender 5.1+, sets units/fps 24 (if not yet done) | — |
+| D3 | Mon 2 Nov | skill updated from the 12 studies; **Step 0 for the new film**: theme candidates, rubric map, runtime estimate, G1 flags on its draft, `PROJECT.md`, folders (the rules re-check, Organizer email and intro download carry over if already done); day-1 risk tests T1–T6 and 05-T7…T11 in `99_TESTS` if not yet run (0.8), with their `get_cost` quote; premise and beat sheet (01) | brings the new idea or draft; approves Step 0; sends the Organizer email if not yet sent; records 2 test lines in ElevenLabs v4 | confirms days and shots/day | **Step 0 Gate**; tests reported, go/no-go on routes |
+| D4 | Tue 3 Nov | script v1 + **G1 Script gate**; style intake and the engine shoot-out (02 §2.8); two pilot scenes proposed from script v1 | reviews script and G1 flags; scores the shoot-out | builds the generic greybox kit | G1 report |
+| D5 | Wed 4 Nov | script v2, dialogue tagged; **style lock `LOOK v1.0`** with the Seedance look test and the film frame (D-9); pilot scenes confirmed, with their breakdown, shot list and triage (03 §3.1.1, 04 §4.1); Character Briefs and Soul Cast casting rounds for the pilot characters (03) | **script lock (Gate 1A)**; picks the two pilot scenes; records their dialogue lines; picks casting winners | greybox of the pilot's BLOCK shots | script and style locked; pilot scenes chosen |
+| D6 | Thu 5 Nov | pilot assets: realism pass, sheets, plates, props (03 §3.5) → **G2-P**; pilot blocking (04 §4.14); pilot packets with the 5.4 lint; pilot budget and test plan quoted (05 §5.11) | picks every winner; approves G2-P, the pilot blocking and the pilot budget | pilot playblasts to spec | **G2-P**; pilot blocking approved |
+| D7 | Fri 6 Nov | pilot drafts, hardest first, with the open tests inside them; approved drafts finalized at 1080p the same day (05 §5.11, 05b §5b.11) | approves packets, drafts and finals in their own words; rules on each test arm | re-blocks on request | pilot finals downloaded |
+| D8 | Sat 7 Nov | rough SFX and dialogue placement (06); rough assembly and rough grade, test T-U (07 §7.14); pilot report: test results, measured R and H, whole-film estimate | watches the pilot cut; rules on each test result | — | **Pilot Gate** (SKILL.md §3a); recipes locked |
+| D9 | Sun 8 Nov | every other asset on `RECIPES_v1` (03) → **G2**; shot list and blocking of the other scenes on the blocking recipe (04); remaining dialogue (Gate 1B) | picks winners; records the remaining lines; approves G2 and 1B | greybox and playblasts of the remaining BLOCK shots | **G2**; **Gate 1B** |
+| D10 | Mon 9 Nov | **animatic lock** (all scenes, pilot finals in place; runtime check); production drafts on `RECIPES_v1`, hardest first (05, 05b); rules re-check (0.1) | approves the animatic and drafts | re-blocks on request | animatic locked |
+| D11 | Tue 10 Nov | drafts → approvals → finals; download every output the same hour; assembly edit; music spotting and direction from the pilot cut (06) | reviews twice a day; music generation | re-blocks | daily close (below) |
+| D12 | Wed 11 Nov | drafts → finals; rough cut; quick judge pass on the rough (08 R0); pickup list from the first assembly (07 §7.4) | rough-cut notes | — | rough cut reviewed |
+| D13 | Thu 12 Nov | last new drafts, pickups included; finals; rough cut v2 | approves | — | no new drafts after today |
+| D14 | Fri 13 Nov | all finals in (the reserve for failed, refused or expiring renders); fine cut support; SFX analysis (06) | fine cut in Premiere | — | all finals downloaded |
 | D15 | Sat 14 Nov | **PICTURE LOCK + G3 gate**; test screening plan | 5–10 real viewers watch before AboStesha signs (08 §8.8, screening A); locks picture | — | G3 report signed |
 | D16 | Sun 15 Nov | sound design, mix notes, grade, cleanup, subtitles EN (+AR) (07); fills submission form draft | mix/grade in Premiere | — | form draft saved |
 | D17 | Mon 16 Nov | judge panel (08); fix list limited to non-story fixes | applies fixes | — | fix list closed |
 | D18 | Tue 17 Nov | master QC; **G4 Delivery gate**; disclosure pack; rules re-check | exports masters; uploads private link | — | G4 report signed |
 | D19 | Wed 18 Nov | submission checklist walk-through | **SUBMITS**; saves confirmation | — | confirmation saved |
-| D20 | Thu 19 Nov | **BUFFER 2**: fallback submission day | — | — | — |
-| D21 | Fri 20 Nov | **BUFFER 3**: deadline day, emergencies only; closing hour unknown, never plan to submit today | — | — | — |
+| D20 | Thu 19 Nov | **BUFFER**: fallback submission day | — | — | — |
+| D21 | Fri 20 Nov | deadline day, emergencies only; closing hour unknown, never plan to submit today | — | — | — |
 
-Two films in parallel (Film A follows the table above exactly; Film B uses only what is left):
+**The pilot in the calendar** (SKILL.md §3a; the owning modules: 02 §2.13, 03 §3.5, 04 §4.14, 05 §5.11, 05b §5b.11, 07 §7.14, ledger L.8):
+- **Choice (D4–D5).** Claude proposes two scenes from script v1 with one-line reasons: one dialogue/acting scene and one movement/visual scene, about 60–90 s of story together, two different look variants where possible. The user picks after Gate 1A. They are real scenes of the film, filed in their own scene folders; approved pilot finals stay in the cut.
+- **Run (D6–D8).** The whole chain runs on those two scenes only, with each module's final method and normal gates and a yes per paid batch; the open tests run inside them. Until the user approves a test's result, the current rule it would change stays in force.
+- **Gate (D8).** Both scenes assembled with rough sound and grade, every test result ruled on, then the recipes are locked (production look, `RECIPES_v1` for assets and Seedance, the blocking recipe, `PERFORMANCE_LOCK_v1`, `FINISH-RECIPE_v1`, production pins and R/H plan). Nothing outside the pilot scenes is drafted before this yes.
+- **Late or not approved.** The Pilot Gate may slip to D9 at the latest: G2 and the remaining blocking then move to D10, the animatic lock to D11, and production keeps D11–D14; Claude re-runs the capacity check (0.5) the same day and proposes scope cuts (shots, never quality). Not approved: the user names what failed, Claude fixes only that layer, re-runs the affected pilot shots and asks again.
+- **No mid-production buffer.** The pilot takes Buffer 1's place: failures surface on two scenes instead of across the film. D14 keeps the render reserve and D20 the fallback submission.
+
+Two films in parallel (calendar v01, before the pilot; not valid under v02. If the user still insists, re-plan Film B's dates with them under 0.6; Film A follows its table exactly):
 
 | Day | Film A | Film B | Blender friend |
 |---|---|---|---|
@@ -208,28 +221,32 @@ Two films in parallel (Film A follows the table above exactly; Film B uses only 
 4. Ledger updated: shot, tool, model (`seedance_2_5`), version, account, Higgsfield job ID (draft and final), project folder, seconds, credits, sha256 of the downloaded original, approval status.
 5. Moderation log updated: what was rejected, error text, what was changed.
 6. Tomorrow's queue written, hardest shots first.
-7. Status vs calendar: on track / 1 day behind / more than 1 day behind. More than one day behind: propose scope cuts (shots, not quality) and get the user's choice the same day.
+7. Status vs calendar v02: on track / 1 day behind / more than 1 day behind. More than one day behind: propose scope cuts (shots, not quality) and get the user's choice the same day.
+8. **Pilot days (D6–D8):** each open test's status and result; pilot spend and generated seconds against the quote (R and H so far); what the Pilot Gate still needs. On the approval day, the locked recipes and the production pins are written into `PROJECT.md` (pilot section).
+9. **After the Pilot Gate:** any asset, block, shot or grade whose prompt, references or settings differ from its recipe card is flagged before it is billed; the scene budget is checked against the pilot's measured R and H (ledger T7).
 
 **Buffers and failure handling:**
 
 | Failure | Response | Time reserved |
 |---|---|---|
 | Render failed or timed out | a timeout is not a failure: the submission outcome is unknown, so check the job (`jobs_wait` with the returned job ID, or `list_project_assets` on the scene folder) and never resubmit until the outcome is known (05 §5.9). A job with status `failed` may be resubmitted once unchanged with the user's yes (log whether credits were charged); a moderation block needs a content change first; on a second failure simplify the shot (fewer refs, shorter) | 25% generation reserve |
-| Character sheet refused by `seedance_2_5` for a realistic face (log the exact refusal text) | switch to the next Higgsfield route proven in T1: a Higgsfield reference element (`manage_reference_elements`, `<<<element_id>>>` in the prompt) or a first frame generated inside Higgsfield from the approved sheet, passed as `start_image` (03-assets-images.md §3.3–3.4, 05-seedance-production.md); never retry an unchanged request or alter the face to slip past the check | T1 on D1 decides the route |
-| Prompt or audio rejected by content checks | change the content, not the wording trick; re-run the G1 check on that beat; log it | Buffer 1 (D12) |
+| Character sheet refused by `seedance_2_5` for a realistic face (log the exact refusal text) | switch to the next Higgsfield route proven in T1: a Higgsfield reference element (`manage_reference_elements`, `<<<element_id>>>` in the prompt) or a first frame generated inside Higgsfield from the approved sheet, passed as `start_image` (03-assets-images.md §3.3–3.4, 05-seedance-production.md); never retry an unchanged request or alter the face to slip past the check | T1 in the day-1 tests (v02: D3–D4) decides the route |
+| Prompt or audio rejected by content checks | change the content, not the wording trick; re-run the G1 check on that beat; log it | D14 reserve |
 | Final differs from the approved draft (it is a new render) | re-review every final; re-draft if identity or action changed | inside reserve |
-| Draft expired (older than 7 days on Higgsfield) | re-draft; the final cannot be made from an expired draft | Buffer 1 |
+| Draft expired (older than 7 days on Higgsfield) | re-draft; the final cannot be made from an expired draft | D14 reserve |
+| Pilot not approved at the end of D8 | the user names what failed; fix only that layer (01, 02, 03, 04, 05b, 05 or 07), re-run the affected pilot shots, ask again | D9 (latest Pilot Gate), then scope cuts (0.5) |
+| A pilot test is inconclusive | keep the current rule; one more draft of each arm only with the user's yes (Seedance has no seed) | inside the pilot budget |
 | Collaborator unavailable | Claude blocks the shot via Higgsfield Bridge `bl_*` or Blender MCP (04-blender-blocking.md) | — |
-| Upload or link failure | second host ready; test the link logged-out on another device | Buffers 2–3 |
+| Upload or link failure | second host ready; test the link logged-out on another device | D20 (D21 emergencies only) |
 | Organizer changes rules mid-production | re-check on D10/D18, re-plan the same day | — |
 
-### 0.8 Day-1 risk tests (D1)
+### 0.8 Day-1 risk tests (v01: D1; v02: D3–D4, before the pilot)
 
-Each test answers one question that would otherwise break the calendar. Report results in a table before any production spend.
+Each test answers one question that would otherwise break the calendar. Report results in a table before any production spend. 05's day-1 tests (05 §5.0: 05-T7…05-T11; 05-T11 also settles decisions D-1 handles and D-14 face re-description) run beside them. The playbook's other tests (CROSS-STUDY §4.8: T-B…T-G) and the modules' own open tests (03 T-I1…T-I4, 04 BL-1…BL-3, 05b T-A1/T-A2, 07 T-U, T3 at scale) do **not** run here: by the user's decision of 2026-11-02 they run inside the two-scene pilot, on real scenes (SKILL.md §3a).
 
 | Test | Question | Method | Pass |
 |---|---|---|---|
-| T1 Faces | Will Higgsfield `seedance_2_5` accept our approved photoreal character sheets? | one GPT Image 2.5 Sunburst hero sheet made in Higgsfield (`generate_image`) → `generate_video` model `seedance_2_5`, mode `omni_reference`, `draft: true`, the sheet's job ID in `medias` with role `image_references`; a second draft with it as `start_image`. If faces are refused: (a) a Higgsfield reference element (`manage_reference_elements` action `create`, then `<<<element_id>>>` in the prompt; the tool lists `seedance_2_0`, not `seedance_2_5`, among its video models as read 2026-11-01, so T1 checks whether 2.5 honours it); (b) a first frame generated inside Higgsfield from the approved sheet, passed as `start_image` (03 §3.4) | a working Higgsfield route for every human character, written into `PROJECT.md` (Routes proven on D1) |
+| T1 Faces | Will Higgsfield `seedance_2_5` accept our approved photoreal character sheets? | one provisional hero sheet made in Higgsfield on 03's routing (`face` on `gpt_image_2` 4k high, then `turn3`; 03 §3.1.0, files `v00` in `99_TESTS`) → `generate_video` model `seedance_2_5`, mode `omni_reference`, `draft: true`, the sheet's job ID in `medias` with role `image_references`; a second draft with it as `start_image`. If faces are refused: (a) a Higgsfield reference element (`manage_reference_elements` action `create`, then `<<<element_id>>>` in the prompt; the tool lists `seedance_2_0`, not `seedance_2_5`, among its video models as read 2026-11-01, so T1 checks whether 2.5 honours it); (b) a first frame generated inside Higgsfield from the approved sheet, passed as `start_image` (03 §3.4) | a working Higgsfield route for every human character, written into `PROJECT.md` (Routes proven by the day-1 tests) |
 | T2 Lip-sync | Does Seedance sync to the supplied ElevenLabs v4 file, and does it keep the voice or re-voice it? | one Arabic line and one English line uploaded to Higgsfield (`media_upload` → PUT → `media_confirm`) and passed with role `audio_references` in `omni_reference` mode, `generate_audio: true` on the draft (T3 checks the 1080p final keeps the audio); measure mouth offset in frames; compare the output voice to the input | offset ≤ 2 frames on a close-up; voice usable or a documented fallback |
 | T3 Draft → final | How far does the 1080p final drift from the 480p draft? | one `draft: true` 480p job, then its final (`draft_job_id`, `resolution: "1080p"`, `bitrate_mode: "high"`); compare identity, action, timing, audio | drift acceptable, or review rule tightened |
 | T4 Provenance | Does our export chain keep watermarks and content credentials? | inspect metadata of the original downloaded from Higgsfield, the Premiere export and the uploaded file (exiftool; c2patool if available) | nothing applied by a tool is lost (cl. 5.6) |
@@ -270,8 +287,11 @@ with Seedance?
 3. Is Seedance 2.5 used through the third-party platform Higgsfield (listed
    there as "Seedance 2.5" by ByteDance; 480p drafts finalized at 1080p) an
    accepted version and route under clauses 1.1 and 5.4?
-4. Are AI image models (GPT Image 2.5, Nano Banana, Midjourney) acceptable as
-   reference inputs to Seedance, if fully disclosed?
+4. Are AI image models used inside Higgsfield (GPT Image 2 and 2.5, Seedream
+   5.0 Pro, Nano Banana Pro, Higgsfield Soul) acceptable as reference inputs
+   to Seedance, if fully disclosed? Does a Seedance clip that is later
+   upscaled (Topaz, inside Higgsfield) or colour graded still count as
+   Seedance-generated?
 5. Is there a closing hour on 20 November 2026 (GST) and a maximum length for
    opening titles and closing credits?
 
@@ -286,7 +306,7 @@ Kind regards,
 
 Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe options; the user chooses. Claude never silently rewrites the user's story. UAE Media Council standards are numbered as in the Council's 20 content standards under Federal Decree-Law No. 55 of 2023 (secondary-source summary, Gulf News, June 2025; the Council's own text was not fetched).
 
-**G1 — Script gate** (end of D2; re-run on any rewrite, in 01-script-and-dialogue.md)
+**G1 — Script gate** (end of D4 in calendar v02; re-run on any rewrite, in 01-script-and-dialogue.md)
 - [ ] Theme named and visible in at least two scenes (5.3(e)).
 - [ ] No strong or offensive language; no nudity or sexual content; violence and disturbing imagery mild at most (9.1).
 - [ ] No depiction of drug, alcohol, tobacco or gambling use (9.1, 9.2(f); UAE std 11, 12).
@@ -301,14 +321,14 @@ Each gate produces a report with PASS / FIX / ASK lines. FIX items carry G-safe 
 - [ ] Nothing that mocks or misuses the Organizer, the Summit or its Partners (7.6, 9.2(k)).
 - [ ] Human authorship: the user wrote or approved every final line; Claude's edits logged (0.11).
 
-**G2 — Assets gate** (end of D5, in 03-assets-images.md)
+**G2 — Assets gate** (in 03-assets-images.md; runs twice in calendar v02: **G2-P** for the two pilot scenes' assets at the end of D6, then **G2** for every other asset, made on the pilot's `RECIPES_v1`, at the end of D9)
 - [ ] Every face synthetic; no lookalike of any real or famous person; nobody's photo used as a reference without signed consent (6.1(f), 7.5).
 - [ ] Style references are measured descriptors, never frames from copyrighted films or real actors' faces (6.1(d)).
 - [ ] No logos, brand marks, trade dress, readable real brand names, or garbled text that resembles a brand (6.1(d), 9.2(j)).
 - [ ] Wardrobe and settings culturally accurate (kandura, abaya, ghutra worn correctly; mosque and prayer details respectful) (UAE std 5).
 - [ ] Children portrayed safely and with dignity (9.2(b); UAE std 20).
-- [ ] Every human character has a working Higgsfield Seedance face route (T1: sheet as `image_references` or `start_image`, reference element, or a first frame generated inside Higgsfield) before D7.
-- [ ] Tool, model, version, account and plan logged for every asset (5.5(a)).
+- [ ] Every human character has a working Higgsfield Seedance face route (T1: sheet as `image_references` or `start_image`, reference element, or a first frame generated inside Higgsfield) before its first Seedance draft (pilot characters: D7).
+- [ ] Tool, model, version, account and plan logged for every asset (5.5(a)), with its 03 §3.0.1 routing row (and, after the pilot, its `RECIPES_v1` card).
 
 **G3 — Picture-lock gate** (D15, in 07-edit-mix-finish.md)
 - [ ] Runtime: story 5:30–6:34; titles + story + credits ≤ 7:00.
@@ -374,7 +394,8 @@ Human-authorship dossier, filled daily in `evidence/authorship/` (supports the A
 | Evidence | What to keep | Step |
 |---|---|---|
 | Script | the user's dated Arabic draft v0 (already in the repo), every later draft, a log of which lines Claude proposed and which the user wrote or accepted | 01 |
-| Visual design | style decisions and rejected options, signed off by the user | 02, 03 |
+| Visual design | style decisions and rejected options, the engine shoot-out scores, signed off by the user | 02, 03 |
+| Two-scene pilot | the user's choice of the two scenes, their ruling on every pilot test and their Pilot Gate words, the recipes locked from them | 4P (SKILL.md §3a) |
 | Human-made motion | Blender files with hand-set keyframes by the collaborator and the user; playblast beside the Seedance result for each shot | 04, 05 |
 | Direction | per-shot performance notes, selects and rejects with reasons | 05b |
 | Edit and sound | Premiere project versions, cut notes, mix decisions | 07 |
@@ -392,11 +413,23 @@ Human-authorship dossier, filled daily in `evidence/authorship/` (supports the A
 • المدة: القصة 6:00–6:30 عند اعتماد السيناريو (وحدّها الأقصى عند تثبيت المونتاج 6:34)، والمجموع مع العنوان والتترات ≤ 7:00. تقديرنا للمسودة الحالية: <م:ث>.
 • نسبة Seedance: هدف الصورة ≥ 90%. الصوت: ننتظر رد المنظمين (الرسالة جاهزة).
 • مخاطر اليوم الأول: الوجوه الواقعية، مزامنة الشفاه، الفرق بين المسودة والنسخة النهائية، بيانات المصدر.
+• تجربة المشهدين: بعد قفل السيناريو والستايل نصنع مشهدين كاملين (حوار وتمثيل + حركة وصورة) بالطريقة النهائية (D6–D8)، وإذا اعتمدناهما نصنع بقية الفيلم على الأساس نفسه تماماً.
 • ملاحظات الامتثال على المسودة: <عدد> نقطة (الجدول مرفق) — نقرر كل نقطة في الخطوة 1.
 • الأوسكار: ليس هدفاً الآن. نسخة القمة مقفلة للقمة، وبعد 10 يناير 2027 يُسمح بنسخة معدّلة للمهرجانات أو بنسخة "الحلقة 0"؛ أما الفيلم المقدَّم فقصة مستقلة كاملة لا تُسمّى حلقة ولا حلقة تجريبية.
 ```
 
-**Calendar** — the 0.7 table with Arabic headers (اليوم · التاريخ · Claude · أبوستيشا · صديق Blender · بوابة نهاية اليوم), dates filled, lock days in bold.
+**Calendar** — the 0.7 table (v02) with Arabic headers (اليوم · التاريخ · Claude · أبوستيشا · صديق Blender · بوابة نهاية اليوم), dates filled, lock days in bold, the pilot days (D6–D8) marked «تجربة المشهدين».
+
+**Pilot plan card** (D4–D5, after Gate 1A; SKILL.md §3a):
+```
+تجربة المشهدين — <اسم الفيلم>
+• المشهدان المقترحان: S<##> (حوار وتمثيل: <سبب في سطر>) + S<##> (حركة وصورة: <سبب في سطر>) — المدة معاً <م:ث>
+• ما نصنعه فيهما: الأصول ← البلوكنغ ← مسودات Seedance ← نسخ 1080p ← صوت وتلوين أوليان، بالطريقة النهائية نفسها
+• الاختبارات داخلهما: <T-B · T-E · T-C · T-D · T-F · T-G · T-I1…T-I4 · T-A1 · T-U> — حتى نعتمد نتيجة كل اختبار تبقى القاعدة الحالية
+• التكلفة التقديرية (get_cost): <رصيد> · الأيام: D6–D8 · بوابة التجربة: نهاية D8 (أقصاها D9)
+• إذا اعتمدنا المشهدين نقفل الوصفات ونصنع بقية الفيلم على الأساس نفسه تماماً
+هل نعتمد هذين المشهدين وخطة التجربة؟ أم نختار مشهدين آخرين؟
+```
 
 **Daily status line**:
 ```
@@ -415,8 +448,8 @@ ASK 1 — <سؤال للمنظمين أو لمراجع بشري>
 
 **Lock prompt**:
 ```
-هل نعتمد الخطوة 0 (المحور، المدة، الجدول، رسالة المنظمين، خطة اختبارات اليوم الأول)
-وننتقل إلى الخطوة 1: السيناريو والحوار (01-script-and-dialogue.md)؟ أم تريد تعديلات؟
+هل نعتمد الخطوة 0 (المحور، المدة، الجدول v02 مع تجربة المشهدين، رسالة المنظمين، خطة اختبارات اليوم الأول)
+وننتقل إلى الخطوة 1: السيناريو والحوار (01-script-and-dialogue.md)؟ أم نعدّل شيئاً أولاً؟
 ```
 
 ---
@@ -426,10 +459,10 @@ ASK 1 — <سؤال للمنظمين أو لمراجع بشري>
 1. One film or two; if two, the stagger and both go/no-go dates.
 2. Theme per film, and the rubric map.
 3. Runtime budget and the current length estimate with cut candidates.
-4. The calendar, including the collaborator's confirmed days and the three lock dates: script D3, animatic D7, picture D15 (Film B, if any: D6, D10, D16).
+4. Calendar v02, including the collaborator's confirmed days and the lock dates: script and style D5, G2-P D6, Pilot Gate D8 (latest D9), G2 D9, animatic D10, picture D15 (Film B, if any: re-planned with the user, 0.6).
 5. The Organizer email: sent by the user, with the date logged.
 6. The G1 flag table on the draft: acknowledged (decisions happen in 01).
-7. The D1 risk-test plan and its spend.
+7. The day-1 risk-test plan (0.8) and its spend, and the two-scene pilot as a gated step (SKILL.md §3a): two scenes chosen after Gate 1A, the open tests run inside them, and the rule that the whole film reuses the method locked at the Pilot Gate.
 8. Collaborator agreement: rights assignment and credit signed; named for the AI Disclosure (cl. 6.1(b)).
 9. Acknowledgement of the holdback and the Organizer's perpetual licence (cl. 8.1, 8.4), that the Summit cut is locked for the Summit (a festival or "Episode 0" re-edit only after 10 Jan 2027), and that no series pitch, screener or option happens before the holdback ends.
 
@@ -448,24 +481,29 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 | Drafts left to expire | Finalize or kill every approved draft before it is 5 days old (Higgsfield finalizes a draft only within 7 days) |
 | Losing outputs | Download every original from Higgsfield in the same hour, log its sha256, archive it on Drive; the Higgsfield project is not the archive |
 | Hand-made web-app jobs missing from the ledger | Read the project back every daily close (`list_project_assets`, `get_project_asset_prompt`) |
-| Discovering the face block on D7 | T1 on D1; prove a Higgsfield face route for every character before D7 |
+| Discovering the face block on the first pilot draft | T1 in the day-1 tests (v02: D3–D4); prove a Higgsfield face route for every pilot character before D7 and for every other character before D10 |
 | Fixing a moderation reject by rewording the same content | Change the content; re-run G1 on that beat |
 | Two films sharing a world or characters | "Substantially similar" can disqualify both (cl. 5.2) |
 | Posting a teaser or BTS clip | Holdback breach disqualifies (cl. 8.4, 13.1(g)) |
 | Entering a festival "just to test" | Breaks cl. 5.3(b); festivals only after the Summit outcome |
 | Re-cutting the Summit cut before the holdback ends | The Summit cut stays locked and the linked file unaltered (cl. 5.8, 8.4); a festival or "Episode 0" re-edit only after 10 Jan 2027 (Academy eligibility would be affected only if the Oscars ever become a target) |
 | Eleven Music cue with no licence record | The user's Enterprise contract was confirmed 2026-10-30; it must be the full Enterprise Music tier (Lite excludes film); log the contract and tier before the first cue |
-| Calling the film "Episode 0" or a pilot | Risks the "complete story" rule (F8); the submission stays one complete standalone story; series wording only in the pitch, after 10 Jan |
+| Calling the film "Episode 0" or a pilot | Risks the "complete story" rule (F8); the submission stays one complete standalone story; series wording only in the pitch, after 10 Jan; the two-scene "pilot" is an internal test name, never in the film, credits or form |
+| Starting full production before the Pilot Gate | Only the two pilot scenes are produced until the user approves both (SKILL.md §3a); G2, the animatic lock and production drafts follow it |
+| A pilot made of the two easiest scenes | One dialogue/acting scene and one movement/visual scene that carry the film's hardest conditions |
+| Treating the pilot as throwaway footage | Pilot scenes are real scenes in their own folders, made with the final method; approved finals stay in the film |
+| Later scenes drift from the approved pilot | Every asset, block, shot and grade fills its recipe card; a change is a new version with the user's yes and a redo list |
+| Planning from a v01 day in a module | Calendar v02 (0.7) wins; re-plan the dates with the user when the pilot slips |
 | Swapping the file behind the submitted link | Cl. 5.8: the link stays live and unaltered until the Award closes |
 | Fonts missing from the licence log | Fonts are named in cl. 5.5(c) |
-| Exporting in a way that strips content credentials | T4 on D1; keep raw finals untouched |
+| Exporting in a way that strips content credentials | T4 in the day-1 tests; keep raw finals untouched |
 | Collaborator not named or not assigned rights | Breaks cl. 6.1(b), 6.1(c); sign on D0 |
 | Claude rewriting religious lines alone | Every religious line goes to a human reviewer |
 | Trusting only the LLM judge panel | Real viewers on D15 (08-judge-panel.md) |
 
 ---
 
-## Verification stamp and sources (checked 2026-10-30; Higgsfield route facts 2026-11-01)
+## Verification stamp and sources (checked 2026-10-30; Higgsfield route facts 2026-11-01; pilot and calendar v02 2026-11-02)
 
 - Award page and Terms (last updated 12/10/2026): https://www.1billionsummit.com/ai-award-2027 and https://www.1billionsummit.com/ai-award-2027/terms-and-conditions — fetched today; clauses 1.1, 2.2, 4–9, 11.2–11.3, 13.1, 14.1, 20.8, 20.10 as cited. Intro download: the Google Drive folder linked from "Download the intro" on the page.
 - Oscars 99th Rule Eight (Animated Short) and Rule Seventeen (Live Action Short): https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf, https://www.oscars.org/sites/oscars/files/2026-05/99th%20Live%20Action%20Short%20Rules.pdf — read today (I.B.2, I.B.4, I.C, II.A–C, III.C–D, IV.A). 100th rules: not published (search today).
@@ -473,4 +511,9 @@ Do not assume approval from silence or partial agreement. Wait for an explicit "
 - Seedance 2.5 on Higgsfield (checked 2026-11-01): `models_explore` get `seedance_2_5` lists mode `t2v` / `omni_reference` / `video_edit` / `video_extension`, duration 4–30 s (whole seconds), resolution 480p / 720p / 1080p, `generate_audio` (default true), `bitrate_mode` standard / high, `draft` (a 480p draft that can be finalized within seven days), `draft_job_id` (finalize a completed draft at 1080p), media roles `start_image`, `end_image`, `image_references`, `video_references`, `audio_references`; no `watermark` parameter and no frame rate listed (T4, T6). Cost measured on Higgsfield: 3 credits/s draft, 16 credits/s 1080p final; references and `bitrate_mode` do not change the price (re-check with `get_cost: true` before each batch). A transport timeout leaves the outcome unknown: never resubmit until it is known (`generate_video` tool description).
 - Face route: the `manage_reference_elements` tool description (read 2026-11-01) lists `seedance_2_0`, not `seedance_2_5`, among the video models that honour `<<<element_id>>>`; T1 tests sheet as `image_references`, sheet as `start_image`, reference element, and a first frame generated inside Higgsfield, in that order (03-assets-images.md §3.3–3.4).
 - "Second Life" trademark: UDRP decision https://www.adrforum.com/DomainDecisions/1089130.htm and https://secondlife.com/corporate/brand-faq — registration of 13 Apr 2004 confirmed in the decision; current status not checked.
+- Two-scene pilot, calendar v02 and image routing: the user's decisions of 2026-11-02 (apply every proposal of the cross-study playbook with its recommended choice, "test first" items become pilot tests; image tools routed per job inside Higgsfield, Midjourney optional; two full scenes before the film). Image routing verified on the Higgsfield MCP (`models_explore`, `generate_image` `get_cost: true`, 2026-11-02, no generations; 03 §3.0.1).
+- **Method learned from public Higgsfield projects** (studied 2026-11-02 through the Higgsfield MCP project tools; method only, no character, design, location or story copied; `prompt-library/studies/2026-11-02_<key>.md`, merged in `2026-11-02_CROSS-STUDY.md` §1, §3C.5–3C.7, §4.0, §4.8):
+  - Lean spine (one asset burst before video, a whole-film plan, long takes used whole or mined): Kimti by `@ameerahmed`, SÉKOU by `@mauriziocibelli`, LEAK by `@creativemanifesto`.
+  - Engine shoot-out before freezing the look: The Breach by `@sileent`, THREAD by `@pandaproduction`, HUNGER by `@sssacccade`, Buzkashi by `@sqr_studio`, UNPROMPTED by `@shestak`.
+  - Generated-to-story ratios and resolution ladders behind the budget (0.5): all twelve, also Fukushima by `@aist`, TOKYO 4:17 by `@nicholastakeyama`, In Passing by `@julianmarshall`, CONTROL by `@pietromalegori`.
 - Carried over from the user's own earlier skills (cinematic-pipeline: explicit lock prompts, no approval from silence, Arabic address; higgsfield-generate: quality first, no cost optimisation unless asked), paraphrased.

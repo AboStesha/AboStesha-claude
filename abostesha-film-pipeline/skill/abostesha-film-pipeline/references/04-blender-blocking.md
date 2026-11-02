@@ -1,10 +1,15 @@
 # 04 — Blender Blocking: Greybox Guides for Seedance (Step 4)
 
-**Purpose.** Turn the locked script and dialogue into a numbered shot list and a timed animatic. For every shot whose camera, staging or motion is hard, build a greybox playblast: simple primitives, colour-coded stand-ins, real lenses, timing locked to the ElevenLabs lines.
-**Output.** The shot-by-shot blocking table, an animatic for the whole film, and per BLOCK shot a clean playblast that Seedance 2.5 accepts as `@Video1`, plus stills, a dialogue track and a hand-off sheet, all versioned on Google Drive.
-**Rule.** The blockout owns camera, timing, layout and motion. It never owns look. Playblasts are references only and never appear in the film. Calendar: shot list on D3–D4, greybox batches on D4–D5, playblasts and animatic v1 on D6, **animatic lock on D7** (00-award-brief-and-calendar.md §0.7).
+**Purpose.** Turn the locked script and dialogue into a numbered shot list and a timed animatic, and give every shot the cheapest blocking reference that holds it (decision 2026-11-02, P04-1…P04-3):
+- a **greybox playblast** (simple primitives, colour-coded stand-ins, real lenses, timing locked to the ElevenLabs lines) for camera moves of about 10 s or more, routes through more than one space, vehicles, crowds, physics events and dream symmetry;
+- a **blocking still** made from an approved plate or frame (marker still, floor plan or pose sketch) for locked and dialogue shots (4.12);
+- a silent **phone gesture clip** for a precise hand procedure (4.13);
+- text alone for inserts and simple B-roll.
+**Output.** The shot-by-shot blocking table, an animatic for the whole film, per BLOCK shot a clean playblast that Seedance 2.5 accepts as `@Video1`, per STILL shot its approved blocking still, per gesture shot its clean clip, plus stills, a dialogue track and a hand-off sheet, all versioned on Google Drive.
+**Rule.** The blockout owns timing, layout, route and screen positions, and the camera path too, except on a shot that uses the PATH GUIDE clause (pilot test T-G, 4.14). It never owns look. Playblasts, blocking stills and gesture clips are references only and never appear in the film.
+**Pilot first (decision 2026-11-02).** After the script and the style are locked and the pilot scenes' assets pass G2-P (03 §3.5), 04 blocks only the two pilot scenes of the two-scene pilot (SKILL.md; 4.14). When the user approves both pilot scenes, every other shot is blocked on exactly the blocking recipe the pilot locked. Calendar for the whole-film pass (00-award-brief-and-calendar.md §0.7): shot list on D3–D4, greybox and still batches on D4–D5, playblasts and animatic v1 on D6, **animatic lock on D7**. The pilot comes first, so batches for non-pilot scenes start only after the pilot approval; if that pushes the animatic lock past D7, say so in Arabic and re-plan the dates with the user (00).
 
-Talk to the user in Arabic (addressing them as أبوستيشا). Write the friend's brief, hand-off sheets and every prompt clause in English, unless the user says their friend prefers Arabic. Blender UI terms stay in English either way.
+Talk to the user in Arabic (addressing them as أبوستيشا, with gender-neutral wording such as «هل نعتمد…؟»). Write the friend's brief, hand-off sheets and every prompt clause in English, unless the user says their friend prefers Arabic. Blender UI terms stay in English either way.
 
 ---
 
@@ -19,28 +24,35 @@ Talk to the user in Arabic (addressing them as أبوستيشا). Write the frie
 | Sun azimuth and elevation per location and story date, north direction | ledger-continuity-physics.md | for exteriors |
 | Friend's availability and realistic shots per day | 00 Inputs | yes |
 | Blender access: friend's machine, or the user's Blender connected through an MCP | 4.8 | at least one route |
+| The two pilot scenes; before the pilot approval only their shots are blocked | SKILL.md (two-scene pilot); 02 §2.13; 03 §3.5 (G2-P) | yes |
+| Approved plates and frames for blocking stills: location `master`, `rev`, `angle-<n>`, keyframes, frames of approved drafts; the plate route chosen by pilot test T-B | 03 §3.1.6, §3.5; 05 | for `STILL-MRK` and `STILL-SKT` shots |
+| The film's frame: full 16:9 (recommended) or a letterbox inside 16:9 (decision D-9) | 02 §2.1 step 4; 07 | before cameras are set |
+| `SLA_04_BLOCKING-RECIPE_v1.md` | 4.14, written at the pilot approval | for every non-pilot shot |
+| Phone gesture clips | the user or the friend (4.13) | only for `+GEST` shots |
 
 ---
 
 ## Hard rules
 
-1. **Reference only.** A playblast, Blender render or layout still never goes into the edit. It would count against the 70% Seedance share and break the photoreal look (00 §0.4).
+1. **Reference only.** A playblast, Blender render, layout still, blocking still or gesture clip never goes into the edit. It would count against the 70% Seedance share and break the photoreal look (00 §0.4).
 2. **The guide copies defects as faithfully as intent.** A bent pole came back as a snake, loose blocks as extra people, a car with no marked front driving in reverse, a hero keyed past a roof edge air-walking (scenario-labs; greybox-director). Fix identity and physics in geometry first and in prompt text second.
-3. **One BLOCK shot = one Seedance generation.** The playblast lasts exactly G whole seconds, 4 ≤ G ≤ 15. The clip length equals the requested duration. Seedance stretches a shorter reference, and the motion turns floaty (greybox-director). Seedance 2.5 on Higgsfield accepts 4–30 s (`duration`, whole seconds), but the 15 s cap is our house rule: clips of 10–15 s held layout and clips of 20–30 s drifted (scenario-labs audit of 28 renders).
+3. **One BLOCK shot = one Seedance generation.** The playblast lasts exactly G whole seconds, 4 ≤ G ≤ 15. The clip length equals the requested duration. Seedance stretches a shorter reference, and the motion turns floaty (greybox-director). Seedance 2.5 on Higgsfield accepts 4–30 s (`duration`, whole seconds), but the 15 s cap is our house rule for every playblast-driven shot (decision D-10, kept 2026-11-02): clips of 10–15 s held layout and clips of 20–30 s drifted (scenario-labs audit of 28 renders). The studied films' 20–30 s takes (The Breach, SÉKOU, THREAD) were mostly blocked by text, so only a one-space take blocked by a still and text may run to 25 s (4.1 step 3; 05 P05-6).
 4. **Colour carries identity.** One saturated colour per hero, a grey set, a dark world. Never deliver an all-grey playblast: one provider's input screen refused a bare grey mannequin clip, while saturated colours passed (scenario-labs).
-5. **The upload copy is clean:** no overlays, gizmos, path lines, empties, camera frustums, text, burn-ins or audio. The Seedance 2.5 prompt guide's clay-model advice asks for no trajectory lines, coordinate lines or camera cones. A video's audio track can be read as a reference, so the upload copy is silent.
+5. **The upload copy is clean:** no overlays, gizmos, path lines, empties, camera frustums, text, burn-ins or audio. The Seedance 2.5 prompt guide's clay-model advice asks for no trajectory lines, coordinate lines or camera cones. A video's audio track can be read as a reference, so the upload copy is silent. The same holds for a gesture clip, which also loses its location metadata (4.13).
 6. **Lens discipline.** Use only focal lengths from the 02 ladder. Never animate a lens jump. A cut changes lens only by changing camera.
 7. **IDs from 01, never renumbered.** Shots are `S07-SH03`; inserted shots are `S07-SH03A`; a cut shot stays in the table as `OMITTED`.
-8. **Holdback.** Drive folders are shared only with named people (the user, the friend). Never use "Anyone with the link". No playblast is posted anywhere (00, holdback). The film's Higgsfield project stays private: never publish or share it, and never bring a playblast into Higgsfield from a public link.
-9. **No generation or imported assets in this step.** Do not use the Higgsfield add-on's Video, Scene builder or other paid tabs, ahujasid's `generate_3d`, `search_assets` or `import_asset`, or any `generate_*` call. Build with primitives only. Seedance runs only in 05-seedance-production.md (Higgsfield `generate_video`, model `seedance_2_5`), where it is logged.
-10. **Authorship is logged per shot.** Record who keyed it (friend, user, Claude) and who approved it. Human-keyed motion on the primary subjects is evidence for the authorship dossier (00 §0.11). Record the Blender version and the MCP server and version in the ledger's "Tools that shape frames" pin, so the disclosure (00 D1) can list Claude and the MCP as support tools with a 0% share of the final picture.
-11. **G-rated staging.** Block no violence beyond mild, and no drug, alcohol or tobacco props. Re-check any beat 01 flagged.
+8. **Holdback.** Drive folders are shared only with named people (the user, the friend). Never use "Anyone with the link". No playblast is posted anywhere (00, holdback). The film's Higgsfield project stays private: never publish or share it, and never bring a playblast or gesture clip into Higgsfield from a public link.
+9. **No generation in Blender, and only blocking stills outside it.** Do not use the Higgsfield add-on's Video, Scene builder or other paid tabs, ahujasid's `generate_3d`, `search_assets` or `import_asset`, or any `generate_*` call from Blender. Build with primitives only. The only generations in this step are the blocking stills (4.12) and still restyles (4.9): Higgsfield `generate_image` on 03's routing (03 §3.0.1), preflighted with `get_cost: true`, made only after the user's yes for that batch, and logged like any image (job ID, model, folder, SHA-256 of the download). Seedance runs only in 05-seedance-production.md (Higgsfield `generate_video`, model `seedance_2_5`), where it is logged.
+10. **Authorship is logged per shot.** Record who keyed it (friend, user, Claude), or who performed a gesture clip, and who approved it. Human-keyed motion on the primary subjects is evidence for the authorship dossier (00 §0.11). Record the Blender version and the MCP server and version in the ledger's "Tools that shape frames" pin, so the disclosure (00 D1) can list Claude and the MCP as support tools with a 0% share of the final picture.
+11. **G-rated staging.** Block no violence beyond mild, and no drug, alcohol or tobacco props. Re-check any beat 01 flagged. The same applies to a gesture clip's stand-in object.
+12. **Gesture clips show hands only.** No face, tattoo, ring, watch, logo, brand or readable text. The role line keeps the person out of the picture (4.13), and no real person appears in the film.
+13. **Pilot basis.** Until the user approves the two-scene pilot, only the pilot scenes are blocked. After the approval, every shot is blocked on the locked blocking recipe (4.14). A recipe change is a new version, made only with the user's yes.
 
 ---
 
 ## Procedure
 
-### 4.1 Shot list and triage (D3–D4)
+### 4.1 Shot list and triage (D3–D4; the pilot scenes first, 4.14)
 
 1. Break each locked scene into shots. One shot holds one readable idea. A beat that needs two ideas is two shots. **Two people talking in one ON shot is unsolved** (01 §1.2.6): give each speaker their own shot, or shoot the reverse over the listener.
 2. For each shot, set size, lens, camera height, move and screen direction. Take them from the scene's 02 variant:
@@ -54,17 +66,23 @@ Talk to the user in Arabic (addressing them as أبوستيشا). Write the frie
 | FINALE | steadied handheld: about half the R-DAY amplitudes |
 
 3. **Duration.** Edit length L (frames) comes from the measured dialogue plus action and reaction beats. Generation length is `G = max(4, ceil((L + 24) / 24))` seconds. That adds at least 12 frames of head handle and 12 of tail handle at 24 fps; rounding up adds the rest to the tail. If G > 15, split the shot or plan a cut. Inserts shorter than 4 s still generate 4 s; 07-edit-mix-finish.md trims them. For every shot with an ON line, re-run 01's preflight (§1.2.6) against the real shot: keep the clip to 3–8 s with one speaker, or mark the line REBALANCE and tell the user.
-4. **Triage** each shot into one mode:
+   **Long takes (decision D-10, 2026-11-02).** The 15 s cap holds for every playblast-driven shot: a longer move is split or cut. A one-space take blocked by a still and text (no route beyond the room, no vehicle, no physics event) may run 16–25 s. Write its action for about 80% of G and leave the rest as a tail that 07 trims (05 P05-6): `G = ceil(L / 19.2)` (19.2 = 24 fps × 0.8), with L the edit length in frames. Above 25 s, split. ON lines inside a long take still pass 01's preflight.
+4. **Triage** each shot into one mode. Decision 2026-11-02 (P04-2): Blender is kept for long moves and routes, and locked and dialogue shots are blocked from stills. CONTROL, LEAK and Fukushima blocked shots this way and reached their films.
    - **BLOCK** (full playblast) if any of these hold:
-     - the camera moves and the move carries meaning;
-     - two or more subjects relate by position or eyeline;
-     - there is a travel path, vehicle or crowd reaction;
-     - there is a physics event (jump, fall, water entry, contact, glass);
-     - it is the master shot that fixes a location's geography;
+     - a camera move of about 10 s or more, or a route through more than one room or space;
+     - a shorter camera move whose path carries meaning (a reveal timed to an action);
+     - a travel path, vehicle or crowd reaction;
+     - a physics event (jump, fall, water entry, contact, glass);
+     - a moving master shot that fixes a location's geography;
      - dream geometry must hold exact symmetry.
-   - **STILL** (one 1920×1080 camera still as a layout reference): one subject, simple action, and a camera that is static or carries only the variant's default drift. That drift is written in the prompt (05), not blocked.
-   - **TEXT** (no Blender): inserts, macros, HUD and screen graphics (planned as post graphics per 01 `LEGIBLE-TEXT`), and simple B-roll. A full-frame post graphic is non-Seedance picture. Add its seconds to the 00 §0.4 non-Seedance budget (≤ 10% of T), and show the running total in T1.
-5. **Capacity check.** BLOCK count ≤ (friend's shots/day × greybox days D4–D6) + Claude's MCP capacity. If it does not fit, demote the easiest BLOCK shots to STILL. Never shorten the animatic. Hardest shots go first, so that 05 can start drafts on D7.
+   - **STILL** (a blocking still, 4.12) for locked or near-locked shots and dialogue shots when no BLOCK condition holds. This includes two subjects who relate by position or eyeline. The camera is static or carries only the variant's default drift, which 05 writes in the prompt (02 operator sentence), not the blockout. Pick the sub-type:
+     - `STILL-MRK`, a marker still on the approved plate: who stands where, facing where;
+     - `STILL-PLAN`, a floor plan (one per scene or location): geography across shots and reverses. It goes beside a MRK or LAY still, never alone, and never to force a move;
+     - `STILL-SKT`, a pose sketch of an approved frame: a body pose or a body-to-object relation;
+     - `STILL-LAY`, the Blender layout still (one 1920×1080 camera still, the earlier STILL mode): one subject, simple action, and a camera position that must be exact.
+   - **TEXT** (no Blender, no still): inserts, macros, HUD and screen graphics (planned as post graphics per 01 `LEGIBLE-TEXT`), and simple B-roll. A full-frame post graphic is non-Seedance picture. Add its seconds to the 00 §0.4 non-Seedance budget (≤ 10% of T), and show the running total in T1. Until pilot test T-F (05, decision D-3) is approved, each insert or atmosphere piece is its own shot and its own generation, and written cuts never enter a BLOCK, STILL or dialogue shot (05 rule 3).
+   - **`+GEST`**, a flag on any mode (4.13): a precise hand procedure gets a phone gesture clip.
+5. **Capacity check.** BLOCK count ≤ (friend's shots/day × greybox days: D5–D6 for the pilot scenes, D9–D10 for the rest in calendar v02) + Claude's MCP capacity. If it does not fit, demote the easiest BLOCK shots to a STILL sub-type (most often `STILL-MRK` beside the scene's `STILL-PLAN`), and keep BLOCK for long moves, routes and physics. Never shorten the animatic. Hardest shots go first, so that 05 can start the pilot drafts on D7 and the other scenes' drafts on D10.
 6. Build the blocking table (template T1). Show it in Arabic and get the user's choices on every PROPOSED cell.
 
 ### 4.2 Location sets: one geography per location
@@ -161,6 +179,7 @@ Seedance copies whatever moves in the clip, limbs included. Choose per character
   - camera ≥ 0.8 m from walls and rails unless the contact is intended (closer reads as a collision or a cut) (jellypoplabs whitebox-check);
   - one side of the action line per scene;
   - journeys keep a fixed screen direction. PROPOSED: Miraj's trips to work run left → right and his trips home right → left.
+- **Frame (decision D-9).** 02 recommends full 16:9 with no matte (02 §2.1 step 4); the user decides in writing with the style lock (D5, calendar v02), before any pilot camera is set. If they choose a letterbox inside 16:9 (2.39:1 inside 1920×1080 leaves an 804 px band with 138 px bars), keep heads, eyelines and every beat inside the band in every BLOCK camera and every blocking still. The `_REV_` copy and the contact sheet show the band lines. The `_PB_` stays the clean full frame (hard rule 5).
 
 ### 4.5 Timing locked to dialogue, and the animatic
 
@@ -171,7 +190,7 @@ Seedance copies whatever moves in the clip, limbs included. Choose per character
    `ffmpeg -i <line.wav> -af "adelay=<ms>:all=1,apad=whole_dur=<G>" -ar 48000 -ac 1 -t <G> SLA_<SHOT>_DLG_v<NN>.wav`
    Two or more lines are mixed without level loss:
    `ffmpeg -i <L1.wav> -i <L2.wav> -filter_complex "[0]adelay=<ms1>:all=1[a];[1]adelay=<ms2>:all=1[b];[a][b]amix=inputs=2:normalize=0,apad=whole_dur=<G>" -ar 48000 -ac 1 -t <G> SLA_<SHOT>_DLG_v<NN>.wav`
-5. **Whole-film animatic (D6), assembled in cut order.** Use the playblast for BLOCK shots, the layout still for STILL shots, and a black slate with the shot ID for TEXT shots. Add every selected dialogue WAV and no music.
+5. **Whole-film animatic (D6), assembled in cut order.** Use the playblast for BLOCK shots, the approved blocking still for STILL shots (the MRK, SKT or LAY still; a PLAN never stands for a shot), and a black slate with the shot ID for TEXT shots. The pilot's two scenes get their own animatic first (4.14). Add every selected dialogue WAV and no music.
    - Build it in a Blender VSE file `SLA_ANIMATIC_v##.blend`.
    - When no Blender is available, build it with ffmpeg from the cut-list CSV. Trim each clip by its handles, so the animatic shows edit lengths.
    - Export `SLA_ANIMATIC_v##.mp4` (1920×1080, 24 fps, shot ID and timecode burned in) and `SLA_ANIMATIC_v##_cutlist.csv` (shot, in TC, out TC, edit frames, G, mode). The user rebuilds the edit in Premiere from the CSV (07).
@@ -197,7 +216,7 @@ Seedance copies whatever moves in the clip, limbs included. Choose per character
 
 ### 4.7 Mode A: the Blender friend builds it
 
-1. Ask once: «بأي لغة تفضّل أن أكتب ملف التعليمات لصديقك: الإنجليزية أم العربية؟»
+1. Ask once: «بأي لغة نكتب ملف التعليمات لصديقك: الإنجليزية أم العربية؟»
 2. Send the friend brief (T2) and the colour legend. Put both in Drive `_brief/`. Share the `04-blocking` folder with the friend as Editor, but only after the collaborator agreement is signed (00 R4) and the user says yes.
 3. **D2:** the friend builds the generic stand-in kit `SLA_KIT_STANDINS_v01.blend`: capsules in the six palette colours, extras and vehicle blocks. Heroes get their legend colours and features when 03's sheets land (D4). Location sets start once the shot list names them (D3–D4).
 4. **D4–D5:** per batch, the friend uploads files to the shot folders (4.11), sets the log status to REVIEW, and messages the user.
@@ -217,7 +236,7 @@ Seedance copies whatever moves in the clip, limbs included. Choose per character
 - **On the Bridge.** Its modules are normative for *how* to call `bl_*` tools: API conventions, save policy, audits. This module governs *what* the guide contains. Skip its lookdev, HDRI, PBR and generation modules, because the playblast is a Seedance guide, not a render. The server's notes group `blender-greybox` with the generation workflows, so read it for blockout conventions only and never run a generation step from it (hard rule 9). If a module conflicts with a hard rule here, follow this module and tell the user which rule conflicted. The `blender-*` module texts have not been read yet. Read them on first connect and note any conflict in the blocking log. The Bridge also lists a browser "3D Blocking Studio" (`bs_*`); it is untested, so use it only if the user asks.
 - **Lab and ahujasid** both default to port 9876. Never run them together.
 - **Probe read-only first:** `bpy.app.version` (5.2 LTS is the target; scenario's toolkit is 5.2-tested), the open file, its scenes, unsaved changes. Never touch objects you did not create. Build in a new scene `BLK_<SHOT>`, or in a new file the user names.
-- **Saves.** The Bridge rule is: save only when the user explicitly asks. Ask once: «هل تسمح لي بحفظ نسخة احتياطية منفصلة بعد كل مرحلة؟ ملفك الأصلي لن يُلمس.» With a yes, run `bpy.ops.wm.save_as_mainfile(filepath=<backup>, copy=True)` after each stage.
+- **Saves.** The Bridge rule is: save only when the user explicitly asks. Ask once: «هل أحفظ نسخة احتياطية منفصلة بعد كل مرحلة؟ الملف الأصلي لن يُلمس.» With a yes, run `bpy.ops.wm.save_as_mainfile(filepath=<backup>, copy=True)` after each stage.
 - **Execution hygiene:**
   - one short, idempotent stage per call, get-or-create by name;
   - every call first checks that the expected file and scene are open;
@@ -325,7 +344,7 @@ More 5.x traps:
 
 **Into Higgsfield.** `medias[].value` takes only a media ID or a job ID, never an https link, so a Drive share page cannot be passed. Upload the file itself (4.10 step 7): `media_upload` → PUT the bytes to the returned `upload_url` → `media_confirm` (`type: video`). Never use `media_import_url` on a Drive or public link (holdback).
 
-**Task type.** Always `mode: omni_reference`. `video_edit` and `video_extension` work on the greybox itself: an edit ignores `duration` and `aspect_ratio`, is billed by the reference's length, and keeps the grey world. A prompt that reads as an edit (edit, add, remove, delete, replace, change, modify) or an extension (extend, continue) can turn the task into one; the underlying model does this from the words alone, and whether Higgsfield's explicit `mode` prevents it is untested. So the T3 clause avoids those words.
+**Task type.** Always `mode: omni_reference`. `video_edit` and `video_extension` work on the greybox itself: an edit ignores `duration` and `aspect_ratio`, is billed by the reference's length, and keeps the grey world. A prompt that reads as an edit (edit, add, remove, delete, replace, change, modify) or an extension (extend, continue) can turn the task into one; the underlying model does this from the words alone, and whether Higgsfield's explicit `mode` prevents it is untested. So the T3 clauses (v1 and the PATH GUIDE variant v1-PG) and the 4.12–4.13 role lines avoid those words.
 
 **Settings.**
 
@@ -358,7 +377,11 @@ Pass when:
 - there is no audio stream;
 - size ≤ 200 MB.
 
-**Stills.** Save PNG stills at frame 1, the middle, the last frame and every named beat: `_STILL_v03_f0001.png`. 05 may use them as beat-anchor keyframe images (greybox-director) or as first-frame sources (`start_image`). A restyle of a still runs inside Higgsfield (`generate_image`, GPT Image 2.5 Sunburst or Nano Banana Pro / 2.1, per 03) in the scene folder, and is logged like any generation: job ID, model, folder and the sha256 of the downloaded original. Gate the result for surviving primitives, box heads above all. For STILL-mode shots, export `_LAYOUT_v##.png` for 03 and 05. 03 attaches it with "use only the geometry and camera; ignore the grey materials".
+**Stills.** Save PNG stills at frame 1, the middle, the last frame and every named beat: `_STILL_v03_f0001.png`. 05 may use them as beat-anchor keyframe images (greybox-director) or as first-frame sources (`start_image`). A restyle of a still runs inside Higgsfield (`generate_image`) in the scene folder on 03's routing (03 §3.0.1, decision 2026-11-02):
+- a frame-0 restyle into a keyframe is row 10: `nano_banana_pro` 2k at the film aspect, refs = the plate + the identity sheet, 4k only for a frame that becomes a Seedance reference. The alternative is the Kimti and THREAD chain: a `soul_cinematic` still for composition and light, then an identity swap on `nano_banana_pro` or `gpt_image_2`;
+- a pose sketch of an approved frame is `seedream_v5_pro` (4.12);
+- Nano Banana 2.1 is used only inside pilot test T-I2 (03 §3.5).
+Each one is logged like any generation: job ID, model, folder and the sha256 of the downloaded original. Gate the result for surviving primitives, box heads above all. For `STILL-LAY` shots, export `_LAYOUT_v##.png` for 03 and 05. 03 attaches it with "use only the geometry and camera; ignore the grey materials".
 
 ### 4.10 Review gate per shot (Claude, before the user sees it)
 
@@ -385,7 +408,8 @@ Pass when:
 4. Play `_REV_` against the line markers. Lines land on the planned frames. The timing matches the animatic.
 5. Fill the hand-off sheet (T3) from the scene, never retyped from the brief. Compute the lens heading (`lens_heading`, at the middle frame) and the camera-relative sun (`sun_relative`) per shot. Write them into the shot database (`lens_heading_deg`, `sun_rel`) and ledger-continuity-physics.md; the ledger's `sun_position.py --cam <heading>` must agree within a few degrees. If the physical sun contradicts the 02 variant rule (for example, a reverse angle puts R-DAY's sun in front of the camera), stop. Ask the user to choose: keep physics, or cheat the sun for this shot. Log the decision.
 6. Show the review card (T4). The user approves, and the log row turns APPROVED. Only the APPROVED `_PB_` version may be used in 05.
-7. **Upload to Higgsfield** (Claude; only the APPROVED `_PB_`). Check that the local file's sha256 matches T3. Then `media_upload` (filename = the `_PB_` name) → PUT the bytes → `media_confirm` (`type: video`), and `attach_project_asset` places it in the scene's `blocking/` folder of the film's Higgsfield project (ledger L.0b). Write the media ID and folder into T3 and T5. A new version is a new upload; never reuse the old media ID for v+1. 05 uploads a `_DLG_` track itself when it sends one.
+7. **Upload to Higgsfield** (Claude; only the APPROVED `_PB_`). Check that the local file's sha256 matches T3. Then `media_upload` (filename = the `_PB_` name) → PUT the bytes → `media_confirm` (`type: video`), and `attach_project_asset` places it in the scene's `blocking/` folder of the film's Higgsfield project (ledger L.0b). Write the media ID and folder into T3 and T5. A new version is a new upload; never reuse the old media ID for v+1. 05 uploads a `_DLG_` track itself when it sends one. Blocking stills (4.12) are Higgsfield jobs that are already in the scene's `blocking/` folder, so T3 lists their job IDs and nothing is uploaded. An approved gesture clip is uploaded like a `_PB_` (4.13).
+8. **STILL and `+GEST` shots** pass the same gate in short form: steps 1–3 become the checks in 4.12 step 5 or 4.13 step 4, and steps 5–7 apply as written (hand-off sheet, review card T4b, IDs in T3 and T5).
 
 ### 4.11 Google Drive: folders, names, log
 
@@ -401,15 +425,96 @@ AboStesha Films/SLA_01-second-life-ascent/04-blocking/
                SLA_S03-SH02_STILL_v03_f0001.png … _f0168.png
                SLA_S03-SH02_DLG_v03.wav     (only when the shot has dialogue)
                SLA_S03-SH02_HANDOFF_v03.md
-  animatic/    SLA_ANIMATIC_v02.mp4 · SLA_ANIMATIC_v02_cutlist.csv
-  SLA_04_blocking-log.csv
+  S03/SLA_S03_PLAN_v01.png          (floor plan, one per scene or location)
+  S03/S03-SH03/SLA_S03-SH03_MRK_v01.png       (marker still; SKT for a pose sketch) · _HANDOFF_v01.md
+  S03/S03-SH05/SLA_S03-SH05_GEST_v01.mp4      (clean gesture clip, uploaded) · SLA_S03-SH05_GEST-RAW_v01.mov (raw, never uploaded)
+  animatic/    SLA_PILOT-ANIMATIC_v01.mp4 · SLA_ANIMATIC_v02.mp4 · SLA_ANIMATIC_v02_cutlist.csv
+  SLA_04_blocking-log.csv · _brief/SLA_04_BLOCKING-RECIPE_v1.md (written at the pilot approval)
 ```
 - Mirror to `films/01-second-life-ascent/04-blocking/`. Git tracks `.md` and `.csv`; binaries are git-ignored.
-- The Higgsfield project holds only the uploaded APPROVED `_PB_` files, in each scene's `blocking/` folder (4.10 step 7). It is never the only copy.
+- The Higgsfield project holds only the uploaded APPROVED `_PB_` and `_GEST_` files and the blocking-still jobs, in each scene's `blocking/` folder (4.10 step 7). It is never the only copy.
 - PNG sequences stay local. Delete them after the encode passes verification.
 - Versions only go up. Never overwrite a version.
 - Keep everything 24 months (00 §0.2 rule D2: project files on request within 7 days).
 - Use the Google Drive connector to search, download and read. Create folders or share only after the user says yes.
+
+### 4.12 Blocking stills: the STILL route (decision 2026-11-02, P04-2)
+
+Locked and dialogue shots are blocked with a still made from an approved plate or frame, not a playblast. Three studied films blocked this way and the shots reached their films: CONTROL used location stills with coloured stick-figure markers (≈80 prompts), LEAK an overhead floor-plan Element, and Fukushima a pencil sketch in the final take of its parking-lot scene. That a still costs less than a playblast is [INFERRED]. Every still runs on the Higgsfield image model the studied films used for that job (decision 2026-11-02; 03 §3.0.1).
+
+| Sub-type | Use for | Made from | Model and settings (Higgsfield `generate_image`) | Role in 05 |
+|---|---|---|---|---|
+| `STILL-MRK` marker still | who stands where and faces where, on a locked or drifting camera; dialogue geography | the approved plate whose camera matches the shot: 03 `master`, `rev` or `angle-<n>`. If none matches, ask 03 for an angle plate (row 6) or use `STILL-LAY` | `nano_banana_pro` 2k, same aspect as the plate, Image 1 = the plate, 03's one-change edit form (E1), 2 takes. For markers that must sit exactly: `gpt_image_2_5` (`variant` sunburst, `quality` max, `resolution` 2k, `background` opaque), the precise-edit model of Fukushima and UNPROMPTED. CONTROL's marker model is not recorded; the routing is 03 row 11 [INFERRED] | BLOCKING STILL |
+| `STILL-PLAN` floor plan | one per scene or location: rooms, doors, furniture, numbered camera positions and stations, so geography holds across shots and reverses | text; or, when the location's Blender set exists (4.2), a top orthographic Workbench render of `SLA_LOC_<LOC>_SET` (exact and free, no generation) | `nano_banana_pro` 4k, 16:9, 2 takes (LEAK's plan matches a Nano Banana Pro 4K size [INFERRED]) | BLOCKING MAP |
+| `STILL-SKT` pose sketch | a body pose or a body-to-object relation (sitting into a seat, a hand on a rail) where a photoreal frame would take over the first frame or the light | an approved photoreal frame: a keyframe (03 row 10) or a frame of an approved draft | `seedream_v5_pro` 2k edit, Image 1 = the frame, `count` 2 (Fukushima); alternative `nano_banana_pro` 2k | POSE SKETCH |
+| `STILL-LAY` layout still | one subject, simple action, exact camera position | Blender camera still (4.9) | none | 03 attaches it as geometry and camera only |
+
+1. **Prompts.** Copy them from `prompt-library/locations.md`, "Blocking stills made from an approved plate". Fill the slots from T1 and the 4.2 set conventions:
+   - Marker still: "Keep this plate exactly as it is. Add flat, simple stick figures as markers: a {{legend colour}} figure at {{position, in metres from a named landmark}} facing {{direction}}, a {{legend colour}} figure at {{position}}. Markers are flat diagrams, not people. Do not move, resize, relight or redraw anything else in the image." Marker colours are the 4.3 legend colours, so a character has one colour in every playblast and every still. Use at most two markers, because a generation carries at most two character identities (playbook §3C.9 lint); extras stay in the shot text.
+   - Floor plan: "A clean overhead floor plan of {{place}}: rooms labelled {{plain room words}}, furniture outlines, doors, a camera icon at each numbered camera position {{1–n}}, a north arrow. Flat diagram, white lines on grey." Labels are plain room words and numbers only, never character names, asset codes or story words (TOKYO 4:17 saw an element name painted onto a street sign; 03 P03-10).
+   - Pose sketch (abridged from Fukushima's Seedream prompt): "Convert this image into a simple, loosely drawn pencil storyboard sketch. Preserve the original composition, camera angle, perspective, character pose, and placement of objects. Use sparse, slightly rough graphite lines on plain white paper. Simplify {{the figure and the objects}} into clear, recognizable shapes. Reduce the background to a few essential outlines. Keep the face indistinct, without detailed facial features. Use minimal shading. No fine textures or photorealistic rendering: a quick cinematic storyboard drawing, not a polished illustration."
+2. **Plate route.** Make every MRK still from the plate route that pilot test T-B chose (03 §3.5). Until T-B approves graded plates, that is the neutral master.
+3. **Budget.** A shot carries at most one blocking still, plus the scene's plan when geography must hold across a reverse. A floor plan gives geography, not a move: LEAK's 360° one-take with a plan came back as cuts between stations, so a move stays a BLOCK shot.
+4. **Generate.** Run `get_cost: true` first and show the card in Arabic with the job count and credits. Generate only after the user's yes for that batch. Each job carries `folder_id` = the scene's `blocking/` folder (`04_SCENES/Sxx_<slug>/blocking`). Names: `SLA_<SHOT>_MRK_v##.png`, `SLA_<S##>_PLAN_v##.png`, `SLA_<SHOT>_SKT_v##.png`. Download each kept original, hash it with SHA-256 and log it like any 03 image: route, model, job ID, folder, prompt origin (`C`, or `H/C` when the user's blocking choices shaped it).
+5. **Check before the user sees it.**
+   - The plate is unchanged except for the markers: compare side by side at 100% and reject any still that moved, relit or redrew the plate.
+   - Each marker is a flat diagram with no face, clothes or shadow. The colours match the legend, the positions and facings match T1, and nothing sits at a frame edge or outside the letterbox band (if D-9 chose one).
+   - The sketch's face is indistinct and its pose matches the frame.
+   - The plan's doors, sides and the action line match the set and the 180° line.
+6. **Role lines for 05.** 05 owns the final wording (P05-2 vocabulary; `prompt-library/seedance-action.md`, "Reference role block"):
+   - BLOCKING STILL (CONTROL): "@Image{{n}} is a BLOCKING STILL: the {{colour}} marker is {{CHR}}, the {{colour}} marker is {{CHR}}; the coloured markers are annotations, not objects; framing comes from the prompt."
+   - BLOCKING MAP (our wording [INFERRED]): "@Image{{n}} is a BLOCKING MAP of {{place}}: room layout, doors and camera positions only; it is a diagram and never appears as a picture in the shot."
+   - POSE SKETCH (Fukushima): "@Image{{n}} is a POSE SKETCH: pose and spatial reference only; its lines, strokes, colour patches, paper texture and drawing style must not enter the image." A sketch goes in `image_references`, never `start_image`.
+
+### 4.13 Phone gesture reference: `+GEST` (decision 2026-11-02, P04-3)
+
+For a precise hand procedure, the user or the friend films the gesture on a phone: a case opened in the right order, a button sequence, a strap threaded, a note folded. The Breach bound such a clip as a GESTURE REFERENCE in 6 jobs, and the insert made with it is in the film (medium confidence).
+
+1. **Filming card** (send it in Arabic):
+   - landscape, 1080p, 24 or 30 fps, the phone on a support at the shot's angle where possible;
+   - hands and forearms only: no face, tattoo, ring, watch, logo, brand or readable text; plain sleeves, a plain table, even light;
+   - a stand-in object of the prop's size and shape, with the working end clearly visible;
+   - one clean run of the gesture with a second of stillness before and after; three tries;
+   - G-rated: no weapon, drug, alcohol or tobacco, and no blade near a hand.
+2. **Clean copy.** Trim the best try to the gesture plus about 0.5 s each side (2–15 s). Re-encode it silent and without metadata, which also removes a phone's location tag:
+   `ffmpeg -i <raw> -ss <in> -to <out> -map 0:v:0 -vf "fps=24,scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2" -c:v libx264 -pix_fmt yuv420p -crf 16 -an -map_metadata -1 -movflags +faststart SLA_<SHOT>_GEST_v01.mp4`
+   Verify with `ffprobe -v error -show_entries format_tags:stream=codec_type,codec_name,width,height,r_frame_rate -of compact`. Pass: one h264 stream at 1920×1080 and 24/1, no audio stream, and no `location` tag.
+3. **Files.** The raw file stays private in the shot's Drive folder as `_GEST-RAW_`. It is evidence of human-performed motion for the authorship dossier (00 §0.11). It is never uploaded to Higgsfield and never goes into the edit.
+4. **Check before the user sees it.** Only hands, the stand-in object and a plain ground are in frame, and the working end and the order of moves read at 2 fps.
+5. **Upload** the approved clean copy like a `_PB_` (4.10 step 7): `media_upload` → PUT the bytes → `media_confirm` (`type: video`) → `attach_project_asset` into the scene's `blocking/` folder.
+6. **Role line for 05** (The Breach's form): "@Video{{n}} is a GESTURE REFERENCE: it demonstrates the procedure only. Copy only the hand path, the order of moves and which end of the {{object}} is worked. Do not copy the person, their clothes, the room, the table or the light; the hands are {{CHR}}'s hands from @Image{{m}}." Name the object's anatomy in the shot text as well ("the small catch at the left end, never the hinge"), because The Breach had to spell out which end was worked. A `+GEST` shot is usually TEXT or STILL. With a BLOCK shot the clip is a second video reference, inside the 4.9 limits (at most 10 clips and 30 s in total).
+7. **Authorship and disclosure.** Log the performer (user or friend) and the date in T5. The clip is a support reference with a 0% share of the final picture (00 D1). If the friend performs it, the collaborator agreement covers it (00 R4). In the draft, sweep at 2 fps for any trace of the filmer (sleeve, watch, skin, room) before approval.
+
+### 4.14 The two-scene pilot: the blocking part (decision 2026-11-02)
+
+The two-scene pilot (SKILL.md) proves the whole method on two full scenes before the film is made: assets → blocking → Seedance drafts → 1080p finals → rough sound and grade. It runs after the script and the style are locked and the pilot scenes' assets pass G2-P (03 §3.5). This module's part:
+
+1. **Shot list.** The whole film's shot list (4.1) may be drafted as PROPOSED right after the script lock: it is text only, it keeps 01's IDs, and it shows the runtime early. Batches (greybox, stills, gesture clips) run only for the pilot scenes' shots until the pilot is approved.
+2. **Block the pilot scenes with the final method.** Apply 4.1–4.13 as written: triage, sets, stand-ins, cameras, dialogue strips and `_DLG_` tracks, playblasts, blocking stills, gesture clips, review, upload and hand-off sheets. Assemble `SLA_PILOT-ANIMATIC_v##.mp4` (the 4.5 step 5 spec, the two scenes only) and pass Gate 4-P.
+3. **Pilot tests run here.** Each runs inside the pilot. Until the user approves its result, the current rule in column 3 stays in force. Preflight each paid test with `get_cost: true` and get one yes for the set.
+
+| Test | Question | Current rule until approved | Method in the pilot | Pass |
+|---|---|---|---|---|
+| T-G (P04-1; playbook §4.8) | Does the PATH GUIDE clause v1-PG (route, timing marks and layout from the clip; camera behaviour from text) beat clause v1 (camera from the clip) on long moves? | clause v1 on every BLOCK shot | one pilot BLOCK shot with a camera move of 10–15 s or a multi-room route, drafted twice with identical settings, references and text except the clause: A = v1, B = v1-PG plus the 02 variant's operator sentence. If no pilot shot qualifies, use the longest pilot BLOCK move; if there is none, a test shot in a pilot location in `99_TESTS`, with the user's yes. 2 fps sweep and a side-by-side | B keeps the route, the positions and every beat within ±0.5 s, the camera reads as a person and not a rig, and no cut is invented → v1-PG becomes the clause for moves of about 10 s or more and for multi-room routes; v1 stays where the camera must match the playblast exactly. Otherwise v1 stays everywhere |
+| BL-1 (open in 4.9) | Does Higgsfield accept a Workbench `_PB_` as `video_references`, and does an `omni_reference` job report that mode with no edit or extension task? | the 4.9 spec, marked [UNVERIFIED] | the first pilot BLOCK draft (05) | accepted, and the job reports `omni_reference` → remove the [UNVERIFIED] marks; if refused, strong tint (Common failures) and re-test |
+| BL-2 (open in 4.9 Settings) | Do Workbench cavity and shadows help or hurt the guide? | cavity optional, shadows off | one pilot BLOCK shot exported both ways, drafted with identical text | the version with fewer surviving primitives and steadier layout becomes the export setting |
+| BL-3 (open in 4.3) | Jointed stand-in or capsule for the robot? | jointed, hand-keyed limp | only if a pilot scene shows the robot: a 4–6 s window both ways | the limp and the stiff gait read; no human gait leaks in |
+
+The pilot tests of 02, 03 and 05 (T-B, T-E, T-F, T-C, T-D and the others those modules list) run on these same shots; 04 supplies the blocking they need.
+4. **Pilot checks on the applied rules.** STILL-route shots hold positions, eyelines and the 180° line. No marker, pencil line or plan graphic renders in a take. A `+GEST` insert keeps the hand path and nothing of the person. Lines land on their planned frames in the 1080p finals.
+5. **Blocking recipe lock at the pilot approval.** When the user approves both pilot scenes, Claude writes `04-blocking/_brief/SLA_04_BLOCKING-RECIPE_v1.md` from the approved pilot shots:
+   - the stand-in kit version and the colour legend;
+   - the triage thresholds and the still sub-type per shot class;
+   - the clause per shot class (v1, or v1-PG if T-G passed), with the stand-in and gait passages;
+   - each blocking-still template with its model id, every parameter, takes and role line, and the plate route T-B chose;
+   - the gesture filming card and encode;
+   - the camera rig and the handheld budgets per variant as calibrated;
+   - the export settings (Workbench, cavity per BL-2), the encode and ffprobe pass rules;
+   - the duration rules (the 15 s cap; the long-take rule);
+   - the BL-1…BL-3 and T-G results.
+   From then on, every shot of the film fills only the recipe's slots. Changing the recipe means `v1.1`, made only with the user's yes and a list of the shots to re-block and re-draft (SKILL.md §3).
+6. **If the pilot is not approved,** the user names what failed. 04 changes only the failing recipe items, re-blocks the affected pilot shots, and 05 re-drafts them. Then the user judges again.
+7. **Name.** "Pilot" is an internal production test. The film is never called a pilot or an episode (00 F8).
 
 ---
 
@@ -421,11 +526,12 @@ AboStesha Films/SLA_01-second-life-ascent/04-blocking/
 | اللقطة | السطور | النمط | المتغيّر | الحجم | العدسة | ارتفاع الكاميرا | الحركة/الجهاز | طول المونتاج | G (ث) | الإطارات | الشخصيات (لون/نوع) | لحظات مفتاحية (إطار) | اتجاه الشاشة | فيزياء | المنفّذ | الحالة |
 | S03-SH01 | — | BLOCK | R-DAY | EWS | 24mm | 1.6m | handheld, slow pan | 4.0s | 5 | 1-120 | MIRAJ red featured (far), extras grey | train enters f40 | L→R | — | friend | PROPOSED |
 | S03-SH02 | — | BLOCK | R-DAY | FS→MWS | 35mm | 1.55m | backing rail, handheld | 5.5s | 7 | 1-168 | MIRAJ red featured, ROBOT cyan jointed | robot stops f121 | L→R | CONTACT f133 | friend | PROPOSED |
-| S03-SH03 | S03-L03 | STILL | R-DAY | MCU | 50mm | 1.62m | handheld drift (prompt only) | 3.0s | 4 | — | MIRAJ red | — | — | — | Claude | PROPOSED |
+| S03-SH03 | S03-L03 | STILL-MRK | R-DAY | MCU | 50mm | 1.62m | handheld drift (prompt only) | 3.0s | 4 | — | MIRAJ red marker (+ S03 PLAN) | — | — | — | Claude | PROPOSED |
 | S03-SH04 | — | TEXT | BROADCAST | INSERT | — | — | HUD graphic in post | 2.5s | — | — | — | — | — | LEGIBLE-TEXT | 07 | PROPOSED |
-عدد لقطات BLOCK: 2 / السعة المتاحة: __ · زمن المشهد: 15.0s · صورة غير Seedance حتى الآن: 2.5s (الحد ≈ 10% من T)
+| S03-SH05 | — | TEXT +GEST | R-DAY | ECU | 85mm | 1.1m | locked, faint drift (prompt only) | 3.0s | 4 | — | MIRAJ hands | case opened f30, lens lifted f62 | — | — | user (phone) | PROPOSED |
+عدد لقطات BLOCK: 2 / السعة المتاحة: __ · صور بلوكنغ: 1 MRK + 1 PLAN · مقاطع إيماءة: 1 · زمن المشهد: 18.0s · صورة غير Seedance حتى الآن: 2.5s (الحد ≈ 10% من T)
 ```
-CSV keys: `shot_id,line_ids,mode,variant,size,lens_mm,cam_height_m,move_rig,edit_s,gen_s,frames,cast,beats,screen_dir,physics,owner,status`.
+Modes: `BLOCK`, `STILL-MRK`, `STILL-PLAN`, `STILL-SKT`, `STILL-LAY`, `TEXT`; the `+GEST` flag goes in its own CSV column. CSV keys: `shot_id,line_ids,mode,gest,variant,size,lens_mm,cam_height_m,move_rig,edit_s,gen_s,frames,cast,beats,screen_dir,physics,owner,status`.
 
 **T2 — Friend brief** (`SLA_04_FRIEND-BRIEF_v01.md`; the shot-specific part repeats per batch)
 ```markdown
@@ -463,6 +569,8 @@ Never: render passes for the film, lens jumps on a cut, all-grey figures, public
 # S03-SH02 blocking hand-off v03 (APPROVED 2026-11-04 by AboStesha)
 Files: SLA_S03-SH02_PB_v03.mp4 (sha256 …) · REV · STILL f0001/f0084/f0121/f0168 · DLG — none
 Higgsfield: PB media ID … in 04_SCENES/S03_<slug>/blocking (pass as video_references, mode omni_reference)
+  Blocking stills: S03 PLAN job ID … (BLOCKING MAP) · gesture clip: none
+Clause: v1 (default). v1-PG only as arm B of pilot test T-G, or after the user approves T-G for moves of about 10 s or more.
 Format: 24 fps, 1920x1080, frames 1-168 = 7 s · edit window f13-f144 (handles 12 head, 24 tail)
 Camera: CAM_S03-SH02, 35 mm (about 63 degrees), height 1.55 m, backing rail, lead 3.5 m -> 2.4 m (FS -> MWS),
   lens heading 278 deg (west), handheld R-DAY budget, focus on Miraj's face, background soft.
@@ -477,7 +585,8 @@ Motion states: Miraj walks toward camera at 1.35 m/s, stops f118; robot steps in
   right f84-f121 and raises its arm; fist bump on f133; train passes behind f97-f160 at 12 m/s.
 Lines: none in this shot.  Events for 06 SFX: train pass f97-f160, fist-bump contact f133.
 Assumed sizes: walkway width 4.0 m, railing 1.1 m.  Artifacts: none.
-Tie-breaks: the clip defines the whole camera path; where text and clip disagree about motion or
+Tie-breaks: the clip defines the whole camera path (under v1-PG: the route and timing only; the
+  camera's behaviour comes from the text); where text and clip disagree about motion or
   position, the clip wins; every stand-in becomes the real subject its position and size imply.
 Blockout clause v1 for 05 (no brackets, no ratio or duration words):
 @Video1 is a coarse 3D blocking reference: rehearsal footage in which coloured stand-ins walked
@@ -495,8 +604,27 @@ lifts, weight shifting from foot to foot, arms swinging. His feet never slide, g
 robot keeps the jointed figure's stiff, mechanical steps and its left-leg limp. If the text and
 @Video1 disagree about motion or position, @Video1 wins. No blocky placeholder geometry, no
 mannequin figures, no capsule-shaped bodies.
+
+Blockout clause v1-PG for 05: the PATH GUIDE variant (arm B of pilot test T-G; for moves of about
+10 s or more and multi-room routes only after the user approves T-G):
+@Video1 is a PATH GUIDE only: take {{subject}}'s route, the timing marks and the layout of {{place}}
+from it — not its stiff camera, not its empty surroundings, not its placeholder shapes. The
+{{object}} in @Video1 is a POSITION placeholder only: design a real {{object}}. The red figure is
+{{CHR}}, @Image1. {{one sentence per further colour, as in v1}} {{the stand-in and gait passages of
+v1, unchanged}} The camera's behaviour comes from this text: {{the 02 variant CAMERA line with its
+operator sentence}}. If the text and @Video1 disagree about the route, the positions or the timing,
+@Video1 wins.
 ```
-Two passages are adapted from scenario-labs `cast.md` (MIT): the stand-in passage ("a colored capsule stand-in … natural human motion") and the gait passage ("walks naturally … glide or float"). They are rewritten here for one character with arms. Use them only for human characters on capsule stand-ins. A jointed robot gets one plain motion line instead. Identity handles follow the Higgsfield face route proven in T1 (00 §0.8; 03 §3.3–3.4): `@Image1` stays when the approved sheet passes as `image_references`; with a first frame generated inside Higgsfield (`start_image`), 05 maps the colour to the person in that frame; with a reference element, 05 writes `<<<element_id>>>` where the clause names the person and never puts the element in `medias`. The colour-to-name mapping itself never changes. Keep edit and extension words out of the clause (4.9). 05 merges the clause with the 02 prefix, the asset role lines and the audio binding, then tests it on one shot. That test A/Bs the scenario-labs 2×2 style board against the greybox-director frame-0 restyle.
+v1-PG adapts The Breach's approved wording: "The attached previz video is a PATH GUIDE only: take Tommy's route and the room layout from it — not its stiff camera, not its empty rooms, not its placeholder shapes" and "the bed in the previz is a POSITION placeholder only". The Breach's strict family ("Follow the camera movement of the reference video EXACTLY …") gave 18 jobs and none reached 1080p, while the PATH GUIDE family produced the approved 30 s one-take. Our v1 takes the camera from the clip, as the strict family did, so T-G decides which clause is used for long moves.
+
+**Reference lines for STILL and `+GEST` shots** (in the hand-off sheet; 05 merges them, 4.12 step 6 and 4.13 step 6):
+```text
+@Image{{n}} is a BLOCKING STILL: the red marker is Miraj; the coloured markers are annotations, not objects; framing comes from the prompt.
+@Image{{n}} is a BLOCKING MAP of the metro walkway: room layout, doors and camera positions only; it is a diagram and never appears as a picture in the shot.
+@Image{{n}} is a POSE SKETCH: pose and spatial reference only; its lines, strokes, colour patches, paper texture and drawing style must not enter the image.
+@Video{{n}} is a GESTURE REFERENCE: it demonstrates the procedure only. Copy only the hand path, the order of moves and which end of the lens case is worked. Do not copy the person, their clothes, the room, the table or the light; the hands are Miraj's hands from @Image1.
+```
+Two passages are adapted from scenario-labs `cast.md` (MIT): the stand-in passage ("a colored capsule stand-in … natural human motion") and the gait passage ("walks naturally … glide or float"). They are rewritten here for one character with arms. Use them only for human characters on capsule stand-ins. A jointed robot gets one plain motion line instead. Identity handles follow the Higgsfield face route proven in T1 (00 §0.8; 03 §3.3–3.4): `@Image1` stays when the approved sheet passes as `image_references`; with a first frame generated inside Higgsfield (`start_image`), 05 maps the colour to the person in that frame; with a reference element, 05 writes `<<<element_id>>>` where the clause names the person and never puts the element in `medias`. The colour-to-name mapping itself never changes. Keep edit and extension words out of the clause (4.9). 05 merges the clause with the 02 prefix, the asset role lines and the audio binding, then tests it on one shot inside the two-scene pilot. That test A/Bs the scenario-labs 2×2 style board against the greybox-director frame-0 restyle.
 
 **T4 — Review card** (Arabic, one per shot)
 ```text
@@ -506,14 +634,25 @@ Two passages are adapted from scenario-labs `cast.md` (MIT): the stand-in passag
 بالعين: الألوان مطابقة · مخرج الممشى مأهول ✓ · بداية ونهاية ثابتتان ✓
 ملاحظات: الروبوت يدخل الكادر قبل السطر بـ 9 إطارات — مقصود؟
 الشمس: عالية خلف الكاميرا يساراً — متوافقة مع R-DAY ✓
-هل تعتمد هذه النسخة لمسودات Seedance؟ (نعم / تعديل: …)
+هل نعتمد هذه النسخة لمسودات Seedance؟ (نعم / تعديل: …)
+```
+
+**T4b — Review card for a blocking still or gesture clip** (Arabic, one per shot)
+```text
+لقطة S03-SH03 — صورة بلوكنغ MRK v01 (nano_banana_pro 2k، رصيد: 2) — جاهزة لاعتمادك
+اللوحة الأصلية لم تتغير ✓ · العلامة الحمراء = معراج، عند الدرابزين، وجهه نحو الكاميرا يساراً ✓ · العلامات رسم مسطّح بلا ملامح ✓
+لقطة S03-SH05 — مقطع إيماءة GEST v01 (4 ث، صامت، بلا بيانات موقع) — اليدان والعلبة فقط ✓ · الطرف الصحيح يُفتح ✓
+هل نعتمدهما لمسودات Seedance؟ (نعم / تعديل: …)
 ```
 
 **T5 — Blocking log row** (`SLA_04_blocking-log.csv`, append-only)
 ```text
 shot_id,version,mode,owner,channel,blend_file,pb_file,pb_sha256,gen_s,frames,status,approved_by,approved_date,notes,hf_media_id,hf_folder
 S03-SH02,v03,BLOCK,friend,manual,SLA_S03-SH02_BLK_v03.blend,SLA_S03-SH02_PB_v03.mp4,<sha256>,7,1-168,APPROVED,AboStesha,2026-11-04,robot limp keyed by friend,<media_id>,04_SCENES/S03_<slug>/blocking
+S03-SH03,v01,STILL-MRK,Claude,higgsfield nano_banana_pro 2k,—,SLA_S03-SH03_MRK_v01.png,<sha256>,4,—,APPROVED,AboStesha,2026-11-04,from LOC_METRO-WALKWAY master v02,<job_id>,04_SCENES/S03_<slug>/blocking
+S03-SH05,v01,TEXT+GEST,user,phone,—,SLA_S03-SH05_GEST_v01.mp4,<sha256>,4,—,APPROVED,AboStesha,2026-11-04,performed by AboStesha; hands only; raw kept on Drive,<media_id>,04_SCENES/S03_<slug>/blocking
 ```
+For STILL and `+GEST` rows, `pb_file` and `pb_sha256` hold the reference file, and `hf_media_id` holds its job ID (blocking still) or media ID (gesture clip).
 
 **Worked mini-example: dialogue shot (illustrative IDs; the real ones come from the locked script).**
 - S11-SH03, INT. MIRAJ'S ROOM, NIGHT, R-INT. Miraj sits on the bed edge, phone at his ear. He listens to his mother (S11-L04, PHONE, 2.41 s measured), then answers (S11-L05, ON, 1.90 s).
@@ -523,25 +662,34 @@ S03-SH02,v03,BLOCK,friend,manual,SLA_S03-SH02_BLK_v03.blend,SLA_S03-SH02_PB_v03.
   - a 14-frame pause, f72–f85, in which Miraj's head turns from the window toward the camera side, f78–f84;
   - L05 runs f86–f131.
   - Edit window: f13 to f143, which is L04 start through L05 end plus a 12-frame reaction. L = 131 frames → G = ceil(155/24) = 7 s, frames 1–168.
-- Stand-in: a red featured capsule with `arms` and a `nose`. The phone (thickened) is parented to the right arm. Root z = 0.45 − 0.47 × 1.74 = −0.37 m, so the head top sits at about 1.37 m.
+- Mode: `STILL-MRK` (4.12; one speaker, near-locked camera). A red marker sits on the bed edge of the approved room plate (03 `rev`, whose camera matches the MCU), facing the window. The head turn f78–f84 goes into the text through 05b. If the user wants the blockout to time that turn, switch to BLOCK: a red featured capsule with `arms` and a `nose`, the phone (thickened) parented to the right arm, root z = 0.45 − 0.47 × 1.74 = −0.37 m, so the head top sits at about 1.37 m.
 - Outputs:
   - `_DLG_`: L04 delayed 500 ms, L05 delayed 3542 ms, padded to 7 s;
   - the hand-off lists lines by frame and second, so 05 can bind `@Audio1` to Miraj and keep the mother's voice off-screen.
 
 ---
 
-## Gate (animatic lock, Step 4, D7; not to be confused with 00's G4 Delivery gate)
+## Gates (4-P pilot blocking; recipe lock; animatic lock, Step 4, D10 in calendar v02; not to be confused with 00's G4 Delivery gate)
 
-Ask: «هل تعتمد جدول اللقطات والأنيماتيك v__ كنسخة مقفلة؟ بعد القفل تُجمَّد أرقام اللقطات ومددها، ونبدأ مسودات Seedance.»
+**Gate 4-P: pilot blocking (before the pilot's Seedance drafts).** Ask: «هل نعتمد بلوكنغ مشهدَي التجربة: الجدول، الأنيماتيك الجزئي، وكل لقطة BLOCK وكل صورة بلوكنغ ومقطع إيماءة؟ بعد الاعتماد تبدأ مسودات Seedance للمشهدين.» The user approves:
+- the pilot scenes' blocking table, with no PROPOSED cells;
+- `SLA_PILOT-ANIMATIC_v##` with every selected line in sync;
+- every pilot BLOCK, STILL and `+GEST` shot, approved and with its IDs in T3;
+- the pilot test plan (4.14 step 3): which shot runs T-G, both clauses written, BL-1…BL-3 assigned, and the cost shown.
+
+**Blocking recipe lock (inside the pilot approval, 4.14 step 5).** Ask: «اعتمدنا المشهدين. هل نقفل وصفة البلوكنغ v1 كما استُخدمت فيهما، ونبلك بقية الفيلم على الأساس نفسه؟» With a clear yes, `SLA_04_BLOCKING-RECIPE_v1.md` is saved with the T-G and BL results and the user's choice on each.
+
+**Animatic lock (D10 in calendar v02, after the Pilot Gate).** Ask: «هل نعتمد جدول اللقطات والأنيماتيك v__ كنسخة مقفلة؟ بعد القفل تُجمَّد أرقام اللقطات ومددها، ونبدأ مسودات Seedance.»
 
 The user approves:
-1. **The blocking table.** Every shot has an ID, mode (BLOCK / STILL / TEXT), size, lens, height, move, edit length and G. No PROPOSED cells remain.
+1. **The blocking table.** Every shot has an ID, mode (BLOCK / STILL-MRK / STILL-PLAN / STILL-SKT / STILL-LAY / TEXT, with any `+GEST` flag), size, lens, height, move, edit length and G. No PROPOSED cells remain. No playblast-driven shot exceeds 15 s, and every long take of 16–25 s is a one-space, still-and-text take with its tail listed (D-10).
 2. **The animatic.** Body runtime 6:00–6:30, total ≤ 7:00 including titles and credits. Every selected line is in place and sync is correct.
-3. **Every BLOCK shot.** An APPROVED `_PB_` version that passes the 4.9 ffprobe check and the 4.10 review, plus its hand-off sheet and its Higgsfield media ID. STILL shots have their layout still.
-4. **The Drive folder** is complete and the log has no blank cells. Authorship is recorded per shot. Lens heading, camera-relative sun and contact frames are entered in the shot database and ledger-continuity-physics.md.
-5. **Open conflicts are decided:** sun cheats, any stand-in A/B result, Bridge-module conflicts.
+3. **Every BLOCK shot.** An APPROVED `_PB_` version that passes the 4.9 ffprobe check and the 4.10 review, plus its hand-off sheet and its Higgsfield media ID. Every STILL shot has its approved blocking still and job ID (a LAY still for `STILL-LAY`). Every `+GEST` shot has its approved clean clip and media ID.
+4. **The Drive folder** is complete and the log has no blank cells. Authorship is recorded per shot, gesture performers included. Lens heading, camera-relative sun and contact frames are entered in the shot database and ledger-continuity-physics.md.
+5. **Open conflicts are decided:** sun cheats, any stand-in A/B result, Bridge-module conflicts, and the frame (D-9) before any camera was set.
+6. **The recipe.** Every non-pilot shot follows `SLA_04_BLOCKING-RECIPE_v1` or a later version the user approved, and the clause per shot class follows the T-G result.
 
-Partial release is allowed: approved BLOCK shots may enter 05 drafts before the full lock. That happens hardest-first on D7. Any later change to an approved shot creates v+1 and is flagged to 05. A draft made from the old version is never finalized for the new one: v+1 needs a new upload and a new draft, and Higgsfield drafts can be finalized only within 7 days, so late blocking changes cost draft time.
+Partial release is allowed: approved BLOCK shots may enter 05 drafts before the full lock, but only after the Pilot Gate (SKILL.md §3a); outside the two pilot scenes that happens hardest-first from D10 (calendar v02). Any later change to an approved shot creates v+1 and is flagged to 05. A draft made from the old version is never finalized for the new one: v+1 needs a new upload and a new draft, and Higgsfield drafts can be finalized only within 7 days, so late blocking changes cost draft time.
 
 ---
 
@@ -565,7 +713,17 @@ Partial release is allowed: approved BLOCK shots may enter 05 drafts before the 
 | Floaty, slow motion | reference shorter than the requested duration | playblast exactly G s |
 | Output keeps the grey look, or the job fails on task type | `mode` set to `video_edit` or `video_extension`, or the prompt read as an edit ("replace the capsules…"), so Seedance edited the greybox | `mode: omni_reference` with the `_PB_` as `video_references` (05); no edit or extension words in the clause |
 | `generate_video` refuses the playblast in `medias` | an https or Drive link passed instead of an ID | `media_upload` → PUT → `media_confirm`; pass the media ID (4.10 step 7) |
-| Lost figures and invented close-ups | clip 20–30 s | split into ≤ 15 s shots |
+| Lost figures and invented close-ups | playblast-driven clip of 20–30 s | split into ≤ 15 s shots; only a one-space still-and-text take may run to 25 s (D-10) |
+| Stiff, rig-like camera; long takes abandoned after many tries | the clip's camera copied too literally on a long move (The Breach: the strict "EXACTLY" family, 18 jobs, 0 at 1080p) | pilot test T-G; after approval, the PATH GUIDE clause v1-PG for moves of about 10 s or more |
+| Markers render as people, signs or painted figures | role line missing "annotations, not objects", or lifelike markers | flat stick figures in legend colours; the BLOCKING STILL role line (4.12) |
+| Walls, light or props move under the markers | the edit re-drew the plate | the one-change form ("Do not move, resize, relight or redraw anything else"); re-run on Sunburst max 2k; reject any still that changed the plate |
+| Pencil lines, paper texture or a drawn look in the take | the sketch went without its role line, or as `start_image` | POSE SKETCH role line; sketches go only in `image_references` |
+| A floor-plan take jumps between stations as cuts | a plan used to force a move (LEAK's 360° one-take) | the plan gives geography only; moves are BLOCK shots |
+| Plan labels or codes appear as text in the picture | names or asset codes written on the plan | plain room words and numbers only (4.12) |
+| The filmer's sleeve, watch, skin or room appears in the insert | gesture clip filmed with them, or bound without its do-not-copy line | hands only (4.13); the GESTURE REFERENCE role line; 2 fps sweep before approval |
+| The model works the wrong end of the prop | the gesture clip alone; anatomy not written | name the working end in the shot text (The Breach) |
+| A phone's location data reaches Drive shares or Higgsfield | the raw file uploaded | upload only the clean copy (`-an -map_metadata -1`); the raw stays private on Drive |
+| Production shots stop matching the approved pilot | blocking settings, clause or still recipe changed after the pilot | use `SLA_04_BLOCKING-RECIPE_v1`; any change is a new version with the user's yes and a re-block list (4.14) |
 | Lens "pop" at the start of a shot | a lens key leaking across a cut | one camera per shot; lens keys only inside it |
 | Framing looser or tighter than planned | wrong sensor (24 mm height or fit Auto) | 36 mm, fit Horizontal, 20.25 mm height in the maths |
 | Phone or lens case vanishes | thin prop edge-on | thicken it; angle it toward the camera |
@@ -600,10 +758,22 @@ Partial release is allowed: approved BLOCK shots may enter 05 drafts before the 
   - higgsfield.ai/plugins/blender (Blender 5.1+, Bridge URL) and the Higgsfield Bridge server instructions (`bl_get_skill` order, units, save rule);
   - extensions.blender.org Sun Position (v4.4.0).
 - **Higgsfield MCP tool descriptions, read 2026-11-01:** `models_explore` get `seedance_2_5` (modes, 4–30 s, media roles, a 480p draft finalized at 1080p within seven days); `generate_video` (`medias[].value` is a media or job ID, never an https URL; `get_cost`); `media_upload`, `media_confirm`, `attach_project_asset`; `manage_reference_elements` (lists `seedance_2_0`, not `seedance_2_5`, among the video models that honour `<<<element_id>>>`).
+- **Method learned from public Higgsfield projects** (studies of 2026-11-02 in `prompt-library/studies/`; cross-study playbook `2026-11-02_CROSS-STUDY.md` §3C.8, §4.0 decisions D-3, D-4, D-9 and D-10, §4.3 P04-1…P04-3, §4.8 test T-G). Method only: no character, design, story, setting or line of these films is copied.
+  - The Breach by `@sileent`: the PATH GUIDE wording and the "POSITION placeholder" line (clause v1-PG, T-G). Its strict "EXACTLY" family (0-OT v7–v10: 18 jobs, none at 1080p) was abandoned, and the approved one-take `09e63706` came from the PATH GUIDE family. Also the self-filmed phone gesture clip bound as GESTURE REFERENCE with a do-not-copy list (`44c9a024`, 6 uses), and writing out which end of a prop is worked (4.13). Its 30 s one-takes are part of the evidence behind D-10.
+  - CONTROL by `@pietromalegori`: location stills with coloured stick-figure markers (≈80 prompts) and the role line "BLOCKING REFERENCE ONLY … the coloured markers are annotations, not objects" (`STILL-MRK`).
+  - LEAK by `@creativemanifesto`: the overhead floor-plan Element and `Spatial layout` lines (`STILL-PLAN`), and their limit: a plan used to force a 360° move came back as cuts.
+  - Fukushima by `@aist`: the pencil-sketch blocking element made on Seedream 5.0 Pro from an approved frame, with its "pose and spatial reference only" role line (`STILL-SKT`); GPT Image 2.5 at quality max for precise edits (with UNPROMPTED by `@shestak`).
+  - SÉKOU by `@mauriziocibelli` and THREAD by `@pandaproduction`: 20–30 s takes blocked by text, with a spare tail (the long-take rule, D-10 with 05 P05-6).
+  - Kimti by `@ameerahmed` and THREAD: a Soul Cinematic still for composition, then an identity swap, as the keyframe alternative (4.9).
+  - TOKYO 4:17 by `@nicholastakeyama`: an element name painted onto a sign, hence the plain plan labels.
+  - Image routing for every blocking still follows 03 §3.0.1, which maps each job to the studied films' tools.
 - **The user's own skills:** cinematic-pipeline SHOTLIST_RULES (metres, frame thirds, camera height, eye-line spatial blocking; shot-type taxonomy) and seedance-2-5-prompts (a blockout video still needs the subjects, scene and style defined in the prompt).
 - **Not verified:**
   - the content of Higgsfield's `blender-*` modules and the Bridge preview tool names (read on first connect);
   - how the Higgsfield Video tab treats a viewport clip;
   - Higgsfield's own file limits for `video_references` and `audio_references`, and whether its input screen accepts a Workbench playblast (the first BLOCK draft in 05 tells);
   - whether Higgsfield's explicit `mode: omni_reference` stops edit words from turning the task into an edit;
-  - whether the playblast's Workbench cavity or shadows help or hurt (A/B on one shot).
+  - whether the playblast's Workbench cavity or shadows help or hurt (pilot check BL-2);
+  - whether PATH GUIDE beats our v1 clause on playblasts of 15 s or less (The Breach's were 30 s; pilot test T-G);
+  - which model made CONTROL's marker stills (not recorded; `nano_banana_pro` is our routing) and LEAK's floor plan (Nano Banana Pro, inferred from its pixel size);
+  - whether Seedance 2.5 takes a phone gesture clip with real hands without copying them (the first `+GEST` draft in the pilot).
