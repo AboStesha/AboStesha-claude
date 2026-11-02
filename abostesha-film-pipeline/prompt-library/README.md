@@ -4,9 +4,9 @@ Text only (private repo). Every approved generation, every instructive failure a
 
 ## Files
 - `characters.md` · `locations.md` · `props.md` · `style.md`
-- `seedance-dialogue.md` · `seedance-action.md` · `seedance-establishing.md` · `seedance-dream.md` (add a new `seedance-<type>.md` when a new shot type appears)
+- `seedance-dialogue.md` · `seedance-action.md` · `seedance-establishing.md` · `seedance-dream.md` · `seedance-oneshot.md` · `seedance-transition.md` (add a new `seedance-<type>.md` when a new shot type appears)
 - `music.md` · `sfx.md`
-- `studies/<YYYY-MM-DD>_<source>.md` — analyses of Higgsfield projects, AI films and tutorials the user shares
+- `studies/<YYYY-MM-DD>_<source>.md` — analyses of Higgsfield projects, AI films and tutorials the user shares; `studies/2026-11-02_CROSS-STUDY.md` merges the first 12 into one playbook (Arabic summary: `studies/2026-11-02_SUMMARY-AR.md`)
 - `LESSONS.md` — rules proposed from the entries; applied to the skill only after approval
 
 ## Entry template
