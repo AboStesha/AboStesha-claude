@@ -6,7 +6,7 @@
 - **Adversarial check 2026-11-03:** 15 core claims re-checked against [asc], [bafta], [aovfx], [if], [fxg], [vfxv-corb], [afi], [20k], [slash-hz], [sow], [wiki] and [wikiacc]. Corrections: award recipients completed (VFX Oscar and BAFTA, Sound BAFTA); van source material 24 fps per IF; miniature collapse was pyrotechnic per BAFTA; Phantom "six takes" quote is Pfister's, Kodak attribution unverified; ShotOnWhat lists DI finishing.
 - **Companion files:**
   - `ADAPTATION.md`: how our own film borrows the method; LOOK-INC v0.1.
-  - `SUMMARY-AR.md`: the Arabic summary for the user (not yet written as of 2026-11-03).
+  - `SUMMARY-AR.md`: the Arabic summary for the user.
   - The `STYLE REFERENCE: INC` entry in `../../style.md`.
 
 > **How this was built.** Nobody watched, downloaded or ripped the film. Every fact comes from a published source and carries a link: crew interviews, trade press, the BAFTA effects submission, American Cinematographer, reference catalogues and scholarship. The link definitions are at the end (§13).

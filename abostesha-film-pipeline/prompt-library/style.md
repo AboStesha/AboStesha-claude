@@ -98,7 +98,7 @@ height; the top and bottom edges hold only sky, ceiling or floor.
 - Files:
   - `style-references/inception-2010/DOSSIER.md`: the craft dossier, every fact cited. It is the only place the reference title and crew names appear.
   - `style-references/inception-2010/ADAPTATION.md`: the look block, adapters, 9 physical-surrealism Seedance templates, camera rules, score and sound briefs, edit rhythm, G and IP cautions.
-  - `style-references/inception-2010/SUMMARY-AR.md`: the Arabic summary (pending).
+  - `style-references/inception-2010/SUMMARY-AR.md`: the Arabic summary.
 - The code `INC` stays in docs. The tag line pasted into prompts is the neutral `LOOK v0.1 · <ID>` (02 hard rule 2). The compiled Seedance blocks (≤140 words each, no `()<>{}【】`) are in ADAPTATION a.3; the image adapters are in a.5.
 - Decisions open before v1.0:
   - D-9 frame (full 16:9 or a scope letterbox in post);
