@@ -91,3 +91,40 @@ landing within half a second; video, not film; no grain, no tape artefacts, no f
 Compose for a centred wide crop: faces, hands and the action stay inside the central band of the frame
 height; the top and bottom edges hold only sky, ceiling or floor.
 ```
+
+---
+## STYLE REFERENCE: INC (2026-11-02)
+- Status: PROPOSED, v0.1 draft. Not approved, not generated, not tested on Higgsfield. Values are design proposals: no frames were measured (DOSSIER §11).
+- Files:
+  - `style-references/inception-2010/DOSSIER.md`: the craft dossier, every fact cited. It is the only place the reference title and crew names appear.
+  - `style-references/inception-2010/ADAPTATION.md`: the look block, adapters, 9 physical-surrealism Seedance templates, camera rules, score and sound briefs, edit rhythm, G and IP cautions.
+  - `style-references/inception-2010/SUMMARY-AR.md`: the Arabic summary (pending).
+- The code `INC` stays in docs. The tag line pasted into prompts is the neutral `LOOK v0.1 · <ID>` (02 hard rule 2). The compiled Seedance blocks (≤140 words each, no `()<>{}【】`) are in ADAPTATION a.3; the image adapters are in a.5.
+- Decisions open before v1.0:
+  - D-9 frame (full 16:9 or a scope letterbox in post);
+  - the world axes (light + palette, the reference's way, vs 02's camera axis for DEEP);
+  - three new CAMERA forms: bolted, arm, aerial;
+  - the shoot-out, about 392 credits for five variants [ARITH].
+
+### LOOK-INC v0.1 · stable core (Look Bible record)
+```text
+MEDIUM: Photographed live-action drama on real locations and built sets, with real optics and real materials; every frame reads as filmed, never rendered.
+CAPTURE: Anamorphic rendering: oval out-of-focus highlights, gentle softening and slight curvature toward the frame edges, faint horizontal streaks only from bright practical lamps; focus deep enough to keep the space readable behind faces; 180-degree shutter motion blur; clean capture with fine, even sensor texture.
+LIGHT LAW: Every light has a visible or implied physical source; nothing looks lit; highlights roll off softly into a gentle shoulder with print-like contrast; blacks are dense and keep detail; never flattened into an HDR look.
+COLOR: Skin stays natural in every world, never orange, grey or waxy; colour comes from location, weather, light, set and wardrobe, never from a tint.
+TEXTURE: Skin shows pores and fine hair; tailored wool, cotton and leather show weave, crease and wear; wet, polished and glass surfaces carry true reflections.
+PHYSICS: Gravity, mass and inertia are respected; bodies, hair, fabric and loose objects all answer the same gravity direction as the room around them; every impact has weight, contact and a visible reaction.
+PERFORMANCE: Grounded and restrained; people treat the impossible as ordinary work, eyes on a target, breath in the chest.
+CONTINUITY: Characters, wardrobe, props and environments stay identical to their references across every cut; no identity drift.
+AUDIO: Diegetic sound effects and ambience; dialogue only where the shot scripts it. No music, no background music, no score. No subtitles.
+```
+
+### LOOK-INC v0.1 · variants (add to the core; hex and Kelvin values PROPOSED)
+```text
+REALITY · LIGHT: natural daylight at about 5600K through windows and open streets, or practicals at about 3200K after dark; one key direction; faces about one stop under the brightest background. COLOR: sun-warmed stone #B8A487, worn timber #6A5038, neutral shadow #2D3135; restrained saturation. COLOR RULE: Skin is the only saturated colour in frame. CAMERA: handheld.
+DREAM-A · LIGHT: flat overcast at about 6500K, sun fully blocked; steady rain in visible sheets; no hard shadows; sky reflections on every wet surface. COLOR: wet asphalt #2A2F35, rain-dark concrete #6A7076, pale grey sky #A9B0B6; low saturation. COLOR RULE: Skin is the only saturated colour in frame. TEXTURE: everything wet; streets bare of signs and clutter. CAMERA: handheld.
+DREAM-B · LIGHT: tungsten practicals at about 3000K in sconces, lamps and ceiling coves are the only sources; soft pools with falloff between. COLOR: lamp-lit walls #B07A45, dark wood #4A3224, brass #A8823E, deep warm shadow #1C1511. COLOR RULE: The lamps' amber light is the only saturated warm colour in frame. TEXTURE: polished wood, brass and glass reflect the lamps; walls bare. CAMERA: handheld.
+DREAM-C · LIGHT: shadowless overcast at about 7000K over snow; bright, even, low contrast; wind-blown fine snow. COLOR: snow #E7ECEF, cast concrete #8B9196, cool shadow #5D6A76, dark window glass #1E242A; lowest saturation of the dream worlds. COLOR RULE: Skin is the only saturated colour in frame. CAMERA: handheld, every shot moving.
+DEEP · LIGHT: diffuse marine overcast at about 6000K, no direct sun; sea mist beyond 200 metres. COLOR: sea and sky #7E878C, eroded pale stone #A39E93, dark wet rock #34383B; lowest saturation of the film. COLOR RULE: Skin is the only saturated colour in frame. CAMERA: handheld, slower (or locked).
+Every dream variant · PHYSICS EXCEPTION: Only this shot's one impossible event breaks physics; everything else keeps real weight.
+```
