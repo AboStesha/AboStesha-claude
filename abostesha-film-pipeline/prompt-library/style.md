@@ -93,20 +93,22 @@ height; the top and bottom edges hold only sky, ceiling or floor.
 ```
 
 ---
-## STYLE REFERENCE: INC (2026-11-02)
-- Status: PROPOSED, v0.1 draft. Not approved, not generated, not tested on Higgsfield. Values are design proposals: no frames were measured (DOSSIER §11).
+## STYLE REFERENCE: INC (2026-11-02; v0.2 2026-11-03)
+- Status: PROPOSED, v0.2 draft. Not approved, not generated, not tested on Higgsfield. Values are design proposals: no frames were measured (DOSSIER §11).
+- v0.2 refines structure and pacing from a machine scene analysis of 20 official clips, trailers and score uploads (DOSSIER §13, label [OBSERVED-MACHINE]). The v0.1 variants' hex and Kelvin values are unchanged; TRANSIT and the sub-conditions add new PROPOSED design values (not measured, not machine-derived). New: a TRANSIT variant, four sub-conditions and a plot-object colour form (below); coverage budgets, transition devices and a machine legibility gate (ADAPTATION c); onset-dry, threshold-silence and low-statement placement rules (d, e); the climax world-run shape and a teaser template (f).
 - Files:
-  - `style-references/inception-2010/DOSSIER.md`: the craft dossier, every fact cited. It is the only place the reference title and crew names appear.
+  - `style-references/inception-2010/DOSSIER.md`: the craft dossier, every fact cited; §13 holds the machine observations of official uploads. It is the only place the reference title and crew names appear.
   - `style-references/inception-2010/ADAPTATION.md`: the look block, adapters, 9 physical-surrealism Seedance templates, camera rules, score and sound briefs, edit rhythm, G and IP cautions.
   - `style-references/inception-2010/SUMMARY-AR.md`: the Arabic summary.
-- The code `INC` stays in docs. The tag line pasted into prompts is the neutral `LOOK v0.1 · <ID>` (02 hard rule 2). The compiled Seedance blocks (≤140 words each, no `()<>{}【】`) are in ADAPTATION a.3; the image adapters are in a.5.
+- The code `INC` stays in docs. The tag line pasted into prompts is the neutral `LOOK v0.2 · <ID>`, or `LOOK v0.2 · <ID> · <SUB-CONDITION>` (02 hard rule 2). The compiled Seedance blocks and sub-condition swaps (≤140 words each, no `()<>{}【】`) are in ADAPTATION a.3; the image adapters are in a.5.
 - Decisions open before v1.0:
   - D-9 frame (full 16:9 or a scope letterbox in post);
   - the world axes (light + palette, the reference's way, vs 02's camera axis for DEEP);
   - three new CAMERA forms: bolted, arm, aerial;
-  - the shoot-out, about 392 credits for five variants [ARITH].
+  - the v0.2 additions: TRANSIT, the sub-conditions, the plot-object colour form, locked object inserts;
+  - the shoot-out, about 392 credits for five variants, about 471 with TRANSIT [ARITH].
 
-### LOOK-INC v0.1 · stable core (Look Bible record)
+### LOOK-INC v0.2 · stable core (Look Bible record; unchanged from v0.1)
 ```text
 MEDIUM: Photographed live-action drama on real locations and built sets, with real optics and real materials; every frame reads as filmed, never rendered.
 CAPTURE: Anamorphic rendering: oval out-of-focus highlights, gentle softening and slight curvature toward the frame edges, faint horizontal streaks only from bright practical lamps; focus deep enough to keep the space readable behind faces; 180-degree shutter motion blur; clean capture with fine, even sensor texture.
@@ -119,12 +121,23 @@ CONTINUITY: Characters, wardrobe, props and environments stay identical to their
 AUDIO: Diegetic sound effects and ambience; dialogue only where the shot scripts it. No music, no background music, no score. No subtitles.
 ```
 
-### LOOK-INC v0.1 · variants (add to the core; hex and Kelvin values PROPOSED)
+### LOOK-INC v0.2 · variants (add to the core; hex and Kelvin values PROPOSED)
 ```text
 REALITY · LIGHT: natural daylight at about 5600K through windows and open streets, or practicals at about 3200K after dark; one key direction; faces about one stop under the brightest background. COLOR: sun-warmed stone #B8A487, worn timber #6A5038, neutral shadow #2D3135; restrained saturation. COLOR RULE: Skin is the only saturated colour in frame. CAMERA: handheld.
 DREAM-A · LIGHT: flat overcast at about 6500K, sun fully blocked; steady rain in visible sheets; no hard shadows; sky reflections on every wet surface. COLOR: wet asphalt #2A2F35, rain-dark concrete #6A7076, pale grey sky #A9B0B6; low saturation. COLOR RULE: Skin is the only saturated colour in frame. TEXTURE: everything wet; streets bare of signs and clutter. CAMERA: handheld.
 DREAM-B · LIGHT: tungsten practicals at about 3000K in sconces, lamps and ceiling coves are the only sources; soft pools with falloff between. COLOR: lamp-lit walls #B07A45, dark wood #4A3224, brass #A8823E, deep warm shadow #1C1511. COLOR RULE: The lamps' amber light is the only saturated warm colour in frame. TEXTURE: polished wood, brass and glass reflect the lamps; walls bare. CAMERA: handheld.
 DREAM-C · LIGHT: shadowless overcast at about 7000K over snow; bright, even, low contrast; wind-blown fine snow. COLOR: snow #E7ECEF, cast concrete #8B9196, cool shadow #5D6A76, dark window glass #1E242A; lowest saturation of the dream worlds. COLOR RULE: Skin is the only saturated colour in frame. CAMERA: handheld, every shot moving.
 DEEP · LIGHT: diffuse marine overcast at about 6000K, no direct sun; sea mist beyond 200 metres. COLOR: sea and sky #7E878C, eroded pale stone #A39E93, dark wet rock #34383B; lowest saturation of the film. COLOR RULE: Skin is the only saturated colour in frame. CAMERA: handheld, slower (or locked).
+TRANSIT (v0.2; the vehicle or passage between worlds; belongs to no world; no physics exception) · LIGHT: dim, cool light from one caged fixture overhead; bands of light and shadow slide across faces as they travel; beyond it only darkness or passing streaks. COLOR: worn steel #6E7378, painted metal #3F4A4E, deep cool shadow #16191C; low saturation. COLOR RULE: Skin is the only saturated colour in frame. TEXTURE: a grille, slats or mesh in the foreground. CAMERA: handheld.
 Every dream variant · PHYSICS EXCEPTION: Only this shot's one impossible event breaks physics; everything else keeps real weight.
+Every dream variant · optional plot-object COLOR RULE (v0.2): Only skin and the [object]'s [hue] are saturated. DREAM-B: Only the lamps' amber and the [object]'s [hue] are saturated. One object per world.
+DREAM-C note (v0.2): low contrast is the constant; brightness may vary between shots.
+```
+
+### LOOK-INC v0.2 · sub-conditions (swap only the named sentences of the variant)
+```text
+REALITY · HOME · LIGHT: soft daylight through windows mixes with warm practical lamps at about 3200K on wood and fabric; gentle falloff between pools of light; faces about one stop under the brightest window.
+REALITY · CONCOURSE · LIGHT: even, cool overhead light at about 4500K from long ceiling fixtures, no single key; bright, clean, impersonal; daylight through distant glass walls. COLOR: pale stone floor #C9C6BE, brushed steel #8E9398, neutral shadow #2D3135; restrained saturation.
+DREAM-A · INTERIOR · LIGHT: overcast daylight at about 6500K only through rain-streaked windows burning out to white; the room falls into cool shadow; faces stay readable. TEXTURE: bare walls, no signs.
+DEEP · INTERIOR (one personal room, at most one per film) · LIGHT: warm practical lamps at about 3000K pool on worn wood; the world's cool overcast beyond the windows. COLOR: worn wood #5A4636, lamp-lit plaster #A88A66, overcast beyond the glass #7E878C; low saturation. COLOR RULE: The lamps' amber light is the only saturated warm colour in frame.
 ```

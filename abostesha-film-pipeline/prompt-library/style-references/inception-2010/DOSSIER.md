@@ -2,14 +2,14 @@
 
 - **Code:** INC. Use this code everywhere outside this file. The title and the crew names appear only here and in the Look Bible (02 hard rule 2), never in a prompt.
 - **Date:** 2026-11-02.
-- **Status:** research complete, frames not measured (§11).
+- **Status:** research complete, frames not measured (§11). Machine scene analysis of 20 official clips, trailers and score uploads added 2026-11-03 (§13, label [OBSERVED-MACHINE]).
 - **Adversarial check 2026-11-03:** 15 core claims re-checked against [asc], [bafta], [aovfx], [if], [fxg], [vfxv-corb], [afi], [20k], [slash-hz], [sow], [wiki] and [wikiacc]. Corrections: award recipients completed (VFX Oscar and BAFTA, Sound BAFTA); van source material 24 fps per IF; miniature collapse was pyrotechnic per BAFTA; Phantom "six takes" quote is Pfister's, Kodak attribution unverified; ShotOnWhat lists DI finishing.
 - **Companion files:**
-  - `ADAPTATION.md`: how our own film borrows the method; LOOK-INC v0.1.
+  - `ADAPTATION.md`: how our own film borrows the method; LOOK-INC v0.2.
   - `SUMMARY-AR.md`: the Arabic summary for the user.
   - The `STYLE REFERENCE: INC` entry in `../../style.md`.
 
-> **How this was built.** Nobody watched, downloaded or ripped the film. Every fact comes from a published source and carries a link: crew interviews, trade press, the BAFTA effects submission, American Cinematographer, reference catalogues and scholarship. The link definitions are at the end (§13).
+> **How this was built.** Nobody watched, downloaded or ripped the film. Every fact comes from a published source and carries a link: crew interviews, trade press, the BAFTA effects submission, American Cinematographer, reference catalogues and scholarship. The link definitions are at the end (§14). Official clips, trailers and score uploads were read only by a machine scene analyser (§13); nothing was downloaded.
 >
 > **Evidence labels** follow the 02 source ladder:
 > - **VERIFIED**: a crew member's own words, or a tier-1 publication.
@@ -17,6 +17,7 @@
 > - **SNIPPET**: the page refused the fetch tool, so the fact is known only from a search-engine summary. Its exact wording is unconfirmed.
 > - **[UNVERIFIED]**: contradicted, or from fan or uncited sources.
 > - **[DERIVED]**: our own arithmetic on cited numbers.
+> - **[OBSERVED-MACHINE]**: what an automated scene-analysis model said about an official upload (§13). Not a crew statement; ranks below SNIPPET; [UNVERIFIED] unless a sourced fact agrees.
 >
 > **Correction to the brief.** The American Cinematographer cover story (July 2010, by David Heuring) is titled **"Dream Thieves"**, not "Dream Weaver" ([wiki]; [asc]). The same article also lives at [asc2].
 
@@ -569,6 +570,8 @@ All from [mix] unless noted.
 
 **MEASURED: none.** No frame of the film was measured. Under 02 hard rule 1 and §2.3, frames may come only from the user's own legally obtained copy, may be used only for analysis, and are never uploaded to any generator. No such frames had been supplied by 2026-11-02. Trailers and featurettes were not downloaded.
 
+**Machine scene descriptions: see §13.** On 2026-11-03 an automated analyser described 12 official clips, 3 trailers and 5 score uploads: shot-size labels, light and colour words, audio classes and segment timestamps, all [OBSERVED-MACHINE]. They are words, not measurements, and they do not fill the table below. Frame-level colour measurement of those uploads was not possible, because YouTube refuses downloads from the cloud server (HTTP 403); no frame was obtained. The colour words that the machine and the crew agree on are in §13.3.
+
 **Published numeric anchors** (production facts, not frame measurements):
 
 | Anchor | Value | Source |
@@ -590,7 +593,7 @@ All from [mix] unless noted.
 3. Run `python3 -I skill/abostesha-film-pipeline/scripts/measure_frames.py <frames> --csv`.
 4. Record per world: luma p1/p50/p99, % clipped and crushed, mean saturation, shadow and highlight tint, and six clusters.
 5. Label adequacy (1 still = provisional, 2–5 = tentative, 6+ = series-level). Give every colour cluster an owner (set, wardrobe or grade).
-6. Then replace the PROPOSED hex values and Kelvin values in LOOK-INC (ADAPTATION §a) with values derived from the measurements, and bump to v0.2.
+6. Then replace the PROPOSED hex values and Kelvin values in LOOK-INC (ADAPTATION §a) with values derived from the measurements, and bump to v0.3 (v0.2, 2026-11-03, changed structure from machine observations only; its hex and Kelvin values are still the v0.1 proposals).
 
 | World | Frames | p1 | p50 | p99 | Crush % | Clip % | Sat | Shadow tint | Highlight tint | Adequacy |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -622,10 +625,275 @@ All from [mix] unless noted.
 16. **Score brass count:** 22 (Variety, Lehman) vs 10 (Twenty Thousand Hertz). **What was sampled from Piaf:** five accounts (§8).
 17. **Time dilation per level:** 20× (dialogue arithmetic) vs 10× (CGW).
 18. **Awards:** Dyas, Dias and Mowat were Oscar-*nominated* and BAFTA *winners*; some pages wrongly say they shared the Oscar ([wikidyas]). Verified 2026-11-03 against [wikiacc]: four Oscars (Cinematography: Pfister; Sound Editing: King; Sound Mixing: Hirschberg, Rizzo, Novick; Visual Effects: Franklin, Corbould, Lockley, Bebb) and three BAFTAs (Production Design; Sound; Special Visual Effects).
+19. **Machine readings against sourced facts:** every case where the machine scene analysis contradicts a fact above is listed in §13.4. In each case the sourced fact stands.
 
 ---
 
-## 13. Sources
+## 13. Observed in official clips and trailers (machine scene analysis, 2026-11-03)
+
+- **What was read.** Twenty official uploads on YouTube: 12 studio clips, 3 trailers and 5 score tracks. Each was described by Higgsfield `video_analysis`, an automated scene-description model. It returns segments, each with a shot-size label, a visual description, an audio description and timestamps. Its `label` field (marketing words such as "Opening Hook") was ignored.
+- **Label [OBSERVED-MACHINE].** What the model said about an official upload. It is not a crew statement and ranks below SNIPPET. It stays [UNVERIFIED] unless a sourced fact in §1–10 agrees. Each observation below names the clip and timestamp and ends with **agrees §x**, **contradicts §x** (the sourced fact wins) or *not in this dossier*.
+- **What was not done.** Nobody downloaded, ripped or watched the uploads, and we saw no frame. Frame-level colour measurement was not possible: YouTube refuses downloads from the cloud server (HTTP 403), so §11 still holds no measurement.
+- **Scripts** (session scratchpad, not committed), all run with `python3 -I`: `stats.py` (dialogue clips), `vfx_stats.py` (effect clips), `inc_trailer_stats.py` and `inc_trailer_extra.py` (trailers), `music_stats.py` (score uploads). **[DERIVED]** in this section means our arithmetic on machine timestamps.
+
+| Code | Upload (official title, shortened) | YouTube ID | Used as |
+|---|---|---|---|
+| clip01 | "Most Skilled Extractor" | fpXngRB-VTw | dialogue set |
+| clip02 | "Dream Collapses" (1 of 10) | i9zjvUywVG8 | **failed**: described an invented pill advert; excluded |
+| clip03 | "You're in a Dream" (2 of 10) | i3-jlhJgU9U | dialogue set |
+| clip04 | "Dream Training" (3 of 10) | 0b-H8oQUs1A | effect set |
+| clip05 | "Dream a Little Bigger" | yycyKndEWcA | dialogue set |
+| clip06 | "Basement of the Mind" (4 of 10) | nDaQia9WXtA | dialogue set |
+| clip07 | "Runaway Train" (5 of 10) | wdfoifeXHeY | effect set |
+| clip08 | "Hallway Fight" (6 of 10) | X-KDt-G1pJ0 | effect set (fixed 3-s grid) |
+| clip09 | "Mountaintop Assault" (7 of 10) | z07dRKuSaYE | effect set (nearest to shot level) |
+| clip10 | "Inception on My Wife" (8 of 10) | UJd4s9ntbS0 | dialogue set |
+| clip11 | "Final Kick" (9 of 10) | IA5YlOXJ_PQ | effect set |
+| clip12 | "Ending" (10 of 10) | pQd1-4tqymo | dialogue set |
+| IMAX UK | 10-year re-release trailer, 1:47 | 5EiV_HXIIGs | trailer, shot level |
+| Digital WB | original campaign trailer, 2:18 | Qwe6qXFTdgc | trailer, shot level |
+| Flashback UK | same base cut as Digital WB, 2:28 | LifqWf0BAOA | beat order only (10 segments) |
+| Time | score track | hMQ7VhcCpuY | 71 % coverage |
+| Dream Is Collapsing | score track | jvT9Sq97mhg | 98 % coverage |
+| Half Remembered Dream | score track | BC1LcJ7DIS0 | full coverage |
+| Mombasa | score track | kn_wEjhla-4 | **rejected**: 6 % coverage, invented props |
+| Dream Within a Dream | score track | kFc0T_D36W8 | **rejected**: 7 % coverage, zooms on a still image |
+
+### 13.1 Read this first: what the analyser can and cannot do
+
+1. **A segment is not a shot.** Segment length depends on the analysis run, not on the cut. clip08 came back on a fixed 3-s grid (43 × 3 s). The score uploads came back in 15-s or 3-s windows. The same trailer cut came back once as 76 scenes (Digital WB) and once as 10 (Flashback UK). Five dialogue segments say outright that they hold "a series of quick shots". **No number in this section is the film's average shot length**, and none may be quoted as one (§10.2 stands). Use them for ratios and order only.
+2. **It can fabricate a whole clip.** clip02 came back as a consumer pill advert: a glowing capsule, testimonials, a to-camera tagline, one 77-s segment. The two lowest-coverage score analyses (Mombasa 6 %, Dream Within a Dream 7 %) describe live action, zooms and a pan on uploads that their sibling analyses describe as one still image. All three are excluded. Rule adopted: an analysis under 10 % coverage is unusable.
+3. **Its camera words are unreliable.** It wrote "zoom" in four film clips (clip04 0:08, clip06 0:14, clip08 0:33, clip11 0:36) and on still images in two score uploads, against a production that made no zoom reframes (§1.3). It calls handheld "static" (47 of 137 dialogue segments; 5 snow segments in clip09). It wrote "zoom" zero times in 141 trailer descriptions.
+4. **Its ear is coarse.** It misses music under speech or loud effects: two end cards report orchestral music "fading out" after scene bodies that never mention music (clip03 1:52, clip10 2:33). It files low brass under "bass", never names piano or guitar, calls the hybrid score "orchestral", cannot tell score from trailer audio, and has no word for a sub-second silence. Transcripts are lossy: "injections closing in" for *projections* (clip05); repeated lines from alignment errors (clip10 1:40, 2:22).
+5. **It is fooled exactly where the crew cheated.** The four added suns read as natural shadows (clip04 0:23). The flat-laid shaft reads as a fall "down the center of the shaft" (clip11 0:30; at 0:00 the same rig is described as sliding "down a track", which is the method). The hinged mirror door reads as a mirror "pulled from thin air" (clip04 1:38). The horizontally built shaft reads as "tilted" (IMAX 0:56). That makes it a fair *viewer-perception* test and a poor source of method.
+
+### 13.2 Measured numbers [DERIVED from machine timestamps]
+
+#### 13.2.1 Dialogue and drama clips (clip01, 03, 05, 06, 10, 12)
+
+Set B is film content only: clip02 out, end cards out (clip03 1:52–2:04, clip10 2:33–2:44). Audio classes: dialogue (a transcript or named speech), music (music, melody, beat, orchestral, swell, drone), effects (any other named sound), silence ("silence", "minimal sound"). The primary class is dialogue if any speech is present, otherwise the first class named. The two "drone" segments in clip12 count as music; that call is ambiguous.
+
+| Measure, set B | Value |
+|---|---|
+| Segments / running time | 137 / 673 s (11.2 min) |
+| Mean / median segment | 4.91 s / 3.0 s (range 1–26 s, SD 3.97) |
+| Segments ≤ 2 s / ≥ 10 s | 39 / 14 |
+| ECU · CU · MCU · MS · WS, by count | 9.5 · 40.9 · 5.1 · 32.1 · 12.4 % |
+| ECU · CU · MCU · MS · WS, by time | 6.4 · 34.0 · 5.2 · 34.6 · 19.8 % |
+| Primary audio D · M · E · S, by count | 67.9 · 2.2 · 27.0 · 2.9 % |
+| Primary audio D · M · E · S, by time | 63.3 · 2.4 · 32.7 · 1.6 % |
+| Camera words | "static" 47, "follows / pans" 14, "zoom" 1, none 75 |
+
+All seven clips raw (set A, with clip02 and the end cards): 146 segments, 851 s, mean 5.83 s, median 3.5 s, maximum 77 s (the failed clip02).
+
+| Clip (world as staged) | Segs | Total | Mean / median | ECU-CU-MCU-MS-WS | Primary D/M/E/S |
+|---|---|---|---|---|---|
+| clip01: business dinner in a dream castle | 9 | 54 s | 6.0 / 5.0 s | 0-2-0-6-1 | 9/0/0/0 |
+| clip03: daylight teaching dream | 15 | 112 s | 7.5 / 4.0 s | 2-1-7-3-2 | 13/0/2/0 |
+| clip05: first-level warehouse fight | 10 | 70 s | 7.0 / 6.5 s | 0-1-0-6-3 | 5/1/4/0 |
+| clip06: descent into the lead's memory floors | 41 | 127 s | 3.1 / 2.0 s | 2-22-0-14-3 | 21/0/17/3 |
+| clip10: confession and memory montage | 45 | 153 s | 3.4 / 3.0 s | 9-24-0-10-2 | 41/0/4/0 |
+| clip12: return to reality | 17 | 157 s | 9.2 / 8.0 s | 0-6-0-5-6 | 4/2/10/1 |
+
+| Coverage split, set B | n | Tight (ECU+CU+MCU) | MS | WS by count / by time |
+|---|---|---|---|---|
+| Dialogue-primary segments | 93 | 58.1 % | 36.6 % | 5.4 % / 7.7 % |
+| Non-dialogue segments | 44 | 50.0 % | 22.7 % | 27.3 % / 40.5 % |
+
+[DERIVED] Wides are about 5× more frequent outside dialogue (5.06× by count, 5.26× by time). The return (clip12) runs 2.7–3.0× the segment length of the confrontations (clip06, clip10).
+
+#### 13.2.2 Effect clips (clip04, 07, 08, 09, 11)
+
+| Clip | Effect content | Length | Segments | Mean / median | Segmentation |
+|---|---|---|---|---|---|
+| clip04 | street fold, mirror bridge | 154 s | 23 | 6.70 / 5 s | semantic; dialogue and mirror passages merged (21 s, 26 s) |
+| clip07 | train in the street, rain chase | 105 s | 9 | 11.67 / 10 s | coarse; "a series of quick cuts" inside 10–29-s segments |
+| clip08 | van roll intercut with the rotating hotel | 129 s | 43 | 3.00 / 3 s | fixed 3-s windows (artefact) |
+| clip09 | snow action → three-world cross-cut → avalanche | 151 s | 71 | 2.13 / 2 s | nearest to shot level; whole seconds |
+| clip11 | lift, vault beat, fortress collapse, kick cascade | 168 s | 20 | 8.40 / 8 s | coarse in the cascade |
+
+| Shot size | CU | MCU | MS | WS | POV |
+|---|---|---|---|---|---|
+| Effect segments (n = 95) | 8 % | 0 | 47 % | 43 % | 1 % |
+| Other segments (n = 71) | 37 % | 7 % | 46 % | 10 % | 0 |
+
+| Audio, one class per segment | Music + effects | Effects only | Music only | Dialogue-led | Silence |
+|---|---|---|---|---|---|
+| Effect segments | 45 % | 43 % | 8 % | 3 % | 0 |
+| Other segments | 39 % | 21 % | 13 % | 27 % | 0 |
+
+"Silence" is named once in 166 segments, and that segment also carries wind and a spoken line.
+
+| Cross-cut passage (a world run = consecutive segments in one world) | Switches | Shape |
+|---|---|---|
+| clip08, hotel / van | 18 in 129 s (7.2 s per switch) | hotel share of time by thirds 43 % → 80 % → 64 %; rotation segments 4 → 11 → 1 |
+| clip09 1:07–1:46, van / hotel / snow | 7 in 39 s | world runs 4, 17, 6, 2, 3, 2, 3, 2 s: 1 switch in the first 21 s, 6 in the last 18 s |
+| clip09, three blocks | — | mean segment 1.63 s (snow action) → 2.17 s (cross-cut) → 3.75 s (avalanche and aftermath) |
+| clip11 | 13 in 168 s | segments merged; not measurable |
+
+#### 13.2.3 Trailers
+
+| Metric | IMAX UK | Digital WB |
+|---|---|---|
+| Runtime / scenes | 107 s / 55 | 138 s / 76 |
+| Text cards and logos | 11, 26 % of runtime | 7, 17 % |
+| Picture shots: n, mean / median | 44, 1.80 / 1.5 s | 69, 1.65 / 1 s |
+| Picture shots ≤ 1 s / ≤ 2 s (both cuts pooled, n = 113) | 54 % / 88 % | (pooled) |
+| Mean scene length by thirds | 1.80 → 1.64 → 2.69 s | 1.70 → 1.59 → 2.30 s |
+| Shot sizes, picture only | WS 43 · CU 25 · MCU 18 · MS 11 · ECU 2 % | WS 43 · MCU 20 · CU 17 · MS 17 · POV 1 % |
+| Impossible-event shots | 14, 32 % of picture time, mean 1.8 s | 18, 25 %, mean 1.6 s |
+| Primary audio, % of seconds | D 41 · M 26 · HIT 21 · FX 12 | FX 40 · D 38 · HIT 14 · M 7 |
+| Hits: count / on cards | 13 / 10 | 5 / 5 |
+| Scenes with speech | 36 % | 36 % |
+| Longest picture holds | fold 7 s (0:37); post-title object 6 s (1:30) | sea-edge city 6 s (1:53); realisation close-up 5 s (0:59) |
+| "Zoom" in any description | 0 | 0 |
+
+Timestamps are whole seconds, so every length is ±1 s. Flashback UK (148 s, 10 segments, mean 14.8 s) is the same base cut as Digital WB: the dialogue order is identical and the beats start within 0–2 s of each other. It is used for beat order only. **Trailer pace is never film pace.**
+
+#### 13.2.4 Score uploads
+
+| Track | Album length [wikisnd] | Analysed to | Coverage | Windows | Window length | Verdict |
+|---|---|---|---|---|---|---|
+| Time | 4:35 | 3:15 | 71 % | 13 | 15 s each (SD 0) | usable, partial |
+| Dream Is Collapsing | 2:28 | 2:25 | 98 % | 9 | 15 s (one of 25 s) | usable, low resolution |
+| Half Remembered Dream | 1:12 | 1:12 | 100 % | 5 | 11–21 s | usable |
+| Mombasa | 4:54 | 0:18 | 6 % | 5 | 3–5 s | rejected |
+| Dream Within a Dream | 5:04 | 0:21 | 7 % | 7 | 3 s | rejected |
+
+- Music is the primary class in 38 of 39 windows (99.3 % of the time). There is no dialogue, and silence appears only at a track end (Dream Is Collapsing 2:00–2:25).
+- Instrument words, as windows that use them (of 39): "orchestral" 20, bass or low end 17, percussion or hits 15, strings 11, drone or pad 9, synth or electronic 7, brass 3, tick or heartbeat 1; **piano 0, guitar 0, voice 0**.
+- The windows run on the analyser's clock (15 s, 3 s), not on cuts or bars. The pooled 11.46-s mean is not an edit figure.
+
+### 13.3 Strongest observations, by department
+
+Every observation carries [OBSERVED-MACHINE]; [DERIVED] marks our arithmetic on machine timestamps.
+
+**Palette and light (§2–3)**
+- [OBSERVED-MACHINE] **The palettes read at 1–2-s cuts.** In the two shot-level trailers, 23 of 35 world shots (66 %) got their documented palette family and **none** got the opposite family: rain city and van 7 of 9 "cool / blue / grey"; hotel 7 of 12 "warm"; snow 6 of 10 "cold / white / grey"; castle 3 of 4 "warm / golden / lantern". In clip08 the model calls the hotel "warm" in 20 of 27 segments and never calls a van segment warm (0 of 12; cool, grey or desaturated in 11 of 12), through 3-s cross-cuts. **Agrees §3.3** ("you immediately know where you are"). This is the strongest machine support for the tight-shot test.
+- [OBSERVED-MACHINE] **Colour temperature follows what a space is for, not the dream level.**
+  - Warm in practical-lit rooms of intimacy and memory: the castle hall (clip01 0:00–0:24), the lamp-lit memory room (clip06 0:23), memory interiors (clip10 0:20, 0:43), the home, "warm wood, soft light" (clip12 1:34).
+  - Cool in transit and threat: the lift cage (clip06 0:00–0:21), the warehouse interior (clip05 0:13), the plane cabin, "cool, artificial light from above" (clip12 0:00), the confession close-up, "low, cool" (clip10 0:00).
+  - Bright daylight for teaching and return: the café street (clip03), the terminal, "bright, even, overhead" (clip12 0:12), the sunny garden (clip12 1:34).
+  - Compatible with the one-palette-per-location brief (§3.3). Not a sourced rule.
+- [OBSERVED-MACHINE] **Service spaces drift inside a world.** The hotel stairwell reads "cool and artificial" against the warm corridor (clip08 2:00–2:06); in clip09 the same stairwell is "harsh and artificial", lit by fluorescent fittings, with dull grey walls (1:12–1:28). *Not in this dossier.*
+- [OBSERVED-MACHINE] **First dream level, inside looking out.** A dark, cool interior (a shooter at a gridded window) is cross-cut with a bright, overexposed exterior (clip05 0:13–0:55).
+  - "Cool, blue-toned" **agrees** with the press descriptors in §3.3 ("bluish", "gun-metal") more than with the DP's "neutral". Unsettled until frames are measured.
+  - A "clear, bright sky" **contradicts §5.2** (rain, sun blocked), unless this is one of the shots where the sun crept in (§2.2). More likely blown-out overcast seen from inside, which fits the −3 / +5 latitude (§2.2, §11).
+  - Yellow taxis: one saturated plot object in a desaturated world (clip05 0:00–0:13). *Not in this dossier.*
+- [OBSERVED-MACHINE] **The snow level keeps contrast low while brightness changes:** "dim", "flat grey" and "washed out" in different segments (clip09). **Agrees §3.3** ("sterile, cool").
+- [OBSERVED-MACHINE] **Memory light** (clip10): exteriors "bright, natural, cool" (0:12, 1:05), interiors "warm, natural" (0:20, 0:43), a sunlit room (1:47). The deepest world's palette stays [UNVERIFIED] (§3.3). The sea-edge city's "bright and clear" sky (IMAX 1:21; IMAX 0:52 reads "bright and natural with a hazy, warm quality") **contradicts** "grey sea and sky" (§5.2) on one or two machine shots and settles nothing.
+- [OBSERVED-MACHINE] **No dream code.** The castle, the café and the warehouse are each staged as a real place in natural light (clip01, clip03, clip05); only the event breaks physics. No dissolve, tint or flash appears in any of the 20 analyses; the only optical words are two fades to black at the end of an upload (clip08 2:06, clip12 2:20), neither at a world change. **Agrees §3.3 and §5.1.**
+
+**Coverage and camera (§4)**
+- [OBSERVED-MACHINE] **Dialogue is covered tight, and wides are spent.** WS is 5.4 % of dialogue segments against 27.3 % of the rest (§13.2.1). Each wide does a job:
+  - a blocking change: clip01's only WS lands as the speaker stands, and it reveals the room (0:20–0:24);
+  - a world entry: the terminal (clip12 0:12);
+  - the event: clip03's first WS arrives with the first burst (1:15).
+- [OBSERVED-MACHINE] **Two dialogue modes.**
+  - Partnership or teaching gets matched MCU singles with a soft foreground shoulder (clip03 0:08–0:14).
+  - Threat gets asymmetric sizes (clip06; counts over the whole clip, 0:00–2:07): the newcomer is CU in 14 of her 15 segments; the memory-figure is MS in 11 of 15, and the camera "follows" her. **Agrees §4** (point of view first).
+- [OBSERVED-MACHINE] **The effect is wide; the face is close.** WS is 43 % of effect segments against 10 % of the rest; CU + MCU is 8 % against 44 % (§13.2.2). The trailers do the same: events wide, reactions close, mediums least used (IMAX 0:32–0:37: two wides of the burst, then one MCU reaction).
+- [OBSERVED-MACHINE] **Both rotating-set rigs show:** "rotates in sync with the set", "keeps them centred" (clip08 0:27, 1:15), and an independent camera "circling the combatants" (clip08 0:51). **Agrees §4** (a) and (b).
+- [OBSERVED-MACHINE] **Snow unit:** a ski POV and tracking from beside and behind (clip09 0:05–1:07). **Agrees §4** ("every shot moving"). The model's "static" readings there **contradict** it and are discarded.
+- [OBSERVED-MACHINE] **Trouble is cued off-screen first:** a look up at something unseen (clip01 0:50), glass crunching underfoot before the figure appears (clip06 0:35), a question before the burst (clip03 1:15). The threat's first look sits inside designed silence ("Silence" at clip06 0:40 and 0:47).
+- [OBSERVED-MACHINE] **Exposition inside action.**
+  - Close-up / reverse blocks of 2–3 s per line, over wind (0:11) or dialogue alone (0:39–0:51), set between two action runs (clip09 0:11–0:16, 0:39–0:51).
+  - Overhead ECU inserts of a hand drawing the rule on a tablecloth (clip03 0:22, 0:29).
+  - **Agrees §10.1** (exposition through action).
+- [OBSERVED-MACHINE] **Camera words** ("zoom", "static"): see §13.1 item 3. They **contradict §1.3 and §4** and are discarded.
+
+**Design and costume (§5–6)**
+- [OBSERVED-MACHINE] **The lift as a transition vehicle:** a dim, cool cage with metallic screech, low rumble and wind; the button panel seen through a grid (clip06 0:00–0:21). **Agrees §5.3** (elevators as neutral transition zones; the button debate).
+- [OBSERVED-MACHINE] **Aftermath dressing tells the story before the figure appears:** overturned chairs, an unmade bed, a pram, broken glass (clip06 0:23–0:35). *Not in this dossier.*
+- [OBSERVED-MACHINE] **The castle hall** reads "warm, dim" and gold (clip01): **agrees §5.2**. "Ornate chandeliers" and a "glass table" **contradict §5.2** ("hundreds of lanterns", "minimal furniture"); probably the lanterns misread.
+- [OBSERVED-MACHINE] **Suits on the lead:** "black suit, black tie" (clip01) and "a dark pinstripe suit" on the returning man (clip12 0:12) **contradict §6** ("structured separates, not suits"). Possibly a formal and a travel exception, possibly a misread. Open; check stills.
+- [OBSERVED-MACHINE] **The newcomer keeps one hue family** (a burnt-orange jacket in clip03, an orange top in clip06) while the garments change. Consistent with §6 ("her wardrobe changes in each dream").
+
+**VFX and physics (§7)**
+- [OBSERVED-MACHINE] **Cause leads, effect lags** (clip08): the swerve (0:09) → the hotel starts to tilt (0:18) → the van rolls (0:21, 0:36) → the rotation peaks in two 18-s hotel runs (0:48–1:27) → the van comes to rest (1:36) → the hotel is level again (1:51). The inner world settles after the outer one. **Agrees §7.4.**
+- [OBSERVED-MACHINE] **Gravity tracers:** a pistol slides across the floor (clip08 0:33); papers and small objects fly with the turn (1:21). "Suspended in the air" (0:51) is airtime in a turning room, which the model reads like weightlessness; in §7.4 zero-g needs the outer world in free fall, which has not happened yet.
+- [OBSERVED-MACHINE] **The fold** (clip04 0:01–0:50): wide event segments of 5–7 s alternate with reactions of 2–3 s (0:06–0:08, 0:20–0:23); cars drive up the vertical surface while pedestrians carry on below (0:35–0:50). **Agrees §7.3.** "The pavement begins to curve upward" (0:38–0:43) **contradicts** "pivot, not bend" (§7.3).
+- [OBSERVED-MACHINE] **Train in the street** (clip07 0:20–0:29): one wide, effects only (rhythmic clanging, grinding, crashes, horns), no music. The cab scenes on each side keep a passenger "calm despite the situation" (0:00–0:11, 0:30–0:35). **Agrees §7.3 and §9.1.**
+- [OBSERVED-MACHINE] **Big natural events are held longer.** Four of the five avalanche wides hold 4–8 s (one holds 2 s); the avalanche block's segment mean is 3.75 s against 1.6 s for the action around them (×2.3), under a roar and an orchestral crescendo (clip09 1:46–2:15). **Agrees §7.3** (a real avalanche). The fortress collapse is one 8-s effects-only segment (clip11 1:05–1:13); "the mountain base completely crumbles" (2:08–2:26) **agrees §7.3** (bottom-up miniature).
+- [OBSERVED-MACHINE] **Slow motion mostly on narrative speed events.** The IMAX trailer tags slow motion on the water kick (0:20), the café burst (0:32–0:36) and the van fall (1:13); clip11 on the van hitting the water (2:08–2:26). **Agrees §2.2, §7.3 and §7.4.** Not all ten tags fit: a crashing wave (WB 0:02), a city building crumbling (clip11 1:23) and a falling woman (clip11 1:58) are also tagged, and inner-level slow motion (clip09 0:35, "tumbling in slow motion") **contradicts §7.4**. Those four readings are unexplained or discarded; the café's "slow-motion, stylized" is in §13.4.
+- [OBSERVED-MACHINE] **One long look per trailer.** Exactly one impossible environment gets a long hold: the fold, 7 s (IMAX 0:37); the sea-edge city, 6 s (WB 1:53). All other event shots average 1.6–1.8 s.
+- [OBSERVED-MACHINE] **The café burst described as an explosion.** "Explodes", "explosion sound" and "slow-motion, stylized" (clip03 1:15–1:52; IMAX 0:32; WB 1:49) **contradict §7.3** on method (compressed gas, light debris, no pyrotechnics) and on intent (the ramp starts in real time; debris flies on uneven paths). Right content, wrong words. A liquid ripple in a cup (clip03 1:15–1:30) sits against "even the paper cup … didn't move" (§7.3); possibly a separate insert set-up. Open.
+
+**Score (§8)**
+- [OBSERVED-MACHINE] **Additive builds with open endings.**
+  - Time: a drone, then high strings (0:00–0:30); "a repeating four-note melody" (0:30); slow heavy hits (0:45); brass (1:00); a fading string note, "unresolved" (3:00–3:15).
+  - Half Remembered Dream: an ambient bed, then a sharp electronic pulse (0:13), a "brass-heavy" peak at 36–53 % of the track (0:26–0:38), then strings and the opening bed return (0:39–1:12).
+  - **Agrees §8** (13 additive passes; "a marked lack of culmination"). The "four-note melody" is, in our reading, the four-chord loop heard as a line.
+- [OBSERVED-MACHINE] **Time has two arches** in the machine's verbs (peaks at 1:30 and 2:45–3:00) against the sourced single arch peaking at passes 9–10 (§8, [lehman]). Inconclusive: coverage is 71 %, and the album track is longer than the film cue.
+- [OBSERVED-MACHINE] **No piano** in 39 windows, though Time opens on piano and pad and ends on exposed piano (§8). **Contradicts §8**: missed.
+- [OBSERVED-MACHINE] **"Orchestral" in 20 of 39 windows, synth or electronic in 7.** **Contradicts §8** ("a very electronic score"; about 60 %).
+- [OBSERVED-MACHINE] **Dream Is Collapsing:** low hits at regular intervals with long resonance (0:00–0:45), then one final hit decaying to silence over about 25 s (2:00–2:25). **Agrees** with the brass-into-sustained-piano method (§8). The same words would fit the trailer horn, which §8 keeps separate: the model cannot tell score from trailer audio.
+- [OBSERVED-MACHINE] **A tick-like pulse** opens Half Remembered Dream, "like a heartbeat or a ticking clock" (0:00–0:12). *Not in this dossier*; no source mentions a tick in the score.
+- [OBSERVED-MACHINE] **Trailer hits sit on text.** 15 of 18 hits across the two shot-level trailers land on cards: IMAX puts a low brass hit on 10 of its 11 cards (the first three exactly 6 s apart, 0:12–0:24); WB puts all 5 of its hits on cards. In IMAX, build words (build, swell, crescendo, intensity, tension, urgency) fall in the 1–4 s before a hit in 9 of its 13 hits. This **contradicts** how the film uses the low brass, which tells story and does not bridge transitions (§8, [braam]): it is trailer grammar. The trailers also call their music "orchestral" throughout; trailer audio is not score (§8).
+
+**Sound (§9)**
+- [OBSERVED-MACHINE] **Onsets and impacts are dry.** 8 of the 11 onset or impact segments name no music: the fold onset twice (clip04 0:01, 0:08), the mirror appearance and shatter (clip04 1:38, 2:22), the train (clip07 0:20), the lift twice (clip11 0:00, 0:30), the fortress (clip11 1:05). The other three sit inside an already scored passage. The score arrives on the reveal (clip04 0:15) or after the impact (clip09 1:37: the crash, then a low swell). **Agrees §9.1** (the fold "like a huge watch mechanism": grinding, metallic creaks). **Weak evidence:** the model misses music under loud effects (§13.1 item 4), and music is named on both sides of the fold onset ("a low, atmospheric musical hum" at clip04 0:00, "deep musical drones" at 0:06). Read it as "effects lead the onset", not as proof that no music plays.
+- [OBSERVED-MACHINE] **Signature before score.** The snow world plays 16 s of effects only (wind, skis, snowmobile, gunfire) before the score joins at 0:16 (clip09). In clip07 the score enters only at 0:36, after the train.
+- [OBSERVED-MACHINE] **Dialogue leaves the track under effects:** 3 % of effect segments are dialogue-led against 27 % of the rest (§13.2.2).
+- [OBSERVED-MACHINE] **The rotating set has its own voice:** "a deep, resonating sound that matches the movement of the set" (clip08 0:18, 1:00, 1:18). **Rest after motion:** when the van stops (1:36), the score drops to one sustained low tone, then low pulses carry the exit (1:51–2:09).
+- [OBSERVED-MACHINE] **A quiet beat before the cascade.** The vault scene holds longest (segments of 8, 7, 8 and 16 s) under soft score, with keypad beeps and a mechanical whirr as its effects (clip11 0:15–1:05). The intercut thins but does not stop: one 4-s excursion cuts away to the lift fall and the van in the water (0:30–0:34). **Agrees §7.1 and §8.**
+- [OBSERVED-MACHINE] **Silence at thresholds:** the threat's first look (clip06 0:40, 0:47) and the border check, "minimal sound", with the officer in the foreground (clip12 0:25–0:31).
+- [OBSERVED-MACHINE] **The wake is bridged.** One continuous drone runs across two wake close-ups on the plane (clip12 0:00–0:12). The return is then logged as ambience, "background music" and finally the object's sound alone (clip12 0:12–2:37). That **contradicts §8**, where Lehman places the last bare-piano passes on the reunion: a scored sequence under-reported as effects.
+- [OBSERVED-MACHINE] **Each action shot owns a sound** in the campaign trailer: a train horn (WB 0:29), tyres (0:30), glass (0:31), the avalanche (1:04), a blast (1:13).
+- [OBSERVED-MACHINE] **A possible pre-echo:** "a train passing" under the lift descent (clip06 0:14–0:21), about a minute before trains come up in the dialogue (1:13–1:24). It may only be lift machinery. *Not in this dossier*; weak.
+
+**Editing and transitions (§10)**
+- [OBSERVED-MACHINE] **World changes are physical or sonic, never optical.** Four devices appear:
+  - a transit vehicle with its own sound (clip06 0:00–0:21);
+  - a voice-over bridge into memory images (clip10 0:12–1:05);
+  - a sustained cue across a wake cut (clip12 0:00–0:12);
+  - a retroactive reveal by a question nobody can answer (clip03 1:15).
+
+  **Agrees §3.3** (no dream code) and §10.2 (orientation devices).
+- [OBSERVED-MACHINE] **Rhythm by function** (segment means, not ASL):
+  - memory and confrontation 3.1–3.4 s (clip06, clip10);
+  - pitch and teaching 6–7.5 s, inflated by merged segments (clip01, clip03, clip05);
+  - the return 9.2 s, ending on a 17-s object hold, 1.84× the clip mean [DERIVED] (clip12 2:20–2:37).
+- [OBSERVED-MACHINE] **World runs shrink toward an outer-world event:** 17 → 6 → 2–3 s (clip09 1:07–1:46). During the inner world's gravity event, that world takes the long runs (the hotel holds 80 % of clip08's middle third), and the cut returns to the outer world at each change of cause. **Agrees §7.4 and §10.2** (cross-cut parallel action; the slowest level as the spine).
+- [OBSERVED-MACHINE] **Motif inserts mark obsession:** a safe dial (clip10 0:22, 1:03) and a spinning object (0:27, 0:29, 0:49, 0:57). That is six ECU inserts, 13 % of the clip's 45 segments; with its three other ECUs, clip10 has 9 ECUs (20 %), the highest ECU share in the batch; the cut returns to a motif six times in the first 65 s.
+- [OBSERVED-MACHINE] **Trailer shape:** the middle third is the fastest (mean 1.64 s IMAX, 1.59 s WB); the last third slows into the title; 2 of the 3 cuts add a 5–6-s post-title tag. The IMAX cut is bookended on the spinning object (0:00, 1:30), and its only "quiet" audio is the second bookend.
+
+### 13.4 Where the machine contradicts sourced facts (the sourced fact stands)
+
+| Machine claim (where) | Sourced fact | Verdict |
+|---|---|---|
+| "zoom" (clip04 0:08, clip06 0:14, clip08 0:33, clip11 0:36) | no zoom reframes (§1.3, [dga]) | invented; read as camera travel or the set moving |
+| "static" on handheld (47 dialogue segments; clip09 snow) | handheld backbone; "every shot moving" (§4) | vocabulary blind spot |
+| the street "curves upward" (clip04 0:38) | "pivot, not bend" (§7.3) | misread |
+| a mirror "pulled from thin air" (clip04 1:38) | a real hinged mirror door, shot handheld (§7.3) | the hinge's swing reads as an appearance |
+| shadows "fall naturally" (clip04 0:23) | four added suns (§7.3) | right as perception, wrong as method |
+| a car "falls rapidly down the center of the shaft" (clip11 0:30); the shaft "tilted" (IMAX 0:56) | shaft built horizontal; car fired along rails (§5.2, §7.3) | the intended illusion |
+| café "explodes" (clip03 1:15; IMAX 0:32; WB 1:49) | compressed gas, light debris, no pyrotechnics (§7.3) | right content, wrong word |
+| café "slow-motion, stylized" (clip03 1:30) | ramp starts in real time; uneven, unchoreographed paths (§7.3) | wrong intent |
+| an inner level "in slow motion" (clip09 0:35) | inner levels play at real time (§7.4) | discarded |
+| castle "chandeliers", "glass table" (clip01) | lanterns, minimal furniture (§5.2) | misread |
+| the lead in suits (clip01; clip12 0:12) | separates, not suits (§6) | open; check stills |
+| level 1 under a "clear, bright sky" (clip05) | rain, sun blocked (§5.2); the sun sometimes crept in (§2.2) | probably blown-out overcast |
+| sea-edge city "futuristic" (IMAX 0:52, 1:21), sky "bright and clear" (IMAX 1:21) | glacial modernism; grey sea and sky, palette [UNVERIFIED] (§3.3, §5.2) | open until frames are measured |
+| vault lit "low and dramatic" (IMAX 0:57) | space-lit, "neutral, sterile and shadowless", black walls (§2.2); WB 0:40 "cool and clinical" agrees | IMAX wrong: the darkness is the set (§2.1) |
+| the frame story on a "train seat" (WB 1:46, 1:59) | a plane trip (§10.2); IMAX 1:20 says "airplane cabin" | WB wrong |
+| the castle hall a "library or study" (WB 1:52) | the lantern hall (§5.2) | misread |
+| an "oil rig or factory" blast (IMAX 0:50); a crash into an "office" (IMAX 1:17) | no such location (§5.2) | unidentified; do not build on either |
+| an "orchestral" score with no piano (score uploads) | very electronic; piano opens and closes "Time" (§8) | coarse ear |
+| a "faster tempo" (Dream Is Collapsing 1:15) | subdivisions of one tempo (§8) | cannot detect it |
+| the reunion as ambience (clip12 1:34–2:37) | bare-piano passes on the reunion (§8) | music-blind |
+| "injections closing in" (clip05) | *projections* | lossy transcript |
+
+### 13.5 Open checks
+
+- With the user's yes: re-run clip02, Mombasa and Dream Within a Dream, and extend Time past 3:15. For the form of the score, [lehman] pp. 27–30 stays a better source than any machine pass.
+- Not covered by this batch: collapse staging (clip02 failed); it rests on §1–10 alone.
+- Covered, but missed in the first pass: the projections' stare. [OBSERVED-MACHINE] Pedestrians turn their heads together to stare at the newcomer while the rest of the street walks on (clip04 0:57–1:38); after the mirrors shatter they "no longer" stare (2:26). *Not in this dossier's §1–10.*
+- A line here is promoted to VERIFIED only when a sourced fact or a measured still from the user's own copy agrees (§11; 02 hard rule 1).
+
+---
+
+## 14. Sources
 
 Access notes:
 - These pages refused the fetch tool and are cited from search snippets only: IMDb, British Cinematographer, Fast Company, MTV, FilmL.A., the Weingartner CV, FirstShowing, Far Out, Variety (score and editor pieces) and the PopMatters review.
