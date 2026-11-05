@@ -11,6 +11,7 @@ for d in prompt-library/style-references/*/; do
   cp "$d"ADAPTATION.md "$LIB/style-references/$n/" 2>/dev/null || true
   cp "$d"SUMMARY-AR.md "$LIB/style-references/$n/" 2>/dev/null || true
 done
+[ -f screenwriting-study/README.md ] && cp screenwriting-study/README.md "$LIB/screenwriting-study.md"
 find skill -name __pycache__ -prune -exec rm -rf {} +
 rm -f dist/abostesha-film-pipeline.zip
 (cd skill && zip -qr ../dist/abostesha-film-pipeline.zip abostesha-film-pipeline -x '*/__pycache__/*' '*.pyc' '*.DS_Store')
